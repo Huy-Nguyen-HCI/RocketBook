@@ -26,7 +26,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = rocketbook1.0.0
-DISTDIR = /auto/bunter_usr10/vuh/avengersWC/.tmp/rocketbook1.0.0
+DISTDIR = /auto/bunter_usr23/slukej/Desktop/Avengers/.tmp/rocketbook1.0.0
 SUBTARGETS    =  \
 		sub-model \
 		sub-unittest-unittest \
@@ -35,79 +35,79 @@ SUBTARGETS    =  \
 
 sub-model-qmake_all:  FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
+	cd model/ && $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
 	cd model/ && $(MAKE) -f Makefile qmake_all
 sub-model: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
 sub-model-make_first: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
 sub-model-all: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
 sub-model-clean: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
 sub-model-distclean: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-model-install_subtargets: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
 sub-model-uninstall_subtargets: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-unittest-unittest-qmake_all:  FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
+	cd unittest/unittest/ && $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
 	cd unittest/unittest/ && $(MAKE) -f Makefile qmake_all
 sub-unittest-unittest: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
 sub-unittest-unittest-make_first: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
 sub-unittest-unittest-all: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
 sub-unittest-unittest-clean: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
 sub-unittest-unittest-distclean: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-unittest-unittest-install_subtargets: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
 sub-unittest-unittest-uninstall_subtargets: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-database-qmake_all:  FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
+	cd database/ && $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
 	cd database/ && $(MAKE) -f Makefile qmake_all
 sub-database: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
 sub-database-make_first: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
 sub-database-all: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
 sub-database-clean: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
 sub-database-distclean: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
 sub-database-install_subtargets: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
 sub-database-uninstall_subtargets: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: rocketbook.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
@@ -232,13 +232,13 @@ uninstall_subtargets: sub-model-uninstall_subtargets sub-unittest-unittest-unins
 
 sub-model-check:
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 sub-unittest-unittest-check:
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 sub-database-check:
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 check: sub-model-check sub-unittest-unittest-check sub-database-check
 install:install_subtargets  FORCE
 
@@ -255,13 +255,13 @@ distdir: sub-model-distdir sub-unittest-unittest-distdir sub-database-distdir FO
 
 sub-model-distdir: FORCE
 	@test -d model/ || mkdir -p model/
-	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/model
+	cd model/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/model/model.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/model
 
 sub-unittest-unittest-distdir: FORCE
 	@test -d unittest/unittest/ || mkdir -p unittest/unittest/
-	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/unittest/unittest
+	cd unittest/unittest/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/unittest/unittest/unittest.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/unittest/unittest
 
 sub-database-distdir: FORCE
 	@test -d database/ || mkdir -p database/
-	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr10/vuh/avengersWC/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/database
+	cd database/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/slukej/Desktop/Avengers/database/database.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/database
 

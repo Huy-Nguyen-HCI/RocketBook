@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG
-CFLAGS        = -pipe -g -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -g -std=c++0x -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/lib64/qt5/mkspecs/linux-g++
+DEFINES       = -DQT_QML_DEBUG -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
+CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -g -std=c++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+INCPATH       = -I. -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtGui -isystem /usr/include/qt5/QtSql -isystem /usr/include/qt5/QtCore -I. -I/usr/lib64/qt5/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake-qt5
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,10 +33,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = model1.0.0
-DISTDIR = /auto/bunter_usr10/vuh/avengersWC/model/.tmp/model1.0.0
+DISTDIR = /auto/bunter_usr23/slukej/Desktop/Avengers/model/.tmp/model1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -l sqlite3 
+LIBS          = $(SUBLIBS) -l sqlite3 -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -50,10 +50,26 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		rocketuser.cpp \
-		profile.cpp 
+		profile.cpp \
+		../database/accountdb.cpp \
+		blog.cpp \
+		comment.cpp \
+		multimediacontent.cpp \
+		post.cpp \
+		scrapbook.cpp \
+		tweet.cpp \
+		feed.cpp 
 OBJECTS       = main.o \
 		rocketuser.o \
-		profile.o
+		profile.o \
+		accountdb.o \
+		blog.o \
+		comment.o \
+		multimediacontent.o \
+		post.o \
+		scrapbook.o \
+		tweet.o \
+		feed.o
 DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
 		/usr/lib64/qt5/mkspecs/common/linux.conf \
@@ -103,14 +119,35 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/features/c++11.prf \
 		/usr/lib64/qt5/mkspecs/features/qml_debug.prf \
 		/usr/lib64/qt5/mkspecs/features/warn_on.prf \
+		/usr/lib64/qt5/mkspecs/features/qt.prf \
+		/usr/lib64/qt5/mkspecs/features/resources.prf \
+		/usr/lib64/qt5/mkspecs/features/moc.prf \
+		/usr/lib64/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib64/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib64/qt5/mkspecs/features/testcase_targets.prf \
 		/usr/lib64/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
 		model.pro rocketuser.h \
-		profile.h main.cpp \
+		profile.h \
+		../database/accountdb.h \
+		blog.h \
+		comment.h \
+		multimediacontent.h \
+		post.h \
+		scrapbook.h \
+		tweet.h \
+		feed.h main.cpp \
 		rocketuser.cpp \
-		profile.cpp
+		profile.cpp \
+		../database/accountdb.cpp \
+		blog.cpp \
+		comment.cpp \
+		multimediacontent.cpp \
+		post.cpp \
+		scrapbook.cpp \
+		tweet.cpp \
+		feed.cpp
 QMAKE_TARGET  = model
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = model
@@ -190,11 +227,19 @@ Makefile: model.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/m
 		/usr/lib64/qt5/mkspecs/features/c++11.prf \
 		/usr/lib64/qt5/mkspecs/features/qml_debug.prf \
 		/usr/lib64/qt5/mkspecs/features/warn_on.prf \
+		/usr/lib64/qt5/mkspecs/features/qt.prf \
+		/usr/lib64/qt5/mkspecs/features/resources.prf \
+		/usr/lib64/qt5/mkspecs/features/moc.prf \
+		/usr/lib64/qt5/mkspecs/features/unix/opengl.prf \
+		/usr/lib64/qt5/mkspecs/features/unix/thread.prf \
 		/usr/lib64/qt5/mkspecs/features/testcase_targets.prf \
 		/usr/lib64/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
-		model.pro
+		model.pro \
+		/usr/lib64/libQt5Gui.prl \
+		/usr/lib64/libQt5Sql.prl \
+		/usr/lib64/libQt5Core.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile model.pro
 /usr/lib64/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib64/qt5/mkspecs/common/unix.conf:
@@ -245,11 +290,19 @@ Makefile: model.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/m
 /usr/lib64/qt5/mkspecs/features/c++11.prf:
 /usr/lib64/qt5/mkspecs/features/qml_debug.prf:
 /usr/lib64/qt5/mkspecs/features/warn_on.prf:
+/usr/lib64/qt5/mkspecs/features/qt.prf:
+/usr/lib64/qt5/mkspecs/features/resources.prf:
+/usr/lib64/qt5/mkspecs/features/moc.prf:
+/usr/lib64/qt5/mkspecs/features/unix/opengl.prf:
+/usr/lib64/qt5/mkspecs/features/unix/thread.prf:
 /usr/lib64/qt5/mkspecs/features/testcase_targets.prf:
 /usr/lib64/qt5/mkspecs/features/exceptions.prf:
 /usr/lib64/qt5/mkspecs/features/yacc.prf:
 /usr/lib64/qt5/mkspecs/features/lex.prf:
 model.pro:
+/usr/lib64/libQt5Gui.prl:
+/usr/lib64/libQt5Sql.prl:
+/usr/lib64/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile model.pro
 
@@ -264,6 +317,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents rocketuser.h profile.h ../database/accountdb.h blog.h comment.h multimediacontent.h post.h scrapbook.h tweet.h feed.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp rocketuser.cpp profile.cpp ../database/accountdb.cpp blog.cpp comment.cpp multimediacontent.cpp post.cpp scrapbook.cpp tweet.cpp feed.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -278,8 +333,18 @@ distclean: clean
 
 ####### Sub-libraries
 
+mocclean: compiler_moc_header_clean compiler_moc_source_clean
+
+mocables: compiler_moc_header_make_all compiler_moc_source_make_all
+
 check: first
 
+compiler_rcc_make_all:
+compiler_rcc_clean:
+compiler_moc_header_make_all:
+compiler_moc_header_clean:
+compiler_moc_source_make_all:
+compiler_moc_source_clean:
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -290,7 +355,7 @@ compiler_clean:
 
 ####### Compile
 
-main.o: main.cpp 
+main.o: main.cpp ../database/accountdb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 rocketuser.o: rocketuser.cpp rocketuser.h \
@@ -299,6 +364,55 @@ rocketuser.o: rocketuser.cpp rocketuser.h \
 
 profile.o: profile.cpp profile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o profile.o profile.cpp
+
+accountdb.o: ../database/accountdb.cpp ../database/accountdb.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o accountdb.o ../database/accountdb.cpp
+
+blog.o: blog.cpp blog.h \
+		post.h \
+		rocketuser.h \
+		profile.h \
+		comment.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o blog.o blog.cpp
+
+comment.o: comment.cpp comment.h \
+		post.h \
+		rocketuser.h \
+		profile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o comment.o comment.cpp
+
+multimediacontent.o: multimediacontent.cpp multimediacontent.h \
+		post.h \
+		rocketuser.h \
+		profile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o multimediacontent.o multimediacontent.cpp
+
+post.o: post.cpp post.h \
+		rocketuser.h \
+		profile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o post.o post.cpp
+
+scrapbook.o: scrapbook.cpp scrapbook.h \
+		blog.h \
+		post.h \
+		rocketuser.h \
+		profile.h \
+		comment.h \
+		tweet.h \
+		multimediacontent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scrapbook.o scrapbook.cpp
+
+tweet.o: tweet.cpp tweet.h \
+		post.h \
+		rocketuser.h \
+		profile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tweet.o tweet.cpp
+
+feed.o: feed.cpp feed.h \
+		post.h \
+		rocketuser.h \
+		profile.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o feed.o feed.cpp
 
 ####### Install
 
