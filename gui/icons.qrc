@@ -7,5 +7,6 @@
         <file>logout.png</file>
         <file>group.png</file>
         <file>friends.png</file>
+        <file>rocket.png</file>
     </qresource>
 </RCC>
