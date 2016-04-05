@@ -2,7 +2,7 @@
 
 AccountDB::AccountDB()
 {
-    accountDB = QSqlDatabase::addDatabase("../accountDB.db");
+    accountDB = QSqlDatabase::addDatabase("QSQLITE");
     accountDB.setDatabaseName("../accountDB.db");
 
     if (!accountDB.open())
@@ -94,16 +94,16 @@ bool AccountDB::removeAccount(const QString& userName)
     return success;
 }
 
-//void AccountDB::printAllAccounts() const
-//{
-//    qDebug() << "Accounts in db:";
-//    QSqlQuery query("SELECT * FROM accounts");
-//    while (query.next())
-//    {
-//        QString name = query.value(idName).toString();
-//        qDebug() << "===" << name;
-//    }
-//}
+std::string AccountDB::selectAccount(const QString& userName, const QString& password)
+{
+    qDebug() << "Accounts in db:";
+    QSqlQuery query("SELECT * FROM accounts");
+    while (query.next())
+    {
+        QString name = query.value(idName).toString();
+        qDebug() << "===" << name;
+    }
+}
 
 bool AccountDB::accountExists(const QString& userName) const
 {
