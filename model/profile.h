@@ -20,6 +20,9 @@ public:
     std::string getName() { return name; }
     std::string getPicturePath() { return picturePath; }
 
+    void setDescription(std::string input) : descrition(input) { }
+    void setName(std::string input) : name(input)  { }
+    void setPicturePath(std::string input) : picturePath(input) { }
 private:
     int id;
     static int id_cnt;
