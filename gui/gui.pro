@@ -12,8 +12,7 @@ TARGET = gui
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        logingui.cpp \
+SOURCES += logingui.cpp \
     mainwindow.cpp
 
 HEADERS  += logingui.h \
