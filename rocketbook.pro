@@ -4,4 +4,5 @@ SUBDIRS += \
     model \
 #    database \
     unittest/unittest \
-    database
+    database \
+    gui
