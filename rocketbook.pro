@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     model \
-    database
+    database \
+    unittest/unittest
