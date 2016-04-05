@@ -6,6 +6,7 @@
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlRecord>
 #include <QDebug>
+#include <string>
 
 /**
  * @brief The AccountDB class
@@ -69,6 +70,15 @@ public:
      * @return true if succeeded, false if failed
      */
     bool removeAccount(const QString& userName);
+
+    /**
+     * @brief selectAccount
+     * Return a string including details of the account with the username and password
+     * @param userName username of the account
+     * @param password password of the account
+     * @return a string with id, username, password, profileid
+     */
+    std::string selectAccount(const QString& userName, const QString& password);
 
     /**
      * @brief accountExists

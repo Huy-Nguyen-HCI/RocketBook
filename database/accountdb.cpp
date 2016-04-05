@@ -97,12 +97,17 @@ bool AccountDB::removeAccount(const QString& userName)
 std::string AccountDB::selectAccount(const QString& userName, const QString& password)
 {
     qDebug() << "Accounts in db:";
-    QSqlQuery query("SELECT * FROM accounts");
-    while (query.next())
-    {
-        QString name = query.value(idName).toString();
-        qDebug() << "===" << name;
-    }
+    QSqlQuery query("SELECT * FROM accounts WHERE username = (:username) AND password = (:password)");
+    query.bindValue(":username", userName);
+    query.bindValue(":password", password);
+
+//    if
+
+//    while (query.next())
+//    {
+//        QString name = query.value().toString();
+//        qDebug() << "===" << name;
+//    }
 }
 
 bool AccountDB::accountExists(const QString& userName) const
