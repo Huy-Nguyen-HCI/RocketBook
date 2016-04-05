@@ -94,20 +94,37 @@ bool AccountDB::removeAccount(const QString& userName)
     return success;
 }
 
-std::string AccountDB::selectAccount(const QString& userName, const QString& password)
+QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& password)
 {
+    QString accountInfo = "";
+
     qDebug() << "Accounts in db:";
     QSqlQuery query("SELECT * FROM accounts WHERE username = (:username) AND password = (:password)");
     query.bindValue(":username", userName);
     query.bindValue(":password", password);
 
-//    if
+    int accountidIndex = query.record().indexOf("username");
+    int usernameIndex = query.record().indexOf("username");
+    int passwordIndex = query.record().indexOf("password");
+    int profileidIndex = query.record().indexOf("profileid");
 
-//    while (query.next())
-//    {
-//        QString name = query.value().toString();
-//        qDebug() << "===" << name;
-//    }
+    if (query.exec())
+    {
+        if(query.next())
+        {
+            accountInfo += query.value(accountidIndex).toString() + " ";
+            accountInfo += query.value(usernameIndex).toString() + " ";
+            accountInfo += query.value(passwordIndex).toString() + " ";
+            accountInfo += query.value(profileidIndex).toString();
+        }
+    }
+    else
+    {
+        qDebug() << "account retrieval fails:" <<query.lastError();
+    }
+
+    return accountInfo;
+
 }
 
 bool AccountDB::accountExists(const QString& userName) const

@@ -74,11 +74,13 @@ public:
     /**
      * @brief selectAccount
      * Return a string including details of the account with the username and password
+     * For example, a possible return is "1 vuh Avengers214 2"
+     *
      * @param userName username of the account
      * @param password password of the account
-     * @return a string with id, username, password, profileid
+     * @return a string with id, username, password, profileid; return "" if the account does not exist.
      */
-    std::string selectAccount(const QString& userName, const QString& password);
+    QString retrieveAccountInfo(const QString& userName, const QString& password);
 
     /**
      * @brief accountExists
