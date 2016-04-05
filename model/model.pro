@@ -2,13 +2,14 @@ TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
 #CONFIG -= qt
+QT +=sql
 
 LIBS    += -l sqlite3
 
 SOURCES += main.cpp \
     rocketuser.cpp \
     profile.cpp \
-#    ../database/*.cpp
+    ../database/accountdb.cpp \
     blog.cpp \
     comment.cpp \
     multimediacontent.cpp \
@@ -20,7 +21,7 @@ SOURCES += main.cpp \
 HEADERS += \
     rocketuser.h \
     profile.h \
-#    ../database/*.h
+    ../database/*.h \
     blog.h \
     comment.h \
     multimediacontent.h \
