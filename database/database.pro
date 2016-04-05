@@ -9,9 +9,13 @@ SOURCES += \
     dbtool.cpp \
     dbtable.cpp \
     accountdb.cpp \
-    main.cpp
+    main.cpp \
+    dbmanager.cpp
 
 HEADERS += \
     dbtool.h \
     dbtable.h \
-    accountdb.h
+    accountdb.h \
+    dbmanager.h
+
+QT += sql
