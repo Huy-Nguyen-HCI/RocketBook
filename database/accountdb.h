@@ -11,28 +11,50 @@ class AccountDB
 {
 public:
     /**
-     * @brief AccountDB Construct an account database at
+     * @brief AccountDB
+     *
+     * Construct an account database at ../AccountDB.db
      */
     AccountDB();
+
+    /**
+     * @brief AccountDB
+     * Construct an account database, given the path
+     * @param path path of the account
+     */
     AccountDB(const QString& path);
 
+    /**
+     * @brief ~AccountDB
+     *
+     * Default destructor for account
+     */
     ~AccountDB();
 
+    /**
+     * @brief isOpen
+     *
+     * Check whether account database is open
+     * @return true if yes, false if no
+     */
     bool isOpen() const;
 
-    bool addProfile(int profileID, const QString& userName, const QString& password, int scrapbookID);
+    /**
+     * @brief addAccount
+     * Add a new account
+     * @param accountID Account ID
+     * @param userName
+     * @param password
+     * @param profileid
+     * @return
+     */
+    bool addAccount(int accountID, const QString &userName, const QString &password, int profileid);
 
-    bool removeProfile(const QString& userName);
-
-    bool profileExists(const QString& userName) const;
-
-    bool addaccount(int accountID, const QString &userName, const QString &password, int profileid);
-
-    bool removeaccount(const QString& userName);
+    bool removeAccount(const QString& userName);
 
     bool accountExists(const QString& userName) const;
 
-    bool removeAllaccounts();
+    bool removeAllAccounts();
 
     bool removeAllProfiles();
 

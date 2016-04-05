@@ -43,7 +43,7 @@ bool AccountDB::isOpen() const
     return accountDB.isOpen();
 }
 
-bool AccountDB::addaccount(int accountID, const QString &userName, const QString &password, int profileid)
+bool AccountDB::addAccount(int accountID, const QString &userName, const QString &password, int profileid)
 {
     bool success = false;
 
@@ -70,7 +70,7 @@ bool AccountDB::addaccount(int accountID, const QString &userName, const QString
 
 
 
-bool AccountDB::removeaccount(const QString& userName)
+bool AccountDB::removeAccount(const QString& userName)
 {
     bool success = false;
 
@@ -128,7 +128,7 @@ bool AccountDB::accountExists(const QString& userName) const
     return exists;
 }
 
-bool AccountDB::removeAllaccounts()
+bool AccountDB::removeAllAccounts()
 {
     bool success = false;
 
