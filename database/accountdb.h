@@ -23,6 +23,14 @@ public:
 
     bool profileExists(const QString& userName) const;
 
+    bool addaccount(int accountID, const QString &userName, const QString &password, int profileid);
+
+    bool removeaccount(const QString& userName);
+
+    bool accountExists(const QString& userName) const;
+
+    bool removeAllaccounts();
+
     bool removeAllProfiles();
 
 private:
