@@ -2,7 +2,17 @@
 
 ProfileDB::ProfileDB()
 {
+    profileDB = QSqlDatabase::addDatabase("../profileDB.db");
+    profileDB.setDatabaseName("../profileDB.db");
 
+    if (!profileDB.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
 }
 
 ProfileDB::ProfileDB(const QString &path)
@@ -33,14 +43,17 @@ bool ProfileDB::isOpen() const
     return profileDB.isOpen();
 }
 
-bool ProfileDB::addProfile(int profileID, const QString &name, const QString &password, int scrapbookID)
+bool ProfileDB::addProfile(int profileID, const QString &userName, const QString &password, int scrapbookID)
 {
     bool success = false;
 
-    if (!profileID.isEmpty() && !name.isEmpty() && !password.isEmpty() && scrapbookID.isEmpty()) {
+    if (!userName.isEmpty() && !password.isEmpty()) {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO profiles (name) VALUES (:name)");
-        queryAdd.bindValue(":name", name);
+        queryAdd.prepare("INSERT INTO profiles (profileid, username, password, scrapbookid) VALUES (:profileid, :username, :password, :scrapbookid)");
+        queryAdd.bindValue(":profileid", profileID);
+        queryAdd.bindValue(":username", userName);
+        queryAdd.bindValue(":password", password);
+        queryAdd.bindValue(":scrapbookid", scrapbookID);
 
         if(queryAdd.exec())
         {
@@ -48,75 +61,38 @@ bool ProfileDB::addProfile(int profileID, const QString &name, const QString &pa
         }
         else
         {
-            qDebug() << "add person failed: " << queryAdd.lastError();
+            qDebug() << "add profile failed: " << queryAdd.lastError();
         }
     }
+    return success;
 }
 
 
-//DbManager::~DbManager()
-//{
-//    if (m_db.isOpen())
-//    {
-//        m_db.close();
-//    }
-//}
 
-//bool DbManager::isOpen() const
-//{
-//    return m_db.isOpen();
-//}
 
-//bool DbManager::addPerson(const QString& name)
-//{
-//    bool success = false;
+bool ProfileDB::removeProfile(const QString& userName)
+{
+    bool success = false;
 
-//    if (!name.isEmpty())
-//    {
-//        QSqlQuery queryAdd;
-//        queryAdd.prepare("INSERT INTO people (name) VALUES (:name)");
-//        queryAdd.bindValue(":name", name);
+    if (profileExists(userName))
+    {
+        QSqlQuery queryDelete;
+        queryDelete.prepare("DELETE FROM profiles WHERE username = (:username)");
+        queryDelete.bindValue(":username", userName);
+        success = queryDelete.exec();
 
-//        if(queryAdd.exec())
-//        {
-//            success = true;
-//        }
-//        else
-//        {
-//            qDebug() << "add person failed: " << queryAdd.lastError();
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "add person failed: name cannot be empty";
-//    }
+        if(!success)
+        {
+            qDebug() << "remove profile failed: " << queryDelete.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "remove profile failed: profile doesnt exist";
+    }
 
-//    return success;
-//}
-
-//bool DbManager::removePerson(const QString& name)
-//{
-//    bool success = false;
-
-//    if (personExists(name))
-//    {
-//        QSqlQuery queryDelete;
-//        queryDelete.prepare("DELETE FROM people WHERE name = (:name)");
-//        queryDelete.bindValue(":name", name);
-//        success = queryDelete.exec();
-
-//        if(!success)
-//        {
-//            qDebug() << "remove person failed: " << queryDelete.lastError();
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "remove person failed: person doesnt exist";
-//    }
-
-//    return success;
-//}
+    return success;
+}
 
 //void DbManager::printAllPersons() const
 //{
@@ -130,44 +106,44 @@ bool ProfileDB::addProfile(int profileID, const QString &name, const QString &pa
 //    }
 //}
 
-//bool DbManager::personExists(const QString& name) const
-//{
-//    bool exists = false;
+bool ProfileDB::profileExists(const QString& userName) const
+{
+    bool exists = false;
 
-//    QSqlQuery checkQuery;
-//    checkQuery.prepare("SELECT name FROM people WHERE name = (:name)");
-//    checkQuery.bindValue(":name", name);
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT username FROM profiles WHERE username = (:username)");
+    checkQuery.bindValue(":username", userName);
 
-//    if (checkQuery.exec())
-//    {
-//        if (checkQuery.next())
-//        {
-//            exists = true;
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "person exists failed: " << checkQuery.lastError();
-//    }
+    if (checkQuery.exec())
+    {
+        if (checkQuery.next())
+        {
+            exists = true;
+        }
+    }
+    else
+    {
+        qDebug() << "profile exists failed: " << checkQuery.lastError();
+    }
 
-//    return exists;
-//}
+    return exists;
+}
 
-//bool DbManager::removeAllPersons()
-//{
-//    bool success = false;
+bool ProfileDB::removeAllProfiles()
+{
+    bool success = false;
 
-//    QSqlQuery removeQuery;
-//    removeQuery.prepare("DELETE FROM people");
+    QSqlQuery removeQuery;
+    removeQuery.prepare("DELETE FROM profiles");
 
-//    if (removeQuery.exec())
-//    {
-//        success = true;
-//    }
-//    else
-//    {
-//        qDebug() << "remove all persons failed: " << removeQuery.lastError();
-//    }
+    if (removeQuery.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "remove all profiles failed: " << removeQuery.lastError();
+    }
 
-//    return success;
-//}
+    return success;
+}

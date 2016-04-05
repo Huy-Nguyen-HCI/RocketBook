@@ -17,11 +17,11 @@ public:
 
     bool isOpen() const;
 
-    bool addProfile(int profileID, const QString& name, const QString& password, int scrapbookID);
+    bool addProfile(int profileID, const QString& userName, const QString& password, int scrapbookID);
 
-    bool removeProfile(const QString& name);
+    bool removeProfile(const QString& userName);
 
-    bool profileExists(const QString& name) const;
+    bool profileExists(const QString& userName) const;
 
     bool removeAllProfiles();
 
