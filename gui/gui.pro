@@ -13,7 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += logingui.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    main.cpp
 
 HEADERS  += logingui.h \
     mainwindow.h
