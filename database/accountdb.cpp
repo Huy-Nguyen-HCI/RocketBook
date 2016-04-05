@@ -43,17 +43,17 @@ bool AccountDB::isOpen() const
     return accountDB.isOpen();
 }
 
-bool AccountDB::addaccount(int accountID, const QString &userName, const QString &password, int scrapbookID)
+bool AccountDB::addaccount(int accountID, const QString &userName, const QString &password, int profileid)
 {
     bool success = false;
 
     if (!userName.isEmpty() && !password.isEmpty()) {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO accounts (accountid, username, password, scrapbookid) VALUES (:accountid, :username, :password, :scrapbookid)");
+        queryAdd.prepare("INSERT INTO accounts (accountid, username, password, profileid) VALUES (:accountid, :username, :password, :profileid)");
         queryAdd.bindValue(":accountid", accountID);
         queryAdd.bindValue(":username", userName);
         queryAdd.bindValue(":password", password);
-        queryAdd.bindValue(":scrapbookid", scrapbookID);
+        queryAdd.bindValue(":profileid", profileid);
 
         if(queryAdd.exec())
         {
