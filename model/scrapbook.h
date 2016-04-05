@@ -18,7 +18,14 @@ public:
 private:
     std::vector<Blog*>* blogList;
     std::vector<Tweet*>* tweetList;
-    std::vector<MultimediaContent*>* multimediaList;
+    std::vector<MultimediaContent*>* mediaList;
+
+    void addBlog(Blog* newBlog);
+    Blog* getBlog(int num);
+    void addTweet(Tweet* newTweet);
+    Tweet* getTweet(int num);
+    void addMedia(MultimediaContent* newMedia);
+    MultimediaContent* getMedia(int num);
 
 };
 
