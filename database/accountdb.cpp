@@ -43,14 +43,14 @@ bool AccountDB::isOpen() const
     return accountDB.isOpen();
 }
 
-bool AccountDB::addProfile(int profileID, const QString &userName, const QString &password, int scrapbookID)
+bool AccountDB::addaccount(int accountID, const QString &userName, const QString &password, int scrapbookID)
 {
     bool success = false;
 
     if (!userName.isEmpty() && !password.isEmpty()) {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO profiles (profileid, username, password, scrapbookid) VALUES (:profileid, :username, :password, :scrapbookid)");
-        queryAdd.bindValue(":profileid", profileID);
+        queryAdd.prepare("INSERT INTO accounts (accountid, username, password, scrapbookid) VALUES (:accountid, :username, :password, :scrapbookid)");
+        queryAdd.bindValue(":accountid", accountID);
         queryAdd.bindValue(":username", userName);
         queryAdd.bindValue(":password", password);
         queryAdd.bindValue(":scrapbookid", scrapbookID);
@@ -61,7 +61,7 @@ bool AccountDB::addProfile(int profileID, const QString &userName, const QString
         }
         else
         {
-            qDebug() << "add profile failed: " << queryAdd.lastError();
+            qDebug() << "add account failed: " << queryAdd.lastError();
         }
     }
     return success;
@@ -70,35 +70,34 @@ bool AccountDB::addProfile(int profileID, const QString &userName, const QString
 
 
 
-bool AccountDB::removeProfile(const QString& userName)
+bool AccountDB::removeaccount(const QString& userName)
 {
     bool success = false;
 
-    if (profileExists(userName))
+    if (accountExists(userName))
     {
         QSqlQuery queryDelete;
-        queryDelete.prepare("DELETE FROM profiles WHERE username = (:username)");
+        queryDelete.prepare("DELETE FROM accounts WHERE username = (:username)");
         queryDelete.bindValue(":username", userName);
         success = queryDelete.exec();
 
         if(!success)
         {
-            qDebug() << "remove profile failed: " << queryDelete.lastError();
+            qDebug() << "remove account failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove profile failed: profile doesnt exist";
+        qDebug() << "remove account failed: account doesnt exist";
     }
 
     return success;
 }
 
-//void DbManager::printAllPersons() const
+//void AccountDB::printAllAccounts() const
 //{
-//    qDebug() << "Persons in db:";
-//    QSqlQuery query("SELECT * FROM people");
-//    int idName = query.record().indexOf("name");
+//    qDebug() << "Accounts in db:";
+//    QSqlQuery query("SELECT * FROM accounts");
 //    while (query.next())
 //    {
 //        QString name = query.value(idName).toString();
@@ -106,12 +105,12 @@ bool AccountDB::removeProfile(const QString& userName)
 //    }
 //}
 
-bool AccountDB::profileExists(const QString& userName) const
+bool AccountDB::accountExists(const QString& userName) const
 {
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT username FROM profiles WHERE username = (:username)");
+    checkQuery.prepare("SELECT username FROM accounts WHERE username = (:username)");
     checkQuery.bindValue(":username", userName);
 
     if (checkQuery.exec())
@@ -123,18 +122,18 @@ bool AccountDB::profileExists(const QString& userName) const
     }
     else
     {
-        qDebug() << "profile exists failed: " << checkQuery.lastError();
+        qDebug() << "account exists failed: " << checkQuery.lastError();
     }
 
     return exists;
 }
 
-bool AccountDB::removeAllProfiles()
+bool AccountDB::removeAllaccounts()
 {
     bool success = false;
 
     QSqlQuery removeQuery;
-    removeQuery.prepare("DELETE FROM profiles");
+    removeQuery.prepare("DELETE FROM accounts");
 
     if (removeQuery.exec())
     {
@@ -142,7 +141,7 @@ bool AccountDB::removeAllProfiles()
     }
     else
     {
-        qDebug() << "remove all profiles failed: " << removeQuery.lastError();
+        qDebug() << "remove all accounts failed: " << removeQuery.lastError();
     }
 
     return success;
