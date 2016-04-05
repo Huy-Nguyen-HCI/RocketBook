@@ -10,6 +10,9 @@
 class AccountDB
 {
 public:
+    /**
+     * @brief AccountDB Construct an account database at
+     */
     AccountDB();
     AccountDB(const QString& path);
 
