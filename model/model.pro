@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     post.cpp \
     scrapbook.cpp \
     tweet.cpp \
-    feed.cpp
+    feed.cpp \
+    accountcontroller.cpp
 
 HEADERS += \
     rocketuser.h \
@@ -28,4 +29,5 @@ HEADERS += \
     post.h \
     scrapbook.h \
     tweet.h \
-    feed.h
+    feed.h \
+    accountcontroller.h

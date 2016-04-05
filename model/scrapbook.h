@@ -20,11 +20,13 @@ private:
     std::vector<Tweet*>* tweetList;
     std::vector<MultimediaContent*>* mediaList;
 
+    //Methods for add to and getting from containers
     void addBlog(Blog* newBlog);
-    Blog* getBlog(int num);
     void addTweet(Tweet* newTweet);
-    Tweet* getTweet(int num);
     void addMedia(MultimediaContent* newMedia);
+
+    Blog* getBlog(int num);
+    Tweet* getTweet(int num);
     MultimediaContent* getMedia(int num);
 
 };

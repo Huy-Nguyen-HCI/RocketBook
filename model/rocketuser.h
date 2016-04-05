@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-
+class Profile;
 /**
  * @brief The RocketUser class stores information about the user.
  *      Profile
@@ -22,9 +22,12 @@ public:
     RocketUser();
     RocketUser(int id);
     ~RocketUser();
+    int getPlayerId();
+    Profile* getProfile();
 
 private:
-    Profile profile;
+    Profile* profile;
+    int id;
     // group list
     std::string password;
     // privacy settings
@@ -32,6 +35,8 @@ private:
     // friend list
     // feed
     // chat container
+    static int id_cnt;
+
 };
 
 #endif // ROCKETUSER_H

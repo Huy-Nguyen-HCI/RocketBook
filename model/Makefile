@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = model1.0.0
-DISTDIR = /auto/bunter_usr10/vuh/avengersWC/model/.tmp/model1.0.0
+DISTDIR = /auto/bunter_usr23/slukej/Desktop/Avengers/model/.tmp/model1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) -l sqlite3 -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
@@ -58,7 +58,8 @@ SOURCES       = main.cpp \
 		post.cpp \
 		scrapbook.cpp \
 		tweet.cpp \
-		feed.cpp 
+		feed.cpp \
+		accountcontroller.cpp 
 OBJECTS       = main.o \
 		rocketuser.o \
 		profile.o \
@@ -69,7 +70,8 @@ OBJECTS       = main.o \
 		post.o \
 		scrapbook.o \
 		tweet.o \
-		feed.o
+		feed.o \
+		accountcontroller.o
 DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
 		/usr/lib64/qt5/mkspecs/common/linux.conf \
@@ -137,7 +139,8 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		post.h \
 		scrapbook.h \
 		tweet.h \
-		feed.h main.cpp \
+		feed.h \
+		accountcontroller.h main.cpp \
 		rocketuser.cpp \
 		profile.cpp \
 		../database/accountdb.cpp \
@@ -147,7 +150,8 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		post.cpp \
 		scrapbook.cpp \
 		tweet.cpp \
-		feed.cpp
+		feed.cpp \
+		accountcontroller.cpp
 QMAKE_TARGET  = model
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = model
@@ -317,8 +321,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents rocketuser.h profile.h ../database/accountdb.h blog.h comment.h multimediacontent.h post.h scrapbook.h tweet.h feed.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp rocketuser.cpp profile.cpp ../database/accountdb.cpp blog.cpp comment.cpp multimediacontent.cpp post.cpp scrapbook.cpp tweet.cpp feed.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents rocketuser.h profile.h ../database/accountdb.h blog.h comment.h multimediacontent.h post.h scrapbook.h tweet.h feed.h accountcontroller.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp rocketuser.cpp profile.cpp ../database/accountdb.cpp blog.cpp comment.cpp multimediacontent.cpp post.cpp scrapbook.cpp tweet.cpp feed.cpp accountcontroller.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -355,14 +359,35 @@ compiler_clean:
 
 ####### Compile
 
-main.o: main.cpp ../database/accountdb.h
+main.o: main.cpp ../database/accountdb.h \
+		accountcontroller.h \
+		rocketuser.h \
+		profile.h \
+		scrapbook.h \
+		blog.h \
+		post.h \
+		comment.h \
+		tweet.h \
+		multimediacontent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 rocketuser.o: rocketuser.cpp rocketuser.h \
-		profile.h
+		profile.h \
+		scrapbook.h \
+		blog.h \
+		post.h \
+		comment.h \
+		tweet.h \
+		multimediacontent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rocketuser.o rocketuser.cpp
 
-profile.o: profile.cpp profile.h
+profile.o: profile.cpp profile.h \
+		scrapbook.h \
+		blog.h \
+		post.h \
+		comment.h \
+		tweet.h \
+		multimediacontent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o profile.o profile.cpp
 
 accountdb.o: ../database/accountdb.cpp ../database/accountdb.h
@@ -370,49 +395,47 @@ accountdb.o: ../database/accountdb.cpp ../database/accountdb.h
 
 blog.o: blog.cpp blog.h \
 		post.h \
-		rocketuser.h \
-		profile.h \
 		comment.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o blog.o blog.cpp
 
 comment.o: comment.cpp comment.h \
-		post.h \
-		rocketuser.h \
-		profile.h
+		post.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o comment.o comment.cpp
 
 multimediacontent.o: multimediacontent.cpp multimediacontent.h \
-		post.h \
-		rocketuser.h \
-		profile.h
+		post.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o multimediacontent.o multimediacontent.cpp
 
-post.o: post.cpp post.h \
-		rocketuser.h \
-		profile.h
+post.o: post.cpp post.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o post.o post.cpp
 
 scrapbook.o: scrapbook.cpp scrapbook.h \
 		blog.h \
 		post.h \
-		rocketuser.h \
-		profile.h \
 		comment.h \
 		tweet.h \
 		multimediacontent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scrapbook.o scrapbook.cpp
 
 tweet.o: tweet.cpp tweet.h \
-		post.h \
-		rocketuser.h \
-		profile.h
+		post.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tweet.o tweet.cpp
 
 feed.o: feed.cpp feed.h \
-		post.h \
-		rocketuser.h \
-		profile.h
+		post.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o feed.o feed.cpp
+
+accountcontroller.o: accountcontroller.cpp accountcontroller.h \
+		../database/accountdb.h \
+		rocketuser.h \
+		profile.h \
+		scrapbook.h \
+		blog.h \
+		post.h \
+		comment.h \
+		tweet.h \
+		multimediacontent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o accountcontroller.o accountcontroller.cpp
 
 ####### Install
 

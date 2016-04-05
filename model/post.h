@@ -1,7 +1,7 @@
 #ifndef POST_H
 #define POST_H
 
-#include "rocketuser.h"
+#include <string>
 
 /**
  * @brief The Post class serves as a parent for all content that the user can post
@@ -18,7 +18,7 @@ public:
     Post();
 
 protected:
-    RocketUser* user;
+    std::string username;
 
 };
 
