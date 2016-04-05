@@ -4,7 +4,7 @@ TEMPLATE = app
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    profiledb.cpp
+    accountdb.cpp
 
 RESOURCES += qml.qrc
 
@@ -15,6 +15,6 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    profiledb.h
+    accountdb.h
 
 QT +=sql

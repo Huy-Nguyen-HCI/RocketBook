@@ -1,5 +1,5 @@
-#ifndef PROFILEDB_H
-#define PROFILEDB_H
+#ifndef ACCOUNTDB_H
+#define ACCOUNTDB_H
 #include <QString>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
@@ -7,13 +7,13 @@
 #include <QtSql/QSqlRecord>
 #include <QDebug>
 
-class ProfileDB
+class AccountDB
 {
 public:
-    ProfileDB();
-    ProfileDB(const QString& path);
+    AccountDB();
+    AccountDB(const QString& path);
 
-    ~ProfileDB();
+    ~AccountDB();
 
     bool isOpen() const;
 
@@ -26,7 +26,7 @@ public:
     bool removeAllProfiles();
 
 private:
-    QSqlDatabase profileDB;
+    QSqlDatabase accountDB;
 };
 
-#endif // PROFILEDB_H
+#endif // ACCOUNTDB_H

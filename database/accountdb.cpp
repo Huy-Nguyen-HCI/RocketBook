@@ -1,11 +1,11 @@
-#include "profiledb.h"
+#include "accountdb.h"
 
-ProfileDB::ProfileDB()
+AccountDB::AccountDB()
 {
-    profileDB = QSqlDatabase::addDatabase("../profileDB.db");
-    profileDB.setDatabaseName("../profileDB.db");
+    accountDB = QSqlDatabase::addDatabase("../accountDB.db");
+    accountDB.setDatabaseName("../accountDB.db");
 
-    if (!profileDB.open())
+    if (!accountDB.open())
     {
         qDebug() << "Error: connection with database fail";
     }
@@ -15,12 +15,12 @@ ProfileDB::ProfileDB()
     }
 }
 
-ProfileDB::ProfileDB(const QString &path)
+AccountDB::AccountDB(const QString &path)
 {
-    profileDB = QSqlDatabase::addDatabase(path);
-    profileDB.setDatabaseName(path);
+    accountDB = QSqlDatabase::addDatabase(path);
+    accountDB.setDatabaseName(path);
 
-    if (!profileDB.open())
+    if (!accountDB.open())
     {
         qDebug() << "Error: connection with database fail";
     }
@@ -30,20 +30,20 @@ ProfileDB::ProfileDB(const QString &path)
     }
 }
 
-ProfileDB::~ProfileDB()
+AccountDB::~AccountDB()
 {
-    if (profileDB.isOpen())
+    if (accountDB.isOpen())
     {
-        profileDB.close();
+        accountDB.close();
     }
 }
 
-bool ProfileDB::isOpen() const
+bool AccountDB::isOpen() const
 {
-    return profileDB.isOpen();
+    return accountDB.isOpen();
 }
 
-bool ProfileDB::addProfile(int profileID, const QString &userName, const QString &password, int scrapbookID)
+bool AccountDB::addProfile(int profileID, const QString &userName, const QString &password, int scrapbookID)
 {
     bool success = false;
 
@@ -70,7 +70,7 @@ bool ProfileDB::addProfile(int profileID, const QString &userName, const QString
 
 
 
-bool ProfileDB::removeProfile(const QString& userName)
+bool AccountDB::removeProfile(const QString& userName)
 {
     bool success = false;
 
@@ -106,7 +106,7 @@ bool ProfileDB::removeProfile(const QString& userName)
 //    }
 //}
 
-bool ProfileDB::profileExists(const QString& userName) const
+bool AccountDB::profileExists(const QString& userName) const
 {
     bool exists = false;
 
@@ -129,7 +129,7 @@ bool ProfileDB::profileExists(const QString& userName) const
     return exists;
 }
 
-bool ProfileDB::removeAllProfiles()
+bool AccountDB::removeAllProfiles()
 {
     bool success = false;
 
