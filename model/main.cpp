@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+    /**
     // construct the database
     DBTool *dbtool = new DBTool("AccountDataBase");
 
@@ -62,8 +63,9 @@ int main()
                 cout << "Log in successful. Welcome " << username << "!" << endl;
 
         }
-    }
 
+    }
+**/
     return 0;
 }
 

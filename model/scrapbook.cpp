@@ -12,7 +12,7 @@ void ScrapBook::addBlog(Blog* newBlog){
 }
 
 void ScrapBook::addTweet(Tweet* newTweet){
-    TweetList->push_back(newTweet);
+    tweetList->push_back(newTweet);
 }
 
 void ScrapBook::addMedia(MultimediaContent* newMedia){
@@ -23,7 +23,7 @@ void ScrapBook::addMedia(MultimediaContent* newMedia){
 
 
 
-Comment* ScrapBook::getBlog(int num){
+Blog* ScrapBook::getBlog(int num){
     return blogList->at(num);
 }
 
