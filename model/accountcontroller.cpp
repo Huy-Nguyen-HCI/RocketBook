@@ -12,7 +12,7 @@ void AccountController::createAccount(){
 
     //QCoreApplication a(argc,argv);
 
-    accountDB=new AccountDB("accountDB.sqlite");
+    accountDB=new AccountDB("../database/accountDB.sqlite");
 
 
     if (accountDB->isOpen()){
@@ -55,6 +55,7 @@ void AccountController::createAccount(){
                 std::cout << "Enter password: ";
                 std::cin >> password;
 
+
                 std::string storedPassword=getPassword((accountDB->retrieveAccountInfo(QString::fromStdString(username),QString::fromStdString(password))).toStdString());
 
                 if (storedPassword != password)
@@ -82,6 +83,8 @@ void AccountController::addFriend(){
 }
 
 std::string AccountController::getPassword(std::string accountinfo){
+     std::cout << "info is " << accountinfo << std::endl;
+
     std::string arr[4];
     int i = 0;
     stringstream ssin(accountinfo);
