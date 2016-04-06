@@ -395,6 +395,9 @@ accountdb.o: ../database/accountdb.cpp ../database/accountdb.h
 
 blog.o: blog.cpp blog.h \
 		post.h \
+		scrapbook.h \
+		tweet.h \
+		multimediacontent.h \
 		comment.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o blog.o blog.cpp
 

@@ -3,8 +3,8 @@
 
 #include "../gtest/gtest.h"
 #include "../../database/accountdb.h"
-#include "../../model/blog.h"
-#include "../../model/comment.h"
+//#include "../../model/blog.h"
+//#include "../../model/comment.h"
 
 using namespace std;
 
