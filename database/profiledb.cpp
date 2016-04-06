@@ -105,9 +105,9 @@ QString ProfileDB::retrieveProfileInfo(int profileID)
     queryRetrieve.bindValue(":profileid", profileID);
 
     int profileidIndex = /*query.record().indexOf("profileid");*/ 0;
-    int fullnameIndex = /*query.record().indexOf("username");*/ 1;
-    int photoIndex = /*query.record().indexOf("password");*/ 2;
-    int descriptionIndex = /*query.record().indexOf("profileid");*/ 3;
+    int fullnameIndex = /*query.record().indexOf("fullname");*/ 1;
+    int photoIndex = /*query.record().indexOf("photo");*/ 2;
+    int descriptionIndex = /*query.record().indexOf("description");*/ 3;
 
     if (queryRetrieve.exec())
     {
@@ -125,7 +125,84 @@ QString ProfileDB::retrieveProfileInfo(int profileID)
     }
 
     return profileInfo;
+}
 
+QString ProfileDB::retrieveFullname (int profileID)
+{
+    QString fullName = "";
+
+    qDebug() << "Profiles in db:";
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT fullname FROM profiles WHERE profileid = (:profileid)");
+    queryRetrieve.bindValue(":profileid", profileID);
+
+    int fullnameIndex = /*query.record().indexOf("fullname");*/ 1;
+
+    if (queryRetrieve.exec())
+    {
+        if(queryRetrieve.next())
+        {
+            fullName += queryRetrieve.value(fullnameIndex).toString() + " ";
+        }
+    }
+    else
+    {
+        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return fullName;
+}
+
+QString ProfileDB::retrievePhoto (int profileID)
+{
+    QString photo = "";
+
+    qDebug() << "Profiles in db:";
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT fullname FROM profiles WHERE profileid = (:profileid)");
+    queryRetrieve.bindValue(":profileid", profileID);
+
+    int photoIndex = /*query.record().indexOf("photo");*/ 2;
+
+    if (queryRetrieve.exec())
+    {
+        if(queryRetrieve.next())
+        {
+            photo += queryRetrieve.value(photoIndex).toString() + " ";
+        }
+    }
+    else
+    {
+        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return photo;
+}
+
+QString ProfileDB::retrieveDescription (int profileID)
+{
+    QString description = "";
+
+    qDebug() << "Profiles in db:";
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT description FROM profiles WHERE profileid = (:profileid)");
+    queryRetrieve.bindValue(":profileid", profileID);
+
+    int descriptionIndex = /*query.record().indexOf("description");*/ 2;
+
+    if (queryRetrieve.exec())
+    {
+        if(queryRetrieve.next())
+        {
+            description += queryRetrieve.value(descriptionIndex).toString() + " ";
+        }
+    }
+    else
+    {
+        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return description;
 }
 
 bool ProfileDB::profileExists(int profileID) const

@@ -1,10 +1,7 @@
 #ifndef ACCOUNTDB_H
 #define ACCOUNTDB_H
 #include <QString>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlError>
-#include <QtSql/QSqlRecord>
+#include <QtSql>
 #include <QDebug>
 
 /**

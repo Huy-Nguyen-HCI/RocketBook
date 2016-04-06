@@ -1,10 +1,7 @@
 #ifndef PROFILEDB_H
 #define PROFILEDB_H
 #include <QString>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlError>
-#include <QtSql/QSqlRecord>
+#include <QtSql>
 #include <QDebug>
 
 /**
@@ -22,7 +19,6 @@ class ProfileDB
 public:
     /**
      * @brief ProfileDB
-     *
      * Construct a profile database at ../database/profiledb.sqlite
      */
     ProfileDB();
@@ -79,6 +75,33 @@ public:
      * @return a string with profileid, fullname, photo, description; return "" if the profile does not exist.
      */
     QString retrieveProfileInfo(int profileID);
+
+    /**
+     * @brief retrieveFullname
+     * Return the full name stored in the profile
+     *
+     * @param profileID the ID of the profile retrieved
+     * @return a string representing the full name of the profile; return "" if the profile does not exist.
+     */
+    QString retrieveFullname (int profileID);
+
+    /**
+     * @brief retrievePhoto
+     * Return the photo stored in the profile
+     *
+     * @param profileID the ID of the profile retrieved
+     * @return a string representing the photo of the profile; return "" if the profile does not exist.
+     */
+    QString retrievePhoto (int profileID);
+
+    /**
+     * @brief retrieveDescription
+     * Return the description stored in the profile
+     *
+     * @param profileID the ID of the profile retrieved
+     * @return a string representing the description of the profile; return "" if the profile does not exist.
+     */
+    QString retrieveDescription (int profileID);
 
     /**
      * @brief profileExists
