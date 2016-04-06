@@ -6,7 +6,6 @@
 #include <QtSql/QSqlError>
 #include <QtSql/QSqlRecord>
 #include <QDebug>
-#include <string>
 
 /**
  * @brief The AccountDB class
@@ -14,7 +13,7 @@
  * Create an sqlite3 table in a database file.
  * The database structure:
  * Column 1: accountid INTEGER PRIMARY KEY
- * Column 2: username TEXT
+ * Column 2: username TEXT UNIQUE
  * Column 3: password TEXT
  * Column 4: profileid INTEGER
  */
@@ -24,21 +23,21 @@ public:
     /**
      * @brief AccountDB
      *
-     * Construct an account database at ../AccountDB.db
+     * Construct an account database at ../database/accountDB.sqlite
      */
     AccountDB();
 
     /**
      * @brief AccountDB
-     * Construct an account database, given the path
-     * @param path path of the account
+     * Construct an account database, given the path and the name of the database
+     * @param path full path name of the accountdb
      */
     AccountDB(const QString& path);
 
     /**
      * @brief ~AccountDB
      *
-     * Default destructor for account
+     * Default destructor for account database
      */
     ~AccountDB();
 
@@ -72,7 +71,7 @@ public:
     bool removeAccount(const QString& userName);
 
     /**
-     * @brief selectAccount
+     * @brief retrieveAccountInfo
      * Return a string including details of the account with the username and password
      * For example, a possible return is "1 vuh Avengers214 2"
      *

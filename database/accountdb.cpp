@@ -3,7 +3,7 @@
 AccountDB::AccountDB()
 {
     accountDB = QSqlDatabase::addDatabase("QSQLITE");
-    accountDB.setDatabaseName("accountDB.sqlite");
+    accountDB.setDatabaseName("../database/accountDB.sqlite");
 
     if (!accountDB.open())
     {
