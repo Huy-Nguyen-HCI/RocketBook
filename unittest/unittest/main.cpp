@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 
 #include "../gtest/gtest.h"
 #include "../../database/accountdb.h"
@@ -20,15 +21,26 @@ TEST(AccntDatabase, testAccntDB)
     const QString un3("username3");
     const QString pw3("password3");
 
+
+    newDB.removeAllAccounts();
+
     bool added;
-    added = newDB.addAccount(12346, un, pw, 54322);
-    newDB.addAccount(12345, un2, pw2, 54321);
+    int id1 = rand();
+    int id2 = rand();
+    added = newDB.addAccount(id1, un, pw, 54322);
+    newDB.addAccount(id2, un2, pw2, 54321);
 
     ASSERT_TRUE(added);
 
-    //ASSERT_TRUE(newDB.accountExists(un));
-    //ASSERT_TRUE(newDB.accountExists(un2));
+    ASSERT_TRUE(newDB.accountExists(un));
+    ASSERT_TRUE(newDB.accountExists(un2));
     ASSERT_FALSE(newDB.accountExists(un3));
+
+    bool allRemoved;
+
+    allRemoved = newDB.removeAllAccounts();
+
+    ASSERT_TRUE(allRemoved);
 
 
 
