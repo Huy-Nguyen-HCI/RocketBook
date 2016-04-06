@@ -1,0 +1,2 @@
+DISTFILES += \
+    Makefile
