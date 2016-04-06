@@ -4,7 +4,8 @@ CONFIG -= app_bundle
 #CONFIG -= qt
 QT +=sql
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    databasetester.cpp
 INCLUDEPATH += googletest                       \
                        ../googletest/src                   \
                        ../googletest/src/gtest             \
@@ -28,5 +29,6 @@ INCLUDEPATH += googletest                       \
         HEADERS += "../../database/accountdb.h"            \
               #     "../../model/blog.h"                  \
               #      "../../model/comment.h"
+    databasetester.h
 
 
