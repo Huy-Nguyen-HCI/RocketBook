@@ -2,6 +2,7 @@
 #define ACCOUNTCONTROLLER_H
 
 #include <iostream>
+#include <sstream>
 #include <QDebug>
 #include <QCoreApplication>
 #include "../database/accountdb.h"
@@ -12,13 +13,12 @@ class AccountController
 {
 public:
     AccountController();
-
+    void createAccount();
+    void addFriend();
+    std::string getPassword(std::string accountinfo);
 
 private:
-     AccountDB* accountDB;
-     void createAccount();
-     void addFriend();
-     std::string getPassword(std::string accountinfo);
+    AccountDB* accountDB;
 };
 
 #endif // ACCOUNTCONTROLLER_H

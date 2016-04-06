@@ -6,9 +6,11 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-AccountController* a= new AccountController();
+    QCoreApplication app(argc, argv);
+    AccountController a;
+    a.createAccount();
     return 0;
 }
 

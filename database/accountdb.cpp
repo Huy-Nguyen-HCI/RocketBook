@@ -2,8 +2,8 @@
 
 AccountDB::AccountDB()
 {
-    accountDB = QSqlDatabase::addDatabase("../accountDB.db");
-    accountDB.setDatabaseName("../accountDB.db");
+    accountDB = QSqlDatabase::addDatabase("QSQLITE");
+    accountDB.setDatabaseName("accountDB.sqlite");
 
     if (!accountDB.open())
     {
@@ -17,7 +17,7 @@ AccountDB::AccountDB()
 
 AccountDB::AccountDB(const QString &path)
 {
-    accountDB = QSqlDatabase::addDatabase(path);
+    accountDB = QSqlDatabase::addDatabase("QSQLITE");
     accountDB.setDatabaseName(path);
 
     if (!accountDB.open())
