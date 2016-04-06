@@ -35,7 +35,7 @@ private:
     // friend list
     // feed
     // chat container
-    static int id_cnt;
+    static int idCnt;
 
 };
 

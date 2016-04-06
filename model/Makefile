@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = model1.0.0
-DISTDIR = /auto/bunter_usr23/slukej/Desktop/Avengers/model/.tmp/model1.0.0
+DISTDIR = /auto/bunter_usr10/vuh/avengersWC/model/.tmp/model1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) -l sqlite3 -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
@@ -395,9 +395,6 @@ accountdb.o: ../database/accountdb.cpp ../database/accountdb.h
 
 blog.o: blog.cpp blog.h \
 		post.h \
-		scrapbook.h \
-		tweet.h \
-		multimediacontent.h \
 		comment.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o blog.o blog.cpp
 

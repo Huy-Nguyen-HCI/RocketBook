@@ -99,28 +99,29 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
     QString accountInfo = "";
 
     qDebug() << "Accounts in db:";
-    QSqlQuery query("SELECT * FROM accounts WHERE username = (:username) AND password = (:password)");
-    query.bindValue(":username", userName);
-    query.bindValue(":password", password);
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT * FROM accounts WHERE username = :username AND password = :password");
+    queryRetrieve.bindValue(":username", userName);
+    queryRetrieve.bindValue(":password", password);
 
-    int accountidIndex = /*query.record().indexOf("accountid");*/ 1;
-    int usernameIndex = /*query.record().indexOf("username");*/ 2;
-    int passwordIndex = /*query.record().indexOf("password");*/ 3;
-    int profileidIndex = /*query.record().indexOf("profileid");*/ 4;
+    int accountidIndex = /*query.record().indexOf("accountid");*/ 0;
+    int usernameIndex = /*query.record().indexOf("username");*/ 1;
+    int passwordIndex = /*query.record().indexOf("password");*/ 2;
+    int profileidIndex = /*query.record().indexOf("profileid");*/ 3;
 
-    if (query.exec())
+    if (queryRetrieve.exec())
     {
-        if(query.next())
+        if(queryRetrieve.next())
         {
-            accountInfo += query.value(accountidIndex).toString() + " ";
-            accountInfo += query.value(usernameIndex).toString() + " ";
-            accountInfo += query.value(passwordIndex).toString() + " ";
-            accountInfo += query.value(profileidIndex).toString();
+            accountInfo += queryRetrieve.value(accountidIndex).toString() + " ";
+            accountInfo += queryRetrieve.value(usernameIndex).toString() + " ";
+            accountInfo += queryRetrieve.value(passwordIndex).toString() + " ";
+            accountInfo += queryRetrieve.value(profileidIndex).toString();
         }
     }
     else
     {
-        qDebug() << "account retrieval fails:" <<query.lastError();
+        qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return accountInfo;

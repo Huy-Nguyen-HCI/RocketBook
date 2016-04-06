@@ -2,13 +2,13 @@
 
 
 
-int RocketUser::id_cnt;
+int RocketUser::idCnt;
 
 RocketUser::RocketUser()
 {
-id=id_cnt;
-id_cnt++;
-profile=new Profile();
+    id=idCnt;
+    idCnt++;
+    profile = new Profile();
 }
 
 int RocketUser::getPlayerId(){

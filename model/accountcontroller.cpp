@@ -17,18 +17,18 @@ void AccountController::createAccount(){
 
     if (accountDB->isOpen()){
         // variables for handling user input
-        int user_input;
+        int userInput;
         std::string username, password;
 
         while (true) {
 
             cout << "\nEnter 0 to quit, 1 to create account, 2 to log in \n";
-            cin >> user_input;
+            cin >> userInput;
 
-            if (user_input == 0) break;
+            if (userInput == 0) break;
 
             // create account
-            if (user_input == 1) {
+            if (userInput == 1) {
 
                 cout << "Enter user name: ";
                 cin >> username;
@@ -48,7 +48,7 @@ void AccountController::createAccount(){
 
             // log in
 
-            if (user_input == 2) {
+            if (userInput == 2) {
 
                 std::cout << "Enter user name: ";
                 std::cin >> username;
@@ -92,8 +92,8 @@ std::string AccountController::getPassword(std::string accountinfo){
         ssin >> arr[i];
         ++i;
     }
-    std::cout << "password is " << arr[3] << std::endl;
-    return arr[3];
+    std::cout << "password is " << arr[2] << std::endl;
+    return arr[2];
 }
 
 /**
