@@ -8,12 +8,12 @@
 /**
  * @brief The CommentDB class
  *
- * Create an sqlite3 table named "Accounts" in a database file.
+ * Create an sqlite3 table named "Comments" in a database file.
  * The database structure:
- * Column 1: AccountID INTEGER PRIMARY KEY
- * Column 2: Username TEXT UNIQUE
- * Column 3: Password TEXT
- * Column 4: ProfileID INTEGER
+ * Column 1: CommentID INTEGER PRIMARY KEY
+ * Column 2: AccountID INTEGER
+ * Column 3: BlogID TEXT
+ * Column 4: Content TEXT NOT NULL
  */
 class CommentDB
 {
@@ -42,7 +42,7 @@ public:
     /**
      * @brief isOpen
      *
-     * Check whether account database is open
+     * Check whether comment database is open
      * @return true if yes, false if no
      */
     bool isOpen() const;
