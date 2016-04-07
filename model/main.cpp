@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
     AccountController a;
-    a.createAccount();
+    a.run();
     return 0;
 }
 

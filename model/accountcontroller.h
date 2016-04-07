@@ -13,12 +13,24 @@ class AccountController
 {
 public:
     AccountController();
-    void createAccount();
+    void run();
     void addFriend();
-    std::string getPassword(std::string accountinfo);
+
+
+
 
 private:
     AccountDB* accountDB;
+    std::string askUserName();
+    std::string askPassword();
+    void createNewAccount(std::string username, std::string password);
+    bool checkAccountExists(std::string username);
+
+    std::string getPassword(std::string accountinfo);
+    bool verifyPassword(std::string username,std::string password);
+    void login();
+    void createAccount();
+    int requestInput();
 };
 
 #endif // ACCOUNTCONTROLLER_H

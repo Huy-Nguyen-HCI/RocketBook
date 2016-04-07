@@ -8,82 +8,78 @@ AccountController::AccountController()
 
 }
 
-void AccountController::createAccount(){
-
-    //QCoreApplication a(argc,argv);
+void AccountController::run(){
 
     accountDB=new AccountDB("../database/accountDB.sqlite");
-
-
-    if (accountDB->isOpen()){
-        // variables for handling user input
-        int userInput;
         std::string username, password;
+    if (accountDB->isOpen()){
 
         while (true) {
-
-            cout << "\nEnter 0 to quit, 1 to create account, 2 to log in \n";
-            cin >> userInput;
+            int userInput=requestInput();
 
             if (userInput == 0) break;
 
-            // create account
-            if (userInput == 1) {
+            else if (userInput == 1) // create account
+                createAccount();
 
-                cout << "Enter user name: ";
-                cin >> username;
-                cout << "Enter password: ";
-                cin >> password;
-
-                if (accountDB->accountExists(QString::fromStdString(username)))
-                    cerr << "Username already exists." << endl;
-                else {
-                    RocketUser* currentUser= new RocketUser();
-                    accountDB->addAccount(currentUser->getPlayerId(),QString::fromStdString(username),QString::fromStdString(password),currentUser->getProfile()->getID());
-
-                    //(int accountID, const QString &userName, const QString &password, int profileid)
-                    cout << "Successfully created account for " << username << endl;
-                }
-            }
-
-            // log in
-
-            if (userInput == 2) {
-
-                std::cout << "Enter user name: ";
-                std::cin >> username;
-                std::cout << "Enter password: ";
-                std::cin >> password;
-
-
-                std::string storedPassword=getPassword((accountDB->retrieveAccountInfo(QString::fromStdString(username),QString::fromStdString(password))).toStdString());
-
-                if (storedPassword != password)
-                    std::cerr << "Wrong username or password" << std::endl;
-                else
-                    std::cout << "Log in successful. Welcome " << username << "!" << std::endl;
-            }
-
+            else if (userInput == 2)              // log in
+                login();
         }
-
-
-
-
-
     }
-
 }
+
 
 void AccountController::addFriend(){
 
 
 
 
+}
+
+void AccountController::createAccount(){
+    std::string username, password;
+    username=askUserName();
+    password=askPassword();
+
+    if (checkAccountExists(username))
+        cerr << "Username already exists." << endl;
+    else {
+        createNewAccount(username,password);
+    }
 
 }
 
+void AccountController::login(){
+    std::string username, password;
+    username=askUserName();
+    password=askPassword();
+    verifyPassword(username,password);
+}
+
+std::string AccountController::askUserName(){
+    std::string username;
+    std::cout << "Enter user name: ";
+    std::cin >> username;
+    return username;
+}
+
+std::string AccountController::askPassword(){
+    std::string password;
+    std::cout << "Enter user name: ";
+    std::cin >> password;
+    return password;
+}
+
+void AccountController::createNewAccount(std::string username, std::string password){
+    RocketUser* currentUser= new RocketUser();
+    accountDB->addAccount(currentUser->getPlayerId(),QString::fromStdString(username),QString::fromStdString(password),currentUser->getProfile()->getID());
+    cout << "Successfully created account for " << username << endl;
+
+}
+
+
 std::string AccountController::getPassword(std::string accountinfo){
-     std::cout << "info is " << accountinfo << std::endl;
+    std::cout << "info is " << accountinfo << std::endl;
 
     std::string arr[4];
     int i = 0;
@@ -96,8 +92,22 @@ std::string AccountController::getPassword(std::string accountinfo){
     return arr[2];
 }
 
-/**
-string Player::lastName(string m_full_name){
-    return m_full_name.substr(0,m_full_name.find(", "));
+
+bool AccountController::checkAccountExists(std::string username){
+    return accountDB->accountExists(QString::fromStdString(username));
 }
-**/
+
+bool AccountController::verifyPassword(std::string username,std::string password){
+    std::string storedPassword=getPassword((accountDB->retrieveAccountInfo(QString::fromStdString(username),QString::fromStdString(password))).toStdString());
+    if (storedPassword != password)
+        std::cerr << "Wrong username or password" << std::endl;
+    else
+        std::cout << "Log in successful. Welcome " << username << "!" << std::endl;
+}
+
+int AccountController::requestInput(){
+    int userInput;
+    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in \n";
+    cin >> userInput;
+    return userInput;
+}
