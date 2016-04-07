@@ -3,7 +3,7 @@
 FriendDB::FriendDB()
 {
     friendDB = QSqlDatabase::addDatabase("QSQLITE");
-    friendDB.setDatabaseName("../database/accountDB.sqlite");
+    friendDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!friendDB.open())
     {
@@ -55,12 +55,29 @@ bool FriendDB::addFriend(int accountID, int friendID)
 
     if(queryAdd.exec())
     {
+        success = false;
+    }
+    else
+    {
+        qDebug() << "add friend failed: " << queryAdd.lastError();
+    }
+
+    QSqlQuery queryAdd2;
+    queryAdd2.prepare("INSERT INTO Friends (AccountID, FriendID) VALUES (:AccountID, :FriendID)");
+    queryAdd2.bindValue(":AccountID", friendID);
+    queryAdd2.bindValue(":FriendID", accountID);
+
+    if(queryAdd.exec())
+    {
         success = true;
     }
     else
     {
         qDebug() << "add friend failed: " << queryAdd.lastError();
     }
+
+
+
 
     return success;
 }

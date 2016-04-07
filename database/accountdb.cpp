@@ -3,7 +3,7 @@
 AccountDB::AccountDB()
 {
     accountDB = QSqlDatabase::addDatabase("QSQLITE");
-    accountDB.setDatabaseName("../database/accountDB.sqlite");
+    accountDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!accountDB.open())
     {
@@ -129,6 +129,34 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
     return accountInfo;
 
 }
+
+int AccountDB::retrieveAccountId(const QString& userName)
+{
+    QString accountId;
+
+    qDebug() << "Accounts in db:";
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT AccountID FROM Accounts WHERE username = :Username");
+    queryRetrieve.bindValue(":Username", userName);
+
+    int accountIDIndex = /*query.record().indexOf("AccountID");*/ 0;
+
+    if (queryRetrieve.exec())
+    {
+        if(queryRetrieve.next())
+        {
+            accountId = queryRetrieve.value(accountIDIndex).toString() + " ";
+        }
+    }
+    else
+    {
+        qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return accountId.toInt();
+
+}
+
 
 bool AccountDB::accountExists(const QString& username) const
 {

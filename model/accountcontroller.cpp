@@ -10,7 +10,8 @@ AccountController::AccountController()
 
 void AccountController::run(){
 
-    accountDB=new AccountDB("../database/accountDB.sqlite");
+    accountDB=new AccountDB("../database/rocketDB.sqlite");
+    friendDB=new FriendDB("../database/rocketDB.sqlite");
 
     if (accountDB->isOpen()){
 
@@ -32,14 +33,25 @@ void AccountController::run(){
 
 
 void AccountController::addFriend(){
-    std::string username;
+    std::string username, friendname;
     username=askUserName();
+   // friendname=askUserName();
+
+    if (!checkAccountExists(friendname) || !checkAccountExists(username))
+        cerr << "Account does not exist." << endl;
+    else{
+     int userId, friendId;
+    // accountDB->g
 
 
+         //friendDB->addFriend()
+
+      //  addFriend();
     //Search through friend Database
     //verify indicated account exists. Check that Friend ID is not already in friend list
     //Add friend if account exists and is not on database
 
+    }
 
 }
 
@@ -99,12 +111,25 @@ std::string AccountController::getPassword(std::string accountinfo){
     return arr[2];
 }
 
+std::string AccountController::getUserId(std::string accountinfo){
+    std::cout << "info is " << accountinfo << std::endl;
+
+    std::string arr[4];
+    int i = 0;
+    stringstream ssin(accountinfo);
+    while (ssin.good() && i < 4){
+        ssin >> arr[i];
+        ++i;
+    }
+    std::cout << "user Id is " << arr[3] << std::endl;
+    return arr[3];
+}
 
 bool AccountController::checkAccountExists(std::string username){
     return accountDB->accountExists(QString::fromStdString(username));
 }
 
-bool AccountController::verifyPassword(std::string username,std::string password){
+void AccountController::verifyPassword(std::string username,std::string password){
     std::string storedPassword=getPassword((accountDB->retrieveAccountInfo(QString::fromStdString(username),QString::fromStdString(password))).toStdString());
     if (storedPassword != password)
         std::cerr << "Wrong username or password" << std::endl;

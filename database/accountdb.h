@@ -78,6 +78,8 @@ public:
      */
     QString retrieveAccountInfo(const QString& username, const QString& password);
 
+    int retrieveAccountId(const QString& username);
+
     /**
      * @brief accountExists
      * Check if account exists, knowing the username

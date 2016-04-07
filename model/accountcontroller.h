@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include "../database/accountdb.h"
+#include "../database/frienddb.h"
 #include <string>
 #include <rocketuser.h>
 
@@ -34,6 +35,7 @@ public:
 
 private:
     AccountDB* accountDB;
+    FriendDB* friendDB;
     std::string askUserName();
     std::string askPassword();
     /**
@@ -54,13 +56,15 @@ private:
      * @return Account's stored password
      */
     std::string getPassword(std::string accountinfo);
+
+    std::string getUserId(std::string accountinfo);
     /**
      * @brief Checks if user entered correct password
      * @param username Account username entered by user
      * @param password Password entered by user
      * @return True if password entered by user matches stored password.
      */
-    bool verifyPassword(std::string username,std::string password);
+    void verifyPassword(std::string username,std::string password);
     /**
      * @brief Sequence of actions for attempting to login into an account.
      */
@@ -74,6 +78,8 @@ private:
      * @returns Integer value representing user selection
      */
     int requestInput();
+
+
 };
 
 #endif // ACCOUNTCONTROLLER_H

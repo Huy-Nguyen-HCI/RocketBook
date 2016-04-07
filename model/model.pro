@@ -10,6 +10,7 @@ SOURCES += main.cpp \
     rocketuser.cpp \
     profile.cpp \
     ../database/accountdb.cpp \
+    ../database/frienddb.cpp \
     blog.cpp \
     comment.cpp \
     multimediacontent.cpp \

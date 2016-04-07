@@ -189,7 +189,6 @@ TEST(AccntDatabase, testRetrieveInfo)
 
 
 
-
 //TEST(Modelfunc, testBlog)
 //{
 //    //Blog b;

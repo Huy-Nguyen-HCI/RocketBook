@@ -3,7 +3,7 @@
 ProfileDB::ProfileDB()
 {
     profileDB = QSqlDatabase::addDatabase("QSQLITE");
-    profileDB.setDatabaseName("../database/profileDB.sqlite");
+    profileDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!profileDB.open())
     {
