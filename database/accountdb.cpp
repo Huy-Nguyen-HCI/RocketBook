@@ -43,17 +43,17 @@ bool AccountDB::isOpen() const
     return accountDB.isOpen();
 }
 
-bool AccountDB::addAccount(int accountID, const QString &userName, const QString &password, int profileid)
+bool AccountDB::addAccount(int accountID, const QString &username, const QString &password, int profileID)
 {
     bool success = false;
 
-    if (!userName.isEmpty() && !password.isEmpty()) {
+    if (!username.isEmpty() && !password.isEmpty()) {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO accounts (accountid, username, password, profileid) VALUES (:accountid, :username, :password, :profileid)");
-        queryAdd.bindValue(":accountid", accountID);
-        queryAdd.bindValue(":username", userName);
-        queryAdd.bindValue(":password", password);
-        queryAdd.bindValue(":profileid", profileid);
+        queryAdd.prepare("INSERT INTO accounts (AccountID, Username, Password, ProfileID) VALUES (:AccountID, :Username, :Password, :ProfileID)");
+        queryAdd.bindValue(":AccountID", accountID);
+        queryAdd.bindValue(":Username", username);
+        queryAdd.bindValue(":Password", password);
+        queryAdd.bindValue(":ProfileID", profileID);
 
         if(queryAdd.exec())
         {
@@ -70,15 +70,15 @@ bool AccountDB::addAccount(int accountID, const QString &userName, const QString
 
 
 
-bool AccountDB::removeAccount(const QString& userName)
+bool AccountDB::removeAccount(const QString& username)
 {
     bool success = false;
 
-    if (accountExists(userName))
+    if (accountExists(username))
     {
         QSqlQuery queryDelete;
-        queryDelete.prepare("DELETE FROM accounts WHERE username = (:username)");
-        queryDelete.bindValue(":username", userName);
+        queryDelete.prepare("DELETE FROM accounts WHERE Username = (:Username)");
+        queryDelete.bindValue(":Username", username);
         success = queryDelete.exec();
 
         if(!success)
@@ -100,20 +100,20 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
 
     qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT * FROM accounts WHERE username = :username AND password = :password");
-    queryRetrieve.bindValue(":username", userName);
-    queryRetrieve.bindValue(":password", password);
+    queryRetrieve.prepare("SELECT * FROM accounts WHERE username = :Username AND Password = :Password");
+    queryRetrieve.bindValue(":Username", userName);
+    queryRetrieve.bindValue(":Password", password);
 
-    int accountidIndex = /*query.record().indexOf("accountid");*/ 0;
-    int usernameIndex = /*query.record().indexOf("username");*/ 1;
-    int passwordIndex = /*query.record().indexOf("password");*/ 2;
-    int profileidIndex = /*query.record().indexOf("profileid");*/ 3;
+    int accountIDIndex = /*query.record().indexOf("AccountID");*/ 0;
+    int usernameIndex = /*query.record().indexOf("Username");*/ 1;
+    int passwordIndex = /*query.record().indexOf("Password");*/ 2;
+    int profileidIndex = /*query.record().indexOf("ProfileID");*/ 3;
 
     if (queryRetrieve.exec())
     {
         if(queryRetrieve.next())
         {
-            accountInfo += queryRetrieve.value(accountidIndex).toString() + " ";
+            accountInfo += queryRetrieve.value(AccountIDIndex).toString() + " ";
             accountInfo += queryRetrieve.value(usernameIndex).toString() + " ";
             accountInfo += queryRetrieve.value(passwordIndex).toString() + " ";
             accountInfo += queryRetrieve.value(profileidIndex).toString();
@@ -128,13 +128,13 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
 
 }
 
-bool AccountDB::accountExists(const QString& userName) const
+bool AccountDB::accountExists(const QString& username) const
 {
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT username FROM accounts WHERE username = (:username)");
-    checkQuery.bindValue(":username", userName);
+    checkQuery.prepare("SELECT Username FROM accounts WHERE Username = (:Username)");
+    checkQuery.bindValue(":Username", username);
 
     if (checkQuery.exec())
     {

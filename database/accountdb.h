@@ -9,10 +9,10 @@
  *
  * Create an sqlite3 table in a database file.
  * The database structure:
- * Column 1: accountid INTEGER PRIMARY KEY
- * Column 2: username TEXT UNIQUE
- * Column 3: password TEXT
- * Column 4: profileid INTEGER
+ * Column 1: AccountID INTEGER PRIMARY KEY
+ * Column 2: Username TEXT UNIQUE
+ * Column 3: Password TEXT
+ * Column 4: ProfileID INTEGER
  */
 class AccountDB
 {
@@ -51,41 +51,41 @@ public:
      * Add a new account to the database table
      *
      * @param accountID Account ID
-     * @param userName
+     * @param username
      * @param password
-     * @param profileid
+     * @param profileID
      * @return true if added, false if not added
      */
-    bool addAccount(int accountID, const QString &userName, const QString &password, int profileid);
+    bool addAccount(int accountID, const QString &username, const QString &password, int profileID);
 
     /**
      * @brief removeAccount
      * Remove an entire account from the database, knowing the username
      *
-     * @param userName the username of the account removed
+     * @param username the username of the account removed
      * @return true if succeeded, false if failed
      */
-    bool removeAccount(const QString& userName);
+    bool removeAccount(const QString& username);
 
     /**
      * @brief retrieveAccountInfo
      * Return a string including details of the account with the username and password
      * For example, a possible return is "1 vuh Avengers214 2"
      *
-     * @param userName username of the account
+     * @param username username of the account
      * @param password password of the account
-     * @return a string with id, username, password, profileid; return "" if the account does not exist.
+     * @return a string with AccountID, Username, Password, ProfileID; return "" if the account does not exist.
      */
-    QString retrieveAccountInfo(const QString& userName, const QString& password);
+    QString retrieveAccountInfo(const QString& username, const QString& password);
 
     /**
      * @brief accountExists
      * Check if account exists, knowing the username
      *
-     * @param userName the username of the account checked
+     * @param username the username of the account checked
      * @return true if yes, false if no
      */
-    bool accountExists(const QString& userName) const;
+    bool accountExists(const QString& username) const;
 
     /**
      * @brief removeAllAccounts
