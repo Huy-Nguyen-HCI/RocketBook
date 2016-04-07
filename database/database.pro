@@ -5,7 +5,8 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     accountdb.cpp \
-    profiledb.cpp
+    profiledb.cpp \
+    frienddb.cpp
 
 RESOURCES += qml.qrc
 
@@ -17,6 +18,7 @@ include(deployment.pri)
 
 HEADERS += \
     accountdb.h \
-    profiledb.h
+    profiledb.h \
+    frienddb.h
 
 QT +=sql
