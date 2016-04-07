@@ -15,15 +15,18 @@ TEMPLATE = app
 SOURCES += logingui.cpp \
     mainwindow.cpp \
     main.cpp \
-    bloggui.cpp
+    createpostgui.cpp \
+    scrapbook.cpp
 
 HEADERS  += logingui.h \
     mainwindow.h \
-    bloggui.h
+    createpostgui.h \
+    scrapbook.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
-    bloggui.ui
+    createpostgui.ui \
+    scrapbook.ui
 
 RESOURCES += \
     icons.qrc
