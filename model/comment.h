@@ -12,7 +12,7 @@ class Comment:public Post{
 
 public:
     Comment();
-
+    int accountID;
 private:
     std::string content;
 
