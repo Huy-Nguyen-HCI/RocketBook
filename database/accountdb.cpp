@@ -104,6 +104,8 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
     queryRetrieve.bindValue(":Username", userName);
     queryRetrieve.bindValue(":Password", password);
 
+
+
     int accountIDIndex = /*query.record().indexOf("AccountID");*/ 0;
     int usernameIndex = /*query.record().indexOf("Username");*/ 1;
     int passwordIndex = /*query.record().indexOf("Password");*/ 2;
@@ -113,7 +115,7 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
     {
         if(queryRetrieve.next())
         {
-            accountInfo += queryRetrieve.value(AccountIDIndex).toString() + " ";
+            accountInfo += queryRetrieve.value(accountIDIndex).toString() + " ";
             accountInfo += queryRetrieve.value(usernameIndex).toString() + " ";
             accountInfo += queryRetrieve.value(passwordIndex).toString() + " ";
             accountInfo += queryRetrieve.value(profileidIndex).toString();
