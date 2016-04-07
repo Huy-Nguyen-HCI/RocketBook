@@ -49,7 +49,7 @@ bool AccountDB::addAccount(int accountID, const QString &username, const QString
 
     if (!username.isEmpty() && !password.isEmpty()) {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO accounts (AccountID, Username, Password, ProfileID) VALUES (:AccountID, :Username, :Password, :ProfileID)");
+        queryAdd.prepare("INSERT INTO Accounts (AccountID, Username, Password, ProfileID) VALUES (:AccountID, :Username, :Password, :ProfileID)");
         queryAdd.bindValue(":AccountID", accountID);
         queryAdd.bindValue(":Username", username);
         queryAdd.bindValue(":Password", password);
@@ -77,7 +77,7 @@ bool AccountDB::removeAccount(const QString& username)
     if (accountExists(username))
     {
         QSqlQuery queryDelete;
-        queryDelete.prepare("DELETE FROM accounts WHERE Username = (:Username)");
+        queryDelete.prepare("DELETE FROM Accounts WHERE Username = (:Username)");
         queryDelete.bindValue(":Username", username);
         success = queryDelete.exec();
 
@@ -100,7 +100,7 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
 
     qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT * FROM accounts WHERE username = :Username AND Password = :Password");
+    queryRetrieve.prepare("SELECT * FROM Accounts WHERE username = :Username AND Password = :Password");
     queryRetrieve.bindValue(":Username", userName);
     queryRetrieve.bindValue(":Password", password);
 
@@ -133,7 +133,7 @@ bool AccountDB::accountExists(const QString& username) const
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT Username FROM accounts WHERE Username = (:Username)");
+    checkQuery.prepare("SELECT Username FROM Accounts WHERE Username = (:Username)");
     checkQuery.bindValue(":Username", username);
 
     if (checkQuery.exec())
@@ -156,7 +156,7 @@ bool AccountDB::removeAllAccounts()
     bool success = false;
 
     QSqlQuery removeQuery;
-    removeQuery.prepare("DELETE FROM accounts");
+    removeQuery.prepare("DELETE FROM Accounts");
 
     if (removeQuery.exec())
     {

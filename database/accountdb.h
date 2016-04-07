@@ -7,7 +7,7 @@
 /**
  * @brief The AccountDB class
  *
- * Create an sqlite3 table in a database file.
+ * Create an sqlite3 table named "Accounts" in a database file.
  * The database structure:
  * Column 1: AccountID INTEGER PRIMARY KEY
  * Column 2: Username TEXT UNIQUE
