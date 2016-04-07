@@ -15,6 +15,11 @@ public:
     explicit LoginGUI(QWidget *parent = 0);
     ~LoginGUI();
 
+private slots:
+    void on_loginButton_clicked();
+
+    void on_createAccountButton_clicked();
+
 private:
     Ui::LoginGUI *ui;
 };

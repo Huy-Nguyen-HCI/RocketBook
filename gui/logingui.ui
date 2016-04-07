@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>533</width>
-    <height>397</height>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>LoginGUI</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
+   <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/rocket.png&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;Welcome to RocketBook!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -24,7 +24,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="1" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string/>
@@ -38,7 +38,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="usernameBox"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_3">
@@ -48,22 +48,41 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="passwordBox"/>
       </item>
      </layout>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Log in</string>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string/>
      </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="loginButton">
+        <property name="text">
+         <string>Log in</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="createAccountButton">
+        <property name="text">
+         <string>Create account</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>loginButton</zorder>
+     <zorder>createAccountButton</zorder>
+     <zorder>createAccountButton</zorder>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="pushButton_2">
+   <item row="3" column="0">
+    <widget class="QLabel" name="errorMessage">
      <property name="text">
-      <string>Create account</string>
+      <string/>
      </property>
     </widget>
    </item>

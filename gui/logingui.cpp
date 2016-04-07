@@ -12,3 +12,14 @@ LoginGUI::~LoginGUI()
 {
     delete ui;
 }
+
+
+void LoginGUI::on_loginButton_clicked()
+{
+
+}
+
+void LoginGUI::on_createAccountButton_clicked()
+{
+
+}
