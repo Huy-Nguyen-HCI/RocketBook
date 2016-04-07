@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>770</width>
-    <height>600</height>
+    <width>644</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,6 +36,9 @@
    <addaction name="actionFeed"/>
    <addaction name="separator"/>
    <addaction name="actionGroups"/>
+   <addaction name="separator"/>
+   <addaction name="actionScrapbook"/>
+   <addaction name="actionNew_Post"/>
    <addaction name="separator"/>
    <addaction name="actionLog_out"/>
   </widget>
@@ -123,7 +126,33 @@
     <string>View your groups</string>
    </property>
   </action>
+  <action name="actionNew_Post">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/post.png</normaloff>:/post.png</iconset>
+   </property>
+   <property name="text">
+    <string>New Post</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a new post</string>
+   </property>
+  </action>
+  <action name="actionScrapbook">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/scrapbook.png</normaloff>:/scrapbook.png</iconset>
+   </property>
+   <property name="text">
+    <string>Scrapbook</string>
+   </property>
+   <property name="toolTip">
+    <string>View the scrapbook</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

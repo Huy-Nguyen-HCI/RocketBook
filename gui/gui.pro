@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += logingui.cpp \
     mainwindow.cpp \
-    main.cpp
+    main.cpp \
+    bloggui.cpp
 
 HEADERS  += logingui.h \
-    mainwindow.h
+    mainwindow.h \
+    bloggui.h
 
 FORMS    += logingui.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    bloggui.ui
 
 RESOURCES += \
     icons.qrc

@@ -8,5 +8,7 @@
         <file>group.png</file>
         <file>friends.png</file>
         <file>rocket.png</file>
+        <file>post.png</file>
+        <file>scrapbook.png</file>
     </qresource>
 </RCC>
