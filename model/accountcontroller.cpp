@@ -11,7 +11,7 @@ AccountController::AccountController()
 void AccountController::run(){
 
     accountDB=new AccountDB("../database/rocketDB.sqlite");
-    friendDB=new FriendDB("../database/rocketDB.sqlite");
+   // friendDB=new FriendDB("../database/rocketDB.sqlite");
 
     if (accountDB->isOpen()){
 
@@ -73,6 +73,11 @@ void AccountController::login(){
     username=askUserName();
     password=askPassword();
     verifyPassword(username,password);
+
+
+
+    cout << "id is: " << accountDB->retrieveAccountId(QString::fromStdString(username)) << endl;
+
 }
 
 std::string AccountController::askUserName(){
@@ -84,7 +89,7 @@ std::string AccountController::askUserName(){
 
 std::string AccountController::askPassword(){
     std::string password;
-    std::cout << "Enter user name: ";
+    std::cout << "Enter password: ";
     std::cin >> password;
     return password;
 }

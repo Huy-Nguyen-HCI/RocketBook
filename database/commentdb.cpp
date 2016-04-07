@@ -1,4 +1,4 @@
-#include "CommentDB.h"
+#include "commentdb.h"
 
 CommentDB::CommentDB()
 {
