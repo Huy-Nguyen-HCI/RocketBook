@@ -35,6 +35,7 @@ void AccountController::addFriend(){
     std::string username;
     username=askUserName();
 
+
     //Search through friend Database
     //verify indicated account exists. Check that Friend ID is not already in friend list
     //Add friend if account exists and is not on database
