@@ -8,30 +8,30 @@ ScrapBook::ScrapBook()
 
 
 void ScrapBook::addBlog(Blog* newBlog){
-    blogList->push_back(newBlog);
+    blogList.push_back(newBlog);
 }
 
 void ScrapBook::addTweet(Tweet* newTweet){
-    tweetList->push_back(newTweet);
+    tweetList.push_back(newTweet);
 }
 
-void ScrapBook::addMedia(MultimediaContent* newMedia){
-    mediaList->push_back(newMedia);
+void ScrapBook::addMedia(Multimedia* newMedia){
+    mediaList.push_back(newMedia);
 }
 
 
 
 
 
-Blog* ScrapBook::getBlog(int num){
-    return blogList->at(num);
-}
+//Blog* ScrapBook::getBlog(int num){
+//    return blogList->at(num);
+//}
 
-Tweet* ScrapBook::getTweet(int num){
-    return tweetList->at(num);
-}
+//Tweet* ScrapBook::getTweet(int num){
+//    return tweetList->at(num);
+//}
 
-MultimediaContent* ScrapBook::getMedia(int num){
-    return mediaList->at(num);
-}
+//Multimedia* ScrapBook::getMedia(int num){
+//    return mediaList->at(num);
+//}
 

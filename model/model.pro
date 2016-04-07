@@ -13,12 +13,12 @@ SOURCES += main.cpp \
     ../database/frienddb.cpp \
     blog.cpp \
     comment.cpp \
-    multimediacontent.cpp \
     post.cpp \
     scrapbook.cpp \
     tweet.cpp \
     feed.cpp \
-    accountcontroller.cpp
+    accountcontroller.cpp \
+    multimedia.cpp
 
 HEADERS += \
     rocketuser.h \
@@ -26,9 +26,9 @@ HEADERS += \
     ../database/*.h \
     blog.h \
     comment.h \
-    multimediacontent.h \
     post.h \
     scrapbook.h \
     tweet.h \
     feed.h \
-    accountcontroller.h
+    accountcontroller.h \
+    multimedia.h

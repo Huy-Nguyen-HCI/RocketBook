@@ -1,13 +1,27 @@
 #include "blog.h"
 
-Blog::Blog(){
+Blog::Blog(int accountID, std::string title, std::string content): Post::Post(accountID, content)
+{
+    this->title = title;
+}
 
+Blog::~Blog() {
+
+}
+
+std::string Blog::getTitle()
+{
+    return title;
 }
 
 void Blog::addComment(Comment* newComment){
-    commentList->push_back(newComment);
+    commentList.push_back(newComment);
 }
 
-Comment* Blog::getComment(int num){
-    return commentList->at(num);
+std::vector<Comment*> Blog::getAllComments(){
+    return commentList;
+}
+
+void Blog::editBlog(std::string newContent) {
+    content = newContent;
 }

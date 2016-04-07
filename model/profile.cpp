@@ -1,10 +1,11 @@
 #include "profile.h"
 
-int Profile::id_cnt;
+int Profile::idCnt;
 
 Profile::Profile()
 {
-    id = id_cnt ++;
+    id = idCnt ++;
+    scrapBook = new ScrapBook();
 }
 
 

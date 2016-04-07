@@ -95,8 +95,9 @@ std::string AccountController::askPassword(){
 }
 
 void AccountController::createNewAccount(std::string username, std::string password){
+//    int rocketUserID =
     RocketUser* currentUser= new RocketUser();
-    accountDB->addAccount(currentUser->getPlayerId(),QString::fromStdString(username),QString::fromStdString(password),currentUser->getProfile()->getID());
+    accountDB->addAccount(currentUser->getID(),QString::fromStdString(username),QString::fromStdString(password),currentUser->getProfile()->getID());
     cout << "Successfully created account for " << username << endl;
 
 }

@@ -2,7 +2,7 @@
 
 
 
-int RocketUser::idCnt;
+int RocketUser::idCnt = 0;
 
 RocketUser::RocketUser()
 {
@@ -11,7 +11,19 @@ RocketUser::RocketUser()
     profile = new Profile();
 }
 
-int RocketUser::getPlayerId(){
+RocketUser::RocketUser(int id)
+{
+    this->id = id;
+    idCnt = id;
+    idCnt++;
+    profile = new Profile();
+}
+
+RocketUser::~RocketUser() {
+    delete profile;
+}
+
+int RocketUser::getID(){
     return id;
 }
 
