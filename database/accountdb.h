@@ -96,6 +96,8 @@ public:
      */
     bool removeAllAccounts();
 
+    int getMaxAccountID();
+
 
 private:
     QSqlDatabase accountDB;

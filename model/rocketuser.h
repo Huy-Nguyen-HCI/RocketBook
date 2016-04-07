@@ -4,13 +4,6 @@
 #include <string>
 #include <vector>
 
-//class Profile;
-//class ScrapBook;
-//class Blog;
-//class Post;
-//class Comment;
-//class Tweet;
-//class Multimedia;
 
 /**
  * @brief The RocketUser class stores information about the user.

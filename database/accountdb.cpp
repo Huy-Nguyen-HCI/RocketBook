@@ -145,7 +145,7 @@ int AccountDB::retrieveAccountId(const QString& userName)
     {
         if(queryRetrieve.next())
         {
-            accountId = queryRetrieve.value(accountIDIndex).toString() + " ";
+            accountId = queryRetrieve.value(accountIDIndex).toString();
         }
     }
     else
@@ -198,4 +198,28 @@ bool AccountDB::removeAllAccounts()
     }
 
     return success;
+}
+
+int AccountDB::getMaxAccountID()
+{
+    QString maxID;
+
+    qDebug() << "Accounts in db:";
+    QSqlQuery queryMaxID;
+    queryMaxID.prepare("SELECT max(AccountID) FROM Accounts");
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toString();
+        }
+    }
+    else
+    {
+        qDebug() << "account retrieval fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID.toInt();
+
 }
