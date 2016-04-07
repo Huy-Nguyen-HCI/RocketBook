@@ -33,6 +33,8 @@ private:
     // privacy settings
     int adminRights;
     // friend list
+    std::vector<int>* friendList;
+    void addFriend(int friendUserId);
     // feed
     // chat container
     static int idCnt;

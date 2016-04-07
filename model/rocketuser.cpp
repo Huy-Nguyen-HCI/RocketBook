@@ -18,3 +18,9 @@ int RocketUser::getPlayerId(){
 Profile* RocketUser::getProfile(){
     return profile;
 }
+
+void RocketUser::addFriend(int friendUserId){
+    friendList->push_back(friendUserId);
+
+
+}

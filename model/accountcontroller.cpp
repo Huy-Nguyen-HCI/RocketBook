@@ -11,7 +11,7 @@ AccountController::AccountController()
 void AccountController::run(){
 
     accountDB=new AccountDB("../database/accountDB.sqlite");
-        std::string username, password;
+
     if (accountDB->isOpen()){
 
         while (true) {
@@ -22,16 +22,22 @@ void AccountController::run(){
             else if (userInput == 1) // create account
                 createAccount();
 
-            else if (userInput == 2)              // log in
+            else if (userInput == 2) // log in
                 login();
+            else if (userInput == 3)
+                addFriend();
         }
     }
 }
 
 
 void AccountController::addFriend(){
+    std::string username;
+    username=askUserName();
 
-
+    //Search through friend Database
+    //verify indicated account exists. Check that Friend ID is not already in friend list
+    //Add friend if account exists and is not on database
 
 
 }
@@ -107,7 +113,7 @@ bool AccountController::verifyPassword(std::string username,std::string password
 
 int AccountController::requestInput(){
     int userInput;
-    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in \n";
+    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 to add friend \n";
     cin >> userInput;
     return userInput;
 }
