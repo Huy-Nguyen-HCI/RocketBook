@@ -2,6 +2,7 @@
 #define LOGINGUI_H
 
 #include <QWidget>
+#include <string>
 
 namespace Ui {
 class LoginGUI;
