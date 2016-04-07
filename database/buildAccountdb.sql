@@ -1,1 +1,1 @@
-CREATE TABLE accounts (accountid integer primary key, username text, password text not null, profileid integer);
+CREATE TABLE accounts (AccountID integer primary key, Username text, Password text not null, ProfileID integer);
