@@ -23,12 +23,17 @@ INCLUDEPATH += googletest                       \
                    "../googletest/src/gtest-test-part.cc"  \
                    "../googletest/src/gtest-typed-test.cc" \
                    "../../database/accountdb.cpp"          \
+                   "../../database/profiledb.cpp"
+
+
+
              #      "../../model/blog.cpp"                  \
              #       "../../model/comment.cpp"
 
         HEADERS += "../../database/accountdb.h"            \
+                   "../../database/profiledb.h"
               #     "../../model/blog.h"                  \
               #      "../../model/comment.h"
-    databasetester.h
+    #databasetester.h
 
 

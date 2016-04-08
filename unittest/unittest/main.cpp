@@ -4,6 +4,7 @@
 
 #include "../gtest/gtest.h"
 #include "../../database/accountdb.h"
+#include "../../database/profiledb.h"
 //#include "../../model/blog.h"
 //#include "../../model/comment.h"
 
@@ -185,18 +186,127 @@ TEST(AccntDatabase, testRetrieveInfo)
 
 }
 
+// PROFILE DATABASE TESTS /////////////////////////////////////////////////////////
+
+
+
+TEST(ProfDatabase, testAddProf)
+{
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = 1231;
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = 1232;
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+
+    newPDB.removeAllProfiles();
+
+    bool added = false;
+    bool added2 = false;
+
+    added = newPDB.addProfile(pid1, fn, ph, dscr);
+    added2 = newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+
+    ASSERT_TRUE(added);
+    ASSERT_TRUE(added2);
+
+
+
+    bool allRemoved;
+
+    newPDB.removeAllProfiles();
 
 
 
 
-//TEST(Modelfunc, testBlog)
-//{
-//    //Blog b;
-//    //Comment c;
+
+}
+
+TEST(ProfDatabase, testProfExists)
+{
+
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = 1231;
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = 1232;
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+
+    newPDB.removeAllProfiles();
+
+
+    newPDB.addProfile(pid1, fn, ph, dscr);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+
+    //ASSERT_TRUE(newPDB.profileExists(pid1));
+    //ASSERT_TRUE(newPDB.profileExists(pid2));
+
+    int pid3 = 1233;
+    ASSERT_FALSE(newPDB.profileExists(pid3));
+
+    newPDB.removeAllProfiles();
 
 
 
-//}
+}
+
+TEST(ProfDatabase, testRmvProf)
+{
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = rand();
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = rand();
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+    int pid3 = rand();
+    const QString fn3("fullName3");
+    const QString ph3("photo3");
+    const QString dscr3("description3");
+
+
+    newPDB.removeAllProfiles();
+
+    newPDB.addProfile(pid1, fn, ph, dscr);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+    bool removed1 = false;
+    removed1 = newPDB.removeProfile(pid1);
+    //ASSERT_TRUE(removed1);
+    ASSERT_FALSE(newPDB.profileExists(pid1));
+    bool removed2 = false;
+    removed2 = newPDB.removeProfile(pid2);
+    //ASSERT_TRUE(removed2);
+    ASSERT_FALSE(newPDB.profileExists(pid2));
+
+    newPDB.removeAllProfiles();
+
+
+
+
+
+}
+
+
 
 
 int main(int argc, char **argv)
