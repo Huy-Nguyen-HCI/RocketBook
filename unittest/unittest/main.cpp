@@ -132,6 +132,40 @@ TEST(AccntDatabase, testRmvAll)
 
 }
 
+TEST(AccntDatabase, testRetrieveAccntID)
+{
+
+    const QString path("../unittest/testdirec/testAccntDB");
+    AccountDB newDB(path);
+    const QString un("username");
+    const QString pw("password");
+    const QString un2("username2");
+    const QString pw2("password2");
+
+    newDB.removeAllAccounts();
+
+    int id1 = rand();
+    int id2 = rand();
+
+    int pid1 = rand();
+    int pid2 = rand();
+
+
+
+    newDB.addAccount(id1, un, pw, pid1);
+    newDB.addAccount(id2, un2, pw2, pid2);
+
+    int actualID1 = newDB.retrieveAccountId(un);
+
+    ASSERT_EQ(actualID1, id1);
+
+    int actualID2 = newDB.retrieveAccountId(un2);
+
+    ASSERT_EQ(actualID2, id2);
+
+
+}
+
 TEST(AccntDatabase, testRetrieveInfo)
 {
 
@@ -299,6 +333,79 @@ TEST(ProfDatabase, testRmvProf)
     ASSERT_FALSE(newPDB.profileExists(pid2));
 
     newPDB.removeAllProfiles();
+
+
+
+
+
+}
+
+TEST(ProfDatabase, testRetrieveInfo)
+{
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = rand();
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = rand();
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+    newPDB.removeAllProfiles();
+
+    newPDB.addProfile(pid1, fn, ph, dscr);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+    string info1 = "";
+    info1 = info1 + to_string(pid1) + " ";
+    info1 = info1 + fn.toStdString() + " ";
+    info1 = info1 + ph.toStdString() + " ";
+    info1 = info1 + dscr.toStdString();
+
+    string actualInfo1 = newPDB.retrieveProfileInfo(pid1).toStdString();
+    ASSERT_EQ(info1, actualInfo1);
+
+    string info2 = "";
+    info2 = info2 + to_string(pid2) + " ";
+    info2 = info2 + fn2.toStdString() + " ";
+    info2 = info2 + ph2.toStdString() + " ";
+    info2 = info2 + dscr2.toStdString();
+
+    string actualInfo2 = newPDB.retrieveProfileInfo(pid2).toStdString();
+    ASSERT_EQ(info2, actualInfo2);
+
+
+
+
+
+
+}
+
+TEST(ProfDatabase, testRetrieveFullName)
+{
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = rand();
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = rand();
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+    newPDB.removeAllProfiles();
+
+    newPDB.addProfile(pid1, fn, ph, dscr);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+    string actualFN1 = newPDB.retrieveFullname(pid1).toStdString();
+    string expectedFN1 = fn.toStdString();
+    ASSERT_EQ(expectedFN1, actualFN1);
 
 
 
