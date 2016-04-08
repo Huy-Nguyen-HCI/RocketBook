@@ -57,7 +57,7 @@ public:
      * @param profileID
      * @return true if added, false if not added
      */
-    bool addMultimedia(int multimediaID, int scrapbookID, QString multimediaTitle, QString multimediaDescription, QString multimediaContent);
+    bool addMultimedia(int multimediaID, int scrapbookID, const QString &multimediaTitle, const QString &multimediaDescription, const QString &multimediaContent);
 
     /**
      * @brief removeMultimedia

@@ -57,7 +57,7 @@ public:
      * @param profileID
      * @return true if added, false if not added
      */
-    bool addComment(int commentID, int accountID, int blogID, QString content);
+    bool addComment(int commentID, int accountID, int blogID, const QString &content);
 
     /**
      * @brief removeComment

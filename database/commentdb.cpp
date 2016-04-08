@@ -43,7 +43,7 @@ bool CommentDB::isOpen() const
     return commentDB.isOpen();
 }
 
-bool CommentDB::addComment(int commentID, int accountID, int blogID, QString content)
+bool CommentDB::addComment(int commentID, int accountID, int blogID, const QString &content)
 {
     bool success = false;
 

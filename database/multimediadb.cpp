@@ -43,7 +43,11 @@ bool MultimediaDB::isOpen() const
     return multimediaDB.isOpen();
 }
 
-bool MultimediaDB::addMultimedia(int multimediaID, int scrapbookID, QString multimediaTitle, QString multimediaDescription, QString multimediaContent)
+bool MultimediaDB::addMultimedia(int multimediaID,
+                                 int scrapbookID,
+                                 const QString &multimediaTitle,
+                                 const QString &multimediaDescription,
+                                 const QString &multimediaContent)
 {
     bool success = false;
 
