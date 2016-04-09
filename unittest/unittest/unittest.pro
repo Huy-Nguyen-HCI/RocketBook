@@ -23,6 +23,8 @@ INCLUDEPATH += googletest                       \
                    "../googletest/src/gtest-test-part.cc"  \
                    "../googletest/src/gtest-typed-test.cc" \
                    "../../database/accountdb.cpp"          \
+                   "../../database/frienddb.cpp"          \
+                   "../../database/commentdb.cpp"          \
                    "../../database/profiledb.cpp"
 
 
@@ -31,6 +33,8 @@ INCLUDEPATH += googletest                       \
              #       "../../model/comment.cpp"
 
         HEADERS += "../../database/accountdb.h"            \
+                   "../../database/frienddb.h"            \
+                   "../../database/commentdb.h"            \
                    "../../database/profiledb.h"
               #     "../../model/blog.h"                  \
               #      "../../model/comment.h"

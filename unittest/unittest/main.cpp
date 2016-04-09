@@ -5,6 +5,10 @@
 #include "../gtest/gtest.h"
 #include "../../database/accountdb.h"
 #include "../../database/profiledb.h"
+#include "../../database/frienddb.h"
+#include "../../database/commentdb.h"
+
+
 //#include "../../model/blog.h"
 //#include "../../model/comment.h"
 
@@ -40,12 +44,6 @@ TEST(AccntDatabase, testAddAccnt)
 
     ASSERT_TRUE(allRemoved);
 
-
-
-
-
-
-    //newDB.addaccount();
 
 
 }
@@ -279,8 +277,8 @@ TEST(ProfDatabase, testProfExists)
     newPDB.addProfile(pid2, fn2, ph2, dscr2);
 
 
-    //ASSERT_TRUE(newPDB.profileExists(pid1));
-    //ASSERT_TRUE(newPDB.profileExists(pid2));
+    ASSERT_TRUE(newPDB.profileExists(pid1));
+    ASSERT_TRUE(newPDB.profileExists(pid2));
 
     int pid3 = 1233;
     ASSERT_FALSE(newPDB.profileExists(pid3));
@@ -315,14 +313,51 @@ TEST(ProfDatabase, testRmvProf)
 
     bool removed1 = false;
     removed1 = newPDB.removeProfile(pid1);
-    //ASSERT_TRUE(removed1);
+    ASSERT_TRUE(removed1);
     ASSERT_FALSE(newPDB.profileExists(pid1));
     bool removed2 = false;
     removed2 = newPDB.removeProfile(pid2);
-    //ASSERT_TRUE(removed2);
+    ASSERT_TRUE(removed2);
     ASSERT_FALSE(newPDB.profileExists(pid2));
 
     newPDB.removeAllProfiles();
+}
+
+TEST(ProfDatabase, testRmvAllProf)
+{
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = rand();
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = rand();
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+    int pid3 = rand();
+    const QString fn3("fullName3");
+    const QString ph3("photo3");
+    const QString dscr3("description3");
+
+
+    newPDB.removeAllProfiles();
+
+    newPDB.addProfile(pid1, fn, ph, dscr);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+    ASSERT_TRUE(newPDB.profileExists(pid1));
+    ASSERT_TRUE(newPDB.profileExists(pid2));
+
+    bool allRmv = false;
+    allRmv = newPDB.removeAllProfiles();
+    ASSERT_TRUE(allRmv);
+    ASSERT_FALSE(newPDB.profileExists(pid1));
+    ASSERT_FALSE(newPDB.profileExists(pid2));
+
+
 }
 
 TEST(ProfDatabase, testRetrieveInfo)
@@ -381,6 +416,73 @@ TEST(ProfDatabase, testRetrieveFullName)
     string actualFN1 = newPDB.retrieveFullname(pid1).toStdString();
     string expectedFN1 = fn.toStdString();
     ASSERT_EQ(expectedFN1, actualFN1);
+
+}
+
+TEST(ProfDatabase, testRetrievePhoto)
+{
+    const QString path("../unittest/testdirec/profiles");
+    ProfileDB newPDB(path);
+    int pid1 = rand();
+    const QString fn("fullName");
+    const QString ph("photo");
+    const QString dscr("description");
+
+    int pid2 = rand();
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    const QString dscr2("description2");
+
+    newPDB.removeAllProfiles();
+
+    newPDB.addProfile(pid1, fn, ph, dscr);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+
+    string actualPh1 = newPDB.retrievePhoto(pid1).toStdString();
+    string expectedPh1 = ph.toStdString();
+    ASSERT_EQ(expectedPh1, actualPh1);
+
+    string actualPh2 = newPDB.retrievePhoto(pid2).toStdString();
+    string expectedPh2 = ph2.toStdString();
+    ASSERT_EQ(expectedPh2, actualPh2);
+
+}
+
+//Comment DB Tests:
+
+TEST(CommentDatabase, testAddComments)
+{
+    const QString path("../unittest/testdirec/comments");
+    CommentDB newCDB(path);
+    int cid1 = 4;
+    int aid1 = 5;
+    int bid1 = 7;
+    const QString content("content");
+
+
+    bool added = false;
+    added = newCDB.addComment(cid1, aid1, bid1, content);
+    ASSERT_TRUE(added);
+
+
+
+}
+
+
+//FRIEND DB TESTS//
+
+TEST(FriendDatabase, testAddFriends)
+{
+    const QString path("../unittest/testdirec/friends");
+    FriendDB newFDB(path);
+    int accntid = 1;
+    int friendid = 2;
+
+    bool added = false;
+    added = newFDB.addFriend(accntid, friendid);
+    //ASSERT_TRUE(added);
+
+
 
 }
 
