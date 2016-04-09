@@ -458,13 +458,111 @@ TEST(CommentDatabase, testAddComments)
     int aid1 = 5;
     int bid1 = 7;
     const QString content("content");
+    int cid2 = 14;
+    int aid2 = 15;
+    int bid2 = 17;
+    const QString content2("content2");
 
-
+    newCDB.removeAllComments();
     bool added = false;
     added = newCDB.addComment(cid1, aid1, bid1, content);
     ASSERT_TRUE(added);
+    bool added2 = false;
+    added2 = newCDB.addComment(cid2, aid2, bid2, content2);
+    ASSERT_TRUE(added2);
 
 
+
+    newCDB.removeAllComments();
+
+
+
+}
+
+TEST(CommentDatabase, testRmvComments)
+{
+    const QString path("../unittest/testdirec/comments");
+    CommentDB newCDB(path);
+    int cid1 = 4;
+    int aid1 = 5;
+    int bid1 = 7;
+    const QString content("content");
+    int cid2 = 14;
+    int aid2 = 15;
+    int bid2 = 17;
+    const QString content2("content2");
+
+    newCDB.removeAllComments();
+    bool added = false;
+    added = newCDB.addComment(cid1, aid1, bid1, content);
+    ASSERT_TRUE(added);
+    bool added2 = false;
+    added2 = newCDB.addComment(cid2, aid2, bid2, content2);
+    ASSERT_TRUE(added2);
+    newCDB.removeComment(cid1);
+    ASSERT_FALSE(newCDB.commentExists(cid1));
+
+
+
+    newCDB.removeAllComments();
+
+
+
+}
+
+TEST(CommentDatabase, testRmvAllComments)
+{
+    const QString path("../unittest/testdirec/comments");
+    CommentDB newCDB(path);
+    int cid1 = 4;
+    int aid1 = 5;
+    int bid1 = 7;
+    const QString content("content");
+    int cid2 = 14;
+    int aid2 = 15;
+    int bid2 = 17;
+    const QString content2("content2");
+
+    newCDB.removeAllComments();
+    bool added = false;
+    added = newCDB.addComment(cid1, aid1, bid1, content);
+    ASSERT_TRUE(added);
+    bool added2 = false;
+    added2 = newCDB.addComment(cid2, aid2, bid2, content2);
+    ASSERT_TRUE(added2);
+    newCDB.removeAllComments();
+    ASSERT_FALSE(newCDB.commentExists(cid1));
+    ASSERT_FALSE(newCDB.commentExists(cid2));
+
+    newCDB.removeAllComments();
+
+}
+
+TEST(CommentDatabase, testRetrieveInfo)
+{
+    const QString path("../unittest/testdirec/comments");
+    CommentDB newCDB(path);
+    int cid1 = 4;
+    int aid1 = 5;
+    int bid1 = 7;
+    const QString content("content");
+    int cid2 = 14;
+    int aid2 = 15;
+    int bid2 = 17;
+    const QString content2("content2");
+
+    newCDB.removeAllComments();
+    newCDB.addComment(cid1, aid1, bid1, content);
+    newCDB.addComment(cid2, aid2, bid2, content2);
+
+
+    std::tuple<int,int,int,QString> actualInfo1 =
+            newCDB.retrieveCommentInfo(cid1);
+
+    ASSERT_EQ (std::get<0>(actualInfo1), cid1);
+    ASSERT_EQ (std::get<1>(actualInfo1), aid1);
+    ASSERT_EQ (std::get<2>(actualInfo1), bid1);
+    ASSERT_EQ (std::get<3>(actualInfo1), content);
 
 }
 
@@ -473,6 +571,8 @@ TEST(CommentDatabase, testAddComments)
 
 TEST(FriendDatabase, testAddFriends)
 {
+
+
     const QString path("../unittest/testdirec/friends");
     FriendDB newFDB(path);
     int accntid = 1;
@@ -485,6 +585,7 @@ TEST(FriendDatabase, testAddFriends)
 
 
 }
+
 
 
 
