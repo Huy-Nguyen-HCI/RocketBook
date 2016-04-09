@@ -51,6 +51,9 @@ void AccountController::addFriend(){
 
      friendDB->addFriend(userId,friendId);
 
+     std::cout << "You are now friends with " << friendname << "!" << std::endl;
+
+
     }
 
 }
@@ -76,6 +79,7 @@ void AccountController::deleteFriend(){
 
 
      friendDB->removeFriend(userId,friendId);
+     std::cout << "You are no longer friends with " << friendname << "." << std::endl;
 
     }
 }
