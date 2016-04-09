@@ -94,9 +94,8 @@ bool AccountDB::removeAccount(const QString& username)
     return success;
 }
 
-QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& password)
+std::tuple<int,QString,QString,int> AccountDB::retrieveAccountInfo(const QString& userName, const QString& password)
 {
-    QString accountInfo = "";
 
     qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve;
@@ -104,21 +103,20 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
     queryRetrieve.bindValue(":Username", userName);
     queryRetrieve.bindValue(":Password", password);
 
-
-
     int accountIDIndex = /*query.record().indexOf("AccountID");*/ 0;
     int usernameIndex = /*query.record().indexOf("Username");*/ 1;
     int passwordIndex = /*query.record().indexOf("Password");*/ 2;
     int profileidIndex = /*query.record().indexOf("ProfileID");*/ 3;
 
+    int accountID = -1;
+    int profileID = -1;
+
     if (queryRetrieve.exec())
     {
         if(queryRetrieve.next())
         {
-            accountInfo += queryRetrieve.value(accountIDIndex).toString() + " ";
-            accountInfo += queryRetrieve.value(usernameIndex).toString() + " ";
-            accountInfo += queryRetrieve.value(passwordIndex).toString() + " ";
-            accountInfo += queryRetrieve.value(profileidIndex).toString();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
+            profileID = queryRetrieve.value(profileidIndex).toInt();
         }
     }
     else
@@ -126,18 +124,18 @@ QString AccountDB::retrieveAccountInfo(const QString& userName, const QString& p
         qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return accountInfo;
+    return std::make_tuple(accountID, userName, password, profileID);
 
 }
 
-int AccountDB::retrieveAccountId(const QString& userName)
+int AccountDB::retrieveAccountId(const QString& username)
 {
     QString accountId;
 
     qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve;
     queryRetrieve.prepare("SELECT AccountID FROM Accounts WHERE username = :Username");
-    queryRetrieve.bindValue(":Username", userName);
+    queryRetrieve.bindValue(":Username", username);
 
     int accountIDIndex = /*query.record().indexOf("AccountID");*/ 0;
 

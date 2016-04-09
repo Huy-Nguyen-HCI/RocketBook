@@ -10,6 +10,8 @@
 #include <string>
 #include <rocketuser.h>
 
+typedef std::tuple<int, QString, QString, int> AccountInfoType;
+
 /**
  * @brief Account Controller class initiates user actions. This includes Login and Add friend.
  */
@@ -55,9 +57,9 @@ private:
      * @param accountinfo Database row for a given username
      * @return Account's stored password
      */
-    std::string getPassword(std::string accountinfo);
+    std::string getPassword(AccountInfoType accountinfo);
 
-    std::string getUserId(std::string accountinfo);
+    std::string getUsername(AccountInfoType accountinfo);
     /**
      * @brief Checks if user entered correct password
      * @param username Account username entered by user

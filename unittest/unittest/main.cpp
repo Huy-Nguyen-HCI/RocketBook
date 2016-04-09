@@ -195,27 +195,25 @@ TEST(AccntDatabase, testRetrieveInfo)
     info1 = info1 + pw.toStdString() + " ";
     info1 = info1 + to_string(pid1);
 
-    string actualInfo1 = newDB.retrieveAccountInfo(un, pw).toStdString();
+    std::tuple<int,QString,QString,int> actualInfo1 =
+            newDB.retrieveAccountInfo(un, pw);
 
-    ASSERT_EQ(actualInfo1, info1);
-
-    string info2 = "";
-    info2 = info2 + to_string(id2) + " ";
-    info2 = info2 + un2.toStdString() + " ";
-    info2 = info2 + pw2.toStdString() + " ";
-    info2 = info2 + to_string(pid2);
-
-    string actualInfo2 = newDB.retrieveAccountInfo(un2, pw2).toStdString();
-
-    ASSERT_EQ(actualInfo2, info2);
+    ASSERT_EQ (std::get<0>(actualInfo1), id1);
+    ASSERT_EQ (std::get<1>(actualInfo1), un);
+    ASSERT_EQ (std::get<2>(actualInfo1), pw);
+    ASSERT_EQ (std::get<3>(actualInfo1), pid1);
 
 
 
+    std::tuple<int,QString,QString,int> actualInfo2 =
+            newDB.retrieveAccountInfo(un2, pw2);
 
-
+    ASSERT_EQ (std::get<0>(actualInfo2), id2);
+    ASSERT_EQ (std::get<1>(actualInfo2), un2);
+    ASSERT_EQ (std::get<2>(actualInfo2), pw2);
+    ASSERT_EQ (std::get<3>(actualInfo2), pid2);
 
     newDB.removeAllAccounts();
-
 
 
 }

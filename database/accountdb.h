@@ -76,7 +76,7 @@ public:
      * @param password password of the account
      * @return a string with AccountID, Username, Password, ProfileID; return "" if the account does not exist.
      */
-    QString retrieveAccountInfo(const QString& username, const QString& password);
+    std::tuple<int, QString, QString, int> retrieveAccountInfo(const QString& username, const QString& password);
 
     int retrieveAccountId(const QString& username);
 

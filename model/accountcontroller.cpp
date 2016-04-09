@@ -106,32 +106,12 @@ void AccountController::createNewAccount(std::string username, std::string passw
 }
 
 
-std::string AccountController::getPassword(std::string accountinfo){
-    std::cout << "info is " << accountinfo << std::endl;
-
-    std::string arr[4];
-    int i = 0;
-    stringstream ssin(accountinfo);
-    while (ssin.good() && i < 4){
-        ssin >> arr[i];
-        ++i;
-    }
-    std::cout << "password is " << arr[2] << std::endl;
-    return arr[2];
+std::string AccountController::getPassword(AccountInfoType accountinfo){
+    return std::get<2>(accountinfo).toStdString();
 }
 
-std::string AccountController::getUserId(std::string accountinfo){
-    std::cout << "info is " << accountinfo << std::endl;
-
-    std::string arr[4];
-    int i = 0;
-    stringstream ssin(accountinfo);
-    while (ssin.good() && i < 4){
-        ssin >> arr[i];
-        ++i;
-    }
-    std::cout << "user Id is " << arr[3] << std::endl;
-    return arr[3];
+std::string AccountController::getUsername(AccountInfoType accountinfo){
+    return std::get<1>(accountinfo).toStdString();
 }
 
 bool AccountController::checkAccountExists(std::string username){
@@ -139,7 +119,9 @@ bool AccountController::checkAccountExists(std::string username){
 }
 
 void AccountController::verifyPassword(std::string username,std::string password){
-    std::string storedPassword=getPassword((accountDB->retrieveAccountInfo(QString::fromStdString(username),QString::fromStdString(password))).toStdString());
+    const QString user = QString::fromStdString(username);
+    const QString pass = QString::fromStdString(password);
+    std::string storedPassword = getPassword(accountDB->retrieveAccountInfo(user, pass));
     if (storedPassword != password)
         std::cerr << "Wrong username or password" << std::endl;
     else
