@@ -4,7 +4,7 @@
 #include <QtSql>
 #include <QDebug>
 
-
+typedef std::tuple<int, int, QString> TweetInfoType;
 /**
  * @brief The TweetDB class
  *
@@ -64,7 +64,7 @@ public:
      * @param id of the removed tweet
      * @return true if succeeded, false if failed
      */
-    bool removeTweet(int id);
+    bool removeTweet(int tweetID);
 
     /**
      * @brief retrieveTweetInfo get information about the tweet.
@@ -72,7 +72,7 @@ public:
      * @param id the id of the tweet
      * @return Return a tuple containing information about the tweet (tweetID, scrapbookID, tweetContent)
      */
-    //QString retrieveTweetInfo(const QString& username, const QString& password);
+    TweetInfoType retrieveTweetInfo(int tweetID);
 
     /**
      * @brief tweetExists

@@ -95,9 +95,8 @@ bool ProfileDB::removeProfile(int profileID)
     return success;
 }
 
-QString ProfileDB::retrieveProfileInfo(int profileID)
+ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
 {
-    QString profileInfo = "";
 
     qDebug() << "Profiles in db:";
     QSqlQuery queryRetrieve;
@@ -109,14 +108,19 @@ QString ProfileDB::retrieveProfileInfo(int profileID)
     int photoIndex = /*query.record().indexOf("photo");*/ 2;
     int descriptionIndex = /*query.record().indexOf("description");*/ 3;
 
+    int id = -1;
+    QString fullname = "";
+    QString photo = "";
+    QString description = "";
+
     if (queryRetrieve.exec())
     {
         if(queryRetrieve.next())
         {
-            profileInfo += queryRetrieve.value(profileidIndex).toString() + " ";
-            profileInfo += queryRetrieve.value(fullnameIndex).toString() + " ";
-            profileInfo += queryRetrieve.value(photoIndex).toString() + " ";
-            profileInfo += queryRetrieve.value(descriptionIndex).toString();
+            id = queryRetrieve.value(profileidIndex).toInt();
+            fullname = queryRetrieve.value(fullnameIndex).toString();
+            photo = queryRetrieve.value(photoIndex).toString();
+            description = queryRetrieve.value(descriptionIndex).toString();
         }
     }
     else
@@ -124,85 +128,25 @@ QString ProfileDB::retrieveProfileInfo(int profileID)
         qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return profileInfo;
+    return std::make_tuple(id, fullname, photo, description);
 }
 
 QString ProfileDB::retrieveFullname (int profileID)
 {
-    QString fullName = "";
-
-    qDebug() << "Profiles in db:";
-    QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT fullname FROM profiles WHERE profileid = (:profileid)");
-    queryRetrieve.bindValue(":profileid", profileID);
-
-    int fullnameIndex = /*query.record().indexOf("fullname");*/ 1;
-
-    if (queryRetrieve.exec())
-    {
-        if(queryRetrieve.next())
-        {
-            fullName += queryRetrieve.value(fullnameIndex).toString() + " ";
-        }
-    }
-    else
-    {
-        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
-    }
-
-    return fullName;
+    ProfileInfoType info = retrieveProfileInfo(profileID);
+    return std::get<1>(info);
 }
 
 QString ProfileDB::retrievePhoto (int profileID)
 {
-    QString photo = "";
-
-    qDebug() << "Profiles in db:";
-    QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT fullname FROM profiles WHERE profileid = (:profileid)");
-    queryRetrieve.bindValue(":profileid", profileID);
-
-    int photoIndex = /*query.record().indexOf("photo");*/ 2;
-
-    if (queryRetrieve.exec())
-    {
-        if(queryRetrieve.next())
-        {
-            photo += queryRetrieve.value(photoIndex).toString() + " ";
-        }
-    }
-    else
-    {
-        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
-    }
-
-    return photo;
+    ProfileInfoType info = retrieveProfileInfo(profileID);
+    return std::get<2>(info);
 }
 
 QString ProfileDB::retrieveDescription (int profileID)
 {
-    QString description = "";
-
-    qDebug() << "Profiles in db:";
-    QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT description FROM profiles WHERE profileid = (:profileid)");
-    queryRetrieve.bindValue(":profileid", profileID);
-
-    int descriptionIndex = /*query.record().indexOf("description");*/ 2;
-
-    if (queryRetrieve.exec())
-    {
-        if(queryRetrieve.next())
-        {
-            description += queryRetrieve.value(descriptionIndex).toString() + " ";
-        }
-    }
-    else
-    {
-        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
-    }
-
-    return description;
+    ProfileInfoType info = retrieveProfileInfo(profileID);
+    return std::get<3>(info);
 }
 
 bool ProfileDB::profileExists(int profileID) const

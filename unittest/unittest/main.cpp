@@ -254,11 +254,6 @@ TEST(ProfDatabase, testAddProf)
     bool allRemoved;
 
     newPDB.removeAllProfiles();
-
-
-
-
-
 }
 
 TEST(ProfDatabase, testProfExists)
@@ -291,9 +286,6 @@ TEST(ProfDatabase, testProfExists)
     ASSERT_FALSE(newPDB.profileExists(pid3));
 
     newPDB.removeAllProfiles();
-
-
-
 }
 
 TEST(ProfDatabase, testRmvProf)
@@ -331,11 +323,6 @@ TEST(ProfDatabase, testRmvProf)
     ASSERT_FALSE(newPDB.profileExists(pid2));
 
     newPDB.removeAllProfiles();
-
-
-
-
-
 }
 
 TEST(ProfDatabase, testRetrieveInfo)
@@ -357,28 +344,18 @@ TEST(ProfDatabase, testRetrieveInfo)
     newPDB.addProfile(pid1, fn, ph, dscr);
     newPDB.addProfile(pid2, fn2, ph2, dscr2);
 
-    string info1 = "";
-    info1 = info1 + to_string(pid1) + " ";
-    info1 = info1 + fn.toStdString() + " ";
-    info1 = info1 + ph.toStdString() + " ";
-    info1 = info1 + dscr.toStdString();
-
-    string actualInfo1 = newPDB.retrieveProfileInfo(pid1).toStdString();
-    ASSERT_EQ(info1, actualInfo1);
-
-    string info2 = "";
-    info2 = info2 + to_string(pid2) + " ";
-    info2 = info2 + fn2.toStdString() + " ";
-    info2 = info2 + ph2.toStdString() + " ";
-    info2 = info2 + dscr2.toStdString();
-
-    string actualInfo2 = newPDB.retrieveProfileInfo(pid2).toStdString();
-    ASSERT_EQ(info2, actualInfo2);
+    ProfileInfoType info = newPDB.retrieveProfileInfo(pid1);
+    ASSERT_EQ (std::get<0>(info), pid1);
+    ASSERT_EQ (std::get<1>(info), fn);
+    ASSERT_EQ (std::get<2>(info), ph);
+    ASSERT_EQ (std::get<3>(info), dscr);
 
 
-
-
-
+    ProfileInfoType info2 = newPDB.retrieveProfileInfo(pid2);
+    ASSERT_EQ (std::get<0>(info2), pid2);
+    ASSERT_EQ (std::get<1>(info2), fn2);
+    ASSERT_EQ (std::get<2>(info2), ph2);
+    ASSERT_EQ (std::get<3>(info2), dscr2);
 
 }
 
@@ -404,10 +381,6 @@ TEST(ProfDatabase, testRetrieveFullName)
     string actualFN1 = newPDB.retrieveFullname(pid1).toStdString();
     string expectedFN1 = fn.toStdString();
     ASSERT_EQ(expectedFN1, actualFN1);
-
-
-
-
 
 }
 

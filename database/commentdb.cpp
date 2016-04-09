@@ -93,9 +93,8 @@ bool CommentDB::removeComment(int id)
     return success;
 }
 
-QString CommentDB::retrieveCommentInfo(int id)
+CommentInfoType CommentDB::retrieveCommentInfo(int id)
 {
-    QString commentInfo = "";
 
     QSqlQuery queryRetrieve;
     queryRetrieve.prepare("SELECT * FROM Comments WHERE CommentID = :CommentID");
@@ -104,16 +103,23 @@ QString CommentDB::retrieveCommentInfo(int id)
 
 
     int commentIDIndex = /*query.record().indexOf("commentID");*/ 0;
-    int usernameIndex = /*query.record().indexOf("Username");*/ 1;
-    int contentIndex = /*query.record().indexOf("Password");*/ 2;
+    int blogIDIndex = /*query.record().indexOf("Username");*/ 1;
+    int accountIDIndex = /*query.record().indexOf("Password");*/ 2;
+    int contentIndex = 3;
+
+    int commentID = -1;
+    int accountID = -1;
+    int blogID = -1;
+    QString content = "";
 
     if (queryRetrieve.exec())
     {
         if(queryRetrieve.next())
         {
-            commentInfo += queryRetrieve.value(commentIDIndex).toString() + " ";
-            commentInfo += queryRetrieve.value(usernameIndex).toString() + " ";
-            commentInfo += queryRetrieve.value(contentIndex).toString();
+            commentID = queryRetrieve.value(commentIDIndex).toInt();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
+            blogID = queryRetrieve.value(blogIDIndex).toInt();
+            content = queryRetrieve.value(contentIndex).toString();
         }
     }
     else
@@ -121,7 +127,7 @@ QString CommentDB::retrieveCommentInfo(int id)
         qDebug() << "comment retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return commentInfo;
+    return std::make_tuple(commentID, accountID, blogID, content);
 
 }
 

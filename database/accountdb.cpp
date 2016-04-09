@@ -94,7 +94,7 @@ bool AccountDB::removeAccount(const QString& username)
     return success;
 }
 
-std::tuple<int,QString,QString,int> AccountDB::retrieveAccountInfo(const QString& userName, const QString& password)
+AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName, const QString& password)
 {
 
     qDebug() << "Accounts in db:";
@@ -110,6 +110,8 @@ std::tuple<int,QString,QString,int> AccountDB::retrieveAccountInfo(const QString
 
     int accountID = -1;
     int profileID = -1;
+    QString user = "";
+    QString pass = "";
 
     if (queryRetrieve.exec())
     {
@@ -117,6 +119,8 @@ std::tuple<int,QString,QString,int> AccountDB::retrieveAccountInfo(const QString
         {
             accountID = queryRetrieve.value(accountIDIndex).toInt();
             profileID = queryRetrieve.value(profileidIndex).toInt();
+            user = queryRetrieve.value(usernameIndex).toString();
+            pass = queryRetrieve.value(passwordIndex).toString();
         }
     }
     else
@@ -124,7 +128,7 @@ std::tuple<int,QString,QString,int> AccountDB::retrieveAccountInfo(const QString
         qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return std::make_tuple(accountID, userName, password, profileID);
+    return std::make_tuple(accountID, user, pass, profileID);
 
 }
 

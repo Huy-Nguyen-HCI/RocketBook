@@ -92,37 +92,38 @@ bool TweetDB::removeTweet(int id)
     return success;
 }
 
-//QString tweetDB::retrievetweetInfo(int id)
-//{
-//    QString tweetInfo = "";
+TweetInfoType TweetDB::retrieveTweetInfo(int tweetID)
+{
 
-//    QSqlQuery queryRetrieve;
-//    queryRetrieve.prepare("SELECT * FROM tweets WHERE tweetID = :tweetID");
-//    queryRetrieve.bindValue(":tweetID", id);
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT * FROM tweets WHERE tweetID = :tweetID");
+    queryRetrieve.bindValue(":tweetID", tweetID);
 
+    int tweetIDIndex = /*query.record().indexOf("tweetID");*/ 0;
+    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 1;
+    int contentIndex = /*query.record().indexOf("Password");*/ 2;
 
+    int id = -1;
+    int scrapbookID = -1;
+    QString tweetContent = "";
 
-//    int tweetIDIndex = /*query.record().indexOf("tweetID");*/ 0;
-//    int usernameIndex = /*query.record().indexOf("Username");*/ 1;
-//    int contentIndex = /*query.record().indexOf("Password");*/ 2;
+    if (queryRetrieve.exec())
+    {
+        if(queryRetrieve.next())
+        {
+            id = queryRetrieve.value(tweetIDIndex).toInt();
+            scrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
+            tweetContent = queryRetrieve.value(contentIndex).toString();
+        }
+    }
+    else
+    {
+        qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
+    }
 
-//    if (queryRetrieve.exec())
-//    {
-//        if(queryRetrieve.next())
-//        {
-//            tweetInfo += queryRetrieve.value(tweetIDIndex).toString() + " ";
-//            tweetInfo += queryRetrieve.value(usernameIndex).toString() + " ";
-//            tweetInfo += queryRetrieve.value(contentIndex).toString();
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
-//    }
+    return std::make_tuple(id, scrapbookID, tweetContent);
 
-//    return tweetInfo;
-
-//}
+}
 
 bool TweetDB::tweetExists(int id) const
 {

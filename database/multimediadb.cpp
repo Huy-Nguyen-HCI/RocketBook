@@ -98,39 +98,45 @@ bool MultimediaDB::removeMultimedia(int id)
     return success;
 }
 
-//QString MultimediaDB::retrieveMultimediaInfo(int id)
-//{
-//    QString multimediaInfo = "";
+MultimediaInfoType MultimediaDB::retrieveMultimediaInfo(int id)
+{
 
-//    QSqlQuery queryRetrieve;
-//    queryRetrieve.prepare("SELECT * FROM Multimedias WHERE MultimediaID = :MultimediaID");
-//    queryRetrieve.bindValue(":MultimediaID", id);
-
+    QSqlQuery queryRetrieve;
+    queryRetrieve.prepare("SELECT * FROM Multimedias WHERE MultimediaID = :MultimediaID");
+    queryRetrieve.bindValue(":MultimediaID", id);
 
 
-//    int multimediaIDIndex = /*query.record().indexOf("MultimediaID");*/ 0;
-//    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 1;
-//    int multimediaTitleIndex = /*query.record().indexOf("Password");*/ 2;
-//    int multimediaDescriptionIndex = 3;
-//    int multimediaContentIndex = 4;
+    int multimediaIDIndex = /*query.record().indexOf("MultimediaID");*/ 0;
+    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 1;
+    int multimediaTitleIndex = /*query.record().indexOf("Password");*/ 2;
+    int multimediaDescriptionIndex = 3;
+    int multimediaContentIndex = 4;
 
-//    if (queryRetrieve.exec())
-//    {
-//        if(queryRetrieve.next())
-//        {
-//            MultimediaInfo += queryRetrieve.value(MultimediaIDIndex).toString() + " ";
-//            MultimediaInfo += queryRetrieve.value(usernameIndex).toString() + " ";
-//            MultimediaInfo += queryRetrieve.value(contentIndex).toString();
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "Multimedia retrieval fails:" <<queryRetrieve.lastError();
-//    }
+    int multimediaID = -1;
+    int scrapbookID = -1;
+    QString title = "";
+    QString description = "";
+    QString content = "";
 
-//    return multimediaInfo;
+    if (queryRetrieve.exec())
+    {
+        if(queryRetrieve.next())
+        {
+            multimediaID = queryRetrieve.value(multimediaIDIndex).toInt();
+            scrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
+            title = queryRetrieve.value(multimediaTitleIndex).toString();
+            description = queryRetrieve.value(multimediaDescriptionIndex).toString();
+            content = queryRetrieve.value(multimediaContentIndex).toString();
+        }
+    }
+    else
+    {
+        qDebug() << "Multimedia retrieval fails:" <<queryRetrieve.lastError();
+    }
 
-//}
+    return std::make_tuple(multimediaID, scrapbookID, title, description, content);
+
+}
 
 bool MultimediaDB::multimediaExists(int id) const
 {

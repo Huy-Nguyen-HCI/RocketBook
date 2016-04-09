@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <QDebug>
 
+typedef std::tuple<int, QString, QString, QString> ProfileInfoType;
 /**
  * @brief The ProfileDB class
  *
@@ -74,7 +75,7 @@ public:
      * @param profileID the ID of the profile retrieved
      * @return a string with profileid, fullname, photo, description; return "" if the profile does not exist.
      */
-    QString retrieveProfileInfo(int profileID);
+    ProfileInfoType retrieveProfileInfo(int profileID);
 
     /**
      * @brief retrieveFullname

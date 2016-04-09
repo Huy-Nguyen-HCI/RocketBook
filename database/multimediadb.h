@@ -4,6 +4,8 @@
 #include <QtSql>
 #include <QDebug>
 
+
+typedef std::tuple<int, int, QString, QString, QString> MultimediaInfoType;
 /**
  * @brief The MultimediaDB class
  *
@@ -77,7 +79,7 @@ public:
      * @param id the Multimedia's id.
      * @return a string with the id, username and content, or an empty string if id does not exist.
      */
-    //std::tuple<int,int,QString,QString,QString> retrieveMultimediaInfo(int id);
+    MultimediaInfoType retrieveMultimediaInfo(int id);
 
     /**
      * @brief MultimediaExists

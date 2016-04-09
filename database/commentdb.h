@@ -5,6 +5,8 @@
 #include <QtSql>
 #include <QDebug>
 
+typedef std::tuple<int, int, int, QString> CommentInfoType;
+
 /**
  * @brief The CommentDB class
  *
@@ -77,7 +79,7 @@ public:
      * @param id the comment's id.
      * @return a string with the id, username and content, or an empty string if id does not exist.
      */
-    QString retrieveCommentInfo(int id);
+    CommentInfoType retrieveCommentInfo(int id);
 
     /**
      * @brief commentExists
