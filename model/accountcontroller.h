@@ -35,6 +35,8 @@ public:
 
     void deleteFriend();
 
+    void displayFriends();
+
 
 private:
     AccountDB* accountDB;

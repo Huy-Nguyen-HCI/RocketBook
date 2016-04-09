@@ -29,10 +29,20 @@ void AccountController::run(){
                 addFriend();
             else if(userInput == 4)
                 deleteFriend();
+            else if(userInput == 5)
+                displayFriends();
         }
     }
 }
 
+//Doesn't work yet
+void AccountController::displayFriends(){
+    std::string username=askUserName();
+    int userId=accountDB->retrieveAccountId(QString::fromStdString(username));
+    std::cout << friendDB->retrieveFriendsList(userId).toStdString();
+                         //^Doesn't work yet
+
+}
 
 void AccountController::addFriend(){
     std::string username, friendname;
@@ -157,7 +167,7 @@ void AccountController::verifyPassword(std::string username,std::string password
 
 int AccountController::requestInput(){
     int userInput;
-    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 to add friend, 4 to delete friend \n";
+    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 to add friend, 4 to delete friend, 5 to display friends \n";
     cin >> userInput;
     return userInput;
 }

@@ -110,25 +110,22 @@ bool FriendDB::removeFriends(int accountID, int friendID)
     return success;
 }
 
+//Doesn't work yet
 QString FriendDB::retrieveFriendsList(int accountId)
 {
     QString friendInfo = "";
 
     qDebug() << "Friends in db:";
     QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT * FROM Accounts WHERE AccuntID = (:AccountID)");
+    queryRetrieve.prepare("SELECT FriendID FROM Friends WHERE AccuntID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountId);
 
-
-
-    int accountIdIndex = /*query.record().indexOf("AccountID");*/ 0;
-    int friendIdIndex = /*query.record().indexOf("FriendID"); */ 2;
+    int friendIdIndex = /*query.record().indexOf("FriendID"); */ 0;
 
     if (queryRetrieve.exec())
     {
         while(queryRetrieve.next())
         {
-            friendInfo += queryRetrieve.value(accountIdIndex).toString() + " ";
             friendInfo += queryRetrieve.value(friendIdIndex).toString() + " ";
         }
     }
