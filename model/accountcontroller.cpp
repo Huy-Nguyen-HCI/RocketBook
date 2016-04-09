@@ -36,18 +36,22 @@ void AccountController::run(){
 
 void AccountController::addFriend(){
     std::string username, friendname;
+    int userId, friendId;
+
     username=askUserName();
     friendname=askUserName();
+    userId=accountDB->retrieveAccountId(QString::fromStdString(username));
+    friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
+
 
     if (!checkAccountExists(friendname) || !checkAccountExists(username))
         cerr << "Account does not exist." << endl;
 
-    //also must check if users are friends^^^^^^^^^^^^^^^^^^^^^
+    else if(friendDB->friendshipExists(userId,friendId))
+        cerr << "You are already friend with " << friendname <<endl;
 
     else{
-     int userId, friendId;
-     userId=accountDB->retrieveAccountId(QString::fromStdString(username));
-     friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
+
 
      friendDB->addFriend(userId,friendId);
 
@@ -67,16 +71,10 @@ void AccountController::deleteFriend(){
     userId=accountDB->retrieveAccountId(QString::fromStdString(username));
     friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
 
-    //Check if friendship exists
-
-
-
     if (!friendDB->friendshipExists(userId,friendId))
         cerr << "Friendship does not exist." << endl;
 
     else{
-
-
 
      friendDB->removeFriend(userId,friendId);
      std::cout << "You are no longer friends with " << friendname << "." << std::endl;
