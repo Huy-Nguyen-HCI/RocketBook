@@ -27,6 +27,8 @@ void AccountController::run(){
                 login();
             else if (userInput == 3)
                 addFriend();
+            else if(userInput == 4)
+                deleteFriend();
         }
     }
 }
@@ -49,20 +51,30 @@ void AccountController::addFriend(){
 
      friendDB->addFriend(userId,friendId);
 
-
-
-    // accountDB->g
-
-
-         //friendDB->addFriend()
-
-      //  addFriend();
-    //Search through friend Database
-    //verify indicated account exists. Check that Friend ID is not already in friend list
-    //Add friend if account exists and is not on database
-
     }
 
+}
+
+void AccountController::deleteFriend(){
+    std::string username, friendname;
+    int userId, friendId;
+
+    username=askUserName();
+    friendname=askUserName();
+    userId=accountDB->retrieveAccountId(QString::fromStdString(username));
+    friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
+
+    //Check if friendship exists
+    if (friendDB->friendshipExists(userId,friendId))
+        cerr << "Friendship does not exist." << endl;
+
+    else{
+
+
+
+     friendDB->removeFriend(userId,friendId);
+
+    }
 }
 
 void AccountController::createAccount(){
@@ -140,7 +152,7 @@ void AccountController::verifyPassword(std::string username,std::string password
 
 int AccountController::requestInput(){
     int userInput;
-    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 to add friend \n";
+    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 to add friend, 4 to delete friend \n";
     cin >> userInput;
     return userInput;
 }

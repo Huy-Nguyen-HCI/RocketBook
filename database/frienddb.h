@@ -85,6 +85,7 @@ public:
 private:
 
     bool addNewFriend(int accountID, int friendID);
+    bool removeFriends(int accountID, int friendID);
     QSqlDatabase friendDB;
 };
 

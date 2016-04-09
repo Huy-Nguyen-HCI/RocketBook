@@ -76,10 +76,15 @@ bool FriendDB::addNewFriend(int accountID, int friendID)
     return success;
 }
 
+bool FriendDB::removeFriend(int accountID, int friendID){
+
+    removeFriends(accountID, friendID);
+    return removeFriends(friendID, accountID);
+
+}
 
 
-
-bool FriendDB::removeFriend(int accountID, int friendID)
+bool FriendDB::removeFriends(int accountID, int friendID)
 {
     bool success = false;
 
@@ -91,13 +96,6 @@ bool FriendDB::removeFriend(int accountID, int friendID)
         queryDelete.bindValue(":AccountID", accountID);
         queryDelete.bindValue(":FriendID", friendID);
         success = queryDelete.exec();
-
-        //Deletes user from friend's account's friend list
-        QSqlQuery queryDelete2;
-        queryDelete2.prepare("DELETE FROM Friends WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
-        queryDelete2.bindValue(":AccountID", friendID);
-        queryDelete2.bindValue(":FriendID", accountID);
-        success = queryDelete2.exec();
 
         if(!success)
         {

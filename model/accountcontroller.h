@@ -33,6 +33,7 @@ public:
     void addFriend();
 
 
+    void deleteFriend();
 
 
 private:
