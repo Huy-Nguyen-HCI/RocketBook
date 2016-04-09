@@ -34,7 +34,9 @@ public:
 
     /**
      * @brief addFriend
-     * Add a new account to the database table
+     * Adds a new friendship by entering two entires into the friend table:
+     * entry 1: userId and friendId
+     * entry 2: friend Id and User Id
      *
      * @param accountID Account ID
      * @param friendID Friend ID
@@ -81,6 +83,8 @@ public:
 
 
 private:
+
+    bool addNewFriend(int accountID, int friendID);
     QSqlDatabase friendDB;
 };
 

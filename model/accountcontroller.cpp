@@ -11,7 +11,7 @@ AccountController::AccountController()
 void AccountController::run(){
 
     accountDB=new AccountDB("../database/rocketDB.sqlite");
-   // friendDB=new FriendDB("../database/rocketDB.sqlite");
+    friendDB=new FriendDB("../database/rocketDB.sqlite");
 
     if (accountDB->isOpen()){
 
@@ -39,8 +39,18 @@ void AccountController::addFriend(){
 
     if (!checkAccountExists(friendname) || !checkAccountExists(username))
         cerr << "Account does not exist." << endl;
+
+    //also must check if users are friends^^^^^^^^^^^^^^^^^^^^^
+
     else{
      int userId, friendId;
+     userId=accountDB->retrieveAccountId(QString::fromStdString(username));
+     friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
+
+     friendDB->addFriend(userId,friendId);
+
+
+
     // accountDB->g
 
 

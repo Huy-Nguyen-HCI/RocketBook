@@ -17,7 +17,10 @@ FriendDB::FriendDB()
 
 FriendDB::FriendDB(const QString &path)
 {
-    friendDB = QSqlDatabase::addDatabase("QSQLITE");
+   // friendDB = QSqlDatabase::addDatabase("QSQLITE");
+    //This screws up the system if it gets called for a second database^^^^^^^^^^^^^^
+
+
     friendDB.setDatabaseName(path);
 
     if (!friendDB.open())
@@ -44,7 +47,15 @@ bool FriendDB::isOpen() const
     return friendDB.isOpen();
 }
 
-bool FriendDB::addFriend(int accountID, int friendID)
+bool FriendDB::addFriend(int accountID, int friendID){
+
+    addNewFriend(accountID, friendID);
+    return addNewFriend(friendID, accountID);
+
+}
+
+
+bool FriendDB::addNewFriend(int accountID, int friendID)
 {
     bool success = false;
 
@@ -61,23 +72,6 @@ bool FriendDB::addFriend(int accountID, int friendID)
     {
         qDebug() << "add friend failed: " << queryAdd.lastError();
     }
-
-    QSqlQuery queryAdd2;
-    queryAdd2.prepare("INSERT INTO Friends (AccountID, FriendID) VALUES (:AccountID, :FriendID)");
-    queryAdd2.bindValue(":AccountID", friendID);
-    queryAdd2.bindValue(":FriendID", accountID);
-
-    if(queryAdd.exec())
-    {
-        success = true;
-    }
-    else
-    {
-        qDebug() << "add friend failed: " << queryAdd.lastError();
-    }
-
-
-
 
     return success;
 }
