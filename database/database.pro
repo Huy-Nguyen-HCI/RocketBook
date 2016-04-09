@@ -8,6 +8,7 @@ SOURCES += main.cpp \
     profiledb.cpp \
     commentdb.cpp \
     multimediadb.cpp \
+    frienddb.cpp    \
     tweetdb.cpp
 
 RESOURCES += qml.qrc
@@ -23,6 +24,7 @@ HEADERS += \
     profiledb.h \
     commentdb.h \
     multimediadb.h \
+    frienddb.h  \
     tweetdb.h
 
 QT +=sql

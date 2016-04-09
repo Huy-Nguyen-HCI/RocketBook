@@ -35,7 +35,7 @@ void AccountController::run(){
 void AccountController::addFriend(){
     std::string username, friendname;
     username=askUserName();
-   // friendname=askUserName();
+    friendname=askUserName();
 
     if (!checkAccountExists(friendname) || !checkAccountExists(username))
         cerr << "Account does not exist." << endl;
