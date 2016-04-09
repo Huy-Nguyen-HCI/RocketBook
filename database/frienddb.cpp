@@ -148,7 +148,7 @@ bool FriendDB::friendshipExists(int accountID, int friendID) const
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT Username FROM Accounts WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
+    checkQuery.prepare("SELECT AccountId FROM Friends WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
     checkQuery.bindValue(":AccountID", accountID);
     checkQuery.bindValue(":FriendID", friendID);
 

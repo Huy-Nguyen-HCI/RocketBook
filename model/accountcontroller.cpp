@@ -65,7 +65,10 @@ void AccountController::deleteFriend(){
     friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
 
     //Check if friendship exists
-    if (friendDB->friendshipExists(userId,friendId))
+
+
+
+    if (!friendDB->friendshipExists(userId,friendId))
         cerr << "Friendship does not exist." << endl;
 
     else{
