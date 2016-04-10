@@ -17,7 +17,7 @@ FriendDB::FriendDB()
 
 FriendDB::FriendDB(const QString &path)
 {
-   // friendDB = QSqlDatabase::addDatabase("QSQLITE");
+    friendDB = QSqlDatabase::addDatabase("QSQLITE");
     //This screws up the system if it gets called for a second database^^^^^^^^^^^^^^
 
 
@@ -117,7 +117,7 @@ QString FriendDB::retrieveFriendsList(int accountId)
 
     qDebug() << "Friends in db:";
     QSqlQuery queryRetrieve;
-    queryRetrieve.prepare("SELECT FriendID FROM Friends WHERE AccuntID = (:AccountID)");
+    queryRetrieve.prepare("SELECT FriendID FROM Friends WHERE AccountID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountId);
 
     int friendIdIndex = /*query.record().indexOf("FriendID"); */ 0;
@@ -145,7 +145,7 @@ bool FriendDB::friendshipExists(int accountID, int friendID) const
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT AccountId FROM Friends WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
+    checkQuery.prepare("SELECT AccountID FROM Friends WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
     checkQuery.bindValue(":AccountID", accountID);
     checkQuery.bindValue(":FriendID", friendID);
 
@@ -169,7 +169,7 @@ bool FriendDB::removeAllFriends()
     bool success = false;
 
     QSqlQuery removeQuery;
-    removeQuery.prepare("DELETE FROM friends");
+    removeQuery.prepare("DELETE FROM Friends");
 
     if (removeQuery.exec())
     {
