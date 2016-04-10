@@ -25,6 +25,8 @@ INCLUDEPATH += googletest                       \
                    "../../database/accountdb.cpp"          \
                    "../../database/frienddb.cpp"          \
                    "../../database/commentdb.cpp"          \
+                   "../../database/tweetdb.cpp"          \
+                   "../../database/multimediadb.cpp"          \
                    "../../database/profiledb.cpp"
 
 
@@ -35,6 +37,8 @@ INCLUDEPATH += googletest                       \
         HEADERS += "../../database/accountdb.h"            \
                    "../../database/frienddb.h"            \
                    "../../database/commentdb.h"            \
+                   "../../database/tweetdb.h"            \
+                   "../../database/multimediadb.h"          \
                    "../../database/profiledb.h"
               #     "../../model/blog.h"                  \
               #      "../../model/comment.h"
