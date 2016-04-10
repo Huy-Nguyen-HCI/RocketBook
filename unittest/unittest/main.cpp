@@ -745,9 +745,11 @@ TEST(TweetDatabase, testRetrieveTweetInfo)
 
 }
 
+//Multimedia Tests:
+
 TEST(MultimediaDatabase, testAddMM)
 {
-    const QString path("../unittest/testdirec/multimedia");
+    const QString path("../unittest/testdirec/Multimedias");
     MultimediaDB newMDB(path);
     int mid1 = 5;
     int sid1 = 6;
