@@ -7,7 +7,7 @@
 //class Post;
 //class RocketUser;
 //class Profile;
-//class ScrapBook;
+//class Scrapbook;
 //class Blog;
 //class Comment;
 //class Multimedia;
@@ -18,7 +18,7 @@
 class Tweet: public Post
 {
 public:
-    Tweet(int accountID, std::string content);
+    Tweet(std::string username, std::string content);
     ~Tweet();
 
 private:

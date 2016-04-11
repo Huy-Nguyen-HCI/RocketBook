@@ -3,14 +3,6 @@
 
 #include <post.h>
 
-//class Post;
-//class RocketUser;
-//class Profile;
-//class ScrapBook;
-//class Blog;
-//class Comment;
-//class Tweet;
-
 
 
 /**
@@ -21,7 +13,7 @@ class Multimedia:public Post{
 
 
 public:
-    Multimedia(int accountID, std::string title, std::string description, std::string content);
+    Multimedia(std::string username, std::string title, std::string description, std::string content);
     ~Multimedia();
     std::string getTitle();
     std::string getDescription();

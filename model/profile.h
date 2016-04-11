@@ -3,14 +3,6 @@
 #include <string>
 #include <scrapbook.h>
 
-
-//class ScrapBook;
-//class Blog;
-//class Post;
-//class RocketUser;
-//class Comment;
-//class Tweet;
-//class Multimedia;
 /**
  * @brief The Profile class stores information about a user's profile:
  *      Picture
@@ -35,7 +27,7 @@ private:
     std::string description;
     std::string name;
     std::string picturePath;
-    ScrapBook* scrapBook;
+    Scrapbook* scrapBook;
 };
 
 #endif // PROFILE_H

@@ -5,13 +5,6 @@
 #include "post.h"
 #include "comment.h"
 
-//class Post;
-//class RocketUser;
-//class Profile;
-//class ScrapBook;
-//class Tweet;
-//class Multimedia;
-//class Comment;
 
 /**
  * @brief The Blog class contains text that creator of the blog has posted
@@ -27,7 +20,16 @@ public:
      * @param title The title of the blog
      * @param content The content of the blog
      */
-    Blog(int accountID, std::string title, std::string content);
+    Blog(std::string username, std::string title, std::string content);
+
+    /**
+     * @brief Blog
+     * @param id
+     * @param username
+     * @param title
+     * @param content
+     */
+    Blog(int id, std::string username, std::string title, std::string content);
 
     /**
      * @brief Default destructor for blog post

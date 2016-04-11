@@ -2,9 +2,20 @@
 
 int Post::idCnt = 0;
 
-Post::Post(std::__cxx11::string username, std::string content)
+Post::Post(std::string username, std::string content)
 {
     id = idCnt;
+    idCnt++;
+
+    this->username = username;
+    this->content = content;
+
+}
+
+Post::Post(int id, std::__cxx11::string username, std::__cxx11::string content)
+{
+    this->id = id;
+    idCnt = id;
     idCnt++;
 
     this->username = username;
@@ -16,7 +27,7 @@ int Post::getID() {
     return id;
 }
 
-int Post::getAuthorUsername() {
+std::string Post::getAuthorUsername() {
     return username;
 }
 

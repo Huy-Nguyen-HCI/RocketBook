@@ -1,21 +1,31 @@
 #include "scrapbook.h"
 
-ScrapBook::ScrapBook()
-{
+int Scrapbook::idCnt = 0;
 
+Scrapbook::Scrapbook()
+{
+    id=idCnt;
+    idCnt++;
+}
+
+Scrapbook::Scrapbook(int id)
+{
+    this->id = id;
+    idCnt = id;
+    idCnt++;
+    idCnt++;
 }
 
 
-
-void ScrapBook::addBlog(Blog* newBlog){
+void Scrapbook::addBlog(Blog* newBlog){
     blogList.push_back(newBlog);
 }
 
-void ScrapBook::addTweet(Tweet* newTweet){
+void Scrapbook::addTweet(Tweet* newTweet){
     tweetList.push_back(newTweet);
 }
 
-void ScrapBook::addMedia(Multimedia* newMedia){
+void Scrapbook::addMedia(Multimedia* newMedia){
     mediaList.push_back(newMedia);
 }
 
@@ -23,15 +33,15 @@ void ScrapBook::addMedia(Multimedia* newMedia){
 
 
 
-//Blog* ScrapBook::getBlog(int num){
+//Blog* Scrapbook::getBlog(int num){
 //    return blogList->at(num);
 //}
 
-//Tweet* ScrapBook::getTweet(int num){
+//Tweet* Scrapbook::getTweet(int num){
 //    return tweetList->at(num);
 //}
 
-//Multimedia* ScrapBook::getMedia(int num){
+//Multimedia* Scrapbook::getMedia(int num){
 //    return mediaList->at(num);
 //}
 

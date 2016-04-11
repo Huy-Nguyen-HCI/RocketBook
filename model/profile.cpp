@@ -5,7 +5,7 @@ int Profile::idCnt;
 Profile::Profile()
 {
     id = idCnt ++;
-    scrapBook = new ScrapBook();
+    scrapBook = new Scrapbook();
 }
 
 

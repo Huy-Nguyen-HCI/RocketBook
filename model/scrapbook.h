@@ -5,27 +5,25 @@
 #include "tweet.h"
 #include "multimedia.h"
 
-//class Blog;
-//class Post;
-//class RocketUser;
-//class Profile;
-//class Comment;
-//class Tweet;
-//class Multimedia;
 
 /**
  * @brief The Scrapbook class contains all the content a user has posted.
  */
 
-class ScrapBook
+class Scrapbook
 {
 public:
-    ScrapBook();
+    Scrapbook();
+    Scrapbook(int id);
 
 private:
+    int id;
+    static int idCnt;
+
     std::vector<Blog*> blogList;
     std::vector<Tweet*> tweetList;
     std::vector<Multimedia*> mediaList;
+    std::vector<Post*> postList;
 
     //Methods for add to and getting from containers
     void addBlog(Blog* newBlog);

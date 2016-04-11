@@ -18,10 +18,18 @@ public:
     /**
      * @brief Post is a constructor of a post.
      *
-     * @param author The pointer to the author of the post.
+     * @param username The username of the author of the post.
      * @param content The content of the post.
      */
     Post(std::string username, std::string content);
+
+    /**
+     * @brief Post is a constructor of a post.
+     * @param id The ID of the post
+     * @param username The username of the author of the post.
+     * @param content The content of the post.
+     */
+    Post(int id, std::string username, std::string content);
 
     /**
      * @brief getID returns the ID of the post
@@ -33,7 +41,7 @@ public:
      * @brief getAuthor gets the author of the post.
      * @return the author of the post.
      */
-    int getAuthorID();
+    std::string getAuthorUsername();
 
     /**
      * @brief getContent gets the content of the post.

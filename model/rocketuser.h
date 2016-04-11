@@ -28,6 +28,8 @@ public:
 private:
     Profile* profile;
     int id;
+    static int idCnt;
+
     // group list
     std::string password;
     // privacy settings
@@ -37,7 +39,7 @@ private:
     void addFriend(int friendUserId);
     // feed
     // chat container
-    static int idCnt;
+
 
 };
 
