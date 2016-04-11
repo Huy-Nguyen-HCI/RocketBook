@@ -86,7 +86,7 @@ private:
 
     bool addFriendBothSides(int accountID, int friendID);
     bool removeFriendBothSides(int accountID, int friendID);
-    QSqlDatabase friendDB;
+    QString connectionName;
 };
 
 #endif // FRIENDDB_H

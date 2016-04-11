@@ -2,7 +2,8 @@
 
 AccountDB::AccountDB()
 {
-    accountDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("accounts");
+    QSqlDatabase accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     accountDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!accountDB.open())
@@ -17,7 +18,8 @@ AccountDB::AccountDB()
 
 AccountDB::AccountDB(const QString &path)
 {
-    accountDB = QSqlDatabase::addDatabase("QSQLITE", "accounts");
+    connectionName.append("accounts");
+    QSqlDatabase accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     accountDB.setDatabaseName(path);
 
     if (!accountDB.open())
@@ -32,16 +34,12 @@ AccountDB::AccountDB(const QString &path)
 
 AccountDB::~AccountDB()
 {
-    if (accountDB.isOpen())
-    {
-        accountDB.close();
-    }
-
-    QSqlDatabase::removeDatabase("accounts");
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 bool AccountDB::isOpen() const
 {
+    QSqlDatabase accountDB = QSqlDatabase::database(connectionName);
     return accountDB.isOpen();
 }
 
@@ -50,7 +48,7 @@ bool AccountDB::addAccount(int accountID, const QString &username, const QString
     bool success = false;
 
     if (!username.isEmpty() && !password.isEmpty()) {
-        QSqlQuery queryAdd;
+        QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
         queryAdd.prepare("INSERT INTO Accounts (AccountID, Username, Password, ProfileID) VALUES (:AccountID, :Username, :Password, :ProfileID)");
         queryAdd.bindValue(":AccountID", accountID);
         queryAdd.bindValue(":Username", username);
@@ -78,7 +76,7 @@ bool AccountDB::removeAccount(const QString& username)
 
     if (accountExists(username))
     {
-        QSqlQuery queryDelete;
+        QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM Accounts WHERE Username = (:Username)");
         queryDelete.bindValue(":Username", username);
         success = queryDelete.exec();
@@ -100,7 +98,7 @@ AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName, const QS
 {
 
     qDebug() << "Accounts in db:";
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM Accounts WHERE username = :Username AND Password = :Password");
     queryRetrieve.bindValue(":Username", userName);
     queryRetrieve.bindValue(":Password", password);
@@ -139,7 +137,7 @@ int AccountDB::retrieveAccountId(const QString& username)
     QString accountId;
 
     qDebug() << "Accounts in db:";
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT AccountID FROM Accounts WHERE username = :Username");
     queryRetrieve.bindValue(":Username", username);
 
@@ -166,7 +164,7 @@ bool AccountDB::accountExists(const QString& username) const
 {
     bool exists = false;
 
-    QSqlQuery checkQuery;
+    QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
     checkQuery.prepare("SELECT Username FROM Accounts WHERE Username = (:Username)");
     checkQuery.bindValue(":Username", username);
 
@@ -189,7 +187,7 @@ bool AccountDB::removeAllAccounts()
 {
     bool success = false;
 
-    QSqlQuery removeQuery;
+    QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
     removeQuery.prepare("DELETE FROM Accounts");
 
     if (removeQuery.exec())
@@ -209,7 +207,7 @@ int AccountDB::getMaxAccountID()
     QString maxID;
 
     qDebug() << "Accounts in db:";
-    QSqlQuery queryMaxID;
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(AccountID) FROM Accounts");
 
     if (queryMaxID.exec())

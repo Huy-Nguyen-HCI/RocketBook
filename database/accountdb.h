@@ -101,7 +101,7 @@ public:
 
 
 private:
-    QSqlDatabase accountDB;
+    QString connectionName;
 };
 
 #endif // ACCOUNTDB_H

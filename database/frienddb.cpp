@@ -2,7 +2,8 @@
 
 FriendDB::FriendDB()
 {
-    friendDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("friends");
+    QSqlDatabase friendDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     friendDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!friendDB.open())
@@ -17,7 +18,8 @@ FriendDB::FriendDB()
 
 FriendDB::FriendDB(const QString &path)
 {
-    friendDB = QSqlDatabase::addDatabase("QSQLITE", "friends");
+    connectionName.append("friends");
+    QSqlDatabase friendDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     //Must name database connection
 
     friendDB.setDatabaseName(path);
@@ -34,23 +36,22 @@ FriendDB::FriendDB(const QString &path)
 
 FriendDB::~FriendDB()
 {
-    if (friendDB.isOpen())
-    {
-        friendDB.close();
-    }
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 
 bool FriendDB::isOpen() const
 {
+    QSqlDatabase friendDB = QSqlDatabase::database(connectionName);
     return friendDB.isOpen();
 }
 
 bool FriendDB::addFriend(int accountID, int friendID){
 
-    addFriendBothSides(accountID, friendID);
-    return addFriendBothSides(friendID, accountID);
-
+    bool success = false;
+    success = addFriendBothSides(accountID, friendID) &&
+              addFriendBothSides(friendID, accountID);
+    return success;
 }
 
 
@@ -58,7 +59,7 @@ bool FriendDB::addFriendBothSides(int accountID, int friendID)
 {
     bool success = false;
 
-    QSqlQuery queryAdd;
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Friends (AccountID, FriendID) VALUES (:AccountID, :FriendID)");
     queryAdd.bindValue(":AccountID", accountID);
     queryAdd.bindValue(":FriendID", friendID);
@@ -90,7 +91,7 @@ bool FriendDB::removeFriendBothSides(int accountID, int friendID)
     if (friendshipExists(accountID, friendID))
     {
         //Deletes friend from user's account's friend list
-        QSqlQuery queryDelete;
+        QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM Friends WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
         queryDelete.bindValue(":AccountID", accountID);
         queryDelete.bindValue(":FriendID", friendID);
@@ -115,7 +116,7 @@ QString FriendDB::retrieveFriendsList(int accountId)
     QString friendInfo = "";
 
     qDebug() << "Friends in db:";
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT FriendID FROM Friends WHERE AccountID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountId);
 
@@ -143,7 +144,7 @@ bool FriendDB::friendshipExists(int accountID, int friendID) const
 
     bool exists = false;
 
-    QSqlQuery checkQuery;
+    QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
     checkQuery.prepare("SELECT AccountID FROM Friends WHERE AccountID = (:AccountID) AND FriendID = (:FriendID)");
     checkQuery.bindValue(":AccountID", accountID);
     checkQuery.bindValue(":FriendID", friendID);
@@ -167,7 +168,7 @@ bool FriendDB::removeAllFriends()
 {
     bool success = false;
 
-    QSqlQuery removeQuery;
+    QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
     removeQuery.prepare("DELETE FROM Friends");
 
     if (removeQuery.exec())

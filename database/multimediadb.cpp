@@ -2,7 +2,8 @@
 
 MultimediaDB::MultimediaDB()
 {
-    multimediaDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("multimedia");
+    QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     multimediaDB.setDatabaseName("MultimediaDB.sqlite");
 
     if (!multimediaDB.open())
@@ -17,7 +18,8 @@ MultimediaDB::MultimediaDB()
 
 MultimediaDB::MultimediaDB(const QString &path)
 {
-    multimediaDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("multimedia");
+    QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     multimediaDB.setDatabaseName(path);
 
     if (!multimediaDB.open())
@@ -32,14 +34,12 @@ MultimediaDB::MultimediaDB(const QString &path)
 
 MultimediaDB::~MultimediaDB()
 {
-    if (multimediaDB.isOpen())
-    {
-        multimediaDB.close();
-    }
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 bool MultimediaDB::isOpen() const
 {
+    QSqlDatabase multimediaDB = QSqlDatabase::database(connectionName);
     return multimediaDB.isOpen();
 }
 
@@ -51,7 +51,7 @@ bool MultimediaDB::addMultimedia(int multimediaID,
 {
     bool success = false;
 
-    QSqlQuery queryAdd;
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Multimedias (MultimediaID, ScrapbookID, MultimediaTitle, MultimediaDescription, MultimediaContent) VALUES (:MultimediaID, :ScrapbookID, :MultimediaTitle, :MultimediaDescription, :MultimediaContent)");
     queryAdd.bindValue(":MultimediaID", multimediaID);
     queryAdd.bindValue(":ScrapbookID", scrapbookID);
@@ -80,7 +80,7 @@ bool MultimediaDB::removeMultimedia(int id)
 
     if (multimediaExists(id))
     {
-        QSqlQuery queryDelete;
+        QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM Multimedias WHERE MultimediaID = (:MultimediaID)");
         queryDelete.bindValue(":MultimediaID", id);
         success = queryDelete.exec();
@@ -101,7 +101,7 @@ bool MultimediaDB::removeMultimedia(int id)
 MultimediaInfoType MultimediaDB::retrieveMultimediaInfo(int id)
 {
 
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM Multimedias WHERE MultimediaID = :MultimediaID");
     queryRetrieve.bindValue(":MultimediaID", id);
 
@@ -142,7 +142,7 @@ bool MultimediaDB::multimediaExists(int id) const
 {
     bool exists = false;
 
-    QSqlQuery checkQuery;
+    QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
     checkQuery.prepare("SELECT * FROM Multimedias WHERE MultimediaID = (:MultimediaID)");
     checkQuery.bindValue(":MultimediaID", id);
 
@@ -165,7 +165,7 @@ bool MultimediaDB::removeAllMultimedias()
 {
     bool success = false;
 
-    QSqlQuery removeQuery;
+    QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
     removeQuery.prepare("DELETE FROM Multimedias");
 
     if (removeQuery.exec())

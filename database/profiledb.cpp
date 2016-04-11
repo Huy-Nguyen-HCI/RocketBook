@@ -2,7 +2,8 @@
 
 ProfileDB::ProfileDB()
 {
-    profileDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("profiles");
+    QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     profileDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!profileDB.open())
@@ -18,7 +19,8 @@ ProfileDB::ProfileDB()
 
 ProfileDB::ProfileDB(const QString &path)
 {
-    profileDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("profiles");
+    QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     profileDB.setDatabaseName(path);
 
     if (!profileDB.open())
@@ -33,14 +35,12 @@ ProfileDB::ProfileDB(const QString &path)
 
 ProfileDB::~ProfileDB()
 {
-    if (profileDB.isOpen())
-    {
-        profileDB.close();
-    }
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 bool ProfileDB::isOpen() const
 {
+    QSqlDatabase profileDB = QSqlDatabase::database(connectionName);
     return profileDB.isOpen();
 }
 
@@ -49,7 +49,7 @@ bool ProfileDB::addProfile(int profileID, const QString &fullName, const QString
     bool success = false;
 
 
-    QSqlQuery queryAdd;
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO profiles (profileid, fullname, photo, description) VALUES (:profileid, :fullname, :photo, :description)");
     queryAdd.bindValue(":profileid", profileID);
     queryAdd.bindValue(":fullname", fullName);
@@ -68,16 +68,13 @@ bool ProfileDB::addProfile(int profileID, const QString &fullName, const QString
     return success;
 }
 
-
-
-
 bool ProfileDB::removeProfile(int profileID)
 {
     bool success = false;
 
     if (profileExists(profileID))
     {
-        QSqlQuery queryDelete;
+        QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM profiles WHERE profileid = :profileid");
         queryDelete.bindValue(":profileid", profileID);
         success = queryDelete.exec();
@@ -99,7 +96,7 @@ ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
 {
 
     qDebug() << "Profiles in db:";
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM profiles WHERE profileid = (:profileid)");
     queryRetrieve.bindValue(":profileid", profileID);
 
@@ -153,7 +150,7 @@ bool ProfileDB::profileExists(int profileID) const
 {
     bool exists = false;
 
-    QSqlQuery checkQuery;
+    QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
     checkQuery.prepare("SELECT profileid FROM profiles WHERE profileid = (:profileid)");
     checkQuery.bindValue(":profileid", profileID);
 
@@ -176,7 +173,7 @@ bool ProfileDB::removeAllProfiles()
 {
     bool success = false;
 
-    QSqlQuery removeQuery;
+    QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
     removeQuery.prepare("DELETE FROM profiles");
 
     if (removeQuery.exec())

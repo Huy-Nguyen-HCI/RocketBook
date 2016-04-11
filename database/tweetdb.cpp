@@ -2,7 +2,8 @@
 
 TweetDB::TweetDB()
 {
-    tweetDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("tweets");
+    QSqlDatabase tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     tweetDB.setDatabaseName("TweetDB.sqlite");
 
     if (!tweetDB.open())
@@ -17,7 +18,8 @@ TweetDB::TweetDB()
 
 TweetDB::TweetDB(const QString &path)
 {
-    tweetDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("tweets");
+    QSqlDatabase tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     tweetDB.setDatabaseName(path);
 
     if (!tweetDB.open())
@@ -32,14 +34,12 @@ TweetDB::TweetDB(const QString &path)
 
 TweetDB::~TweetDB()
 {
-    if (tweetDB.isOpen())
-    {
-        tweetDB.close();
-    }
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 bool TweetDB::isOpen() const
 {
+    QSqlDatabase tweetDB = QSqlDatabase::database(connectionName);
     return tweetDB.isOpen();
 }
 
@@ -47,7 +47,7 @@ bool TweetDB::addTweet(int tweetID, int scrapbookID, const QString &tweetContent
 {
     bool success = false;
 
-    QSqlQuery queryAdd;
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Tweets (TweetID, ScrapbookID, TweetContent) VALUES (:TweetID, :ScrapbookID, :TweetContent)");
     queryAdd.bindValue(":TweetID", tweetID);
     queryAdd.bindValue(":ScrapbookID", scrapbookID);
@@ -74,7 +74,7 @@ bool TweetDB::removeTweet(int id)
 
     if (tweetExists(id))
     {
-        QSqlQuery queryDelete;
+        QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM Tweets WHERE TweetID = (:TweetID)");
         queryDelete.bindValue(":TweetID", id);
         success = queryDelete.exec();
@@ -95,7 +95,7 @@ bool TweetDB::removeTweet(int id)
 TweetInfoType TweetDB::retrieveTweetInfo(int tweetID)
 {
 
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM tweets WHERE tweetID = :tweetID");
     queryRetrieve.bindValue(":tweetID", tweetID);
 
@@ -129,7 +129,7 @@ bool TweetDB::tweetExists(int id) const
 {
     bool exists = false;
 
-    QSqlQuery checkQuery;
+    QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
     checkQuery.prepare("SELECT * FROM Tweets WHERE TweetID = (:TweetID)");
     checkQuery.bindValue(":TweetID", id);
 
@@ -152,7 +152,7 @@ bool TweetDB::removeAllTweets()
 {
     bool success = false;
 
-    QSqlQuery removeQuery;
+    QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
     removeQuery.prepare("DELETE FROM Tweets");
 
     if (removeQuery.exec())

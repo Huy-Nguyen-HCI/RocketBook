@@ -99,7 +99,7 @@ public:
 
 
 private:
-    QSqlDatabase commentDB;
+    QString connectionName;
 };
 
 

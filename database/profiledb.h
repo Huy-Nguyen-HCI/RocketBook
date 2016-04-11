@@ -122,7 +122,7 @@ public:
 
 
 private:
-    QSqlDatabase profileDB;
+    QString connectionName;
 };
 
 #endif // PROFILEDB_H

@@ -92,6 +92,7 @@ public:
 
 
 private:
-    QSqlDatabase tweetDB;
+    QString connectionName;
+
 };
 #endif // TWEETDB_H

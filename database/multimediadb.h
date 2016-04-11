@@ -99,7 +99,7 @@ public:
 
 
 private:
-    QSqlDatabase multimediaDB;
+    QString connectionName;
 };
 
 #endif // MULTIMEDIADB_H

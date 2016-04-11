@@ -2,7 +2,8 @@
 
 CommentDB::CommentDB()
 {
-    commentDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("comments");
+    QSqlDatabase commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     commentDB.setDatabaseName("CommentDB.sqlite");
 
     if (!commentDB.open())
@@ -17,7 +18,8 @@ CommentDB::CommentDB()
 
 CommentDB::CommentDB(const QString &path)
 {
-    commentDB = QSqlDatabase::addDatabase("QSQLITE");
+    connectionName.append("comments");
+    QSqlDatabase commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     commentDB.setDatabaseName(path);
 
     if (!commentDB.open())
@@ -32,14 +34,12 @@ CommentDB::CommentDB(const QString &path)
 
 CommentDB::~CommentDB()
 {
-    if (commentDB.isOpen())
-    {
-        commentDB.close();
-    }
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 bool CommentDB::isOpen() const
 {
+    QSqlDatabase commentDB = QSqlDatabase::database(connectionName);
     return commentDB.isOpen();
 }
 
@@ -47,7 +47,7 @@ bool CommentDB::addComment(int commentID, int accountID, int blogID, const QStri
 {
     bool success = false;
 
-    QSqlQuery queryAdd;
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Comments (CommentID, AccountID, BlogID, Content) VALUES (:CommentID, :AccountID, :BlogID, :Content)");
     queryAdd.bindValue(":CommentID", commentID);
     queryAdd.bindValue(":AccountID", accountID);
@@ -75,7 +75,7 @@ bool CommentDB::removeComment(int id)
 
     if (commentExists(id))
     {
-        QSqlQuery queryDelete;
+        QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM Comments WHERE CommentID = (:CommentID)");
         queryDelete.bindValue(":CommentID", id);
         success = queryDelete.exec();
@@ -96,7 +96,7 @@ bool CommentDB::removeComment(int id)
 CommentInfoType CommentDB::retrieveCommentInfo(int id)
 {
 
-    QSqlQuery queryRetrieve;
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM Comments WHERE CommentID = :CommentID");
     queryRetrieve.bindValue(":CommentID", id);
 
@@ -135,7 +135,7 @@ bool CommentDB::commentExists(int id) const
 {
     bool exists = false;
 
-    QSqlQuery checkQuery;
+    QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
     checkQuery.prepare("SELECT * FROM Comments WHERE CommentID = (:CommentID)");
     checkQuery.bindValue(":CommentID", id);
 
@@ -158,7 +158,7 @@ bool CommentDB::removeAllComments()
 {
     bool success = false;
 
-    QSqlQuery removeQuery;
+    QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
     removeQuery.prepare("DELETE FROM Comments");
 
     if (removeQuery.exec())
