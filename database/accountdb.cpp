@@ -17,7 +17,7 @@ AccountDB::AccountDB()
 
 AccountDB::AccountDB(const QString &path)
 {
-    accountDB = QSqlDatabase::addDatabase("QSQLITE","accounts");
+    accountDB = QSqlDatabase::addDatabase("QSQLITE", "accounts");
     accountDB.setDatabaseName(path);
 
     if (!accountDB.open())
@@ -36,6 +36,8 @@ AccountDB::~AccountDB()
     {
         accountDB.close();
     }
+
+    QSqlDatabase::removeDatabase("accounts");
 }
 
 bool AccountDB::isOpen() const
