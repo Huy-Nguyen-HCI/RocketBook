@@ -25,8 +25,7 @@ TEST(AccntDatabase, testAddAccnt)
     const QString pw("password");
     const QString un2("username2");
     const QString pw2("password2");
-    const QString un3("username3");
-    const QString pw3("password3");
+
 
 
     newDB.removeAllAccounts();
@@ -672,6 +671,8 @@ TEST(FriendDatabase, testRmvFriends)
     bool rmv2 = false;
     rmv2 = newFDB.removeFriend(accntid2, friendid2);
     ASSERT_TRUE(rmv2);
+    ASSERT_FALSE(newFDB.friendshipExists(accntid, friendid));
+    ASSERT_FALSE(newFDB.friendshipExists(accntid2, friendid2));
 
     newFDB.removeAllFriends();
 }
