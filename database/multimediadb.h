@@ -5,17 +5,19 @@
 #include <QDebug>
 
 
-typedef std::tuple<int, int, QString, QString, QString> MultimediaInfoType;
+typedef std::tuple<int, int, int, QString, QString, QString, int> MultimediaInfoType;
 /**
  * @brief The MultimediaDB class
  *
- * Create an sqlite3 table named "Multimedia" in a database file.
+ * Create an sqlite3 table named "Multimedias" in a database file.
  * The database structure:
  * Column 1: MultimediaID INTEGER PRIMARY KEY
- * Column 2: ScrapbookID INTEGER
- * Column 3: MultimediaTitle TEXT
- * Column 4: MultimediaDescription TEXT
- * Column 5: MultimediaContent TEXT
+ * Column 2: AccountID INTEGR NOT NULL
+ * Column 3: ScrapbookID INTEGER NOT NULL
+ * Column 4: MultimediaTitle TEXT
+ * Column 5: MultimediaDescription TEXT
+ * Column 6: MultimediaContent TEXT
+ * Column 7: Privacy INTEGER NOT NULL
  */
 class MultimediaDB
 {
@@ -59,7 +61,13 @@ public:
      * @param profileID
      * @return true if added, false if not added
      */
-    bool addMultimedia(int multimediaID, int scrapbookID, const QString &multimediaTitle, const QString &multimediaDescription, const QString &multimediaContent);
+    bool addMultimedia(int multimediaID,
+                       int accountID,
+                       int scrapbookID,
+                       const QString &multimediaTitle,
+                       const QString &multimediaDescription,
+                       const QString &multimediaContent,
+                       int privacy);
 
     /**
      * @brief removeMultimedia

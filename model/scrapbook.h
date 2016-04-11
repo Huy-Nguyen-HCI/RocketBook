@@ -4,6 +4,8 @@
 #include "blog.h"
 #include "tweet.h"
 #include "multimedia.h"
+#include "../database/tweetdb.h"
+#include "../database/multimediadb.h"
 
 
 /**
@@ -20,15 +22,24 @@ private:
     int id;
     static int idCnt;
 
+
     std::vector<Blog*> blogList;
     std::vector<Tweet*> tweetList;
     std::vector<Multimedia*> mediaList;
     std::vector<Post*> postList;
 
     //Methods for add to and getting from containers
-    void addBlog(Blog* newBlog);
-    void addTweet(Tweet* newTweet);
-    void addMedia(Multimedia* newMedia);
+    Blog* addBlog(Blog* newBlog);
+    Blog* addBlog(std::string username, std::string title, std::string content);
+
+    Tweet* addTweet(Tweet* newTweet);
+    Tweet* addTweet(std::string username, std::string content);
+
+    Multimedia* addMedia(Multimedia* newMedia);
+    Multimedia* addMedia(std::string username,
+                         std::string title,
+                         std::string description,
+                         std::string content);
 
 //    Blog* getBlog(int num);
 //    Tweet* getTweet(int num);

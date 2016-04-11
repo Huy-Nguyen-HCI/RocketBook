@@ -453,7 +453,7 @@ TEST(ProfDatabase, testRetrievePhoto)
 
 TEST(CommentDatabase, testAddComments)
 {
-    const QString path("../unittest/testdirec/comments");
+    const QString path("../unittest/testdirec/testContentDB");
     CommentDB newCDB(path);
     int cid1 = 4;
     int aid1 = 5;
@@ -482,7 +482,7 @@ TEST(CommentDatabase, testAddComments)
 
 TEST(CommentDatabase, testCommentExists)
 {
-    const QString path("../unittest/testdirec/comments");
+    const QString path("../unittest/testdirec/testContentDB");
     CommentDB newCDB(path);
     int cid1 = 4;
     int aid1 = 5;
@@ -512,7 +512,7 @@ TEST(CommentDatabase, testCommentExists)
 
 TEST(CommentDatabase, testRmvComments)
 {
-    const QString path("../unittest/testdirec/comments");
+    const QString path("../unittest/testdirec/testContentDB");
     CommentDB newCDB(path);
     int cid1 = 4;
     int aid1 = 5;
@@ -543,7 +543,7 @@ TEST(CommentDatabase, testRmvComments)
 
 TEST(CommentDatabase, testRmvAllComments)
 {
-    const QString path("../unittest/testdirec/comments");
+    const QString path("../unittest/testdirec/testContentDB");
     CommentDB newCDB(path);
     int cid1 = 4;
     int aid1 = 5;
@@ -571,7 +571,7 @@ TEST(CommentDatabase, testRmvAllComments)
 
 TEST(CommentDatabase, testRetrieveInfo)
 {
-    const QString path("../unittest/testdirec/comments");
+    const QString path("../unittest/testdirec/testContentDB");
     CommentDB newCDB(path);
     int cid1 = 4;
     int aid1 = 5;
@@ -751,21 +751,25 @@ TEST(FriendDatabase, testRetrieveFriendsList)
 
 TEST(TweetDatabase, testAddTweet)
 {
-    const QString path("../unittest/testdirec/tweets");
+    const QString path("../unittest/testdirec/testContentDB");
     TweetDB newTDB(path);
     int tid1 = 4;
-    int sid1 = 5;
+    int aid1 = 5;
+    int sid1 = 6;
     const QString content("content");
+    int pri1 = 0;
     int tid2 = 14;
-    int sid2 = 15;
+    int aid2 = 15;
+    int sid2 = 16;
     const QString content2("content2");
+    int pri2 = 1;
 
     newTDB.removeAllTweets();
     bool added = false;
-    added = newTDB.addTweet(tid1, sid1, content);
+    added = newTDB.addTweet(tid1, aid1, sid1, content, pri1);
     ASSERT_TRUE(added);
     bool added2 = false;
-    added2 = newTDB.addTweet(tid2, sid2, content2);
+    added2 = newTDB.addTweet(tid2, aid2, sid2, content2, pri2);
     ASSERT_TRUE(added2);
 
 
@@ -778,22 +782,27 @@ TEST(TweetDatabase, testAddTweet)
 
 TEST(TweetDatabase, testTweetExists)
 {
-    const QString path("../unittest/testdirec/tweets");
+    const QString path("../unittest/testdirec/testContentDB");
     TweetDB newTDB(path);
     int tid1 = 4;
-    int sid1 = 5;
+    int aid1 = 5;
+    int sid1 = 6;
     const QString content("content");
+    int pri1 = 0;
     int tid2 = 14;
-    int sid2 = 15;
+    int aid2 = 15;
+    int sid2 = 16;
     const QString content2("content2");
+    int pri2 = 1;
+
 
 
     newTDB.removeAllTweets();
     ASSERT_FALSE(newTDB.tweetExists(tid1));
     ASSERT_FALSE(newTDB.tweetExists(tid2));
-    newTDB.addTweet(tid1, sid1, content);
+    newTDB.addTweet(tid1, aid1, sid1, content, pri1);
     ASSERT_TRUE(newTDB.tweetExists(tid1));
-    newTDB.addTweet(tid2, sid2, content2);
+    newTDB.addTweet(tid2, aid2, sid2, content2, pri2);
     ASSERT_TRUE(newTDB.tweetExists(tid2));
 
     newTDB.removeAllTweets();
@@ -802,19 +811,23 @@ TEST(TweetDatabase, testTweetExists)
 
 TEST(TweetDatabase, testRmvTweet)
 {
-    const QString path("../unittest/testdirec/tweets");
+    const QString path("../unittest/testdirec/testContentDB");
     TweetDB newTDB(path);
     int tid1 = 4;
-    int sid1 = 5;
+    int aid1 = 5;
+    int sid1 = 6;
     const QString content("content");
+    int pri1 = 0;
     int tid2 = 14;
-    int sid2 = 15;
+    int aid2 = 15;
+    int sid2 = 16;
     const QString content2("content2");
+    int pri2 = 1;
 
 
     newTDB.removeAllTweets();
-    newTDB.addTweet(tid1, sid1, content);
-    newTDB.addTweet(tid2, sid2, content2);
+    newTDB.addTweet(tid1, aid1, sid1, content, pri1);
+    newTDB.addTweet(tid2, aid2, sid2, content2, pri2);
     newTDB.removeTweet(tid1);
     newTDB.removeTweet(tid2);
     ASSERT_FALSE(newTDB.tweetExists(tid1));
@@ -826,19 +839,23 @@ TEST(TweetDatabase, testRmvTweet)
 
 TEST(TweetDatabase, testRmvAllTweets)
 {
-    const QString path("../unittest/testdirec/tweets");
+    const QString path("../unittest/testdirec/testContentDB");
     TweetDB newTDB(path);
     int tid1 = 4;
-    int sid1 = 5;
+    int aid1 = 5;
+    int sid1 = 6;
     const QString content("content");
+    int pri1 = 0;
     int tid2 = 14;
-    int sid2 = 15;
+    int aid2 = 15;
+    int sid2 = 16;
     const QString content2("content2");
+    int pri2 = 1;
 
 
     newTDB.removeAllTweets();
-    newTDB.addTweet(tid1, sid1, content);
-    newTDB.addTweet(tid2, sid2, content2);
+    newTDB.addTweet(tid1, aid1, sid1, content, pri1);
+    newTDB.addTweet(tid2, aid2, sid2, content2, pri2);
     newTDB.removeAllTweets();
     ASSERT_FALSE(newTDB.tweetExists(tid1));
     ASSERT_FALSE(newTDB.tweetExists(tid2));
@@ -849,28 +866,35 @@ TEST(TweetDatabase, testRmvAllTweets)
 
 TEST(TweetDatabase, testRetrieveTweetInfo)
 {
-    const QString path("../unittest/testdirec/tweets");
+    const QString path("../unittest/testdirec/testContentDB");
     TweetDB newTDB(path);
     int tid1 = 4;
-    int sid1 = 5;
+    int aid1 = 5;
+    int sid1 = 6;
     const QString content("content");
+    int pri1 = 0;
     int tid2 = 14;
-    int sid2 = 15;
+    int aid2 = 15;
+    int sid2 = 16;
     const QString content2("content2");
-
+    int pri2 = 1;
 
     newTDB.removeAllTweets();
-    newTDB.addTweet(tid1, sid1, content);
-    newTDB.addTweet(tid2, sid2, content2);
+    newTDB.addTweet(tid1, aid1, sid1, content, pri1);
+    newTDB.addTweet(tid2, aid2, sid2, content2, pri2);
 
     TweetInfoType info = newTDB.retrieveTweetInfo(tid1);
     ASSERT_EQ (std::get<0>(info), tid1);
-    ASSERT_EQ (std::get<1>(info), sid1);
-    ASSERT_EQ (std::get<2>(info), content);
+    ASSERT_EQ (std::get<1>(info), aid1);
+    ASSERT_EQ (std::get<2>(info), sid1);
+    ASSERT_EQ (std::get<3>(info), content);
+    ASSERT_EQ (std::get<4>(info), pri1);
     TweetInfoType info2 = newTDB.retrieveTweetInfo(tid2);
     ASSERT_EQ (std::get<0>(info2), tid2);
-    ASSERT_EQ (std::get<1>(info2), sid2);
-    ASSERT_EQ (std::get<2>(info2), content2);
+    ASSERT_EQ (std::get<1>(info2), aid2);
+    ASSERT_EQ (std::get<2>(info2), sid2);
+    ASSERT_EQ (std::get<3>(info2), content2);
+    ASSERT_EQ (std::get<4>(info2), pri2);
 
 }
 
@@ -878,17 +902,18 @@ TEST(TweetDatabase, testRetrieveTweetInfo)
 
 TEST(MultimediaDatabase, testAddMM)
 {
-    const QString path("../unittest/testdirec/Multimedias");
+    const QString path("../unittest/testdirec/testContentDB");
     MultimediaDB newMDB(path);
     int mid1 = 5;
-    int sid1 = 6;
+    int aid1 = 6;
+    int sid1 = 7;
     const QString mmTitle1("Title 1");
     const QString mmDescription1("Description 1");
     const QString mmContent1("Content 1");
-
+    int pri1 = 0;
     newMDB.removeAllMultimedias();
     bool added = false;
-    added = newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
+    added = newMDB.addMultimedia(mid1, aid1, sid1, mmTitle1, mmDescription1, mmContent1, pri1);
     ASSERT_TRUE(added);
     ASSERT_TRUE(newMDB.multimediaExists(mid1));
 
@@ -899,22 +924,27 @@ TEST(MultimediaDatabase, testAddMM)
 TEST(MultimediaDatabase, testRmvMultimedia)
 {
 
-    const QString path("../unittest/testdirec/Multimedias");
+    const QString path("../unittest/testdirec/testContentDB");
     MultimediaDB newMDB(path);
     int mid1 = 5;
-    int sid1 = 6;
-    int mid2 = 15;
-    int sid2 = 16;
+    int aid1 = 6;
+    int sid1 = 7;
     const QString mmTitle1("Title 1");
     const QString mmDescription1("Description 1");
     const QString mmContent1("Content 1");
+    int pri1 = 0;
+
+    int mid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
     const QString mmTitle2("Title 2");
     const QString mmDescription2("Description 2");
     const QString mmContent2("Content 2");
+    int pri2 = 1;
 
     newMDB.removeAllMultimedias();
-    newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
-    newMDB.addMultimedia(mid2, sid2, mmTitle2, mmDescription2, mmContent2);
+    newMDB.addMultimedia(mid1, aid1, sid1, mmTitle1, mmDescription1, mmContent1, pri1);
+    newMDB.addMultimedia(mid2, aid2, sid2, mmTitle2, mmDescription2, mmContent2, pri2);
 
     bool rmv1 = false;
     rmv1 = newMDB.removeMultimedia(mid1);
@@ -932,22 +962,27 @@ TEST(MultimediaDatabase, testRmvMultimedia)
 TEST(MultimediaDatabase, testRmvAllMultimedia)
 {
 
-    const QString path("../unittest/testdirec/Multimedias");
+    const QString path("../unittest/testdirec/testContentDB");
     MultimediaDB newMDB(path);
     int mid1 = 5;
-    int sid1 = 6;
-    int mid2 = 15;
-    int sid2 = 16;
+    int aid1 = 6;
+    int sid1 = 7;
     const QString mmTitle1("Title 1");
     const QString mmDescription1("Description 1");
     const QString mmContent1("Content 1");
+    int pri1 = 0;
+
+    int mid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
     const QString mmTitle2("Title 2");
     const QString mmDescription2("Description 2");
     const QString mmContent2("Content 2");
+    int pri2 = 1;
 
     newMDB.removeAllMultimedias();
-    newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
-    newMDB.addMultimedia(mid2, sid2, mmTitle2, mmDescription2, mmContent2);
+    newMDB.addMultimedia(mid1, aid1, sid1, mmTitle1, mmDescription1, mmContent1, pri1);
+    newMDB.addMultimedia(mid2, aid2, sid2, mmTitle2, mmDescription2, mmContent2, pri2);
 
     ASSERT_TRUE(newMDB.multimediaExists(mid1));
     ASSERT_TRUE(newMDB.multimediaExists(mid2));
@@ -967,24 +1002,30 @@ TEST(MultimediaDatabase, testRmvAllMultimedia)
 TEST(MultimediaDatabase, testMultimediaExists)
 {
 
-    const QString path("../unittest/testdirec/Multimedias");
+    const QString path("../unittest/testdirec/testContentDB");
     MultimediaDB newMDB(path);
     int mid1 = 5;
-    int sid1 = 6;
-    int mid2 = 15;
-    int sid2 = 16;
+    int aid1 = 6;
+    int sid1 = 7;
     const QString mmTitle1("Title 1");
     const QString mmDescription1("Description 1");
     const QString mmContent1("Content 1");
+    int pri1 = 0;
+
+    int mid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
     const QString mmTitle2("Title 2");
     const QString mmDescription2("Description 2");
     const QString mmContent2("Content 2");
+    int pri2 = 1;
 
     newMDB.removeAllMultimedias();
     ASSERT_FALSE(newMDB.multimediaExists(mid1));
     ASSERT_FALSE(newMDB.multimediaExists(mid2));
-    newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
-    newMDB.addMultimedia(mid2, sid2, mmTitle2, mmDescription2, mmContent2);
+
+    newMDB.addMultimedia(mid1, aid1, sid1, mmTitle1, mmDescription1, mmContent1, pri1);
+    newMDB.addMultimedia(mid2, aid2, sid2, mmTitle2, mmDescription2, mmContent2, pri2);
     ASSERT_TRUE(newMDB.multimediaExists(mid1));
     ASSERT_TRUE(newMDB.multimediaExists(mid2));
 
@@ -992,32 +1033,45 @@ TEST(MultimediaDatabase, testMultimediaExists)
 
 TEST(MultimediaDatabase, testRetrieveInfo)
 {
-    const QString path("../unittest/testdirec/Multimedias");
+    const QString path("../unittest/testdirec/testContentDB");
     MultimediaDB newMDB(path);
     int mid1 = 5;
-    int sid1 = 6;
-    int mid2 = 15;
-    int sid2 = 16;
+    int aid1 = 6;
+    int sid1 = 7;
     const QString mmTitle1("Title 1");
     const QString mmDescription1("Description 1");
     const QString mmContent1("Content 1");
+    int pri1 = 0;
+
+    int mid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
     const QString mmTitle2("Title 2");
     const QString mmDescription2("Description 2");
     const QString mmContent2("Content 2");
+    int pri2 = 1;
+
+    newMDB.removeAllMultimedias();
+    newMDB.addMultimedia(mid1, aid1, sid1, mmTitle1, mmDescription1, mmContent1, pri1);
+    newMDB.addMultimedia(mid2, aid2, sid2, mmTitle2, mmDescription2, mmContent2, pri2);
 
     MultimediaInfoType info1 = newMDB.retrieveMultimediaInfo(mid1);
     ASSERT_EQ (std::get<0>(info1), mid1);
-    ASSERT_EQ (std::get<1>(info1), sid1);
-    ASSERT_EQ (std::get<2>(info1), mmTitle1);
-    ASSERT_EQ (std::get<3>(info1), mmDescription1);
-    ASSERT_EQ (std::get<4>(info1), mmContent1);
+    ASSERT_EQ (std::get<1>(info1), aid1);
+    ASSERT_EQ (std::get<2>(info1), sid1);
+    ASSERT_EQ (std::get<3>(info1), mmTitle1);
+    ASSERT_EQ (std::get<4>(info1), mmDescription1);
+    ASSERT_EQ (std::get<5>(info1), mmContent1);
+    ASSERT_EQ (std::get<6>(info1), pri1);
 
     MultimediaInfoType info2 = newMDB.retrieveMultimediaInfo(mid2);
     ASSERT_EQ (std::get<0>(info2), mid2);
-    ASSERT_EQ (std::get<1>(info2), sid2);
-    ASSERT_EQ (std::get<2>(info2), mmTitle2);
-    ASSERT_EQ (std::get<3>(info2), mmDescription2);
-    ASSERT_EQ (std::get<4>(info2), mmContent2);
+    ASSERT_EQ (std::get<1>(info2), aid2);
+    ASSERT_EQ (std::get<2>(info2), sid2);
+    ASSERT_EQ (std::get<3>(info2), mmTitle2);
+    ASSERT_EQ (std::get<4>(info2), mmDescription2);
+    ASSERT_EQ (std::get<5>(info2), mmContent2);
+    ASSERT_EQ (std::get<6>(info2), pri2);
 }
 
 

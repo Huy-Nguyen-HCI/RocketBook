@@ -44,20 +44,24 @@ bool MultimediaDB::isOpen() const
 }
 
 bool MultimediaDB::addMultimedia(int multimediaID,
+                                 int accountID,
                                  int scrapbookID,
                                  const QString &multimediaTitle,
                                  const QString &multimediaDescription,
-                                 const QString &multimediaContent)
+                                 const QString &multimediaContent,
+                                 int privacy)
 {
     bool success = false;
 
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
-    queryAdd.prepare("INSERT INTO Multimedias (MultimediaID, ScrapbookID, MultimediaTitle, MultimediaDescription, MultimediaContent) VALUES (:MultimediaID, :ScrapbookID, :MultimediaTitle, :MultimediaDescription, :MultimediaContent)");
+    queryAdd.prepare("INSERT INTO Multimedias (MultimediaID, AccountID, ScrapbookID, MultimediaTitle, MultimediaDescription, MultimediaContent, Privacy) VALUES (:MultimediaID, :AccountID, :ScrapbookID, :MultimediaTitle, :MultimediaDescription, :MultimediaContent, :Privacy)");
     queryAdd.bindValue(":MultimediaID", multimediaID);
+    queryAdd.bindValue(":AccountID", accountID);
     queryAdd.bindValue(":ScrapbookID", scrapbookID);
     queryAdd.bindValue(":MultimediaTitle", multimediaTitle);
     queryAdd.bindValue(":MultimediaDescription", multimediaDescription);
     queryAdd.bindValue(":MultimediaContent", multimediaContent);
+    queryAdd.bindValue(":Privacy", privacy);
 
     if(queryAdd.exec())
     {
@@ -87,12 +91,12 @@ bool MultimediaDB::removeMultimedia(int id)
 
         if(!success)
         {
-            qDebug() << "remove Multimedia failed: " << queryDelete.lastError();
+            qDebug() << "remove Multimedias failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove Multimedia failed: Multimedia doesnt exist";
+        qDebug() << "remove Multimedias failed: Multimedia doesnt exist";
     }
 
     return success;
@@ -107,26 +111,32 @@ MultimediaInfoType MultimediaDB::retrieveMultimediaInfo(int id)
 
 
     int multimediaIDIndex = /*query.record().indexOf("MultimediaID");*/ 0;
-    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 1;
-    int multimediaTitleIndex = /*query.record().indexOf("Password");*/ 2;
-    int multimediaDescriptionIndex = 3;
-    int multimediaContentIndex = 4;
+    int accountIDIndex = /*query.record().indexOf("MultimediaID");*/ 1;
+    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 2;
+    int multimediaTitleIndex = /*query.record().indexOf("Password");*/ 3;
+    int multimediaDescriptionIndex = 4;
+    int multimediaContentIndex = 5;
+    int privacyIndex = 6;
 
     int multimediaID = -1;
+    int accountID = -1;
     int scrapbookID = -1;
     QString title = "";
     QString description = "";
     QString content = "";
+    int privacy = -1;
 
     if (queryRetrieve.exec())
     {
         if(queryRetrieve.next())
         {
             multimediaID = queryRetrieve.value(multimediaIDIndex).toInt();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
             scrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
             title = queryRetrieve.value(multimediaTitleIndex).toString();
             description = queryRetrieve.value(multimediaDescriptionIndex).toString();
             content = queryRetrieve.value(multimediaContentIndex).toString();
+            privacy = queryRetrieve.value(privacyIndex).toInt();
         }
     }
     else
@@ -134,7 +144,13 @@ MultimediaInfoType MultimediaDB::retrieveMultimediaInfo(int id)
         qDebug() << "Multimedia retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return std::make_tuple(multimediaID, scrapbookID, title, description, content);
+    return std::make_tuple(multimediaID,
+                           accountID,
+                           scrapbookID,
+                           title,
+                           description,
+                           content,
+                           privacy);
 
 }
 

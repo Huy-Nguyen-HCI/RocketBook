@@ -4,15 +4,17 @@
 #include <QtSql>
 #include <QDebug>
 
-typedef std::tuple<int, int, QString> TweetInfoType;
+typedef std::tuple<int, int, int, QString, int> TweetInfoType;
 /**
  * @brief The TweetDB class
  *
  * Create an sqlite3 table named "Tweets" in a database file.
  * The database structure:
  * Column 1: TweetID INTEGER PRIMARY KEY
- * Column 2: ScrapbookID INTEGER
- * Column 3: TweetContent TEXT
+ * Column 2: AccountID INTEGER NOT NULL
+ * Column 3: ScrapbookID INTEGER NOT NULL
+ * Column 4: TweetContent TEXT
+ * Column 5: Privacy INTEGER NOT NULL
  */
 class TweetDB
 {
@@ -50,12 +52,14 @@ public:
      * @brief addTweet
      * Add a new Tweet to the database table
      *
-     * @param TweetID Tweet ID
-     * @param ScrapbookID the ID of the scrapbook that contains the tweet
+     * @param tweetID Tweet ID
+     * @param accountID ID of the author
+     * @param scrapbookID the ID of the scrapbook that contains the tweet
      * @param tweetContent the content of the tweet.
+     * @param privacy The privacy setting of the tweet
      * @return true if added, false if not added
      */
-    bool addTweet(int tweetID, int scrapbookID, const QString &tweetContent);
+    bool addTweet(int tweetID, int accountID, int scrapbookID, const QString &tweetContent, int privacy);
 
     /**
      * @brief removeTweet

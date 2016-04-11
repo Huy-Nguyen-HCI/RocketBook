@@ -13,9 +13,9 @@ typedef std::tuple<int, int, int, QString> CommentInfoType;
  * Create an sqlite3 table named "Comments" in a database file.
  * The database structure:
  * Column 1: CommentID INTEGER PRIMARY KEY
- * Column 2: AccountID INTEGER
+ * Column 2: AccountID INTEGER NOT NULL
  * Column 3: BlogID TEXT
- * Column 4: Content TEXT NOT NULL
+ * Column 4: CommentContent TEXT NOT NULL
  */
 class CommentDB
 {
@@ -59,7 +59,10 @@ public:
      * @param profileID
      * @return true if added, false if not added
      */
-    bool addComment(int commentID, int accountID, int blogID, const QString &content);
+    bool addComment(int commentID,
+                    int accountID,
+                    int blogID,
+                    const QString &content);
 
     /**
      * @brief removeComment

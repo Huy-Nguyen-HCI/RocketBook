@@ -43,15 +43,17 @@ bool TweetDB::isOpen() const
     return tweetDB.isOpen();
 }
 
-bool TweetDB::addTweet(int tweetID, int scrapbookID, const QString &tweetContent)
+bool TweetDB::addTweet(int tweetID, int accountID, int scrapbookID, const QString &tweetContent, int privacy)
 {
     bool success = false;
 
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
-    queryAdd.prepare("INSERT INTO Tweets (TweetID, ScrapbookID, TweetContent) VALUES (:TweetID, :ScrapbookID, :TweetContent)");
+    queryAdd.prepare("INSERT INTO Tweets (TweetID, AccountID, ScrapbookID, TweetContent, Privacy) VALUES (:TweetID, :AccountID, :ScrapbookID, :TweetContent, :Privacy)");
     queryAdd.bindValue(":TweetID", tweetID);
+    queryAdd.bindValue(":AccountID", accountID);
     queryAdd.bindValue(":ScrapbookID", scrapbookID);
     queryAdd.bindValue(":TweetContent", tweetContent);
+    queryAdd.bindValue(":Privacy", privacy);
 
     if(queryAdd.exec())
     {
@@ -100,20 +102,26 @@ TweetInfoType TweetDB::retrieveTweetInfo(int tweetID)
     queryRetrieve.bindValue(":tweetID", tweetID);
 
     int tweetIDIndex = /*query.record().indexOf("tweetID");*/ 0;
-    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 1;
-    int contentIndex = /*query.record().indexOf("Password");*/ 2;
+    int accountIDIndex = 1;
+    int scrapbookIDIndex = /*query.record().indexOf("Username");*/ 2;
+    int contentIndex = /*query.record().indexOf("Password");*/ 3;
+    int privacyIndex = 4;
 
     int id = -1;
+    int accountID = -1;
     int scrapbookID = -1;
     QString tweetContent = "";
+    int privacy = -1;
 
     if (queryRetrieve.exec())
     {
         if(queryRetrieve.next())
         {
             id = queryRetrieve.value(tweetIDIndex).toInt();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
             scrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
             tweetContent = queryRetrieve.value(contentIndex).toString();
+            privacy = queryRetrieve.value(privacyIndex).toInt();
         }
     }
     else
@@ -121,7 +129,7 @@ TweetInfoType TweetDB::retrieveTweetInfo(int tweetID)
         qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return std::make_tuple(id, scrapbookID, tweetContent);
+    return std::make_tuple(id, accountID, scrapbookID, tweetContent, privacy);
 
 }
 

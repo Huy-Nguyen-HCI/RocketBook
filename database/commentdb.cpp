@@ -48,11 +48,11 @@ bool CommentDB::addComment(int commentID, int accountID, int blogID, const QStri
     bool success = false;
 
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
-    queryAdd.prepare("INSERT INTO Comments (CommentID, AccountID, BlogID, Content) VALUES (:CommentID, :AccountID, :BlogID, :Content)");
+    queryAdd.prepare("INSERT INTO Comments (CommentID, AccountID, BlogID, CommentContent) VALUES (:CommentID, :AccountID, :BlogID, :CommentContent)");
     queryAdd.bindValue(":CommentID", commentID);
     queryAdd.bindValue(":AccountID", accountID);
     queryAdd.bindValue(":BlogID", blogID);
-    queryAdd.bindValue(":Content", content);
+    queryAdd.bindValue(":CommentContent", content);
 
     if(queryAdd.exec())
     {
@@ -102,10 +102,10 @@ CommentInfoType CommentDB::retrieveCommentInfo(int id)
 
 
 
-    int commentIDIndex = /*query.record().indexOf("commentID");*/ 0;
-    int blogIDIndex = /*query.record().indexOf("Username");*/ 1;
-    int accountIDIndex = /*query.record().indexOf("Password");*/ 2;
-    int contentIndex = 3;
+    int commentIDIndex = /*query.record().indexOf("CommentID");*/ 0;
+    int accountIDIndex = /*query.record().indexOf("AccountID");*/ 1;
+    int blogIDIndex = /*query.record().indexOf("BlogID");*/ 2;
+    int contentIndex = /*query.record().indexOf("CommentContent");*/3;
 
     int commentID = -1;
     int accountID = -1;
