@@ -17,9 +17,8 @@ FriendDB::FriendDB()
 
 FriendDB::FriendDB(const QString &path)
 {
-    friendDB = QSqlDatabase::addDatabase("QSQLITE");
-    //This screws up the system if it gets called for a second database^^^^^^^^^^^^^^
-
+    friendDB = QSqlDatabase::addDatabase("QSQLITE", "friends");
+    //Must name database connection
 
     friendDB.setDatabaseName(path);
 
@@ -49,13 +48,13 @@ bool FriendDB::isOpen() const
 
 bool FriendDB::addFriend(int accountID, int friendID){
 
-    addNewFriend(accountID, friendID);
-    return addNewFriend(friendID, accountID);
+    addFriendBothSides(accountID, friendID);
+    return addFriendBothSides(friendID, accountID);
 
 }
 
 
-bool FriendDB::addNewFriend(int accountID, int friendID)
+bool FriendDB::addFriendBothSides(int accountID, int friendID)
 {
     bool success = false;
 
@@ -78,13 +77,13 @@ bool FriendDB::addNewFriend(int accountID, int friendID)
 
 bool FriendDB::removeFriend(int accountID, int friendID){
 
-    removeFriends(accountID, friendID);
-    return removeFriends(friendID, accountID);
+    removeFriendBothSides(accountID, friendID);
+    return removeFriendBothSides(friendID, accountID);
 
 }
 
 
-bool FriendDB::removeFriends(int accountID, int friendID)
+bool FriendDB::removeFriendBothSides(int accountID, int friendID)
 {
     bool success = false;
 
