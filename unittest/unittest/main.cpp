@@ -603,20 +603,104 @@ TEST(CommentDatabase, testRetrieveInfo)
 
 TEST(FriendDatabase, testAddFriends)
 {
-
-
     const QString path("../unittest/testdirec/friends");
     FriendDB newFDB(path);
     int accntid = 1;
     int friendid = 2;
+    int accntid2 = 11;
+    int friendid2 = 12;
+
+    newFDB.removeAllFriends();
 
     bool added = false;
     added = newFDB.addFriend(accntid, friendid);
     ASSERT_TRUE(added);
+    bool added2 = false;
+    added2 = newFDB.addFriend(accntid2, friendid2);
+    ASSERT_TRUE(added2);
+
+    newFDB.removeAllFriends();
 
 
 
 }
+
+TEST(FriendDatabase, testFriendshipExists)
+{
+    const QString path("../unittest/testdirec/friends");
+    FriendDB newFDB(path);
+    int accntid = 1;
+    int friendid = 2;
+    int accntid2 = 11;
+    int friendid2 = 12;
+
+    newFDB.removeAllFriends();
+
+    ASSERT_FALSE(newFDB.friendshipExists(accntid, friendid));
+    ASSERT_FALSE(newFDB.friendshipExists(accntid2, friendid2));
+
+
+    newFDB.addFriend(accntid, friendid);
+    newFDB.addFriend(accntid2, friendid2);
+    ASSERT_TRUE(newFDB.friendshipExists(accntid, friendid));
+    ASSERT_TRUE(newFDB.friendshipExists(accntid2, friendid2));
+
+    newFDB.removeAllFriends();
+
+
+
+}
+
+TEST(FriendDatabase, testRmvFriends)
+{
+    const QString path("../unittest/testdirec/friends");
+    FriendDB newFDB(path);
+    int accntid = 1;
+    int friendid = 2;
+    int accntid2 = 11;
+    int friendid2 = 12;
+    newFDB.removeAllFriends();
+
+
+
+    newFDB.addFriend(accntid, friendid);
+    newFDB.addFriend(accntid2, friendid2);
+
+    bool rmv1 = false;
+    rmv1 = newFDB.removeFriend(accntid, friendid);
+    ASSERT_TRUE(rmv1);
+    bool rmv2 = false;
+    rmv2 = newFDB.removeFriend(accntid2, friendid2);
+    ASSERT_TRUE(rmv2);
+
+    newFDB.removeAllFriends();
+}
+
+TEST(FriendDatabase, testRmvAllFriends)
+{
+    const QString path("../unittest/testdirec/friends");
+    FriendDB newFDB(path);
+    int accntid = 1;
+    int friendid = 2;
+    int accntid2 = 11;
+    int friendid2 = 12;
+    newFDB.removeAllFriends();
+
+
+
+    newFDB.addFriend(accntid, friendid);
+    newFDB.addFriend(accntid2, friendid2);
+
+    bool rmvall = false;
+    rmvall = newFDB.removeAllFriends();
+    ASSERT_TRUE(rmvall);
+    ASSERT_FALSE(newFDB.friendshipExists(accntid, friendid));
+    ASSERT_FALSE(newFDB.friendshipExists(accntid2, friendid2));
+
+}
+
+
+
 
 //TWEED DB TESTS
 
