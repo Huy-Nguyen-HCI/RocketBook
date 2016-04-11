@@ -700,6 +700,50 @@ TEST(FriendDatabase, testRmvAllFriends)
 
 }
 
+TEST(FriendDatabase, testRetrieveFriendsList)
+{
+    const QString path("../unittest/testdirec/friends");
+    FriendDB newFDB(path);
+    int accntid1 = 1;
+    int friendid1 = 2;
+    int accntid2 = 11;
+    int friendid2 = 12;
+    int friendid3 = 22;
+    int friendid4 = 32;
+    newFDB.removeAllFriends();
+
+
+
+    newFDB.addFriend(accntid1, friendid1);
+    newFDB.addFriend(accntid1, friendid2);
+    newFDB.addFriend(accntid1, friendid3);
+    newFDB.addFriend(accntid1, friendid4);
+    newFDB.addFriend(accntid2, friendid1);
+    newFDB.addFriend(accntid2, friendid2);
+    newFDB.addFriend(accntid2, friendid3);
+    newFDB.addFriend(accntid2, friendid4);
+
+    QString expectedFriendsList1("");
+    QString expectedFriendsList2("");
+    expectedFriendsList1 += QString::number(friendid1) + " ";
+    expectedFriendsList1 += QString::number(friendid2) + " ";
+    expectedFriendsList1 += QString::number(friendid3) + " ";
+    expectedFriendsList1 += QString::number(friendid4) + " ";
+
+    expectedFriendsList2 += QString::number(friendid1) + " ";
+    expectedFriendsList2 += QString::number(friendid2) + " ";
+    expectedFriendsList2 += QString::number(friendid3) + " ";
+    expectedFriendsList2 += QString::number(friendid4) + " ";
+
+    ASSERT_EQ(expectedFriendsList1.toStdString(), newFDB.retrieveAllFriends(accntid1).toStdString());
+    ASSERT_EQ(expectedFriendsList2.toStdString(), newFDB.retrieveAllFriends(accntid2).toStdString());
+
+
+
+
+
+}
+
 
 
 
