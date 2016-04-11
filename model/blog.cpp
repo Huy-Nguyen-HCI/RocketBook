@@ -1,6 +1,6 @@
 #include "blog.h"
 
-Blog::Blog(int accountID, std::string title, std::string content): Post::Post(accountID, content)
+Blog::Blog(std::string username, std::string title, std::string content): Post::Post(username, content)
 {
     this->title = title;
 }

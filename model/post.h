@@ -2,15 +2,7 @@
 #define POST_H
 
 #include <string>
-//#include <rocketuser.h>
 
-//class RocketUser;
-//class Profile;
-//class ScrapBook;
-//class Blog;
-//class Comment;
-//class Tweet;
-//class Multimedia;
 
 /**
  * @brief The Post class serves as a parent for all content that the user can post
@@ -29,7 +21,7 @@ public:
      * @param author The pointer to the author of the post.
      * @param content The content of the post.
      */
-    Post(int accountID, std::string content);
+    Post(std::string username, std::string content);
 
     /**
      * @brief getID returns the ID of the post
@@ -50,7 +42,7 @@ public:
     std::string getContent();
 
 protected:
-    int accountID;
+    std::string username;
     std::string content;
     int id;
     static int idCnt;

@@ -2,12 +2,12 @@
 
 int Post::idCnt = 0;
 
-Post::Post(int accountID, std::string content)
+Post::Post(std::__cxx11::string username, std::string content)
 {
     id = idCnt;
     idCnt++;
 
-    this->accountID = accountID;
+    this->username = username;
     this->content = content;
 
 }
@@ -16,8 +16,8 @@ int Post::getID() {
     return id;
 }
 
-int Post::getAuthorID() {
-    return accountID;
+int Post::getAuthorUsername() {
+    return username;
 }
 
 std::string Post::getContent() {

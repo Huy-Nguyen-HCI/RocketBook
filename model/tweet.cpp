@@ -1,6 +1,6 @@
 #include "tweet.h"
 
-Tweet::Tweet(int accountID, std::string content): Post(accountID, content)
+Tweet::Tweet(std::string username, std::string content): Post(username, content)
 {
 }
 
