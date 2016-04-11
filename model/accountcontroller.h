@@ -43,6 +43,7 @@ private:
     FriendDB* friendDB;
     std::string askUserName();
     std::string askPassword();
+
     /**
      * @brief Creates new account and adds account information to database.
      * @param username Account username
@@ -84,6 +85,7 @@ private:
      */
     int requestInput();
 
+        std::vector<int>* getFriendsList(std::string username);
 
 };
 

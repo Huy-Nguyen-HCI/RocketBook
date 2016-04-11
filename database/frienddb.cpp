@@ -127,7 +127,7 @@ QString FriendDB::retrieveAllFriends(int accountId)
         while(queryRetrieve.next())
         {
             friendInfo += queryRetrieve.value(friendIdIndex).toString() + " ";
-        }
+        }                                                    //remove^
     }
 
     else

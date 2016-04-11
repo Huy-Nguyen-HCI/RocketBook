@@ -38,8 +38,16 @@ void AccountController::run(){
 //Doesn't work yet
 void AccountController::displayFriends(){
     std::string username=askUserName();
-    int userId=accountDB->retrieveAccountId(QString::fromStdString(username));
-    std::cout << friendDB->retrieveAllFriends(userId).toStdString();
+    std::vector<int>* friendlist= getFriendsList(username);
+    /**
+    for( int i=0; i<friendlist->capacity(); i++){
+        std::cout << friendlist->at(i) << std::endl;
+
+    }
+**/
+ //   int userId=accountDB->retrieveAccountId(QString::fromStdString(username));
+
+//    std::cout << friendDB->retrieveAllFriends(userId).toStdString();
                          //^Doesn't work yet
 
 }
@@ -171,3 +179,27 @@ int AccountController::requestInput(){
     cin >> userInput;
     return userInput;
 }
+
+std::vector<int>* AccountController::getFriendsList(std::string username){
+    std::string friendIds, currentId;
+    friendIds=friendDB->retrieveAllFriends(accountDB->retrieveAccountId(QString::fromStdString(username))).toStdString();
+
+    std::cout << friendIds;
+
+
+    int id;
+
+ //   currentId=friendIds.substr(0,friendIds.find(", ")+2);
+  //  id=currentId.stoi();
+
+//    friendIds=friendIds.substr(friendIds(", ")+2);
+
+
+
+//
+
+    std::vector<int>* friendList;
+    return friendList;
+
+}
+
