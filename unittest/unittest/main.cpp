@@ -767,6 +767,130 @@ TEST(MultimediaDatabase, testAddMM)
     newMDB.removeAllMultimedias();
 }
 
+TEST(MultimediaDatabase, testRmvMultimedia)
+{
+
+    const QString path("../unittest/testdirec/Multimedias");
+    MultimediaDB newMDB(path);
+    int mid1 = 5;
+    int sid1 = 6;
+    int mid2 = 15;
+    int sid2 = 16;
+    const QString mmTitle1("Title 1");
+    const QString mmDescription1("Description 1");
+    const QString mmContent1("Content 1");
+    const QString mmTitle2("Title 2");
+    const QString mmDescription2("Description 2");
+    const QString mmContent2("Content 2");
+
+    newMDB.removeAllMultimedias();
+    newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
+    newMDB.addMultimedia(mid2, sid2, mmTitle2, mmDescription2, mmContent2);
+
+    bool rmv1 = false;
+    rmv1 = newMDB.removeMultimedia(mid1);
+    ASSERT_TRUE(rmv1);
+    ASSERT_FALSE(newMDB.multimediaExists(mid1));
+    bool rmv2 = false;
+    rmv2 = newMDB.removeMultimedia(mid2);
+    ASSERT_TRUE(rmv2);
+    ASSERT_FALSE(newMDB.multimediaExists(mid2));
+
+
+
+}
+
+TEST(MultimediaDatabase, testRmvAllMultimedia)
+{
+
+    const QString path("../unittest/testdirec/Multimedias");
+    MultimediaDB newMDB(path);
+    int mid1 = 5;
+    int sid1 = 6;
+    int mid2 = 15;
+    int sid2 = 16;
+    const QString mmTitle1("Title 1");
+    const QString mmDescription1("Description 1");
+    const QString mmContent1("Content 1");
+    const QString mmTitle2("Title 2");
+    const QString mmDescription2("Description 2");
+    const QString mmContent2("Content 2");
+
+    newMDB.removeAllMultimedias();
+    newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
+    newMDB.addMultimedia(mid2, sid2, mmTitle2, mmDescription2, mmContent2);
+
+    ASSERT_TRUE(newMDB.multimediaExists(mid1));
+    ASSERT_TRUE(newMDB.multimediaExists(mid2));
+
+    bool allRmv = false;
+    allRmv = newMDB.removeAllMultimedias();
+    ASSERT_TRUE(allRmv);
+    ASSERT_FALSE(newMDB.multimediaExists(mid1));
+    ASSERT_FALSE(newMDB.multimediaExists(mid2));
+
+
+
+
+
+}
+
+TEST(MultimediaDatabase, testMultimediaExists)
+{
+
+    const QString path("../unittest/testdirec/Multimedias");
+    MultimediaDB newMDB(path);
+    int mid1 = 5;
+    int sid1 = 6;
+    int mid2 = 15;
+    int sid2 = 16;
+    const QString mmTitle1("Title 1");
+    const QString mmDescription1("Description 1");
+    const QString mmContent1("Content 1");
+    const QString mmTitle2("Title 2");
+    const QString mmDescription2("Description 2");
+    const QString mmContent2("Content 2");
+
+    newMDB.removeAllMultimedias();
+    ASSERT_FALSE(newMDB.multimediaExists(mid1));
+    ASSERT_FALSE(newMDB.multimediaExists(mid2));
+    newMDB.addMultimedia(mid1, sid1, mmTitle1, mmDescription1, mmContent1);
+    newMDB.addMultimedia(mid2, sid2, mmTitle2, mmDescription2, mmContent2);
+    ASSERT_TRUE(newMDB.multimediaExists(mid1));
+    ASSERT_TRUE(newMDB.multimediaExists(mid2));
+
+}
+
+TEST(MultimediaDatabase, testRetrieveInfo)
+{
+    const QString path("../unittest/testdirec/Multimedias");
+    MultimediaDB newMDB(path);
+    int mid1 = 5;
+    int sid1 = 6;
+    int mid2 = 15;
+    int sid2 = 16;
+    const QString mmTitle1("Title 1");
+    const QString mmDescription1("Description 1");
+    const QString mmContent1("Content 1");
+    const QString mmTitle2("Title 2");
+    const QString mmDescription2("Description 2");
+    const QString mmContent2("Content 2");
+
+    MultimediaInfoType info1 = newMDB.retrieveMultimediaInfo(mid1);
+    ASSERT_EQ (std::get<0>(info1), mid1);
+    ASSERT_EQ (std::get<1>(info1), sid1);
+    ASSERT_EQ (std::get<2>(info1), mmTitle1);
+    ASSERT_EQ (std::get<3>(info1), mmDescription1);
+    ASSERT_EQ (std::get<4>(info1), mmContent1);
+
+    MultimediaInfoType info2 = newMDB.retrieveMultimediaInfo(mid2);
+    ASSERT_EQ (std::get<0>(info2), mid2);
+    ASSERT_EQ (std::get<1>(info2), sid2);
+    ASSERT_EQ (std::get<2>(info2), mmTitle2);
+    ASSERT_EQ (std::get<3>(info2), mmDescription2);
+    ASSERT_EQ (std::get<4>(info2), mmContent2);
+}
+
 
 
 
