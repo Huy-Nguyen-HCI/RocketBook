@@ -4,6 +4,7 @@
 #include <QString>
 #include <QtSql>
 #include <QDebug>
+#include <vector>
 
 class FriendDB
 {
@@ -62,7 +63,7 @@ public:
      * @return a string with all friend account Ids.
      */
 
-    QString retrieveAllFriends(int accountId);
+    std::vector<int>* retrieveAllFriends(int accountId);
 
     /**
      * @brief friendshipExists

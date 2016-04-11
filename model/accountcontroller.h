@@ -85,8 +85,6 @@ private:
      */
     int requestInput();
 
-        std::vector<int>* getFriendsList(std::string username);
-
 };
 
 #endif // ACCOUNTCONTROLLER_H
