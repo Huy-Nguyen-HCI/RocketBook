@@ -111,7 +111,7 @@ bool FriendDB::removeFriendBothSides(int accountID, int friendID)
 }
 
 //Doesn't work yet
-QString FriendDB::retrieveFriendsList(int accountId)
+QString FriendDB::retrieveAllFriends(int accountId)
 {
     QString friendInfo = "";
 

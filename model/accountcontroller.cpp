@@ -39,7 +39,7 @@ void AccountController::run(){
 void AccountController::displayFriends(){
     std::string username=askUserName();
     int userId=accountDB->retrieveAccountId(QString::fromStdString(username));
-    std::cout << friendDB->retrieveFriendsList(userId).toStdString();
+    std::cout << friendDB->retrieveAllFriends(userId).toStdString();
                          //^Doesn't work yet
 
 }

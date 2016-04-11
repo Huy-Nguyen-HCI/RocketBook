@@ -62,7 +62,7 @@ public:
      * @return a string with all friend account Ids.
      */
 
-    QString retrieveFriendsList(int accountId);
+    QString retrieveAllFriends(int accountId);
 
     /**
      * @brief friendshipExists
