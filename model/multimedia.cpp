@@ -1,10 +1,22 @@
 #include "multimedia.h"
 
-Multimedia::Multimedia(std::string username, std::string title, std::string description, std::string content): Post(username, content)
+Multimedia::Multimedia(std::string username,
+                       std::string title,
+                       std::string description,
+                       std::string content): Post(username, content)
 {
     this->title = title;
     this->description = description;
+}
 
+Multimedia::Multimedia(int id,
+                       std::string username,
+                       std::string title,
+                       std::string description,
+                       std::string content): Post(id, username, content)
+{
+    this->title = title;
+    this->description = description;
 }
 
 Multimedia::~Multimedia() {

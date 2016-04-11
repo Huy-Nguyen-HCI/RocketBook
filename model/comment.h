@@ -11,6 +11,7 @@ class Comment: public Post{
 
 public:
     Comment(std::string username, std::string content);
+    Comment(int id, std::string username, std::string content);
     ~Comment();
 private:
 

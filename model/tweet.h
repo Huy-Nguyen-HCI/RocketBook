@@ -19,6 +19,7 @@ class Tweet: public Post
 {
 public:
     Tweet(std::string username, std::string content);
+    Tweet(int id, std::string username, std::string content);
     ~Tweet();
 
 private:

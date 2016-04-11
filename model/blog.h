@@ -16,18 +16,18 @@ class Blog:public Post
 public:
     /**
      * @brief Construct a blog post
-     * @param author Pointer to the author of the blog
+     * @param username The username of the author of the blog
      * @param title The title of the blog
      * @param content The content of the blog
      */
     Blog(std::string username, std::string title, std::string content);
 
     /**
-     * @brief Blog
-     * @param id
-     * @param username
-     * @param title
-     * @param content
+     * @brief Construct a blog post
+     * @param id The ID of the blog post
+     * @param username The username of the author of the blog
+     * @param title The title of the blog
+     * @param content The content of the blog
      */
     Blog(int id, std::string username, std::string title, std::string content);
 

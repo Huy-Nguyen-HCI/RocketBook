@@ -13,7 +13,16 @@ class Multimedia:public Post{
 
 
 public:
-    Multimedia(std::string username, std::string title, std::string description, std::string content);
+    Multimedia(std::string username,
+               std::string title,
+               std::string description,
+               std::string content);
+    Multimedia(int id,
+               std::string username,
+               std::string title,
+               std::string description,
+               std::string content);
+
     ~Multimedia();
     std::string getTitle();
     std::string getDescription();

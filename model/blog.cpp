@@ -5,6 +5,11 @@ Blog::Blog(std::string username, std::string title, std::string content): Post::
     this->title = title;
 }
 
+Blog::Blog(int id, std::string username, std::string title, std::string content): Post::Post(id, username, content)
+{
+    this->title = title;
+}
+
 Blog::~Blog() {
 
 }
