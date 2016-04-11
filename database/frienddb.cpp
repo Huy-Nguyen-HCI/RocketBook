@@ -65,7 +65,7 @@ bool FriendDB::addFriendBothSides(int accountID, int friendID)
 
     if(queryAdd.exec())
     {
-        success = false;
+        success = true;
     }
     else
     {
