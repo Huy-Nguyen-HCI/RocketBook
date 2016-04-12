@@ -1,6 +1,6 @@
 #include "blogdb.h"
 
-BlogDB::BlogDB()
+BlogDB::BlogDB() : PostDB::PostDB()
 {
     connectionName.append("blogs");
     QSqlDatabase blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -16,7 +16,7 @@ BlogDB::BlogDB()
     }
 }
 
-BlogDB::BlogDB(const QString &path)
+BlogDB::BlogDB(const QString &path) : PostDB::PostDB()
 {
     connectionName.append("blogs");
     QSqlDatabase blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -34,14 +34,8 @@ BlogDB::BlogDB(const QString &path)
 
 BlogDB::~BlogDB()
 {
-    QSqlDatabase::removeDatabase(connectionName);
 }
 
-bool BlogDB::isOpen() const
-{
-    QSqlDatabase blogDB = QSqlDatabase::database(connectionName);
-    return blogDB.isOpen();
-}
 
 bool BlogDB::addBlog(int blogID,
                      int accountID,
@@ -219,27 +213,4 @@ bool BlogDB::removeAllBlogs()
     }
 
     return success;
-}
-
-int BlogDB::getMaxBlogID()
-{
-    int maxID;
-
-    qDebug() << "Max blogID in db:";
-    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
-    queryMaxID.prepare("SELECT max(BlogID) FROM Blogs");
-
-    if (queryMaxID.exec())
-    {
-        if(queryMaxID.next())
-        {
-            maxID = queryMaxID.value(0).toInt();
-        }
-    }
-    else
-    {
-        qDebug() << "Max PostID fails:" <<queryMaxID.lastError();
-    }
-
-    return maxID;
 }

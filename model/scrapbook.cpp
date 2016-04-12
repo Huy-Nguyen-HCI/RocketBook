@@ -6,15 +6,17 @@ Scrapbook::Scrapbook()
 {
     id=idCnt;
     idCnt++;
+
+    //construct
     blogDB = new BlogDB("../database/contentDB.sqlite");
     tweetDB = new TweetDB("../database/contentDB.sqlite");
     multimediaDB = new MultimediaDB("../database/contentDB.sqlite");
     accountDB = new AccountDB("../database/accountDB.sqlite");
 
-    //construct blogList from database
-    //construct tweetList from database
-    //construct mediaList from database
-    //construct postList from database
+    ///construct blogList from database
+    ///construct tweetList from database
+    ///construct mediaList from database
+    ///construct postList from database
 }
 
 Scrapbook::Scrapbook(int id)
@@ -54,17 +56,18 @@ Blog *Scrapbook::addBlog(Blog* newBlog){
 
 Blog* Scrapbook::addBlog(QString username, QString title, QString content)
 {
-    int blogID = blogDB->getMaxBlogID() + 1; //pull out latest BlogID
+    //pull out latest PostID
+    int blogID = blogDB->getMaxBlogID() + 1;
 
-    Blog* newBlog = new Blog(blogID, username, title, content); //create new blog
-    blogList.push_back(newBlog); //push back into the storage.
+    //create new blog
+    Blog* newBlog = new Blog(blogID, username, title, content);
+
+    //push back into the storage.
+    blogList.push_back(newBlog);
 
     //add blog into the database
-
-    int accountID = accountDB->retrieveAccountID(username);
-
     blogDB->addBlog(blogID,
-                    accountID,
+                    accountDB->retrieveAccountID(username),
                     this->id,
                     title,
                     content,
@@ -74,14 +77,21 @@ Blog* Scrapbook::addBlog(QString username, QString title, QString content)
 
 Tweet *Scrapbook::addTweet(Tweet* newTweet){
     tweetList.push_back(newTweet);
-    //store tweet in DB
+
+    //add tweet into the database
+    int accountID = accountDB->retrieveAccountID(newTweet->getAuthorUsername());
+    tweetDB->addTweet(newTweet->getID(),
+                     accountID,
+                     this->id,
+                     newTweet->getContent(),
+                     newTweet->getPrivacy());
     return newTweet;
 }
 
 Tweet *Scrapbook::addTweet(QString username, QString content){
-    //pull out latest ID
+    ///pull out latest ID
     Tweet* newTweet = new Tweet(username, content);
-    //store tweet in DB
+    ///store tweet in DB
     return newTweet;
 }
 

@@ -4,6 +4,7 @@
 #include <QString>
 #include <QtSql>
 #include <QDebug>
+#include <postdb.h>
 
 typedef std::tuple<int, int, int, QString> CommentInfoType;
 
@@ -17,7 +18,7 @@ typedef std::tuple<int, int, int, QString> CommentInfoType;
  * Column 3: BlogID TEXT
  * Column 4: CommentContent TEXT NOT NULL
  */
-class CommentDB
+class CommentDB: public PostDB
 {
 public:
     /**
@@ -40,14 +41,6 @@ public:
      * Default destructor for comment database
      */
     ~CommentDB();
-
-    /**
-     * @brief isOpen
-     *
-     * Check whether comment database is open
-     * @return true if yes, false if no
-     */
-    bool isOpen() const;
 
     /**
      * @brief addComment
@@ -102,7 +95,6 @@ public:
 
 
 private:
-    QString connectionName;
 };
 
 

@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QDebug>
 #include <vector>
+#include <postdb.h>
 
 typedef std::tuple<int, int, int, QString, QString, int> BlogInfoType;
 
@@ -20,7 +21,7 @@ typedef std::tuple<int, int, int, QString, QString, int> BlogInfoType;
  * Column 5: BlogContent TEXT
  * Column 6: Privacy INTEGER NOT NULL
  */
-class BlogDB
+class BlogDB: public PostDB
 {
 public:
     /**
@@ -41,14 +42,6 @@ public:
      * Default destructor for Blog database
      */
     ~BlogDB();
-
-    /**
-     * @brief isOpen
-     *
-     * Check whether Blog database is open
-     * @return true if yes, false if no
-     */
-    bool isOpen() const;
 
     /**
      * @brief addBlog
@@ -110,10 +103,8 @@ public:
      */
     bool removeAllBlogs();
 
-    int getMaxBlogID();
 
 private:
-    QString connectionName;
 };
 
 #endif // BLOGDB_H

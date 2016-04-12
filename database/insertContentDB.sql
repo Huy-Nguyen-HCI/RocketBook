@@ -1,0 +1,10 @@
+INSERT INTO Blogs (BlogID, AccountID, ScrapbookID, BlogTitle, BlogContent, Privacy) VALUES (0, 1, 1, "Blog 1", "123", 0);
+INSERT INTO Blogs (BlogID, AccountID, ScrapbookID, BlogTitle, BlogContent, Privacy) VALUES (3, 1, 3, "Blog 2", "456", 1);
+INSERT INTO Blogs (BlogID, AccountID, ScrapbookID, BlogTitle, BlogContent, Privacy) VALUES (5, 4, 5, "Blog 3", "789", 0);
+INSERT INTO Comments (CommentID, AccountID, BlogID, CommentContent) VALUES (1, 2, 3, "Comment 1");
+INSERT INTO Comments (CommentID, AccountID, BlogID, CommentContent) VALUES (4, 1, 5, "Comment 2");
+INSERT INTO Multimedias (MultimediaID, AccountID, ScrapbookID, MultimediaTitle, MultimediaDescription, MultimediaContent, Privacy) VALUES (2, 3, 4, "MM 1", "Des1", "abc", 0);
+INSERT INTO Multimedias (MultimediaID, AccountID, ScrapbookID, MultimediaTitle, MultimediaDescription, MultimediaContent, Privacy) VALUES (7, 4, 3, "MM 2", "Des2", "def", 0);
+INSERT INTO Tweets (TweetID, AccountID, ScrapbookID, TweetContent, Privacy) VALUES (6, 3, 3, "Tweet 1", 0);
+INSERT INTO Tweets (TweetID, AccountID, ScrapbookID, TweetContent, Privacy) VALUES (8, 3, 4, "Tweet 2", 0);
+INSERT INTO Tweets (TweetID, AccountID, ScrapbookID, TweetContent, Privacy) VALUES (9, 2, 2, "Tweet 3", 0);

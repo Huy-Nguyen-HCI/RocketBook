@@ -1,6 +1,6 @@
 #include "commentdb.h"
 
-CommentDB::CommentDB()
+CommentDB::CommentDB(): PostDB::PostDB()
 {
     connectionName.append("comments");
     QSqlDatabase commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -16,7 +16,7 @@ CommentDB::CommentDB()
     }
 }
 
-CommentDB::CommentDB(const QString &path)
+CommentDB::CommentDB(const QString &path): PostDB::PostDB()
 {
     connectionName.append("comments");
     QSqlDatabase commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -34,14 +34,8 @@ CommentDB::CommentDB(const QString &path)
 
 CommentDB::~CommentDB()
 {
-    QSqlDatabase::removeDatabase(connectionName);
 }
 
-bool CommentDB::isOpen() const
-{
-    QSqlDatabase commentDB = QSqlDatabase::database(connectionName);
-    return commentDB.isOpen();
-}
 
 bool CommentDB::addComment(int commentID, int accountID, int blogID, const QString &content)
 {
