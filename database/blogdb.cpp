@@ -1,6 +1,6 @@
 #include "blogdb.h"
 
-BlogDB::BlogDB() : PostDB::PostDB()
+BlogDB::BlogDB()
 {
     connectionName.append("blogs");
     QSqlDatabase blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -34,6 +34,7 @@ BlogDB::BlogDB(const QString &path) : PostDB::PostDB()
 
 BlogDB::~BlogDB()
 {
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 
@@ -156,12 +157,15 @@ std::vector<BlogInfoType> BlogDB::retrieveAllBlogInfo(int scrapbookID)
     {
         while (queryRetrieve.next())
         {
+            //retrieve each unit info
             id = queryRetrieve.value(blogIDIndex).toInt();
             accountID = queryRetrieve.value(accountIDIndex).toInt();
             newScrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
             blogTitle = queryRetrieve.value(titleIndex).toString();
             blogContent = queryRetrieve.value(contentIndex).toString();
             privacy = queryRetrieve.value(privacyIndex).toInt();
+
+            //add a row into the vector
             blogInfo.push_back(std::make_tuple(id, accountID, newScrapbookID, blogTitle, blogContent, privacy));
         }
     }

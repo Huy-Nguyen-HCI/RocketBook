@@ -11,7 +11,8 @@
 
 
 /**
- * @brief The Scrapbook class contains all the content a user has posted.
+ * @brief The Scrapbook class
+ * Contains all the content a user has posted.
  */
 
 class Scrapbook
@@ -20,6 +21,7 @@ public:
     Scrapbook();
     Scrapbook(int id);
     ~Scrapbook();
+
 
     //Methods for add to and getting from containers
     Blog* addBlog(Blog* newBlog);
@@ -37,6 +39,9 @@ public:
 private:
     int id;
     static int idCnt;
+
+    //Methods for constructing all containers from database
+    void constructContentContainers();
 
     BlogDB* blogDB;
     TweetDB* tweetDB;

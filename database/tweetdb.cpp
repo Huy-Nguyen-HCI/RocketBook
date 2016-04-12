@@ -34,6 +34,7 @@ TweetDB::TweetDB(const QString &path): PostDB::PostDB()
 
 TweetDB::~TweetDB()
 {
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 

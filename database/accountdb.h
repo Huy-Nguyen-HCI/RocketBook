@@ -97,7 +97,14 @@ public:
      */
     bool removeAllAccounts();
 
+    /**
+     * @brief getMaxAccountID
+     * Get the maximum ID used for account
+     * @return the maximum ID used for account
+     */
     int getMaxAccountID();
+
+    QString getUsername(int accountID);
 
     static QString getAccountPassword(AccountInfoType info) { return std::get<2>(info); }
 

@@ -206,7 +206,7 @@ int AccountDB::getMaxAccountID()
 {
     int maxID;
 
-    qDebug() << "Accounts in db:";
+    qDebug() << "Get max account ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(AccountID) FROM Accounts");
 
@@ -224,4 +224,25 @@ int AccountDB::getMaxAccountID()
 
     return maxID;
 
+}
+
+QString AccountDB::getUsername(int accountID)
+{
+    qDebug() << "Get username in db:";
+    QSqlQuery queryUsername(QSqlDatabase::database(connectionName));
+    queryUsername.prepare("SELECT Username FROM Accounts WHERE AccountID = :AccountID");
+    queryUsername.bindValue(":AccountID", accountID);
+    if (queryUsername.exec())
+    {
+        if(queryUsername.next())
+        {
+            return queryUsername.value(0).toString();
+        }
+    }
+    else
+    {
+        qDebug() << "username retrieval fails:" <<queryUsername.lastError();
+    }
+
+    return "";
 }

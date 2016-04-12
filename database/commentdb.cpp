@@ -34,6 +34,7 @@ CommentDB::CommentDB(const QString &path): PostDB::PostDB()
 
 CommentDB::~CommentDB()
 {
+    QSqlDatabase::removeDatabase(connectionName);
 }
 
 

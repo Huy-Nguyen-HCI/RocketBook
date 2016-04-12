@@ -4,20 +4,23 @@
 #include <QtSql>
 #include <QDebug>
 
+/**
+ * @brief The PostDB class
+ */
 class PostDB
 {
 public:
-    /**
-     * @brief PostDB
-     * Default constructor of post
-     */
-    PostDB();
+//    /**
+//     * @brief PostDB
+//     * Default constructor of post
+//     */
+//    PostDB();
 
-    /**
-     * @brief ~PostDB
-     * Default destructor
-     */
-    ~PostDB();
+//    /**
+//     * @brief ~PostDB
+//     * Default destructor
+//     */
+//    ~PostDB();
 
     /**
      * @brief isOpen
