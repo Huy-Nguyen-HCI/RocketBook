@@ -22,24 +22,14 @@ INCLUDEPATH += googletest                       \
                    "../googletest/src/gtest-printers.cc"   \
                    "../googletest/src/gtest-test-part.cc"  \
                    "../googletest/src/gtest-typed-test.cc" \
-                   "../../database/accountdb.cpp"          \
-                   "../../database/frienddb.cpp"          \
-                   "../../database/commentdb.cpp"          \
-                   "../../database/tweetdb.cpp"          \
-                   "../../database/multimediadb.cpp"          \
-                   "../../database/profiledb.cpp"
+                   ../../database/*db.cpp \
 
 
 
              #      "../../model/blog.cpp"                  \
              #       "../../model/comment.cpp"
 
-        HEADERS += "../../database/accountdb.h"            \
-                   "../../database/frienddb.h"            \
-                   "../../database/commentdb.h"            \
-                   "../../database/tweetdb.h"            \
-                   "../../database/multimediadb.h"          \
-                   "../../database/profiledb.h"
+        HEADERS += ../../database/*.h
               #     "../../model/blog.h"                  \
               #      "../../model/comment.h"
     #databasetester.h

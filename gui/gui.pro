@@ -35,7 +35,7 @@ SOURCES += logingui.cpp \
 HEADERS  += logingui.h \
     mainwindow.h \
     createpostgui.h \
-    ../database/*db.h \
+    ../database/*.h \
     ../model/*.h
 
 FORMS    += logingui.ui \

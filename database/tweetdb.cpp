@@ -1,6 +1,6 @@
 #include "tweetdb.h"
 
-TweetDB::TweetDB()
+TweetDB::TweetDB(): PostDB::PostDB()
 {
     connectionName.append("tweets");
     QSqlDatabase tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -16,7 +16,7 @@ TweetDB::TweetDB()
     }
 }
 
-TweetDB::TweetDB(const QString &path)
+TweetDB::TweetDB(const QString &path): PostDB::PostDB()
 {
     connectionName.append("tweets");
     QSqlDatabase tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -34,14 +34,8 @@ TweetDB::TweetDB(const QString &path)
 
 TweetDB::~TweetDB()
 {
-    QSqlDatabase::removeDatabase(connectionName);
 }
 
-bool TweetDB::isOpen() const
-{
-    QSqlDatabase tweetDB = QSqlDatabase::database(connectionName);
-    return tweetDB.isOpen();
-}
 
 bool TweetDB::addTweet(int tweetID, int accountID, int scrapbookID, const QString &tweetContent, int privacy)
 {

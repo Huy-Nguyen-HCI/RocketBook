@@ -2,6 +2,7 @@
 #define POSTDB_H
 #include <QString>
 #include <QtSql>
+#include <QDebug>
 
 class PostDB
 {

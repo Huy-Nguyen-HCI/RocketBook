@@ -1,8 +1,6 @@
 #ifndef TWEETDB_H
 #define TWEETDB_H
-#include <QString>
-#include <QtSql>
-#include <QDebug>
+#include "postdb.h"
 
 typedef std::tuple<int, int, int, QString, int> TweetInfoType;
 /**
@@ -16,7 +14,7 @@ typedef std::tuple<int, int, int, QString, int> TweetInfoType;
  * Column 4: TweetContent TEXT
  * Column 5: Privacy INTEGER NOT NULL
  */
-class TweetDB
+class TweetDB: public PostDB
 {
 public:
     /**
@@ -39,14 +37,6 @@ public:
      * Default destructor for Tweet database
      */
     ~TweetDB();
-
-    /**
-     * @brief isOpen
-     *
-     * Check whether Tweet database is open
-     * @return true if yes, false if no
-     */
-    bool isOpen() const;
 
     /**
      * @brief addTweet
@@ -96,7 +86,6 @@ public:
 
 
 private:
-    QString connectionName;
 
 };
 #endif // TWEETDB_H

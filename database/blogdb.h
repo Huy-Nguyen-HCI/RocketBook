@@ -1,11 +1,8 @@
 #ifndef BLOGDB_H
 #define BLOGDB_H
 
-#include <QString>
-#include <QtSql>
-#include <QDebug>
 #include <vector>
-#include <postdb.h>
+#include "postdb.h"
 
 typedef std::tuple<int, int, int, QString, QString, int> BlogInfoType;
 

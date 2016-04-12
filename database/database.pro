@@ -2,6 +2,7 @@ TEMPLATE = app
 
 #QT += qml quick
 CONFIG += c++11
+QT +=sql
 
 SOURCES += main.cpp \
     accountdb.cpp \
@@ -31,4 +32,4 @@ HEADERS += \
     blogdb.h \
     postdb.h
 
-QT +=sql
+

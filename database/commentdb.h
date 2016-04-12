@@ -1,10 +1,7 @@
 #ifndef COMMENTDB_H
 #define COMMENTDB_H
 
-#include <QString>
-#include <QtSql>
-#include <QDebug>
-#include <postdb.h>
+#include "postdb.h"
 
 typedef std::tuple<int, int, int, QString> CommentInfoType;
 

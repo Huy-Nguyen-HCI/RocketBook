@@ -3,6 +3,7 @@
 #include <QString>
 #include <QtSql>
 #include <QDebug>
+#include "postdb.h"
 
 
 typedef std::tuple<int, int, int, QString, QString, QString, int> MultimediaInfoType;
@@ -19,7 +20,7 @@ typedef std::tuple<int, int, int, QString, QString, QString, int> MultimediaInfo
  * Column 6: MultimediaContent TEXT
  * Column 7: Privacy INTEGER NOT NULL
  */
-class MultimediaDB
+class MultimediaDB: public PostDB
 {
 public:
     /**
@@ -107,7 +108,6 @@ public:
 
 
 private:
-    QString connectionName;
 };
 
 #endif // MULTIMEDIADB_H

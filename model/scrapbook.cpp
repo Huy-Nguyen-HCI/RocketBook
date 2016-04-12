@@ -57,7 +57,7 @@ Blog *Scrapbook::addBlog(Blog* newBlog){
 Blog* Scrapbook::addBlog(QString username, QString title, QString content)
 {
     //pull out latest PostID
-    int blogID = blogDB->getMaxBlogID() + 1;
+    int blogID = blogDB->getMaxPostID() + 1;
 
     //create new blog
     Blog* newBlog = new Blog(blogID, username, title, content);

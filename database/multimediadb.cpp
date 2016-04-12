@@ -1,6 +1,6 @@
 #include "multimediadb.h"
 
-MultimediaDB::MultimediaDB()
+MultimediaDB::MultimediaDB(): PostDB::PostDB()
 {
     connectionName.append("multimedia");
     QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
@@ -16,7 +16,7 @@ MultimediaDB::MultimediaDB()
     }
 }
 
-MultimediaDB::MultimediaDB(const QString &path)
+MultimediaDB::MultimediaDB(const QString &path): PostDB::PostDB()
 {
     connectionName.append("multimedia");
     QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
