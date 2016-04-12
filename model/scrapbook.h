@@ -7,6 +7,7 @@
 #include "../database/blogdb.h"
 #include "../database/tweetdb.h"
 #include "../database/multimediadb.h"
+#include "../database/accountdb.h"
 
 
 /**
@@ -18,6 +19,7 @@ class Scrapbook
 public:
     Scrapbook();
     Scrapbook(int id);
+    ~Scrapbook();
 
     //Methods for add to and getting from containers
     Blog* addBlog(Blog* newBlog);
@@ -39,6 +41,7 @@ private:
     BlogDB* blogDB;
     TweetDB* tweetDB;
     MultimediaDB* multimediaDB;
+    AccountDB* accountDB;
 
     std::vector<Blog*> blogList;
     std::vector<Tweet*> tweetList;

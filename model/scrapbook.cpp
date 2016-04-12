@@ -9,6 +9,7 @@ Scrapbook::Scrapbook()
     blogDB = new BlogDB("../database/contentDB.sqlite");
     tweetDB = new TweetDB("../database/contentDB.sqlite");
     multimediaDB = new MultimediaDB("../database/contentDB.sqlite");
+    accountDB = new AccountDB("../database/accountDB.sqlite");
 
     //construct blogList from database
     //construct tweetList from database
@@ -28,20 +29,53 @@ Scrapbook::Scrapbook(int id)
     multimediaDB = new MultimediaDB("../database/contentDB.sqlite");
 }
 
+Scrapbook::~Scrapbook()
+{
+    delete blogDB;
+    delete tweetDB;
+    delete multimediaDB;
+    delete accountDB;
+}
+
 
 Blog *Scrapbook::addBlog(Blog* newBlog){
     blogList.push_back(newBlog);
-    //store blog in DB
+
+    //add blog into the database
+    QString qUsername = QString::fromStdString(newBlog->getAuthorUsername());
+    int accountID = accountDB->retrieveAccountID(qUsername);
+    QString qTitle = QString::fromStdString(newBlog->getTitle());
+    QString qContent = QString::fromStdString(newBlog->getContent());
+
+    blogDB->addBlog(newBlog->getID(),
+                    accountID,
+                    this->id,
+                    qTitle,
+                    qContent,
+                    newBlog->getPrivacy());
+
     return newBlog;
 }
 
 Blog* Scrapbook::addBlog(std::string username, std::string title, std::string content)
 {
-    //pull out latest BlogID
-    int blogID = blogDB->
-    Blog* newBlog = new Blog(blogID, username, title, content);
-    blogList.push_back(newBlog);
-    //store blog in DB
+    int blogID = blogDB->getMaxBlogID() + 1; //pull out latest BlogID
+
+    Blog* newBlog = new Blog(blogID, username, title, content); //create new blog
+    blogList.push_back(newBlog); //push back into the storage.
+
+    //add blog into the database
+    QString qUsername = QString::fromStdString(username);
+    int accountID = accountDB->retrieveAccountID(qUsername);
+    QString qTitle = QString::fromStdString(title);
+    QString qContent = QString::fromStdString(content);
+
+    blogDB->addBlog(blogID,
+                    accountID,
+                    this->id,
+                    qTitle,
+                    qContent,
+                    newBlog->getPrivacy());
     return newBlog;
 }
 

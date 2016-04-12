@@ -51,6 +51,8 @@ public:
 
     void setPrivate();
 
+    bool getPrivacy() {return privacy;}
+
 protected:
     std::string username;
     std::string content;

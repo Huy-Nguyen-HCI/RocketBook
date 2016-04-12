@@ -154,11 +154,11 @@ TEST(AccntDatabase, testRetrieveAccntID)
     newDB.addAccount(id1, un, pw, pid1);
     newDB.addAccount(id2, un2, pw2, pid2);
 
-    int actualID1 = newDB.retrieveAccountId(un);
+    int actualID1 = newDB.retrieveAccountID(un);
 
     ASSERT_EQ(actualID1, id1);
 
-    int actualID2 = newDB.retrieveAccountId(un2);
+    int actualID2 = newDB.retrieveAccountID(un2);
 
     ASSERT_EQ(actualID2, id2);
 

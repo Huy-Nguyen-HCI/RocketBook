@@ -4,6 +4,7 @@
 #include <QString>
 #include <QtSql>
 #include <QDebug>
+#include <vector>
 
 typedef std::tuple<int, int, int, QString, QString, int> BlogInfoType;
 
@@ -24,7 +25,6 @@ class BlogDB
 public:
     /**
      * @brief BlogDB
-     *
      * Construct a Blog database at BlogDB.sqlite
      */
     BlogDB();
@@ -38,7 +38,6 @@ public:
 
     /**
      * @brief ~BlogDB
-     *
      * Default destructor for Blog database
      */
     ~BlogDB();
@@ -79,12 +78,21 @@ public:
     bool removeBlog(int id);
 
     /**
-     * @brief retrieveBlogInfo get information about the blog.
+     * @brief retrieveBlogInfo
+     * Get information about the blog.
      *
      * @param id the id of the blog
      * @return Return a tuple containing information about the blog (blogID, scrapbookID, blogContent)
      */
     BlogInfoType retrieveBlogInfo(int blogID);
+
+    /**
+     * @brief retrieveAllBlogInfo
+     * Retrieve all blogs from a scrapbooik
+     * @param scrapbookID The ID of the scrapbook
+     * @return A vector of all BlogInfoType tuples containing the data of the blog
+     */
+    std::vector<BlogInfoType> retrieveAllBlogInfo(int scrapbookID);
 
     /**
      * @brief blogExists

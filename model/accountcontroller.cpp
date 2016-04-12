@@ -38,14 +38,14 @@ void AccountController::run(){
 //Doesn't work yet
 void AccountController::displayFriends(){
     std::string username=askUserName();
-    std::vector<int>* friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountId(QString::fromStdString(username)));
+    std::vector<int>* friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(QString::fromStdString(username)));
 
 
-    for( int i=0; i<friendlist->capacity(); i++){
+    for(unsigned int i=0; i<friendlist->capacity(); i++){
         std::cout << friendlist->at(i) << std::endl;
     }
 
- //   int userId=accountDB->retrieveAccountId(QString::fromStdString(username));
+ //   int userId=accountDB->retrieveAccountID(QString::fromStdString(username));
 
 //    std::cout << friendDB->retrieveAllFriends(userId).toStdString();
                          //^Doesn't work yet
@@ -58,8 +58,8 @@ void AccountController::addFriend(){
 
     username=askUserName();
     friendname=askUserName();
-    userId=accountDB->retrieveAccountId(QString::fromStdString(username));
-    friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
+    userId=accountDB->retrieveAccountID(QString::fromStdString(username));
+    friendId=accountDB->retrieveAccountID(QString::fromStdString(friendname));
 
 
     if (!checkAccountExists(friendname) || !checkAccountExists(username))
@@ -86,8 +86,8 @@ void AccountController::deleteFriend(){
 
     username=askUserName();
     friendname=askUserName();
-    userId=accountDB->retrieveAccountId(QString::fromStdString(username));
-    friendId=accountDB->retrieveAccountId(QString::fromStdString(friendname));
+    userId=accountDB->retrieveAccountID(QString::fromStdString(username));
+    friendId=accountDB->retrieveAccountID(QString::fromStdString(friendname));
 
     if (!friendDB->friendshipExists(userId,friendId))
         cerr << "Friendship does not exist." << endl;
@@ -121,7 +121,7 @@ void AccountController::login(){
 
 
 
-    cout << "id is: " << accountDB->retrieveAccountId(QString::fromStdString(username)) << endl;
+    cout << "id is: " << accountDB->retrieveAccountID(QString::fromStdString(username)) << endl;
 
 }
 

@@ -79,7 +79,7 @@ public:
      */
     AccountInfoType retrieveAccountInfo(const QString& username, const QString& password);
 
-    int retrieveAccountId(const QString& username);
+    int retrieveAccountID(const QString& username);
 
     /**
      * @brief accountExists

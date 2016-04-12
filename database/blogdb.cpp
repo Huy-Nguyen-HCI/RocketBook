@@ -135,7 +135,48 @@ BlogInfoType BlogDB::retrieveBlogInfo(int blogID)
     }
 
     return std::make_tuple(id, accountID, scrapbookID, blogTitle, blogContent, privacy);
+}
 
+std::vector<BlogInfoType> BlogDB::retrieveAllBlogInfo(int scrapbookID)
+{
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
+    queryRetrieve.prepare("SELECT * FROM Blogs WHERE ScrapbookID = :ScrapbookID");
+    queryRetrieve.bindValue(":ScrapbookID", scrapbookID);
+
+    int blogIDIndex = /*query.record().indexOf("BlogID");*/ 0;
+    int accountIDIndex = /*query.record().indexOf("AccountID");*/ 1;
+    int scrapbookIDIndex = /*query.record().indexOf("ScrapbookID");*/ 2;
+    int titleIndex = 3;
+    int contentIndex = /*query.record().indexOf("BlogContent");*/ 4;
+    int privacyIndex = 5;
+
+    int id = -1;
+    int accountID = -1;
+    int newScrapbookID = -1;
+    QString blogTitle = "";
+    QString blogContent = "";
+    int privacy = -1;
+    std::vector<BlogInfoType> blogInfo;
+
+    if (queryRetrieve.exec())
+    {
+        while (queryRetrieve.next())
+        {
+            id = queryRetrieve.value(blogIDIndex).toInt();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
+            newScrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
+            blogTitle = queryRetrieve.value(titleIndex).toString();
+            blogContent = queryRetrieve.value(contentIndex).toString();
+            privacy = queryRetrieve.value(privacyIndex).toInt();
+            blogInfo.push_back(std::make_tuple(id, accountID, newScrapbookID, blogTitle, blogContent, privacy));
+        }
+    }
+    else
+    {
+        qDebug() << "blog retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return blogInfo;
 }
 
 bool BlogDB::blogExists(int id) const

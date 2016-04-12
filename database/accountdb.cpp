@@ -132,7 +132,7 @@ AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName, const QS
 
 }
 
-int AccountDB::retrieveAccountId(const QString& username)
+int AccountDB::retrieveAccountID(const QString& username)
 {
     QString accountId;
 
