@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 #CONFIG -= qt
 QT +=sql
 
-LIBS    += -l sqlite3
 
 SOURCES += main.cpp \
     rocketuser.cpp \

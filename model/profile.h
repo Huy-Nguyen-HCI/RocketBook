@@ -1,7 +1,7 @@
 #ifndef PROFILE_H
 #define PROFILE_H
 #include <string>
-#include <scrapbook.h>
+#include "scrapbook.h"
 
 /**
  * @brief The Profile class stores information about a user's profile:

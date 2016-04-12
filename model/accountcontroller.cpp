@@ -5,13 +5,11 @@ using namespace std;
 
 AccountController::AccountController()
 {
-
+    accountDB = new AccountDB("../database/rocketDB.sqlite");
+    friendDB = new FriendDB("../database/rocketDB.sqlite");
 }
 
 void AccountController::run(){
-
-    accountDB=new AccountDB("../database/rocketDB.sqlite");
-    friendDB=new FriendDB("../database/rocketDB.sqlite");
 
     if (accountDB->isOpen()){
 
@@ -53,27 +51,27 @@ void AccountController::displayFriends(){
 }
 
 void AccountController::addFriend(){
-    std::string username, friendname;
+    QString username, friendname;
     int userId, friendId;
 
-    username=askUserName();
-    friendname=askUserName();
-    userId=accountDB->retrieveAccountID(QString::fromStdString(username));
-    friendId=accountDB->retrieveAccountID(QString::fromStdString(friendname));
+    username = QString::fromStdString(askUserName());
+    friendname = QString::fromStdString(askUserName());
+    userId=accountDB->retrieveAccountID(username);
+    friendId=accountDB->retrieveAccountID(friendname);
 
 
     if (!checkAccountExists(friendname) || !checkAccountExists(username))
         cerr << "Account does not exist." << endl;
 
     else if(friendDB->friendshipExists(userId,friendId))
-        cerr << "You are already friend with " << friendname <<endl;
+        cerr << "You are already friend with " << friendname.toStdString() <<endl;
 
     else{
 
 
      friendDB->addFriend(userId,friendId);
 
-     std::cout << "You are now friends with " << friendname << "!" << std::endl;
+     std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
 
 
     }
@@ -101,9 +99,9 @@ void AccountController::deleteFriend(){
 }
 
 void AccountController::createAccount(){
-    std::string username, password;
-    username=askUserName();
-    password=askPassword();
+    QString username, password;
+    username = QString::fromStdString(askUserName());
+    password = QString::fromStdString(askPassword());
 
     if (checkAccountExists(username))
         cerr << "Username already exists." << endl;
@@ -114,14 +112,12 @@ void AccountController::createAccount(){
 }
 
 void AccountController::login(){
-    std::string username, password;
-    username=askUserName();
-    password=askPassword();
+    QString username, password;
+    username = QString::fromStdString(askUserName());
+    password = QString::fromStdString(askPassword());
     verifyPassword(username,password);
 
-
-
-    cout << "id is: " << accountDB->retrieveAccountID(QString::fromStdString(username)) << endl;
+    cout << "id is: " << accountDB->retrieveAccountID(username) << endl;
 
 }
 
@@ -139,38 +135,34 @@ std::string AccountController::askPassword(){
     return password;
 }
 
-void AccountController::createNewAccount(std::string username, std::string password){
+bool AccountController::createNewAccount(QString username, QString password){
     //check what is the last ID of the rocketuser in the database, create the ID for the next user
     int rocketUserID = accountDB->getMaxAccountID() + 1;
     //create a new rocket user with the new ID
     RocketUser* currentUser= new RocketUser(rocketUserID);
 
-    accountDB->addAccount(currentUser->getID(),QString::fromStdString(username),QString::fromStdString(password),currentUser->getProfile()->getID());
-    cout << "Successfully created account for " << username << endl;
+    return accountDB->addAccount(currentUser->getID(),username,password,currentUser->getProfile()->getID());
+    //cout << "Successfully created account for " << username.toStdString() << endl;
 
 }
 
 
-std::string AccountController::getPassword(AccountInfoType accountinfo){
-    return std::get<2>(accountinfo).toStdString();
+QString AccountController::getPassword(AccountInfoType accountinfo){
+    return std::get<2>(accountinfo);
 }
 
-std::string AccountController::getUsername(AccountInfoType accountinfo){
-    return std::get<1>(accountinfo).toStdString();
+QString AccountController::getUsername(AccountInfoType accountinfo){
+    return std::get<1>(accountinfo);
 }
 
-bool AccountController::checkAccountExists(std::string username){
-    return accountDB->accountExists(QString::fromStdString(username));
+bool AccountController::checkAccountExists(QString username){
+    return accountDB->accountExists(username);
 }
 
-void AccountController::verifyPassword(std::string username,std::string password){
-    const QString user = QString::fromStdString(username);
-    const QString pass = QString::fromStdString(password);
-    std::string storedPassword = getPassword(accountDB->retrieveAccountInfo(user, pass));
-    if (storedPassword != password)
-        std::cerr << "Wrong username or password" << std::endl;
-    else
-        std::cout << "Log in successful. Welcome " << username << "!" << std::endl;
+bool AccountController::verifyPassword(QString username, QString password){
+
+    QString storedPassword = getPassword(accountDB->retrieveAccountInfo(username, password));
+    return storedPassword == password;
 }
 
 int AccountController::requestInput(){

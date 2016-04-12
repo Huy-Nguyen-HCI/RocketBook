@@ -19,19 +19,28 @@ SOURCES += logingui.cpp \
     mainwindow.cpp \
     main.cpp \
     createpostgui.cpp \
-    scrapbook.cpp \
-    ../database/accountdb.cpp
+    ../database/*db.cpp \
+    ../model/accountcontroller.cpp \
+    ../model/blog.cpp \
+    ../model/comment.cpp \
+    ../model/feed.cpp \
+    ../model/post.cpp \
+    ../model/rocketuser.cpp \
+    ../model/tweet.cpp \
+    ../model/multimedia.cpp \
+    ../model/scrapbook.cpp \
+    ../model/profile.cpp
+
 
 HEADERS  += logingui.h \
     mainwindow.h \
     createpostgui.h \
-    scrapbook.h \
-    ../database/accountdb.h
+    ../database/*db.h \
+    ../model/*.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
-    createpostgui.ui \
-    scrapbook.ui
+    createpostgui.ui
 
 RESOURCES += \
     icons.qrc \

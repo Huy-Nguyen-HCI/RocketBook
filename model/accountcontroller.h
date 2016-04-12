@@ -8,9 +8,8 @@
 #include "../database/accountdb.h"
 #include "../database/frienddb.h"
 #include <string>
-#include <rocketuser.h>
+#include "rocketuser.h"
 
-typedef std::tuple<int, QString, QString, int> AccountInfoType;
 
 /**
  * @brief Account Controller class initiates user actions. This includes Login and Add friend.
@@ -24,7 +23,7 @@ public:
      */
     AccountController();
     /**
-     * @brief Runs account controller. Asks for user input and performs indicated action.
+     * @brief Runs account controller in the terminal. Asks for user input and performs indicated action.
      */
     void run();
 
@@ -32,15 +31,24 @@ public:
      * @brief Creates new account and adds account information to database.
      * @param username Account username
      * @param password Account password
+     * @return true if adding is successful and false otherwise
      */
-    void createNewAccount(std::string username, std::string password);
+    bool createNewAccount(QString username, QString password);
 
     /**
      * @brief Checks of account exists
      * @param username Account username
      * @return true if account exists
      */
-    bool checkAccountExists(std::string username);
+    bool checkAccountExists(QString username);
+
+    /**
+     * @brief Checks if user entered correct password
+     * @param username Account username entered by user
+     * @param password Password entered by user
+     * @return True if password entered by user matches stored password.
+     */
+    bool verifyPassword(QString username,QString password);
 
     /**
      * @brief Sequence of actions for attempting to login into an account.
@@ -71,16 +79,9 @@ private:
      * @param accountinfo Database row for a given username
      * @return Account's stored password
      */
-    std::string getPassword(AccountInfoType accountinfo);
+    QString getPassword(AccountInfoType accountinfo);
 
-    std::string getUsername(AccountInfoType accountinfo);
-    /**
-     * @brief Checks if user entered correct password
-     * @param username Account username entered by user
-     * @param password Password entered by user
-     * @return True if password entered by user matches stored password.
-     */
-    void verifyPassword(std::string username,std::string password);
+    QString getUsername(AccountInfoType accountinfo);
 
     /**
      * @brief Sequence of actions for attempting to create a new account.
