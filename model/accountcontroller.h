@@ -27,6 +27,26 @@ public:
      * @brief Runs account controller. Asks for user input and performs indicated action.
      */
     void run();
+
+    /**
+     * @brief Creates new account and adds account information to database.
+     * @param username Account username
+     * @param password Account password
+     */
+    void createNewAccount(std::string username, std::string password);
+
+    /**
+     * @brief Checks of account exists
+     * @param username Account username
+     * @return true if account exists
+     */
+    bool checkAccountExists(std::string username);
+
+    /**
+     * @brief Sequence of actions for attempting to login into an account.
+     */
+    void login();
+
     /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
@@ -44,18 +64,8 @@ private:
     std::string askUserName();
     std::string askPassword();
 
-    /**
-     * @brief Creates new account and adds account information to database.
-     * @param username Account username
-     * @param password Account password
-     */
-    void createNewAccount(std::string username, std::string password);
-    /**
-     * @brief Checks of account exists
-     * @param username Account username
-     * @return true if account exists
-     */
-    bool checkAccountExists(std::string username);
+
+
     /**
      * @brief Parses account info and returns only account password
      * @param accountinfo Database row for a given username
@@ -71,10 +81,7 @@ private:
      * @return True if password entered by user matches stored password.
      */
     void verifyPassword(std::string username,std::string password);
-    /**
-     * @brief Sequence of actions for attempting to login into an account.
-     */
-    void login();
+
     /**
      * @brief Sequence of actions for attempting to create a new account.
      */
