@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <string>
+#include "../database/accountdb.h"
 
 namespace Ui {
 class LoginGUI;
@@ -13,7 +14,7 @@ class LoginGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit LoginGUI(QWidget *parent = 0);
+    explicit LoginGUI(AccountDB *inputAccountDB, QWidget *parent = 0);
     ~LoginGUI();
 
 private slots:
@@ -23,6 +24,7 @@ private slots:
 
 private:
     Ui::LoginGUI *ui;
+    AccountDB *accountDB;
 };
 
 #endif // LOGINGUI_H

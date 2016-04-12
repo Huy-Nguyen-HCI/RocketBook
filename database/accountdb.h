@@ -99,9 +99,12 @@ public:
 
     int getMaxAccountID();
 
+    static QString getAccountPassword(AccountInfoType info) { return std::get<2>(info); }
 
 private:
     QString connectionName;
 };
 
 #endif // ACCOUNTDB_H
+
+

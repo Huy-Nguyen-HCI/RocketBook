@@ -12,7 +12,7 @@ Post::Post(std::string username, std::string content)
 
 }
 
-Post::Post(int id, std::__cxx11::string username, std::__cxx11::string content)
+Post::Post(int id, std::string username, std::string content)
 {
     this->id = id;
     idCnt = id;
