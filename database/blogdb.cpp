@@ -179,3 +179,26 @@ bool BlogDB::removeAllBlogs()
 
     return success;
 }
+
+int BlogDB::getMaxBlogID()
+{
+    int maxID;
+
+    qDebug() << "Max blogID in db:";
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
+    queryMaxID.prepare("SELECT max(BlogID) FROM Blogs");
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "Max PostID fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID;
+}

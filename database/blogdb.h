@@ -102,6 +102,8 @@ public:
      */
     bool removeAllBlogs();
 
+    int getMaxBlogID();
+
 private:
     QString connectionName;
 };

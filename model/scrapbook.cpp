@@ -6,6 +6,10 @@ Scrapbook::Scrapbook()
 {
     id=idCnt;
     idCnt++;
+    blogDB = new BlogDB("../database/contentDB.sqlite");
+    tweetDB = new TweetDB("../database/contentDB.sqlite");
+    multimediaDB = new MultimediaDB("../database/contentDB.sqlite");
+
     //construct blogList from database
     //construct tweetList from database
     //construct mediaList from database
@@ -18,6 +22,10 @@ Scrapbook::Scrapbook(int id)
     idCnt = id;
     idCnt++;
     idCnt++;
+
+    blogDB = new BlogDB("../database/contentDB.sqlite");
+    tweetDB = new TweetDB("../database/contentDB.sqlite");
+    multimediaDB = new MultimediaDB("../database/contentDB.sqlite");
 }
 
 
@@ -29,8 +37,9 @@ Blog *Scrapbook::addBlog(Blog* newBlog){
 
 Blog* Scrapbook::addBlog(std::string username, std::string title, std::string content)
 {
-    //pull out latest ID
-    Blog* newBlog = new Blog(username, title, content);
+    //pull out latest BlogID
+    int blogID = blogDB->
+    Blog* newBlog = new Blog(blogID, username, title, content);
     blogList.push_back(newBlog);
     //store blog in DB
     return newBlog;

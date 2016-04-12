@@ -4,6 +4,7 @@
 #include "blog.h"
 #include "tweet.h"
 #include "multimedia.h"
+#include "../database/blogdb.h"
 #include "../database/tweetdb.h"
 #include "../database/multimediadb.h"
 
@@ -35,6 +36,9 @@ private:
     int id;
     static int idCnt;
 
+    BlogDB* blogDB;
+    TweetDB* tweetDB;
+    MultimediaDB* multimediaDB;
 
     std::vector<Blog*> blogList;
     std::vector<Tweet*> tweetList;

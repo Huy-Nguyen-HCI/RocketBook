@@ -49,11 +49,14 @@ public:
      */
     std::string getContent();
 
+    void setPrivate();
+
 protected:
     std::string username;
     std::string content;
     int id;
     static int idCnt;
+    bool privacy;
 
 };
 

@@ -11,6 +11,11 @@ SOURCES += main.cpp \
     profile.cpp \
     ../database/accountdb.cpp \
     ../database/frienddb.cpp \
+    ../database/blogdb.cpp \
+    ../database/commentdb.cpp \
+    ../database/multimediadb.cpp \
+    ../database/tweetdb.cpp \
+    ../database/profiledb.cpp \
     blog.cpp \
     comment.cpp \
     post.cpp \

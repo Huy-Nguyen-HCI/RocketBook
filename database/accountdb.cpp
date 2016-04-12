@@ -204,7 +204,7 @@ bool AccountDB::removeAllAccounts()
 
 int AccountDB::getMaxAccountID()
 {
-    QString maxID;
+    int maxID;
 
     qDebug() << "Accounts in db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
@@ -214,7 +214,7 @@ int AccountDB::getMaxAccountID()
     {
         if(queryMaxID.next())
         {
-            maxID = queryMaxID.value(0).toString();
+            maxID = queryMaxID.value(0).toInt();
         }
     }
     else
@@ -222,6 +222,6 @@ int AccountDB::getMaxAccountID()
         qDebug() << "account retrieval fails:" <<queryMaxID.lastError();
     }
 
-    return maxID.toInt();
+    return maxID;
 
 }

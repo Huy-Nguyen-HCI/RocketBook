@@ -9,6 +9,7 @@ Post::Post(std::string username, std::string content)
 
     this->username = username;
     this->content = content;
+    privacy = 0;
 
 }
 
@@ -20,7 +21,7 @@ Post::Post(int id, std::string username, std::string content)
 
     this->username = username;
     this->content = content;
-
+    privacy = 0;
 }
 
 int Post::getID() {
@@ -33,4 +34,8 @@ std::string Post::getAuthorUsername() {
 
 std::string Post::getContent() {
     return content;
+}
+
+void Post::setPrivate() {
+    privacy = 1;
 }
