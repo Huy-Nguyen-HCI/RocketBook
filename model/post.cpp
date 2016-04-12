@@ -2,7 +2,7 @@
 
 int Post::idCnt = 0;
 
-Post::Post(std::string username, std::string content)
+Post::Post(QString username, QString content)
 {
     id = idCnt;
     idCnt++;
@@ -13,7 +13,7 @@ Post::Post(std::string username, std::string content)
 
 }
 
-Post::Post(int id, std::string username, std::string content)
+Post::Post(int id, QString username, QString content)
 {
     this->id = id;
     idCnt = id;
@@ -28,11 +28,11 @@ int Post::getID() {
     return id;
 }
 
-std::string Post::getAuthorUsername() {
+QString Post::getAuthorUsername() {
     return username;
 }
 
-std::string Post::getContent() {
+QString Post::getContent() {
     return content;
 }
 

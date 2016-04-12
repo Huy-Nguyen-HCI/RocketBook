@@ -13,23 +13,23 @@ class Multimedia:public Post{
 
 
 public:
-    Multimedia(std::string username,
-               std::string title,
-               std::string description,
-               std::string content);
+    Multimedia(QString username,
+               QString title,
+               QString description,
+               QString content);
     Multimedia(int id,
-               std::string username,
-               std::string title,
-               std::string description,
-               std::string content);
+               QString username,
+               QString title,
+               QString description,
+               QString content);
 
     ~Multimedia();
-    std::string getTitle();
-    std::string getDescription();
+    QString getTitle();
+    QString getDescription();
 
 private:
-    std::string title;
-    std::string description;
+    QString title;
+    QString description;
 };
 
 #endif // MULTIMEDIA_H

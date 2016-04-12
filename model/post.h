@@ -1,7 +1,7 @@
 #ifndef POST_H
 #define POST_H
 
-#include <string>
+#include <QString>
 
 
 /**
@@ -21,7 +21,7 @@ public:
      * @param username The username of the author of the post.
      * @param content The content of the post.
      */
-    Post(std::string username, std::string content);
+    Post(QString username, QString content);
 
     /**
      * @brief Post is a constructor of a post.
@@ -29,7 +29,7 @@ public:
      * @param username The username of the author of the post.
      * @param content The content of the post.
      */
-    Post(int id, std::string username, std::string content);
+    Post(int id, QString username, QString content);
 
     /**
      * @brief getID returns the ID of the post
@@ -41,21 +41,21 @@ public:
      * @brief getAuthor gets the author of the post.
      * @return the author of the post.
      */
-    std::string getAuthorUsername();
+    QString getAuthorUsername();
 
     /**
      * @brief getContent gets the content of the post.
      * @return the content of the post.
      */
-    std::string getContent();
+    QString getContent();
 
     void setPrivate();
 
     bool getPrivacy() {return privacy;}
 
 protected:
-    std::string username;
-    std::string content;
+    QString username;
+    QString content;
     int id;
     static int idCnt;
     bool privacy;

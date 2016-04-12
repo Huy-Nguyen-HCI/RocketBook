@@ -1,6 +1,5 @@
 #ifndef BLOG_H
 #define BLOG_H
-#include <string>
 #include <vector>
 #include "post.h"
 #include "comment.h"
@@ -20,7 +19,7 @@ public:
      * @param title The title of the blog
      * @param content The content of the blog
      */
-    Blog(std::string username, std::string title, std::string content);
+    Blog(QString username, QString title, QString content);
 
     /**
      * @brief Construct a blog post
@@ -29,7 +28,7 @@ public:
      * @param title The title of the blog
      * @param content The content of the blog
      */
-    Blog(int id, std::string username, std::string title, std::string content);
+    Blog(int id, QString username, QString title, QString content);
 
     /**
      * @brief Default destructor for blog post
@@ -46,7 +45,7 @@ public:
      * @brief getTitle gets the title for this blog post
      * @return the title for this blog post
      */
-    std::string getTitle();
+    QString getTitle();
 
     /**
      * @brief getAllComments retrieves all the comments in the blog post
@@ -59,11 +58,11 @@ public:
      * by delete the old content and add the new content
      * @param newContent The new content to be in the blog
      */
-    void editBlog(std::string newContent);
+    void editBlog(QString newContent);
 
 private:
     std::vector<Comment*> commentList;
-    std::string title;
+    QString title;
 };
 
 #endif // BLOG_H

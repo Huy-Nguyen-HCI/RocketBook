@@ -1,11 +1,11 @@
 #include "blog.h"
 
-Blog::Blog(std::string username, std::string title, std::string content): Post::Post(username, content)
+Blog::Blog(QString username, QString title, QString content): Post::Post(username, content)
 {
     this->title = title;
 }
 
-Blog::Blog(int id, std::string username, std::string title, std::string content): Post::Post(id, username, content)
+Blog::Blog(int id, QString username, QString title, QString content): Post::Post(id, username, content)
 {
     this->title = title;
 }
@@ -14,7 +14,7 @@ Blog::~Blog() {
 
 }
 
-std::string Blog::getTitle()
+QString Blog::getTitle()
 {
     return title;
 }
@@ -27,6 +27,6 @@ std::vector<Comment*> Blog::getAllComments(){
     return commentList;
 }
 
-void Blog::editBlog(std::string newContent) {
+void Blog::editBlog(QString newContent) {
     content = newContent;
 }

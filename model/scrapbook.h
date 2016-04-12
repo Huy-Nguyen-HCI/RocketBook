@@ -23,16 +23,16 @@ public:
 
     //Methods for add to and getting from containers
     Blog* addBlog(Blog* newBlog);
-    Blog* addBlog(std::string username, std::string title, std::string content);
+    Blog* addBlog(QString username, QString title, QString content);
 
     Tweet* addTweet(Tweet* newTweet);
-    Tweet* addTweet(std::string username, std::string content);
+    Tweet* addTweet(QString username, QString content);
 
     Multimedia* addMedia(Multimedia* newMedia);
-    Multimedia* addMedia(std::string username,
-                         std::string title,
-                         std::string description,
-                         std::string content);
+    Multimedia* addMedia(QString username,
+                         QString title,
+                         QString description,
+                         QString content);
 
 private:
     int id;

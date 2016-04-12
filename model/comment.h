@@ -2,7 +2,6 @@
 #define COMMENT_H
 
 #include "post.h"
-#include <string>
 
 /**
  * @brief The Comment class contains comments which users have posted on blogs.
@@ -10,8 +9,8 @@
 class Comment: public Post{
 
 public:
-    Comment(std::string username, std::string content);
-    Comment(int id, std::string username, std::string content);
+    Comment(QString username, QString content);
+    Comment(int id, QString username, QString content);
     ~Comment();
 private:
 

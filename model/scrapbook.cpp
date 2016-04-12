@@ -42,22 +42,17 @@ Blog *Scrapbook::addBlog(Blog* newBlog){
     blogList.push_back(newBlog);
 
     //add blog into the database
-    QString qUsername = QString::fromStdString(newBlog->getAuthorUsername());
-    int accountID = accountDB->retrieveAccountID(qUsername);
-    QString qTitle = QString::fromStdString(newBlog->getTitle());
-    QString qContent = QString::fromStdString(newBlog->getContent());
-
+    int accountID = accountDB->retrieveAccountID(newBlog->getAuthorUsername());
     blogDB->addBlog(newBlog->getID(),
                     accountID,
                     this->id,
-                    qTitle,
-                    qContent,
+                    newBlog->getTitle(),
+                    newBlog->getContent(),
                     newBlog->getPrivacy());
-
     return newBlog;
 }
 
-Blog* Scrapbook::addBlog(std::string username, std::string title, std::string content)
+Blog* Scrapbook::addBlog(QString username, QString title, QString content)
 {
     int blogID = blogDB->getMaxBlogID() + 1; //pull out latest BlogID
 
@@ -65,16 +60,14 @@ Blog* Scrapbook::addBlog(std::string username, std::string title, std::string co
     blogList.push_back(newBlog); //push back into the storage.
 
     //add blog into the database
-    QString qUsername = QString::fromStdString(username);
-    int accountID = accountDB->retrieveAccountID(qUsername);
-    QString qTitle = QString::fromStdString(title);
-    QString qContent = QString::fromStdString(content);
+
+    int accountID = accountDB->retrieveAccountID(username);
 
     blogDB->addBlog(blogID,
                     accountID,
                     this->id,
-                    qTitle,
-                    qContent,
+                    title,
+                    content,
                     newBlog->getPrivacy());
     return newBlog;
 }
@@ -85,7 +78,7 @@ Tweet *Scrapbook::addTweet(Tweet* newTweet){
     return newTweet;
 }
 
-Tweet *Scrapbook::addTweet(std::string username, std::string content){
+Tweet *Scrapbook::addTweet(QString username, QString content){
     //pull out latest ID
     Tweet* newTweet = new Tweet(username, content);
     //store tweet in DB
@@ -99,7 +92,7 @@ Multimedia *Scrapbook::addMedia(Multimedia* newMedia){
     return newMedia;
 }
 
-Multimedia *Scrapbook::addMedia(std::string username, std::string title, std::string description, std::string content){
+Multimedia *Scrapbook::addMedia(QString username, QString title, QString description, QString content){
     //pull out latest ID
     Multimedia* newMedia = new Multimedia(username, title, description, content);
     mediaList.push_back(newMedia);

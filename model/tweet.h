@@ -18,8 +18,8 @@
 class Tweet: public Post
 {
 public:
-    Tweet(std::string username, std::string content);
-    Tweet(int id, std::string username, std::string content);
+    Tweet(QString username, QString content);
+    Tweet(int id, QString username, QString content);
     ~Tweet();
 
 private:
