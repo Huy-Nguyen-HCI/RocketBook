@@ -38,7 +38,7 @@ private:
     std::vector<int>* friendList;
     void addFriend(int friendUserId);
     // feed
-    // chat container
+  // Chat List
 
 
 };

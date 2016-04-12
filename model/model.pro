@@ -22,7 +22,9 @@ SOURCES += main.cpp \
     tweet.cpp \
     feed.cpp \
     accountcontroller.cpp \
-    multimedia.cpp
+    multimedia.cpp \
+    message.cpp \
+    chat.cpp
 
 HEADERS += \
     rocketuser.h \
@@ -35,4 +37,6 @@ HEADERS += \
     tweet.h \
     feed.h \
     accountcontroller.h \
-    multimedia.h
+    multimedia.h \
+    message.h \
+    chat.h
