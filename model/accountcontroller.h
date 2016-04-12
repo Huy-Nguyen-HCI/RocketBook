@@ -58,12 +58,12 @@ public:
     /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
-    void addFriend();
+    void addFriend(QString username, QString friendname);
 
 
-    void deleteFriend();
+    void deleteFriend(QString username, QString friendname);
 
-    void displayFriends();
+    void displayFriends(QString username);
 
 
 private:
@@ -92,6 +92,7 @@ private:
      * @returns Integer value representing user selection
      */
     int requestInput();
+    int requestInput2();
 
 };
 

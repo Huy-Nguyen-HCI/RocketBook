@@ -23,42 +23,47 @@ void AccountController::run(){
 
             else if (userInput == 2) // log in
                 login();
-            else if (userInput == 3)
-                addFriend();
-            else if(userInput == 4)
-                deleteFriend();
-            else if(userInput == 5)
-                displayFriends();
+            else if (userInput == 3){
+                int input2=requestInput2();
+
+
+                if (input2==0) break;
+                else if(input2==1){
+                    std::string username=askUserName();
+                    std::string friendname=askUserName();
+                    addFriend(QString::fromStdString(username), QString::fromStdString(friendname));
+                }
+                else if(input2 == 2){
+                    std::string username=askUserName();
+                    std::string friendname=askUserName();
+                    deleteFriend(QString::fromStdString(username), QString::fromStdString(friendname));
+
+                }
+                else if(input2 == 3){
+                    std::string username=askUserName();
+                    displayFriends(QString::fromStdString(username));
+
+                }
+            }
         }
     }
 }
 
-//Doesn't work yet
-void AccountController::displayFriends(){
-    std::string username=askUserName();
-    std::vector<int>* friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(QString::fromStdString(username)));
+void AccountController::displayFriends(QString username){
+
+    std::vector<int>* friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
 
 
     for(unsigned int i=0; i<friendlist->capacity(); i++){
         std::cout << friendlist->at(i) << std::endl;
     }
-
- //   int userId=accountDB->retrieveAccountID(QString::fromStdString(username));
-
-//    std::cout << friendDB->retrieveAllFriends(userId).toStdString();
-                         //^Doesn't work yet
-
 }
 
-void AccountController::addFriend(){
-    QString username, friendname;
+void AccountController::addFriend(QString username, QString friendname){
     int userId, friendId;
 
-    username = QString::fromStdString(askUserName());
-    friendname = QString::fromStdString(askUserName());
     userId=accountDB->retrieveAccountID(username);
     friendId=accountDB->retrieveAccountID(friendname);
-
 
     if (!checkAccountExists(friendname) || !checkAccountExists(username))
         cerr << "Account does not exist." << endl;
@@ -78,14 +83,12 @@ void AccountController::addFriend(){
 
 }
 
-void AccountController::deleteFriend(){
-    std::string username, friendname;
+void AccountController::deleteFriend(QString username, QString friendname){
+
     int userId, friendId;
 
-    username=askUserName();
-    friendname=askUserName();
-    userId=accountDB->retrieveAccountID(QString::fromStdString(username));
-    friendId=accountDB->retrieveAccountID(QString::fromStdString(friendname));
+    userId=accountDB->retrieveAccountID(username);
+    friendId=accountDB->retrieveAccountID(friendname);
 
     if (!friendDB->friendshipExists(userId,friendId))
         cerr << "Friendship does not exist." << endl;
@@ -93,7 +96,7 @@ void AccountController::deleteFriend(){
     else{
 
      friendDB->removeFriend(userId,friendId);
-     std::cout << "You are no longer friends with " << friendname << "." << std::endl;
+     std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
 
     }
 }
@@ -167,7 +170,14 @@ bool AccountController::verifyPassword(QString username, QString password){
 
 int AccountController::requestInput(){
     int userInput;
-    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 to add friend, 4 to delete friend, 5 to display friends \n";
+    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 edit friends \n";
+    cin >> userInput;
+    return userInput;
+}
+
+int AccountController::requestInput2(){
+    int userInput;
+    cout << "\nEnter 0 to go back, 1 add friend, 2 to delete friend, 3 display friend ID's' \n";
     cin >> userInput;
     return userInput;
 }
