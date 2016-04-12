@@ -18,16 +18,6 @@ public:
     Scrapbook();
     Scrapbook(int id);
 
-private:
-    int id;
-    static int idCnt;
-
-
-    std::vector<Blog*> blogList;
-    std::vector<Tweet*> tweetList;
-    std::vector<Multimedia*> mediaList;
-    std::vector<Post*> postList;
-
     //Methods for add to and getting from containers
     Blog* addBlog(Blog* newBlog);
     Blog* addBlog(std::string username, std::string title, std::string content);
@@ -40,6 +30,18 @@ private:
                          std::string title,
                          std::string description,
                          std::string content);
+
+private:
+    int id;
+    static int idCnt;
+
+
+    std::vector<Blog*> blogList;
+    std::vector<Tweet*> tweetList;
+    std::vector<Multimedia*> mediaList;
+    std::vector<Post*> postList;
+
+
 
 //    Blog* getBlog(int num);
 //    Tweet* getTweet(int num);
