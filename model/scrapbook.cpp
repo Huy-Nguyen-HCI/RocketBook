@@ -7,7 +7,7 @@ Scrapbook::Scrapbook()
     id=idCnt;
     idCnt++;
     //construct all lists from database
-    constructContentContainer();
+    constructContentContainers();
 }
 
 Scrapbook::Scrapbook(int id)
@@ -19,7 +19,7 @@ Scrapbook::Scrapbook(int id)
 
 
     //construct all lists from database
-    constructContentContainer();
+    constructContentContainers();
 }
 
 Scrapbook::~Scrapbook()
@@ -30,7 +30,7 @@ Scrapbook::~Scrapbook()
     delete accountDB;
 }
 
-Scrapbook::constructContentContainers()
+void Scrapbook::constructContentContainers()
 {
     blogDB = new BlogDB("../database/contentDB.sqlite");
     tweetDB = new TweetDB("../database/contentDB.sqlite");

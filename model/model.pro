@@ -8,7 +8,7 @@ QT +=sql
 SOURCES += main.cpp \
     rocketuser.cpp \
     profile.cpp \
-    ../database/*db.h \
+    ../database/*db.cpp \
     blog.cpp \
     comment.cpp \
     post.cpp \
