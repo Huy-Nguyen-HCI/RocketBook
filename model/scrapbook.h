@@ -4,9 +4,12 @@
 #include "blog.h"
 #include "tweet.h"
 #include "multimedia.h"
+#include "comment.h"
+
 #include "../database/blogdb.h"
 #include "../database/tweetdb.h"
 #include "../database/multimediadb.h"
+#include "../database/commentdb.h"
 #include "../database/accountdb.h"
 
 
@@ -25,16 +28,22 @@ public:
 
     //Methods for add to and getting from containers
     Blog* addBlog(Blog* newBlog);
-    Blog* addBlog(QString username, QString title, QString content);
+    Blog* addBlog(QString username,
+                  QString title,
+                  QString content,
+                  bool privacy);
 
     Tweet* addTweet(Tweet* newTweet);
-    Tweet* addTweet(QString username, QString content);
+    Tweet* addTweet(QString username,
+                    QString content,
+                    bool privacy);
 
     Multimedia* addMedia(Multimedia* newMedia);
     Multimedia* addMedia(QString username,
                          QString title,
                          QString description,
-                         QString content);
+                         QString content,
+                         bool privacy);
 
 private:
     int id;
@@ -46,6 +55,7 @@ private:
     BlogDB* blogDB;
     TweetDB* tweetDB;
     MultimediaDB* multimediaDB;
+    CommentDB* commentDB;
     AccountDB* accountDB;
 
     std::vector<Blog*> blogList;

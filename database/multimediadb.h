@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <QDebug>
 #include "postdb.h"
+#include <vector>
 
 
 typedef std::tuple<int, int, int, QString, QString, QString, int> MultimediaInfoType;
@@ -89,6 +90,14 @@ public:
      * @return a string with the id, username and content, or an empty string if id does not exist.
      */
     MultimediaInfoType retrieveMultimediaInfo(int id);
+
+    /**
+     * @brief retrieveAllMultimediaInfo
+     * Retrieve all Multimedias from a scrapbooik
+     * @param scrapbookID The ID of the scrapbook
+     * @return A vector of all MultimediaInfoType tuples containing the data of the Multimedia
+     */
+    std::vector<MultimediaInfoType> retrieveAllMultimediaInfo(int scrapbookID);
 
     /**
      * @brief MultimediaExists

@@ -128,6 +128,48 @@ TweetInfoType TweetDB::retrieveTweetInfo(int tweetID)
 
 }
 
+std::vector<TweetInfoType> TweetDB::retrieveAllTweetInfo(int scrapbookID)
+{
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
+    queryRetrieve.prepare("SELECT * FROM Tweets WHERE ScrapbookID = :ScrapbookID");
+    queryRetrieve.bindValue(":ScrapbookID", scrapbookID);
+
+    int tweetIDIndex = /*query.record().indexOf("TweetID");*/ 0;
+    int accountIDIndex = /*query.record().indexOf("AccountID");*/ 1;
+    int scrapbookIDIndex = /*query.record().indexOf("ScrapbookID");*/ 2;
+    int contentIndex = /*query.record().indexOf("TweetContent");*/ 3;
+    int privacyIndex = 4;
+
+    int id = -1;
+    int accountID = -1;
+    int newScrapbookID = -1;
+    QString tweetContent = "";
+    int privacy = -1;
+    std::vector<TweetInfoType> tweetInfo;
+
+    if (queryRetrieve.exec())
+    {
+        while (queryRetrieve.next())
+        {
+            //retrieve each unit info
+            id = queryRetrieve.value(tweetIDIndex).toInt();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
+            newScrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
+            tweetContent = queryRetrieve.value(contentIndex).toString();
+            privacy = queryRetrieve.value(privacyIndex).toInt();
+
+            //add a row into the vector
+            tweetInfo.push_back(std::make_tuple(id, accountID, newScrapbookID, tweetContent, privacy));
+        }
+    }
+    else
+    {
+        qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return tweetInfo;
+}
+
 bool TweetDB::tweetExists(int id) const
 {
     bool exists = false;

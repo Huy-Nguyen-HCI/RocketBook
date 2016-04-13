@@ -154,6 +154,60 @@ MultimediaInfoType MultimediaDB::retrieveMultimediaInfo(int id)
 
 }
 
+std::vector<MultimediaInfoType> MultimediaDB::retrieveAllMultimediaInfo(int scrapbookID)
+{
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
+    queryRetrieve.prepare("SELECT * FROM Multimedias WHERE ScrapbookID = :ScrapbookID");
+    queryRetrieve.bindValue(":ScrapbookID", scrapbookID);
+
+    int multimediaIDIndex = /*query.record().indexOf("MultimediaID");*/ 0;
+    int accountIDIndex = /*query.record().indexOf("AccountID");*/ 1;
+    int scrapbookIDIndex = /*query.record().indexOf("ScrapbookID");*/ 2;
+    int titleIndex = 3;
+    int descriptionIndex = 4;
+    int contentIndex = /*query.record().indexOf("MultimediaContent");*/ 5;
+    int privacyIndex = 6;
+
+    int id = -1;
+    int accountID = -1;
+    int newScrapbookID = -1;
+    QString multimediaTitle = "";
+    QString multimediaDescription = "";
+    QString multimediaContent = "";
+    int privacy = -1;
+    std::vector<MultimediaInfoType> multimediaInfo;
+
+    if (queryRetrieve.exec())
+    {
+        while (queryRetrieve.next())
+        {
+            //retrieve each unit info
+            id = queryRetrieve.value(multimediaIDIndex).toInt();
+            accountID = queryRetrieve.value(accountIDIndex).toInt();
+            newScrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
+            multimediaTitle = queryRetrieve.value(titleIndex).toString();
+            multimediaDescription = queryRetrieve.value(descriptionIndex).toString();
+            multimediaContent = queryRetrieve.value(contentIndex).toString();
+            privacy = queryRetrieve.value(privacyIndex).toInt();
+
+            //add a row into the vector
+            multimediaInfo.push_back(std::make_tuple(id,
+                                                     accountID,
+                                                     newScrapbookID,
+                                                     multimediaTitle,
+                                                     multimediaDescription,
+                                                     multimediaContent,
+                                                     privacy));
+        }
+    }
+    else
+    {
+        qDebug() << "multimedia retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return multimediaInfo;
+}
+
 bool MultimediaDB::multimediaExists(int id) const
 {
     bool exists = false;

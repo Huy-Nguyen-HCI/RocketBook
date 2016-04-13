@@ -1,6 +1,7 @@
 #ifndef TWEETDB_H
 #define TWEETDB_H
 #include "postdb.h"
+#include <vector>
 
 typedef std::tuple<int, int, int, QString, int> TweetInfoType;
 /**
@@ -67,6 +68,14 @@ public:
      * @return Return a tuple containing information about the tweet (tweetID, scrapbookID, tweetContent)
      */
     TweetInfoType retrieveTweetInfo(int tweetID);
+
+    /**
+     * @brief retrieveAllTweetInfo
+     * Retrieve all tweets from a scrapbooik
+     * @param scrapbookID The ID of the scrapbook
+     * @return A vector of all TweetInfoType tuples containing the data of the Tweet
+     */
+    std::vector<TweetInfoType> retrieveAllTweetInfo(int scrapbookID);
 
     /**
      * @brief tweetExists
