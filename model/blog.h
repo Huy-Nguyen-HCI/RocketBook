@@ -41,6 +41,8 @@ public:
      */
     void addComment(Comment* newComment);
 
+    int getID() { return id;}
+
     /**
      * @brief getTitle gets the title for this blog post
      * @return the title for this blog post

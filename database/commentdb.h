@@ -65,14 +65,21 @@ public:
 
     /**
      * @brief retrieveComment
-     * Return a string containing information about the comment with the format
-     *      "[id] [username] [content]"
-     * For example, a possible return is "1 vuh Hello World!"
+     * Return a tuple containing information about the comment
      *
      * @param id the comment's id.
      * @return a string with the id, username and content, or an empty string if id does not exist.
      */
     CommentInfoType retrieveCommentInfo(int id);
+
+    /**
+     * @brief retrieveAllComments
+     * Return a vector of tuple containing information about the comme
+     * @param blogID
+     * The ID of the blog
+     * @return
+     */
+    std::vector<CommentInfoType> retrieveAllCommentInfo(int blogID);
 
     /**
      * @brief commentExists

@@ -95,6 +95,19 @@ void Scrapbook::constructContentContainers()
     }
 
     //reconstruct all comments
+    for (unsigned int i = 0; i < blogList.size(); i++) {
+        int blogID = blogList[i]->getID();
+        std::vector<CommentInfoType> commentInfo = commentDB->retrieveAllCommentInfo(blogID);
+        for (unsigned int i = 0; i < commentInfo.size(); i++) {
+            int commentID = std::get<0>(commentInfo[i]);
+            int accountID = std::get<1>(commentInfo[i]);
+            QString commentContent = std::get<3>(commentInfo[i]);
+            Comment* newComment = new Comment(commentID,
+                                              accountDB->getUsername(accountID),
+                                              commentContent);
+            blogList[i]->addComment(newComment);
+        }
+    }
 
 
 }
