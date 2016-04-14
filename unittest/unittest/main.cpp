@@ -9,6 +9,7 @@
 #include "../../database/commentdb.h"
 #include "../../database/tweetdb.h"
 #include "../../database/multimediadb.h"
+#include "../../database/blogdb.h"
 
 
 //#include "../../model/blog.h"
@@ -1074,6 +1075,37 @@ TEST(MultimediaDatabase, testRetrieveInfo)
     ASSERT_EQ (std::get<6>(info2), pri2);
 }
 
+//BLOGDB TESTS
+
+TEST(BlogDatabase, testAddBlog)
+{
+    const QString path("../unittest/testdirec/Blogs");
+    BlogDB newBDB(path);
+    int bid1 = 5;
+    int aid1 = 6;
+    int sid1 = 7;
+    const QString blogTitle1("Title 1");
+    const QString blogContent1("Description 1");
+    int priv1 = 0;
+    int bid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
+    const QString blogTitle2("Title 2");
+    const QString blogContent2("Description 2");
+    int priv2 = 2;
+    newBDB.removeAllBlogs();
+    bool added = false;
+    added = newBDB.addBlog(bid1, aid1, sid1, blogTitle1, blogContent1, priv1);
+    ASSERT_TRUE(added);
+    ASSERT_TRUE(newBDB.blogExists(bid1));
+    bool added2 = false;
+    added2 = newBDB.addBlog(bid2, aid2, sid2, blogTitle2, blogContent2, priv2);
+    ASSERT_TRUE(added2);
+    ASSERT_TRUE(newBDB.blogExists(bid2));
+
+
+    newBDB.removeAllBlogs();
+}
 
 
 
