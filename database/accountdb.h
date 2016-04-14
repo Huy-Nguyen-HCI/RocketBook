@@ -21,7 +21,7 @@ public:
     /**
      * @brief AccountDB
      *
-     * Construct an account database at ../database/accountDB.sqlite
+     * Construct an account database at ../database/RocketDB.sqlite
      */
     AccountDB();
 
