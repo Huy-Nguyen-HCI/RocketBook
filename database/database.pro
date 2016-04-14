@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     frienddb.cpp    \
     tweetdb.cpp \
     blogdb.cpp \
-    postdb.cpp
+    postdb.cpp \
+    messagedb.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,6 +31,7 @@ HEADERS += \
     frienddb.h  \
     tweetdb.h \
     blogdb.h \
-    postdb.h
+    postdb.h \
+    messagedb.h
 
 

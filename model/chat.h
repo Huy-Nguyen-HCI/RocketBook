@@ -13,6 +13,8 @@ public:
     std::vector<std::string> memberList;
     std::vector<Message*> messageList;
 
+    int chatId;
+
     void addMessage(Message* newMessage);
 };
 
