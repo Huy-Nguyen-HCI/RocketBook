@@ -46,6 +46,45 @@ bool MessageDB::isOpen() const
     return messageDB.isOpen();
 }
 
+bool MessageDB::addMessage(int messageID, int chatID, int accountID, std::string message){
+
+    bool success = false;
+
+        QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
+        queryAdd.prepare("INSERT INTO Messages (MessageID, ChatID, AccountID, Message) VALUES (:MessageID, :ChatID, :AccountID, :Message)");
+   //     queryAdd.bindValue(":MessageID", accountID);
+   //     queryAdd.bindValue(":ChatID", username);
+   //     queryAdd.bindValue(":AccountID", password);
+    //    queryAdd.bindValue(":Message", profileID);
+
+        if(queryAdd.exec())
+        {
+            success = true;
+        }
+        else
+        {
+            qDebug() << "Failed to add message: " << queryAdd.lastError();
+        }
+
+    return success;
+}
+
+bool MessageDB::deleteMessage(int chatID, std::string text){
+
+}
+
+std::vector<std::string>* MessageDB::retrieveChatMessages(int chatID){
+
+}
+
+std::vector<int>* MessageDB::retrieveChatSenders(int chatID){
+
+}
+
+
+
+
+
 /**
 
 bool MessageDB::addMessage(){

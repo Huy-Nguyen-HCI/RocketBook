@@ -7,6 +7,8 @@
 #include <QDebug>
 #include <vector>
 
+//typedef std::tuple<int, QString, QString, int, int> AccountInfoType;
+
 class MessageDB
 {
 public:
@@ -39,12 +41,18 @@ public:
     bool isOpen() const;
 
 
-    bool addMessage();
+    bool addMessage(int messageID, int chatID, int accountID, std::string message);
+    bool deleteMessage(int chatID, std::string text);
+
+    std::vector<std::string>* retrieveChatMessages(int chatID);
+    std::vector<int>* retrieveChatSenders(int chatID);
+
+
 
 
 //    std::vector<int> retrieveChats(int accountId);
-    std::vector<int> retrieveMessages(int chatId);
-    QString retrieveMessageContent(int chatId, int messageId);
+  //  std::vector<int> retrieveMessages(int chatId);
+  //  QString retrieveMessageContent(int chatId, int messageId);
 
 private:
      QString connectionName;
