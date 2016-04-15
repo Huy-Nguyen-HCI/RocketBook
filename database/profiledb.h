@@ -32,6 +32,8 @@ public:
      */
     ProfileDB(const QString& path);
 
+    ProfileDB(const QString &path, QString connectionName);
+
     /**
      * @brief ~ProfileDB
      *

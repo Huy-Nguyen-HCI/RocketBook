@@ -33,6 +33,22 @@ ProfileDB::ProfileDB(const QString &path)
     }
 }
 
+ProfileDB::ProfileDB(const QString &path, QString connectionName)
+{
+    this->connectionName.append(connectionName);
+    QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    profileDB.setDatabaseName(path);
+
+    if (!profileDB.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
+}
+
 ProfileDB::~ProfileDB()
 {
     QSqlDatabase::removeDatabase(connectionName);
