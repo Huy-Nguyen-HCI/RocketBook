@@ -745,25 +745,42 @@ TEST(FriendDatabase, testRetrieveFriendsList)
     newFDB.addFriend(accntid1, friendid2);
     newFDB.addFriend(accntid1, friendid3);
     newFDB.addFriend(accntid1, friendid4);
-    newFDB.addFriend(accntid2, friendid1);
-    newFDB.addFriend(accntid2, friendid2);
-    newFDB.addFriend(accntid2, friendid3);
     newFDB.addFriend(accntid2, friendid4);
+    newFDB.addFriend(accntid2, friendid3);
+    newFDB.addFriend(accntid2, friendid2);
+    newFDB.addFriend(accntid2, friendid1);
 
-    QString expectedFriendsList1("");
-    QString expectedFriendsList2("");
-    expectedFriendsList1 += QString::number(friendid1) + " ";
-    expectedFriendsList1 += QString::number(friendid2) + " ";
-    expectedFriendsList1 += QString::number(friendid3) + " ";
-    expectedFriendsList1 += QString::number(friendid4) + " ";
+//    QString expectedFriendsList1("");
+//    QString expectedFriendsList2("");
+//    expectedFriendsList1 += QString::number(friendid1) + " ";
+//    expectedFriendsList1 += QString::number(friendid2) + " ";
+//    expectedFriendsList1 += QString::number(friendid3) + " ";
+//    expectedFriendsList1 += QString::number(friendid4) + " ";
 
-    expectedFriendsList2 += QString::number(friendid1) + " ";
-    expectedFriendsList2 += QString::number(friendid2) + " ";
-    expectedFriendsList2 += QString::number(friendid3) + " ";
-    expectedFriendsList2 += QString::number(friendid4) + " ";
+//    expectedFriendsList2 += QString::number(friendid1) + " ";
+//    expectedFriendsList2 += QString::number(friendid2) + " ";
+//    expectedFriendsList2 += QString::number(friendid3) + " ";
+//    expectedFriendsList2 += QString::number(friendid4) + " ";
 
-    //ASSERT_EQ(expectedFriendsList1.toStdString(), newFDB.retrieveAllFriends(accntid1).toStdString());
-    //ASSERT_EQ(expectedFriendsList2.toStdString(), newFDB.retrieveAllFriends(accntid2).toStdString());
+    vector<int>* expectedFriends1;
+    expectedFriends1->push_back(friendid1);
+    expectedFriends1->push_back(friendid2);
+    expectedFriends1->push_back(friendid3);
+    expectedFriends1->push_back(friendid4);
+
+    vector<int>* expectedFriends2;
+    expectedFriends2->push_back(friendid4);
+    expectedFriends2->push_back(friendid3);
+    expectedFriends2->push_back(friendid2);
+    expectedFriends2->push_back(friendid1);
+
+    ASSERT_EQ(expectedFriends1, newFDB.retrieveAllFriends(accntid1));
+
+    //ASSERT_EQ(expectedFriends2, newFDB.retrieveAllFriends(accntid2));
+
+
+    //ASSERT_EQ(expectedFriendsList1.toStdString(), newFDB.retrieveAllFriends(accntid1)->toStdString());
+    //ASSERT_EQ(expectedFriendsList2.toStdString(), newFDB.retrieveAllFriends(accntid2)->toStdString());
 
 
 
