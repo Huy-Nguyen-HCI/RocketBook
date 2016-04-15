@@ -43,17 +43,18 @@ bool AccountDB::isOpen() const
     return accountDB.isOpen();
 }
 
-bool AccountDB::addAccount(int accountID, const QString &username, const QString &password, int profileID)
+bool AccountDB::addAccount(int accountID, const QString &username, const QString &password, int profileID, int adminRights)
 {
     bool success = false;
 
     if (!username.isEmpty() && !password.isEmpty()) {
         QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
-        queryAdd.prepare("INSERT INTO Accounts (AccountID, Username, Password, ProfileID) VALUES (:AccountID, :Username, :Password, :ProfileID)");
+        queryAdd.prepare("INSERT INTO Accounts (AccountID, Username, Password, ProfileID, AdminRights) VALUES (:AccountID, :Username, :Password, :ProfileID, :AdminRights)");
         queryAdd.bindValue(":AccountID", accountID);
         queryAdd.bindValue(":Username", username);
         queryAdd.bindValue(":Password", password);
         queryAdd.bindValue(":ProfileID", profileID);
+        queryAdd.bindValue(":AdminRights", adminRights);
 
         if(queryAdd.exec())
         {
@@ -107,11 +108,13 @@ AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName, const QS
     int usernameIndex = /*query.record().indexOf("Username");*/ 1;
     int passwordIndex = /*query.record().indexOf("Password");*/ 2;
     int profileidIndex = /*query.record().indexOf("ProfileID");*/ 3;
+    int adminRightsIndex = 4;
 
     int accountID = -1;
-    int profileID = -1;
     QString user = "";
     QString pass = "";
+    int profileID = -1;
+    int adminRights = -1;
 
     if (queryRetrieve.exec())
     {
@@ -121,15 +124,14 @@ AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName, const QS
             profileID = queryRetrieve.value(profileidIndex).toInt();
             user = queryRetrieve.value(usernameIndex).toString();
             pass = queryRetrieve.value(passwordIndex).toString();
+            adminRights = queryRetrieve.value(adminRightsIndex).toInt();
         }
     }
     else
     {
         qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
-
-    return std::make_tuple(accountID, user, pass, profileID);
-
+    return std::make_tuple(accountID, user, pass, profileID, adminRights);
 }
 
 int AccountDB::retrieveAccountID(const QString& username)

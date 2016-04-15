@@ -171,7 +171,7 @@ std::vector<int>* ChatDB::retrieveAccountsInChat(int chatID){
         qDebug() << "Chat retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return chatList;
+    return accountList;
 
 }
 

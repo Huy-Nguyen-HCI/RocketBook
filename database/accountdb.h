@@ -4,7 +4,7 @@
 #include <QtSql>
 #include <QDebug>
 
-typedef std::tuple<int, QString, QString, int> AccountInfoType;
+typedef std::tuple<int, QString, QString, int, int> AccountInfoType;
 /**
  * @brief The AccountDB class
  *
@@ -14,6 +14,7 @@ typedef std::tuple<int, QString, QString, int> AccountInfoType;
  * Column 2: Username TEXT UNIQUE
  * Column 3: Password TEXT
  * Column 4: ProfileID INTEGER
+ * Column 5: AdminRights
  */
 class AccountDB
 {
@@ -57,7 +58,7 @@ public:
      * @param profileID
      * @return true if added, false if not added
      */
-    bool addAccount(int accountID, const QString &username, const QString &password, int profileID);
+    bool addAccount(int accountID, const QString &username, const QString &password, int profileID, int adminRights);
 
     /**
      * @brief removeAccount

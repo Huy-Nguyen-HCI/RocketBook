@@ -138,13 +138,14 @@ std::string AccountController::askPassword(){
     return password;
 }
 
+///Not working right now -> will fix later when stitching rocketuser and accountcontroller
 bool AccountController::createNewAccount(QString username, QString password){
     //check what is the last ID of the rocketuser in the database, create the ID for the next user
     int rocketUserID = accountDB->getMaxAccountID() + 1;
     //create a new rocket user with the new ID
     RocketUser* currentUser= new RocketUser(rocketUserID);
 
-    return accountDB->addAccount(currentUser->getID(),username,password,currentUser->getProfile()->getID());
+    return accountDB->addAccount(currentUser->getID(),username,password,currentUser->getProfile()->getID(), currentUser->isAdmin());
     //cout << "Successfully created account for " << username.toStdString() << endl;
 
 }

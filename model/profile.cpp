@@ -6,8 +6,8 @@ int Profile::idCnt = 0;
 Profile::Profile(QString fullName, QString photo, QString description)
 {
     //Find the ID of the profile
-    ProfileDB profileDB("../database/profileDB.sqlite");
-    int id = profileDB.getMaxProfileID() + 1;
+    profileDB = new ProfileDB("../database/profileDB.sqlite", "Scrapbook");
+    id = profileDB->getMaxProfileID() + 1;
     idCnt = id;
     idCnt++;
 
@@ -17,10 +17,14 @@ Profile::Profile(QString fullName, QString photo, QString description)
     this->description = description;
 
     //Create a new scrapbook that does not possess the same ID
-    scrapBook = new Scrapbook(profileDB.getMaxScrapbookID() + 1);
+    scrapBook = new Scrapbook(profileDB->getMaxScrapbookID() + 1);
 }
 
-Profile::Profile(int id, QString fullName, QString photo, QString description, int scrapbookID)
+Profile::Profile(int id,
+                 QString fullName,
+                 QString photo,
+                 QString description,
+                 int scrapbookID)
 {
     //Set the ID
     this->id = id;

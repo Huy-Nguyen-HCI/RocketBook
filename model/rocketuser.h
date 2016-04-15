@@ -20,25 +20,47 @@ class RocketUser
 {
 public:
     RocketUser(); ///This is here for now, because I can't code any more, but we'll take it out
+    RocketUser(int id)
+    {
+    } ///This is here for now, because I can't code any more, but we'll take it out
 
     /**
      * @brief RocketUser
-     *
+     * Used to create a new account, must have full name, photo, description, etc.
      * @param fullName
      * @param photo
      * @param description
      */
-    RocketUser(QString fullName, QString photo, QString description);
-    RocketUser(int id);
+    RocketUser(QString username,
+               QString fullName = "",
+               QString photo = "",
+               QString description = "",
+               int adminRights = 0);
+
+    /**
+     * @brief RocketUser
+     * Only used for login, reconstruct everything
+     * @param id
+     * @param username
+     * @param profileID
+     * @param adminRights
+     */
+    RocketUser(int id,
+               QString username,
+               int profileID,
+               int adminRights);
+
     ~RocketUser();
     int getID();
     Profile* getProfile();
+    bool isAdmin() { return adminRights;}
 
 private:
     Profile* profile;
     int id;
     static int idCnt;
-
+    QString username;
+    ProfileDB* profileDB;
     // group list
     std::string password;
     // privacy settings

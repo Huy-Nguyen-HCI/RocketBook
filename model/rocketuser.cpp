@@ -4,34 +4,49 @@
 
 int RocketUser::idCnt = 0;
 
-RocketUser::RocketUser(QString fullName, QString photo, QString description)
+RocketUser::RocketUser(QString username,
+                       QString fullName,
+                       QString photo,
+                       QString description,
+                       int adminRights)
 {
     id=idCnt;
     idCnt++;
+    this->username = username;
+    this->adminRights = adminRights;
+    profileDB = new ProfileDB ("../database/profileDB.sqlite", "Profiles");
     profile = new Profile(fullName, photo, description);
-    ProfileDB profileDB("../database/profileDB.sqlite");
-    profileDB.addProfile(profile->getID(),
-                         profile->getFullName(),
-                         profile->getPicturePath(),
-                         profile->getDescription(),
-                         profile->getScrapbook()->getID());
+    profileDB->addProfile(profile->getID(),
+                          profile->getFullName(),
+                          profile->getPicturePath(),
+                          profile->getDescription(),
+                          profile->getScrapbook()->getID());
+
 }
 
-RocketUser::RocketUser(int id)
+RocketUser::RocketUser(int id,
+                       QString username,
+                       int profileID,
+                       int adminRights = 0)
 {
     this->id = id;
     idCnt = id;
     idCnt++;
+    this->username = username;
+    this->adminRights = adminRights;
 
-    ProfileDB profileDB("../database/profileDB.sqlite");
-//    int profileID =
+    profileDB = new ProfileDB ("../database/profileDB.sqlite", "Profiles");
+    if (profileDB->profileExists(profileID)) {
+        ProfileInfoType profileInfo = profileDB->retrieveProfileInfo(profileID);
 
-//    profile = new Profile();
-//    profileDB.addProfile(profile->getID(),
-//                         profile->getFullName(),
-//                         profile->getPicturePath(),
-//                         profile->getDescription(),
-//                         profile->getScrapbook()->getID());
+        QString fullName = std::get<1>(profileInfo);
+        QString photo = std::get<2>(profileInfo);
+        QString description = std::get<3>(profileInfo);
+        int scrapbookID = std::get<4>(profileInfo);
+        profile = new Profile(profileID, fullName, photo, description, scrapbookID);
+    } else {
+        qDebug() << "Profile does not exists.";
+    }
 }
 
 RocketUser::~RocketUser() {

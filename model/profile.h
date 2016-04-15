@@ -50,6 +50,7 @@ private:
     QString description;
     QString fullName;
     QString picturePath;
+    ProfileDB* profileDB;
     Scrapbook* scrapBook;
 };
 
