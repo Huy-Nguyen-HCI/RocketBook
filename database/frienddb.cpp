@@ -110,7 +110,7 @@ bool FriendDB::removeFriendBothSides(int accountID, int friendID)
     return success;
 }
 
-//Doesn't work yet
+
 std::vector<int>* FriendDB::retrieveAllFriends(int accountId)
 {
     std::vector<int>* friendList= new std::vector<int>();
@@ -135,7 +135,7 @@ std::vector<int>* FriendDB::retrieveAllFriends(int accountId)
         qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return friendList;// friendInfo;
+    return friendList;
 
 }
 

@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     tweetdb.cpp \
     blogdb.cpp \
     postdb.cpp \
-    messagedb.cpp
+    messagedb.cpp \
+    chatdb.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,6 +33,7 @@ HEADERS += \
     tweetdb.h \
     blogdb.h \
     postdb.h \
-    messagedb.h
+    messagedb.h \
+    chatdb.h
 
 

@@ -1,6 +1,8 @@
 #include "messagedb.h"
 
 
+//structure: message Id, Chat Id, Account Id, message (text)
+
 MessageDB::MessageDB()
 {
     connectionName.append("messages");
@@ -48,15 +50,33 @@ bool MessageDB::isOpen() const
 
 bool MessageDB::addMessage(){
 
+//insert:
+// New Message id; same chat id; sended account Id; message
+
+
 }
 
 //message= "user has been added"
+
 bool MessageDB::addAccountToChat(){
+
+
+//Creates entry to database
+//insert:
+//new Message id; same chat id; creator account Id; message="Chat Created"
+
+
+
 
 }
 
-//message="you have created chat"
-bool MessageDB::addChat(){
+
+bool MessageDB::createChat(){
+
+//insert:
+//Message id=0; new chat id; creator account Id; message="Chat Created"
+
+
 
 }
 

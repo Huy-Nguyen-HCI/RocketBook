@@ -46,7 +46,7 @@ public:
     bool addAccountToChat();
 
     //message="you have created chat"
-    bool addChat();
+    bool createChat();
 
 
 
