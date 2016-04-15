@@ -3,6 +3,8 @@
 
 Screen::Screen()
 {
+
+    /**
     // initialize the screen
     initscr();
 
@@ -23,6 +25,9 @@ Screen::Screen()
     // getch returns a single value representing the  function  key,
     // as in KEY_LEFT
     keypad(stdscr, TRUE);
+
+    **/
+
 
 }
 
