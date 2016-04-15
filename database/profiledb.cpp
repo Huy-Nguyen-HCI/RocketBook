@@ -115,7 +115,7 @@ ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
     qDebug() << "Profiles in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM Profiles WHERE ProfileID = (:ProfileID)");
-    queryRetrieve.bindValue(":profileid", profileID);
+    queryRetrieve.bindValue(":ProfileID", profileID);
 
     int profileidIndex = /*query.record().indexOf("profileid");*/ 0;
     int fullnameIndex = /*query.record().indexOf("fullname");*/ 1;
