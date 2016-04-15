@@ -32,7 +32,8 @@ SUBTARGETS    =  \
 		sub-unittest-unittest \
 		sub-database \
 		sub-gui \
-		sub-docs
+		sub-docs \
+		sub-textui
 
 
 sub-model-qmake_all:  FORCE
@@ -160,6 +161,31 @@ sub-docs-install_subtargets: FORCE
 sub-docs-uninstall_subtargets: FORCE
 	@test -d docs/ || mkdir -p docs/
 	cd docs/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/docs/docs.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-textui-qmake_all:  FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile
+	cd textui/ && $(MAKE) -f Makefile qmake_all
+sub-textui: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+sub-textui-make_first: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-textui-all: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-textui-clean: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-textui-distclean: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-textui-install_subtargets: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-textui-uninstall_subtargets: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: rocketbook.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
@@ -271,16 +297,16 @@ rocketbook.pro:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile rocketbook.pro
 
-qmake_all: sub-model-qmake_all sub-unittest-unittest-qmake_all sub-database-qmake_all sub-gui-qmake_all sub-docs-qmake_all FORCE
+qmake_all: sub-model-qmake_all sub-unittest-unittest-qmake_all sub-database-qmake_all sub-gui-qmake_all sub-docs-qmake_all sub-textui-qmake_all FORCE
 
-make_first: sub-model-make_first sub-unittest-unittest-make_first sub-database-make_first sub-gui-make_first sub-docs-make_first  FORCE
-all: sub-model-all sub-unittest-unittest-all sub-database-all sub-gui-all sub-docs-all  FORCE
-clean: sub-model-clean sub-unittest-unittest-clean sub-database-clean sub-gui-clean sub-docs-clean  FORCE
-distclean: sub-model-distclean sub-unittest-unittest-distclean sub-database-distclean sub-gui-distclean sub-docs-distclean  FORCE
+make_first: sub-model-make_first sub-unittest-unittest-make_first sub-database-make_first sub-gui-make_first sub-docs-make_first sub-textui-make_first  FORCE
+all: sub-model-all sub-unittest-unittest-all sub-database-all sub-gui-all sub-docs-all sub-textui-all  FORCE
+clean: sub-model-clean sub-unittest-unittest-clean sub-database-clean sub-gui-clean sub-docs-clean sub-textui-clean  FORCE
+distclean: sub-model-distclean sub-unittest-unittest-distclean sub-database-distclean sub-gui-distclean sub-docs-distclean sub-textui-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-model-install_subtargets sub-unittest-unittest-install_subtargets sub-database-install_subtargets sub-gui-install_subtargets sub-docs-install_subtargets FORCE
-uninstall_subtargets: sub-model-uninstall_subtargets sub-unittest-unittest-uninstall_subtargets sub-database-uninstall_subtargets sub-gui-uninstall_subtargets sub-docs-uninstall_subtargets FORCE
+install_subtargets: sub-model-install_subtargets sub-unittest-unittest-install_subtargets sub-database-install_subtargets sub-gui-install_subtargets sub-docs-install_subtargets sub-textui-install_subtargets FORCE
+uninstall_subtargets: sub-model-uninstall_subtargets sub-unittest-unittest-uninstall_subtargets sub-database-uninstall_subtargets sub-gui-uninstall_subtargets sub-docs-uninstall_subtargets sub-textui-uninstall_subtargets FORCE
 
 sub-model-check:
 	@test -d model/ || mkdir -p model/
@@ -297,7 +323,10 @@ sub-gui-check:
 sub-docs-check:
 	@test -d docs/ || mkdir -p docs/
 	cd docs/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/docs/docs.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-check: sub-model-check sub-unittest-unittest-check sub-database-check sub-gui-check sub-docs-check
+sub-textui-check:
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+check: sub-model-check sub-unittest-unittest-check sub-database-check sub-gui-check sub-docs-check sub-textui-check
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
@@ -307,7 +336,7 @@ FORCE:
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
 
-distdir: sub-model-distdir sub-unittest-unittest-distdir sub-database-distdir sub-gui-distdir sub-docs-distdir FORCE
+distdir: sub-model-distdir sub-unittest-unittest-distdir sub-database-distdir sub-gui-distdir sub-docs-distdir sub-textui-distdir FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents /usr/lib64/qt5/mkspecs/features/spec_pre.prf /usr/lib64/qt5/mkspecs/common/unix.conf /usr/lib64/qt5/mkspecs/common/linux.conf /usr/lib64/qt5/mkspecs/common/sanitize.conf /usr/lib64/qt5/mkspecs/common/gcc-base.conf /usr/lib64/qt5/mkspecs/common/gcc-base-unix.conf /usr/lib64/qt5/mkspecs/common/g++-base.conf /usr/lib64/qt5/mkspecs/common/g++-unix.conf /usr/lib64/qt5/mkspecs/qconfig.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_bootstrap_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_concurrent.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_concurrent_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_core.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_core_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_dbus.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_dbus_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_gui.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_gui_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_network.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_network_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_opengl.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_opengl_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_openglextensions.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_platformsupport_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_printsupport.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_printsupport_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_sql.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_sql_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_testlib.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_testlib_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_widgets.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_widgets_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_xml.pri /usr/lib64/qt5/mkspecs/modules/qt_lib_xml_private.pri /usr/lib64/qt5/mkspecs/features/qt_functions.prf /usr/lib64/qt5/mkspecs/features/qt_config.prf /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mkspecs/features/spec_post.prf .qmake.stash /usr/lib64/qt5/mkspecs/features/exclusive_builds.prf /usr/lib64/qt5/mkspecs/features/default_pre.prf /usr/lib64/qt5/mkspecs/features/resolve_config.prf /usr/lib64/qt5/mkspecs/features/default_post.prf /usr/lib64/qt5/mkspecs/features/qml_debug.prf /usr/lib64/qt5/mkspecs/features/warn_on.prf /usr/lib64/qt5/mkspecs/features/testcase_targets.prf /usr/lib64/qt5/mkspecs/features/exceptions.prf /usr/lib64/qt5/mkspecs/features/yacc.prf /usr/lib64/qt5/mkspecs/features/lex.prf rocketbook.pro $(DISTDIR)/
 
@@ -330,4 +359,8 @@ sub-gui-distdir: FORCE
 sub-docs-distdir: FORCE
 	@test -d docs/ || mkdir -p docs/
 	cd docs/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/docs/docs.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/docs
+
+sub-textui-distdir: FORCE
+	@test -d textui/ || mkdir -p textui/
+	cd textui/ && ( test -e Makefile || $(QMAKE) /auto/bunter_usr23/townleym/wc20160410/textui/textui.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/textui
 

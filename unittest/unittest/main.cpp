@@ -224,7 +224,7 @@ TEST(AccntDatabase, testRetrieveInfo)
 
 TEST(ProfDatabase, testAddProf)
 {
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = 1231;
     const QString fn("fullName");
@@ -251,16 +251,13 @@ TEST(ProfDatabase, testAddProf)
     ASSERT_TRUE(added2);
 
 
-
-    bool allRemoved;
-
     newPDB.removeAllProfiles();
 }
 
 TEST(ProfDatabase, testProfExists)
 {
 
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = 1231;
     const QString fn("fullName");
@@ -293,7 +290,7 @@ TEST(ProfDatabase, testProfExists)
 
 TEST(ProfDatabase, testRmvProf)
 {
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = rand();
     const QString fn("fullName");
@@ -332,7 +329,7 @@ TEST(ProfDatabase, testRmvProf)
 
 TEST(ProfDatabase, testRmvAllProf)
 {
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = rand();
     const QString fn("fullName");
@@ -371,7 +368,7 @@ TEST(ProfDatabase, testRmvAllProf)
 
 TEST(ProfDatabase, testRetrieveInfo)
 {
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = rand();
     const QString fn("fullName");
@@ -407,7 +404,7 @@ TEST(ProfDatabase, testRetrieveInfo)
 
 TEST(ProfDatabase, testRetrieveFullName)
 {
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = rand();
     const QString fn("fullName");
@@ -434,7 +431,7 @@ TEST(ProfDatabase, testRetrieveFullName)
 
 TEST(ProfDatabase, testRetrievePhoto)
 {
-    const QString path("../unittest/testdirec/profiles");
+    const QString path("../unittest/testdirec/Profiles");
     ProfileDB newPDB(path);
     int pid1 = rand();
     const QString fn("fullName");
@@ -1114,6 +1111,34 @@ TEST(BlogDatabase, testAddBlog)
     bool added2 = false;
     added2 = newBDB.addBlog(bid2, aid2, sid2, blogTitle2, blogContent2, priv2);
     ASSERT_TRUE(added2);
+    ASSERT_TRUE(newBDB.blogExists(bid2));
+
+
+    newBDB.removeAllBlogs();
+}
+
+TEST(BlogDatabase, testBlogExists)
+{
+    const QString path("../unittest/testdirec/Blogs");
+    BlogDB newBDB(path);
+    int bid1 = 5;
+    int aid1 = 6;
+    int sid1 = 7;
+    const QString blogTitle1("Title 1");
+    const QString blogContent1("Description 1");
+    int priv1 = 0;
+    int bid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
+    const QString blogTitle2("Title 2");
+    const QString blogContent2("Description 2");
+    int priv2 = 2;
+    newBDB.removeAllBlogs();
+    ASSERT_FALSE(newBDB.blogExists(bid1));
+    ASSERT_FALSE(newBDB.blogExists(bid2));
+    newBDB.addBlog(bid1, aid1, sid1, blogTitle1, blogContent1, priv1);
+    ASSERT_TRUE(newBDB.blogExists(bid1));
+    newBDB.addBlog(bid2, aid2, sid2, blogTitle2, blogContent2, priv2);
     ASSERT_TRUE(newBDB.blogExists(bid2));
 
 

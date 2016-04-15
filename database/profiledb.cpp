@@ -66,7 +66,7 @@ bool ProfileDB::addProfile(int profileID, const QString &fullName, const QString
 
 
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
-    queryAdd.prepare("INSERT INTO Profiles (ProfileID, FullName, Photo, Description) VALUES (:ProfileID, :FullName, :Photo, :Description, :Scrapbook)");
+    queryAdd.prepare("INSERT INTO Profiles (ProfileID, FullName, Photo, Description, ScrapbookID) VALUES (:ProfileID, :FullName, :Photo, :Description, :ScrapbookID)");
     queryAdd.bindValue(":ProfileID", profileID);
     queryAdd.bindValue(":FullName", fullName);
     queryAdd.bindValue(":Photo", photo);
@@ -93,7 +93,7 @@ bool ProfileDB::removeProfile(int profileID)
     {
         QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
         queryDelete.prepare("DELETE FROM Profiles WHERE ProfileID = (:ProfileID)");
-        queryDelete.bindValue(":profileid", profileID);
+        queryDelete.bindValue(":ProfileID", profileID);
         success = queryDelete.exec();
 
         if(!success)
