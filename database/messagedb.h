@@ -42,16 +42,7 @@ public:
     bool addMessage();
 
 
-    //message= "user has been added"
-    bool addAccountToChat();
-
-    //message="you have created chat"
-    bool createChat();
-
-
-
-    std::vector<int> retrieveChats(int accountId);
-    std::vector<int> retrieveAccountsInChat(int chatId);
+//    std::vector<int> retrieveChats(int accountId);
     std::vector<int> retrieveMessages(int chatId);
     QString retrieveMessageContent(int chatId, int messageId);
 

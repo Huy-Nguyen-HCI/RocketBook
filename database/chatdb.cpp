@@ -147,6 +147,34 @@ std::vector<int>* ChatDB::retrieveChatList(int accountID){
 
 }
 
+std::vector<int>* ChatDB::retrieveAccountsInChat(int chatID){
+
+    std::vector<int>* accountList= new std::vector<int>();
+
+    qDebug() << "Chats in db:";
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
+    queryRetrieve.prepare("SELECT ChatID FROM Chats WHERE ChatID = (:ChatID)");
+    queryRetrieve.bindValue(":ChatID", chatID);
+
+    int accountIdIndex = /*query.record().indexOf("AccountID"); */ 0;
+
+    if (queryRetrieve.exec())
+    {
+        while(queryRetrieve.next())
+        {
+            accountList->push_back(queryRetrieve.value(accountIdIndex).toInt());
+        }
+    }
+
+    else
+    {
+        qDebug() << "Chat retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return chatList;
+
+}
+
 bool ChatDB::removeAllChats()
 {
     bool success = false;
