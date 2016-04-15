@@ -4,23 +4,24 @@
 #include <QtSql>
 #include <QDebug>
 
-typedef std::tuple<int, QString, QString, QString> ProfileInfoType;
+typedef std::tuple<int, QString, QString, QString, int> ProfileInfoType;
 /**
  * @brief The ProfileDB class
  *
  * Create an sqlite3 table in a database file.
  * The database structure:
- * Column 1: profileid INTEGER PRIMARY KEY
- * Column 2: fullname TEXT
- * Column 3: photo TEXT
- * Column 4: description TEXT
+ * Column 1: ProfileID INTEGER PRIMARY KEY
+ * Column 2: FullName TEXT
+ * Column 3: Photo TEXT
+ * Column 4: Description TEXT
+ * Column 5: ScrapbookID INTEGER UNIQUE
  */
 class ProfileDB
 {
 public:
     /**
      * @brief ProfileDB
-     * Construct a profile database at ../database/profiledb.sqlite
+     * Construct a profile database at ../database/profileDB.sqlite
      */
     ProfileDB();
 
@@ -54,9 +55,10 @@ public:
      * @param fullName
      * @param photo
      * @param description
+     * @param scrapbookID
      * @return true if added, false if not added
      */
-    bool addProfile(int profileID, const QString &fullName, const QString &photo, const QString &description);
+    bool addProfile(int profileID, const QString &fullName, const QString &photo, const QString &description, int scrapbookID);
 
     /**
      * @brief removeProfile
@@ -120,6 +122,19 @@ public:
      */
     bool removeAllProfiles();
 
+    /**
+     * @brief getMaxProfileID
+     * Get the maximum ID used for profile
+     * @return the maximum ID used for profile
+     */
+    int getMaxProfileID();
+
+    /**
+     * @brief getMaxScrapbookID
+     * Get the maximum ID used for scrapbook
+     * @return the maximum ID used for scrapbook
+     */
+    int getMaxScrapbookID();
 
 private:
     QString connectionName;

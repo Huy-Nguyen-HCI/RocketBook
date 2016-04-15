@@ -230,20 +230,21 @@ TEST(ProfDatabase, testAddProf)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = 231;
 
     int pid2 = 1232;
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
-
+    int sid2 = 232;
 
     newPDB.removeAllProfiles();
 
     bool added = false;
     bool added2 = false;
 
-    added = newPDB.addProfile(pid1, fn, ph, dscr);
-    added2 = newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    added = newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    added2 = newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
 
     ASSERT_TRUE(added);
@@ -265,18 +266,20 @@ TEST(ProfDatabase, testProfExists)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = 231;
 
     int pid2 = 1232;
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
+    int sid2 = 232;
 
 
     newPDB.removeAllProfiles();
 
 
-    newPDB.addProfile(pid1, fn, ph, dscr);
-    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
 
     ASSERT_TRUE(newPDB.profileExists(pid1));
@@ -296,11 +299,13 @@ TEST(ProfDatabase, testRmvProf)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = 231;
 
-    int pid2 = rand();
+    int pid2 = 1232;
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
+    int sid2 = 232;
 
     int pid3 = rand();
     const QString fn3("fullName3");
@@ -310,8 +315,8 @@ TEST(ProfDatabase, testRmvProf)
 
     newPDB.removeAllProfiles();
 
-    newPDB.addProfile(pid1, fn, ph, dscr);
-    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
     bool removed1 = false;
     removed1 = newPDB.removeProfile(pid1);
@@ -333,11 +338,13 @@ TEST(ProfDatabase, testRmvAllProf)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = 231;
 
-    int pid2 = rand();
+    int pid2 = 1232;
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
+    int sid2 = 232;
 
     int pid3 = rand();
     const QString fn3("fullName3");
@@ -347,8 +354,8 @@ TEST(ProfDatabase, testRmvAllProf)
 
     newPDB.removeAllProfiles();
 
-    newPDB.addProfile(pid1, fn, ph, dscr);
-    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
     ASSERT_TRUE(newPDB.profileExists(pid1));
     ASSERT_TRUE(newPDB.profileExists(pid2));
@@ -370,16 +377,18 @@ TEST(ProfDatabase, testRetrieveInfo)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = 231;
 
-    int pid2 = rand();
+    int pid2 = 1232;
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
+    int sid2 = 232;
 
     newPDB.removeAllProfiles();
 
-    newPDB.addProfile(pid1, fn, ph, dscr);
-    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
     ProfileInfoType info = newPDB.retrieveProfileInfo(pid1);
     ASSERT_EQ (std::get<0>(info), pid1);
@@ -404,16 +413,18 @@ TEST(ProfDatabase, testRetrieveFullName)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = rand();
 
     int pid2 = rand();
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
+    int sid2 = rand();
 
     newPDB.removeAllProfiles();
 
-    newPDB.addProfile(pid1, fn, ph, dscr);
-    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
     string actualFN1 = newPDB.retrieveFullname(pid1).toStdString();
     string expectedFN1 = fn.toStdString();
@@ -429,16 +440,18 @@ TEST(ProfDatabase, testRetrievePhoto)
     const QString fn("fullName");
     const QString ph("photo");
     const QString dscr("description");
+    int sid1 = rand();
 
     int pid2 = rand();
     const QString fn2("fullName2");
     const QString ph2("photo2");
     const QString dscr2("description2");
+    int sid2 = rand();
 
     newPDB.removeAllProfiles();
 
-    newPDB.addProfile(pid1, fn, ph, dscr);
-    newPDB.addProfile(pid2, fn2, ph2, dscr2);
+    newPDB.addProfile(pid1, fn, ph, dscr, sid1);
+    newPDB.addProfile(pid2, fn2, ph2, dscr2, sid2);
 
     string actualPh1 = newPDB.retrievePhoto(pid1).toStdString();
     string expectedPh1 = ph.toStdString();

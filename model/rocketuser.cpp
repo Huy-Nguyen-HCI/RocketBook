@@ -4,11 +4,17 @@
 
 int RocketUser::idCnt = 0;
 
-RocketUser::RocketUser()
+RocketUser::RocketUser(QString fullName, QString photo, QString description)
 {
     id=idCnt;
     idCnt++;
-    profile = new Profile();
+    profile = new Profile(fullName, photo, description);
+    ProfileDB profileDB("../database/profileDB.sqlite");
+    profileDB.addProfile(profile->getID(),
+                         profile->getFullName(),
+                         profile->getPicturePath(),
+                         profile->getDescription(),
+                         profile->getScrapbook()->getID());
 }
 
 RocketUser::RocketUser(int id)
@@ -16,7 +22,16 @@ RocketUser::RocketUser(int id)
     this->id = id;
     idCnt = id;
     idCnt++;
-    profile = new Profile();
+
+    ProfileDB profileDB("../database/profileDB.sqlite");
+//    int profileID =
+
+//    profile = new Profile();
+//    profileDB.addProfile(profile->getID(),
+//                         profile->getFullName(),
+//                         profile->getPicturePath(),
+//                         profile->getDescription(),
+//                         profile->getScrapbook()->getID());
 }
 
 RocketUser::~RocketUser() {

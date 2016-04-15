@@ -2,6 +2,7 @@
 #define PROFILE_H
 #include <string>
 #include "scrapbook.h"
+#include "../database/profiledb.h"
 
 /**
  * @brief The Profile class stores information about a user's profile:
@@ -14,19 +15,41 @@
 class Profile
 {
 public:
+
     Profile();
+
+
+    /**
+     * @brief Profile
+     * Constructor to create a new profile, knowing name, photo, description
+     *
+     * @param fullName Full name of the user/group
+     * @param photo Photo link of the user/group
+     * @param description Description of the user/group
+     */
+    Profile(QString fullName, QString photo, QString description);
+
+    /**
+     * @brief Profile
+     * Constructor to reconstruct a profile with ID, full name, photo, description, scrapbook
+     * @param id The ID of the profile
+     */
+    Profile(int id, QString fullName, QString photo, QString description, int scrapbookID);
+
+
     int getID() { return id; }
-    std::string getDescription() { return description; }
-    std::string getName() { return name; }
-    std::string getPicturePath() { return picturePath; }
+    QString getDescription() { return description; }
+    QString getFullName() { return fullName; }
+    QString getPicturePath() { return picturePath; }
+    Scrapbook* getScrapbook() { return scrapBook; }
 
 
 private:
     int id;
     static int idCnt;
-    std::string description;
-    std::string name;
-    std::string picturePath;
+    QString description;
+    QString fullName;
+    QString picturePath;
     Scrapbook* scrapBook;
 };
 

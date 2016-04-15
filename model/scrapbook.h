@@ -25,6 +25,8 @@ public:
     Scrapbook(int id);
     ~Scrapbook();
 
+    int getID() { return id;}
+
 
     //Methods for add to and getting from containers
     Blog* addBlog(Blog* newBlog);

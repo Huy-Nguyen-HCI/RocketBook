@@ -2,7 +2,7 @@
 
 ProfileDB::ProfileDB()
 {
-    connectionName.append("profiles");
+    connectionName.append("Profiles");
     QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     profileDB.setDatabaseName("../database/RocketDB.sqlite");
 
@@ -19,7 +19,7 @@ ProfileDB::ProfileDB()
 
 ProfileDB::ProfileDB(const QString &path)
 {
-    connectionName.append("profiles");
+    connectionName.append("Profiles");
     QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
     profileDB.setDatabaseName(path);
 
@@ -44,17 +44,18 @@ bool ProfileDB::isOpen() const
     return profileDB.isOpen();
 }
 
-bool ProfileDB::addProfile(int profileID, const QString &fullName, const QString &photo, const QString &description)
+bool ProfileDB::addProfile(int profileID, const QString &fullName, const QString &photo, const QString &description, int scrapbookID)
 {
     bool success = false;
 
 
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
-    queryAdd.prepare("INSERT INTO profiles (profileid, fullname, photo, description) VALUES (:profileid, :fullname, :photo, :description)");
-    queryAdd.bindValue(":profileid", profileID);
-    queryAdd.bindValue(":fullname", fullName);
-    queryAdd.bindValue(":photo", photo);
-    queryAdd.bindValue(":description", description);
+    queryAdd.prepare("INSERT INTO Profiles (ProfileID, FullName, Photo, Description) VALUES (:ProfileID, :FullName, :Photo, :Description, :Scrapbook)");
+    queryAdd.bindValue(":ProfileID", profileID);
+    queryAdd.bindValue(":FullName", fullName);
+    queryAdd.bindValue(":Photo", photo);
+    queryAdd.bindValue(":Description", description);
+    queryAdd.bindValue(":ScrapbookID", scrapbookID);
 
     if(queryAdd.exec())
     {
@@ -75,7 +76,7 @@ bool ProfileDB::removeProfile(int profileID)
     if (profileExists(profileID))
     {
         QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
-        queryDelete.prepare("DELETE FROM profiles WHERE profileid = :profileid");
+        queryDelete.prepare("DELETE FROM Profiles WHERE ProfileID = (:ProfileID)");
         queryDelete.bindValue(":profileid", profileID);
         success = queryDelete.exec();
 
@@ -97,18 +98,20 @@ ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
 
     qDebug() << "Profiles in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
-    queryRetrieve.prepare("SELECT * FROM profiles WHERE profileid = (:profileid)");
+    queryRetrieve.prepare("SELECT * FROM Profiles WHERE ProfileID = (:ProfileID)");
     queryRetrieve.bindValue(":profileid", profileID);
 
     int profileidIndex = /*query.record().indexOf("profileid");*/ 0;
     int fullnameIndex = /*query.record().indexOf("fullname");*/ 1;
     int photoIndex = /*query.record().indexOf("photo");*/ 2;
     int descriptionIndex = /*query.record().indexOf("description");*/ 3;
+    int scrapbookIDIndex = 4;
 
     int id = -1;
     QString fullname = "";
     QString photo = "";
     QString description = "";
+    int scrapbookID = -1;
 
     if (queryRetrieve.exec())
     {
@@ -118,6 +121,7 @@ ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
             fullname = queryRetrieve.value(fullnameIndex).toString();
             photo = queryRetrieve.value(photoIndex).toString();
             description = queryRetrieve.value(descriptionIndex).toString();
+            scrapbookID = queryRetrieve.value(scrapbookIDIndex).toInt();
         }
     }
     else
@@ -125,7 +129,7 @@ ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
         qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
     }
 
-    return std::make_tuple(id, fullname, photo, description);
+    return std::make_tuple(id, fullname, photo, description, scrapbookID);
 }
 
 QString ProfileDB::retrieveFullname (int profileID)
@@ -151,8 +155,8 @@ bool ProfileDB::profileExists(int profileID) const
     bool exists = false;
 
     QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
-    checkQuery.prepare("SELECT profileid FROM profiles WHERE profileid = (:profileid)");
-    checkQuery.bindValue(":profileid", profileID);
+    checkQuery.prepare("SELECT ProfileID FROM Profiles WHERE ProfileID = (:ProfileID)");
+    checkQuery.bindValue(":ProfileID", profileID);
 
     if (checkQuery.exec())
     {
@@ -174,7 +178,7 @@ bool ProfileDB::removeAllProfiles()
     bool success = false;
 
     QSqlQuery removeQuery(QSqlDatabase::database(connectionName));
-    removeQuery.prepare("DELETE FROM profiles");
+    removeQuery.prepare("DELETE FROM Profiles");
 
     if (removeQuery.exec())
     {
@@ -186,4 +190,50 @@ bool ProfileDB::removeAllProfiles()
     }
 
     return success;
+}
+
+int ProfileDB::getMaxProfileID()
+{
+    int maxID = -1;
+
+    qDebug() << "Get max profile ID from db:";
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
+    queryMaxID.prepare("SELECT max(ProfileID) FROM Profiles");
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "profile ID max fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID;
+}
+
+int ProfileDB::getMaxScrapbookID()
+{
+    int maxID = -1;
+
+    qDebug() << "Get max profile ID from db:";
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
+    queryMaxID.prepare("SELECT max(ScrapbookID) FROM Profiles");
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "profile ID max fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID;
 }

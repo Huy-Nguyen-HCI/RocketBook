@@ -15,8 +15,6 @@ Scrapbook::Scrapbook(int id)
     this->id = id;
     idCnt = id;
     idCnt++;
-    idCnt++;
-
 
     //construct all lists from database
     constructContentContainers();

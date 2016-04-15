@@ -3,7 +3,7 @@
 #include "profile.h"
 #include <string>
 #include <vector>
-
+#include "../database/profiledb.h"
 
 /**
  * @brief The RocketUser class stores information about the user.
@@ -19,7 +19,16 @@
 class RocketUser
 {
 public:
-    RocketUser();
+    RocketUser(); ///This is here for now, because I can't code any more, but we'll take it out
+
+    /**
+     * @brief RocketUser
+     *
+     * @param fullName
+     * @param photo
+     * @param description
+     */
+    RocketUser(QString fullName, QString photo, QString description);
     RocketUser(int id);
     ~RocketUser();
     int getID();

@@ -1,1 +1,1 @@
-create table profiles (profileid integer primary key, fullname text, photo text, description text);
+create table Profiles (ProfileID integer primary key, FullName text, Photo text, Description text, ScrapbookID integer unique);
