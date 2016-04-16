@@ -10,5 +10,6 @@
         <file>rocket.png</file>
         <file>post.png</file>
         <file>scrapbook.png</file>
+        <file>smallrocket.png</file>
     </qresource>
 </RCC>

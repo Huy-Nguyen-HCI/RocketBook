@@ -29,18 +29,36 @@ SOURCES += logingui.cpp \
     ../model/tweet.cpp \
     ../model/multimedia.cpp \
     ../model/scrapbook.cpp \
-    ../model/profile.cpp
+    ../model/profile.cpp \
+    createaccountgui.cpp \
+    dashboardgui.cpp \
+    scrapbookgui.cpp \
+    createbloggui.cpp \
+    createtweetgui.cpp \
+    createmultimediagui.cpp
 
 
 HEADERS  += logingui.h \
     mainwindow.h \
     createpostgui.h \
     ../database/*.h \
-    ../model/*.h
+    ../model/*.h \
+    createaccountgui.h \
+    dashboardgui.h \
+    scrapbookgui.h \
+    createbloggui.h \
+    createtweetgui.h \
+    createmultimediagui.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
-    createpostgui.ui
+    createpostgui.ui \
+    createaccountgui.ui \
+    dashboardgui.ui \
+    scrapbookgui.ui \
+    createbloggui.ui \
+    createtweetgui.ui \
+    createmultimediagui.ui
 
 RESOURCES += \
     icons.qrc \
