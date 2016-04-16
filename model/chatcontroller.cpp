@@ -94,12 +94,17 @@ void ChatController::selectChat(){
     //Displas participants in each chat
     for(int i=0; i<chatList->size(); i++){
         accountsInChat=chatDB->retrieveAccountsInChat(chatList->at(i));
-        cout << "chat Id: " << i << endl << "members: ";
+
+
+
+        cout << "chat Id: " << chatList->at(i) << endl << "members: ";
+        /**
         for(int j=0; i<accountsInChat->size(); j++){
-    //        cout << accountDB->getUsername(accountsInChat->at(j)) <<
+            cout << accountDB->getUsername(accountsInChat->at(j)).toStdString() << " ";
         }
 
-
+        **/
+        cout << endl;
     }
 
 
