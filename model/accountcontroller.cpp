@@ -45,6 +45,11 @@ void AccountController::run(){
 
                 }
             }
+            else if(userInput==4){
+                ChatController b;
+                b.run();
+                accountDB = new AccountDB("../database/rocketDB.sqlite");
+            }
         }
     }
 }

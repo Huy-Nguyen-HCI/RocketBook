@@ -21,6 +21,7 @@ SOURCES += logingui.cpp \
     createpostgui.cpp \
     ../database/*db.cpp \
     ../model/accountcontroller.cpp \
+    ../model/chatcontroller.cpp \
     ../model/blog.cpp \
     ../model/comment.cpp \
     ../model/feed.cpp \
