@@ -41,10 +41,10 @@ public:
     bool isOpen() const;
 
 
-    bool addMessage(int messageID, int chatID, int accountID, std::string message);
-    bool deleteMessage(int chatID, std::string text);
+    bool addMessage(int messageID, int chatID, int accountID, const QString &message);
+    bool deleteMessage(int chatID, const QString &text);
 
-    std::vector<std::string>* retrieveChatMessages(int chatID);
+    std::vector<QString>* retrieveChatMessages(int chatID);
     std::vector<int>* retrieveChatSenders(int chatID);
 
 

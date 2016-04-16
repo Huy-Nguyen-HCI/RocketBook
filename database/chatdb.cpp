@@ -44,6 +44,29 @@ bool ChatDB::isOpen() const
     return chatDB.isOpen();
 }
 
+bool ChatDB::createChat(int accountID){
+
+    bool success = false;
+    int chatID=getMaxChatID()+1;
+
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
+    queryAdd.prepare("INSERT INTO Chats (ChatID, AccountID) VALUES (:ChatID, :AccountID)");
+    queryAdd.bindValue(":ChatID", chatID);
+    queryAdd.bindValue(":AccountID", accountID);
+
+    if(queryAdd.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "create chat failed: " << queryAdd.lastError();
+    }
+
+    return success;
+
+}
+
 bool ChatDB::addToChat(int chatID, int accountID){
 
     bool success = false;
@@ -192,4 +215,28 @@ bool ChatDB::removeAllChats()
     }
 
     return success;
+}
+
+int ChatDB::getMaxChatID()
+{
+    int maxID;
+
+    qDebug() << "Get max chat ID from db:";
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
+    queryMaxID.prepare("SELECT max(ChatID) FROM Chats");
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "chat retrieval fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID;
+
 }

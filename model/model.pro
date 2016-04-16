@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     accountcontroller.cpp \
     multimedia.cpp \
     message.cpp \
-    chat.cpp
+    chat.cpp \
+    chatcontroller.cpp
 
 HEADERS += \
     rocketuser.h \
@@ -33,4 +34,5 @@ HEADERS += \
     accountcontroller.h \
     multimedia.h \
     message.h \
-    chat.h
+    chat.h \
+    chatcontroller.h

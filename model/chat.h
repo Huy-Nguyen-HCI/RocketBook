@@ -3,19 +3,22 @@
 
 #include <string>
 #include <vector>
-#include <message.h>
+#include "message.h"
 
 class Chat
 {
 public:
-    Chat();
+    Chat(int chatId);
+
 
     std::vector<std::string> memberList;
     std::vector<Message*> messageList;
 
     int chatId;
+    int getChatId();
 
     void addMessage(Message* newMessage);
+
 };
 
 #endif // CHAT_H

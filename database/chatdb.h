@@ -44,6 +44,10 @@ public:
     bool removeFromChat(int chatID, int accountID);
     std::vector<int>* retrieveChatList(int accountID);
     std::vector<int>* retrieveAccountsInChat(int chatId);
+    bool createChat(int accountID);
+
+    int getMaxChatID();
+
 
     bool inChat(int chatID, int accountID) const;
 

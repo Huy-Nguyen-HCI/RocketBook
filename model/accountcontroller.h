@@ -9,6 +9,7 @@
 #include "../database/frienddb.h"
 #include <string>
 #include "rocketuser.h"
+#include "chatcontroller.h"
 
 
 /**
