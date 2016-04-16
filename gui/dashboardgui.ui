@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>589</width>
-    <height>311</height>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,12 +39,20 @@ p, li { white-space: pre-wrap; }
        <property name="text">
         <string>Feed</string>
        </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/feed.png</normaloff>:/feed.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="aboutMeButton">
        <property name="text">
         <string>About me</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/user.png</normaloff>:/user.png</iconset>
        </property>
       </widget>
      </item>
@@ -53,12 +61,20 @@ p, li { white-space: pre-wrap; }
        <property name="text">
         <string>Scrapbook</string>
        </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/scrapbook.png</normaloff>:/scrapbook.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="friendsButton">
        <property name="text">
         <string>Friends</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/friends.png</normaloff>:/friends.png</iconset>
        </property>
       </widget>
      </item>
@@ -67,12 +83,20 @@ p, li { white-space: pre-wrap; }
        <property name="text">
         <string>Groups</string>
        </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/group.png</normaloff>:/group.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="messagingButton">
        <property name="text">
         <string>Messaging</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/message.png</normaloff>:/message.png</iconset>
        </property>
       </widget>
      </item>
@@ -111,6 +135,8 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
