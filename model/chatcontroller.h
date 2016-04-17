@@ -8,6 +8,7 @@
 #include "../database/chatdb.h"
 #include "../database/messagedb.h"
 #include "../database/accountdb.h"
+#include "../database/frienddb.h"
 #include <string>
 #include "rocketuser.h"
 #include "chat.h"
@@ -23,15 +24,18 @@ public:
     void run();
     void selectChat();
     void createChat();
+    void addMemberToChat();
 
 
     int requestInput();
+    int requestInput2();
     std::string askUserName();
 
 
 
 private:
     AccountDB* accountDB;
+    FriendDB* friendDB;
     ChatDB* chatDB;
     MessageDB* messageDB;
 };

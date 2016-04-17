@@ -7,6 +7,7 @@ ChatController::ChatController()
     chatDB = new ChatDB("../database/rocketDB.sqlite");
     messageDB = new MessageDB("../database/rocketDB.sqlite");
     accountDB = new AccountDB("../database/rocketDB.sqlite");
+    friendDB = new FriendDB("../database/rocketDB.sqlite");
 
 }
 
@@ -30,19 +31,28 @@ void ChatController::run(){
             else if (userInput == 1) // create account
                 createChat();
 
-            else if (userInput == 2) // log in
+            else if (userInput == 2){ // log in
                 selectChat();
-            /**
-            else if (userInput == 3){
+
+
                 int input2=requestInput2();
 
 
                 if (input2==0) break;
+
+                else if(input2==1){ //Add member to chat
+                   addMemberToChat();
+                }
+
+
+                /**
                 else if(input2==1){
                     std::string username=askUserName();
                     std::string friendname=askUserName();
                     addFriend(QString::fromStdString(username), QString::fromStdString(friendname));
                 }
+
+
                 else if(input2 == 2){
                     std::string username=askUserName();
                     std::string friendname=askUserName();
@@ -56,12 +66,33 @@ void ChatController::run(){
                 }
             }
             **/
+            }
         }
 
     }
 }
 
 void ChatController::createChat(){
+    QString username, friendname;
+    username=QString::fromStdString(askUserName());
+    friendname=QString::fromStdString(askUserName());
+    //Checks if user exits
+    if(friendDB->friendshipExists(accountDB->retrieveAccountID(username),accountDB->retrieveAccountID(friendname))){
+
+        //vvvvvvvvvvvvvvvvvv here
+        if(chatDB->createChat(accountDB->retrieveAccountID(username)))
+            cout << friendname.toStdString() << " successfully added to chat" << endl;
+        else
+            cout << "Chat Creation failed" << endl;
+
+    }
+    else{
+        cout << "Accounts are not friends and thus cannot be added to chat" << endl;
+
+    }
+}
+
+void ChatController::addMemberToChat(){
     QString username;
     username=QString::fromStdString(askUserName());
     if(accountDB->accountExists(username)){
@@ -98,12 +129,11 @@ void ChatController::selectChat(){
 
 
         cout << "chat Id: " << chatList->at(i) << endl << "members: ";
-        /**
-        for(int j=0; i<accountsInChat->size(); j++){
+
+        for(int j=0; j<accountsInChat->size(); j++){
             cout << accountDB->getUsername(accountsInChat->at(j)).toStdString() << " ";
         }
 
-        **/
         cout << endl;
     }
 
@@ -130,6 +160,13 @@ std::string ChatController::askUserName(){
 int ChatController::requestInput(){
     int userInput;
     cout << "\nEnter 0 to quit, 1 to create chat, 2 select chat, 3  \n";
+    cin >> userInput;
+    return userInput;
+}
+
+int ChatController::requestInput2(){
+    int userInput;
+    cout << "\nEnter 0 to go back, 1 to add account to chat, 2 to send message, 3 to remove account from chat \n";
     cin >> userInput;
     return userInput;
 }

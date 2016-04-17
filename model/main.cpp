@@ -3,13 +3,14 @@
 #include <string>
 #include "../database/accountdb.h"
 #include "accountcontroller.h"
+#include "chatcontroller.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
-    AccountController a;
+    ChatController a;
     a.run();
     return 0;
 }
