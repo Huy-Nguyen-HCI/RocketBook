@@ -14,23 +14,18 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>30</y>
-      <width>120</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="page"/>
-    <widget class="QWidget" name="page_2"/>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="page"/>
+      <widget class="QWidget" name="page_2"/>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
     <string>toolBar</string>
@@ -46,7 +41,7 @@
    </attribute>
    <addaction name="actionAboutMe"/>
    <addaction name="separator"/>
-   <addaction name="actionFeed_2"/>
+   <addaction name="actionFeed"/>
    <addaction name="actionNotifications"/>
    <addaction name="actionFriend"/>
    <addaction name="actionScrapbook"/>
@@ -56,7 +51,7 @@
    <addaction name="separator"/>
    <addaction name="actionLog_out"/>
   </widget>
-  <action name="actionFeed_2">
+  <action name="actionFeed">
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/feed.png</normaloff>:/feed.png</iconset>

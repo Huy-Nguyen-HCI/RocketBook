@@ -18,7 +18,6 @@ TEMPLATE = app
 SOURCES += logingui.cpp \
     mainwindow.cpp \
     main.cpp \
-    createpostgui.cpp \
     ../database/*db.cpp \
     ../model/accountcontroller.cpp \
     ../model/chatcontroller.cpp \
@@ -36,12 +35,14 @@ SOURCES += logingui.cpp \
     scrapbookgui.cpp \
     createbloggui.cpp \
     createtweetgui.cpp \
-    createmultimediagui.cpp
+    createmultimediagui.cpp \
+    displaybloggui.cpp \
+    displaytweetgui.cpp \
+    displaymultimediagui.cpp
 
 
 HEADERS  += logingui.h \
     mainwindow.h \
-    createpostgui.h \
     ../database/*.h \
     ../model/*.h \
     createaccountgui.h \
@@ -49,17 +50,22 @@ HEADERS  += logingui.h \
     scrapbookgui.h \
     createbloggui.h \
     createtweetgui.h \
+    displaybloggui.h \
+    displaytweetgui.h \
+    displaymultimediagui.h \
     createmultimediagui.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
-    createpostgui.ui \
     createaccountgui.ui \
     dashboardgui.ui \
     scrapbookgui.ui \
     createbloggui.ui \
     createtweetgui.ui \
-    createmultimediagui.ui
+    createmultimediagui.ui \
+    displaybloggui.ui \
+    displaytweetgui.ui \
+    displaymultimediagui.ui
 
 RESOURCES += \
     icons.qrc \

@@ -7,6 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    dashboard = new DashboardGUI();
+    scrapbook = new ScrapbookGUI();
+
+    ui->stackedWidget->addWidget(dashboard);
+    ui->stackedWidget->addWidget(scrapbook);
 }
 
 MainWindow::~MainWindow()
@@ -15,3 +20,43 @@ MainWindow::~MainWindow()
 }
 
 
+
+void MainWindow::on_actionFeed_triggered()
+{
+    ui->stackedWidget->setCurrentWidget(dashboard);
+}
+
+void MainWindow::on_actionAboutMe_triggered()
+{
+
+}
+
+void MainWindow::on_actionNotifications_triggered()
+{
+
+}
+
+void MainWindow::on_actionFriend_triggered()
+{
+
+}
+
+void MainWindow::on_actionLog_out_triggered()
+{
+
+}
+
+void MainWindow::on_actionGroups_triggered()
+{
+
+}
+
+void MainWindow::on_actionMessaging_triggered()
+{
+
+}
+
+void MainWindow::on_actionScrapbook_triggered()
+{
+    ui->stackedWidget->setCurrentWidget(scrapbook);
+}
