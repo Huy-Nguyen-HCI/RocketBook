@@ -10,6 +10,9 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
+    ChatController a;
+    a.run();
+
 
     return 0;
 }

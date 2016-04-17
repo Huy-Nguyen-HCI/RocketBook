@@ -22,13 +22,15 @@ public:
     ChatController();
 
     void run();
-    void selectChat();
-    void createChat();
-    void addMemberToChat();
+    int selectChat(QString username);
+    void createChat(QString username);
+    void addMemberToChat(QString username, int chatId);
+    void sendMessage(QString username, int chatId);
 
 
     int requestInput();
     int requestInput2();
+    int userPicksChat();
     std::string askUserName();
 
 
