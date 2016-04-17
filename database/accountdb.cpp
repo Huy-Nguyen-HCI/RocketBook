@@ -95,15 +95,13 @@ bool AccountDB::removeAccount(const QString& username)
     return success;
 }
 
-AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName, const QString& password)
+AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName)
 {
 
     qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
-    queryRetrieve.prepare("SELECT * FROM Accounts WHERE username = :Username AND Password = :Password");
+    queryRetrieve.prepare("SELECT * FROM Accounts WHERE username = :Username");
     queryRetrieve.bindValue(":Username", userName);
-    queryRetrieve.bindValue(":Password", password);
-
     int accountIDIndex = /*query.record().indexOf("AccountID");*/ 0;
     int usernameIndex = /*query.record().indexOf("Username");*/ 1;
     int passwordIndex = /*query.record().indexOf("Password");*/ 2;

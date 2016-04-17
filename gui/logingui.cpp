@@ -24,7 +24,7 @@ void LoginGUI::on_loginButton_clicked()
     if (accountController->checkAccountExists(username)) {
 
         /// TODO: if username and password match, log in and segue to main view
-        if (accountController->verifyPassword(username, password)) {
+        if (accountController->login(username, password)) {
             ui->message->setText("Welcome, " + username + "!");
         }
         else {
@@ -39,21 +39,22 @@ void LoginGUI::on_loginButton_clicked()
 
 void LoginGUI::on_createAccountButton_clicked()
 {
-    QString username = ui->usernameBox->text();
-    QString password = ui->passwordBox->text();
+    ///TODO: Go to the create account gui
+//    QString username = ui->usernameBox->text();
+//    QString password = ui->passwordBox->text();
 
-    // check username
-    if (accountController->checkAccountExists(username)) {
+//    // check username
+//    if (accountController->checkAccountExists(username)) {
 
-        ui->message->setText("Error: Account already exists!");
-    }
-    // if username does not exist, create account and display successful message
-    else {
-        if (accountController->createNewAccount(username, password)) {
-            ui->message->setText("Create account " + username + " successful!");
-        }
-        else
-            ui->message->setText("Error occured while trying to create new account.");
-    }
+//        ui->message->setText("Error: Account already exists!");
+//    }
+//    // if username does not exist, create account and display successful message
+//    else {
+//        if (accountController->createNewAccount(username, password)) {
+//            ui->message->setText("Create account " + username + " successful!");
+//        }
+//        else
+//            ui->message->setText("Error occured while trying to create new account.");
+//    }
 
 }

@@ -23,10 +23,10 @@ public:
      * @brief Constructs and runs account controller.
      */
     AccountController();
-    /**
-     * @brief Runs account controller in the terminal. Asks for user input and performs indicated action.
-     */
-    void run();
+//    /**
+//     * @brief Runs account controller in the terminal. Asks for user input and performs indicated action.
+//     */
+//    void run();
 
     /**
      * @brief Creates new account and adds account information to database.
@@ -34,7 +34,12 @@ public:
      * @param password Account password
      * @return true if adding is successful and false otherwise
      */
-    bool createNewAccount(QString username, QString password);
+    bool createNewAccount(QString username,
+                          QString password,
+                          QString fullName = "",
+                          QString photo = "",
+                          QString description = "",
+                          int adminRights = 0);
 
     /**
      * @brief Checks of account exists
@@ -43,24 +48,17 @@ public:
      */
     bool checkAccountExists(QString username);
 
-    /**
-     * @brief Checks if user entered correct password
-     * @param username Account username entered by user
-     * @param password Password entered by user
-     * @return True if password entered by user matches stored password.
-     */
-    bool verifyPassword(QString username,QString password);
+
 
     /**
      * @brief Sequence of actions for attempting to login into an account.
      */
-    void login();
+    bool login(QString username, QString password);
 
     /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
     void addFriend(QString username, QString friendname);
-
 
     void deleteFriend(QString username, QString friendname);
 
@@ -70,24 +68,16 @@ public:
 private:
     AccountDB* accountDB;
     FriendDB* friendDB;
-    std::string askUserName();
-    std::string askPassword();
-
-
+    RocketUser* currentUser;
 
     /**
-     * @brief Parses account info and returns only account password
-     * @param accountinfo Database row for a given username
-     * @return Account's stored password
+     * @brief Checks if user entered correct password
+     * @param username Account username entered by user
+     * @param password Password entered by user
+     * @return True if password entered by user matches stored password.
      */
-    QString getPassword(AccountInfoType accountinfo);
+    bool verifyPassword(QString username,QString password);
 
-    QString getUsername(AccountInfoType accountinfo);
-
-    /**
-     * @brief Sequence of actions for attempting to create a new account.
-     */
-    void createAccount();
     /**
      * @brief Asks for user to select operation
      * @returns Integer value representing user selection

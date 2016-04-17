@@ -78,7 +78,7 @@ public:
      * @param password password of the account
      * @return a string with AccountID, Username, Password, ProfileID; return "" if the account does not exist.
      */
-    AccountInfoType retrieveAccountInfo(const QString& username, const QString& password);
+    AccountInfoType retrieveAccountInfo(const QString& username);
 
     int retrieveAccountID(const QString& username);
 
@@ -106,8 +106,6 @@ public:
     int getMaxAccountID();
 
     QString getUsername(int accountID);
-
-    static QString getAccountPassword(AccountInfoType info) { return std::get<2>(info); }
 
 private:
     QString connectionName;

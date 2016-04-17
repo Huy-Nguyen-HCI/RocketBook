@@ -19,10 +19,6 @@
 class RocketUser
 {
 public:
-    RocketUser(); ///This is here for now, because I can't code any more, but we'll take it out
-    RocketUser(int id)
-    {
-    } ///This is here for now, because I can't code any more, but we'll take it out
 
     /**
      * @brief RocketUser
@@ -31,7 +27,8 @@ public:
      * @param photo
      * @param description
      */
-    RocketUser(QString username,
+    RocketUser(int id,
+               QString username,
                QString fullName = "",
                QString photo = "",
                QString description = "",

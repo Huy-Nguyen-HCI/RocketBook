@@ -212,7 +212,7 @@ TEST(AccntDatabase, testRetrieveInfo)
     info1 = info1 + to_string(adminrights1);
 
     std::tuple<int,QString,QString,int, int> actualInfo1 =
-            newDB.retrieveAccountInfo(un, pw);
+            newDB.retrieveAccountInfo(un);
 
     ASSERT_EQ (std::get<0>(actualInfo1), id1);
     ASSERT_EQ (std::get<1>(actualInfo1), un);
@@ -222,7 +222,7 @@ TEST(AccntDatabase, testRetrieveInfo)
 
 
     std::tuple<int,QString,QString,int, int> actualInfo2 =
-            newDB.retrieveAccountInfo(un2, pw2);
+            newDB.retrieveAccountInfo(un2);
 
     ASSERT_EQ (std::get<0>(actualInfo2), id2);
     ASSERT_EQ (std::get<1>(actualInfo2), un2);

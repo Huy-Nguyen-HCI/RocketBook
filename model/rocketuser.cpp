@@ -4,13 +4,15 @@
 
 int RocketUser::idCnt = 0;
 
-RocketUser::RocketUser(QString username,
+RocketUser::RocketUser(int id,
+                       QString username,
                        QString fullName,
                        QString photo,
                        QString description,
                        int adminRights)
 {
-    id=idCnt;
+    this->id = id;
+    idCnt = id;
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;

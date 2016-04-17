@@ -30,9 +30,12 @@ int main(int argc, char *argv[]) {
     AccountController *acc = new AccountController();
     LoginGUI *loginView = new LoginGUI(acc);
 
+
     MainWindow w;
     w.setLoginView(loginView);
     w.show();
+
+
 
     return a.exec();
 }
