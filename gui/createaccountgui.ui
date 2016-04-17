@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Create a new account</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -19,10 +19,10 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/smallrocket.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/rocket.png</pixmap>
+        <pixmap resource="icons.qrc">:/rocket.png</pixmap>
        </property>
       </widget>
      </item>
@@ -150,8 +150,17 @@
      </item>
     </layout>
    </item>
+   <item>
+    <widget class="QLabel" name="message">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -25,7 +25,9 @@ void LoginGUI::on_loginButton_clicked()
 
         /// TODO: if username and password match, log in and segue to main view
         if (accountController->login(username, password)) {
-            ui->message->setText("Welcome, " + username + "!");
+            this->close();
+            main->setUsername(username);
+            main->show();
         }
         else {
             ui->message->setText("Error: Wrong password!");
@@ -39,22 +41,15 @@ void LoginGUI::on_loginButton_clicked()
 
 void LoginGUI::on_createAccountButton_clicked()
 {
-    ///TODO: Go to the create account gui
-//    QString username = ui->usernameBox->text();
-//    QString password = ui->passwordBox->text();
 
-//    // check username
-//    if (accountController->checkAccountExists(username)) {
+    this->close();
+    createAccountView->clearAllFields();
+    createAccountView->show();
 
-//        ui->message->setText("Error: Account already exists!");
-//    }
-//    // if username does not exist, create account and display successful message
-//    else {
-//        if (accountController->createNewAccount(username, password)) {
-//            ui->message->setText("Create account " + username + " successful!");
-//        }
-//        else
-//            ui->message->setText("Error occured while trying to create new account.");
-//    }
+}
 
+void LoginGUI::clearAllFields() {
+    ui->usernameBox->setText("");
+    ui->passwordBox->setText("");
+    ui->message->setText("");
 }

@@ -44,54 +44,40 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionSettings"/>
-   <addaction name="actionAccounts"/>
+   <addaction name="actionAboutMe"/>
    <addaction name="separator"/>
-   <addaction name="actionFriends"/>
+   <addaction name="actionFeed_2"/>
    <addaction name="actionNotifications"/>
-   <addaction name="actionFeed"/>
-   <addaction name="separator"/>
-   <addaction name="actionGroups"/>
-   <addaction name="separator"/>
+   <addaction name="actionFriend"/>
    <addaction name="actionScrapbook"/>
-   <addaction name="actionNew_Post"/>
+   <addaction name="separator"/>
+   <addaction name="actionMessaging"/>
+   <addaction name="actionGroups"/>
    <addaction name="separator"/>
    <addaction name="actionLog_out"/>
   </widget>
-  <action name="actionSettings">
+  <action name="actionFeed_2">
    <property name="icon">
-    <iconset>
-     <normaloff>settings.png</normaloff>settings.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/feed.png</normaloff>:/feed.png</iconset>
    </property>
    <property name="text">
-    <string>Settings</string>
+    <string>Feed</string>
    </property>
    <property name="toolTip">
-    <string>User settings</string>
+    <string>View Feed</string>
    </property>
   </action>
-  <action name="actionAccounts">
+  <action name="actionAboutMe">
    <property name="icon">
     <iconset>
      <normaloff>user.png</normaloff>user.png</iconset>
    </property>
    <property name="text">
-    <string>Accounts</string>
+    <string>About Me</string>
    </property>
    <property name="toolTip">
     <string>Manage account</string>
-   </property>
-  </action>
-  <action name="actionFriends">
-   <property name="icon">
-    <iconset>
-     <normaloff>friends.png</normaloff>friends.png</iconset>
-   </property>
-   <property name="text">
-    <string>Friends</string>
-   </property>
-   <property name="toolTip">
-    <string>See friend list</string>
    </property>
   </action>
   <action name="actionNotifications">
@@ -106,13 +92,13 @@
     <string>View notifications</string>
    </property>
   </action>
-  <action name="actionFeed">
+  <action name="actionFriend">
    <property name="icon">
-    <iconset>
-     <normaloff>feed.png</normaloff>feed.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/friends.png</normaloff>:/friends.png</iconset>
    </property>
    <property name="text">
-    <string>Feed</string>
+    <string>Friends</string>
    </property>
    <property name="toolTip">
     <string>See the latest feed</string>
@@ -142,13 +128,13 @@
     <string>View your groups</string>
    </property>
   </action>
-  <action name="actionNew_Post">
+  <action name="actionMessaging">
    <property name="icon">
     <iconset resource="icons.qrc">
-     <normaloff>:/post.png</normaloff>:/post.png</iconset>
+     <normaloff>:/message.png</normaloff>:/message.png</iconset>
    </property>
    <property name="text">
-    <string>New Post</string>
+    <string>Messaging</string>
    </property>
    <property name="toolTip">
     <string>Create a new post</string>

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "logingui.h"
+#include "createaccountgui.h"
 
 /**
     IMAGE SOURCES:
@@ -25,17 +26,20 @@
  * @return
  */
 int main(int argc, char *argv[]) {
+
     QApplication a(argc, argv);
+    AccountController acc;
 
-    AccountController *acc = new AccountController();
-    LoginGUI *loginView = new LoginGUI(acc);
+    MainWindow main;
+    LoginGUI loginView(&acc);
+    CreateAccountGUI createAccountView(&acc);
+
+    loginView.setMainWindow(&main);
+    loginView.setCreateAccountView(&createAccountView);
+    createAccountView.setLoginView(&loginView);
 
 
-    MainWindow w;
-    w.setLoginView(loginView);
-    w.show();
-
-
+    loginView.show();
 
     return a.exec();
 }
