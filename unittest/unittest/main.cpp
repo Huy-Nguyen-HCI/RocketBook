@@ -776,7 +776,7 @@ TEST(FriendDatabase, testRetrieveFriendsList)
 
     ASSERT_EQ(expectedFriends1, newFDB.retrieveAllFriends(accntid1));
 
-    //ASSERT_EQ(expectedFriends2, newFDB.retrieveAllFriends(accntid2));
+    ASSERT_EQ(expectedFriends2, newFDB.retrieveAllFriends(accntid2));
 
 
     //ASSERT_EQ(expectedFriendsList1.toStdString(), newFDB.retrieveAllFriends(accntid1)->toStdString());
@@ -1209,6 +1209,119 @@ TEST(BlogDatabase, testRmvBlog)
     ASSERT_TRUE(rmv2);
     ASSERT_FALSE(newBDB.blogExists(bid1));
     ASSERT_FALSE(newBDB.blogExists(bid2));
+
+}
+
+TEST(BlogDatabase, testRetrieveBlogInfo)
+{
+    const QString path("../unittest/testdirec/Blogs");
+    BlogDB newBDB(path);
+    int bid1 = 5;
+    int aid1 = 6;
+    int sid1 = 7;
+    const QString blogTitle1("Title 1");
+    const QString blogContent1("Description 1");
+    int priv1 = 0;
+    int bid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
+    const QString blogTitle2("Title 2");
+    const QString blogContent2("Description 2");
+    int priv2 = 2;
+    newBDB.removeAllBlogs();
+    newBDB.addBlog(bid1, aid1, sid1, blogTitle1, blogContent1, priv1);
+    newBDB.addBlog(bid2, aid2, sid2, blogTitle2, blogContent2, priv2);
+
+    BlogInfoType info = newBDB.retrieveBlogInfo(bid1);
+    ASSERT_EQ (std::get<0>(info), bid1);
+    ASSERT_EQ (std::get<1>(info), aid1);
+    ASSERT_EQ (std::get<2>(info), sid1);
+    ASSERT_EQ (std::get<3>(info), blogTitle1);
+    ASSERT_EQ (std::get<4>(info), blogContent1);
+    ASSERT_EQ (std::get<5>(info), priv1);
+
+    BlogInfoType info2 = newBDB.retrieveBlogInfo(bid2);
+    ASSERT_EQ (std::get<0>(info2), bid2);
+    ASSERT_EQ (std::get<1>(info2), aid2);
+    ASSERT_EQ (std::get<2>(info2), sid2);
+    ASSERT_EQ (std::get<3>(info2), blogTitle2);
+    ASSERT_EQ (std::get<4>(info2), blogContent2);
+    ASSERT_EQ (std::get<5>(info2), priv2);
+
+    newBDB.removeAllBlogs();
+
+}
+
+TEST(BlogDatabase, testRetrieveAllBlogInfo)
+{
+    const QString path("../unittest/testdirec/Blogs");
+    BlogDB newBDB(path);
+    int bid1 = 5;
+    int aid1 = 6;
+    int sid1 = 7;
+    const QString blogTitle1("Title 1");
+    const QString blogContent1("Description 1");
+    int priv1 = 0;
+    int bid2 = 15;
+    int aid2 = 16;
+    int sid2 = 17;
+    const QString blogTitle2("Title 2");
+    const QString blogContent2("Description 2");
+    int priv2 = 2;
+    int bid3 = 35;
+    int aid3 = 36;
+    const QString blogTitle3("Title 3");
+    const QString blogContent3("Description 3");
+    int priv3 = 33;
+    int bid4 = 45;
+    int aid4 = 46;
+    const QString blogTitle4("Title 4");
+    const QString blogContent4("Description 4");
+    int priv4 = 4;
+
+    newBDB.removeAllBlogs();
+    newBDB.addBlog(bid1, aid1, sid1, blogTitle1, blogContent1, priv1);
+    newBDB.addBlog(bid2, aid2, sid2, blogTitle2, blogContent2, priv2);
+    newBDB.addBlog(bid3, aid3, sid1, blogTitle3, blogContent3, priv3);
+    newBDB.addBlog(bid4, aid4, sid2, blogTitle4, blogContent4, priv4);
+
+    vector<BlogInfoType> info = newBDB.retrieveAllBlogInfo(sid1);
+    vector<BlogInfoType> infoTwo = newBDB.retrieveAllBlogInfo(sid2);
+
+    std::tuple<int,int,int, QString, QString, int> info1 = info.at(0);
+    std::tuple<int,int,int, QString, QString, int> info3 = info.at(1);
+    std::tuple<int,int,int, QString, QString, int> info2 = infoTwo.at(0);
+    std::tuple<int,int,int, QString, QString, int> info4 = infoTwo.at(1);
+
+    ASSERT_EQ (std::get<0>(info1), bid1);
+    ASSERT_EQ (std::get<1>(info1), aid1);
+    ASSERT_EQ (std::get<2>(info1), sid1);
+    ASSERT_EQ (std::get<3>(info1), blogTitle1);
+    ASSERT_EQ (std::get<4>(info1), blogContent1);
+    ASSERT_EQ (std::get<5>(info1), priv1);
+
+    ASSERT_EQ (std::get<0>(info2), bid2);
+    ASSERT_EQ (std::get<1>(info2), aid2);
+    ASSERT_EQ (std::get<2>(info2), sid2);
+    ASSERT_EQ (std::get<3>(info2), blogTitle2);
+    ASSERT_EQ (std::get<4>(info2), blogContent2);
+    ASSERT_EQ (std::get<5>(info2), priv2);
+
+    ASSERT_EQ (std::get<0>(info3), bid3);
+    ASSERT_EQ (std::get<1>(info3), aid3);
+    ASSERT_EQ (std::get<2>(info3), sid1);
+    ASSERT_EQ (std::get<3>(info3), blogTitle3);
+    ASSERT_EQ (std::get<4>(info3), blogContent3);
+    ASSERT_EQ (std::get<5>(info3), priv3);
+
+    ASSERT_EQ (std::get<0>(info4), bid4);
+    ASSERT_EQ (std::get<1>(info4), aid4);
+    ASSERT_EQ (std::get<2>(info4), sid2);
+    ASSERT_EQ (std::get<3>(info4), blogTitle4);
+    ASSERT_EQ (std::get<4>(info4), blogContent4);
+    ASSERT_EQ (std::get<5>(info4), priv4);
+
+    newBDB.removeAllBlogs();
 
 }
 
