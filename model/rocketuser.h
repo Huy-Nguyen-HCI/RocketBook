@@ -59,7 +59,6 @@ private:
     QString username;
     ProfileDB* profileDB;
     // group list
-    std::string password;
     // privacy settings
     int adminRights;
     // friend list

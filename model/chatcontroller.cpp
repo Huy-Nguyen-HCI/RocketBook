@@ -116,13 +116,13 @@ int ChatController::selectChat(QString username){
     std::vector<int>* accountsInChat;
 
     //Displays participants in each chat
-    for(int i=0; i<chatList->size(); i++){
+    for(unsigned int i=0; i<chatList->size(); i++){
         accountsInChat=chatDB->retrieveAccountsInChat(chatList->at(i));
 
 
         cout << "chat Id: " << chatList->at(i) << endl << "members: ";
 
-        for(int j=0; j<accountsInChat->size(); j++){
+        for(unsigned int j=0; j<accountsInChat->size(); j++){
             cout << accountDB->getUsername(accountsInChat->at(j)).toStdString() << " ";
         }
 

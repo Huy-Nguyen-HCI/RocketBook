@@ -129,23 +129,19 @@ bool AccountController::createNewAccount(QString username,
     //check what is the last ID of the rocketuser in the database, create the ID for the next user
     int rocketUserID = accountDB->getMaxAccountID() + 1;
     //create a new rocket user with the new ID
+    currentUser= new RocketUser(rocketUserID,
+                                username,
+                                fullName,
+                                photo,
+                                description,
+                                adminRights);
 
-    //if add account to database is successful, create new current user
-    if (accountDB->addAccount(currentUser->getID(),
-                              username,
-                              password,
-                              currentUser->getProfile()->getID(),
-                              currentUser->isAdmin())) {
-        currentUser= new RocketUser(rocketUserID,
-                                    username,
-                                    fullName,
-                                    photo,
-                                    description,
-                                    adminRights);
-        return true;
-    } else {
-        return false;
-    }
+    //if add account to database is successful
+    return accountDB->addAccount(currentUser->getID(),
+                                 username,
+                                 password,
+                                 currentUser->getProfile()->getID(),
+                                 currentUser->isAdmin());
 }
 
 

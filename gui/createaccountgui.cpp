@@ -41,6 +41,8 @@ void CreateAccountGUI::on_createButton_clicked()
     QString password = ui->passwordBox->text();
     QString confirm = ui->confirmPasswordBox->text();
     QString fullName = ui->fullnameBox->text();
+    QString photo = ui->profilePathBox->text();
+//    QString description = ui->describeBox->;
 
     // check username and password cannot be empty
 
@@ -76,7 +78,7 @@ void CreateAccountGUI::on_createButton_clicked()
     }
 
     // if username does not exist, create account and display successful message
-    if (accountController->createNewAccount(username, password)) {
+    if (accountController->createNewAccount(username, password, fullName, photo)) {
 
         ui->message->setText("Create account " + username + " successful!");
 

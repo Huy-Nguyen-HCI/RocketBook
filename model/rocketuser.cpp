@@ -16,7 +16,7 @@ RocketUser::RocketUser(int id,
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;
-    profileDB = new ProfileDB ("../database/profileDB.sqlite", "Profiles");
+    profileDB = new ProfileDB ("../database/rocketDB.sqlite", "Profiles");
     profile = new Profile(fullName, photo, description);
     profileDB->addProfile(profile->getID(),
                           profile->getFullName(),
