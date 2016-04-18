@@ -3,11 +3,17 @@
 
 #include <iostream>
 #include <random>
+#include <string>
 
 #include "../gtest/gtest.h"
 #include "../../database/accountdb.h"
-#include "../../model/blog.h"
-#include "../../model/comment.h"
+#include "../../database/profiledb.h"
+#include "../../database/frienddb.h"
+#include "../../database/commentdb.h"
+#include "../../database/tweetdb.h"
+#include "../../database/multimediadb.h"
+#include "../../database/blogdb.h"
+
 
 
 class DatabaseTester

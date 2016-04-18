@@ -1,15 +1,4 @@
-#include "../../database/accountdb.h"
-#include "../../database/profiledb.h"
-#include "../../database/frienddb.h"
-#include "../../database/commentdb.h"
-#include "../../database/tweetdb.h"
-#include "../../database/multimediadb.h"
-#include "../../database/blogdb.h"
-#include "../gtest/gtest.h"
-
-#include <iostream>
-#include <random>
-#include <string>
+#include "databasetester.h"
 using namespace std;
 
 

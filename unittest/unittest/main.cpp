@@ -1,11 +1,6 @@
-
-
 #include "databasetester.h"
+#include "modeltester.h"
 
-
-
-//#include "../../model/blog.h"
-//#include "../../model/comment.h"
 
 
 

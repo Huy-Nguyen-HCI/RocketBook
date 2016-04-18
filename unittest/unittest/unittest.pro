@@ -5,7 +5,8 @@ CONFIG -= app_bundle
 QT +=sql
 
 SOURCES += main.cpp \
-    databasetester.cpp
+    databasetester.cpp \
+    modeltester.cpp
 INCLUDEPATH += googletest                       \
                        ../googletest/src                   \
                        ../googletest/src/gtest             \
@@ -22,14 +23,32 @@ INCLUDEPATH += googletest                       \
                    "../googletest/src/gtest-printers.cc"   \
                    "../googletest/src/gtest-test-part.cc"  \
                    "../googletest/src/gtest-typed-test.cc" \
-                   ../../database/*db.cpp \
+                   ../../database/*db.cpp                  \
+                   ../../model/accountcontroller.cpp       \
+                   ../../model/blog.cpp                    \
+                   ../../model/chat.cpp                    \
+                   ../../model/chatcontroller.cpp          \
+                   ../../model/comment.cpp                 \
+                   ../../model/feed.cpp                    \
+                   ../../model/message.cpp                 \
+                   ../../model/multimedia.cpp              \
+                   ../../model/post.cpp                    \
+                   ../../model/profile.cpp                 \
+                   ../../model/rocketuser.cpp              \
+                   ../../model/scrapbook.cpp               \
+                   ../../model/tweet.cpp                   \
+
+
 
 
 
              #      "../../model/blog.cpp"                  \
              #       "../../model/comment.cpp"
 
-        HEADERS += ../../database/*.h
+        HEADERS += ../../database/*.h \
+                   ../../model/*.h \
+                    modeltester.h      \
+                    databasetester.h
               #     "../../model/blog.h"                  \
               #      "../../model/comment.h"
     #databasetester.h
