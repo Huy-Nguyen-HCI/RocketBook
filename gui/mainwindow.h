@@ -11,6 +11,9 @@
 #include "dashboardgui.h"
 #include "scrapbookgui.h"
 
+
+class LoginGUI;
+
 namespace Ui {
 class MainWindow;
 }
@@ -22,6 +25,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void setUsername(QString input) { username = input; }
+    void setAccountController(AccountController *input) { accountController = input; }
     ~MainWindow();
 
 private slots:
@@ -46,6 +50,8 @@ private:
     QString username;
     DashboardGUI *dashboard;
     ScrapbookGUI *scrapbook;
+    AccountController *accountController;
+    LoginGUI *login;
 };
 
 #endif // MAINWINDOW_H

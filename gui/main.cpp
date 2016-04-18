@@ -32,12 +32,14 @@ int main(int argc, char *argv[]) {
 
     MainWindow main;
     LoginGUI loginView(&acc);
-    CreateAccountGUI createAccountView(&acc);
+    CreateAccountGUI createAccountView(&acc);  
 
+    // set up connections
+    main.setAccountController(&acc);
     loginView.setMainWindow(&main);
     loginView.setCreateAccountView(&createAccountView);
     createAccountView.setLoginView(&loginView);
-
+    createAccountView.setMainWindow(&main);
 
     loginView.show();
 

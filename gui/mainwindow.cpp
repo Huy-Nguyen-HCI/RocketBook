@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    if (login) delete login;
 }
 
 
@@ -43,7 +44,10 @@ void MainWindow::on_actionFriend_triggered()
 
 void MainWindow::on_actionLog_out_triggered()
 {
-
+    login = new LoginGUI(accountController);
+    login->setMainWindow(this);
+    this->close();
+    login->show();
 }
 
 void MainWindow::on_actionGroups_triggered()

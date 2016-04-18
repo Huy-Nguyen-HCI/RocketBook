@@ -42,10 +42,9 @@ void CreateAccountGUI::on_createButton_clicked()
     QString confirm = ui->confirmPasswordBox->text();
     QString fullName = ui->fullnameBox->text();
     QString photo = ui->profilePathBox->text();
-//    QString description = ui->describeBox->;
+    //QString description = ui->describeBox->text();
 
     // check username and password cannot be empty
-
     if (username.isEmpty() || password.isEmpty()) {
 
          ui->message->setText("Error: Both username and password have to be nonempty!");
@@ -77,14 +76,18 @@ void CreateAccountGUI::on_createButton_clicked()
         return;
     }
 
-    // if username does not exist, create account and display successful message
+    // if username does not exist, create account and segue to dashboard
     if (accountController->createNewAccount(username, password, fullName, photo)) {
 
-        ui->message->setText("Create account " + username + " successful!");
+        this->close();
+        main->setUsername(username);
+        main->show();
+        return;
 
     }
-    else
-        ui->message->setText("Error occured while trying to create new account.");
+
+    // display error message
+    ui->message->setText("Error occured while trying to create new account.");
 
 }
 

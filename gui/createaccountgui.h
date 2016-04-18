@@ -3,8 +3,10 @@
 
 #include <QWidget>
 #include "logingui.h"
+#include "mainwindow.h"
 
 class LoginGUI;
+class MainWindow;
 
 namespace Ui {
 class CreateAccountGUI;
@@ -19,6 +21,7 @@ public:
     void setLoginView(LoginGUI *input) { loginView = input; }
     ~CreateAccountGUI();
     void clearAllFields();
+    void setMainWindow(MainWindow *input) { main = input; }
 
 private slots:
     void on_uploadButton_clicked();
@@ -31,6 +34,7 @@ private:
     Ui::CreateAccountGUI *ui;
     LoginGUI *loginView;
     AccountController *accountController;
+    MainWindow *main;
 };
 
 #endif // CREATEACCOUNTGUI_H

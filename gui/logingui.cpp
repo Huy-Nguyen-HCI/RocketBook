@@ -23,7 +23,7 @@ void LoginGUI::on_loginButton_clicked()
     // check username
     if (accountController->checkAccountExists(username)) {
 
-        /// TODO: if username and password match, log in and segue to main view
+        // if username and password match, log in and segue to main view
         if (accountController->login(username, password)) {
             this->close();
             main->setUsername(username);
