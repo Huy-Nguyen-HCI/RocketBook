@@ -32,6 +32,7 @@ public:
     int requestInput();
     int requestInput2();
     int userPicksChat();
+    std::string userEntersMessage();
     std::string askUserName();
 
 

@@ -52,7 +52,7 @@ void ChatController::run(){
 
 
                     else if(input2 == 2){ //Display messages
-                        sendMessage(username, chatSelection);
+                        displayMessages(chatSelection);
                     }
 
                     else if(input2 == 3){ //Send message in chat
@@ -147,13 +147,24 @@ int ChatController::selectChat(QString username){
 
 }
 
-
+//Displays all messages in chats and senders
 void ChatController::displayMessages(int chatId){
+
+      std::vector<QString>* messageList= messageDB->retrieveChatMessages(chatId);
+      std::vector<int>* senderList= messageDB->retrieveChatSenders(chatId);
+
+      for(int i=0;i<messageList->size();i++){
+          std::cout << accountDB->getUsername(senderList->at(i)).toStdString() << " : " << messageList->at(i).toStdString() << endl;
+      }
 
 
 }
 
 void ChatController::sendMessage(QString username, int chatId){
+    std::string message=userEntersMessage();
+
+    //MessageDB->addMessage(getMax,chatId,accountDB->retrieveAccountID(username), message);
+    //Need get max
 
 }
 
@@ -184,6 +195,13 @@ int ChatController::requestInput2(){
 int ChatController::userPicksChat(){
     int userInput;
     cout << "\n Enter number of chat you would like (not chat id) \n";
+    cin >> userInput;
+    return userInput;
+}
+
+string ChatController::userEntersMessage(){
+    string userInput;
+    cout << "\n Enter message \n";
     cin >> userInput;
     return userInput;
 }
