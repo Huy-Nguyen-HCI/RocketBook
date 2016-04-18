@@ -36,24 +36,30 @@ void ChatController::run(){
 
             else if (userInput == 2){ // select chat
                 int chatSelection=selectChat(username);
+                if(chatSelection!=-1){
 
 
-                int input2=requestInput2();
+                    int input2=requestInput2();
 
 
 
-                if (input2==0) break;
+                    if (input2==0) break;
 
-                else if(input2==1){ //Add member to chat
-                   addMemberToChat(username, chatSelection);
+                    else if(input2==1){ //Add member to chat
+                        addMemberToChat(username, chatSelection);
+                    }
+
+
+
+                    else if(input2 == 2){ //Display messages
+                        sendMessage(username, chatSelection);
+                    }
+
+                    else if(input2 == 3){ //Send message in chat
+                        sendMessage(username, chatSelection);
+                    }
+
                 }
-
-
-
-                else if(input2 == 2){ //Send message in chat
-                   sendMessage(username, chatSelection);
-                }
-
             }
         }
 
@@ -77,6 +83,7 @@ void ChatController::createChat(QString username){
 
 }
 
+
 void ChatController::addMemberToChat(QString username, int chatId){
     QString friendname;
     friendname=QString::fromStdString(askUserName());
@@ -97,7 +104,8 @@ void ChatController::addMemberToChat(QString username, int chatId){
 
 }
 
-
+//Displays all chats and asks user to pick one. User can pick from first chat
+//by entering 0 or last chat by entering # of chats-1
 int ChatController::selectChat(QString username){
 
     if(accountDB->accountExists(username)){
@@ -121,7 +129,12 @@ int ChatController::selectChat(QString username){
         cout << endl;
     }
 
-    return userPicksChat();
+    int selection=userPicksChat();
+
+    if(selection<chatList->size())
+        return chatList->at(selection);
+    else
+        return -1;
 
 
 
@@ -131,6 +144,12 @@ int ChatController::selectChat(QString username){
     else{
         cout << "Account entered does not exit" << endl;
     }
+
+}
+
+
+void ChatController::displayMessages(int chatId){
+
 
 }
 
@@ -157,7 +176,7 @@ int ChatController::requestInput(){
 
 int ChatController::requestInput2(){
     int userInput;
-    cout << "\nEnter 0 to go back, 1 to add account to chat, 2 to send message, 3 to remove account from chat \n";
+    cout << "\nEnter 0 to go back, 1 to add account to chat, 2 to display messages, 3 to send message, 4 to remove account from chat \n";
     cin >> userInput;
     return userInput;
 }

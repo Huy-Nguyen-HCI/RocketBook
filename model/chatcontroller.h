@@ -26,6 +26,7 @@ public:
     void createChat(QString username);
     void addMemberToChat(QString username, int chatId);
     void sendMessage(QString username, int chatId);
+    void displayMessages(int chatId);
 
 
     int requestInput();
