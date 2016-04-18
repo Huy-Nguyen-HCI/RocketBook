@@ -56,11 +56,11 @@ AccountController::AccountController()
 
 void AccountController::displayFriends(QString username){
 
-    std::vector<int>* friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
+    std::vector<int> friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
 
 
-    for(unsigned int i=0; i<friendlist->capacity(); i++){
-        std::cout << friendlist->at(i) << std::endl;
+    for(unsigned int i=0; i<friendlist.capacity(); i++){
+        std::cout << friendlist.at(i) << std::endl;
     }
 }
 
