@@ -153,6 +153,31 @@ std::vector<int>* MessageDB::retrieveChatSenders(int chatID){
 
 }
 
+int MessageDB::getMaxMessageID(int chatId)
+{
+    int maxID;
+
+    qDebug() << "Get max messageID from chat from db:";
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
+    queryMaxID.prepare("SELECT max(MessageID) FROM Chats WHERE ChatID = (:ChatID)");
+    queryMaxID.bindValue(":ChatID", chatId);
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "message retrieval fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID;
+
+}
+
 
 
 

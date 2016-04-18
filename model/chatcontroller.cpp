@@ -133,9 +133,10 @@ int ChatController::selectChat(QString username){
 
     if(selection<chatList->size())
         return chatList->at(selection);
-    else
+    else{
+        cout << "selection failed";
         return -1;
-
+}
 
 
     }
@@ -160,11 +161,15 @@ void ChatController::displayMessages(int chatId){
 
 }
 
+//User enters message and message is added to message database for the chat specified
 void ChatController::sendMessage(QString username, int chatId){
     std::string message=userEntersMessage();
 
-    //MessageDB->addMessage(getMax,chatId,accountDB->retrieveAccountID(username), message);
-    //Need get max
+    if(messageDB->addMessage(messageDB->getMaxMessageID(chatId)+1,chatId,accountDB->retrieveAccountID(username), QString::fromStdString(message)))
+        cout << "Message Sent" << endl;
+
+    else
+        cout << "send message failed" << endl;
 
 }
 

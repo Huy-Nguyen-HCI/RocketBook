@@ -47,6 +47,8 @@ public:
     std::vector<QString>* retrieveChatMessages(int chatID);
     std::vector<int>* retrieveChatSenders(int chatID);
 
+    int getMaxMessageID(int chatId);
+
 
 
 
