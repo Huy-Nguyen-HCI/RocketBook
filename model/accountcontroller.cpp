@@ -149,7 +149,7 @@ bool AccountController::createNewAccount(QString username,
                                  username,
                                  password,
                                  currentUser->getProfile()->getID(),
-                                 currentUser->isAdmin());
+                                 adminRights);
 }
 
 
