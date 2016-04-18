@@ -23,6 +23,11 @@ public:
      * @brief Constructs and runs account controller.
      */
     AccountController();
+
+    /**
+     * @brief Constructs and runs account controller.
+     */
+    AccountController(QString& path);
 //    /**
 //     * @brief Runs account controller in the terminal. Asks for user input and performs indicated action.
 //     */
@@ -69,6 +74,7 @@ private:
     AccountDB* accountDB;
     FriendDB* friendDB;
     RocketUser* currentUser;
+    QString dbPath;
 
     /**
      * @brief Checks if user entered correct password

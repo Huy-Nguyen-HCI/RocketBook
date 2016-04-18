@@ -27,7 +27,8 @@ public:
      * @param photo
      * @param description
      */
-    RocketUser(int id,
+    RocketUser(QString dbPath,
+               int id,
                QString username,
                QString fullName = "",
                QString photo = "",
@@ -42,7 +43,8 @@ public:
      * @param profileID
      * @param adminRights
      */
-    RocketUser(int id,
+    RocketUser(QString dbPath,
+               int id,
                QString username,
                int profileID,
                int adminRights);

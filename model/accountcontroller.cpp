@@ -5,8 +5,15 @@ using namespace std;
 
 AccountController::AccountController()
 {
-    accountDB = new AccountDB("../database/rocketDB.sqlite");
-    friendDB = new FriendDB("../database/rocketDB.sqlite");
+    dbPath.append("../database/rocketDB.sqlite");
+    accountDB = new AccountDB(dbPath);
+    friendDB = new FriendDB(dbPath);
+}
+
+AccountController::AccountController(QString &path) {
+    dbPath.append(path);
+    accountDB = new AccountDB(dbPath);
+    friendDB = new FriendDB(dbPath);
 }
 
 //void AccountController::run(){
@@ -113,7 +120,7 @@ bool AccountController::login(QString username, QString password){
         int accountID = std::get<0>(accountInfo);
         int profileID = std::get<3>(accountInfo);
         int adminRights = std::get<4>(accountInfo);
-        currentUser = new RocketUser(accountID, username, profileID, adminRights);
+        currentUser = new RocketUser(dbPath, accountID, username, profileID, adminRights);
         return true;
     } else {
         return false;
@@ -129,7 +136,8 @@ bool AccountController::createNewAccount(QString username,
     //check what is the last ID of the rocketuser in the database, create the ID for the next user
     int rocketUserID = accountDB->getMaxAccountID() + 1;
     //create a new rocket user with the new ID
-    currentUser= new RocketUser(rocketUserID,
+    currentUser= new RocketUser(dbPath,
+                                rocketUserID,
                                 username,
                                 fullName,
                                 photo,

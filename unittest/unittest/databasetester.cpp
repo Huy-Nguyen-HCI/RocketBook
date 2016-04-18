@@ -708,9 +708,6 @@ TEST(FriendDatabase, testRmvAllFriends)
     int accntid2 = 11;
     int friendid2 = 12;
     newFDB.removeAllFriends();
-
-
-
     newFDB.addFriend(accntid, friendid);
     newFDB.addFriend(accntid2, friendid2);
 

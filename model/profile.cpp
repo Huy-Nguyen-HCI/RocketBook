@@ -3,10 +3,10 @@
 int Profile::idCnt = 0;
 
 
-Profile::Profile(QString fullName, QString photo, QString description)
+Profile::Profile(QString dbPath, QString fullName, QString photo, QString description)
 {
     //Find the ID of the profile
-    profileDB = new ProfileDB("../database/profileDB.sqlite", "Scrapbook");
+    profileDB = new ProfileDB(dbPath, "Scrapbook");
     id = profileDB->getMaxProfileID() + 1;
     idCnt = id;
     idCnt++;
@@ -17,10 +17,11 @@ Profile::Profile(QString fullName, QString photo, QString description)
     this->description = description;
 
     //Create a new scrapbook that does not possess the same ID
-    scrapBook = new Scrapbook(profileDB->getMaxScrapbookID() + 1);
+    scrapBook = new Scrapbook(dbPath, profileDB->getMaxScrapbookID() + 1);
 }
 
-Profile::Profile(int id,
+Profile::Profile(QString dbPath,
+                 int id,
                  QString fullName,
                  QString photo,
                  QString description,
@@ -34,7 +35,8 @@ Profile::Profile(int id,
     this->fullName = fullName;
     this->picturePath = photo;
     this->description = description;
-    scrapBook = new Scrapbook(id);
+    scrapBook = new Scrapbook(dbPath, scrapbookID);
+    profileDB = new ProfileDB(dbPath, "Scrapbook");
 }
 
 

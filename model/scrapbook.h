@@ -21,8 +21,8 @@
 class Scrapbook
 {
 public:
-    Scrapbook();
-    Scrapbook(int id);
+    Scrapbook(QString dbPath);
+    Scrapbook(QString dbPath, int id);
     ~Scrapbook();
 
     int getID() { return id;}
@@ -59,6 +59,7 @@ private:
     MultimediaDB* multimediaDB;
     CommentDB* commentDB;
     AccountDB* accountDB;
+    QString dbPath;
 
     std::vector<Blog*> blogList;
     std::vector<Tweet*> tweetList;

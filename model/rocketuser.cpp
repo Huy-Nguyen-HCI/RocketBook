@@ -4,7 +4,8 @@
 
 int RocketUser::idCnt = 0;
 
-RocketUser::RocketUser(int id,
+RocketUser::RocketUser(QString dbPath,
+                       int id,
                        QString username,
                        QString fullName,
                        QString photo,
@@ -16,8 +17,8 @@ RocketUser::RocketUser(int id,
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;
-    profileDB = new ProfileDB ("../database/rocketDB.sqlite", "Profiles");
-    profile = new Profile(fullName, photo, description);
+    profileDB = new ProfileDB (dbPath);
+    profile = new Profile(dbPath, fullName, photo, description);
     profileDB->addProfile(profile->getID(),
                           profile->getFullName(),
                           profile->getPicturePath(),
@@ -26,7 +27,8 @@ RocketUser::RocketUser(int id,
 
 }
 
-RocketUser::RocketUser(int id,
+RocketUser::RocketUser(QString dbPath,
+                       int id,
                        QString username,
                        int profileID,
                        int adminRights = 0)
@@ -37,7 +39,7 @@ RocketUser::RocketUser(int id,
     this->username = username;
     this->adminRights = adminRights;
 
-    profileDB = new ProfileDB ("../database/profileDB.sqlite", "Profiles");
+    profileDB = new ProfileDB (dbPath);
     if (profileDB->profileExists(profileID)) {
         ProfileInfoType profileInfo = profileDB->retrieveProfileInfo(profileID);
 
@@ -45,7 +47,7 @@ RocketUser::RocketUser(int id,
         QString photo = std::get<2>(profileInfo);
         QString description = std::get<3>(profileInfo);
         int scrapbookID = std::get<4>(profileInfo);
-        profile = new Profile(profileID, fullName, photo, description, scrapbookID);
+        profile = new Profile(dbPath, profileID, fullName, photo, description, scrapbookID);
     } else {
         qDebug() << "Profile does not exists.";
     }

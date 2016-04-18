@@ -2,16 +2,18 @@
 
 int Scrapbook::idCnt = 0;
 
-Scrapbook::Scrapbook()
+Scrapbook::Scrapbook(QString dbPath)
 {
+    this->dbPath = dbPath;
     id=idCnt;
     idCnt++;
     //construct all lists from database
     constructContentContainers();
 }
 
-Scrapbook::Scrapbook(int id)
+Scrapbook::Scrapbook(QString dbPath, int id)
 {
+    this->dbPath = dbPath;
     this->id = id;
     idCnt = id;
     idCnt++;
@@ -31,11 +33,11 @@ Scrapbook::~Scrapbook()
 void Scrapbook::constructContentContainers()
 {
     //create the database connections
-    blogDB = new BlogDB("../database/contentDB.sqlite");
-    tweetDB = new TweetDB("../database/contentDB.sqlite");
-    multimediaDB = new MultimediaDB("../database/contentDB.sqlite");
-    commentDB = new CommentDB("../database/contentDB.sqlite");
-    accountDB = new AccountDB("../database/accountDB.sqlite");
+    blogDB = new BlogDB(dbPath);
+    tweetDB = new TweetDB(dbPath);
+    multimediaDB = new MultimediaDB(dbPath);
+    commentDB = new CommentDB(dbPath);
+    accountDB = new AccountDB(dbPath);
 
 
     //reconstruct all blogs

@@ -27,14 +27,14 @@ public:
      * @param photo Photo link of the user/group
      * @param description Description of the user/group
      */
-    Profile(QString fullName, QString photo, QString description);
+    Profile(QString dbPath, QString fullName, QString photo, QString description);
 
     /**
      * @brief Profile
      * Constructor to reconstruct a profile with ID, full name, photo, description, scrapbook
      * @param id The ID of the profile
      */
-    Profile(int id, QString fullName, QString photo, QString description, int scrapbookID);
+    Profile(QString dbPath, int id, QString fullName, QString photo, QString description, int scrapbookID);
 
 
     int getID() { return id; }
