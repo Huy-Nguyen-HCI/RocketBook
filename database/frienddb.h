@@ -63,7 +63,7 @@ public:
      * @return a string with all friend account Ids.
      */
 
-    std::vector<int>* retrieveAllFriends(int accountId);
+    std::vector<int> retrieveAllFriends(int accountId);
 
     /**
      * @brief friendshipExists

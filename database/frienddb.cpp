@@ -111,9 +111,9 @@ bool FriendDB::removeFriendBothSides(int accountID, int friendID)
 }
 
 
-std::vector<int>* FriendDB::retrieveAllFriends(int accountId)
+std::vector<int> FriendDB::retrieveAllFriends(int accountId)
 {
-    std::vector<int>* friendList= new std::vector<int>();
+    std::vector<int> friendList;
 
     qDebug() << "Friends in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
@@ -126,7 +126,7 @@ std::vector<int>* FriendDB::retrieveAllFriends(int accountId)
     {
         while(queryRetrieve.next())
         {
-            friendList->push_back(queryRetrieve.value(friendIdIndex).toInt());
+            friendList.push_back(queryRetrieve.value(friendIdIndex).toInt());
         }
     }
 
