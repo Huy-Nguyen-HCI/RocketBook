@@ -4,7 +4,7 @@ using namespace std;
 TEST(RocketUserTest, testGetID)
 {
 
-    const QString dbPath("../unittest/testdirec/Profiles");
+    const QString dbPath("../unittest/testdirec");
     int id1 = 0;
     const QString un1("username1");
     const QString fn1("fullName1");
@@ -23,6 +23,27 @@ TEST(RocketUserTest, testGetID)
     ASSERT_EQ(id2, user2.getID());
     ASSERT_NE(id2, user1.getID());
     ASSERT_NE(id1, user2.getID());
+
+
+}
+
+TEST(ProfileTest, testCreateProf)
+{
+//    Profile::Profile(QString dbPath,
+//                     int id,
+//                     QString fullName,
+//                     QString photo,
+//                     QString description,
+//                     int scrapbookID)
+
+    const QString dbPath("../unittest/testdirec");
+    int id1 = 0;
+    const QString fn1("fullName1");
+    const QString ph1("photo1");
+    const QString dscr1("description1");
+    int sid1 = 5;
+
+    Profile prof(dbPath, id1, fn1, ph1, dscr1, sid1);
 
 
 }
