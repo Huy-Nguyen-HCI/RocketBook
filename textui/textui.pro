@@ -8,8 +8,10 @@ LIBS    += -lncurses
 
 SOURCES += main.cpp \
     mainmenu.cpp \
-    screen.cpp
+    screen.cpp \
+    loginui.cpp
 
 HEADERS += \
     mainmenu.h \
-    screen.h
+    screen.h \
+    loginui.h

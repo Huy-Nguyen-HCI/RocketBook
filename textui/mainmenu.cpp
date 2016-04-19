@@ -4,7 +4,7 @@ MainMenu::MainMenu(): Screen::Screen()
 {
 
     initialize();
-    run();
+    changeScreen(run());
 
 }
 
@@ -39,7 +39,7 @@ int MainMenu::run(){
                 v=7;
             break;
         case KEY_DOWN:
-            if(v<8) //arrows goes dowm
+            if(v<8) //arrows goes down
             v++;
             if(v==8) //arrow goes back to top
                 v=1;
@@ -56,8 +56,6 @@ int MainMenu::run(){
     return v;
 }
 
-
-
     // a function for drawing the current screen
 
     void MainMenu::DrawScreen(int v) {
@@ -71,12 +69,12 @@ int MainMenu::run(){
 
     // print the instructions for manipulating the Value object
     mvprintw(0, 0, "Main Menu\nPlease select one by using the arrow keys and pressing enter:");
-    mvprintw(3, 8, "Profile");
-    mvprintw(4, 8, "Messages");
-    mvprintw(5, 8, "Top Games");
-    mvprintw(6, 8, "Configure");
-    mvprintw(7, 8, "Grou");
-    mvprintw(8, 8, "Chats");
+    mvprintw(3, 8, "Edit Pofile");
+    mvprintw(4, 8, "Post content");
+    mvprintw(5, 8, "See Feeds");
+    mvprintw(6, 8, "Groups");
+    mvprintw(7, 8, "Chats");
+    mvprintw(8, 8, "Notifications");
     mvprintw(9, 8, "Logout");
 
     mvprintw(v+2, 5, "->");
@@ -86,16 +84,19 @@ int MainMenu::run(){
     }
 
     void MainMenu::changeScreen(int selection){
-        /**
+
         // cleanup the window and return control to bash
         endwin();
-
+/**
         //std::cout << "exiting main\n";
 
         if(selection==1)
-            LI = new Login();
+            login = new LoginUI();
         else if(selection==2)
             TopP = new TopPlayer();
+        **/
+
+        /**
         else if(selection==3)
             TopG = new TopGame();
         else if(selection==4)
@@ -108,11 +109,12 @@ int MainMenu::run(){
             RUI = new RobotsUI();
             delete RUI;
         }
-        else if(selection==7)
+        **/
+        if(selection==7)
             return;
 
-        intialize();
-        changeScreen(interact());
-    **/
+        initialize();
+        changeScreen(run());
+
     }
 
