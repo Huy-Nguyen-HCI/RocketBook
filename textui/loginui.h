@@ -3,7 +3,10 @@
 
 #include "ncurses.h"
 #include "screen.h"
-//#include "../model/accountcontroller.h"
+
+#define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
+#include "../model/accountcontroller.h"
+
 
 
 class LoginUI: public Screen{
@@ -13,7 +16,7 @@ public:
 
 
 private:
- //   AccountController *accountController;
+    AccountController *accountController;
 };
 
 #endif // LOGINTEXTUI_H
