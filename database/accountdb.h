@@ -105,6 +105,13 @@ public:
      */
     int getMaxAccountID();
 
+    /**
+     * @brief getUsername
+     * Get the the username of an account for a given account Id
+     *
+     * @param accountId Account Id.
+     * @return username of account which has the specified account Id
+     */
     QString getUsername(int accountID);
 
 private:

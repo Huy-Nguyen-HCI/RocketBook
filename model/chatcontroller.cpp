@@ -14,14 +14,6 @@ ChatController::ChatController()
 void ChatController::run(){
 
     if (chatDB->isOpen()){
-     //   RocketUser* user= new RocketUser();
-
-
-        //1----createChat();
-
-
-
-        //2-----selectChat();
 
         QString username=QString::fromStdString(askUserName());
 
@@ -40,7 +32,6 @@ void ChatController::run(){
 
 
                     int input2=requestInput2();
-
 
 
                     if (input2==0) break;
@@ -116,32 +107,32 @@ int ChatController::selectChat(QString username){
     if(accountDB->accountExists(username)){
 
 
-    //Returns all chatId's which the user is in
-    std::vector<int>* chatList= chatDB->retrieveChatList(accountDB->retrieveAccountID(username));
-    std::vector<int>* accountsInChat;
+        //Returns all chatId's which the user is in
+        std::vector<int>* chatList= chatDB->retrieveChatList(accountDB->retrieveAccountID(username));
+        std::vector<int>* accountsInChat;
 
-    //Displays participants in each chat
-    for(unsigned int i=0; i<chatList->size(); i++){
-        accountsInChat=chatDB->retrieveAccountsInChat(chatList->at(i));
+        //Displays participants in each chat
+        for(unsigned int i=0; i<chatList->size(); i++){
+            accountsInChat=chatDB->retrieveAccountsInChat(chatList->at(i));
 
 
-        cout << "chat Id: " << chatList->at(i) << endl << "members: ";
+            cout << "chat Id: " << chatList->at(i) << endl << "members: ";
 
-        for(unsigned int j=0; j<accountsInChat->size(); j++){
-            cout << accountDB->getUsername(accountsInChat->at(j)).toStdString() << " ";
+            for(unsigned int j=0; j<accountsInChat->size(); j++){
+                cout << accountDB->getUsername(accountsInChat->at(j)).toStdString() << " ";
+            }
+
+            cout << endl;
         }
 
-        cout << endl;
-    }
+        int selection=userPicksChat();
 
-    int selection=userPicksChat();
-
-    if(selection<chatList->size())
-        return chatList->at(selection);
-    else{
-        cout << "selection failed";
-        return -1;
-}
+        if(selection<chatList->size())
+            return chatList->at(selection);
+        else{
+            cout << "selection failed";
+            return -1;
+        }
 
 
     }
