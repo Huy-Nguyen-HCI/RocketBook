@@ -9,19 +9,23 @@
 class FriendDB
 {
 public:
+    /**
+     * @brief FriendDB
+     * Construct a friend database
+     */
     FriendDB();
 
     /**
      * @brief FriendDB
-     * Construct an account database, given the path and the name of the database
-     * @param path full path name of the accountdb
+     * Construct a friend database, given the path and the name of the database
+     * @param path full path name of the frienddb
      */
     FriendDB(const QString& path);
 
     /**
      * @brief ~FriendDB
      *
-     * Default destructor for account database
+     * Default destructor for friend database
      */
     ~FriendDB();
 
@@ -56,11 +60,11 @@ public:
 
     /**
      * @brief retrieveAccountInfo
-     * Return a string including ID's of all of the accounts which the user is friends with
+     * Return a vector including ID's of all of the accounts which the user is friends with
      *
      * @param  accountID User's account Id.
      * @param password password of the account
-     * @return a string with all friend account Ids.
+     * @return a vector with all friend account Ids.
      */
 
     std::vector<int> retrieveAllFriends(int accountId);
@@ -85,7 +89,24 @@ public:
 
 private:
 
+    /**
+     * @brief addFriend
+     * Adds a new friendship by entering one of two entries into the friends table.
+     * Must be called twice to completely remove friendship
+     *
+     * @param accountID Account ID
+     * @param friendID Friend ID
+     * @return true if added, false if not added
+     */
     bool addFriendBothSides(int accountID, int friendID);
+
+    /**
+     * @brief removeFriend
+     * Removes a friendship. Must be called twice to completed remove friendship
+     *
+     * @param username the username of the friend to be removed
+     * @return true if succeeded, false if failed
+     */
     bool removeFriendBothSides(int accountID, int friendID);
     QString connectionName;
 };

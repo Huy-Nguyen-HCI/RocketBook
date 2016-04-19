@@ -26,7 +26,7 @@ public:
     MessageDB(const QString& path);
 
     /**
-     * @brief ~AccountDB
+     * @brief ~MessageDB
      *
      * Default destructor for message database
      */
@@ -41,20 +41,58 @@ public:
     bool isOpen() const;
 
 
+    /**
+     * @brief addMessage
+     * Add a new message to message database table
+     *
+     * @param messageID Message Id.
+     * @param chatID Chat Id
+     * @param accountID Id of sender
+     * @param &message Message being sent
+     * @return true if added, false if not added
+     */
     bool addMessage(int messageID, int chatID, int accountID, const QString &message);
+    /**
+     * @brief deleteMessage
+     * Deletes a specific message from a specific chat
+     *
+     * @param chatID Id of choosen chat
+     * @param messageID Id of choosen message
+     * @return true if succeeded, false if failed
+     */
     bool deleteMessage(int chatID, int messageID);
 
+    /**
+     * @brief retrieveChatMessages
+     * Return a vector of strings including ID's of all of the message in a chat
+     *
+     * @param chatId Id of chat which all messages will be retrieved from
+     * @return a vector of all messages in specified chat
+     */
     std::vector<QString>* retrieveChatMessages(int chatID);
-    std::vector<int>* retrieveChatSenders(int chatID);
 
+    /**
+     * @brief retrieveChatSenders
+     * Return a vector including ID's of all senders of message in a chat in the same order
+     * as message were sent.
+     *
+     * Example:
+     * ChatMessages<Joe: Hi> <Ha: Hi> <Joe: how are you> <Ha: I'm good>
+     * ChatSenders<Joe Id> <Ha Id> <Joe Id> <Ha Id>
+     *
+     * @param chatId Id of chat which all messages will be retrieved from
+     * @return a vector sender Id's corresponding to messages sent
+     */
+    std::vector<int>* retrieveChatSenders(int chatID);
+    /**
+     * @brief getMaxMessageID
+     * Get the maximum ID for messages in specified chat
+     *
+     * @param chatId Id of specified chat which max message Id will be retrieved from
+     * @return the maximum used for messages in chat
+     */
     int getMaxMessageID(int chatId);
 
-
-
-
-//    std::vector<int> retrieveChats(int accountId);
-  //  std::vector<int> retrieveMessages(int chatId);
-  //  QString retrieveMessageContent(int chatId, int messageId);
 
 private:
      QString connectionName;
