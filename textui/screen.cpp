@@ -4,9 +4,9 @@
 Screen::Screen()
 {
 
-    /**
+
     // initialize the screen
-    initscr();
+/**    initscr();
 
     // hide the cursor from view (comment this line out for debugging)
     curs_set(0);
@@ -35,3 +35,15 @@ Screen::~Screen()
 {
 
 }
+
+void Screen::initialize(){
+    initscr();
+    curs_set(0);
+    cbreak();
+    noecho();
+    erase();
+    keypad(stdscr, TRUE);
+}
+
+
+

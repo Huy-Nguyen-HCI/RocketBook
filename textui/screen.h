@@ -9,6 +9,7 @@ class Screen
 public:
     Screen();
     ~Screen();
+    void initialize();
 };
 
 #endif // SCREEN_H
