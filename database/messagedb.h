@@ -42,7 +42,7 @@ public:
 
 
     bool addMessage(int messageID, int chatID, int accountID, const QString &message);
-    bool deleteMessage(int chatID, const QString &text);
+    bool deleteMessage(int chatID, int messageID);
 
     std::vector<QString>* retrieveChatMessages(int chatID);
     std::vector<int>* retrieveChatSenders(int chatID);

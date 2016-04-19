@@ -28,6 +28,7 @@ public:
     void sendMessage(QString username, int chatId);
     void displayMessages(int chatId);
     void removeUserFromChat(int chatId);
+    void deleteMessage(int chatId);
 
 
     int requestInput();

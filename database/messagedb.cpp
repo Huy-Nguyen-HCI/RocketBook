@@ -69,16 +69,17 @@ bool MessageDB::addMessage(int messageID, int chatID, int accountID, const QStri
         return success;
 }
 
-bool MessageDB::deleteMessage(int chatID,  const QString &text){
+bool MessageDB::deleteMessage(int chatID,  int messageID){
 
-        /**
+
         bool success = false;
 
 
 
         QSqlQuery queryDelete(QSqlDatabase::database(connectionName));
-        queryDelete.prepare("DELETE FROM Messages WHERE Username = (:Username)");
-        queryDelete.bindValue(":Username", username);
+        queryDelete.prepare("DELETE FROM Messages WHERE ChatID = (:ChatID) AND MessageID = (:MessageID)");
+        queryDelete.bindValue(":ChatID", chatID);
+        queryDelete.bindValue(":MessageID", messageID);
         success = queryDelete.exec();
 
         if(!success)
@@ -92,7 +93,7 @@ bool MessageDB::deleteMessage(int chatID,  const QString &text){
         }
 
         return success;
-        **/
+
 }
 
 std::vector<QString>* MessageDB::retrieveChatMessages(int chatID){

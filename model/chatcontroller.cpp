@@ -62,7 +62,7 @@ void ChatController::run(){
                         removeUserFromChat(chatSelection);
                     }
                     else if(input2 == 5){ //Delete message
-                      //  sendMessage(username, chatSelection);
+                        deleteMessage(chatSelection);
                     }
                 }
             }
@@ -193,6 +193,18 @@ void ChatController::sendMessage(QString username, int chatId){
 
 }
 
+//User enters Message ID here. In real program, message ID must be stored in chat object
+void ChatController::deleteMessage(int chatId){
+    int userInput;
+    cout << "\n message number to delete \n";
+    cin >> userInput;
+    if(messageDB->deleteMessage(chatId,userInput))
+        cout << "Message successfully deleted" << endl;
+    else
+        cout << "Message deletion failed" << endl;
+
+}
+
 
 
 std::string ChatController::askUserName(){
@@ -216,6 +228,8 @@ int ChatController::requestInput2(){
     cin >> userInput;
     return userInput;
 }
+
+
 
 int ChatController::userPicksChat(){
     int userInput;
