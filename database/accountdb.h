@@ -93,7 +93,7 @@ public:
 
     /**
      * @brief removeAllAccounts
-     * Remove all accounts existed in the database
+     * Remove all accounts existing in the database
      * @return true if succeeded, false if failed
      */
     bool removeAllAccounts();

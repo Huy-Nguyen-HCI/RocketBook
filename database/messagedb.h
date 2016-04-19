@@ -56,7 +56,7 @@ public:
      * @brief deleteMessage
      * Deletes a specific message from a specific chat
      *
-     * @param chatID Id of choosen chat
+     * @param chatID Id of chosen chat
      * @param messageID Id of choosen message
      * @return true if succeeded, false if failed
      */
