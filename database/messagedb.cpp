@@ -159,7 +159,7 @@ int MessageDB::getMaxMessageID(int chatId)
 
     qDebug() << "Get max messageID from chat from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
-    queryMaxID.prepare("SELECT max(MessageID) FROM Chats WHERE ChatID = (:ChatID)");
+    queryMaxID.prepare("SELECT max(MessageID) FROM Messages WHERE ChatID = (:ChatID)");
     queryMaxID.bindValue(":ChatID", chatId);
 
     if (queryMaxID.exec())
@@ -177,64 +177,3 @@ int MessageDB::getMaxMessageID(int chatId)
     return maxID;
 
 }
-
-
-
-
-
-/**
-
-bool MessageDB::addMessage(){
-
-//insert:
-// New Message id; same chat id; sended account Id; message
-
-
-}
-
-//message= "user has been added"
-
-bool MessageDB::addAccountToChat(){
-
-
-//Creates entry to database
-//insert:
-//new Message id; same chat id; creator account Id; message="Chat Created"
-
-
-
-
-}
-
-
-bool MessageDB::createChat(){
-
-//insert:
-//Message id=0; new chat id; creator account Id; message="Chat Created"
-
-
-
-}
-
-
-std::vector<int> MessageDB::retrieveChats(int accountId){
-
-}
-
-
-std::vector<int> MessageDB::retrieveAccountsInChat(int chatId){
-
-}
-
-
-std::vector<int> MessageDB::retrieveMessages(int chatId){
-
-}
-
-
-QString MessageDB::retrieveMessageContent(int chatId, int messageId){
-
-
-}
-
-**/

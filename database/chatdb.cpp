@@ -121,7 +121,7 @@ bool ChatDB::inChat(int chatID, int accountID) const
     bool exists = false;
 
     QSqlQuery checkQuery(QSqlDatabase::database(connectionName));
-    checkQuery.prepare("SELECT AccountID FROM Chats WHERE Chat = (:ChatID) AND AccountID = (:AccountID)");
+    checkQuery.prepare("SELECT AccountID FROM Chats WHERE ChatID = (:ChatID) AND AccountID = (:AccountID)");
     checkQuery.bindValue(":ChatID", chatID);
     checkQuery.bindValue(":AccountID", accountID);
 

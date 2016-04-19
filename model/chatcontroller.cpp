@@ -58,7 +58,12 @@ void ChatController::run(){
                     else if(input2 == 3){ //Send message in chat
                         sendMessage(username, chatSelection);
                     }
-
+                    else if(input2 == 4){ //Remove someone from a chat
+                        removeUserFromChat(chatSelection);
+                    }
+                    else if(input2 == 5){ //Delete message
+                      //  sendMessage(username, chatSelection);
+                    }
                 }
             }
         }
@@ -148,6 +153,21 @@ int ChatController::selectChat(QString username){
 
 }
 
+
+    void ChatController::removeUserFromChat(int chatId){
+        QString nameToDelete=QString::fromStdString(askUserName());
+
+        if(chatDB->inChat(chatId,accountDB->retrieveAccountID(nameToDelete))){
+            chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(nameToDelete));
+            cout << nameToDelete.toStdString() << " has been deleted from chat";
+
+        }
+        else
+            cout << nameToDelete.toStdString() << " is not in chat";
+
+    }
+
+
 //Displays all messages in chats and senders
 void ChatController::displayMessages(int chatId){
 
@@ -155,7 +175,7 @@ void ChatController::displayMessages(int chatId){
       std::vector<int>* senderList= messageDB->retrieveChatSenders(chatId);
 
       for(int i=0;i<messageList->size();i++){
-          std::cout << accountDB->getUsername(senderList->at(i)).toStdString() << " : " << messageList->at(i).toStdString() << endl;
+          std::cout << accountDB->getUsername(senderList->at(i)).toStdString() << ": " << messageList->at(i).toStdString() << endl;
       }
 
 
@@ -185,14 +205,14 @@ std::string ChatController::askUserName(){
 
 int ChatController::requestInput(){
     int userInput;
-    cout << "\nEnter 0 to quit, 1 to create chat, 2 select chat, 3  \n";
+    cout << "\nEnter 0 to quit, 1 to create chat, 2 select chat \n";
     cin >> userInput;
     return userInput;
 }
 
 int ChatController::requestInput2(){
     int userInput;
-    cout << "\nEnter 0 to go back, 1 to add account to chat, 2 to display messages, 3 to send message, 4 to remove account from chat \n";
+    cout << "\nEnter 0 to go back, 1 to add account to chat, 2 to display messages, 3 to send message, 4 to remove account from chat, 5 to delete message \n";
     cin >> userInput;
     return userInput;
 }
@@ -207,6 +227,7 @@ int ChatController::userPicksChat(){
 string ChatController::userEntersMessage(){
     string userInput;
     cout << "\n Enter message \n";
-    cin >> userInput;
+    std::cin.ignore();
+    getline(cin, userInput);
     return userInput;
 }
