@@ -253,3 +253,23 @@ int ProfileDB::getMaxScrapbookID()
 
     return maxID;
 }
+
+bool ProfileDB::changePhoto(int profileID, QString path) {
+
+    QSqlQuery updateQuery(QSqlDatabase::database(connectionName));
+    updateQuery.prepare("UPDATE Profiles SET Photo = :photo WHERE ProfileID = :id");
+    updateQuery.bindValue(":photo", path);
+    updateQuery.bindValue(":id", profileID);
+
+    return updateQuery.exec();
+}
+
+bool ProfileDB::changeDescription(int profileID, QString description) {
+
+    QSqlQuery updateQuery(QSqlDatabase::database(connectionName));
+    updateQuery.prepare("UPDATE Profiles SET Description = :desc WHERE ProfileID = :id");
+    updateQuery.bindValue(":desc", description);
+    updateQuery.bindValue(":id", profileID);
+
+    return updateQuery.exec();
+}

@@ -35,6 +35,7 @@ void MainWindow::on_actionFeed_triggered()
 
 void MainWindow::on_actionAboutMe_triggered()
 {
+    profile->loadProfile();
     ui->stackedWidget->setCurrentWidget(profile);
 }
 

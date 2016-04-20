@@ -14,49 +14,32 @@ ProfileGUI::~ProfileGUI()
     delete ui;
 }
 
-void ProfileGUI::on_pushButton_loadProfile_clicked()
-{
-    Profile *currentProfile = accountController->getUser()->getProfile();
-    //ui->listView_profile->
 
+
+void ProfileGUI::loadProfile() {
+
+    Profile *currentProfile = accountController->getUser()->getProfile();
 
     QString descr = currentProfile->getDescription();
     QString myName = currentProfile->getFullName();
 
-    //QSqlQueryModel *model = new QSqlQueryModel();
-    //QAbstractItemModel model;
-    //QModelIndex modelIndex;
-
-//    QListWidget profileList(ui->listView_profile);
-//    QListWidgetItem description(descr, &profileList, 0);
-//    QListWidgetItem descriptionTest(descrTest, &profileList, 0);
-    //profileList.addItem(&description);
-//    profileList.addItem(descrTest);
-//    profileList.addItem(descr);
-
-    //QStringList *toAdd = new QStringList();
-    //toAdd->append(descr);
-    //toAdd->append(descrTest);
-
-    //QStringListModel profileModel = new QStringListModel(toAdd, NULL);
-    //profileModel.setStringList(*toAdd);
-
-    //ui->listView_profile->model()->insertRow(0, );
+    ui->descriptionBox->setText(descr);
+    ui->username->setText("Username: " + myName);
+}
 
 
-    ui->listWidget->clear();
-    ui->listWidget->addItem("My Name:    "+myName);
-    ui->listWidget->addItem("My Description:    "+descr);
-
-
-
-
-
-
+void ProfileGUI::on_selectPicture_clicked()
+{
 
 }
 
-void ProfileGUI::on_listView_profile_activated(const QModelIndex &index)
+void ProfileGUI::on_saveDescription_clicked()
 {
-
+    QString newDescription = ui->descriptionBox->toPlainText();
+    if (accountController->getUser()->changeProfileDescription(newDescription)) {
+        ui->message->setText("Update description successful!");
+    }
+    else {
+        ui->message->setText("Update failed. Please call technical support.");
+    }
 }

@@ -138,6 +138,10 @@ public:
      */
     int getMaxScrapbookID();
 
+    bool changePhoto(int profileID, QString path);
+
+    bool changeDescription(int profileID, QString description);
+
 private:
     QString connectionName;
 };

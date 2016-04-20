@@ -21,7 +21,28 @@ void FriendsGUI::on_viewProfile_clicked()
 
 void FriendsGUI::on_removeFriend_clicked()
 {
+    QModelIndexList selected = ui->friendList->selectionModel()->selectedIndexes();
+    if (selected.length() == 0) {
+        ui->message->setText("Error: You have to select a friend to proceed.");
+        return;
+    }
 
+    QString username = selected.at(0).data().toString();
+    RocketUser::DeleteFriendStatus status = accountController->getUser()->deleteFriend(username);
+
+    switch (status) {
+    case RocketUser::DeleteSuccessful:
+        ui->message->setText("You and " + username + " are no longer friends.");
+        refreshFriendList();
+        break;
+    case RocketUser::FriendshipNotExist:
+        ui->message->setText("Error: No friendship to remove. You have probably been ditched before you even know it.");
+        refreshFriendList();
+        break;
+    default:
+        ui->message->setText("Remove friend failed. Please call technical support.");
+        break;
+    }
 }
 
 void FriendsGUI::on_addFriend_clicked()
@@ -30,7 +51,7 @@ void FriendsGUI::on_addFriend_clicked()
     RocketUser::AddFriendStatus status = accountController->getUser()->addFriend(friendName);
 
     switch (status) {
-    case RocketUser::Successful:
+    case RocketUser::AddSuccessful:
         ui->message->setText("Add friend successful!");
         refreshFriendList();
         break;
@@ -42,9 +63,8 @@ void FriendsGUI::on_addFriend_clicked()
     case RocketUser::AlreadyFriend:
         ui->message->setText("Error: You and " + friendName + " are already friends.");
         break;
-
     default:
-        ui->message->setText("Add friend failed.");
+        ui->message->setText("Add friend failed. Please call technical support.");
         break;
     }
 }

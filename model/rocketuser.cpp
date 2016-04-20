@@ -118,25 +118,36 @@ RocketUser::AddFriendStatus RocketUser::addFriend(QString friendname){
 
     if (friendDB->addFriend(userId,friendId)) {
         std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
-        return RocketUser::Successful;
+        return RocketUser::AddSuccessful;
     }
 
-    return RocketUser::Failed;
+    return RocketUser::AddFailed;
 }
 
-void RocketUser::deleteFriend(QString friendname){
+RocketUser::DeleteFriendStatus RocketUser::deleteFriend(QString friendname){
 
     int userId, friendId;
 
     userId=accountDB->retrieveAccountID(username);
     friendId=accountDB->retrieveAccountID(friendname);
 
-    if (!friendDB->friendshipExists(userId,friendId))
+    if (!friendDB->friendshipExists(userId,friendId)){
         std::cerr << "Friendship does not exist." << std::endl;
-
-    else{
-
-        friendDB->removeFriend(userId,friendId);
-        std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
+        return RocketUser::FriendshipNotExist;
     }
+
+    if (friendDB->removeFriend(userId,friendId)) {
+        std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
+        return RocketUser::DeleteSuccessful;
+    }
+
+    return RocketUser::DeleteFailed;
+}
+
+bool RocketUser::changePhoto(QString path) {
+    return profileDB->changePhoto(profile->getID(), path);
+}
+
+bool RocketUser::changeProfileDescription(QString description) {
+    return profileDB->changeDescription(profile->getID(), description);
 }

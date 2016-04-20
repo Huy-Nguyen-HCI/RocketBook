@@ -16,11 +16,13 @@ class ProfileGUI : public QWidget
 public:
     explicit ProfileGUI(AccountController *inputAccountController, QWidget *parent = 0);
     ~ProfileGUI();
+    void loadProfile();
 
 private slots:
-    void on_pushButton_loadProfile_clicked();
 
-    void on_listView_profile_activated(const QModelIndex &index);
+    void on_selectPicture_clicked();
+
+    void on_saveDescription_clicked();
 
 private:
     Ui::ProfileGUI *ui;
