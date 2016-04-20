@@ -18,7 +18,9 @@ LoginUI::LoginUI()
 
     initialize();
     echo();
+    mvprintw(0,0,"Welcome to Rocketbook!");
     run();
+
 
 }
 
@@ -26,23 +28,52 @@ LoginUI::LoginUI()
 void LoginUI::run(){
 
     char name[80], pass[80];
-    std::string username,password;
 
-    mvprintw(0,0,"Enter Username: ");
+    mvprintw(1,0,"Enter Username: ");
 
-    username=getstr(name);
+    getstr(name);
 
     initscr();
-  //  getch();
+    //  getch();
 
-    mvprintw(1,0,"Enter Password: ");
+    mvprintw(2,0,"Enter Password: ");
 
-    password=getstr(pass);
-
-
+    getstr(pass);
 
 
+    accountController=new AccountController();
+    QString x;
+  //  accountController->createNewAccount(QString::fromStdString(name),QString::fromStdString(pass),x,x,x,0);
 
+
+
+    if(accountController->login(QString::fromStdString(name),QString::fromStdString(pass))){
+        erase();
+        refresh();
+
+
+        mvprintw(2,0,"Login Successful. Welcome ");
+        printw(name);
+        refresh();
+        //make main menu
+        return;
+
+
+
+    }
+    else{
+        erase();
+        refresh();
+        mvprintw(0,0,"Login Failed. Try Again.");
+        run();
+    }
+
+
+
+
+
+
+}
 
 
 
@@ -86,4 +117,4 @@ void LoginUI::run(){
 
   //  Configuration::newPlayer(output);
   **/
-}
+
