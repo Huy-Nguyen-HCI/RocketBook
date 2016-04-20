@@ -9,9 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     dashboard = new DashboardGUI();
     scrapbook = new ScrapbookGUI();
+    profile = new ProfileGUI();
 
     ui->stackedWidget->addWidget(dashboard);
     ui->stackedWidget->addWidget(scrapbook);
+    ui->stackedWidget->addWidget(profile);
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +31,7 @@ void MainWindow::on_actionFeed_triggered()
 
 void MainWindow::on_actionAboutMe_triggered()
 {
-
+    ui->stackedWidget->setCurrentWidget(profile);
 }
 
 void MainWindow::on_actionNotifications_triggered()

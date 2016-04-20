@@ -10,6 +10,7 @@
 #include "createtweetgui.h"
 #include "dashboardgui.h"
 #include "scrapbookgui.h"
+#include "profilegui.h"
 
 /**
  *      1. Create a ProfileGUI
@@ -56,6 +57,7 @@ private:
     QString username;
     DashboardGUI *dashboard;
     ScrapbookGUI *scrapbook;
+    ProfileGUI *profile;
     AccountController *accountController;
     LoginGUI *login;
 };
