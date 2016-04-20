@@ -67,9 +67,7 @@ public:
 
     void deleteFriend(QString username, QString friendname);
 
-
-
-    std::vector<QString>* getFriends(QString username);
+    std::vector<QString> getFriends(QString username);
 
 
 private:

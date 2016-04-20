@@ -2,25 +2,12 @@
 
 
 
-LoginUI::LoginUI()
-{
-/**
-    char mesg[]="Enter a string: ";
-    char str[80];
-
-
-    getstr(str);
-    mvprintw(LINES - 2, 0, "You Entered: %s", str);
-    getch();
-    endwin();
-**/
-
+LoginUI::LoginUI(){
 
     initialize();
     echo();
     mvprintw(0,0,"Welcome to Rocketbook!");
     run();
-
 
 }
 
@@ -44,7 +31,6 @@ void LoginUI::run(){
     accountController=new AccountController();
     QString x;
   //  accountController->createNewAccount(QString::fromStdString(name),QString::fromStdString(pass),x,x,x,0);
-
 
 
     if(accountController->login(QString::fromStdString(name),QString::fromStdString(pass))){
