@@ -17,6 +17,7 @@ RocketUser::RocketUser(QString dbPath,
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;
+    updateFriendList();
     profileDB = new ProfileDB (dbPath);
     friendDB = new FriendDB(dbPath);
     accountDB = new AccountDB(dbPath);
@@ -41,9 +42,11 @@ RocketUser::RocketUser(QString dbPath,
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;
+    updateFriendList();
     friendDB = new FriendDB(dbPath);
     profileDB = new ProfileDB (dbPath);
     accountDB = new AccountDB(dbPath);
+
 
     if (profileDB->profileExists(profileID)) {
         ProfileInfoType profileInfo = profileDB->retrieveProfileInfo(profileID);
@@ -70,32 +73,33 @@ Profile* RocketUser::getProfile(){
     return profile;
 }
 
-void RocketUser::addFriend(int friendUserId){
-    friendList->push_back(friendUserId);
 
-}
+void RocketUser::updateFriendList(){
+    friendIdList.empty();
+    friendNameList.empty();
 
+    friendIdList= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
 
-std::vector<QString> RocketUser::getFriends(QString username){
-
-
-
-    std::vector<int> friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
-
-    std::vector<QString> friendnames;
-
-    for(unsigned int i=0; i<friendlist.size(); i++){
-        friendnames.push_back(accountDB->getUsername(friendlist.at(i)));
+    for(unsigned int i=0; i<friendIdList.size(); i++){
+        friendNameList.push_back(accountDB->getUsername(friendIdList.at(i)));
     }
-
-    return friendnames;
-
 }
 
 
 
 
-void RocketUser::addFriend(QString username, QString friendname){
+std::vector<QString> RocketUser::getFriendNames(){
+    return friendNameList;
+
+
+}
+
+std::vector<int> RocketUser::getFriendIds(){
+    return friendIdList;
+}
+
+
+void RocketUser::addFriend(QString friendname){
     int userId, friendId;
 
     userId=accountDB->retrieveAccountID(username);
@@ -110,16 +114,16 @@ void RocketUser::addFriend(QString username, QString friendname){
     else{
 
 
-     friendDB->addFriend(userId,friendId);
+        friendDB->addFriend(userId,friendId);
 
-     std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
-
+        std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
+        updateFriendList();
 
     }
 
 }
 
-void RocketUser::deleteFriend(QString username, QString friendname){
+void RocketUser::deleteFriend(QString friendname){
 
     int userId, friendId;
 
@@ -131,8 +135,9 @@ void RocketUser::deleteFriend(QString username, QString friendname){
 
     else{
 
-     friendDB->removeFriend(userId,friendId);
-     std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
+        friendDB->removeFriend(userId,friendId);
+        std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
+        updateFriendList();
 
     }
 }

@@ -57,16 +57,19 @@ public:
     int getID();
     Profile* getProfile();
     bool isAdmin() { return adminRights;}
-    void addFriend(int friendUserId);
+    void generateFriendList();
 
     /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
-    void addFriend(QString username, QString friendname);
+    void addFriend(QString friendname);
 
-    void deleteFriend(QString username, QString friendname);
+    void deleteFriend(QString friendname);
 
-    std::vector<QString> getFriends(QString username);
+    std::vector<QString> getFriendNames();
+    std::vector<int> getFriendIds();
+
+    void updateFriendList();
 
 private:
     Profile* profile;
@@ -79,10 +82,12 @@ private:
     // privacy settings
     int adminRights;
     // friend list
-    std::vector<int>* friendList;
+
 
     // feed
   // Chat List
+    std::vector<int> friendIdList;
+    std::vector<QString> friendNameList;
 
 
    FriendDB* friendDB;
