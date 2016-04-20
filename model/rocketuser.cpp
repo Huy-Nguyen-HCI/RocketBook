@@ -17,7 +17,7 @@ RocketUser::RocketUser(QString dbPath,
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;
-    updateFriendList();
+
     profileDB = new ProfileDB (dbPath);
     friendDB = new FriendDB(dbPath);
     accountDB = new AccountDB(dbPath);
@@ -27,7 +27,7 @@ RocketUser::RocketUser(QString dbPath,
                           profile->getPicturePath(),
                           profile->getDescription(),
                           profile->getScrapbook()->getID());
-
+    updateFriendList();
 
 }
 
@@ -42,7 +42,6 @@ RocketUser::RocketUser(QString dbPath,
     idCnt++;
     this->username = username;
     this->adminRights = adminRights;
-    updateFriendList();
     friendDB = new FriendDB(dbPath);
     profileDB = new ProfileDB (dbPath);
     accountDB = new AccountDB(dbPath);
@@ -59,6 +58,8 @@ RocketUser::RocketUser(QString dbPath,
     } else {
         qDebug() << "Profile does not exists.";
     }
+
+    updateFriendList();
 }
 
 RocketUser::~RocketUser() {
