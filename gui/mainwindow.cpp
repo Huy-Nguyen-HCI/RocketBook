@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     dashboard = new DashboardGUI();
     scrapbook = new ScrapbookGUI();
-    profile = new ProfileGUI();
+    profile = new ProfileGUI(accountController);
 
     ui->stackedWidget->addWidget(dashboard);
     ui->stackedWidget->addWidget(scrapbook);

@@ -146,6 +146,11 @@ bool AccountController::login(QString username, QString password){
     }
 }
 
+RocketUser AccountController::getUser()
+{
+    return *currentUser;
+}
+
 bool AccountController::createNewAccount(QString username,
                                          QString password,
                                          QString fullName,

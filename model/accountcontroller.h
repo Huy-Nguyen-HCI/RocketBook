@@ -61,6 +61,11 @@ public:
     bool login(QString username, QString password);
 
     /**
+     * @brief Returns the user associated with the account
+     */
+    RocketUser getUser();
+
+    /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
     void addFriend(QString username, QString friendname);
