@@ -5,9 +5,9 @@
 #include <vector>
 #include <iostream>
 #include "../database/profiledb.h"
-#include "../database/frienddb.h"
 #include "../database/accountdb.h"
 #include "groupcontroller.h"
+#include "friendcontroller.h"
 
 
 /**
@@ -25,8 +25,7 @@ class RocketUser
 {
 public:
 
-    enum AddFriendStatus { AddSuccessful, AlreadyFriend, FriendNotExist, AddFailed };
-    enum DeleteFriendStatus { DeleteSuccessful, FriendshipNotExist, DeleteFailed };
+//    enum AddFriendStatus { Successful, AlreadyFriend, FriendNotExist, Failed };
     /**
      * @brief RocketUser
      * Used to create a new account, must have full name, photo, description, etc.
@@ -57,22 +56,47 @@ public:
                int adminRights);
 
     ~RocketUser();
-    int getID();
-    Profile* getProfile();
-    bool isAdmin() { return adminRights;}
 
     /**
-     * @brief Sequence of actions for attempting to add friend to user database.
+     * @brief getID
+     * Retrieve the ID of the user
+     * @return ID of the user
      */
-    AddFriendStatus addFriend(QString friendname);
-    RocketUser::DeleteFriendStatus deleteFriend(QString friendname);
-    QStringList getFriends();
-    QStringList getFriendNames();
-    std::vector<int> getFriendIds();
-    void updateFriendList();
+    int getID() { return id;}
+
+    /**
+     * @brief getProfile
+     * Access the profile, which contains all about user information and scrapbook
+     * @return the user profile
+     */
+    Profile* getProfile();
+
+    QString getUsername() {return username;}
+
+    /**
+     * @brief controlGroup
+     * Access group functionality of a user
+     * @return a group controller
+     */
+    GroupController* controlGroup() { return groupController;}
+
+    /**
+     * @brief controlFriend
+     * Access friend functionality of a user
+     * @return a friend controller
+     */
+    FriendController* controlFriend() { return friendController;}
+
+    /**
+     * @brief isAdmin
+     * Check if the user is an admin
+     * @return true if user is an admin, false if not
+     */
+    bool isAdmin() { return adminRights;}
 
     bool changeProfileDescription(QString description);
     bool changePhoto(QString path);
+
 
 private:
     //Account matters
@@ -86,13 +110,7 @@ private:
     Profile* profile;
     ProfileDB* profileDB;
 
-    // friend list
-    FriendDB* friendDB;
-    std::vector<int> friendIdList;
-    QStringList friendNameList;
-
-
-    //groupList
+    FriendController* friendController;
     GroupController* groupController;
 
     // feed

@@ -39,6 +39,7 @@ INCLUDEPATH += googletest                       \
                    ../../model/tweet.cpp                   \
                    ../../model/group.cpp                   \
                    ../../model/groupcontroller.cpp         \
+                   ../../model/friendcontroller.cpp \
 
 
 

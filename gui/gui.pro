@@ -32,6 +32,7 @@ SOURCES += logingui.cpp \
     ../model/profile.cpp \
     ../model/group.cpp \
     ../model/groupcontroller.cpp \
+    ../model/friendcontroller.cpp \
     createaccountgui.cpp \
     dashboardgui.cpp \
     scrapbookgui.cpp \

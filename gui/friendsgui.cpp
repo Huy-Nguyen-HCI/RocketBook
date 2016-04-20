@@ -28,14 +28,14 @@ void FriendsGUI::on_removeFriend_clicked()
     }
 
     QString username = selected.at(0).data().toString();
-    RocketUser::DeleteFriendStatus status = accountController->getUser()->deleteFriend(username);
+    FriendController::DeleteFriendStatus status = accountController->getUser()->controlFriend()->deleteFriend(username);
 
     switch (status) {
-    case RocketUser::DeleteSuccessful:
+    case FriendController::DeleteSuccessful:
         ui->message->setText("You and " + username + " are no longer friends.");
         refreshFriendList();
         break;
-    case RocketUser::FriendshipNotExist:
+    case FriendController::FriendshipNotExist:
         ui->message->setText("Error: No friendship to remove. You have probably been ditched before you even know it.");
         refreshFriendList();
         break;
@@ -48,19 +48,19 @@ void FriendsGUI::on_removeFriend_clicked()
 void FriendsGUI::on_addFriend_clicked()
 {
     QString friendName = ui->friendNameInput->text();
-    RocketUser::AddFriendStatus status = accountController->getUser()->addFriend(friendName);
+    FriendController::AddFriendStatus status = accountController->getUser()->controlFriend()->addFriend(friendName);
 
     switch (status) {
-    case RocketUser::AddSuccessful:
+    case FriendController::AddSuccessful:
         ui->message->setText("Add friend successful!");
         refreshFriendList();
         break;
 
-    case RocketUser::FriendNotExist:
+    case FriendController::FriendNotExist:
         ui->message->setText("Error: Input username does not exist.");
         break;
 
-    case RocketUser::AlreadyFriend:
+    case FriendController::AlreadyFriend:
         ui->message->setText("Error: You and " + friendName + " are already friends.");
         break;
     default:
@@ -72,9 +72,9 @@ void FriendsGUI::on_addFriend_clicked()
 void FriendsGUI::refreshFriendList() {
 
     RocketUser *user = accountController->getUser();
-    user->updateFriendList();
+    user->controlFriend()->updateFriendList();
 
-    QStringList friends = user->getFriendNames();
+    QStringList friends = user->controlFriend()->getFriendNames();
 
     QStringListModel *model = new QStringListModel(friends);
 

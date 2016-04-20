@@ -25,6 +25,7 @@ SOURCES += main.cpp \
     ../model/profile.cpp \
     ../model/group.cpp \
     ../model/groupcontroller.cpp \
+    ../model/friendcontroller.cpp \
     friendsui.cpp
 
 HEADERS += \
