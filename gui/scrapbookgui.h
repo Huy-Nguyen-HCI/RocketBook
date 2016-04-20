@@ -8,6 +8,7 @@
 #include "displaybloggui.h"
 #include "displaymultimediagui.h"
 #include "displaytweetgui.h"
+#include "../model/accountcontroller.h"
 
 class CreateTweetGUI;
 class DisplayTweetGUI;
@@ -25,7 +26,7 @@ class ScrapbookGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit ScrapbookGUI(QWidget *parent = 0);
+    explicit ScrapbookGUI(AccountController *inputAccountController, QWidget *parent = 0);
     ~ScrapbookGUI();
     void switchTweetViews();
     void switchBlogViews();
@@ -39,6 +40,7 @@ private:
     DisplayBlogGUI *displayBlogView;
     DisplayMultimediaGUI *displayMultimediaView;
     DisplayTweetGUI *displayTweetView;
+    AccountController *accountController;
 };
 
 #endif // SCRAPBOOKGUI_H

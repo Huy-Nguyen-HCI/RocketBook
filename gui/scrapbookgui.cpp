@@ -1,13 +1,14 @@
 #include "scrapbookgui.h"
 #include "ui_scrapbookgui.h"
 
-ScrapbookGUI::ScrapbookGUI(QWidget *parent) :
+ScrapbookGUI::ScrapbookGUI(AccountController *inputAccountController, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ScrapbookGUI)
 {
     ui->setupUi(this);
+    accountController = inputAccountController;
 
-    createBlogView = new CreateBlogGUI(this);
+    createBlogView = new CreateBlogGUI(accountController, this);
     displayBlogView = new DisplayBlogGUI(this);
     createTweetView = new CreateTweetGUI(this);
     displayTweetView = new DisplayTweetGUI(this);
