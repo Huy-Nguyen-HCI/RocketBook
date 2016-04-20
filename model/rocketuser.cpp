@@ -79,8 +79,7 @@ Profile* RocketUser::getProfile(){
 
 void RocketUser::updateFriendList(){
     friendIdList.empty();
-    QStringList newList;
-    friendNameList = newList;
+    friendNameList.clear();
 
     friendIdList= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
     for(unsigned int i=0; i<friendIdList.size(); i++){

@@ -15,6 +15,7 @@ class FriendsGUI : public QWidget
 public:
     explicit FriendsGUI(AccountController *input, QWidget *parent = 0);
     ~FriendsGUI();
+    void refreshFriendList();
 
 private slots:
     void on_viewProfile_clicked();
@@ -26,7 +27,6 @@ private slots:
 private:
     Ui::FriendsGUI *ui;
     AccountController *accountController;
-    void refreshFriendList();
 };
 
 #endif // FRIENDSGUI_H

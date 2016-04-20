@@ -35,7 +35,6 @@ int main(int argc, char *argv[]) {
     CreateAccountGUI* createAccountView = new CreateAccountGUI(acc);
 
     // set up connections
-    //main->setAccountController(acc);
     loginView->setMainWindow(main);
     loginView->setCreateAccountView(createAccountView);
     createAccountView->setLoginView(loginView);

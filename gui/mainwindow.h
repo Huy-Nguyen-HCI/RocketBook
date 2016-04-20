@@ -11,6 +11,7 @@
 #include "dashboardgui.h"
 #include "scrapbookgui.h"
 #include "profilegui.h"
+#include "friendsgui.h"
 
 /**
  *      1. Create a ProfileGUI
@@ -60,6 +61,7 @@ private:
     ProfileGUI *profile;
     AccountController *accountController;
     LoginGUI *login;
+    FriendsGUI *friends;
 };
 
 #endif // MAINWINDOW_H

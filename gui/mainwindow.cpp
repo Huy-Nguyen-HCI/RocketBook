@@ -12,10 +12,12 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     dashboard = new DashboardGUI();
     scrapbook = new ScrapbookGUI();
     profile = new ProfileGUI(accountController);
+    friends = new FriendsGUI(accountController);
 
     ui->stackedWidget->addWidget(dashboard);
     ui->stackedWidget->addWidget(scrapbook);
     ui->stackedWidget->addWidget(profile);
+    ui->stackedWidget->addWidget(friends);
 }
 
 MainWindow::~MainWindow()
@@ -43,7 +45,8 @@ void MainWindow::on_actionNotifications_triggered()
 
 void MainWindow::on_actionFriend_triggered()
 {
-
+    friends->refreshFriendList();
+    ui->stackedWidget->setCurrentWidget(friends);
 }
 
 void MainWindow::on_actionLog_out_triggered()

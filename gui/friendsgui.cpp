@@ -7,7 +7,6 @@ FriendsGUI::FriendsGUI(AccountController *input, QWidget *parent) :
 {
     ui->setupUi(this);
     accountController = input;
-    refreshFriendList();
 }
 
 FriendsGUI::~FriendsGUI()
