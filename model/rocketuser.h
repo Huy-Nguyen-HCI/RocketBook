@@ -24,6 +24,7 @@ class RocketUser
 {
 public:
 
+    enum AddFriendStatus { Successful, AlreadyFriend, FriendNotExist, Failed };
     /**
      * @brief RocketUser
      * Used to create a new account, must have full name, photo, description, etc.
@@ -62,14 +63,16 @@ public:
     /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
-    void addFriend(QString friendname);
+    AddFriendStatus addFriend(QString friendname);
 
     void deleteFriend(QString friendname);
 
-    std::vector<QString> getFriendNames();
-    std::vector<int> getFriendIds();
+    QStringList getFriends();
 
     void updateFriendList();
+
+    QStringList getFriendNames();
+    std::vector<int> getFriendIds();
 
 private:
     Profile* profile;
@@ -87,7 +90,7 @@ private:
     // feed
   // Chat List
     std::vector<int> friendIdList;
-    std::vector<QString> friendNameList;
+    QStringList friendNameList;
 
 
    FriendDB* friendDB;
