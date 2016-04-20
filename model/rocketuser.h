@@ -53,6 +53,7 @@ public:
     int getID();
     Profile* getProfile();
     bool isAdmin() { return adminRights;}
+    void addFriend(int friendUserId);
 
 private:
     Profile* profile;
@@ -65,7 +66,7 @@ private:
     int adminRights;
     // friend list
     std::vector<int>* friendList;
-    void addFriend(int friendUserId);
+
     // feed
   // Chat List
 

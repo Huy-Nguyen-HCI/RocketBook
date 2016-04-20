@@ -54,10 +54,11 @@ public:
     bool getPrivacy() {return privacy;}
 
 protected:
-    QString username;
-    QString content;
+
     int id;
     static int idCnt;
+    QString username;
+    QString content;
     bool privacy;
 
 };

@@ -9,15 +9,15 @@ class Chat
 {
 public:
     Chat(int chatId);
-
-
-    std::vector<std::string> memberList;
-    std::vector<Message*> messageList;
-
-    int chatId;
     int getChatId();
 
     void addMessage(Message* newMessage);
+
+
+private:
+    int chatId;
+    std::vector<std::string> memberList;
+    std::vector<Message*> messageList;
 
 };
 
