@@ -28,6 +28,7 @@ RocketUser::RocketUser(QString dbPath,
                           profile->getDescription(),
                           profile->getScrapbook()->getID());
     updateFriendList();
+    groupController = new GroupController(dbPath, id);
 
 }
 
@@ -60,6 +61,7 @@ RocketUser::RocketUser(QString dbPath,
     }
 
     updateFriendList();
+    groupController = new GroupController(dbPath, id);
 }
 
 RocketUser::~RocketUser() {
@@ -81,7 +83,7 @@ void RocketUser::updateFriendList(){
     friendNameList = newList;
 
     friendIdList= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
-    for(int i=0; i<friendIdList.size(); i++){
+    for(unsigned int i=0; i<friendIdList.size(); i++){
         friendNameList.append(accountDB->getUsername(friendIdList.at(i)));
     }
 
@@ -106,12 +108,12 @@ RocketUser::AddFriendStatus RocketUser::addFriend(QString friendname){
     friendId=accountDB->retrieveAccountID(friendname);
 
     if (!accountDB->accountExists(friendname) || !accountDB->accountExists(username)){
-        std::cerr << "Account does not exist." << endl;
+        std::cerr << "Account does not exist." << std::endl;
         return RocketUser::FriendNotExist;
     }
 
     if(friendDB->friendshipExists(userId,friendId)) {
-        std::cerr << "You are already friend with " << friendname.toStdString() <<endl;
+        std::cerr << "You are already friend with " << friendname.toStdString() <<std::endl;
         return RocketUser::AlreadyFriend;
     }
 
@@ -131,7 +133,7 @@ void RocketUser::deleteFriend(QString friendname){
     friendId=accountDB->retrieveAccountID(friendname);
 
     if (!friendDB->friendshipExists(userId,friendId))
-        std::cerr << "Friendship does not exist." << endl;
+        std::cerr << "Friendship does not exist." << std::endl;
 
     else{
 

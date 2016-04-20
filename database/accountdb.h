@@ -34,6 +34,14 @@ public:
     AccountDB(const QString& path);
 
     /**
+     * @brief AccountDB
+     * Construct an account database, given the path and the connection name of the database
+     * @param path
+     * @param connectionName
+     */
+    AccountDB(const QString &path, const QString &connectionName);
+
+    /**
      * @brief ~AccountDB
      *
      * Default destructor for account database

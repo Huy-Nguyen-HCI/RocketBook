@@ -32,6 +32,13 @@ public:
     GroupMemberDB(const QString& path);
 
     /**
+     * @brief GroupMemberDB
+     * @param path
+     * @param connectionName
+     */
+    GroupMemberDB(const QString &path, const QString &connectionName);
+
+    /**
      * @brief ~GroupMemberDB
      *
      * Default destructor for groupMember database
@@ -63,10 +70,10 @@ public:
      *
      * @param groupID Group ID
      * @param accountID GroupMember ID
-     * @param groupAdminRights Whether the member is an admin, 0 if false, 1 if true
+     * @param groupAdminRights Whether the member is an admin, 0 if false, 1 if true. Default is 0
      * @return true if added, false if not added
      */
-    bool addGroupMember(int groupID, int accountID, int groupAdminRights);
+    bool addGroupMember(int groupID, int accountID, int groupAdminRights = 0);
 
     /**
      * @brief groupMembershipExists

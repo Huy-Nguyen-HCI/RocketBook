@@ -30,6 +30,8 @@ SOURCES += logingui.cpp \
     ../model/multimedia.cpp \
     ../model/scrapbook.cpp \
     ../model/profile.cpp \
+    ../model/group.cpp \
+    ../model/groupcontroller.cpp \
     createaccountgui.cpp \
     dashboardgui.cpp \
     scrapbookgui.cpp \

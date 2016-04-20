@@ -34,6 +34,24 @@ GroupMemberDB::GroupMemberDB(const QString &path)
     }
 }
 
+GroupMemberDB::GroupMemberDB(const QString &path, const QString &connectionName)
+{
+    this->connectionName.append(connectionName);
+    QSqlDatabase groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    //Must name database connection
+
+    groupMemberDB.setDatabaseName(path);
+
+    if (!groupMemberDB.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
+}
+
 GroupMemberDB::~GroupMemberDB()
 {
     QSqlDatabase::removeDatabase(connectionName);

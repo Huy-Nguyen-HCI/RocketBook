@@ -7,6 +7,7 @@
 #include "../database/profiledb.h"
 #include "../database/frienddb.h"
 #include "../database/accountdb.h"
+#include "groupcontroller.h"
 
 
 /**
@@ -58,42 +59,43 @@ public:
     int getID();
     Profile* getProfile();
     bool isAdmin() { return adminRights;}
-    void generateFriendList();
 
     /**
      * @brief Sequence of actions for attempting to add friend to user database.
      */
     AddFriendStatus addFriend(QString friendname);
-
     void deleteFriend(QString friendname);
-
     QStringList getFriends();
-
-    void updateFriendList();
-
     QStringList getFriendNames();
     std::vector<int> getFriendIds();
+    void updateFriendList();
 
 private:
-    Profile* profile;
+    //Account matters
+    AccountDB* accountDB;
     int id;
     static int idCnt;
     QString username;
-    ProfileDB* profileDB;
-    AccountDB* accountDB;
-    // group list
-    // privacy settings
     int adminRights;
+
+    //Profiles
+    Profile* profile;
+    ProfileDB* profileDB;
+
     // friend list
-
-
-    // feed
-  // Chat List
+    FriendDB* friendDB;
     std::vector<int> friendIdList;
     QStringList friendNameList;
 
 
-   FriendDB* friendDB;
+    //groupList
+    GroupController* groupController;
+
+    // feed
+    // Chat List
+
+
+
 
 };
 

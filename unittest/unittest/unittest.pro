@@ -37,20 +37,14 @@ INCLUDEPATH += googletest                       \
                    ../../model/rocketuser.cpp              \
                    ../../model/scrapbook.cpp               \
                    ../../model/tweet.cpp                   \
+                   ../../model/group.cpp                   \
+                   ../../model/groupcontroller.cpp         \
 
 
-
-
-
-             #      "../../model/blog.cpp"                  \
-             #       "../../model/comment.cpp"
 
         HEADERS += ../../database/*.h \
                    ../../model/*.h \
                     modeltester.h      \
                     databasetester.h
-              #     "../../model/blog.h"                  \
-              #      "../../model/comment.h"
-    #databasetester.h
 
 

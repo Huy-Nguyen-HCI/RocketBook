@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     message.cpp \
     chat.cpp \
     chatcontroller.cpp \
-    group.cpp
+    group.cpp \
+    groupcontroller.cpp
 
 HEADERS += \
     rocketuser.h \
@@ -37,4 +38,5 @@ HEADERS += \
     message.h \
     chat.h \
     chatcontroller.h \
-    group.h
+    group.h \
+    groupcontroller.h

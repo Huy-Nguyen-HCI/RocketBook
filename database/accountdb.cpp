@@ -32,6 +32,22 @@ AccountDB::AccountDB(const QString &path)
     }
 }
 
+AccountDB::AccountDB(const QString &path, const QString &connectionName)
+{
+    this->connectionName.append(connectionName);
+    QSqlDatabase accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    accountDB.setDatabaseName(path);
+
+    if (!accountDB.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
+}
+
 AccountDB::~AccountDB()
 {
     QSqlDatabase::removeDatabase(connectionName);

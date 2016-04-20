@@ -23,6 +23,8 @@ SOURCES += main.cpp \
     ../model/multimedia.cpp \
     ../model/scrapbook.cpp \
     ../model/profile.cpp \
+    ../model/group.cpp \
+    ../model/groupcontroller.cpp \
     friendsui.cpp
 
 HEADERS += \
