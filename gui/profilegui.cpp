@@ -19,8 +19,9 @@ void ProfileGUI::on_pushButton_loadProfile_clicked()
     Profile *currentProfile = accountController->getUser()->getProfile();
     //ui->listView_profile->
 
-    const QString descr = currentProfile->getDescription();
-    const QString descrTest("This is a test");
+
+    QString descr = currentProfile->getDescription();
+    QString myName = currentProfile->getFullName();
 
     //QSqlQueryModel *model = new QSqlQueryModel();
     //QAbstractItemModel model;
@@ -33,14 +34,20 @@ void ProfileGUI::on_pushButton_loadProfile_clicked()
 //    profileList.addItem(descrTest);
 //    profileList.addItem(descr);
 
-    QStringList *toAdd = new QStringList();
-    toAdd->append(descr);
-    toAdd->append(descrTest);
+    //QStringList *toAdd = new QStringList();
+    //toAdd->append(descr);
+    //toAdd->append(descrTest);
 
     //QStringListModel profileModel = new QStringListModel(toAdd, NULL);
     //profileModel.setStringList(*toAdd);
 
     //ui->listView_profile->model()->insertRow(0, );
+
+
+    ui->listWidget->clear();
+    ui->listWidget->addItem("Name:    "+descr);
+
+    ui->listWidget->addItem("My Description:    "+myName);
 
 
 
