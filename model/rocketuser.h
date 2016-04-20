@@ -3,7 +3,11 @@
 #include "profile.h"
 #include <string>
 #include <vector>
+#include <iostream>
 #include "../database/profiledb.h"
+#include "../database/frienddb.h"
+#include "../database/accountdb.h"
+
 
 /**
  * @brief The RocketUser class stores information about the user.
@@ -55,12 +59,22 @@ public:
     bool isAdmin() { return adminRights;}
     void addFriend(int friendUserId);
 
+    /**
+     * @brief Sequence of actions for attempting to add friend to user database.
+     */
+    void addFriend(QString username, QString friendname);
+
+    void deleteFriend(QString username, QString friendname);
+
+    std::vector<QString> getFriends(QString username);
+
 private:
     Profile* profile;
     int id;
     static int idCnt;
     QString username;
     ProfileDB* profileDB;
+    AccountDB* accountDB;
     // group list
     // privacy settings
     int adminRights;
@@ -70,6 +84,8 @@ private:
     // feed
   // Chat List
 
+
+   FriendDB* friendDB;
 
 };
 

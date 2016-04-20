@@ -6,7 +6,6 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include "../database/accountdb.h"
-#include "../database/frienddb.h"
 #include <string>
 #include "rocketuser.h"
 #include "chatcontroller.h"
@@ -65,19 +64,11 @@ public:
      */
     RocketUser getUser();
 
-    /**
-     * @brief Sequence of actions for attempting to add friend to user database.
-     */
-    void addFriend(QString username, QString friendname);
 
-    void deleteFriend(QString username, QString friendname);
-
-    std::vector<QString> getFriends(QString username);
 
 
 private:
     AccountDB* accountDB;
-    FriendDB* friendDB;
     RocketUser* currentUser;
     QString dbPath;
 
@@ -96,7 +87,7 @@ private:
     int requestInput();
     int requestInput2();
 
-    void displayFriends(QString username);
+
 
 };
 

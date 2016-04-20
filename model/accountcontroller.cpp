@@ -7,13 +7,13 @@ AccountController::AccountController()
 {
     dbPath.append("../database/rocketDB.sqlite");
     accountDB = new AccountDB(dbPath);
-    friendDB = new FriendDB(dbPath);
+
 }
 
 AccountController::AccountController(QString &path) {
     dbPath.append(path);
     accountDB = new AccountDB(dbPath);
-    friendDB = new FriendDB(dbPath);
+
 }
 
 //void AccountController::run(){
@@ -60,77 +60,6 @@ AccountController::AccountController(QString &path) {
 //        }
 //    }
 //}
-
-void AccountController::displayFriends(QString username){
-
-    std::vector<int> friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
-
-
-    for(unsigned int i=0; i<friendlist.capacity(); i++){
-        std::cout << friendlist.at(i) << std::endl;
-    }
-}
-
-std::vector<QString> AccountController::getFriends(QString username){
-
-
-
-    std::vector<int> friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
-
-    std::vector<QString> friendnames;
-
-    for(unsigned int i=0; i<friendlist.size(); i++){
-        friendnames.push_back(accountDB->getUsername(friendlist.at(i)));
-    }
-
-    return friendnames;
-
-}
-
-
-
-
-void AccountController::addFriend(QString username, QString friendname){
-    int userId, friendId;
-
-    userId=accountDB->retrieveAccountID(username);
-    friendId=accountDB->retrieveAccountID(friendname);
-
-    if (!checkAccountExists(friendname) || !checkAccountExists(username))
-        cerr << "Account does not exist." << endl;
-
-    else if(friendDB->friendshipExists(userId,friendId))
-        cerr << "You are already friend with " << friendname.toStdString() <<endl;
-
-    else{
-
-
-     friendDB->addFriend(userId,friendId);
-
-     std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
-
-
-    }
-
-}
-
-void AccountController::deleteFriend(QString username, QString friendname){
-
-    int userId, friendId;
-
-    userId=accountDB->retrieveAccountID(username);
-    friendId=accountDB->retrieveAccountID(friendname);
-
-    if (!friendDB->friendshipExists(userId,friendId))
-        cerr << "Friendship does not exist." << endl;
-
-    else{
-
-     friendDB->removeFriend(userId,friendId);
-     std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
-
-    }
-}
 
 
 bool AccountController::login(QString username, QString password){
