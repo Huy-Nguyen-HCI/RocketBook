@@ -2,6 +2,7 @@
 #define PROFILEGUI_H
 
 #include <QWidget>
+#include <QListWidget>
 #include "../model/accountcontroller.h"
 
 namespace Ui {
@@ -18,6 +19,8 @@ public:
 
 private slots:
     void on_pushButton_loadProfile_clicked();
+
+    void on_listView_profile_activated(const QModelIndex &index);
 
 private:
     Ui::ProfileGUI *ui;
