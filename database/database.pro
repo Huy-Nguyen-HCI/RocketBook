@@ -14,7 +14,9 @@ SOURCES += main.cpp \
     blogdb.cpp \
     postdb.cpp \
     messagedb.cpp \
-    chatdb.cpp
+    chatdb.cpp \
+    groupdb.cpp \
+    groupmemberdb.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,6 +36,8 @@ HEADERS += \
     blogdb.h \
     postdb.h \
     messagedb.h \
-    chatdb.h
+    chatdb.h \
+    groupdb.h \
+    groupmemberdb.h
 
 

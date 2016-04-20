@@ -6,6 +6,12 @@
 #include <QDebug>
 #include <vector>
 
+/**
+ * @brief The FriendDB class
+ * Insert/Delete from a sqlite3 table Friends
+ * Column 1: AccountID integer
+ * Column 2: FriendID integer
+ */
 class FriendDB
 {
 public:
@@ -59,14 +65,11 @@ public:
     bool removeFriend(int accountID, int friendID);
 
     /**
-     * @brief retrieveAccountInfo
-     * Return a vector including ID's of all of the accounts which the user is friends with
-     *
-     * @param  accountID User's account Id.
-     * @param password password of the account
-     * @return a vector with all friend account Ids.
+     * @brief retrieveAllFriends
+     * Retrieve all the ID of friends belonging to one account
+     * @param accountId The ID of the friends of an account
+     * @return
      */
-
     std::vector<int> retrieveAllFriends(int accountId);
 
     /**
