@@ -47,6 +47,15 @@ public:
     bool isOpen() const;
 
     /**
+     * @brief createGroup
+     * Create a new group with only one member in which the member is an admin.
+     * @param groupID The ID of the group to be created
+     * @param accountID The ID of the account
+     * @return true if created, false if not
+     */
+    bool createGroup(int groupID, int accountID);
+
+    /**
      * @brief addGroupMember
      * Adds a new groupMembership by entering two entires into the groupMember table:
      * entry 1: userId and groupMemberId
@@ -87,7 +96,14 @@ public:
      */
     std::vector<GroupMemberInfoType> retrieveAllGroupMembersInfo(int groupID);
 
-
+    /**
+     * @brief retrieveGroupList
+     * Retrieve the group list in one account
+     * @param accountID
+     * The ID of the account
+     * @return the list of group IDs
+     */
+    std::vector<int> retrieveGroupList(int accountID);
 
     /**
      * @brief removeAllGroupMembers
@@ -95,6 +111,13 @@ public:
      * @return true if succeeded, false if failed
      */
     bool removeAllGroupMembers();
+
+    /**
+     * @brief getMaxGroupID
+     * Retrieve the last group ID
+     * @return the max (last) group ID
+     */
+    int getMaxGroupID();
 
 
 private:

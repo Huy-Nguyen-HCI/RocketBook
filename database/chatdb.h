@@ -6,7 +6,12 @@
 #include <QDebug>
 #include <vector>
 
-
+/**
+ * @brief The ChatDB class
+ * Maintain a sqlite3 table "Chats" to store chats
+ * Column 1: ChatID INTEGER KEY NOT NULL
+ * Column 2: AccountID INTEGER NOT NULL
+ */
 class ChatDB
 {
 public:
@@ -114,7 +119,7 @@ public:
     bool removeAllChats();
 
 
-
+private:
     QString connectionName;
 
 };

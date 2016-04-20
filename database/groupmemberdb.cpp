@@ -46,6 +46,27 @@ bool GroupMemberDB::isOpen() const
     return groupMemberDB.isOpen();
 }
 
+bool GroupMemberDB::createGroup(int groupID, int accountID)
+{
+    bool success = false;
+    QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
+    queryAdd.prepare("INSERT INTO GroupMembers (GroupID, AccountID, GroupAdminRights) VALUES (:GroupID, :AccountID, :GroupAdminRights)");
+    queryAdd.bindValue(":GroupID", groupID);
+    queryAdd.bindValue(":AccountID", accountID);
+    queryAdd.bindValue(":GroupAdminRights", 1);
+
+    if(queryAdd.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "add group member failed: " << queryAdd.lastError();
+    }
+
+    return success;
+}
+
 bool GroupMemberDB::addGroupMember(int groupID, int accountID, int groupAdminRights){
 
     bool success = false;
@@ -153,6 +174,34 @@ std::vector<GroupMemberInfoType> GroupMemberDB::retrieveAllGroupMembersInfo(int 
     return groupMemberInfo;
 }
 
+std::vector<int> GroupMemberDB::retrieveGroupList(int accountID){
+
+    std::vector<int> groupList;
+
+    qDebug() << "Groups in db:";
+    QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
+    queryRetrieve.prepare("SELECT GroupID FROM Groups WHERE AccountID = (:AccountID)");
+    queryRetrieve.bindValue(":AccountID", accountID);
+
+    int groupIDIndex = /*query.record().indexOf("GroupID"); */ 0;
+
+    if (queryRetrieve.exec())
+    {
+        while(queryRetrieve.next())
+        {
+            groupList.push_back(queryRetrieve.value(groupIDIndex).toInt());
+        }
+    }
+
+    else
+    {
+        qDebug() << "Group retrieval fails:" <<queryRetrieve.lastError();
+    }
+
+    return groupList;
+
+}
+
 
 
 bool GroupMemberDB::removeAllGroupMembers()
@@ -172,5 +221,29 @@ bool GroupMemberDB::removeAllGroupMembers()
     }
 
     return success;
+}
+
+int GroupMemberDB::getMaxGroupID()
+{
+    int maxID;
+
+    qDebug() << "Get max group ID from db:";
+    QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
+    queryMaxID.prepare("SELECT max(GroupID) FROM GroupMembers");
+
+    if (queryMaxID.exec())
+    {
+        if(queryMaxID.next())
+        {
+            maxID = queryMaxID.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "group retrieval fails:" <<queryMaxID.lastError();
+    }
+
+    return maxID;
+
 }
 
