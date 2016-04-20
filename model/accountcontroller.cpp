@@ -71,6 +71,19 @@ void AccountController::displayFriends(QString username){
     }
 }
 
+std::vector<QString>* AccountController::getFriends(QString username){
+
+ //   std::vector<int> friendlist= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
+
+//    for(unsigned int i=0; i<friendlist.capacity(); i++){
+ //       std::cout << friendlist.at(i) << std::endl;
+  //  }
+
+}
+
+
+
+
 void AccountController::addFriend(QString username, QString friendname){
     int userId, friendId;
 
@@ -177,4 +190,5 @@ int AccountController::requestInput2(){
     cin >> userInput;
     return userInput;
 }
+
 

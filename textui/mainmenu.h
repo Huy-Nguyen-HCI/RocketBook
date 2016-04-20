@@ -1,17 +1,24 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 #include "screen.h"
-#include "loginui.h"
 #include <string>
+#include "friendsui.h"
 
 class MainMenu: public Screen
 {
 public:
-    MainMenu();
+    MainMenu(QString username);
     ~MainMenu();
 
     //Screens
-    LoginUI* login;
+    FriendsUI* friends;
+
+
+
+    QString username;
+
+
+
 
 
 

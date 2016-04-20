@@ -1,8 +1,9 @@
 #include "mainmenu.h"
 
-MainMenu::MainMenu(): Screen::Screen()
+MainMenu::MainMenu(QString username)
 {
 
+    this->username=username;
     initialize();
     changeScreen(run());
 
@@ -70,11 +71,11 @@ int MainMenu::run(){
     // print the instructions for manipulating the Value object
     mvprintw(0, 0, "Main Menu\nPlease select one by using the arrow keys and pressing enter:");
     mvprintw(3, 8, "Edit Pofile");
-    mvprintw(4, 8, "Post content");
-    mvprintw(5, 8, "See Feeds");
-    mvprintw(6, 8, "Groups");
-    mvprintw(7, 8, "Chats");
-    mvprintw(8, 8, "Notifications");
+    mvprintw(4, 8, "Add Friends");
+    mvprintw(5, 8, "Post");
+    mvprintw(6, 8, "See feed");
+    mvprintw(7, 8, "Groups");
+    mvprintw(8, 8, "Chats");
     mvprintw(9, 8, "Logout");
 
     mvprintw(v+2, 5, "->");
@@ -87,11 +88,12 @@ int MainMenu::run(){
 
         // cleanup the window and return control to bash
         endwin();
-/**
+
         //std::cout << "exiting main\n";
 
-        if(selection==1)
-            login = new LoginUI();
+        if(selection==2)
+            friends = new FriendsUI(username);
+        /**
         else if(selection==2)
             TopP = new TopPlayer();
         **/

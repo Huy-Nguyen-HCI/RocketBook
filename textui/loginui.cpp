@@ -55,9 +55,7 @@ void LoginUI::run(){
         mvprintw(2,0,"Login Successful. Welcome ");
         printw(name);
         refresh();
-        //make main menu
-        return;
-
+        menu=new MainMenu(QString::fromStdString(name));
 
 
     }
@@ -68,53 +66,4 @@ void LoginUI::run(){
         run();
     }
 
-
-
-
-
-
 }
-
-
-
-
-    /**
-
-    char response[20];
-    bool continue_looping;
-    int length = 0;
-    std::string output;
-    do{
-        continue_looping = true;
-        refresh();
-        clear();
-
-
-
-
-
-
-        if(length>0){
-            output = response;
-            output = output.substr(0,length);
-            mvprintw(14,10,output.c_str());
-        }
-        int ch = getch();
-        if(ch==10){
-            if(length > 0) continue_looping=false;
-        }
-        else if(ch==263){
-            if(length > 0) length--;
-        }
-        else if(ch==27){
-            return;
-        }
-        else{
-            response[length] = char(ch);
-            length++;
-        }
-    } while(continue_looping);
-
-  //  Configuration::newPlayer(output);
-  **/
-

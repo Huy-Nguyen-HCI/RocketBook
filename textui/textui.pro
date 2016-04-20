@@ -22,11 +22,13 @@ SOURCES += main.cpp \
     ../model/tweet.cpp \
     ../model/multimedia.cpp \
     ../model/scrapbook.cpp \
-    ../model/profile.cpp
+    ../model/profile.cpp \
+    friendsui.cpp
 
 HEADERS += \
     mainmenu.h \
     screen.h \
     loginui.h \
     ../database/*.h \
-    ../model/*.h
+    ../model/*.h \
+    friendsui.h
