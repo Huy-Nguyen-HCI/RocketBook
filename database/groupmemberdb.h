@@ -83,7 +83,7 @@ public:
      * @param groupMemberID GroupMember account ID
      * @return true if yes, false if no
      */
-    bool groupMemberExists(int accountID, int groupMemberID) const;
+    bool groupMemberExists(int groupID, int accountID) const;
 
     /**
      * @brief removeGroupMember
@@ -125,6 +125,15 @@ public:
      * @return the max (last) group ID
      */
     int getMaxGroupID();
+
+    /**
+     * @brief setAdmin
+     * Set a group member to become admin
+     * @param groupID
+     * @param accountID
+     * @return true if succeeded, false if failed
+     */
+    bool setAdmin(int groupID, int accountID);
 
 
 private:

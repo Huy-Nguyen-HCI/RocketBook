@@ -77,6 +77,7 @@ public:
      */
     bool removeAllGroups();
 
+
 private:
 
     QString connectionName;

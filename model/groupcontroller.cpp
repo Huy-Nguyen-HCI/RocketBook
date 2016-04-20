@@ -32,3 +32,13 @@ Group* GroupController::createNewGroup(QString fullName,
 std::vector<Group*> GroupController::getAllGroups() {
     return groupList;
 }
+
+Group* GroupController::getGroup(int groupID)
+{
+    for (unsigned int i = 0; i < groupList.size(); i++) {
+        if (groupID == groupList[i]->getID()) {
+            return groupList[i];
+        }
+    }
+    return NULL;
+}

@@ -83,6 +83,10 @@ Group::~Group()
     delete profileDB;
 }
 
+int Group::getID() {
+    return id;
+}
+
 Profile* Group::getProfile() {
     return profile;
 }
@@ -102,4 +106,34 @@ bool Group::addMember(QString username)
     return groupMemberDB->addGroupMember(id, accountID);
 }
 
+bool Group::setAdmin(int accountID)
+{
+    if (groupMemberDB->setAdmin(id, accountID)) {
+        //erase member from member list
+        memberIDList.erase(std::remove(memberIDList.begin(), memberIDList.end(), accountID), memberIDList.end());
+        QString username = accountDB->getUsername(accountID);
+        memberNameList.erase(std::remove(memberNameList.begin(), memberNameList.end(), username), memberNameList.end());
 
+        //add member to admin list
+        adminIDList.push_back(accountID);
+        adminNameList.push_back(username);
+        return true;
+    }
+    return false;
+}
+
+bool Group::setAdmin(QString username)
+{
+    int accountID = accountDB->retrieveAccountID(username);
+    if (groupMemberDB->setAdmin(id, accountID)) {
+        //erase member from member list
+        memberIDList.erase(std::remove(memberIDList.begin(), memberIDList.end(), accountID), memberIDList.end());
+        memberNameList.erase(std::remove(memberNameList.begin(), memberNameList.end(), username), memberNameList.end());
+
+        //add member to admin list
+        adminIDList.push_back(accountID);
+        adminNameList.push_back(username);
+        return true;
+    }
+    return false;
+}

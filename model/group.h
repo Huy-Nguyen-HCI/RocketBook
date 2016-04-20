@@ -40,10 +40,22 @@ public:
 
     ~Group();
 
+    int getID();
     Profile* getProfile();
 
+    //add a new member
     bool addMember(int accountID);
     bool addMember(QString username);
+
+    //set a member to be admin
+    bool setAdmin(int accountID);
+    bool setAdmin(QString username);
+
+    //retrieve member name list
+    std::vector<QString> getMemberNameList() { return memberNameList;}
+    std::vector<QString> getAdminNameList() { return adminNameList;}
+
+
 
 private:
     int id;

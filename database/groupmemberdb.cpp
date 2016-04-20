@@ -265,3 +265,27 @@ int GroupMemberDB::getMaxGroupID()
 
 }
 
+bool GroupMemberDB::setAdmin(int groupID, int accountID)
+{
+    bool success = false;
+    qDebug() << "Set a user to become admin of a group";
+
+    if(groupMemberExists(groupID, accountID)) {
+
+        QSqlQuery querySetAdmin(QSqlDatabase::database(connectionName));
+
+        querySetAdmin.prepare("UPDATE GroupMembers SET AdminRights = 1 WHERE GroupID = (:GroupID) AND AccountID = (:AccountID)");
+        querySetAdmin.bindValue(":GroupID", groupID);
+        querySetAdmin.bindValue(":AccountID", accountID);
+
+        if (querySetAdmin.exec()) {
+            success = true;
+        }
+        else
+        {
+            qDebug() << "set admin fails:" <<querySetAdmin.lastError();
+        }
+    }
+
+    return success;
+}

@@ -1,12 +1,5 @@
 #include "postdb.h"
 
-//PostDB::PostDB() {
-
-//}
-
-//PostDB::~PostDB() {
-//    QSqlDatabase::removeDatabase(connectionName);
-//}
 
 bool PostDB::isOpen() const {
     QSqlDatabase database = QSqlDatabase::database(connectionName);

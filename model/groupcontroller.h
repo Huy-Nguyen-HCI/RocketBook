@@ -17,6 +17,8 @@ public:
 
     std::vector<Group*> getAllGroups();
 
+    Group* getGroup(int groupID);
+
 private:
     int accountID;
     QString dbPath;
