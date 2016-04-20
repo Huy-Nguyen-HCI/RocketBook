@@ -20,16 +20,29 @@ void ProfileGUI::on_pushButton_loadProfile_clicked()
     //ui->listView_profile->
 
     const QString descr = currentProfile->getDescription();
-
+    const QString descrTest("This is a test");
 
     //QSqlQueryModel *model = new QSqlQueryModel();
     //QAbstractItemModel model;
     //QModelIndex modelIndex;
 
-    QListWidget profileList(ui->listView_profile);
-    //QListWidgetItem description(descr, &profileList, 0);
+//    QListWidget profileList(ui->listView_profile);
+//    QListWidgetItem description(descr, &profileList, 0);
+//    QListWidgetItem descriptionTest(descrTest, &profileList, 0);
     //profileList.addItem(&description);
-    profileList.addItem(descr);
+//    profileList.addItem(descrTest);
+//    profileList.addItem(descr);
+
+    QStringList *toAdd = new QStringList();
+    toAdd->append(descr);
+    toAdd->append(descrTest);
+
+    //QStringListModel profileModel = new QStringListModel(toAdd, NULL);
+    //profileModel.setStringList(*toAdd);
+
+    //ui->listView_profile->model()->insertRow(0, );
+
+
 
 
 
