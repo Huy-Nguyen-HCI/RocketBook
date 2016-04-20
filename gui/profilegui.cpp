@@ -45,9 +45,10 @@ void ProfileGUI::on_pushButton_loadProfile_clicked()
 
 
     ui->listWidget->clear();
-    ui->listWidget->addItem("Name:    "+descr);
+    ui->listWidget->addItem("My Name:    "+myName);
+    ui->listWidget->addItem("My Description:    "+descr);
 
-    ui->listWidget->addItem("My Description:    "+myName);
+
 
 
 

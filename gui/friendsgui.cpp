@@ -16,6 +16,7 @@ FriendsGUI::~FriendsGUI()
 
 void FriendsGUI::on_viewProfile_clicked()
 {
+
 }
 
 void FriendsGUI::on_removeFriend_clicked()
