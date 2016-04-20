@@ -1,7 +1,9 @@
 #include "mainmenu.h"
 
-MainMenu::MainMenu(QString username)
+MainMenu::MainMenu(QString username, AccountController* accountControl,ChatController* chatControl)
 {
+    this->accountControl=accountControl;
+    this->chatControl=chatControl;
 
     this->username=username;
     initialize();
@@ -92,7 +94,7 @@ int MainMenu::run(){
         //std::cout << "exiting main\n";
 
         if(selection==2)
-            friends = new FriendsUI(username);
+            friends = new FriendsUI(username,accountControl);
         /**
         else if(selection==2)
             TopP = new TopPlayer();

@@ -8,14 +8,14 @@
 
 class FriendsUI: public Screen{
 public:
-    FriendsUI(QString username);
+    FriendsUI(QString username, AccountController* accountControl);
 
     void run();
 
     QString username;
 
 private:
-    AccountController* controller;
+    AccountController* accountControl;
 
 };
 

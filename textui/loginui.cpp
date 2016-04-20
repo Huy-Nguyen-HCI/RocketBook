@@ -2,8 +2,10 @@
 
 
 
-LoginUI::LoginUI(){
+LoginUI::LoginUI(AccountController* accountControl, ChatController* chatControl){
 
+    this->accountControl=accountControl;
+    this->chatControl=chatControl;
     initialize();
     echo();
     mvprintw(0,0,"Welcome to Rocketbook!");
@@ -27,13 +29,11 @@ void LoginUI::run(){
 
     getstr(pass);
 
-
-    accountController=new AccountController();
     QString x;
   //  accountController->createNewAccount(QString::fromStdString(name),QString::fromStdString(pass),x,x,x,0);
 
 
-    if(accountController->login(QString::fromStdString(name),QString::fromStdString(pass))){
+    if(accountControl->login(QString::fromStdString(name),QString::fromStdString(pass))){
         erase();
         refresh();
 
@@ -41,7 +41,7 @@ void LoginUI::run(){
         mvprintw(2,0,"Login Successful. Welcome ");
         printw(name);
         refresh();
-        menu=new MainMenu(QString::fromStdString(name));
+        menu=new MainMenu(QString::fromStdString(name),accountControl,chatControl);
 
 
     }

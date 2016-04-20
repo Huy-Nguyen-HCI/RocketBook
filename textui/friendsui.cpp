@@ -1,8 +1,9 @@
 #include "friendsui.h"
 
-FriendsUI::FriendsUI(QString username)
+FriendsUI::FriendsUI(QString username, AccountController* accountControl)
 {
     this->username=username;
+    this->accountControl=accountControl;
 initialize();
 run();
 }
@@ -12,7 +13,7 @@ void FriendsUI::run(){
 
 
 
-    std::vector<QString> friends=controller->getFriends(username);
+    std::vector<QString> friends=accountControl->getFriends(username);
     erase();
     refresh();
 

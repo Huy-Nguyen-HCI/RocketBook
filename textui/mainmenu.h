@@ -3,11 +3,14 @@
 #include "screen.h"
 #include <string>
 #include "friendsui.h"
+#define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
+#include "../model/accountcontroller.h"
+#include "../model/chatcontroller.h"
 
 class MainMenu: public Screen
 {
 public:
-    MainMenu(QString username);
+    MainMenu(QString username, AccountController* accountControl,ChatController* chatControl);
     ~MainMenu();
 
     //Screens
@@ -26,6 +29,10 @@ public:
     int run();
     void DrawScreen(int v);
     void changeScreen(int selection);
+
+private:
+    AccountController *accountControl;
+    ChatController* chatControl;
 };
 
 #endif // MAINMENU_H
