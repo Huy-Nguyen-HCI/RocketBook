@@ -2,10 +2,12 @@
 #include "ui_mainwindow.h"
 
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(AccountController *inputAccountController, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    accountController = inputAccountController;
+
     ui->setupUi(this);
     dashboard = new DashboardGUI();
     scrapbook = new ScrapbookGUI();

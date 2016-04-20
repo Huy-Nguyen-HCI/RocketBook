@@ -75,9 +75,9 @@ bool AccountController::login(QString username, QString password){
     }
 }
 
-RocketUser AccountController::getUser()
+RocketUser* AccountController::getUser()
 {
-    return *currentUser;
+    return currentUser;
 }
 
 bool AccountController::createNewAccount(QString username,

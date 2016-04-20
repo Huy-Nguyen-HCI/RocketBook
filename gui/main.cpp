@@ -28,20 +28,20 @@
 int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
-    AccountController acc;
+    AccountController* acc = new AccountController();
 
-    MainWindow main;
-    LoginGUI loginView(&acc);
-    CreateAccountGUI createAccountView(&acc);  
+    MainWindow* main = new MainWindow(acc);
+    LoginGUI* loginView = new LoginGUI(acc);
+    CreateAccountGUI* createAccountView = new CreateAccountGUI(acc);
 
     // set up connections
-    main.setAccountController(&acc);
-    loginView.setMainWindow(&main);
-    loginView.setCreateAccountView(&createAccountView);
-    createAccountView.setLoginView(&loginView);
-    createAccountView.setMainWindow(&main);
+    //main->setAccountController(acc);
+    loginView->setMainWindow(main);
+    loginView->setCreateAccountView(createAccountView);
+    createAccountView->setLoginView(loginView);
+    createAccountView->setMainWindow(main);
 
-    loginView.show();
+    loginView->show();
 
     return a.exec();
 }

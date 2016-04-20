@@ -30,7 +30,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(AccountController *inputAccountController, QWidget *parent = 0);
     void setUsername(QString input) { username = input; }
     void setAccountController(AccountController *input) { accountController = input; }
     ~MainWindow();

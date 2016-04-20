@@ -16,7 +16,7 @@ ProfileGUI::~ProfileGUI()
 
 void ProfileGUI::on_pushButton_loadProfile_clicked()
 {
-    Profile *currentProfile = accountController->getUser().getProfile();
+    Profile *currentProfile = accountController->getUser()->getProfile();
     //ui->listView_profile->
 
     const QString descr = currentProfile->getDescription();
@@ -27,7 +27,7 @@ void ProfileGUI::on_pushButton_loadProfile_clicked()
     //QModelIndex modelIndex;
 
     QListWidget profileList(ui->listView_profile);
-    QListWidgetItem description(descr, &profileList, 0);
+    //QListWidgetItem description(descr, &profileList, 0);
     //profileList.addItem(&description);
     profileList.addItem(descr);
 

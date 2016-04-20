@@ -62,7 +62,7 @@ public:
     /**
      * @brief Returns the user associated with the account
      */
-    RocketUser getUser();
+    RocketUser *getUser();
 
 
 
