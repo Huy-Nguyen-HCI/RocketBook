@@ -10,12 +10,17 @@ class FriendsUI: public Screen{
 public:
     FriendsUI(QString username, AccountController* accountControl);
 
-    void run();
+    int run();
 
     QString username;
+    void DrawScreen(int v);
+    void takeCommand(int selection);
 
 private:
     AccountController* accountControl;
+    void displayFriends();
+    void addFriend();
+    void removeFriend();
 
 };
 

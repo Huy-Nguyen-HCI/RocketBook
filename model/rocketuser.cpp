@@ -137,6 +137,5 @@ void RocketUser::deleteFriend(QString friendname){
 
         friendDB->removeFriend(userId,friendId);
         std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
-
     }
 }
