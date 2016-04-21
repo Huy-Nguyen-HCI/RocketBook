@@ -5,11 +5,17 @@ FriendController::FriendController(QString dbPath, int accountID)
     this->dbPath = dbPath;
     friendDB = new FriendDB(dbPath);
     accountDB = new AccountDB(dbPath, "AccountFriend");
-    profileDB = new ProfileDB(dbPath);
+    profileDB = new ProfileDB(dbPath, "profileFriend");
     this->accountID = accountID;
 
     updateFriendList();
 
+}
+
+FriendController::~FriendController() {
+    delete friendDB;
+    delete accountDB;
+    delete profileDB;
 }
 
 void FriendController::updateFriendList(){
@@ -79,7 +85,7 @@ FriendController::DeleteFriendStatus FriendController::deleteFriend(QString frie
 
 ProfileInfoType FriendController::getFriendProfile(QString username) {
 
-    AccountInfoType accountInfo = accountDB->retrieveAccountID(username);
+    AccountInfoType accountInfo = accountDB->retrieveAccountInfo(username);
     int profileID = std::get<3>(accountInfo);
     ProfileInfoType info = profileDB->retrieveProfileInfo(profileID);
     return info;

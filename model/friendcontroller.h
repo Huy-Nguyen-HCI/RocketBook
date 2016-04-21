@@ -17,9 +17,17 @@ public:
 
     /**
      * @brief FriendController
+     * @param dbPath
      * @param accountID
      */
     FriendController(QString dbPath, int accountID);
+
+    /**
+     * @brief ~FriendController
+     * Default destructor
+     */
+    ~FriendController();
+
 
     AddFriendStatus addFriend(QString friendname);
     DeleteFriendStatus deleteFriend(QString friendname);

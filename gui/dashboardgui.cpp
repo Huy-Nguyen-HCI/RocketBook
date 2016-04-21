@@ -12,3 +12,8 @@ DashboardGUI::~DashboardGUI()
 {
     delete ui;
 }
+
+void DashboardGUI::on_latestScrapbookButton_clicked()
+{
+
+}

@@ -15,6 +15,9 @@ public:
     explicit DashboardGUI(QWidget *parent = 0);
     ~DashboardGUI();
 
+private slots:
+    void on_latestScrapbookButton_clicked();
+
 private:
     Ui::DashboardGUI *ui;
 };
