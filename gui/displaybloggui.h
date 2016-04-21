@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "scrapbookgui.h"
+#include "../model/accountcontroller.h"
+#include "../model/blog.h"
 
 class ScrapbookGUI;
 
@@ -15,15 +17,19 @@ class DisplayBlogGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit DisplayBlogGUI(ScrapbookGUI *input, QWidget *parent = 0);
+    explicit DisplayBlogGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent = 0);
     ~DisplayBlogGUI();
+    void refreshBlogs();
 
 private slots:
     void on_createBlog_clicked();
 
+    void on_refreshBlogs_clicked();
+
 private:
     Ui::DisplayBlogGUI *ui;
     ScrapbookGUI *scrapbook;
+    AccountController *accountController;
 };
 
 #endif // DISPLAYBLOGGUI_H

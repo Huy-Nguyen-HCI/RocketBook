@@ -9,7 +9,7 @@ ScrapbookGUI::ScrapbookGUI(AccountController *inputAccountController, QWidget *p
     accountController = inputAccountController;
 
     createBlogView = new CreateBlogGUI(accountController, this);
-    displayBlogView = new DisplayBlogGUI(this);
+    displayBlogView = new DisplayBlogGUI(accountController, this);
     createTweetView = new CreateTweetGUI(this);
     displayTweetView = new DisplayTweetGUI(this);
     createMultimediaView = new CreateMultimediaGUI(this);

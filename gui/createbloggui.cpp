@@ -25,7 +25,8 @@ void CreateBlogGUI::on_publishButton_clicked()
 {
     QString newTitle = ui->lineEdit->text();
     QString newContent = ui->textEdit->toPlainText();
-    QString userName("m2");
+    QString userName = accountController->getUser()->getUsername();
+    //QString userName("m2");
     Blog newBlog(userName, newTitle, newContent);
 
     Profile *currentProfile = accountController->getUser()->getProfile();

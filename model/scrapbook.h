@@ -34,6 +34,7 @@ public:
                   QString title,
                   QString content,
                   bool privacy);
+    std::vector<Blog*> getAllBlogs();
 
     Tweet* addTweet(Tweet* newTweet);
     Tweet* addTweet(QString username,

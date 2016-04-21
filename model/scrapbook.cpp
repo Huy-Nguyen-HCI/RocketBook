@@ -149,6 +149,12 @@ Blog* Scrapbook::addBlog(QString username, QString title, QString content, bool 
     return newBlog;
 }
 
+std::vector<Blog*> Scrapbook::getAllBlogs()
+{
+    return blogList;
+
+}
+
 Tweet *Scrapbook::addTweet(Tweet* newTweet){
     tweetList.push_back(newTweet);
 

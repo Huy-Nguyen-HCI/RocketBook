@@ -1,12 +1,13 @@
 #include "displaybloggui.h"
 #include "ui_displaybloggui.h"
 
-DisplayBlogGUI::DisplayBlogGUI(ScrapbookGUI *input, QWidget *parent) :
+DisplayBlogGUI::DisplayBlogGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayBlogGUI)
 {
     ui->setupUi(this);
     scrapbook = input;
+    accountController = inputAccountController;
 }
 
 DisplayBlogGUI::~DisplayBlogGUI()
@@ -16,5 +17,33 @@ DisplayBlogGUI::~DisplayBlogGUI()
 
 void DisplayBlogGUI::on_createBlog_clicked()
 {
+    //refreshBlogs();
     scrapbook->switchBlogViews();
 }
+
+void DisplayBlogGUI::on_refreshBlogs_clicked()
+{
+    refreshBlogs();
+}
+
+void DisplayBlogGUI::refreshBlogs()
+{
+    Profile *currentProfile = accountController->getUser()->getProfile();
+    Scrapbook *myScrapbook = currentProfile->getScrapbook();
+    std::vector<Blog*> allBlogs = myScrapbook->getAllBlogs();
+
+    ui->listWidget->clear();
+    for(int i = 0; i < allBlogs.size(); i++){
+        Blog *curentBlog = allBlogs.at(i);
+        QString currentTitle = curentBlog->getTitle();
+        QString currentContent = curentBlog->getContent();
+        QString num = QString::number(i+1);
+        ui->listWidget->addItem("Blog # "+num+":"+"\n");
+        ui->listWidget->addItem("Title:    " + currentTitle);
+        ui->listWidget->addItem("\n");
+        ui->listWidget->addItem("Content:    " + currentContent);
+        ui->listWidget->addItem("\n");
+    }
+}
+
+
