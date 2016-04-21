@@ -43,6 +43,10 @@ void Scrapbook::constructContentContainers()
     constructCommentContainer();
     constructMultimediaContainer();
     constructTweetContainer();
+
+    std::sort(postList.begin(), postList.end(), Scrapbook::comparePost);
+    std::sort(publicPostList.begin(), publicPostList.end(), Scrapbook::comparePost);
+
 }
 
 
@@ -52,8 +56,11 @@ Blog *Scrapbook::addBlog(Blog* newBlog){
     int blogID = blogDB->getMaxPostID() + 1;
     newBlog->setID(blogID);
 
-    blogList.push_back(newBlog);
-    postList.push_back(newBlog);
+    blogList.insert(blogList.begin(), newBlog);
+    postList.insert(postList.begin(), newBlog);
+    if(!newBlog->getPrivacy()) {
+        publicPostList.insert(publicPostList.begin(), newBlog);
+    }
 
     //add blog into the database
     int accountID = accountDB->retrieveAccountID(newBlog->getAuthorUsername());
@@ -76,8 +83,11 @@ Blog* Scrapbook::addBlog(QString username, QString title, QString content, bool 
     if(privacy) { newBlog->setPrivate(); }
 
     //push back into the storage.
-    blogList.push_back(newBlog);
-    postList.push_back(newBlog);
+    blogList.insert(blogList.begin(), newBlog);
+    postList.insert(postList.begin(), newBlog);
+    if(!newBlog->getPrivacy()) {
+        publicPostList.insert(publicPostList.begin(), newBlog);
+    }
 
     //add blog into the database
     blogDB->addBlog(blogID,
@@ -96,8 +106,11 @@ std::vector<Blog*> Scrapbook::getAllBlogs()
 }
 
 Tweet *Scrapbook::addTweet(Tweet* newTweet){
-    tweetList.push_back(newTweet);
-    postList.push_back(newTweet);
+    tweetList.insert(tweetList.begin(), newTweet);
+    postList.insert(postList.begin(), newTweet);
+    if(!newTweet->getPrivacy()) {
+        publicPostList.insert(publicPostList.begin(), newTweet);
+    }
 
     //add tweet into the database
     int accountID = accountDB->retrieveAccountID(newTweet->getAuthorUsername());
@@ -118,8 +131,9 @@ Tweet *Scrapbook::addTweet(QString username, QString content, bool privacy){
     if(privacy) { newTweet->setPrivate(); }
 
     //add tweet into storage
-    tweetList.push_back(newTweet);
-    postList.push_back(newTweet);
+    tweetList.insert(tweetList.begin(), newTweet);
+    postList.insert(postList.begin(), newTweet);
+    if(!privacy) {publicPostList.insert(publicPostList.begin(), newTweet); }
 
     //add tweet into database
     tweetDB->addTweet(tweetID,
@@ -135,8 +149,9 @@ std::vector<Tweet*> Scrapbook::getAllTweets() {
 }
 
 Multimedia *Scrapbook::addMedia(Multimedia* newMedia){
-    mediaList.push_back(newMedia);
-    postList.push_back(newMedia);
+    mediaList.insert(mediaList.begin(), newMedia);
+    postList.insert(postList.begin(), newMedia);
+    if (!newMedia->getPrivacy()) { publicPostList.insert(publicPostList.begin(), newMedia); }
 
     //store media in DB
     int accountID = accountDB->retrieveAccountID(newMedia->getAuthorUsername());
@@ -159,8 +174,9 @@ Multimedia *Scrapbook::addMedia(QString username, QString title, QString descrip
     if(privacy) {newMedia->setPrivate();}
 
     //push back new media into media list
-    mediaList.push_back(newMedia);
-    postList.push_back(newMedia);
+    mediaList.insert(mediaList.begin(), newMedia);
+    postList.insert(postList.begin(), newMedia);
+    if (!newMedia->getPrivacy()) { publicPostList.insert(publicPostList.begin(), newMedia); }
 
     //store media in DB
     multimediaDB->addMultimedia(mediaID,
@@ -185,6 +201,7 @@ std::vector<Post*> Scrapbook::getAllPublicPosts() {
     return publicPostList;
 }
 
+
 void Scrapbook::constructBlogContainer() {
     //reconstruct all blogs
     std::vector<BlogInfoType> blogInfo = blogDB->retrieveAllBlogInfo(this->id);
@@ -207,6 +224,7 @@ void Scrapbook::constructBlogContainer() {
             publicPostList.push_back(newBlog);
         }
     }
+    std::sort(blogList.begin(), blogList.end(), Scrapbook::comparePost);
 }
 
 void Scrapbook::constructTweetContainer() {
@@ -229,6 +247,7 @@ void Scrapbook::constructTweetContainer() {
             publicPostList.push_back(newTweet);
         }
     }
+    std::sort(tweetList.begin(), tweetList.end(), Scrapbook::comparePost);
 }
 
 void Scrapbook::constructMultimediaContainer() {
@@ -256,6 +275,7 @@ void Scrapbook::constructMultimediaContainer() {
         }
 
     }
+    std::sort(mediaList.begin(), mediaList.end(), Scrapbook::comparePost);
 }
 
 void Scrapbook::constructCommentContainer() {
@@ -273,6 +293,18 @@ void Scrapbook::constructCommentContainer() {
             blogList[i]->addComment(newComment);
         }
     }
+}
+
+std::vector<Post*> Scrapbook::getLatest5Posts() {
+    std::vector<Post*> latestPostList;
+    for (unsigned int i = 0; i < 5; i++) {
+        latestPostList.push_back(postList[i]);
+    }
+    return latestPostList;
+}
+
+bool Scrapbook::comparePost(Post* a, Post* b) {
+    return a->getID() > b->getID();
 }
 
 //Blog* Scrapbook::getBlog(int num){

@@ -52,6 +52,7 @@ public:
 
     std::vector<Post*> getAllPosts();
     std::vector<Post*> getAllPublicPosts();
+    std::vector<Post*> getLatest5Posts();
 
 private:
     int id;
@@ -77,6 +78,8 @@ private:
     void constructTweetContainer();
     void constructMultimediaContainer();
     void constructCommentContainer();
+
+    static bool comparePost(Post* a, Post* b);
 
 
 //    Blog* getBlog(int num);
