@@ -18,7 +18,6 @@ ProfileGUI::~ProfileGUI()
 }
 
 
-
 void ProfileGUI::loadProfile() {
 
     Profile *currentProfile = accountController->getUser()->getProfile();

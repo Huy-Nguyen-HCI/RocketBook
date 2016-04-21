@@ -23,7 +23,6 @@ public:
     ~CreateAccountGUI();
     void clearAllFields();
     void setMainWindow(MainWindow *input) { main = input; }
-    void updatePhoto(QString filePath);
 
 private slots:
     void on_uploadButton_clicked();
@@ -39,6 +38,7 @@ private:
     AccountController *accountController;
     MainWindow *main;
     QGraphicsScene *scene;
+
 };
 
 #endif // CREATEACCOUNTGUI_H

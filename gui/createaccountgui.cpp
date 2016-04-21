@@ -116,29 +116,9 @@ void CreateAccountGUI::on_uploadButton_clicked(){
         QString path = dir.relativeFilePath(filePath);
 
         std::cout << "path is : " + path.toStdString() << std::endl;
-/**
-        // update the path in the database
-        accountController->getUser()->getProfile()->setPicturePath(path);
-        accountController->getUser()->changePhoto(path);
 
-     //   updatePhoto(path);
+        ui->profilePathBox->setText(filePath);
 
-        ui->message->setText("Update photo successful!");
-        **/
     }
 
-void CreateAccountGUI::updatePhoto(QString filePath) {
-    /**
-    // clear the current view
-    scene->clear();
-    ui->photo->viewport()->update();
-
-    // display the image in the GUI
-    ui->photo->setScene(scene);
-    QPixmap *file = new QPixmap(filePath);
-    QGraphicsPixmapItem *image = new QGraphicsPixmapItem(*file);
-    scene->addItem(image);
-    ui->photo->fitInView(image);
-    **/
-}
 
