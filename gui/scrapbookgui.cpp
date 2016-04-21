@@ -10,8 +10,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *inputAccountController, QWidget *p
 
     createBlogView = new CreateBlogGUI(accountController, this);
     displayBlogView = new DisplayBlogGUI(accountController, this);
-    createTweetView = new CreateTweetGUI(this);
-    displayTweetView = new DisplayTweetGUI(this);
+    createTweetView = new CreateTweetGUI(accountController, this);
+    displayTweetView = new DisplayTweetGUI(accountController, this);
     createMultimediaView = new CreateMultimediaGUI(accountController, this);
     displayMultimediaView = new DisplayMultimediaGUI(accountController, this);
 
@@ -43,6 +43,7 @@ void ScrapbookGUI::switchTweetViews() {
     if (ui->tweetStackedWidget->currentWidget() == displayTweetView)
         ui->tweetStackedWidget->setCurrentWidget(createTweetView);
     else
+        //displayTweetView->refreshTweets();
         ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
 }
 

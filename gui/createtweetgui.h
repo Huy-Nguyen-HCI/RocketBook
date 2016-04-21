@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "scrapbookgui.h"
+#include "../model/accountcontroller.h"
 
 class ScrapbookGUI;
 
@@ -15,7 +16,7 @@ class CreateTweetGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit CreateTweetGUI(ScrapbookGUI *input, QWidget *parent = 0);
+    explicit CreateTweetGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent = 0);
     ~CreateTweetGUI();
 
 private slots:
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::CreateTweetGUI *ui;
     ScrapbookGUI *scrapbook;
+    AccountController *accountController;
 };
 
 #endif // CREATETWEETGUI_H
