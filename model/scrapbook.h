@@ -52,7 +52,7 @@ public:
 
     std::vector<Post*> getAllPosts();
     std::vector<Post*> getAllPublicPosts();
-    std::vector<Post*> getLatest5Posts();
+    std::vector<Post*> getLatestPosts(int numberOfPosts);
 
 private:
     int id;

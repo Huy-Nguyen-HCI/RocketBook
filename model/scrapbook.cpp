@@ -300,9 +300,13 @@ void Scrapbook::constructCommentContainer() {
     }
 }
 
-std::vector<Post*> Scrapbook::getLatest5Posts() {
+std::vector<Post*> Scrapbook::getLatestPosts(int numberOfPosts) {
     std::vector<Post*> latestPostList;
-    for (unsigned int i = 0; i < 5; i++) {
+    unsigned int numPost = numberOfPosts;
+    if (numPost > postList.size()) {
+        numPost = postList.size();
+    }
+    for (unsigned int i = 0; i < numPost; i++) {
         latestPostList.push_back(postList[i]);
     }
     return latestPostList;
