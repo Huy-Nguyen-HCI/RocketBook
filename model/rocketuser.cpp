@@ -71,78 +71,14 @@ Profile* RocketUser::getProfile(){
 }
 
 bool RocketUser::changeProfileDescription(QString description){
-    ///add change method in profile
+    profile->setDescription(description);
     return profileDB->changeDescription(profile->getID(), description);
 }
 
 bool RocketUser::changePhoto(QString path) {
-    ///add change method in photo
+    profile->setPicturePath(path);
     return profileDB->changeDescription(profile->getID(), path);
 }
 
 
-//void RocketUser::updateFriendList(){
-//    friendIdList.empty();
-//    friendNameList.clear();
 
-//    friendIdList= friendDB->retrieveAllFriends(accountDB->retrieveAccountID(username));
-//    for(unsigned int i=0; i<friendIdList.size(); i++){
-//        friendNameList.append(accountDB->getUsername(friendIdList.at(i)));
-//    }
-
-//}
-
-//QStringList RocketUser::getFriendNames(){
-
-//    return friendNameList;
-//}
-
-//std::vector<int> RocketUser::getFriendIds(){
-//    return friendIdList;
-//}
-
-
-
-
-//RocketUser::AddFriendStatus RocketUser::addFriend(QString friendname){
-//    int userId, friendId;
-
-//    userId=accountDB->retrieveAccountID(username);
-//    friendId=accountDB->retrieveAccountID(friendname);
-
-//    if (!accountDB->accountExists(friendname) || !accountDB->accountExists(username)){
-//        std::cerr << "Account does not exist." << std::endl;
-//        return RocketUser::FriendNotExist;
-//    }
-
-//    if(friendDB->friendshipExists(userId,friendId)) {
-//        std::cerr << "You are already friend with " << friendname.toStdString() <<std::endl;
-//        return RocketUser::AlreadyFriend;
-//    }
-
-//    if (friendDB->addFriend(userId,friendId)) {
-//        std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
-//        return RocketUser::Successful;
-//    }
-
-//    return RocketUser::Failed;
-//}
-
-//void RocketUser::deleteFriend(QString friendname){
-
-//    int userId, friendId;
-
-//    userId=accountDB->retrieveAccountID(username);
-//    friendId=accountDB->retrieveAccountID(friendname);
-
-//    if (!friendDB->friendshipExists(userId,friendId))
-//        std::cerr << "Friendship does not exist." << std::endl;
-//        return RocketUser::FriendshipNotExist;
-//    }
-
-//    else{
-
-//        friendDB->removeFriend(userId,friendId);
-//        std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
-//    }
-//}

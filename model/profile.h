@@ -43,6 +43,9 @@ public:
     QString getPicturePath() { return picturePath; }
     Scrapbook* getScrapbook() { return scrapBook; }
 
+    void setDescription(QString &input) { description = input; }
+    void setFullName(QString &input) { fullName = input; }
+    void setPicturePath(QString &input) { picturePath = input; }
 
 private:
     int id;
