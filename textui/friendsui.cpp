@@ -5,59 +5,11 @@ FriendsUI::FriendsUI(QString username, AccountController* accountControl)// Frie
     this->username=username;
     this->accountControl=accountControl;
     initialize();
-    takeCommand(run());
+    takeCommand(select(4));
 }
 
-int FriendsUI::run(){
+void FriendsUI::drawScreen(int v) {
 
-    int v=1;
-
-    // initialize the interaction loop to run
-    bool continue_looping = true;
-
-    // draw the current screen
-    DrawScreen(v);
-
-    do {
-        // draw the new screen
-        refresh();
-        // obtain character from keyboard
-        int ch = getch();
-        // operate based on input character
-        switch (ch) {
-        case KEY_UP:
-            if(v>0) //arrow goes up
-            v--;
-            if(v==0) //arrow goes to bottom
-                v=4;
-            break;
-        case KEY_DOWN:
-            if(v<5) //arrows goes down
-            v++;
-            if(v==5) //arrow goes back to top
-                v=1;
-            break;
-        case 10: //Enter Key
-            continue_looping = false;
-            break;
-        }
-
-        DrawScreen(v);
-
-    } while(continue_looping);
-
-    return v;
-
-}
-
-
-void FriendsUI::DrawScreen(int v) {
-
-// temporary display string for storing the value
-// of the displayed Value object.
-std::string display;
-
-// clear screen return cursor to (0,0)
 clear();
 
 // print the instructions for manipulating the Value object
@@ -79,8 +31,6 @@ void FriendsUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-    //std::cout << "exiting main\n";
-
     friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
    if(selection==1)
        displayFriends();
@@ -92,7 +42,7 @@ void FriendsUI::takeCommand(int selection){
        return;
 
    initialize();
-   takeCommand(run());
+   takeCommand(select(4));
 
 }
 
@@ -106,8 +56,6 @@ void FriendsUI::displayFriends(){
     }
 
     getch();
-
-
 }
 
 void FriendsUI::addFriend(){
@@ -118,12 +66,8 @@ void FriendsUI::addFriend(){
     echo();
 
     getstr(name);
-    //accountcontroller.getuser.addfriend
 
     friendControl->addFriend(QString::fromStdString(name));
-
-
-
 }
 
 void FriendsUI::removeFriend(){
@@ -134,10 +78,6 @@ void FriendsUI::removeFriend(){
     echo();
 
     getstr(name);
-    //accountcontroller.getuser.addfriend
 
     friendControl->deleteFriend(QString::fromStdString(name));
-
-
-
 }

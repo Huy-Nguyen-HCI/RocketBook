@@ -11,6 +11,8 @@ public:
     Screen();
     ~Screen();
     void initialize();
+    virtual void drawScreen(int v);
+    int select(int max);
 };
 
 #endif // SCREEN_H

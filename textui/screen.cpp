@@ -31,6 +31,48 @@ Screen::Screen()
 
 }
 
+int Screen::select(int max){
+
+    int v=1;
+
+    // initialize the interaction loop to run
+    bool continue_looping = true;
+
+    // draw the current screen
+    drawScreen(v);
+
+    do {
+        // draw the new screen
+        refresh();
+        // obtain character from keyboard
+        int ch = getch();
+        // operate based on input character
+        switch (ch) {
+        case KEY_UP:
+            if(v>0) //arrow goes up
+            v--;
+            if(v==0) //arrow goes to bottom
+                v=max;
+            break;
+        case KEY_DOWN:
+            if(v<max+1) //arrows goes down
+            v++;
+            if(v==max+1) //arrow goes back to top
+                v=1;
+            break;
+        case 10: //Enter Key
+            continue_looping = false;
+            break;
+        }
+
+        drawScreen(v);
+
+    } while(continue_looping);
+
+    return v;
+
+}
+
 Screen::~Screen()
 {
 
@@ -45,5 +87,5 @@ void Screen::initialize(){
     keypad(stdscr, TRUE);
 }
 
-
+void Screen::drawScreen(int v){}
 

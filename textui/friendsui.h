@@ -10,10 +10,10 @@ class FriendsUI: public Screen{
 public:
     FriendsUI(QString username, AccountController* accountControl);// FriendController* friendControl);
 
-    int run();
+  //  int run();
 
     QString username;
-    void DrawScreen(int v);
+    void drawScreen(int v);
     void takeCommand(int selection);
 
 private:

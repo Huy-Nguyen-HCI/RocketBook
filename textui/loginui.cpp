@@ -29,7 +29,6 @@ void LoginUI::run(){
 
     getstr(pass);
 
-    QString x;
   //  accountController->createNewAccount(QString::fromStdString(name),QString::fromStdString(pass),x,x,x,0);
 
 

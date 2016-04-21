@@ -7,6 +7,7 @@
 #include "../model/accountcontroller.h"
 #include "../model/chatcontroller.h"
 #include "../model/friendcontroller.h"
+#include "chatui.h"
 
 class MainMenu: public Screen
 {
@@ -16,19 +17,11 @@ public:
 
     //Screens
     FriendsUI* friends;
-
-
+    ChatUI* chats;
 
     QString username;
 
-
-
-
-
-
-
-    int run();
-    void DrawScreen(int v);
+    void drawScreen(int v);
     void changeScreen(int selection);
 
 private:
