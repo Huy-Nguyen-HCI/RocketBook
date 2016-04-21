@@ -114,6 +114,11 @@ void Scrapbook::constructContentContainers()
 
 
 Blog *Scrapbook::addBlog(Blog* newBlog){
+
+    // set the unique ID for the blog in the database
+    int blogID = blogDB->getMaxPostID() + 1;
+    newBlog->setID(blogID);
+
     blogList.push_back(newBlog);
 
     //add blog into the database

@@ -51,7 +51,9 @@ public:
 
     void setPrivate();
 
-    bool getPrivacy() {return privacy;}
+    bool getPrivacy() { return privacy; }
+
+    void setID(int input) { id = input; }
 
 protected:
 

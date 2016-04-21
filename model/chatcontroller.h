@@ -22,12 +22,12 @@ public:
     ChatController(QString username);
 
     void run();
-    int selectChat();
+    int selectChat();   /**< used in terminal */
     void createChat();
-    void addMemberToChat(int chatId);
+    void addMemberToChat(int chatId);   /**< user in terminal */
     void sendMessage(int chatId);
     void displayMessages(int chatId);
-    void removeUserFromChat(int chatId);
+    void removeUserFromChat(int chatId);    /**< used in terminal */
     void deleteMessage(int chatId);
     std::vector<int>* getChatIdList();
     std::vector<int>* getSenderList(int chatId);

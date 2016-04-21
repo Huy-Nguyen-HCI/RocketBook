@@ -4,7 +4,7 @@ BlogDB::BlogDB()
 {
     connectionName.append("blogs");
     QSqlDatabase blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
-    blogDB.setDatabaseName("BlogDB.sqlite");
+    blogDB.setDatabaseName("rocketDB.sqlite");
 
     if (!blogDB.open())
     {
@@ -47,6 +47,7 @@ bool BlogDB::addBlog(int blogID,
 {
     bool success = false;
 
+    qDebug() << "blog id is: " <<  blogID;
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Blogs (BlogID, AccountID, ScrapbookID, BlogTitle, BlogContent, Privacy) VALUES (:BlogID, :AccountID, :ScrapbookID, :BlogTitle, :BlogContent, :Privacy)");
     queryAdd.bindValue(":BlogID", blogID);

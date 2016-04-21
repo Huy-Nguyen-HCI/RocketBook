@@ -27,11 +27,12 @@ void CreateBlogGUI::on_publishButton_clicked()
     QString newTitle = ui->lineEdit->text();
     QString newContent = ui->textEdit->toPlainText();
     QString userName = accountController->getUser()->getUsername();
-    //QString userName("m2");
-    Blog *newBlog = new Blog(userName, newTitle, newContent);
 
     Profile *currentProfile = accountController->getUser()->getProfile();
     Scrapbook *myScrapbook = currentProfile->getScrapbook();
+
+    Blog *newBlog = new Blog(userName, newTitle, newContent);
+
     myScrapbook->addBlog(newBlog);
 
     scrapbook->refreshBlogs();

@@ -33,16 +33,27 @@ void DisplayBlogGUI::refreshBlogs()
     std::vector<Blog*> allBlogs = myScrapbook->getAllBlogs();
 
     ui->listWidget->clear();
+
     for(int i = 0; i < allBlogs.size(); i++){
+
         Blog *curentBlog = allBlogs.at(i);
         QString currentTitle = curentBlog->getTitle();
         QString currentContent = curentBlog->getContent();
+
+        //QTextBrowser *blog = new QTextBrowser();
+
         QString num = QString::number(i+1);
-        ui->listWidget->addItem("Blog # "+num+":"+"\n");
-        ui->listWidget->addItem("Title:    " + currentTitle);
-        ui->listWidget->addItem("\n");
-        ui->listWidget->addItem("Content:    " + currentContent);
-        ui->listWidget->addItem("\n");
+        QString content =
+                "Blog # " + num + ":" + "\n" +
+                "Title:    " + currentTitle + "\n" +
+                "Content:    " + currentContent + "\n";
+        ui->listWidget->addItem(content);
+
+//        ui->listWidget->addItem("Blog # "+num+":"+"\n");
+//        ui->listWidget->addItem("Title:    " + currentTitle);
+//        ui->listWidget->addItem("\n");
+//        ui->listWidget->addItem("Content:    " + currentContent);
+//        ui->listWidget->addItem("\n");
     }
 }
 

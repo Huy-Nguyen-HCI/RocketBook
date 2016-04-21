@@ -2,6 +2,7 @@
 #define DISPLAYBLOGGUI_H
 
 #include <QWidget>
+#include <QTextBrowser>
 #include "scrapbookgui.h"
 #include "../model/accountcontroller.h"
 #include "../model/blog.h"
