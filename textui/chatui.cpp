@@ -127,8 +127,25 @@ int ChatUI::chatSelection(){
 
 void ChatUI::enterChat(int chatId){
     erase();
+    mvprintw(0,0, "Chat Id: ");
+    printw(std::to_string(chatId).c_str());
+
+    std::vector<int>* senderIds=chatControl->getSenderList(chatId);
+    std::vector<QString>* messages=chatControl->getMessageList(chatId);
+
+    for(int i=0;i<senderIds->size();i++){
+        mvprintw(i+1,0,accountControl->getUserName(senderIds->at(i)).c_str());
+        printw(": ");
+        printw(messages->at(i).toStdString().c_str());
+
+        }
 
 
-  //  Chat
+
+
+
+
+
+    getch();
 
 }

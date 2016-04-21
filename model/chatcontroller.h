@@ -30,6 +30,8 @@ public:
     void removeUserFromChat(int chatId);
     void deleteMessage(int chatId);
     std::vector<int>* getChatIdList();
+    std::vector<int>* getSenderList(int chatId);
+    std::vector<QString>* getMessageList(int chatId);
 
 
     int requestInput();

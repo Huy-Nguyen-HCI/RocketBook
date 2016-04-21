@@ -68,6 +68,8 @@ public:
 
     int getAccountId(QString username);
 
+    std::string getUserName(int id);
+
 
 
 private:

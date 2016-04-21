@@ -198,8 +198,14 @@ void ChatController::deleteMessage(int chatId){
 
 std::vector<int>* ChatController::getChatIdList(){
     return chatDB->retrieveChatList(accountDB->retrieveAccountID(username));
+}
 
+std::vector<int>* ChatController::getSenderList(int chatId){
+    return messageDB->retrieveChatSenders(chatId);
+}
 
+std::vector<QString>* ChatController::getMessageList(int chatId){
+    return messageDB->retrieveChatMessages(chatId);
 }
 
 
