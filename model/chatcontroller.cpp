@@ -67,7 +67,6 @@ void ChatController::createChat(){
 
     if(accountDB->accountExists(username)){
 
-
     if(chatDB->createChat(accountDB->retrieveAccountID(username)))
            cout << "Chat successfully created" << endl;
        else
@@ -79,7 +78,6 @@ void ChatController::createChat(){
     }
 
 }
-
 
 void ChatController::addMemberToChat(int chatId){
     QString friendname;
@@ -158,7 +156,7 @@ void ChatController::removeUserFromChat(int chatId){
 
 }
 
-
+/**
 //Displays all messages in chats and senders
 void ChatController::displayMessages(int chatId){
 
@@ -171,6 +169,7 @@ void ChatController::displayMessages(int chatId){
 
 
 }
+**/
 
 //User enters message and message is added to message database for the chat specified
 void ChatController::sendMessage(int chatId){

@@ -3,7 +3,7 @@
 ChatUI::ChatUI(AccountController* accountControl)
 {
 
-    username=accountControl->getUser()->getUsername();
+    this->username=accountControl->getUser()->getUsername();
     this->accountControl=accountControl;
     initialize();
     takeCommand(select(3));
@@ -34,7 +34,6 @@ void ChatUI::takeCommand(int selection){
     endwin();
 
     chatControl=new ChatController(accountControl->getPath(),accountControl->getUser()->getID());
-    //    chatControl=accountControl->getUser()->controlChat();
    if(selection==1)
        createChat();
    else if(selection==2)
@@ -122,17 +121,19 @@ int ChatUI::chatSelection(){
 
     } while(continue_looping);
 
-    return v;
+    return v-1;
 
 }
 
 void ChatUI::enterChat(int chatId){
-    erase();
-    mvprintw(0,0, "Chat Id: ");
-    printw(std::to_string(chatId).c_str());
+
 
     std::vector<int>* senderIds=chatControl->getSenderList(chatId);
     std::vector<QString>* messages=chatControl->getMessageList(chatId);
+
+    erase();
+    mvprintw(0,0, "Chat Id: ");
+    printw(std::to_string(chatId).c_str());
 
     for(int i=0;i<senderIds->size();i++){
         mvprintw(i+1,0,accountControl->getUserName(senderIds->at(i)).c_str());
@@ -140,11 +141,6 @@ void ChatUI::enterChat(int chatId){
         printw(messages->at(i).toStdString().c_str());
 
         }
-
-
-
-
-
 
 
     getch();
