@@ -18,6 +18,7 @@ CreateBlogGUI::~CreateBlogGUI()
 
 void CreateBlogGUI::on_returnButton_clicked()
 {
+    scrapbook->refreshBlogs();
     scrapbook->switchBlogViews();
 }
 
@@ -27,10 +28,13 @@ void CreateBlogGUI::on_publishButton_clicked()
     QString newContent = ui->textEdit->toPlainText();
     QString userName = accountController->getUser()->getUsername();
     //QString userName("m2");
-    Blog newBlog(userName, newTitle, newContent);
+    Blog *newBlog = new Blog(userName, newTitle, newContent);
 
     Profile *currentProfile = accountController->getUser()->getProfile();
     Scrapbook *myScrapbook = currentProfile->getScrapbook();
-    myScrapbook->addBlog(&newBlog);
+    myScrapbook->addBlog(newBlog);
+
+    scrapbook->refreshBlogs();
+    scrapbook->switchBlogViews();
 
 }

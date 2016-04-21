@@ -17,7 +17,7 @@ DisplayBlogGUI::~DisplayBlogGUI()
 
 void DisplayBlogGUI::on_createBlog_clicked()
 {
-    //refreshBlogs();
+    refreshBlogs();
     scrapbook->switchBlogViews();
 }
 

@@ -53,6 +53,11 @@ void ScrapbookGUI::switchBlogViews() {
         ui->blogStackedWidget->setCurrentWidget(displayBlogView);
 }
 
+void ScrapbookGUI::refreshBlogs()
+{
+    displayBlogView->refreshBlogs();
+}
+
 void ScrapbookGUI::switchMultimediaViews() {
     if (ui->multimediaStackedWidget->currentWidget() == displayMultimediaView)
         ui->multimediaStackedWidget->setCurrentWidget(createMultimediaView);
