@@ -9,6 +9,12 @@ Feed::Feed(QString dbPath, FriendController *friendController, GroupController *
     profileDB = new ProfileDB(dbPath, "profileFeed");
 }
 
+Feed::~Feed()
+{
+    delete accountDB;
+    delete profileDB;
+}
+
 std::vector<Post*> Feed::getFeed() {
     return postList;
 }

@@ -27,10 +27,8 @@ public:
      * @brief Constructs and runs account controller.
      */
     AccountController(QString& path);
-//    /**
-//     * @brief Runs account controller in the terminal. Asks for user input and performs indicated action.
-//     */
-//    void run();
+
+    ~AccountController();
 
     /**
      * @brief Creates new account and adds account information to database.
@@ -52,12 +50,21 @@ public:
      */
     bool checkAccountExists(QString username);
 
-
-
     /**
-     * @brief Sequence of actions for attempting to login into an account.
+     * @brief login
+     * Sequence of actions for attempting to login into an account.
+     * @param username The username of the account
+     * @param password The password of the account
+     * @return true if login passes, false if login fails.
      */
     bool login(QString username, QString password);
+
+    /**
+     * @brief logout
+     * Sequence of actions to log out of an account
+     * @return true of log out passes, false if it fails
+     */
+    void logout();
 
     /**
      * @brief Returns the user associated with the account
@@ -69,6 +76,8 @@ public:
     int getAccountId(QString username);
 
     std::string getUserName(int id);
+
+
 
 
 

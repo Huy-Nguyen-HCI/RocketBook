@@ -39,5 +39,10 @@ Profile::Profile(QString dbPath,
     profileDB = new ProfileDB(dbPath, "Scrapbook");
 }
 
+Profile::~Profile()
+{
+    delete profileDB;
+    delete scrapBook;
+}
 
 

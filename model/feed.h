@@ -12,6 +12,8 @@ class Feed{
 
 public:
     Feed(QString dbPath, FriendController* friendController, GroupController* groupController);
+    ~Feed();
+
     void updatePostList();
     std::vector<Post*> getFeed();
 

@@ -24,6 +24,11 @@ Post::Post(int id, QString username, QString content)
     privacy = 0;
 }
 
+Post::~Post()
+{
+
+}
+
 int Post::getID() {
     return id;
 }

@@ -11,6 +11,15 @@ ChatController::ChatController(QString dbPath, int accountId)
     friendDB = new FriendDB(dbPath);
 
 }
+
+ChatController::~ChatController()
+{
+    delete accountDB;
+    delete friendDB;
+    delete chatDB;
+    delete messageDB;
+}
+
 /**
 void ChatController::run(){
 

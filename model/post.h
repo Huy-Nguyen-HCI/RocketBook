@@ -31,6 +31,8 @@ public:
      */
     Post(int id, QString username, QString content);
 
+    ~Post();
+
     /**
      * @brief getID returns the ID of the post
      * @return the ID of the post.

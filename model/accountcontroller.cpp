@@ -16,51 +16,9 @@ AccountController::AccountController(QString &path) {
 
 }
 
-//void AccountController::run(){
-
-//    if (accountDB->isOpen()){
-
-//        while (true) {
-//            int userInput=requestInput();
-
-//            if (userInput == 0) break;
-
-//            else if (userInput == 1) // create account
-//                createAccount();
-
-//            else if (userInput == 2) // log in
-//                login();
-//            else if (userInput == 3){
-//                int input2=requestInput2();
-
-
-//                if (input2==0) break;
-//                else if(input2==1){
-//                    std::string username=askUserName();
-//                    std::string friendname=askUserName();
-//                    addFriend(QString::fromStdString(username), QString::fromStdString(friendname));
-//                }
-//                else if(input2 == 2){
-//                    std::string username=askUserName();
-//                    std::string friendname=askUserName();
-//                    deleteFriend(QString::fromStdString(username), QString::fromStdString(friendname));
-
-//                }
-//                else if(input2 == 3){
-//                    std::string username=askUserName();
-//                    displayFriends(QString::fromStdString(username));
-
-//                }
-//            }
-//            else if(userInput==4){
-//                ChatController b;
-//                b.run();
-//                accountDB = new AccountDB("../database/rocketDB.sqlite");
-//            }
-//        }
-//    }
-//}
-
+AccountController::~AccountController() {
+    delete accountDB;
+}
 
 bool AccountController::login(QString username, QString password){
     if (checkAccountExists(username) && verifyPassword(username, password)) {
@@ -73,6 +31,12 @@ bool AccountController::login(QString username, QString password){
     } else {
         return false;
     }
+}
+
+void AccountController::logout() {
+    RocketUser* tempUser = currentUser;
+    currentUser = NULL;
+    delete tempUser;
 }
 
 RocketUser* AccountController::getUser()

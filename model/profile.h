@@ -36,6 +36,7 @@ public:
      */
     Profile(QString dbPath, int id, QString fullName, QString photo, QString description, int scrapbookID);
 
+    ~Profile();
 
     int getID() { return id; }
     QString getDescription() { return description; }

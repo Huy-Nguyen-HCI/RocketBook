@@ -10,6 +10,7 @@ class GroupController
 public:
     GroupController(QString dbPath,
                     int accountID);
+    ~GroupController();
 
     Group* createNewGroup(QString fullName,
                           QString photo,

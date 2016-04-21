@@ -69,6 +69,12 @@ RocketUser::RocketUser(QString dbPath,
 
 RocketUser::~RocketUser() {
     delete profile;
+    delete friendController;
+    delete groupController;
+    delete chatController;
+    delete feed;
+    delete profileDB;
+    delete accountDB;
 }
 
 Profile* RocketUser::getProfile(){

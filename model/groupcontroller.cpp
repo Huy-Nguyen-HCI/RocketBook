@@ -18,6 +18,15 @@ GroupController::GroupController(QString dbPath, int accountID)
     }
 }
 
+GroupController::~GroupController()
+{
+    delete groupDB;
+    delete groupMemberDB;
+    for (unsigned int i = 0; i < groupList.size(); i++) {
+        delete groupList[i];
+    }
+}
+
 Group* GroupController::createNewGroup(QString fullName,
                                        QString photo,
                                        QString description)

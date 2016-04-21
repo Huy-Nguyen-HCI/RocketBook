@@ -28,6 +28,11 @@ Scrapbook::~Scrapbook()
     delete tweetDB;
     delete multimediaDB;
     delete accountDB;
+    delete commentDB;
+
+    for (unsigned int i = 0; i < postList.size(); i++) {
+        delete postList[i];
+    }
 }
 
 void Scrapbook::constructContentContainers()

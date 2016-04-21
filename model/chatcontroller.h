@@ -19,6 +19,7 @@ class ChatController
 {
 public:
     ChatController(QString dbPath, int accountId);
+    ~ChatController();
 
     void run();
     int selectChat();   /**< used in terminal */
