@@ -5,7 +5,6 @@
 #include <QTextBrowser>
 #include "scrapbookgui.h"
 #include "../model/accountcontroller.h"
-#include "../model/blog.h"
 
 class ScrapbookGUI;
 

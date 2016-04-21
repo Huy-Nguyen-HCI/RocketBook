@@ -3,11 +3,13 @@
 Blog::Blog(QString username, QString title, QString content): Post::Post(username, content)
 {
     this->title = title;
+    postType = typeBlog;
 }
 
 Blog::Blog(int id, QString username, QString title, QString content): Post::Post(id, username, content)
 {
     this->title = title;
+    postType = typeBlog;
 }
 
 Blog::~Blog() {

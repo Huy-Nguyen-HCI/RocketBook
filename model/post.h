@@ -15,6 +15,7 @@
 class Post
 {
 public:
+
     /**
      * @brief Post is a constructor of a post.
      *
@@ -32,6 +33,8 @@ public:
     Post(int id, QString username, QString content);
 
     ~Post();
+
+    enum PostType {typePost, typeBlog, typeTweet, typeMultimedia, typeComment};
 
     /**
      * @brief getID returns the ID of the post
@@ -57,6 +60,8 @@ public:
 
     void setID(int input) { id = input; }
 
+    PostType type();
+
 protected:
 
     int id;
@@ -64,6 +69,7 @@ protected:
     QString username;
     QString content;
     bool privacy;
+    PostType postType;
 
 };
 

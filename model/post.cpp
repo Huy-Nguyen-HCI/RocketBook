@@ -10,6 +10,7 @@ Post::Post(QString username, QString content)
     this->username = username;
     this->content = content;
     privacy = 0;
+    postType = typePost;
 
 }
 
@@ -22,6 +23,7 @@ Post::Post(int id, QString username, QString content)
     this->username = username;
     this->content = content;
     privacy = 0;
+    postType = typePost;
 }
 
 Post::~Post()
@@ -43,4 +45,8 @@ QString Post::getContent() {
 
 void Post::setPrivate() {
     privacy = 1;
+}
+
+Post::PostType Post::type() {
+    return postType;
 }

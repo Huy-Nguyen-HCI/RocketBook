@@ -7,6 +7,7 @@ Multimedia::Multimedia(QString username,
 {
     this->title = title;
     this->description = description;
+    postType = typeMultimedia;
 }
 
 Multimedia::Multimedia(int id,
@@ -17,6 +18,7 @@ Multimedia::Multimedia(int id,
 {
     this->title = title;
     this->description = description;
+    postType = typeMultimedia;
 }
 
 Multimedia::~Multimedia() {
