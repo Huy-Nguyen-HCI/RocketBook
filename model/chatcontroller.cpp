@@ -2,15 +2,16 @@
 
 using namespace std;
 
-ChatController::ChatController()
+ChatController::ChatController(QString username)
 {
+    this->username=username;
     chatDB = new ChatDB("../database/rocketDB.sqlite");
     messageDB = new MessageDB("../database/rocketDB.sqlite");
     accountDB = new AccountDB("../database/rocketDB.sqlite");
     friendDB = new FriendDB("../database/rocketDB.sqlite");
 
 }
-
+/**
 void ChatController::run(){
 
     if (chatDB->isOpen()){
@@ -61,8 +62,8 @@ void ChatController::run(){
 
     }
 }
-
-void ChatController::createChat(QString username){
+**/
+void ChatController::createChat(){
 
     if(accountDB->accountExists(username)){
 
@@ -80,7 +81,7 @@ void ChatController::createChat(QString username){
 }
 
 
-void ChatController::addMemberToChat(QString username, int chatId){
+void ChatController::addMemberToChat(int chatId){
     QString friendname;
     friendname=QString::fromStdString(askUserName());
     //Checks if users exist and that they are friends
@@ -102,7 +103,7 @@ void ChatController::addMemberToChat(QString username, int chatId){
 
 //Displays all chats and asks user to pick one. User can pick from first chat
 //by entering 0 or last chat by entering # of chats-1
-int ChatController::selectChat(QString username){
+int ChatController::selectChat(){
 
     if(accountDB->accountExists(username)){
 
@@ -144,25 +145,24 @@ int ChatController::selectChat(QString username){
 
 }
 
+void ChatController::removeUserFromChat(int chatId){
+    QString nameToDelete=QString::fromStdString(askUserName());
 
-    void ChatController::removeUserFromChat(int chatId){
-        QString nameToDelete=QString::fromStdString(askUserName());
-
-        if(chatDB->inChat(chatId,accountDB->retrieveAccountID(nameToDelete))){
-            chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(nameToDelete));
-            cout << nameToDelete.toStdString() << " has been deleted from chat";
-
-        }
-        else
-            cout << nameToDelete.toStdString() << " is not in chat";
+    if(chatDB->inChat(chatId,accountDB->retrieveAccountID(nameToDelete))){
+        chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(nameToDelete));
+        cout << nameToDelete.toStdString() << " has been deleted from chat";
 
     }
+    else
+        cout << nameToDelete.toStdString() << " is not in chat";
+
+}
 
 
 //Displays all messages in chats and senders
 void ChatController::displayMessages(int chatId){
 
-      std::vector<QString>* messageList= messageDB->retrieveChatMessages(chatId);
+    std::vector<QString>* messageList= messageDB->retrieveChatMessages(chatId);
       std::vector<int>* senderList= messageDB->retrieveChatSenders(chatId);
 
       for(int i=0;i<messageList->size();i++){
@@ -173,7 +173,7 @@ void ChatController::displayMessages(int chatId){
 }
 
 //User enters message and message is added to message database for the chat specified
-void ChatController::sendMessage(QString username, int chatId){
+void ChatController::sendMessage(int chatId){
     std::string message=userEntersMessage();
 
     if(messageDB->addMessage(messageDB->getMaxMessageID(chatId)+1,chatId,accountDB->retrieveAccountID(username), QString::fromStdString(message)))
@@ -196,6 +196,11 @@ void ChatController::deleteMessage(int chatId){
 
 }
 
+std::vector<int>* ChatController::getChatIdList(){
+    return chatDB->retrieveChatList(accountDB->retrieveAccountID(username));
+
+
+}
 
 
 std::string ChatController::askUserName(){

@@ -2,10 +2,9 @@
 
 
 
-LoginUI::LoginUI(AccountController* accountControl, ChatController* chatControl){
+LoginUI::LoginUI(AccountController* accountControl){
 
     this->accountControl=accountControl;
-    this->chatControl=chatControl;
     initialize();
     echo();
     mvprintw(0,0,"Welcome to Rocketbook!");
@@ -40,7 +39,7 @@ void LoginUI::run(){
         mvprintw(2,0,"Login Successful. Welcome ");
         printw(name);
         refresh();
-        menu=new MainMenu(QString::fromStdString(name),accountControl,chatControl);
+        menu=new MainMenu(QString::fromStdString(name),accountControl);
 
 
     }

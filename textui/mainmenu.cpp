@@ -1,9 +1,9 @@
 #include "mainmenu.h"
 
-MainMenu::MainMenu(QString username, AccountController* accountControl,ChatController* chatControl)
+MainMenu::MainMenu(QString username, AccountController* accountControl)
 {
     this->accountControl=accountControl;
-    this->chatControl=chatControl;
+    //this->chatControl=chatControl;
     // friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
 
     this->username=username;
@@ -43,8 +43,6 @@ void MainMenu::changeScreen(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-    //std::cout << "exiting main\n";
-
     if(selection==2)
         friends = new FriendsUI(username,accountControl);//new FriendController(accountControl->getPath(),accountControl->getAccountId(username)));
 
@@ -59,11 +57,9 @@ void MainMenu::changeScreen(int selection){
     else if(selection==6)
         chats = new ChatUI(username,accountControl);
 
-
     else if(selection==7)
         return;
 
     initialize();
     changeScreen(select(7));
-
 }

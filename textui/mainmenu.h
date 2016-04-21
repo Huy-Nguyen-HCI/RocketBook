@@ -12,7 +12,7 @@
 class MainMenu: public Screen
 {
 public:
-    MainMenu(QString username, AccountController* accountControl,ChatController* chatControl);
+    MainMenu(QString username, AccountController* accountControl);
     ~MainMenu();
 
     //Screens
@@ -26,7 +26,7 @@ public:
 
 private:
     AccountController *accountControl;
-    ChatController* chatControl;
+  //  ChatController* chatControl;
   //  FriendController* friendControl;
 };
 

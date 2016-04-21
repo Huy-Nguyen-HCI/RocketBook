@@ -19,16 +19,17 @@
 class ChatController
 {
 public:
-    ChatController();
+    ChatController(QString username);
 
     void run();
-    int selectChat(QString username);
-    void createChat(QString username);
-    void addMemberToChat(QString username, int chatId);
-    void sendMessage(QString username, int chatId);
+    int selectChat();
+    void createChat();
+    void addMemberToChat(int chatId);
+    void sendMessage(int chatId);
     void displayMessages(int chatId);
     void removeUserFromChat(int chatId);
     void deleteMessage(int chatId);
+    std::vector<int>* getChatIdList();
 
 
     int requestInput();
@@ -44,6 +45,7 @@ private:
     FriendDB* friendDB;
     ChatDB* chatDB;
     MessageDB* messageDB;
+    QString username;
 };
 
 #endif // CHATCONTROLLER_H

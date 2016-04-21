@@ -13,13 +13,12 @@
 
 class LoginUI: public Screen{
 public:
-    LoginUI(AccountController* accountControl, ChatController* chatControl);
+    LoginUI(AccountController* accountControl);
     void run();
     MainMenu* menu;
 
 private:
     AccountController *accountControl;
-    ChatController* chatControl;
 };
 
 #endif // LOGINTEXTUI_H

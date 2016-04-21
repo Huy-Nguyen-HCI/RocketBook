@@ -14,12 +14,18 @@ public:
     int run();
 
     QString username;
-    void DrawScreen(int v);
+    void drawScreen(int v);
+    void displayChats(int v);
     void takeCommand(int selection);
 
 private:
     AccountController* accountControl;
     ChatController* chatControl;
+    void createChat();
+    void selectChat();
+    int chatSelection();
+    void enterChat(int chatId);
+    std::vector<int>* chatList;
 };
 
 #endif // CHATUI_H
