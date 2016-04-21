@@ -2,6 +2,7 @@
 #define FRIENDCONTROLLER_H
 #include "../database/frienddb.h"
 #include "../database/accountdb.h"
+#include "../database/profiledb.h"
 #include <iostream>
 
 /**
@@ -26,6 +27,7 @@ public:
     QStringList getFriendNames();
     std::vector<int> getFriendIds();
     void updateFriendList();
+    ProfileInfoType getFriendProfile(QString username);
 
 private:
     // friend list
@@ -35,6 +37,7 @@ private:
     AccountDB* accountDB;
     std::vector<int> friendIdList;
     QStringList friendNameList;
+    ProfileDB *profileDB;
 };
 
 #endif // FRIENDCONTROLLER_H

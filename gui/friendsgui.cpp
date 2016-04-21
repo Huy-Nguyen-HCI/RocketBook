@@ -16,6 +16,14 @@ FriendsGUI::~FriendsGUI()
 
 void FriendsGUI::on_viewProfile_clicked()
 {
+    QModelIndexList selected = ui->friendList->selectionModel()->selectedIndexes();
+    if (selected.length() == 0) {
+        ui->message->setText("Error: You have to select a friend to proceed.");
+        return;
+    }
+
+    // get friend's info
+    QString friendName = selected.at(0).data().toString();
 
 }
 
