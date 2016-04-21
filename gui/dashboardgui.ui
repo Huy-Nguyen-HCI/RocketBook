@@ -41,7 +41,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QTableWidget" name="latestInfoTableView"/>
+      <widget class="QListWidget" name="latestInfoListWidget"/>
      </item>
     </layout>
    </item>

@@ -9,7 +9,7 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     accountController = inputAccountController;
 
     ui->setupUi(this);
-    dashboard = new DashboardGUI();
+    dashboard = new DashboardGUI(accountController);
     scrapbook = new ScrapbookGUI(accountController);
     profile = new ProfileGUI(accountController);
     friends = new FriendsGUI(accountController);

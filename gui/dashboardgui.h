@@ -19,6 +19,10 @@ public:
 private slots:
     void on_latestScrapbookButton_clicked();
 
+    void displayBlog(Blog* blog);
+    void displayTweet(Tweet* tweet);
+    void displayMultimedia(Multimedia* multimedia);
+
 private:
     Ui::DashboardGUI *ui;
     AccountController* accountController;
