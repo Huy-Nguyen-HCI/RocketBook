@@ -34,7 +34,7 @@ void DisplayTweetGUI::refreshTweets()
 
         Tweet *currentTweet = allTweets.at(i);
         QString currentContent = currentTweet->getContent();
-        QString num = QString::number(i+1);
+        QString num = QString::number(allTweets.size() - i);
         QString content =
                 "Tweet # " + num + ":" + "\n" +
                 currentContent + "\n";

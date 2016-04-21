@@ -45,6 +45,7 @@ void ScrapbookGUI::switchTweetViews() {
     else
         //displayTweetView->refreshTweets();
         ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
+        displayTweetView->refreshTweets();
 }
 
 void ScrapbookGUI::switchBlogViews() {

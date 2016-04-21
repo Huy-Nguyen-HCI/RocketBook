@@ -42,7 +42,7 @@
      <item row="0" column="1">
       <widget class="QPushButton" name="refreshMyTweets">
        <property name="text">
-        <string>See All My Tweets</string>
+        <string>Refresh Tweets</string>
        </property>
       </widget>
      </item>
