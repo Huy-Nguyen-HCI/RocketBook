@@ -27,7 +27,8 @@ SOURCES += main.cpp \
     ../model/groupcontroller.cpp \
     ../model/friendcontroller.cpp \
     friendsui.cpp \
-    chatui.cpp
+    chatui.cpp \
+    postui.cpp
 
 HEADERS += \
     mainmenu.h \
@@ -36,4 +37,5 @@ HEADERS += \
     ../database/*.h \
     ../model/*.h \
     friendsui.h \
-    chatui.h
+    chatui.h \
+    postui.h

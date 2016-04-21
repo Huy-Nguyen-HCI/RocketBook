@@ -8,6 +8,7 @@
 #include "../model/chatcontroller.h"
 #include "../model/friendcontroller.h"
 #include "../model/rocketuser.h"
+#include "postui.h"
 #include "chatui.h"
 
 class MainMenu: public Screen
@@ -19,6 +20,7 @@ public:
     //Screens
     FriendsUI* friends;
     ChatUI* chats;
+    PostUI* post;
 
 
     void drawScreen(int v);

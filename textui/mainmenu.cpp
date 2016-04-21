@@ -45,9 +45,10 @@ void MainMenu::changeScreen(int selection){
     if(selection==2)
         friends = new FriendsUI(accountControl);//new FriendController(accountControl->getPath(),accountControl->getAccountId(username)));
 
-    /**
-        else if(selection==3)
+    else if(selection==3)
+        post = new PostUI();
 
+        /**
         else if(selection==4)
 
         else if(selection==5)
