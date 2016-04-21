@@ -14,13 +14,6 @@ CreateAccountGUI::~CreateAccountGUI()
     delete ui;
 }
 
-/**
- * @brief CreateAccountGUI::on_uploadButton_clicked allows the user to pick a file to upload.
- */
-void CreateAccountGUI::on_uploadButton_clicked()
-{
-
-}
 
 /**
  * @brief CreateAccountGUI::on_returnButton_clicked returns to the login GUI
@@ -100,3 +93,52 @@ void CreateAccountGUI::clearAllFields() {
     ui->describeBox->document()->setPlainText("");
     ui->message->setText("");
 }
+
+/**
+ * @brief CreateAccountGUI::on_uploadButton_clicked allows the user to pick a file to upload.
+ */
+
+void CreateAccountGUI::on_uploadButton_clicked(){
+
+        QString filePath =
+                QFileDialog::getOpenFileName(this,
+                                             tr("Pick your image"),
+                                             ":/",
+                                             tr("Image Files (*.png *.jpg *.bmp)"));
+        // if user cancels the file selection
+
+        if (filePath.isNull()) {
+            return;
+        }
+
+        // change the absolute path to relative file path
+        QDir dir("./");
+        QString path = dir.relativeFilePath(filePath);
+
+        std::cout << "path is : " + path.toStdString() << std::endl;
+/**
+        // update the path in the database
+        accountController->getUser()->getProfile()->setPicturePath(path);
+        accountController->getUser()->changePhoto(path);
+
+     //   updatePhoto(path);
+
+        ui->message->setText("Update photo successful!");
+        **/
+    }
+
+void CreateAccountGUI::updatePhoto(QString filePath) {
+    /**
+    // clear the current view
+    scene->clear();
+    ui->photo->viewport()->update();
+
+    // display the image in the GUI
+    ui->photo->setScene(scene);
+    QPixmap *file = new QPixmap(filePath);
+    QGraphicsPixmapItem *image = new QGraphicsPixmapItem(*file);
+    scene->addItem(image);
+    ui->photo->fitInView(image);
+    **/
+}
+

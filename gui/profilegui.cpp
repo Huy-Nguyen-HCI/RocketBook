@@ -58,6 +58,7 @@ void ProfileGUI::on_selectPicture_clicked()
     updatePhoto(path);
 
     ui->message->setText("Update photo successful!");
+
 }
 
 void ProfileGUI::on_saveDescription_clicked()

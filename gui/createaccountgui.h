@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "logingui.h"
 #include "mainwindow.h"
+#include <QGraphicsScene>
 
 class LoginGUI;
 class MainWindow;
@@ -22,6 +23,7 @@ public:
     ~CreateAccountGUI();
     void clearAllFields();
     void setMainWindow(MainWindow *input) { main = input; }
+    void updatePhoto(QString filePath);
 
 private slots:
     void on_uploadButton_clicked();
@@ -30,11 +32,13 @@ private slots:
 
     void on_createButton_clicked();
 
+
 private:
     Ui::CreateAccountGUI *ui;
     LoginGUI *loginView;
     AccountController *accountController;
     MainWindow *main;
+    QGraphicsScene *scene;
 };
 
 #endif // CREATEACCOUNTGUI_H
