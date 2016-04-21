@@ -1,10 +1,9 @@
 #include "friendsui.h"
 
-FriendsUI::FriendsUI(QString username, AccountController* accountControl, FriendController* friendControl)
+FriendsUI::FriendsUI(QString username, AccountController* accountControl)// FriendController* friendControl)
 {
     this->username=username;
     this->accountControl=accountControl;
-    this->friendControl=friendControl;
     initialize();
     takeCommand(run());
 }
@@ -82,6 +81,7 @@ void FriendsUI::takeCommand(int selection){
 
     //std::cout << "exiting main\n";
 
+    friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
    if(selection==1)
        displayFriends();
    else if(selection==2)

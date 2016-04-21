@@ -8,7 +8,7 @@
 
 class FriendsUI: public Screen{
 public:
-    FriendsUI(QString username, AccountController* accountControl, FriendController* friendControl);
+    FriendsUI(QString username, AccountController* accountControl);// FriendController* friendControl);
 
     int run();
 

@@ -38,7 +38,7 @@ FriendController::AddFriendStatus FriendController::addFriend(QString friendname
     int friendId = accountDB->retrieveAccountID(friendname);
     QString username = accountDB->getUsername(accountID);
 
-    if (!accountDB->accountExists(friendname) || !accountDB->accountExists(username)){
+    if (!accountDB->accountExists(friendname) || !accountDB->accountExists(username) || username==friendname){
         std::cerr << "Account does not exist." << std::endl;
         return FriendController::FriendNotExist;
     }

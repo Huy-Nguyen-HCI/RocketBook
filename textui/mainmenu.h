@@ -34,7 +34,7 @@ public:
 private:
     AccountController *accountControl;
     ChatController* chatControl;
-    FriendController* friendControl;
+  //  FriendController* friendControl;
 };
 
 #endif // MAINMENU_H
