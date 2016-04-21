@@ -40,6 +40,7 @@ public:
     Tweet* addTweet(QString username,
                     QString content,
                     bool privacy);
+    std::vector<Tweet*> getAllTweets();
 
     Multimedia* addMedia(Multimedia* newMedia);
     Multimedia* addMedia(QString username,
@@ -47,6 +48,10 @@ public:
                          QString description,
                          QString content,
                          bool privacy);
+    std::vector<Multimedia*> getAllMedia();
+
+    std::vector<Post*> getAllPosts();
+    std::vector<Post*> getAllPublicPosts();
 
 private:
     int id;
@@ -66,7 +71,12 @@ private:
     std::vector<Tweet*> tweetList;
     std::vector<Multimedia*> mediaList;
     std::vector<Post*> postList;
+    std::vector<Post*> publicPostList;
 
+    void constructBlogContainer();
+    void constructTweetContainer();
+    void constructMultimediaContainer();
+    void constructCommentContainer();
 
 
 //    Blog* getBlog(int num);

@@ -166,6 +166,13 @@ QString ProfileDB::retrieveDescription (int profileID)
     return std::get<3>(info);
 }
 
+int ProfileDB::retrieveScrapbookID (int profileID)
+{
+    ProfileInfoType info = retrieveProfileInfo(profileID);
+    return std::get<4>(info);
+}
+
+
 bool ProfileDB::profileExists(int profileID) const
 {
     bool exists = false;

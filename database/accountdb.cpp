@@ -264,3 +264,24 @@ QString AccountDB::getUsername(int accountID)
 
     return "";
 }
+
+int AccountDB::getProfileID(int accountID)
+{
+    qDebug() << "Get profile ID in db:";
+    QSqlQuery queryUsername(QSqlDatabase::database(connectionName));
+    queryUsername.prepare("SELECT ProfileID FROM Accounts WHERE AccountID = :AccountID");
+    queryUsername.bindValue(":AccountID", accountID);
+    if (queryUsername.exec())
+    {
+        if(queryUsername.next())
+        {
+            return queryUsername.value(0).toInt();
+        }
+    }
+    else
+    {
+        qDebug() << "profile ID retrieval fails:" <<queryUsername.lastError();
+    }
+
+    return -1;
+}

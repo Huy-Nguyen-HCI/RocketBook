@@ -9,6 +9,7 @@
 #include "groupcontroller.h"
 #include "friendcontroller.h"
 #include "chatcontroller.h"
+#include "feed.h"
 
 
 /**
@@ -88,6 +89,8 @@ public:
      */
     FriendController* controlFriend() { return friendController;}
 
+    Feed* getFeed() { return feed;}
+
     /**
      * @brief isAdmin
      * Check if the user is an admin
@@ -117,6 +120,7 @@ private:
     FriendController* friendController;
     GroupController* groupController;
     ChatController* chatController;
+    Feed* feed;
 
     // feed
     // Chat List

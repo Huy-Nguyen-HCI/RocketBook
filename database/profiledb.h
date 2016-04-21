@@ -108,6 +108,8 @@ public:
      */
     QString retrieveDescription (int profileID);
 
+    int retrieveScrapbookID(int profileID);
+
     /**
      * @brief profileExists
      * Check if profile exists, knowing the profile ID

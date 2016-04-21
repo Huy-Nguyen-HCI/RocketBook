@@ -122,6 +122,14 @@ public:
      */
     QString getUsername(int accountID);
 
+    /**
+     * @brief getProfileID
+     * Get the profile ID of an account for a given account ID
+     * @param accountID
+     * @return the profile ID
+     */
+    int getProfileID(int accountID);
+
 private:
     QString connectionName;
 };

@@ -31,6 +31,7 @@ RocketUser::RocketUser(QString dbPath,
     groupController = new GroupController(dbPath, id);
     friendController = new FriendController(dbPath, id);
     chatController= new ChatController(dbPath, id);
+    feed = new Feed(dbPath, friendController, groupController);
 
 }
 
@@ -63,6 +64,7 @@ RocketUser::RocketUser(QString dbPath,
 
     groupController = new GroupController(dbPath, id);
     friendController = new FriendController(dbPath, id);
+    feed = new Feed(dbPath, friendController, groupController);
 }
 
 RocketUser::~RocketUser() {
