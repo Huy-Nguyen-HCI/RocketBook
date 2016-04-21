@@ -4,7 +4,7 @@ MultimediaDB::MultimediaDB(): PostDB::PostDB()
 {
     connectionName.append("multimedia");
     QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
-    multimediaDB.setDatabaseName("MultimediaDB.sqlite");
+    multimediaDB.setDatabaseName("rocketDB.sqlite");
 
     if (!multimediaDB.open())
     {

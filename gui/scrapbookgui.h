@@ -30,7 +30,6 @@ public:
     ~ScrapbookGUI();
     void switchTweetViews();
     void switchBlogViews();
-    void refreshBlogs();
     void switchMultimediaViews();
 
 private:

@@ -40,20 +40,12 @@ void DisplayBlogGUI::refreshBlogs()
         QString currentTitle = curentBlog->getTitle();
         QString currentContent = curentBlog->getContent();
 
-        //QTextBrowser *blog = new QTextBrowser();
-
         QString num = QString::number(i+1);
         QString content =
                 "Blog # " + num + ":" + "\n" +
                 "Title:    " + currentTitle + "\n" +
                 "Content:    " + currentContent + "\n";
         ui->listWidget->addItem(content);
-
-//        ui->listWidget->addItem("Blog # "+num+":"+"\n");
-//        ui->listWidget->addItem("Title:    " + currentTitle);
-//        ui->listWidget->addItem("\n");
-//        ui->listWidget->addItem("Content:    " + currentContent);
-//        ui->listWidget->addItem("\n");
     }
 }
 

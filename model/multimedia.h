@@ -13,6 +13,7 @@ class Multimedia:public Post{
 
 
 public:
+    enum PrivacyType { Private, Public };
     Multimedia(QString username,
                QString title,
                QString description,

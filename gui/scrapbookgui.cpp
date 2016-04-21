@@ -12,8 +12,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *inputAccountController, QWidget *p
     displayBlogView = new DisplayBlogGUI(accountController, this);
     createTweetView = new CreateTweetGUI(this);
     displayTweetView = new DisplayTweetGUI(this);
-    createMultimediaView = new CreateMultimediaGUI(this);
-    displayMultimediaView = new DisplayMultimediaGUI(this);
+    createMultimediaView = new CreateMultimediaGUI(accountController, this);
+    displayMultimediaView = new DisplayMultimediaGUI(accountController, this);
 
     // add display and edit view for blog
     ui->blogStackedWidget->addWidget(displayBlogView);
@@ -23,7 +23,7 @@ ScrapbookGUI::ScrapbookGUI(AccountController *inputAccountController, QWidget *p
     ui->tweetStackedWidget->addWidget(displayTweetView);
     ui->tweetStackedWidget->addWidget(createTweetView);
 
-    // add display and edit view for
+    // add display and edit view for multimedia
     ui->multimediaStackedWidget->addWidget(displayMultimediaView);
     ui->multimediaStackedWidget->addWidget(createMultimediaView);
 
@@ -47,20 +47,23 @@ void ScrapbookGUI::switchTweetViews() {
 }
 
 void ScrapbookGUI::switchBlogViews() {
-    if (ui->blogStackedWidget->currentWidget() == displayBlogView)
+    if (ui->blogStackedWidget->currentWidget() == displayBlogView){
         ui->blogStackedWidget->setCurrentWidget(createBlogView);
-    else
+    }
+    else {
+        displayBlogView->refreshBlogs();
         ui->blogStackedWidget->setCurrentWidget(displayBlogView);
+    }
 }
 
-void ScrapbookGUI::refreshBlogs()
-{
-    displayBlogView->refreshBlogs();
-}
 
 void ScrapbookGUI::switchMultimediaViews() {
-    if (ui->multimediaStackedWidget->currentWidget() == displayMultimediaView)
+    if (ui->multimediaStackedWidget->currentWidget() == displayMultimediaView){
         ui->multimediaStackedWidget->setCurrentWidget(createMultimediaView);
-    else
+    }
+    else {
+        displayMultimediaView->refreshMultimedia();
         ui->multimediaStackedWidget->setCurrentWidget(displayMultimediaView);
+    }
 }
+

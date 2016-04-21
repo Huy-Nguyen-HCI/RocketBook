@@ -18,7 +18,6 @@ CreateBlogGUI::~CreateBlogGUI()
 
 void CreateBlogGUI::on_returnButton_clicked()
 {
-    scrapbook->refreshBlogs();
     scrapbook->switchBlogViews();
 }
 
@@ -35,7 +34,6 @@ void CreateBlogGUI::on_publishButton_clicked()
 
     myScrapbook->addBlog(newBlog);
 
-    scrapbook->refreshBlogs();
     scrapbook->switchBlogViews();
 
 }

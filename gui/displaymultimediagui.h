@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "scrapbookgui.h"
+#include "../model/accountcontroller.h"
 
 class ScrapbookGUI;
 
@@ -15,15 +16,19 @@ class DisplayMultimediaGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit DisplayMultimediaGUI(ScrapbookGUI *input, QWidget *parent = 0);
+    explicit DisplayMultimediaGUI(AccountController *inputAcc, ScrapbookGUI *input, QWidget *parent = 0);
     ~DisplayMultimediaGUI();
+    void refreshMultimedia();
 
 private slots:
     void on_postButton_clicked();
 
+    void on_loadButton_clicked();
+
 private:
     Ui::DisplayMultimediaGUI *ui;
     ScrapbookGUI *scrapbook;
+    AccountController *accountController;
 };
 
 #endif // DISPLAYMULTIMEDIAGUI_H
