@@ -2,17 +2,22 @@
 #define FEED_H
 
 #include <vector>
-#include "post.h"
+#include "friendcontroller.h"
+#include "groupcontroller.h"
+#include "scrapbook.h"
 
 
 
 class Feed{
 
 public:
-    Feed();
+    Feed(FriendController* friendController, GroupController* groupController);
+    void updatePostList();
 
 private:
-    std::vector<Post*>* postList;
+    FriendController* friendController;
+    GroupController* groupController;
+    std::vector<Post*> postList;
 
 };
 
