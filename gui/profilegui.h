@@ -3,6 +3,10 @@
 
 #include <QWidget>
 #include <QListWidget>
+#include <QFileDialog>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsView>
+#include <QGraphicsScene>
 #include "../model/accountcontroller.h"
 
 namespace Ui {
@@ -24,9 +28,13 @@ private slots:
 
     void on_saveDescription_clicked();
 
+    void updatePhoto(QString filePath);
+
 private:
     Ui::ProfileGUI *ui;
     AccountController *accountController;
+    QGraphicsScene *scene;
+
 };
 
 #endif // PROFILEGUI_H

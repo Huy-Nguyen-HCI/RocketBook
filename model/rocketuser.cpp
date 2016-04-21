@@ -77,7 +77,7 @@ bool RocketUser::changeProfileDescription(QString description){
 
 bool RocketUser::changePhoto(QString path) {
     profile->setPicturePath(path);
-    return profileDB->changeDescription(profile->getID(), path);
+    return profileDB->changePhoto(profile->getID(), path);
 }
 
 
