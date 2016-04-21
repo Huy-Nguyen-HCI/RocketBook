@@ -4,6 +4,7 @@ MainMenu::MainMenu(QString username, AccountController* accountControl,ChatContr
 {
     this->accountControl=accountControl;
     this->chatControl=chatControl;
+    friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
 
     this->username=username;
     initialize();
@@ -73,7 +74,7 @@ int MainMenu::run(){
     // print the instructions for manipulating the Value object
     mvprintw(0, 0, "Main Menu\nPlease select one by using the arrow keys and pressing enter:");
     mvprintw(3, 8, "Edit Pofile");
-    mvprintw(4, 8, "Add Friends");
+    mvprintw(4, 8, "Friends");
     mvprintw(5, 8, "Post");
     mvprintw(6, 8, "See feed");
     mvprintw(7, 8, "Groups");
@@ -94,7 +95,7 @@ int MainMenu::run(){
         //std::cout << "exiting main\n";
 
         if(selection==2)
-            friends = new FriendsUI(username,accountControl);
+            friends = new FriendsUI(username,accountControl,friendControl);
         /**
         else if(selection==2)
             TopP = new TopPlayer();

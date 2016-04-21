@@ -1,9 +1,10 @@
 #include "friendsui.h"
 
-FriendsUI::FriendsUI(QString username, AccountController* accountControl)
+FriendsUI::FriendsUI(QString username, AccountController* accountControl, FriendController* friendControl)
 {
     this->username=username;
     this->accountControl=accountControl;
+    this->friendControl=friendControl;
     initialize();
     takeCommand(run());
 }
@@ -97,6 +98,20 @@ void FriendsUI::takeCommand(int selection){
 
 void FriendsUI::displayFriends(){
     erase();
+    mvprintw(0,0,"Friends:");
+    QStringList friendNames= friendControl->getFriendNames();
+    for(unsigned int i=0;i<friendNames.size();i++){
+        mvprintw(i+1,3,friendNames.at(i).toStdString().c_str());
+
+    }
+
+    getch();
+
+
+}
+
+void FriendsUI::addFriend(){
+    erase();
     char name[80];
 
     mvprintw(1,0,"Enter Username of new friend: ");
@@ -105,13 +120,24 @@ void FriendsUI::displayFriends(){
     getstr(name);
     //accountcontroller.getuser.addfriend
 
+    friendControl->addFriend(QString::fromStdString(name));
 
-}
 
-void FriendsUI::addFriend(){
 
 }
 
 void FriendsUI::removeFriend(){
+    erase();
+    char name[80];
+
+    mvprintw(1,0,"Enter Username friend you would like to remove: ");
+    echo();
+
+    getstr(name);
+    //accountcontroller.getuser.addfriend
+
+    friendControl->deleteFriend(QString::fromStdString(name));
+
+
 
 }

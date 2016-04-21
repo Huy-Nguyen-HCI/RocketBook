@@ -64,6 +64,9 @@ public:
      */
     RocketUser *getUser();
 
+    QString getPath();
+
+    int getAccountId(QString username);
 
 
 

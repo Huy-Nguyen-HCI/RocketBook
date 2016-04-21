@@ -6,6 +6,7 @@
 #define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
 #include "../model/accountcontroller.h"
 #include "../model/chatcontroller.h"
+#include "../model/friendcontroller.h"
 
 class MainMenu: public Screen
 {
@@ -33,6 +34,7 @@ public:
 private:
     AccountController *accountControl;
     ChatController* chatControl;
+    FriendController* friendControl;
 };
 
 #endif // MAINMENU_H

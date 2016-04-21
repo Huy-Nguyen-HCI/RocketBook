@@ -131,4 +131,11 @@ int AccountController::requestInput2(){
     return userInput;
 }
 
+QString AccountController::getPath(){
+    return dbPath;
+}
 
+int AccountController::getAccountId(QString username){
+    return accountDB->retrieveAccountID(username);
+
+}
