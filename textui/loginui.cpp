@@ -34,12 +34,12 @@ void LoginUI::run(){
     if(accountControl->login(QString::fromStdString(name),QString::fromStdString(pass))){
         erase();
         refresh();
-
-
         mvprintw(2,0,"Login Successful. Welcome ");
         printw(name);
         refresh();
-        menu=new MainMenu(QString::fromStdString(name),accountControl);
+
+
+        menu=new MainMenu(accountControl);
 
 
     }

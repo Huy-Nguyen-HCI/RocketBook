@@ -7,27 +7,26 @@
 #include "../model/accountcontroller.h"
 #include "../model/chatcontroller.h"
 #include "../model/friendcontroller.h"
+#include "../model/rocketuser.h"
 #include "chatui.h"
 
 class MainMenu: public Screen
 {
 public:
-    MainMenu(QString username, AccountController* accountControl);
+    MainMenu(AccountController* accountControl);
     ~MainMenu();
 
     //Screens
     FriendsUI* friends;
     ChatUI* chats;
 
-    QString username;
 
     void drawScreen(int v);
     void changeScreen(int selection);
 
 private:
     AccountController *accountControl;
-  //  ChatController* chatControl;
-  //  FriendController* friendControl;
+    RocketUser* user;
 };
 
 #endif // MAINMENU_H

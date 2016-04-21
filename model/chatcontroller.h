@@ -10,7 +10,6 @@
 #include "../database/accountdb.h"
 #include "../database/frienddb.h"
 #include <string>
-#include "rocketuser.h"
 #include "chat.h"
 #include "message.h"
 
@@ -19,7 +18,7 @@
 class ChatController
 {
 public:
-    ChatController(QString username);
+    ChatController(QString dbPath, int accountId);
 
     void run();
     int selectChat();   /**< used in terminal */
@@ -48,6 +47,7 @@ private:
     ChatDB* chatDB;
     MessageDB* messageDB;
     QString username;
+    int accountId;
 };
 
 #endif // CHATCONTROLLER_H

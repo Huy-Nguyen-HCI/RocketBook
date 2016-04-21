@@ -1,12 +1,11 @@
 #include "mainmenu.h"
 
-MainMenu::MainMenu(QString username, AccountController* accountControl)
+MainMenu::MainMenu(AccountController* accountControl)
 {
-    this->accountControl=accountControl;
-    //this->chatControl=chatControl;
-    // friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
 
-    this->username=username;
+
+    this->accountControl=accountControl;
+
     initialize();
     changeScreen(select(7));
 
@@ -44,7 +43,7 @@ void MainMenu::changeScreen(int selection){
     endwin();
 
     if(selection==2)
-        friends = new FriendsUI(username,accountControl);//new FriendController(accountControl->getPath(),accountControl->getAccountId(username)));
+        friends = new FriendsUI(accountControl);//new FriendController(accountControl->getPath(),accountControl->getAccountId(username)));
 
     /**
         else if(selection==3)
@@ -55,7 +54,7 @@ void MainMenu::changeScreen(int selection){
 
         **/
     else if(selection==6)
-        chats = new ChatUI(username,accountControl);
+        chats = new ChatUI(accountControl);
 
     else if(selection==7)
         return;

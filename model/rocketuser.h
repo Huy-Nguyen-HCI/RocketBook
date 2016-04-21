@@ -8,6 +8,7 @@
 #include "../database/accountdb.h"
 #include "groupcontroller.h"
 #include "friendcontroller.h"
+#include "chatcontroller.h"
 
 
 /**
@@ -97,6 +98,9 @@ public:
     bool changeProfileDescription(QString description);
     bool changePhoto(QString path);
 
+    ChatController* getChatController();
+
+    ChatController* controlChat() { return chatController;}
 
 private:
     //Account matters
@@ -112,6 +116,7 @@ private:
 
     FriendController* friendController;
     GroupController* groupController;
+    ChatController* chatController;
 
     // feed
     // Chat List

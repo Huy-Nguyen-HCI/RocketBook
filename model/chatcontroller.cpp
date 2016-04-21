@@ -2,13 +2,13 @@
 
 using namespace std;
 
-ChatController::ChatController(QString username)
+ChatController::ChatController(QString dbPath, int accountId)
 {
-    this->username=username;
-    chatDB = new ChatDB("../database/rocketDB.sqlite");
-    messageDB = new MessageDB("../database/rocketDB.sqlite");
-    accountDB = new AccountDB("../database/rocketDB.sqlite");
-    friendDB = new FriendDB("../database/rocketDB.sqlite");
+    this->accountId=accountId;
+    chatDB = new ChatDB(dbPath);
+    messageDB = new MessageDB(dbPath);
+    accountDB = new AccountDB(dbPath);
+    friendDB = new FriendDB(dbPath);
 
 }
 /**

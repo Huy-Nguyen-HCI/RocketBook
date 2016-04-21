@@ -10,7 +10,7 @@
 
 class ChatUI: public Screen{
 public:
-    ChatUI(QString username, AccountController* accountControl);
+    ChatUI(AccountController* accountControl);
     int run();
 
     QString username;
@@ -26,6 +26,7 @@ private:
     int chatSelection();
     void enterChat(int chatId);
     std::vector<int>* chatList;
+
 };
 
 #endif // CHATUI_H

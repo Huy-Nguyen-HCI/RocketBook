@@ -1,9 +1,9 @@
 #include "chatui.h"
 
-ChatUI::ChatUI(QString username, AccountController* accountControl)
+ChatUI::ChatUI(AccountController* accountControl)
 {
 
-    this->username=username;
+    username=accountControl->getUser()->getUsername();
     this->accountControl=accountControl;
     initialize();
     takeCommand(select(3));
@@ -33,7 +33,8 @@ void ChatUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-    chatControl=new ChatController(username);
+    chatControl=new ChatController(accountControl->getPath(),accountControl->getUser()->getID());
+    //    chatControl=accountControl->getUser()->controlChat();
    if(selection==1)
        createChat();
    else if(selection==2)

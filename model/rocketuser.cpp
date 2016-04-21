@@ -4,6 +4,8 @@
 
 int RocketUser::idCnt = 0;
 
+
+
 RocketUser::RocketUser(QString dbPath,
                        int id,
                        QString username,
@@ -28,6 +30,7 @@ RocketUser::RocketUser(QString dbPath,
                           profile->getScrapbook()->getID());
     groupController = new GroupController(dbPath, id);
     friendController = new FriendController(dbPath, id);
+    chatController= new ChatController(dbPath, id);
 
 }
 
@@ -79,6 +82,4 @@ bool RocketUser::changePhoto(QString path) {
     profile->setPicturePath(path);
     return profileDB->changePhoto(profile->getID(), path);
 }
-
-
 

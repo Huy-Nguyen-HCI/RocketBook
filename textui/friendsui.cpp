@@ -1,8 +1,9 @@
 #include "friendsui.h"
 
-FriendsUI::FriendsUI(QString username, AccountController* accountControl)// FriendController* friendControl)
+FriendsUI::FriendsUI(AccountController* accountControl)// FriendController* friendControl)
 {
-    this->username=username;
+    user=accountControl->getUser();
+    username=user->getUsername();
     this->accountControl=accountControl;
     initialize();
     takeCommand(select(4));
@@ -20,7 +21,6 @@ mvprintw(5, 8, "Delete Friend");
 mvprintw(6, 8, "Back");
 
 mvprintw(v+2, 5, "->");
-//std::to_string(v).c_str()
 
 refresh();
 }
@@ -31,7 +31,8 @@ void FriendsUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-    friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
+
+   friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
    if(selection==1)
        displayFriends();
    else if(selection==2)
@@ -49,7 +50,9 @@ void FriendsUI::takeCommand(int selection){
 void FriendsUI::displayFriends(){
     erase();
     mvprintw(0,0,"Friends:");
+
     QStringList friendNames= friendControl->getFriendNames();
+            //QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
     for(unsigned int i=0;i<friendNames.size();i++){
         mvprintw(i+1,3,friendNames.at(i).toStdString().c_str());
 
@@ -67,7 +70,7 @@ void FriendsUI::addFriend(){
 
     getstr(name);
 
-    friendControl->addFriend(QString::fromStdString(name));
+    accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name));
 }
 
 void FriendsUI::removeFriend(){
@@ -79,5 +82,5 @@ void FriendsUI::removeFriend(){
 
     getstr(name);
 
-    friendControl->deleteFriend(QString::fromStdString(name));
+    accountControl->getUser()->controlFriend()->deleteFriend(QString::fromStdString(name));
 }

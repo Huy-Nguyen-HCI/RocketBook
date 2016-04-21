@@ -4,11 +4,12 @@
 #include "screen.h"
 #define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
 #include "../model/accountcontroller.h"
+#include "../model/rocketuser.h"
 
 
 class FriendsUI: public Screen{
 public:
-    FriendsUI(QString username, AccountController* accountControl);// FriendController* friendControl);
+    FriendsUI(AccountController* accountControl);// FriendController* friendControl);
 
   //  int run();
 
@@ -19,6 +20,7 @@ public:
 private:
     AccountController* accountControl;
     FriendController* friendControl;
+    RocketUser* user;
     void displayFriends();
     void addFriend();
     void removeFriend();
