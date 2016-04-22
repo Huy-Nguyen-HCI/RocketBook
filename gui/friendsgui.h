@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../model/accountcontroller.h"
+#include "friendprofilegui.h"
 
 namespace Ui {
 class FriendsGUI;

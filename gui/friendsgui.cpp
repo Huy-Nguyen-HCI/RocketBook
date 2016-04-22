@@ -24,7 +24,11 @@ void FriendsGUI::on_viewProfile_clicked()
 
     // get friend's info
     QString friendName = selected.at(0).data().toString();
+    ProfileInfoType profile = accountController->getUser()->controlFriend()->getFriendProfile(friendName);
 
+    // create a new dialog to view friend's profile
+    FriendProfileGUI *friendProfile = new FriendProfileGUI(profile);
+    friendProfile->show();
 }
 
 void FriendsGUI::on_removeFriend_clicked()

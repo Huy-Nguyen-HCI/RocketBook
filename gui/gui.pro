@@ -43,7 +43,8 @@ SOURCES += logingui.cpp \
     displaytweetgui.cpp \
     displaymultimediagui.cpp \
     profilegui.cpp \
-    friendsgui.cpp
+    friendsgui.cpp \
+    friendprofilegui.cpp
 
 
 HEADERS  += logingui.h \
@@ -60,7 +61,8 @@ HEADERS  += logingui.h \
     displaymultimediagui.h \
     createmultimediagui.h \
     profilegui.h \
-    friendsgui.h
+    friendsgui.h \
+    friendprofilegui.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
@@ -74,7 +76,8 @@ FORMS    += logingui.ui \
     displaytweetgui.ui \
     displaymultimediagui.ui \
     profilegui.ui \
-    friendsgui.ui
+    friendsgui.ui \
+    friendprofilegui.ui
 
 RESOURCES += \
     icons.qrc \
