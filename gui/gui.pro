@@ -11,8 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 CONFIG -= app_bundle
 QT += sql
-QT += multimedia
-QT += multimediawidgets
+#QT += multimedia
+#QT += multimediawidgets
 TARGET = gui
 TEMPLATE = app
 
@@ -47,7 +47,7 @@ SOURCES += logingui.cpp \
     profilegui.cpp \
     friendsgui.cpp \
     friendprofilegui.cpp \
-    multimediaitem.cpp
+#    multimediaitem.cpp
 
 
 HEADERS  += logingui.h \
@@ -66,7 +66,7 @@ HEADERS  += logingui.h \
     profilegui.h \
     friendsgui.h \
     friendprofilegui.h \
-    multimediaitem.h
+#    multimediaitem.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
