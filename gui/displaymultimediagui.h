@@ -7,7 +7,7 @@
 #include <QListWidgetItem>
 #include "scrapbookgui.h"
 #include "../model/accountcontroller.h"
-#include "viewmultimediaitem.h"
+//#include "viewmultimediaitem.h"
 //#include "multimediaitem.h"
 
 class MultimediaItem;
@@ -42,7 +42,7 @@ private:
     ScrapbookGUI *scrapbook;
     AccountController *accountController;
     std::vector<Multimedia*> allMulti;
-    ViewMultimediaItem *viewMedia;
+//    ViewMultimediaItem *viewMedia;
 };
 
 #endif // DISPLAYMULTIMEDIAGUI_H

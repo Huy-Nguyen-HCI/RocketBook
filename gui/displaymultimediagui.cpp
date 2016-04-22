@@ -8,7 +8,7 @@ DisplayMultimediaGUI::DisplayMultimediaGUI(AccountController *inputAcc, Scrapboo
     ui->setupUi(this);
     scrapbook = input;
     accountController = inputAcc;
-    viewMedia = new ViewMultimediaItem();
+//    viewMedia = new ViewMultimediaItem();
 }
 
 DisplayMultimediaGUI::~DisplayMultimediaGUI()
@@ -99,18 +99,18 @@ void DisplayMultimediaGUI::on_loadButton_clicked()
 
 void DisplayMultimediaGUI::on_viewButton_clicked()
 {
-    QList<QListWidgetItem *> selected = ui->multimediaList->selectedItems();
-    if (selected.length() == 0) {
-        ui->message->setText("You have to select an item to proceed.");
-        return;
-    }
+//    QList<QListWidgetItem *> selected = ui->multimediaList->selectedItems();
+//    if (selected.length() == 0) {
+//        ui->message->setText("You have to select an item to proceed.");
+//        return;
+//    }
 
-    int selectedIndex = ui->multimediaList->row(selected.at(0));
-    Multimedia *media = allMulti[selectedIndex];
+//    int selectedIndex = ui->multimediaList->row(selected.at(0));
+//    Multimedia *media = allMulti[selectedIndex];
 
-    qDebug() << "path is: " << media->getContent();
-    viewMedia->show();
-    viewMedia->setPath(media->getContent());
+//    qDebug() << "path is: " << media->getContent();
+//    viewMedia->show();
+//    viewMedia->setPath(media->getContent());
 }
 
 void DisplayMultimediaGUI::on_editButton_clicked()
