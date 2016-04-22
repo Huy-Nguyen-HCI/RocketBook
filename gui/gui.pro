@@ -49,8 +49,7 @@ SOURCES += logingui.cpp \
     displaygroupgui.cpp \
     creategroupgui.cpp \
     messagegui.cpp \
-    chatgui.cpp \
-    viewmultimediaitem.cpp
+    chatgui.cpp
 
 
 HEADERS  += logingui.h \
@@ -73,8 +72,7 @@ HEADERS  += logingui.h \
     displaygroupgui.h \
     creategroupgui.h \
     messagegui.h \
-    chatgui.h \
-    viewmultimediaitem.h
+    chatgui.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
@@ -95,8 +93,7 @@ FORMS    += logingui.ui \
     displaygroupgui.ui \
     creategroupgui.ui \
     messagegui.ui \
-    chatgui.ui \
-    viewmultimediaitem.ui
+    chatgui.ui
 
 RESOURCES += \
     icons.qrc \
