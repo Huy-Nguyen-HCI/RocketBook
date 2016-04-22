@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DisplayGroupGUI</class>
+ <widget class="QWidget" name="DisplayGroupGUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>490</width>
+    <height>441</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QListWidget" name="groupList">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>33</y>
+     <width>311</width>
+     <height>391</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="groupLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>82</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Your Groups:</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>30</y>
+     <width>131</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="enterGroupButton">
+      <property name="text">
+       <string>Enter Group</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="createGroupButton">
+      <property name="text">
+       <string>Create New Group</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

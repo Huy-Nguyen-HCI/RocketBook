@@ -49,6 +49,8 @@ SOURCES += logingui.cpp \
     friendprofilegui.cpp \
 #    multimediaitem.cpp
     displaymessaginggui.cpp
+    displaygroupgui.cpp \
+    creategroupgui.cpp
 
 
 HEADERS  += logingui.h \
@@ -69,6 +71,8 @@ HEADERS  += logingui.h \
     friendprofilegui.h \
 #    multimediaitem.h
     displaymessaginggui.h
+    displaygroupgui.h \
+    creategroupgui.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
@@ -86,6 +90,9 @@ FORMS    += logingui.ui \
     friendprofilegui.ui \
     multimediaitem.ui \
     displaymessaginggui.ui
+    multimediaitem.ui \
+    displaygroupgui.ui \
+    creategroupgui.ui
 
 RESOURCES += \
     icons.qrc \
