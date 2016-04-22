@@ -55,6 +55,24 @@ void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
 
     ui->filePathBox->setText(filePath);
     ui->message->setText("Choose image file successful!");
+
+    QString usersname = accountController->getUser()->getUsername();
+    int picnum = accountController->getUser()->getProfile()->getScrapbook()->getAllMedia().size();
+    QString numpic = QString::number(picnum);
+    QString newPath("../database//picturesDir/"+usersname+"MultimediaPic_"+numpic);
+    QFile newPic(filePath);
+    newPic.copy(filePath, newPath);
+    filePath = newPath;
+
+
+
+//    //copies the picture the user uploaded to the database, so it is accessible and in a uniform location
+//    QString usersname = accountController->getUser()->getUsername();
+//    QString newPath("../database//picturesDir/"+usersname+"Pic");
+//    QFile newPic(path);
+//    newPic.copy(path, newPath);
+
+//    updatePhoto(newPath);
 }
 
 
