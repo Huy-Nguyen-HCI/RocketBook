@@ -50,6 +50,7 @@ void ProfileGUI::on_selectPicture_clicked()
 
     std::cout << "path is : " + path.toStdString() << std::endl;
 
+
     // update the path in the database
     accountController->getUser()->getProfile()->setPicturePath(path);
     accountController->getUser()->changePhoto(path);
@@ -57,6 +58,15 @@ void ProfileGUI::on_selectPicture_clicked()
     updatePhoto(path);
 
     ui->message->setText("Update photo successful!");
+
+    //copies the picture the user uploaded to the database, so it is accessible and in a uniform location
+    QString usersname = accountController->getUser()->getUsername();
+    QString newPath("../database//picturesDir/"+usersname+"Pic");
+    QFile newPic(path);
+    newPic.copy(path, newPath);
+
+    updatePhoto(newPath);
+
 
 }
 

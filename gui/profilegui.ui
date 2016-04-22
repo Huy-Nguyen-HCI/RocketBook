@@ -21,7 +21,7 @@
        <item>
         <widget class="QLabel" name="username">
          <property name="text">
-          <string>Username:</string>
+          <string>Your name:</string>
          </property>
         </widget>
        </item>
