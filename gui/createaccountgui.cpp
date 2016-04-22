@@ -7,6 +7,8 @@ CreateAccountGUI::CreateAccountGUI(AccountController *input, QWidget *parent) :
 {
     ui->setupUi(this);
     accountController = input;
+    ui->passwordBox->setEchoMode(QLineEdit::Password);
+    ui->confirmPasswordBox->setEchoMode(QLineEdit::Password);
 }
 
 CreateAccountGUI::~CreateAccountGUI()

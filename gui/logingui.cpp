@@ -9,6 +9,7 @@ LoginGUI::LoginGUI(AccountController *inputAccountController, QWidget *parent) :
 {
     ui->setupUi(this);
     accountController = inputAccountController;
+    ui->passwordBox->setEchoMode(QLineEdit::Password);
 }
 
 LoginGUI::~LoginGUI()
@@ -20,7 +21,9 @@ LoginGUI::~LoginGUI()
 void LoginGUI::on_loginButton_clicked()
 {
     QString username = ui->usernameBox->text();
+    //ui->passwordBox->setEchoMode(QLineEdit::PasswordEchoOnEdit);
     QString password = ui->passwordBox->text();
+
 
     // check username
     if (accountController->checkAccountExists(username)) {
