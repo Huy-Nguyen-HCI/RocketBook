@@ -6,53 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>615</width>
+    <width>594</width>
     <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="loadButton">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>333</y>
-     <width>382</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Send</string>
-   </property>
-  </widget>
-  <widget class="QListView" name="listView_2">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>50</y>
-     <width>382</width>
-     <height>241</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="chatBox">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>300</y>
-     <width>382</width>
-     <height>27</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QListView" name="listView">
+  <widget class="QListView" name="ChatList">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>50</y>
-     <width>181</width>
-     <height>311</height>
+     <width>271</width>
+     <height>281</height>
     </rect>
    </property>
   </widget>
@@ -69,17 +36,79 @@
     <string>Select Chat</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="LeaveChat">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>340</y>
+     <width>131</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Leave Chat</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="EnterChat">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>131</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Enter Chat</string>
+   </property>
+  </widget>
+  <widget class="QListView" name="friendList">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>50</y>
+     <width>271</width>
+     <height>281</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AddToChat">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>340</y>
+     <width>131</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add to Chat</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="CreateChat">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>340</y>
+     <width>131</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Create Chat</string>
+   </property>
+  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>340</x>
      <y>20</y>
      <width>81</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Chat</string>
+    <string>Friends</string>
    </property>
   </widget>
  </widget>

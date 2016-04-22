@@ -11,14 +11,18 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     ui->setupUi(this);
     dashboard = new DashboardGUI(accountController);
     scrapbook = new ScrapbookGUI(accountController);
+    messages = new MessageGUI(accountController);
     profile = new ProfileGUI(accountController);
     friends = new FriendsGUI(accountController);
 
+
+
+    ui->stackedWidget->addWidget(messages);
     ui->stackedWidget->addWidget(dashboard);
     ui->stackedWidget->addWidget(scrapbook);
     ui->stackedWidget->addWidget(profile);
     ui->stackedWidget->addWidget(friends);
-  //  ui->stackedWidget->addWidget(messages);
+
 
 
     ui->stackedWidget->setCurrentWidget(dashboard);
@@ -64,13 +68,13 @@ void MainWindow::on_actionLog_out_triggered()
 
 void MainWindow::on_actionGroups_triggered()
 {
-   // ui->stackedWidget->setCurrentWidget(messages);
+
 
 }
 
 void MainWindow::on_actionMessaging_triggered()
 {
-
+    ui->stackedWidget->setCurrentWidget(messages);
 }
 
 void MainWindow::on_actionScrapbook_triggered()
