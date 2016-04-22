@@ -29,6 +29,7 @@ void FriendsGUI::on_viewProfile_clicked()
     // create a new dialog to view friend's profile
     FriendProfileGUI *friendProfile = new FriendProfileGUI(profile);
     friendProfile->show();
+    friendProfile->loadPhoto();
 }
 
 void FriendsGUI::on_removeFriend_clicked()

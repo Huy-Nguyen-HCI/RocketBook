@@ -17,6 +17,7 @@ class FriendProfileGUI : public QDialog
 public:
     explicit FriendProfileGUI(ProfileInfoType info, QWidget *parent = 0);
     ~FriendProfileGUI();
+    void loadPhoto();
 
 private slots:
     void on_returnButton_clicked();
@@ -24,6 +25,7 @@ private slots:
 private:
     Ui::FriendProfileGUI *ui;
     QGraphicsScene *scene;
+    QString photoPath;
 };
 
 #endif // FRIENDPROFILEGUI_H

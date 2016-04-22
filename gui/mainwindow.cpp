@@ -18,12 +18,15 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     ui->stackedWidget->addWidget(scrapbook);
     ui->stackedWidget->addWidget(profile);
     ui->stackedWidget->addWidget(friends);
+
+    ui->stackedWidget->setCurrentWidget(dashboard);
+
+    this->setWindowTitle("Welcome " + username + "!");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    if (login) delete login;
 }
 
 
@@ -35,8 +38,9 @@ void MainWindow::on_actionFeed_triggered()
 
 void MainWindow::on_actionAboutMe_triggered()
 {
-    profile->loadProfile();
     ui->stackedWidget->setCurrentWidget(profile);
+    profile->loadProfile();
+    profile->updatePhoto();
 }
 
 void MainWindow::on_actionNotifications_triggered()
@@ -52,13 +56,7 @@ void MainWindow::on_actionFriend_triggered()
 
 void MainWindow::on_actionLog_out_triggered()
 {
-//    login = new LoginGUI(accountController);
-//    CreateAccountGUI *createAccount = new CreateAccountGUI(accountController);
-//    login->setMainWindow(this);
-//    login->setCreateAccountView(createAccount);
-//    createAccount->setLoginView(login);
-//    this->close();
-//    login->show();
+
     this->close();
 }
 

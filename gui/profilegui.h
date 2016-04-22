@@ -21,6 +21,7 @@ public:
     explicit ProfileGUI(AccountController *inputAccountController, QWidget *parent = 0);
     ~ProfileGUI();
     void loadProfile();
+    void updatePhoto();
 
 private slots:
 
@@ -28,12 +29,11 @@ private slots:
 
     void on_saveDescription_clicked();
 
-    void updatePhoto(QString filePath);
-
 private:
     Ui::ProfileGUI *ui;
     AccountController *accountController;
     QGraphicsScene *scene;
+    QString photoPath;
 
 };
 

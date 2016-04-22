@@ -7,7 +7,8 @@ ProfileGUI::ProfileGUI(AccountController *inputAccountController, QWidget *paren
 {
     ui->setupUi(this);
     accountController = inputAccountController;
-    scene = new QGraphicsScene(this);
+
+    scene = new QGraphicsScene();
 
 }
 
@@ -24,11 +25,11 @@ void ProfileGUI::loadProfile() {
 
     QString descr = currentProfile->getDescription();
     QString myName = currentProfile->getFullName();
+    photoPath = currentProfile->getPicturePath();
 
     ui->descriptionBox->setText(descr);
     ui->username->setText("Username: " + myName);
-    updatePhoto(currentProfile->getPicturePath());
-    std::cout << currentProfile->getPicturePath().toStdString() << std::endl;
+    updatePhoto();
 }
 
 
@@ -44,28 +45,27 @@ void ProfileGUI::on_selectPicture_clicked()
         return;
     }
 
+
     // change the absolute path to relative file path
     QDir dir("./");
-    QString path = dir.relativeFilePath(filePath);
-
-    std::cout << "path is : " + path.toStdString() << std::endl;
+    photoPath = dir.relativeFilePath(filePath);
 
 
     // update the path in the database
-    accountController->getUser()->getProfile()->setPicturePath(path);
-    accountController->getUser()->changePhoto(path);
+    accountController->getUser()->getProfile()->setPicturePath(photoPath);
+    accountController->getUser()->changePhoto(photoPath);
 
-    updatePhoto(path);
+    updatePhoto();
 
     ui->message->setText("Update photo successful!");
 
     //copies the picture the user uploaded to the database, so it is accessible and in a uniform location
     QString usersname = accountController->getUser()->getUsername();
     QString newPath("../database//picturesDir/"+usersname+"Pic");
-    QFile newPic(path);
-    newPic.copy(path, newPath);
+    QFile newPic(photoPath);
+    newPic.copy(photoPath, newPath);
 
-    updatePhoto(newPath);
+    updatePhoto();
 
 
 }
@@ -81,15 +81,18 @@ void ProfileGUI::on_saveDescription_clicked()
     }
 }
 
-void ProfileGUI::updatePhoto(QString filePath) {
+void ProfileGUI::updatePhoto() {
+
+    if (photoPath.isNull()) return;
+
     // clear the current view
     scene->clear();
     ui->photo->viewport()->update();
 
     // display the image in the GUI
-    ui->photo->setScene(scene);
-    QPixmap *file = new QPixmap(filePath);
+    ui->photo->setScene(scene);   
+    QPixmap *file = new QPixmap(photoPath);
     QGraphicsPixmapItem *image = new QGraphicsPixmapItem(*file);
-    scene->addItem(image);
     ui->photo->fitInView(image);
+    scene->addItem(image);
 }
