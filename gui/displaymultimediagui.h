@@ -2,9 +2,12 @@
 #define DISPLAYMULTIMEDIAGUI_H
 
 #include <QWidget>
+#include <QListWidgetItem>
 #include "scrapbookgui.h"
 #include "../model/accountcontroller.h"
+#include "multimediaitem.h"
 
+class MultimediaItem;
 class ScrapbookGUI;
 
 namespace Ui {
