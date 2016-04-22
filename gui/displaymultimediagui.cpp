@@ -43,7 +43,15 @@ void DisplayMultimediaGUI::refreshMultimedia() {
                 "Content:       " + content + "\n" +
                 "Description:       " + description + "\n";
 
-        ui->multimediaList->addItem(item);
+
+        //QPicture *newPic = new QPicture(-1);
+        //newPic.load(content);
+        QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), description, ui->multimediaList);
+        //QListWidgetItem *newMedia = new QListWidgetItem(newPic, description, ui->multimediaList);
+        //QListWidgetItem *newMedia = new QListWidgetItem(QImage(content), description, ui->multimediaList);
+        ui->multimediaList->addItem(newMedia);
+
+        //ui->multimediaList->addItem(item);
     }
 
 }
