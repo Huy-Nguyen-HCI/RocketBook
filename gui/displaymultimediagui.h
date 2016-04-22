@@ -1,10 +1,13 @@
 #ifndef DISPLAYMULTIMEDIAGUI_H
 #define DISPLAYMULTIMEDIAGUI_H
 
+#include <QDebug>
+
 #include <QWidget>
 #include <QListWidgetItem>
 #include "scrapbookgui.h"
 #include "../model/accountcontroller.h"
+#include "viewmultimediaitem.h"
 //#include "multimediaitem.h"
 
 class MultimediaItem;
@@ -28,10 +31,18 @@ private slots:
 
     void on_loadButton_clicked();
 
+    void on_viewButton_clicked();
+
+    void on_editButton_clicked();
+
+    void on_deleteButton_clicked();
+
 private:
     Ui::DisplayMultimediaGUI *ui;
     ScrapbookGUI *scrapbook;
     AccountController *accountController;
+    std::vector<Multimedia*> allMulti;
+    ViewMultimediaItem *viewMedia;
 };
 
 #endif // DISPLAYMULTIMEDIAGUI_H

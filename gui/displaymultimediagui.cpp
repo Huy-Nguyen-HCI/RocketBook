@@ -8,6 +8,7 @@ DisplayMultimediaGUI::DisplayMultimediaGUI(AccountController *inputAcc, Scrapboo
     ui->setupUi(this);
     scrapbook = input;
     accountController = inputAcc;
+    viewMedia = new ViewMultimediaItem();
 }
 
 DisplayMultimediaGUI::~DisplayMultimediaGUI()
@@ -24,7 +25,7 @@ void DisplayMultimediaGUI::refreshMultimedia() {
 
     Profile *currentProfile = accountController->getUser()->getProfile();
     Scrapbook *myScrapbook = currentProfile->getScrapbook();
-    std::vector<Multimedia*> allMulti = myScrapbook->getAllMedia();
+    allMulti = myScrapbook->getAllMedia();
 
     ui->multimediaList->clear();
 
@@ -94,4 +95,39 @@ void DisplayMultimediaGUI::refreshMultimedia() {
 void DisplayMultimediaGUI::on_loadButton_clicked()
 {
     refreshMultimedia();
+}
+
+void DisplayMultimediaGUI::on_viewButton_clicked()
+{
+    QList<QListWidgetItem *> selected = ui->multimediaList->selectedItems();
+    if (selected.length() == 0) {
+        ui->message->setText("You have to select an item to proceed.");
+        return;
+    }
+
+    int selectedIndex = ui->multimediaList->row(selected.at(0));
+    Multimedia *media = allMulti[selectedIndex];
+
+    qDebug() << "path is: " << media->getContent();
+    viewMedia->setPath(media->getContent());
+    viewMedia->show();
+}
+
+void DisplayMultimediaGUI::on_editButton_clicked()
+{
+    QList<QListWidgetItem *> selected = ui->multimediaList->selectedItems();
+    if (selected.length() == 0) {
+        ui->message->setText("You have to select an item to proceed.");
+        return;
+    }
+}
+
+void DisplayMultimediaGUI::on_deleteButton_clicked()
+{
+    QList<QListWidgetItem *> selected = ui->multimediaList->selectedItems();
+    if (selected.length() == 0) {
+        ui->message->setText("You have to select an item to proceed.");
+        return;
+    }
+
 }
