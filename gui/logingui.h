@@ -24,17 +24,21 @@ public:
     void setMainWindow(MainWindow *input) { main = input; }
     void setCreateAccountView(CreateAccountGUI *input) { createAccountView = input; }
     void clearAllFields();
+    static bool isFinished() { return finished; }
 
 private slots:
     void on_loginButton_clicked();
 
     void on_createAccountButton_clicked();
 
+    void on_quitButton_clicked();
+
 private:
     Ui::LoginGUI *ui;
     AccountController *accountController;
     MainWindow *main;
     CreateAccountGUI *createAccountView;
+    static bool finished;
 };
 
 #endif // LOGINGUI_H

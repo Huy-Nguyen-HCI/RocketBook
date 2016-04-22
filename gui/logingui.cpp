@@ -1,6 +1,8 @@
 #include "logingui.h"
 #include "ui_logingui.h"
 
+bool LoginGUI::finished = false;
+
 LoginGUI::LoginGUI(AccountController *inputAccountController, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LoginGUI)
@@ -52,4 +54,10 @@ void LoginGUI::clearAllFields() {
     ui->usernameBox->setText("");
     ui->passwordBox->setText("");
     ui->message->setText("");
+}
+
+void LoginGUI::on_quitButton_clicked()
+{
+    finished = true;
+    this->close();
 }

@@ -73,10 +73,14 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="quitButton">
+        <property name="text">
+         <string>Quit</string>
+        </property>
+       </widget>
+      </item>
      </layout>
-     <zorder>loginButton</zorder>
-     <zorder>createAccountButton</zorder>
-     <zorder>createAccountButton</zorder>
     </widget>
    </item>
    <item row="3" column="0">

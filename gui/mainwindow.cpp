@@ -52,13 +52,14 @@ void MainWindow::on_actionFriend_triggered()
 
 void MainWindow::on_actionLog_out_triggered()
 {
-    login = new LoginGUI(accountController);
-    CreateAccountGUI *createAccount = new CreateAccountGUI(accountController);
-    login->setMainWindow(this);
-    login->setCreateAccountView(createAccount);
-    createAccount->setLoginView(login);
+//    login = new LoginGUI(accountController);
+//    CreateAccountGUI *createAccount = new CreateAccountGUI(accountController);
+//    login->setMainWindow(this);
+//    login->setCreateAccountView(createAccount);
+//    createAccount->setLoginView(login);
+//    this->close();
+//    login->show();
     this->close();
-    login->show();
 }
 
 void MainWindow::on_actionGroups_triggered()

@@ -38,7 +38,7 @@ void ProfileGUI::on_selectPicture_clicked()
             QFileDialog::getOpenFileName(this,
                                          tr("Pick your image"),
                                          ":/",
-                                         tr("Image Files (*.png *.jpg *.bmp)"));
+                                         tr("Image Files (*.png *.jpg *.bmp *.gif)"));
     // if user cancels the file selection
     if (filePath.isNull()) {
         return;
