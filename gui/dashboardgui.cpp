@@ -17,6 +17,7 @@ DashboardGUI::~DashboardGUI()
 void DashboardGUI::on_latestScrapbookButton_clicked()
 {
     ui->latestInfoListWidget->clear();
+    ui->latestInfoListWidget->addItem(QString("Your latest posts: \n"));
     std::vector<Post*> latestScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getLatestPosts(5);
     for (unsigned int i = 0; i < latestScrapbook.size(); i++) {
         Post* currentPost = latestScrapbook[i];
@@ -63,6 +64,16 @@ void DashboardGUI::displayTweet(Tweet* tweet) {
 }
 
 void DashboardGUI::displayMultimedia(Multimedia* multimedia) {
+
+    QString title = multimedia->getTitle();
+    QString description = multimedia->getDescription();
+    QString content = multimedia->getContent();
+    QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
+    QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->latestInfoListWidget);
+    ui->latestInfoListWidget->addItem(newMedia);
+
+    ui->latestInfoListWidget->setIconSize(QSize(125,125));
+
 
 }
 
