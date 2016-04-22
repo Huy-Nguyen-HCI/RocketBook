@@ -109,8 +109,8 @@ void DisplayMultimediaGUI::on_viewButton_clicked()
     Multimedia *media = allMulti[selectedIndex];
 
     qDebug() << "path is: " << media->getContent();
-    viewMedia->setPath(media->getContent());
     viewMedia->show();
+    viewMedia->setPath(media->getContent());
 }
 
 void DisplayMultimediaGUI::on_editButton_clicked()
