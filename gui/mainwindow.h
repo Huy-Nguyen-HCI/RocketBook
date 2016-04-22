@@ -13,13 +13,6 @@
 #include "profilegui.h"
 #include "friendsgui.h"
 
-/**
- *      1. Create a ProfileGUI
- *      2. Populate the data in ProfileGUI from ProfileDB (might need a ProfileController class similar to AccountController for this)
- *      3. Create an instance of ProfileGUI in MainWindow (like line 54-57 of MainWindow.h)
- *      4. Put ProfileGUI to the top of the stack as About Me gets called.
- */
-
 class LoginGUI;
 
 namespace Ui {

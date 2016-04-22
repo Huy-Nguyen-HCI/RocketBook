@@ -44,12 +44,17 @@ void DisplayMultimediaGUI::refreshMultimedia() {
                 "Description:       " + description + "\n";
 
 
+        //QString newLabel = new QString("Title: "+title + "\n" + "Descrption: " + description);
+        QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
         //QPicture *newPic = new QPicture(-1);
         //newPic.load(content);
-        QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), description, ui->multimediaList);
+        QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->multimediaList);
+
         //QListWidgetItem *newMedia = new QListWidgetItem(newPic, description, ui->multimediaList);
         //QListWidgetItem *newMedia = new QListWidgetItem(QImage(content), description, ui->multimediaList);
         ui->multimediaList->addItem(newMedia);
+
+        ui->multimediaList->setIconSize(QSize(200,200));
 
         //ui->multimediaList->addItem(item);
     }

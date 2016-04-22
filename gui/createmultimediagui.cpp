@@ -63,16 +63,6 @@ void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
     QFile newPic(filePath);
     newPic.copy(filePath, newPath);
     filePath = newPath;
-
-
-
-//    //copies the picture the user uploaded to the database, so it is accessible and in a uniform location
-//    QString usersname = accountController->getUser()->getUsername();
-//    QString newPath("../database//picturesDir/"+usersname+"Pic");
-//    QFile newPic(path);
-//    newPic.copy(path, newPath);
-
-//    updatePhoto(newPath);
 }
 
 
