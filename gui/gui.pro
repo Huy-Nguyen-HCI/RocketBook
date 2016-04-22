@@ -48,7 +48,7 @@ SOURCES += logingui.cpp \
     friendsgui.cpp \
     friendprofilegui.cpp \
 #    multimediaitem.cpp
-    displaymessaginggui.cpp
+    displaymessaginggui.cpp \
     displaygroupgui.cpp \
     creategroupgui.cpp
 
@@ -70,7 +70,7 @@ HEADERS  += logingui.h \
     friendsgui.h \
     friendprofilegui.h \
 #    multimediaitem.h
-    displaymessaginggui.h
+    displaymessaginggui.h \
     displaygroupgui.h \
     creategroupgui.h
 
@@ -89,7 +89,7 @@ FORMS    += logingui.ui \
     friendsgui.ui \
     friendprofilegui.ui \
     multimediaitem.ui \
-    displaymessaginggui.ui
+    displaymessaginggui.ui \
     multimediaitem.ui \
     displaygroupgui.ui \
     creategroupgui.ui
