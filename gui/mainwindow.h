@@ -12,6 +12,7 @@
 #include "scrapbookgui.h"
 #include "profilegui.h"
 #include "friendsgui.h"
+//#include "messagegui.h"
 
 class LoginGUI;
 
@@ -55,6 +56,9 @@ private:
     AccountController *accountController;
     LoginGUI *login;
     FriendsGUI *friends;
+ //   MessageGUI *messages;
+
+
 };
 
 #endif // MAINWINDOW_H

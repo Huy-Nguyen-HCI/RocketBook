@@ -18,6 +18,8 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     ui->stackedWidget->addWidget(scrapbook);
     ui->stackedWidget->addWidget(profile);
     ui->stackedWidget->addWidget(friends);
+  //  ui->stackedWidget->addWidget(messages);
+
 
     ui->stackedWidget->setCurrentWidget(dashboard);
 
@@ -62,8 +64,7 @@ void MainWindow::on_actionLog_out_triggered()
 
 void MainWindow::on_actionGroups_triggered()
 {
-
- //   ui->stackedWidget->setCurrentWidget(messaging);
+   // ui->stackedWidget->setCurrentWidget(messages);
 
 }
 
