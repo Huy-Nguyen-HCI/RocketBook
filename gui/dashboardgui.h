@@ -23,6 +23,8 @@ private slots:
     void displayTweet(Tweet* tweet);
     void displayMultimedia(Multimedia* multimedia);
 
+    void on_latestMultimediaButton_clicked();
+
 private:
     Ui::DashboardGUI *ui;
     AccountController* accountController;

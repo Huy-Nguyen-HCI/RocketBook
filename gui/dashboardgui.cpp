@@ -77,3 +77,26 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia) {
 
 }
 
+
+void DashboardGUI::on_latestMultimediaButton_clicked()
+{
+    ui->latestInfoListWidget->clear();
+    ui->latestInfoListWidget->addItem(QString("Your latest multimedia: \n"));
+    Profile *currentProfile = accountController->getUser()->getProfile();
+    Scrapbook *myScrapbook = currentProfile->getScrapbook();
+    std::vector<Multimedia*> allMulti = myScrapbook->getAllMedia();
+    for(int i = 0; i < 5; i++){
+        if(i == allMulti.size()){
+            return;
+        }
+        Multimedia *media = allMulti.at(i);
+        QString title = media->getTitle();
+        QString description = media->getDescription();
+        QString content = media->getContent();
+        QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
+        QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->latestInfoListWidget);
+        ui->latestInfoListWidget->addItem(newMedia);
+        ui->latestInfoListWidget->setIconSize(QSize(125,125));
+    }
+
+}
