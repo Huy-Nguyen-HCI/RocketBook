@@ -63,6 +63,8 @@ void MainWindow::on_actionLog_out_triggered()
 void MainWindow::on_actionGroups_triggered()
 {
 
+ //   ui->stackedWidget->setCurrentWidget(messaging);
+
 }
 
 void MainWindow::on_actionMessaging_triggered()
