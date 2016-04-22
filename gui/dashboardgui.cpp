@@ -16,6 +16,7 @@ DashboardGUI::~DashboardGUI()
 
 void DashboardGUI::on_latestScrapbookButton_clicked()
 {
+    ui->latestInfoListWidget->clear();
     std::vector<Post*> latestScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getLatestPosts(5);
     for (unsigned int i = 0; i < latestScrapbook.size(); i++) {
         Post* currentPost = latestScrapbook[i];
@@ -40,9 +41,24 @@ void DashboardGUI::on_latestScrapbookButton_clicked()
 
 void DashboardGUI::displayBlog(Blog* blog) {
 
+
+    QString currentTitle = blog->getTitle();
+    QString currentContent = blog->getContent();
+
+    QString content =
+            "Blog: \n Title:    " + currentTitle + "\n" +
+            "Content:    " + currentContent + "\n";
+    ui->latestInfoListWidget->addItem(content);
 }
 
 void DashboardGUI::displayTweet(Tweet* tweet) {
+
+    QString currentContent = tweet->getContent();
+
+    QString content("Tweet: \n Content: " + currentContent + "\n");
+
+
+    ui->latestInfoListWidget->addItem(content);
 
 }
 
