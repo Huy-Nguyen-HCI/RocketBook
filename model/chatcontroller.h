@@ -22,16 +22,17 @@ public:
 
     void run();
     int selectChat();   /**< used in terminal */
-    void createChat();
+    void createChat(QString friendName);
     bool addMemberToChat(int chatId, QString friendName);   /**< user in terminal */
     void sendMessage(int chatId);
     void displayMessages(int chatId);
-    void removeUserFromChat(int chatId, QString friendName);    /**< used in terminal */
+    bool removeUserFromChat(int chatId, QString username);    /**< used in terminal */
     void deleteMessage(int chatId);
     std::vector<int>* getChatIdList();
     std::vector<int>* getSenderList(int chatId);
     std::vector<QString>* getMessageList(int chatId);
     void updateChats();
+
 QStringList getChatIdListGUI();
 QStringList getChatIdListUI();
 
@@ -50,6 +51,8 @@ private:
     MessageDB* messageDB;
     QString username;
     int accountId;
+
+    void cleanUp();
 };
 
 #endif // CHATCONTROLLER_H

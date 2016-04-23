@@ -16,7 +16,16 @@ MessageGUI::~MessageGUI()
 }
 
 void MessageGUI::on_createChat_clicked(){
-    accountController->getUser()->getChatController()->createChat();
+
+    QModelIndexList selectedFriend = ui->friendList->selectionModel()->selectedIndexes();
+  if (selectedFriend.length() == 0){
+       ui->message->setText("Error: You have to select a friend to proceed.");
+  }
+  else{
+    QString friendName = selectedFriend.at(0).data().toString();
+    accountController->getUser()->getChatController()->createChat(friendName);
+           ui->message->setText("Chat Created!");
+  }
 }
 
 
@@ -38,15 +47,19 @@ void MessageGUI::on_addToChat_clicked(){
         ui->message->setText("Friend added to chat.");
 
     }
-
     else
         ui->message->setText("Friend already in chat.");
-
 }
 
 
 
 void MessageGUI::on_leaveChat_clicked(){
+    QModelIndexList selectedChat = ui->chatList->selectionModel()->selectedIndexes();
+    int chatId = selectedChat.at(0).data().toString().toInt();
+    if(accountController->getUser()->getChatController()->removeUserFromChat(chatId, accountController->getUser()->getUsername()))
+        ui->message->setText("You've left the chat");
+    else
+        ui->message->setText("Chat has been deleted already since all members have left but you.");
 
 }
 

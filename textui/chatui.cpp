@@ -47,7 +47,7 @@ void ChatUI::takeCommand(int selection){
 }
 
 void ChatUI::createChat(){
-    chatControl->createChat();
+ //   chatControl->createChat();
     mvprintw(8, 6, "New Chat Created");
     getch();
     erase();

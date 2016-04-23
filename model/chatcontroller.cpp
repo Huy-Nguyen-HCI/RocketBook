@@ -24,6 +24,7 @@ ChatController::~ChatController()
 void ChatController::updateChats(){
 
 
+    cleanUp();
     chatList.empty();
     Chat* temp;
 
@@ -43,12 +44,13 @@ void ChatController::updateChats(){
 
 }
 
-void ChatController::createChat(){
+void ChatController::createChat(QString friendName){
 
-    if(accountDB->accountExists(username)){
+    if(accountDB->accountExists(username) && accountDB->accountExists(friendName)){
 
     if(chatDB->createChat(accountDB->retrieveAccountID(username))){
            cout << "Chat successfully created" << endl;
+           chatDB->addToChat(chatDB->getMaxChatID(),accountDB->retrieveAccountID(friendName));
      updateChats();
     }
        else
@@ -72,15 +74,17 @@ bool ChatController::addMemberToChat(int chatId,QString friendName){
     return false;
 }
 
-void ChatController::removeUserFromChat(int chatId, QString friendName){
+bool ChatController::removeUserFromChat(int chatId, QString username){
 
-    if(chatDB->inChat(chatId,accountDB->retrieveAccountID(friendName))){
-        chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(friendName));
-        cout << friendName.toStdString() << " has been deleted from chat";
-
+    if(chatDB->inChat(chatId,accountDB->retrieveAccountID(username))){
+        chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(username));
+        cout << username.toStdString() << " has been deleted from chat";
+        updateChats();
+        return true;
     }
     else
-        cout << friendName.toStdString() << " is not in chat";
+        cout <<username.toStdString() << " is not in chat";
+    return false;
 }
 
 QStringList ChatController::getChatIdListGUI(){
@@ -93,7 +97,17 @@ QStringList ChatController::getChatIdListGUI(){
     return list;
 }
 
+//deletes chats with only one member
+void ChatController::cleanUp(){
+  //  std::vector<int>* chatMembers;
+    for(unsigned int i=0;i<=chatDB->getMaxChatID();i++){
+     //   chatMembers=chatDB->retrieveAccountsInChat(i);
+        if(chatDB->retrieveAccountsInChat(i)->size()==1)
+            chatDB->removeFromChat(i,accountId);
 
+
+    }
+}
 
 
 
