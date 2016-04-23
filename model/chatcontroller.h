@@ -8,7 +8,6 @@
 #include "../database/chatdb.h"
 #include "../database/messagedb.h"
 #include "../database/accountdb.h"
-#include "../database/frienddb.h"
 #include <string>
 #include "chat.h"
 #include "message.h"
@@ -24,15 +23,16 @@ public:
     void run();
     int selectChat();   /**< used in terminal */
     void createChat();
-    void addMemberToChat(int chatId);   /**< user in terminal */
+    void addMemberToChat(int chatId, QString friendName);   /**< user in terminal */
     void sendMessage(int chatId);
     void displayMessages(int chatId);
-    void removeUserFromChat(int chatId);    /**< used in terminal */
+    void removeUserFromChat(int chatId, QString friendName);    /**< used in terminal */
     void deleteMessage(int chatId);
     std::vector<int>* getChatIdList();
     std::vector<int>* getSenderList(int chatId);
     std::vector<QString>* getMessageList(int chatId);
-
+    void updateChats();
+QStringList getChatIdListGUI();
 
     int requestInput();
     int requestInput2();
@@ -40,11 +40,11 @@ public:
     std::string userEntersMessage();
     std::string askUserName();
 
+    std::vector<Chat*>* chatList;
 
 
 private:
     AccountDB* accountDB;
-    FriendDB* friendDB;
     ChatDB* chatDB;
     MessageDB* messageDB;
     QString username;

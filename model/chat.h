@@ -8,15 +8,19 @@
 class Chat
 {
 public:
+    Chat();
     Chat(int chatId);
+    Chat(int chatId, std::vector<int>* memberList);
     int getChatId();
 
     void addMessage(Message* newMessage);
+    void addMember();
+    void setMembers(std::vector<int>* memberList);
 
 
 private:
     int chatId;
-    std::vector<std::string> memberList;
+    std::vector<int>* memberList;
     std::vector<Message*> messageList;
 
 };

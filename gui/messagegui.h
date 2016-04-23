@@ -18,6 +18,15 @@ public:
     void refreshChats();
     void refreshFriendList();
 
+private slots:
+    void on_addToChat_clicked();
+
+    void on_createChat_clicked();
+
+    void on_leaveChat_clicked();
+
+    void on_enterChat_clicked();
+
 private:
     Ui::MessageGUI *ui;
     AccountController *accountController;

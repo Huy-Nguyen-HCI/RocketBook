@@ -26,6 +26,8 @@ SOURCES += main.cpp \
     ../model/group.cpp \
     ../model/groupcontroller.cpp \
     ../model/friendcontroller.cpp \
+    ../model/chat.cpp  \
+    ../model/message.cpp  \
     friendsui.cpp \
     chatui.cpp \
     postui.cpp

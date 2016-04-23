@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QListView" name="ChatList">
+  <widget class="QListView" name="chatList">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -36,7 +36,7 @@
     <string>Select Chat</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="LeaveChat">
+  <widget class="QPushButton" name="leaveChat">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -49,7 +49,7 @@
     <string>Leave Chat</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="EnterChat">
+  <widget class="QPushButton" name="enterChat">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -72,7 +72,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="AddToChat">
+  <widget class="QPushButton" name="addToChat">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -85,7 +85,7 @@
     <string>Add to Chat</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="CreateChat">
+  <widget class="QPushButton" name="createChat">
    <property name="geometry">
     <rect>
      <x>310</x>

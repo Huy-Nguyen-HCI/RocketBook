@@ -74,6 +74,8 @@ void MainWindow::on_actionGroups_triggered()
 
 void MainWindow::on_actionMessaging_triggered()
 {
+    messages->refreshFriendList();
+    messages->refreshChats();
     ui->stackedWidget->setCurrentWidget(messages);
 }
 

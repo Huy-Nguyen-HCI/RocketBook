@@ -15,22 +15,42 @@ MessageGUI::~MessageGUI()
     delete ui;
 }
 
+void MessageGUI::on_createChat_clicked(){
+    accountController->getUser()->getChatController()->createChat();
+}
+
+
+void MessageGUI::on_addToChat_clicked(){
+
+}
+
+
+
+void MessageGUI::on_leaveChat_clicked(){
+
+}
+
+void MessageGUI::on_enterChat_clicked(){
+
+}
+
+
+
+
 
 void MessageGUI::refreshChats() {
 
 
-
-
     RocketUser *user = accountController->getUser();
-    /**
-    user->controlFriend()->updateFriendList();
 
-    QStringList friends = user->controlFriend()->getFriendNames();
+    user->getChatController()->updateChats();
 
-    QStringListModel *model = new QStringListModel(friends);
+  //  QStringList chats = user->getChatController()->getChatIdListGUI();
 
-    ui->friendList->setModel(model);
-    **/
+  //  QStringListModel *model = new QStringListModel(chats);
+
+   // ui->chatList->setModel(model);
+
 }
 
 

@@ -8,76 +8,47 @@ ChatController::ChatController(QString dbPath, int accountId)
     chatDB = new ChatDB(dbPath);
     messageDB = new MessageDB(dbPath);
     accountDB = new AccountDB(dbPath);
-    friendDB = new FriendDB(dbPath);
+    username=accountDB->getUsername(accountId);
+  //  std::vector<Chat*>* chatList= new ;
 
 }
 
 ChatController::~ChatController()
 {
     delete accountDB;
-    delete friendDB;
     delete chatDB;
     delete messageDB;
 }
 
-/**
-void ChatController::run(){
+//updates user's chat list
+void ChatController::updateChats(){
 
-    if (chatDB->isOpen()){
-
-        QString username=QString::fromStdString(askUserName());
-
-        while (true) {
-
-            int userInput=requestInput();
-
-            if (userInput == 0) break;
-
-            else if (userInput == 1) // create chat
-                createChat(username);
-
-            else if (userInput == 2){ // select chat
-                int chatSelection=selectChat(username);
-                if(chatSelection!=-1){
+    chatList->empty();
+    Chat* temp;
+    int chatId;
+    std::vector<int>* chats= getChatIdList();
+    std::vector<int>* members;
+    for(unsigned int i=0;i<chats->size();i++){
+        chatId=chats->at(i);
+        members= chatDB->retrieveAccountsInChat(chats->at(i));
 
 
-                    int input2=requestInput2();
+        temp= new Chat(chatId,members);
 
-
-                    if (input2==0) break;
-
-                    else if(input2==1){ //Add member to chat
-                        addMemberToChat(username, chatSelection);
-                    }
-
-
-
-                    else if(input2 == 2){ //Display messages
-                        displayMessages(chatSelection);
-                    }
-
-                    else if(input2 == 3){ //Send message in chat
-                        sendMessage(username, chatSelection);
-                    }
-                    else if(input2 == 4){ //Remove someone from a chat
-                        removeUserFromChat(chatSelection);
-                    }
-                    else if(input2 == 5){ //Delete message
-                        deleteMessage(chatSelection);
-                    }
-                }
-            }
-        }
-
+    // chatList->push_back(temp);
+               //^This line breaks code currently
     }
+
 }
-**/
+
 void ChatController::createChat(){
 
     if(accountDB->accountExists(username)){
 
-    if(chatDB->createChat(accountDB->retrieveAccountID(username)))
+    if(chatDB->createChat(accountDB->retrieveAccountID(username))){
            cout << "Chat successfully created" << endl;
+     updateChats();
+    }
        else
            cout << "Chat Creation failed" << endl;
 
@@ -88,26 +59,53 @@ void ChatController::createChat(){
 
 }
 
-void ChatController::addMemberToChat(int chatId){
-    QString friendname;
-    friendname=QString::fromStdString(askUserName());
-    //Checks if users exist and that they are friends
-    if(friendDB->friendshipExists(accountDB->retrieveAccountID(username),accountDB->retrieveAccountID(friendname))){
+void ChatController::addMemberToChat(int chatId,QString friendName){
 
-
-        if(chatDB->addToChat(chatId, accountDB->retrieveAccountID(friendname)))
-            cout << friendname.toStdString() << " successfully added to chat" << endl;
+        if(chatDB->addToChat(chatId, accountDB->retrieveAccountID(friendName)))
+            cout << friendName.toStdString() << " successfully added to chat" << endl;
         else
             cout << "Chat Creation failed" << endl;
-
-    }
-    else{
-        cout << "Accounts are not friends and thus cannot be added to chat" << endl;
-
-    }
-
 }
 
+void ChatController::removeUserFromChat(int chatId, QString friendName){
+
+    if(chatDB->inChat(chatId,accountDB->retrieveAccountID(friendName))){
+        chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(friendName));
+        cout << friendName.toStdString() << " has been deleted from chat";
+
+    }
+    else
+        cout << friendName.toStdString() << " is not in chat";
+}
+
+QStringList ChatController::getChatIdListGUI(){
+    QStringList list;
+    std::vector<int>* chatIds=getChatIdList();
+
+
+    for(unsigned int i=0;i<chatIds->size();i++)
+    list.append(QString::number(chatIds->at(i)));
+    return list;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
 //Displays all chats and asks user to pick one. User can pick from first chat
 //by entering 0 or last chat by entering # of chats-1
 int ChatController::selectChat(){
@@ -135,7 +133,7 @@ int ChatController::selectChat(){
 
         int selection=userPicksChat();
 
-        if(selection<chatList->size())
+        if(selection<chatList->capacity())
             return chatList->at(selection);
         else{
             cout << "selection failed";
@@ -151,19 +149,8 @@ int ChatController::selectChat(){
     }
 
 }
+**/
 
-void ChatController::removeUserFromChat(int chatId){
-    QString nameToDelete=QString::fromStdString(askUserName());
-
-    if(chatDB->inChat(chatId,accountDB->retrieveAccountID(nameToDelete))){
-        chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(nameToDelete));
-        cout << nameToDelete.toStdString() << " has been deleted from chat";
-
-    }
-    else
-        cout << nameToDelete.toStdString() << " is not in chat";
-
-}
 
 /**
 //Displays all messages in chats and senders
@@ -207,7 +194,11 @@ void ChatController::deleteMessage(int chatId){
 std::vector<int>* ChatController::getChatIdList(){
     return chatDB->retrieveChatList(accountDB->retrieveAccountID(username));
 }
+/**
+QStringList ChatController::getChatIdListUI(){
 
+}
+**/
 std::vector<int>* ChatController::getSenderList(int chatId){
     return messageDB->retrieveChatSenders(chatId);
 }
@@ -215,6 +206,7 @@ std::vector<int>* ChatController::getSenderList(int chatId){
 std::vector<QString>* ChatController::getMessageList(int chatId){
     return messageDB->retrieveChatMessages(chatId);
 }
+
 
 
 std::string ChatController::askUserName(){
@@ -238,7 +230,6 @@ int ChatController::requestInput2(){
     cin >> userInput;
     return userInput;
 }
-
 
 
 int ChatController::userPicksChat(){
