@@ -18,14 +18,15 @@ MessageGUI::~MessageGUI()
 void MessageGUI::on_createChat_clicked(){
 
     QModelIndexList selectedFriend = ui->friendList->selectionModel()->selectedIndexes();
-  if (selectedFriend.length() == 0){
-       ui->message->setText("Error: You have to select a friend to proceed.");
-  }
-  else{
-    QString friendName = selectedFriend.at(0).data().toString();
-    accountController->getUser()->getChatController()->createChat(friendName);
-           ui->message->setText("Chat Created!");
-  }
+    if (selectedFriend.length() == 0){
+        ui->message->setText("Error: You have to select a friend to proceed.");
+    }
+    else{
+        QString friendName = selectedFriend.at(0).data().toString();
+        accountController->getUser()->getChatController()->createChat(friendName);
+        ui->message->setText("Chat Created!");
+        refreshChats();
+    }
 }
 
 
@@ -55,16 +56,32 @@ void MessageGUI::on_addToChat_clicked(){
 
 void MessageGUI::on_leaveChat_clicked(){
     QModelIndexList selectedChat = ui->chatList->selectionModel()->selectedIndexes();
+    if (selectedChat.length()==0) {
+        ui->message->setText("Error: You have to select chat to proceed.");
+        return;
+    }
     int chatId = selectedChat.at(0).data().toString().toInt();
-    if(accountController->getUser()->getChatController()->removeUserFromChat(chatId, accountController->getUser()->getUsername()))
+    if(accountController->getUser()->getChatController()->removeUserFromChat(chatId, accountController->getUser()->getUsername())){
         ui->message->setText("You've left the chat");
+     refreshChats();
+    }
     else
         ui->message->setText("Chat has been deleted already since all members have left but you.");
 
 }
 
 void MessageGUI::on_enterChat_clicked(){
+    QModelIndexList selectedChat = ui->chatList->selectionModel()->selectedIndexes();
+    if (selectedChat.length()==0) {
+        ui->message->setText("Error: You have to select chat to proceed.");
+        return;
+    }
 
+    int chatId = selectedChat.at(0).data().toString().toInt();
+
+
+    ChatGUI *chat = new ChatGUI(accountController,chatId);
+    chat->show();
 }
 
 

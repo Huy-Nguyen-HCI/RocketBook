@@ -99,13 +99,9 @@ QStringList ChatController::getChatIdListGUI(){
 
 //deletes chats with only one member
 void ChatController::cleanUp(){
-  //  std::vector<int>* chatMembers;
     for(unsigned int i=0;i<=chatDB->getMaxChatID();i++){
-     //   chatMembers=chatDB->retrieveAccountsInChat(i);
         if(chatDB->retrieveAccountsInChat(i)->size()==1)
             chatDB->removeFromChat(i,accountId);
-
-
     }
 }
 

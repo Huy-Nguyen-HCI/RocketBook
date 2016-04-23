@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../model/accountcontroller.h"
+#include "chatgui.h"
 
 namespace Ui {
 class MessageGUI;
