@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>594</width>
-    <height>385</height>
+    <height>424</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>50</y>
+     <y>30</y>
      <width>271</width>
-     <height>281</height>
+     <height>301</height>
     </rect>
    </property>
   </widget>
@@ -27,7 +27,7 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>20</y>
+     <y>0</y>
      <width>81</width>
      <height>16</height>
     </rect>
@@ -66,9 +66,9 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>50</y>
+     <y>30</y>
      <width>271</width>
-     <height>281</height>
+     <height>301</height>
     </rect>
    </property>
   </widget>
@@ -102,13 +102,26 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>20</y>
+     <y>0</y>
      <width>81</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Friends</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="message">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>571</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

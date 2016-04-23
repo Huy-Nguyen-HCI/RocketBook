@@ -23,8 +23,10 @@ ChatController::~ChatController()
 //updates user's chat list
 void ChatController::updateChats(){
 
-    chatList->empty();
+
+    chatList.empty();
     Chat* temp;
+
     int chatId;
     std::vector<int>* chats= getChatIdList();
     std::vector<int>* members;
@@ -35,7 +37,7 @@ void ChatController::updateChats(){
 
         temp= new Chat(chatId,members);
 
-    // chatList->push_back(temp);
+     chatList.push_back(temp);
                //^This line breaks code currently
     }
 
@@ -59,12 +61,15 @@ void ChatController::createChat(){
 
 }
 
-void ChatController::addMemberToChat(int chatId,QString friendName){
+bool ChatController::addMemberToChat(int chatId,QString friendName){
 
-        if(chatDB->addToChat(chatId, accountDB->retrieveAccountID(friendName)))
-            cout << friendName.toStdString() << " successfully added to chat" << endl;
-        else
-            cout << "Chat Creation failed" << endl;
+    if(chatDB->addToChat(chatId, accountDB->retrieveAccountID(friendName))){
+        cout << friendName.toStdString() << " successfully added to chat" << endl;
+        return true;
+    }
+    else
+        cout << friendName.toStdString() << " was not added to chat" << endl;
+    return false;
 }
 
 void ChatController::removeUserFromChat(int chatId, QString friendName){
@@ -130,7 +135,7 @@ int ChatController::selectChat(){
 
             cout << endl;
         }
-
+model
         int selection=userPicksChat();
 
         if(selection<chatList->capacity())
@@ -194,11 +199,19 @@ void ChatController::deleteMessage(int chatId){
 std::vector<int>* ChatController::getChatIdList(){
     return chatDB->retrieveChatList(accountDB->retrieveAccountID(username));
 }
-/**
+
+
 QStringList ChatController::getChatIdListUI(){
 
+    QStringList list;
+
+    for(unsigned int i=0;i<chatList.size();i++){
+    list.append(QString::fromStdString(std::to_string(chatList.at(i)->getChatId())));
+    }
+
 }
-**/
+
+
 std::vector<int>* ChatController::getSenderList(int chatId){
     return messageDB->retrieveChatSenders(chatId);
 }

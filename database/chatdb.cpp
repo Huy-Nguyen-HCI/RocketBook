@@ -71,6 +71,7 @@ bool ChatDB::addToChat(int chatID, int accountID){
 
     bool success = false;
 
+    if(!inChat(chatID,accountID)){
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Chats (ChatID, AccountID) VALUES (:ChatID, :AccountID)");
     queryAdd.bindValue(":ChatID", chatID);
@@ -84,8 +85,10 @@ bool ChatDB::addToChat(int chatID, int accountID){
     {
         qDebug() << "add user to chat failed: " << queryAdd.lastError();
     }
-
+}
     return success;
+
+
 }
 
 bool ChatDB::removeFromChat(int chatID, int accountID){

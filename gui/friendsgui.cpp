@@ -92,5 +92,7 @@ void FriendsGUI::refreshFriendList() {
     QStringListModel *model = new QStringListModel(friends);
 
     ui->friendList->setModel(model);
+    //Prevents user for editing friendlist entries in qlist manually
+    ui->friendList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
