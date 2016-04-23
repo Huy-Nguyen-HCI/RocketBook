@@ -23,15 +23,14 @@ void CreateTweetGUI::on_returnButton_clicked()
 
 void CreateTweetGUI::on_publishButton_clicked()
 {
-    QString newContent = ui->contentBox->toPlainText();
-    QString userName = accountController->getUser()->getUsername();
+    QString content = ui->contentBox->toPlainText();
+    QString username = accountController->getUser()->getUsername();
 
     Profile *currentProfile = accountController->getUser()->getProfile();
     Scrapbook *myScrapbook = currentProfile->getScrapbook();
 
-    Tweet *newTweet = new Tweet(userName, newContent);
-
-    myScrapbook->addTweet(newTweet);
+    bool privacy = ui->privateCheckbox->isChecked();
+    myScrapbook->addTweet(username, content, privacy);
 
     scrapbook->switchTweetViews();
 

@@ -130,9 +130,10 @@ Tweet *Scrapbook::addTweet(Tweet* newTweet){
 Tweet *Scrapbook::addTweet(QString username, QString content, bool privacy){
     //pull out last tweetID
     int tweetID = tweetDB->getMaxPostID() + 1;
+    qDebug() << "tweet id is : " << tweetID;
 
     //create new tweet
-    Tweet* newTweet = new Tweet(id, username, content);
+    Tweet* newTweet = new Tweet(tweetID, username, content);
     if(privacy) { newTweet->setPrivate(); }
 
     //add tweet into storage
