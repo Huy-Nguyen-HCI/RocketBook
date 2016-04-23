@@ -84,4 +84,5 @@ void MainWindow::on_actionMessaging_triggered()
 void MainWindow::on_actionScrapbook_triggered()
 {
     ui->stackedWidget->setCurrentWidget(scrapbook);
+    scrapbook->refreshBook();
 }

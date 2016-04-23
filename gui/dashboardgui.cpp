@@ -60,9 +60,9 @@ void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
     //qDebug() << tweet->getID();
 
     int tweetID = tweet->getID();
-    QString s = QString::number(tweetID);
+    QString id = QString::number(tweetID);
 
-    QString content("Tweet: \n Content: " + currentContent + s +"\n");
+    QString content("Tweet: \n Content: " + currentContent +id +"\n");
 
     theList->addItem(content);
 

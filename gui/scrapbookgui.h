@@ -31,6 +31,10 @@ public:
     void switchTweetViews();
     void switchBlogViews();
     void switchMultimediaViews();
+    void refreshBook();
+    void displayBlog(Blog* blog);
+    void displayTweet(Tweet* tweet);
+    void displayMultimedia(Multimedia* multimedia);
 
 private:
     Ui::ScrapbookGUI *ui;
