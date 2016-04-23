@@ -36,6 +36,11 @@ public:
     void displayTweet(Tweet* tweet);
     void displayMultimedia(Multimedia* multimedia);
 
+private slots:
+    void on_editButton_clicked();
+
+    void on_deleteButton_clicked();
+
 private:
     Ui::ScrapbookGUI *ui;
     CreateBlogGUI *createBlogView;

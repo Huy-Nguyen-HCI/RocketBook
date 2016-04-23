@@ -104,7 +104,6 @@ void ScrapbookGUI::displayBlog(Blog* blog) {
     QString content =
             "Blog: \n Title:    " + currentTitle + "\n" +
             "Content:    " + currentContent + "\n";
-    //theList->addItem(content);
     ui->scrapbookArea->addItem(content);
 }
 
@@ -130,4 +129,12 @@ void ScrapbookGUI::displayMultimedia(Multimedia* multimedia) {
 
 }
 
+void ScrapbookGUI::on_editButton_clicked()
+{
 
+}
+
+void ScrapbookGUI::on_deleteButton_clicked()
+{
+
+}
