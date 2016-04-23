@@ -8,14 +8,7 @@ GroupController::GroupController(QString dbPath, int accountID)
     groupDB = new GroupDB(dbPath);
     groupMemberDB = new GroupMemberDB(dbPath);
 
-    std::vector<int> groupIDList = groupMemberDB->retrieveGroupList(accountID);
-
-    for (unsigned int i = 0; i < groupIDList.size(); i++) {
-        int groupID = groupIDList[i];
-        int profileID = groupDB->getProfileID(groupID);
-        Group* newGroup = new Group(dbPath, groupID, profileID);
-        groupList.push_back(newGroup);
-    }
+    refreshGroups();
 }
 
 GroupController::~GroupController()
@@ -39,6 +32,7 @@ Group* GroupController::createNewGroup(QString fullName,
 }
 
 std::vector<Group*> GroupController::getAllGroups() {
+    refreshGroups();
     return groupList;
 }
 
@@ -50,4 +44,20 @@ Group* GroupController::getGroup(int groupID)
         }
     }
     return NULL;
+}
+
+void GroupController::refreshGroups()
+{
+    for (unsigned int i = 0; i < groupList.size(); i++) {
+        delete groupList[i];
+    }
+
+    std::vector<int> groupIDList = groupMemberDB->retrieveGroupList(accountID);
+
+    for (unsigned int i = 0; i < groupIDList.size(); i++) {
+        int groupID = groupIDList[i];
+        int profileID = groupDB->getProfileID(groupID);
+        Group* newGroup = new Group(dbPath, groupID, profileID);
+        groupList.push_back(newGroup);
+    }
 }

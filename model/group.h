@@ -56,7 +56,6 @@ public:
     std::vector<QString> getAdminNameList() { return adminNameList;}
 
 
-
 private:
     int id;
     static int idCnt;

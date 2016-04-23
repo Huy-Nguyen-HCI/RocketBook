@@ -20,6 +20,8 @@ public:
 
     Group* getGroup(int groupID);
 
+    void refreshGroups();
+
 private:
     int accountID;
     QString dbPath;
