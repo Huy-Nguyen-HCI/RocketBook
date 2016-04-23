@@ -43,20 +43,26 @@ void DashboardGUI::on_latestScrapbookButton_clicked()
 void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
 
 
+    int blogID = blog->getID();
+    QString s = QString::number(blogID);
     QString currentTitle = blog->getTitle();
     QString currentContent = blog->getContent();
 
     QString content =
             "Blog: \n Title:    " + currentTitle + "\n" +
-            "Content:    " + currentContent + "\n";
+            "Content:    " + currentContent + s + "\n";
     theList->addItem(content);
 }
 
 void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString currentContent = tweet->getContent();
+    //qDebug() << tweet->getID();
 
-    QString content("Tweet: \n Content: " + currentContent + "\n");
+    int tweetID = tweet->getID();
+    QString s = QString::number(tweetID);
+
+    QString content("Tweet: \n Content: " + currentContent + s +"\n");
 
     theList->addItem(content);
 
