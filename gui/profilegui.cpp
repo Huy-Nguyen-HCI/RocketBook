@@ -93,6 +93,6 @@ void ProfileGUI::updatePhoto() {
     ui->photo->setScene(scene);   
     QPixmap *file = new QPixmap(photoPath);
     QGraphicsPixmapItem *image = new QGraphicsPixmapItem(*file);
-    ui->photo->fitInView(image);
+    ui->photo->fitInView(image, Qt::KeepAspectRatio);
     scene->addItem(image);
 }
