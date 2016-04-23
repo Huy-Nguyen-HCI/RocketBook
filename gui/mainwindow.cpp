@@ -40,6 +40,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionFeed_triggered()
 {
     ui->stackedWidget->setCurrentWidget(dashboard);
+    dashboard->refreshAllPosts();
+
 }
 
 void MainWindow::on_actionAboutMe_triggered()

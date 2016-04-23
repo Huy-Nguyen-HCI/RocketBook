@@ -24,13 +24,13 @@ void DashboardGUI::on_latestScrapbookButton_clicked()
         Post::PostType pType = currentPost->type();
         switch (pType) {
             case Post::typeBlog:
-                displayBlog((Blog*)currentPost);
+                displayBlog((Blog*)currentPost, ui->latestInfoListWidget);
                 break;
             case Post::typeTweet:
-                displayTweet((Tweet*)currentPost);
+                displayTweet((Tweet*)currentPost, ui->latestInfoListWidget);
                 break;
             case Post::typeMultimedia:
-                displayMultimedia((Multimedia*)currentPost);
+                displayMultimedia((Multimedia*)currentPost, ui->latestInfoListWidget);
                 break;
             case Post::typeComment:
                 break;
@@ -40,7 +40,7 @@ void DashboardGUI::on_latestScrapbookButton_clicked()
     }
 }
 
-void DashboardGUI::displayBlog(Blog* blog) {
+void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
 
 
     QString currentTitle = blog->getTitle();
@@ -49,33 +49,34 @@ void DashboardGUI::displayBlog(Blog* blog) {
     QString content =
             "Blog: \n Title:    " + currentTitle + "\n" +
             "Content:    " + currentContent + "\n";
-    ui->latestInfoListWidget->addItem(content);
+    theList->addItem(content);
 }
 
-void DashboardGUI::displayTweet(Tweet* tweet) {
+void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString currentContent = tweet->getContent();
 
     QString content("Tweet: \n Content: " + currentContent + "\n");
 
-
-    ui->latestInfoListWidget->addItem(content);
+    theList->addItem(content);
 
 }
 
-void DashboardGUI::displayMultimedia(Multimedia* multimedia) {
+
+void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theList) {
 
     QString title = multimedia->getTitle();
     QString description = multimedia->getDescription();
     QString content = multimedia->getContent();
     QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
-    QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->latestInfoListWidget);
-    ui->latestInfoListWidget->addItem(newMedia);
+    QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, theList);
+    theList->addItem(newMedia);
 
-    ui->latestInfoListWidget->setIconSize(QSize(125,125));
+    theList->setIconSize(QSize(125,125));
 
 
 }
+
 
 
 void DashboardGUI::on_latestMultimediaButton_clicked()
@@ -97,6 +98,33 @@ void DashboardGUI::on_latestMultimediaButton_clicked()
         QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->latestInfoListWidget);
         ui->latestInfoListWidget->addItem(newMedia);
         ui->latestInfoListWidget->setIconSize(QSize(125,125));
+    }
+
+}
+
+void DashboardGUI::refreshAllPosts()
+{
+    ui->wholeFeed->clear();
+    ui->wholeFeed->addItem(QString("Your posts: \n"));
+    std::vector<Post*> wholeScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getAllPosts();
+    for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
+        Post* currentPost = wholeScrapbook[i];
+        Post::PostType pType = currentPost->type();
+        switch (pType) {
+            case Post::typeBlog:
+                displayBlog((Blog*)currentPost, ui->wholeFeed);
+                break;
+            case Post::typeTweet:
+                displayTweet((Tweet*)currentPost, ui->wholeFeed);
+                break;
+            case Post::typeMultimedia:
+                displayMultimedia((Multimedia*)currentPost, ui->wholeFeed);
+                break;
+            case Post::typeComment:
+                break;
+            case Post::typePost:
+                break;
+        }
     }
 
 }
