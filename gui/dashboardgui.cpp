@@ -46,7 +46,7 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
     QString currentContent = blog->getContent();
 
     QString content =
-            "Blog: \n Title:    " + currentTitle + "\n" +
+            "Blog: \nTitle:    " + currentTitle + "\n" +
             "Content:    " + currentContent + "\n";
     theList->addItem(content);
 }
@@ -54,10 +54,8 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
 void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString currentContent = tweet->getContent();
-    //qDebug() << tweet->getID();
 
-
-    QString content("Tweet: \n Content: " + currentContent +"\n");
+    QString content("Tweet: \nContent: " + currentContent +"\n");
 
     theList->addItem(content);
 
@@ -105,35 +103,12 @@ void DashboardGUI::on_latestMultimediaButton_clicked()
 
 void DashboardGUI::refreshAllPosts()
 {
-//    ui->wholeFeed->clear();
-//    ui->wholeFeed->addItem(QString("Your posts: \n"));
-//    std::vector<Post*> wholeScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getAllPosts();
-//    for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
-//        Post* currentPost = wholeScrapbook[i];
-//        Post::PostType pType = currentPost->type();
-//        switch (pType) {
-//            case Post::typeBlog:
-//                displayBlog((Blog*)currentPost, ui->wholeFeed);
-//                break;
-//            case Post::typeTweet:
-//                displayTweet((Tweet*)currentPost, ui->wholeFeed);
-//                break;
-//            case Post::typeMultimedia:
-//                displayMultimedia((Multimedia*)currentPost, ui->wholeFeed);
-//                break;
-//            case Post::typeComment:
-//                break;
-//            case Post::typePost:
-//                break;
-//        }
-//    }
 
     ui->wholeFeed->clear();
     ui->wholeFeed->addItem(QString("Your friends' rocket lauching adventures: \n"));
     Feed *allFeed = accountController->getUser()->getFeed();
     allFeed->updatePostList();
     std::vector<Post*> friendFeed = allFeed->getFeed();
-    //std::vector<Post*> friendFeed = accountController->getUser()->getFeed()->getFeed();
 
     for (unsigned int i = 0; i < friendFeed.size(); i++) {
         Post* currentPost = friendFeed[i];

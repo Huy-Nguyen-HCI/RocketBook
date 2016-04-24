@@ -21,11 +21,13 @@ std::vector<Post*> Feed::getFeed() {
 
 void Feed::updatePostList()
 {
-    postList.empty();
-    scrapbookList.empty();
+    postList.clear();
+    scrapbookList.clear();
+
 
     //update all friends' scrapbooks
     std::vector<int> friendIDList = friendController->getFriendIds();
+
     for(unsigned int i = 0; i < friendIDList.size(); i++) {
         int profileID = accountDB->getProfileID(friendIDList[i]);
         int scrapbookID = profileDB->retrieveScrapbookID(profileID);
@@ -33,11 +35,13 @@ void Feed::updatePostList()
         scrapbookList.push_back(newScrapbook);
     }
 
+
     //update all groups' scrapbooks
     std::vector<Group*> allGroups = groupController->getAllGroups();
     for (unsigned int i = 0; i < allGroups.size(); i++) {
         scrapbookList.push_back(allGroups[i]->getProfile()->getScrapbook());
     }
+
 
     //push all public posts from scrapbook list into the postList
     for (unsigned int i = 0; i < scrapbookList.size(); i++) {

@@ -102,7 +102,7 @@ void ScrapbookGUI::displayBlog(Blog* blog) {
     QString currentContent = blog->getContent();
 
     QString content =
-            "Blog: \n Title:    " + currentTitle + "\n" +
+            "Blog: \nTitle:    " + currentTitle + "\n" +
             "Content:    " + currentContent + "\n";
     ui->scrapbookArea->addItem(content);
 }
@@ -110,7 +110,7 @@ void ScrapbookGUI::displayBlog(Blog* blog) {
 void ScrapbookGUI::displayTweet(Tweet* tweet) {
 
     QString currentContent = tweet->getContent();
-    QString content("Tweet: \n Content: " + currentContent +"\n");
+    QString content("Tweet: \nContent: " + currentContent +"\n");
     ui->scrapbookArea->addItem(content);
 
 }
@@ -121,7 +121,7 @@ void ScrapbookGUI::displayMultimedia(Multimedia* multimedia) {
     QString title = multimedia->getTitle();
     QString description = multimedia->getDescription();
     QString content = multimedia->getContent();
-    QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
+    QString newLabel("Title: "+title + "\n" + "Description: " + description);
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->scrapbookArea);
     ui->scrapbookArea->addItem(newMedia);
     ui->scrapbookArea->setIconSize(QSize(125,125));
