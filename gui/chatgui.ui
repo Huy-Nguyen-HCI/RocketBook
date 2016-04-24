@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="loadButton">
+  <widget class="QPushButton" name="send">
    <property name="geometry">
     <rect>
      <x>351</x>
@@ -54,7 +54,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>311</width>
+     <width>321</width>
      <height>331</height>
     </rect>
    </property>
@@ -80,6 +80,19 @@
    </property>
    <property name="text">
     <string>Messages</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="close">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Close</string>
    </property>
   </widget>
  </widget>

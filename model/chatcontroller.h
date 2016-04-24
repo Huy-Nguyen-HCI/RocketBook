@@ -24,7 +24,7 @@ public:
     int selectChat();   /**< used in terminal */
     void createChat(QString friendName);
     bool addMemberToChat(int chatId, QString friendName);   /**< user in terminal */
-    void sendMessage(int chatId);
+    bool sendMessage(int chatId, QString message);
     void displayMessages(int chatId);
     bool removeUserFromChat(int chatId, QString username);    /**< used in terminal */
     void deleteMessage(int chatId);
@@ -34,7 +34,9 @@ public:
     void updateChats();
 
 QStringList getChatIdListGUI();
-QStringList getChatIdListUI();
+//QStringList getChatIdListUI();
+QStringList getMessageListGUI(int chatId);
+QStringList getChatMembersGUI(int chatId);
 
     int requestInput();
     int requestInput2();

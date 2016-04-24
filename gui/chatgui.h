@@ -23,6 +23,21 @@ public:
 private:
     Ui::ChatGUI *ui;
     QGraphicsScene *scene;
+
+    AccountController *accountController;
+    int chatId;
+
+
+
+    QTimer *timer;
+
+
+private slots:
+    void on_send_clicked();
+    void refreshMembers();
+    void refreshMessages();
+    void on_close_clicked();
+
 };
 
 #endif // CHATGUI_H

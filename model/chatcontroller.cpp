@@ -23,7 +23,6 @@ ChatController::~ChatController()
 //updates user's chat list
 void ChatController::updateChats(){
 
-
     cleanUp();
     chatList.empty();
     Chat* temp;
@@ -41,7 +40,6 @@ void ChatController::updateChats(){
      chatList.push_back(temp);
                //^This line breaks code currently
     }
-
 }
 
 void ChatController::createChat(QString friendName){
@@ -96,6 +94,17 @@ QStringList ChatController::getChatIdListGUI(){
     list.append(QString::number(chatIds->at(i)));
     return list;
 }
+/**
+QStringList ChatController::getChatIdListGUI(){
+    QStringList list;
+    std::vector<int>* chatIds=getChatIdList();
+
+
+    for(unsigned int i=0;i<chatIds->size();i++)
+    list.append(QString::number(chatIds->at(i)));
+    return list;
+}
+**/
 
 //deletes chats with only one member
 void ChatController::cleanUp(){
@@ -105,8 +114,35 @@ void ChatController::cleanUp(){
     }
 }
 
+QStringList ChatController::getMessageListGUI(int chatId){
+    std::vector<QString>* messages= messageDB->retrieveChatMessages(chatId);
+    std::vector<int>* senders= messageDB->retrieveChatSenders(chatId);
+    QStringList list;
 
+    std::string message;
+    for(int i=messages->size()-1;i>=0;i--){
+    message=accountDB->getUsername(senders->at(i)).toStdString() + " : " + messages->at(i).toStdString();
+    list.append(QString::fromStdString(message));
+    }
+    return list;
+}
 
+QStringList ChatController::getChatMembersGUI(int chatId){
+    std::vector<int>*  members=chatDB->retrieveAccountsInChat(chatId);
+    QStringList list;
+
+    for(unsigned int i=0;i<members->size();i++)
+    list.append(accountDB->getUsername(members->at(i)));
+    return list;
+}
+
+bool ChatController::sendMessage(int chatId, QString message){
+
+    if(messageDB->addMessage(messageDB->getMaxMessageID(chatId)+1,chatId,accountDB->retrieveAccountID(username), message))
+        return true;
+    return false;
+
+}
 
 
 
@@ -182,6 +218,7 @@ void ChatController::displayMessages(int chatId){
 }
 **/
 
+/**
 //User enters message and message is added to message database for the chat specified
 void ChatController::sendMessage(int chatId){
     std::string message=userEntersMessage();
@@ -193,6 +230,7 @@ void ChatController::sendMessage(int chatId){
         cout << "send message failed" << endl;
 
 }
+**/
 
 //User enters Message ID here. In real program, message ID must be stored in chat object
 void ChatController::deleteMessage(int chatId){
@@ -211,6 +249,7 @@ std::vector<int>* ChatController::getChatIdList(){
 }
 
 
+/**
 QStringList ChatController::getChatIdListUI(){
 
     QStringList list;
@@ -218,13 +257,23 @@ QStringList ChatController::getChatIdListUI(){
     for(unsigned int i=0;i<chatList.size();i++){
     list.append(QString::fromStdString(std::to_string(chatList.at(i)->getChatId())));
     }
-
 }
-
+**/
 
 std::vector<int>* ChatController::getSenderList(int chatId){
     return messageDB->retrieveChatSenders(chatId);
 }
+
+//QStringList* ChatController::getSenderListGUI(int chatId){
+    /**
+    std::vector<int>* senders= messageDB->retrieveChatSenders(chatId);
+
+    for(unsigned int i=0;i<senders->size();i++)
+    list.append(QString::number(chatIds->at(i)));
+    return list;
+    **/
+
+//}
 
 std::vector<QString>* ChatController::getMessageList(int chatId){
     return messageDB->retrieveChatMessages(chatId);
@@ -232,6 +281,9 @@ std::vector<QString>* ChatController::getMessageList(int chatId){
 
 
 
+
+
+/**
 std::string ChatController::askUserName(){
     std::string username;
     std::cout << "Enter user name: ";
@@ -269,3 +321,4 @@ string ChatController::userEntersMessage(){
     getline(cin, userInput);
     return userInput;
 }
+**/
