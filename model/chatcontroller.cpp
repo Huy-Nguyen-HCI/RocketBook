@@ -156,6 +156,8 @@ bool ChatController::sendMessage(int chatId, QString message){
 
 
 
+
+
 /**
 //Displays all chats and asks user to pick one. User can pick from first chat
 //by entering 0 or last chat by entering # of chats-1
