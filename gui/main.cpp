@@ -30,7 +30,8 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
     while (!LoginGUI::isFinished()) {
-        AccountController* acc = new AccountController();
+        QString dbPath = "/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite";
+        AccountController* acc = new AccountController(dbPath);
 
         MainWindow* main = new MainWindow(acc);
         LoginGUI* loginView = new LoginGUI(acc);

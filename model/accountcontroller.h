@@ -26,7 +26,7 @@ public:
     /**
      * @brief Constructs and runs account controller.
      */
-    AccountController(QString& path);
+    AccountController(QString path);
 
     ~AccountController();
 

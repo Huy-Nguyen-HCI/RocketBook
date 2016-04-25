@@ -10,7 +10,7 @@ AccountController::AccountController()
 
 }
 
-AccountController::AccountController(QString &path) {
+AccountController::AccountController(QString path) {
     dbPath.append(path);
     accountDB = new AccountDB(dbPath);
 
