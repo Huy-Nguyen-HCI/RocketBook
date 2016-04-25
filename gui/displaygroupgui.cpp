@@ -1,18 +1,26 @@
 #include "displaygroupgui.h"
 #include "ui_displaygroupgui.h"
 
-DisplayGroupGUI::DisplayGroupGUI(AccountController *inputAccountController, QWidget *parent) :
+DisplayGroupGUI::DisplayGroupGUI(AccountController *inputAccountController, GroupGUI* groupGUI, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayGroupGUI)
 {
     ui->setupUi(this);
+
+    //set up input
     this->accountController = inputAccountController;
+    this->groupGUI = groupGUI;
+
+    ui->enterGroupButton->hide();
+
+    //set up group table
     ui->groupTable->setColumnCount(2);
     ui->groupTable->hideColumn(1);
     ui->groupTable->horizontalHeader()->hide();
     ui->groupTable->verticalHeader()->hide();
     ui->groupTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-    refreshGroups();
+
+    connect( ui->groupTable, SIGNAL(cellClicked(int,int)), this, SLOT(on_cell_clicked(int,int)) );
 }
 
 DisplayGroupGUI::~DisplayGroupGUI()
@@ -43,4 +51,16 @@ void DisplayGroupGUI::refreshGroups()
 
 void DisplayGroupGUI::on_cell_clicked( int row, int column )
 {
+    ui->enterGroupButton->show();
+}
+
+void DisplayGroupGUI::on_enterGroupButton_clicked()
+{
+
+}
+
+void DisplayGroupGUI::on_createGroupButton_clicked()
+{
+    refreshGroups();
+    groupGUI->switchGroupViews();
 }

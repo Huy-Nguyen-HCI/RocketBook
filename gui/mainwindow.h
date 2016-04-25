@@ -13,6 +13,7 @@
 #include "profilegui.h"
 #include "friendsgui.h"
 #include "messagegui.h"
+#include "groupgui.h"
 
 class LoginGUI;
 
@@ -57,6 +58,7 @@ private:
     LoginGUI *login;
     FriendsGUI *friends;
     MessageGUI *messages;
+    GroupGUI* groups;
 
 
 };
