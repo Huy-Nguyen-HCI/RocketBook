@@ -26,7 +26,11 @@ bool AccountController::login(QString username, QString password){
         int accountID = std::get<0>(accountInfo);
         int profileID = std::get<3>(accountInfo);
         int adminRights = std::get<4>(accountInfo);
-        currentUser = new RocketUser(dbPath, accountID, username, profileID, adminRights);
+        currentUser = new RocketUser(this->dbPath,
+                                     accountID,
+                                     username,
+                                     profileID,
+                                     adminRights);
         return true;
     } else {
         return false;

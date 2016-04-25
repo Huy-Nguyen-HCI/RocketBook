@@ -51,6 +51,7 @@ void GroupController::refreshGroups()
     for (unsigned int i = 0; i < groupList.size(); i++) {
         delete groupList[i];
     }
+    groupList.clear();
 
     std::vector<int> groupIDList = groupMemberDB->retrieveGroupList(accountID);
 
