@@ -3,10 +3,10 @@
 
 #include "screen.h"
 
-class PostUI: public Screen
+class ScrapbookUI: public Screen
 {
 public:
-    PostUI();
+    ScrapbookUI(AccountController* accountControl);
 
     void drawScreen(int v);
     void takeCommand(int selection);

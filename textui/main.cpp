@@ -1,8 +1,7 @@
 #include <iostream>
-#include "loginui.h"
-#include "mainmenu.h"
-#define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
+
 #include "../model/accountcontroller.h"
+#include "enterui.h"
 
 
 using namespace std;
@@ -10,6 +9,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     AccountController* accountControl= new AccountController();
-    LoginUI* a=new LoginUI(accountControl);
+    EnterUI* a=new EnterUI(accountControl);
     return 0;
 }
+

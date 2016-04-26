@@ -2,7 +2,7 @@
 #define FRIENDSUI_H
 
 #include "screen.h"
-#define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
+
 #include "../model/accountcontroller.h"
 #include "../model/rocketuser.h"
 

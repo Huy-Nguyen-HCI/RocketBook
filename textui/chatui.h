@@ -3,7 +3,7 @@
 
 
 #include "screen.h"
-#define timeout(QPrivateSignal)   timeout2(QPrivateSignal);//       <----- Don't as why this is here
+
 #include "../model/chatcontroller.h"
 #include "../model/accountcontroller.h"
 

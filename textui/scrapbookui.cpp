@@ -1,50 +1,52 @@
-#include "postui.h"
+#include "scrapbookui.h"
 
-PostUI::PostUI()
+ScrapbookUI::ScrapbookUI(AccountController* accountControl)
 {
-
+    this->accountControl=accountControl;
     initialize();
-    takeCommand(select(4));
+    options=5;
+    takeCommand(select(options));
 
 
 }
 
-void PostUI::drawScreen(int v) {
+void ScrapbookUI::drawScreen(int v) {
 
 clear();
 
 // print the instructions for manipulating the Value object
 mvprintw(0, 0, "Select type of content to post:");
-mvprintw(3, 8, "Blog");
-mvprintw(4, 8, "Tweet");
-mvprintw(5, 8, "Multimedia");
-mvprintw(6, 8, "Back");
+mvprintw(3, 8, "Veiw Scrapbook");
+mvprintw(4, 8, "Post Blog");
+mvprintw(5, 8, "Post Tweet");
+mvprintw(6, 8, "Post Multimedia");
+mvprintw(7, 8, "Back");
 
 mvprintw(v+2, 5, "->");
 
 refresh();
 }
 
-void PostUI::takeCommand(int selection){
+void ScrapbookUI::takeCommand(int selection){
 
     // cleanup the window and return control to bash
     endwin();
 
-   if(selection==1)
+   if(selection==2)
        postBlog();
-   else if(selection==2)
-       postTweet();
    else if(selection==3)
-       postMedia();
+       postTweet();
    else if(selection==4)
+       postMedia();
+   else if(selection==5)
        return;
 
    initialize();
-   takeCommand(select(4));
+   takeCommand(select(options));
 
 }
 
-void PostUI::postBlog(){
+void ScrapbookUI::postBlog(){
     char text[2000], path[500];
     erase();
     mvprintw(0,0, "Enter Text: ");
@@ -58,7 +60,7 @@ void PostUI::postBlog(){
 
 }
 
-void PostUI::postTweet(){
+void ScrapbookUI::postTweet(){
     char text[2000], path[500];
     erase();
     mvprintw(0,0, "Enter Text: ");
@@ -68,7 +70,7 @@ void PostUI::postTweet(){
 
 }
 
-void PostUI::postMedia(){
+void ScrapbookUI::postMedia(){
     char path[500];
     erase();
     mvprintw(0,0, "Enter File Path: ");

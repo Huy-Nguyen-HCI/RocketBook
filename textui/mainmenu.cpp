@@ -3,11 +3,10 @@
 MainMenu::MainMenu(AccountController* accountControl)
 {
 
-
     this->accountControl=accountControl;
-
     initialize();
-    changeScreen(select(7));
+    options=8;
+    changeScreen(select(options));
 
 }
 
@@ -18,48 +17,54 @@ MainMenu::~MainMenu()
 
 void MainMenu::drawScreen(int v) {
 
-    // clear screen return cursor to (0,0)
     clear();
 
-    // print the instructions for manipulating the Value object
-    mvprintw(0, 0, "Main Menu\nPlease select one by using the arrow keys and pressing enter:");
-    mvprintw(3, 8, "Edit Pofile");
-    mvprintw(4, 8, "Friends");
-    mvprintw(5, 8, "Post");
-    mvprintw(6, 8, "See feed");
-    mvprintw(7, 8, "Groups");
-    mvprintw(8, 8, "Chats");
-    mvprintw(9, 8, "Logout");
+    mvprintw(0, 0, "Main Menu");
+    mvprintw(3, 8, "About Me");
+    mvprintw(4, 8, "Feed");
+    mvprintw(5, 8, "Notifications");
+    mvprintw(6, 8, "Friends");
+    mvprintw(7, 8, "Scrapbook");
+    mvprintw(8, 8, "Messaging");
+    mvprintw(9, 8, "Groups");
+    mvprintw(10, 8, "Logout");
 
     mvprintw(v+2, 5, "->");
-
-
     refresh();
 }
 
 void MainMenu::changeScreen(int selection){
 
-    // cleanup the window and return control to bash
     endwin();
 
-    if(selection==2)
+    if(selection==1)
+        profile = new ProfileUI(accountControl);
+    /**
+        else if(selection==2)
+
+        else if(selection==3)
+
+      **/
+
+
+
+    else if(selection==4)
         friends = new FriendsUI(accountControl);//new FriendController(accountControl->getPath(),accountControl->getAccountId(username)));
 
-    else if(selection==3)
-        post = new PostUI();
+    else if(selection==5)
+        scrapbook = new ScrapbookUI(accountControl);
 
-        /**
-        else if(selection==4)
-
-        else if(selection==5)
-
-        **/
     else if(selection==6)
         chats = new ChatUI(accountControl);
 
+    /**
     else if(selection==7)
+
+    **/
+
+    else if(selection==8)
         return;
 
     initialize();
-    changeScreen(select(7));
+    changeScreen(select(options));
 }

@@ -30,7 +30,10 @@ SOURCES += main.cpp \
     ../model/message.cpp  \
     friendsui.cpp \
     chatui.cpp \
-    postui.cpp
+    enterui.cpp \
+    createaccountui.cpp \
+    profileui.cpp \
+    scrapbookui.cpp
 
 HEADERS += \
     mainmenu.h \
@@ -40,4 +43,7 @@ HEADERS += \
     ../model/*.h \
     friendsui.h \
     chatui.h \
-    postui.h
+    enterui.h \
+    createaccountui.h \
+    profileui.h \
+    scrapbookui.h
