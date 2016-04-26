@@ -49,11 +49,13 @@
    <addaction name="actionMessaging"/>
    <addaction name="actionGroups"/>
    <addaction name="separator"/>
+   <addaction name="actionAbout_Rocketbook"/>
    <addaction name="actionLog_out"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionFeed">
    <property name="icon">
-    <iconset resource="icons.qrc">
+    <iconset>
      <normaloff>:/feed.png</normaloff>:/feed.png</iconset>
    </property>
    <property name="text">
@@ -69,7 +71,7 @@
      <normaloff>user.png</normaloff>user.png</iconset>
    </property>
    <property name="text">
-    <string>About Me</string>
+    <string>Profile</string>
    </property>
    <property name="toolTip">
     <string>Manage account</string>
@@ -89,7 +91,7 @@
   </action>
   <action name="actionFriend">
    <property name="icon">
-    <iconset resource="icons.qrc">
+    <iconset>
      <normaloff>:/friends.png</normaloff>:/friends.png</iconset>
    </property>
    <property name="text">
@@ -125,7 +127,7 @@
   </action>
   <action name="actionMessaging">
    <property name="icon">
-    <iconset resource="icons.qrc">
+    <iconset>
      <normaloff>:/message.png</normaloff>:/message.png</iconset>
    </property>
    <property name="text">
@@ -137,7 +139,7 @@
   </action>
   <action name="actionScrapbook">
    <property name="icon">
-    <iconset resource="icons.qrc">
+    <iconset>
      <normaloff>:/scrapbook.png</normaloff>:/scrapbook.png</iconset>
    </property>
    <property name="text">
@@ -147,9 +149,19 @@
     <string>View the scrapbook</string>
    </property>
   </action>
+  <action name="actionAbout_Rocketbook">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/about.png</normaloff>:/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>See app and developer information</string>
+   </property>
+  </action>
  </widget>
- <resources>
-  <include location="icons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

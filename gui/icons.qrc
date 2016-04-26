@@ -12,5 +12,6 @@
         <file>scrapbook.png</file>
         <file>smallrocket.png</file>
         <file>message.png</file>
+        <file>about.png</file>
     </qresource>
 </RCC>

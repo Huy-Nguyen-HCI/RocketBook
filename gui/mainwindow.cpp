@@ -88,3 +88,8 @@ void MainWindow::on_actionScrapbook_triggered()
     ui->stackedWidget->setCurrentWidget(scrapbook);
     scrapbook->refreshBook();
 }
+
+void MainWindow::on_actionAbout_Rocketbook_triggered()
+{
+
+}

@@ -48,6 +48,8 @@ private slots:
 
     void on_actionScrapbook_triggered();
 
+    void on_actionAbout_Rocketbook_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString username;

@@ -26,6 +26,7 @@ void ProfileGUI::loadProfile() {
     QString descr = currentProfile->getDescription();
     QString myName = currentProfile->getFullName();
     photoPath = currentProfile->getPicturePath();
+    qDebug() << "path is: " << photoPath;
 
     ui->descriptionBox->setText(descr);
     ui->username->setText("Username: " + myName);
@@ -35,37 +36,38 @@ void ProfileGUI::loadProfile() {
 
 void ProfileGUI::on_selectPicture_clicked()
 {
-    QString filePath =
-            QFileDialog::getOpenFileName(this,
+    photoPath = QFileDialog::getOpenFileName(this,
                                          tr("Pick your image"),
                                          ":/",
                                          tr("Image Files (*.png *.jpg *.bmp)"));
     // if user cancels the file selection
-    if (filePath.isNull()) {
+    if (photoPath.isNull()) {
         return;
     }
 
-
-    // change the absolute path to relative file path
-    QDir dir("./");
-    photoPath = dir.relativeFilePath(filePath);
-
-    // update the path in the database
-    accountController->getUser()->getProfile()->setPicturePath(photoPath);
-    accountController->getUser()->changePhoto(photoPath);
-
-    updatePhoto();
-
-    ui->message->setText("Update photo successful!");
 
     //copies the picture the user uploaded to the database, so it is accessible and in a uniform location
     QString username = accountController->getUser()->getUsername();
 
     QString newPath(AccountController::PATH + "picturesDir/" + username + "Pic");
     QFile newPic(photoPath);
+
+    // if there's already a file at newPath, replace it
+    if (QFile::exists(newPath)) {
+        QFile::remove(newPath);
+    }
+    // copy the new image to the new path
     newPic.copy(photoPath, newPath);
 
+    // update the path in the database
+    accountController->getUser()->getProfile()->setPicturePath(photoPath);
+    accountController->getUser()->changePhoto(newPath);
+    qDebug() << "new path is: " << newPath;
+
     updatePhoto();
+
+    ui->message->setText("Update photo successful!");
+
 
 
 }

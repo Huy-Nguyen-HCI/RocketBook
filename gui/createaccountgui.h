@@ -38,6 +38,7 @@ private:
     AccountController *accountController;
     MainWindow *main;
     QGraphicsScene *scene;
+    QString photoPath;
 
 };
 

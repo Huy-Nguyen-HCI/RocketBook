@@ -36,8 +36,8 @@ void CreateAccountGUI::on_createButton_clicked()
     QString password = ui->passwordBox->text();
     QString confirm = ui->confirmPasswordBox->text();
     QString fullName = ui->fullnameBox->text();
-    QString photo = ui->profilePathBox->text();
-    QString description = ui->describeBox->document()->toPlainText();
+    QString description = ui->describeBox->document()->toPlainText();    
+    QString serverPath = AccountController::PATH + "picturesDir/" + username + "Pic";
 
     // check username and password cannot be empty
     if (username.isEmpty() || password.isEmpty()) {
@@ -71,9 +71,13 @@ void CreateAccountGUI::on_createButton_clicked()
         return;
     }
 
-    // if username does not exist, create account and segue to dashboard
-    if (accountController->createNewAccount(username, password, fullName, photo, description)) {
+    // if username does not already exist, create account, copy image, and segue to dashboard
+    if (accountController->createNewAccount(username, password, fullName, serverPath, description)) {
 
+        // copy the image to the server
+        QFile::copy(photoPath, serverPath);
+
+        // segue to dashboard
         this->close();
         main->setUsername(username);
         main->show();
@@ -102,25 +106,16 @@ void CreateAccountGUI::clearAllFields() {
 
 void CreateAccountGUI::on_uploadButton_clicked(){
 
-        QString filePath =
-                QFileDialog::getOpenFileName(this,
+        photoPath = QFileDialog::getOpenFileName(this,
                                              tr("Pick your image"),
                                              ":/",
                                              tr("Image Files (*.png *.jpg *.bmp)"));
         // if user cancels the file selection
-
-        if (filePath.isNull()) {
+        if (photoPath.isNull()) {
             return;
         }
 
-        // change the absolute path to relative file path
-        QDir dir("./");
-        QString path = dir.relativeFilePath(filePath);
-
-        std::cout << "path is : " + path.toStdString() << std::endl;
-
-        ui->profilePathBox->setText(filePath);
-
-    }
+        ui->profilePathBox->setText(photoPath);
+}
 
 
