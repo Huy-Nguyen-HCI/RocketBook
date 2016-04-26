@@ -25,6 +25,7 @@ private:
     void addFriend();
     void removeFriend();
     int selectFriend(int max);
+    int viewFriendsProfile(int v);
 
 };
 

@@ -7,7 +7,8 @@ FriendsUI::FriendsUI(AccountController* accountControl)// FriendController* frie
     this->accountControl=accountControl;
     initialize();
     options=accountControl->getUser()->controlFriend()->getFriendNames().size();
-    takeCommand(select(4));
+    options=4;
+    takeCommand(select(options));
 }
 
 void FriendsUI::drawScreen(int v) {
@@ -35,18 +36,20 @@ void FriendsUI::takeCommand(int selection){
    friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
    if(selection==1){
 
-       int chosenFriend=selectFriend(10);
-       getch();
+       int chosenFriend=selectFriend(LINES-4);
+       viewFriendsProfile(chosenFriend);
+
    }
    else if(selection==2)
        addFriend();
-   else if(selection==3)
+   else if(selection==3){
        removeFriend();
+   }
    else if(selection==4)
        return;
 
    initialize();
-   takeCommand(select(4));
+   takeCommand(select(options));
 
 }
 
@@ -90,28 +93,18 @@ void FriendsUI::removeFriend(){
 
     getstr(name);
 
+
     accountControl->getUser()->controlFriend()->deleteFriend(QString::fromStdString(name));
 }
 
-//void FriendsUI::displayFriends(){
-//    erase();
-//    mvprintw(0,0,"Friends:");
-
-//    QStringList friendNames= friendControl->getFriendNames();
-//            //QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
-//    for(unsigned int i=0;i<friendNames.size();i++){
-//        mvprintw(i+1,3,friendNames.at(i).toStdString().c_str());
-
-//    }
-//}
 
 int FriendsUI::displayFriends(int v){
     erase();
-    mvprintw(0,0,"Friends:");
+    mvprintw(0,0,"Select a friend's profile to view it or hit q to go back");
 
 
     QStringList friendNames= friendControl->getFriendNames();
-            //QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
+
     for(unsigned int i=0;i<friendNames.size();i++){
         mvprintw(i+2,8,friendNames.at(i).toStdString().c_str());
     }
@@ -161,16 +154,29 @@ int FriendsUI::selectFriend(int m){
         case 10: //Enter Key
             continue_looping = false;
             break;
+        case 113: //q
+            return -1;
         }
 
         displayFriends(v);
 
     } while(continue_looping);
 
-    return v;
+    return v-1;
 
 }
 
-//void FriendsUI::displayFriends(){
+int FriendsUI::viewFriendsProfile(int v){
+        erase();
+    if(v==-1)
+        return 0;
 
-  //  int size=friendControl->getFriendNames().size();
+
+    mvprintw(0,0,"Friend's Profile");
+
+
+    getch();
+
+
+}
+
