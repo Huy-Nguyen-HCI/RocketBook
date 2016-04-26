@@ -3,6 +3,8 @@
 #include <curses.h>
 #include <ncurses.h>
 #include <iostream>
+#include <vector>
+#include <string>
 #define timeout(QPrivateSignal)   timeout2(QPrivateSignal);
 #include "../model/accountcontroller.h"
 
@@ -17,6 +19,7 @@ public:
     int select(int max);
     AccountController *accountControl;
     int options;
+    int getArrowInput();
 
 
 };

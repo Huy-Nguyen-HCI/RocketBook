@@ -19,7 +19,7 @@ void MainMenu::drawScreen(int v) {
 
     clear();
 
-    mvprintw(0, 0, "Main Menu");
+    mvprintw(0, 0, "Dashboard");
     mvprintw(3, 8, "About Me");
     mvprintw(4, 8, "Feed");
     mvprintw(5, 8, "Notifications");

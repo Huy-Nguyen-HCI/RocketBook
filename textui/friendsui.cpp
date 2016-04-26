@@ -6,6 +6,7 @@ FriendsUI::FriendsUI(AccountController* accountControl)// FriendController* frie
     username=user->getUsername();
     this->accountControl=accountControl;
     initialize();
+    options=accountControl->getUser()->controlFriend()->getFriendNames().size();
     takeCommand(select(4));
 }
 
@@ -14,7 +15,7 @@ void FriendsUI::drawScreen(int v) {
 clear();
 
 // print the instructions for manipulating the Value object
-mvprintw(0, 0, "Main Menu\nPlease select one by using the arrow keys and pressing enter:");
+mvprintw(0, 0, "Friends");
 mvprintw(3, 8, "View Friends List");
 mvprintw(4, 8, "Add Friend");
 mvprintw(5, 8, "Delete Friend");
@@ -31,10 +32,11 @@ void FriendsUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-
    friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
-   if(selection==1)
+   if(selection==1){
        displayFriends();
+       getch();
+   }
    else if(selection==2)
        addFriend();
    else if(selection==3)
@@ -47,20 +49,25 @@ void FriendsUI::takeCommand(int selection){
 
 }
 
-void FriendsUI::displayFriends(){
+
+
+
+/**
+
+void FriendsUI::displayFriends(int i){
     erase();
-    mvprintw(0,0,"Friends:");
 
     QStringList friendNames= friendControl->getFriendNames();
-            //QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
-    for(unsigned int i=0;i<friendNames.size();i++){
-        mvprintw(i+1,3,friendNames.at(i).toStdString().c_str());
+    std::vector<std::string> friends;
 
+    for(unsigned int j=i;j<friendNames.size();j++){
+        friends.push_back(friendNames.at(j).toStdString());
     }
+    for(unsigned int k=0;k<friends.size();k++)
+        mvprintw(k+1,3,friends.at(k).c_str());
 
-    getch();
 }
-
+**/
 void FriendsUI::addFriend(){
     erase();
     char name[80];
@@ -77,10 +84,29 @@ void FriendsUI::removeFriend(){
     erase();
     char name[80];
 
-    mvprintw(1,0,"Enter Username friend you would like to remove: ");
+    mvprintw(1,0,"Enter Username of friend you would like to remove: ");
     echo();
 
     getstr(name);
 
     accountControl->getUser()->controlFriend()->deleteFriend(QString::fromStdString(name));
 }
+
+void FriendsUI::displayFriends(){
+    erase();
+    mvprintw(0,0,"Friends:");
+
+    QStringList friendNames= friendControl->getFriendNames();
+            //QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
+    for(unsigned int i=0;i<friendNames.size();i++){
+        mvprintw(i+1,3,friendNames.at(i).toStdString().c_str());
+
+    }
+}
+
+
+
+
+//void FriendsUI::displayFriends(){
+
+  //  int size=friendControl->getFriendNames().size();

@@ -73,6 +73,16 @@ int Screen::select(int max){
 
 }
 
+int Screen::getArrowInput(){
+    int ch = getch();
+
+    if(ch==KEY_UP)
+        return -1;
+    else if(ch==KEY_DOWN)
+        return 1;
+    else
+        return 0;
+}
 
 
 Screen::~Screen()
