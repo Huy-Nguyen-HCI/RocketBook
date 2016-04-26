@@ -115,12 +115,21 @@ void DashboardGUI::refreshAllPosts()
         Post::PostType pType = currentPost->type();
         switch (pType) {
             case Post::typeBlog:
+                //QString usernameInfo(currentPost->getAuthorUsername() + ": \n");
+                //ui->wholeFeed->addItem(usernameInfo);
+                ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayBlog((Blog*)currentPost, ui->wholeFeed);
                 break;
             case Post::typeTweet:
+                //QString usernameInfo(currentPost->getAuthorUsername() + ": \n");
+                //ui->wholeFeed->addItem(usernameInfo);
+                ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayTweet((Tweet*)currentPost, ui->wholeFeed);
                 break;
             case Post::typeMultimedia:
+                //QString usernameInfo(currentPost->getAuthorUsername() + ": \n");
+                //ui->wholeFeed->addItem(usernameInfo);
+                ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayMultimedia((Multimedia*)currentPost, ui->wholeFeed);
                 break;
             case Post::typeComment:
