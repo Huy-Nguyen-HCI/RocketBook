@@ -39,17 +39,15 @@ void MainMenu::changeScreen(int selection){
 
     if(selection==1)
         profile = new ProfileUI(accountControl);
-    /**
-        else if(selection==2)
 
-        else if(selection==3)
+    else if(selection==2)
+        feed = new FeedUI(accountControl);
 
-      **/
-
+    else if(selection==3);
 
 
     else if(selection==4)
-        friends = new FriendsUI(accountControl);//new FriendController(accountControl->getPath(),accountControl->getAccountId(username)));
+        friends = new FriendsUI(accountControl);
 
     else if(selection==5)
         scrapbook = new ScrapbookUI(accountControl);
@@ -57,10 +55,8 @@ void MainMenu::changeScreen(int selection){
     else if(selection==6)
         chats = new ChatUI(accountControl);
 
-    /**
     else if(selection==7)
-
-    **/
+        groups = new GroupsUI(accountControl);
 
     else if(selection==8)
         return;

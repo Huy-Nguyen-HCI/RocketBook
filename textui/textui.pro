@@ -33,7 +33,9 @@ SOURCES += main.cpp \
     enterui.cpp \
     createaccountui.cpp \
     profileui.cpp \
-    scrapbookui.cpp
+    scrapbookui.cpp \
+    feedui.cpp \
+    groupsui.cpp
 
 HEADERS += \
     mainmenu.h \
@@ -46,4 +48,6 @@ HEADERS += \
     enterui.h \
     createaccountui.h \
     profileui.h \
-    scrapbookui.h
+    scrapbookui.h \
+    feedui.h \
+    groupsui.h

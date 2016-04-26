@@ -6,6 +6,8 @@
 #include "scrapbookui.h"
 #include "chatui.h"
 #include "profileui.h"
+#include "feedui.h"
+#include "groupsui.h"
 
 class MainMenu: public Screen
 {
@@ -18,6 +20,8 @@ public:
     ChatUI* chats;
     ScrapbookUI* scrapbook;
     ProfileUI* profile;
+    FeedUI* feed;
+    GroupsUI* groups;
 
 
 
