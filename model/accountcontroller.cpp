@@ -2,6 +2,10 @@
 
 using namespace std;
 
+QString AccountController::PATH = "/usr11/cs205_2016_Grp08/rocketDB/";  /**< server path */
+
+//QString AccountController::PATH = "/Users/HuyNguyen/mount/";   /**< local mount path */
+
 
 AccountController::AccountController()
 {

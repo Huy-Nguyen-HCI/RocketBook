@@ -20,7 +20,7 @@ DisplayGroupGUI::DisplayGroupGUI(AccountController *inputAccountController, Grou
     ui->groupTable->verticalHeader()->hide();
     ui->groupTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    connect( ui->groupTable, SIGNAL(cellClicked(int,int)), this, SLOT(on_cell_clicked(int,int)) );
+    connect( ui->groupTable, SIGNAL(cellClicked(int,int)), this, SLOT(cell_clicked(int,int)) );
 }
 
 DisplayGroupGUI::~DisplayGroupGUI()
@@ -49,7 +49,7 @@ void DisplayGroupGUI::refreshGroups()
     }
 }
 
-void DisplayGroupGUI::on_cell_clicked( int row, int column )
+void DisplayGroupGUI::cell_clicked( int row, int column )
 {
     ui->enterGroupButton->show();
 }

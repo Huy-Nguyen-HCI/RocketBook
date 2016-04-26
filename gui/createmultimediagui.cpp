@@ -56,10 +56,11 @@ void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
     ui->filePathBox->setText(filePath);
     ui->message->setText("Choose image file successful!");
 
-    QString usersname = accountController->getUser()->getUsername();
+    QString username = accountController->getUser()->getUsername();
     int picnum = accountController->getUser()->getProfile()->getScrapbook()->getAllMedia().size();
     QString numpic = QString::number(picnum);
-    QString newPath("/usr11/cs205_2016_Grp08/rocketDB/picturesDir/"+usersname+"MultimediaPic_"+numpic);
+
+    QString newPath(AccountController::PATH + "picturesDir/" + username + "MultimediaPic_" + numpic);
     QFile newPic(filePath);
     newPic.copy(filePath, newPath);
     filePath = newPath;

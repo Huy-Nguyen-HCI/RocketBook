@@ -50,7 +50,6 @@ void ProfileGUI::on_selectPicture_clicked()
     QDir dir("./");
     photoPath = dir.relativeFilePath(filePath);
 
-
     // update the path in the database
     accountController->getUser()->getProfile()->setPicturePath(photoPath);
     accountController->getUser()->changePhoto(photoPath);
@@ -60,8 +59,9 @@ void ProfileGUI::on_selectPicture_clicked()
     ui->message->setText("Update photo successful!");
 
     //copies the picture the user uploaded to the database, so it is accessible and in a uniform location
-    QString usersname = accountController->getUser()->getUsername();
-    QString newPath("/usr11/cs205_2016_Grp08/rocketDB/picturesDir/"+usersname+"Pic");
+    QString username = accountController->getUser()->getUsername();
+
+    QString newPath(AccountController::PATH + "picturesDir/" + username + "Pic");
     QFile newPic(photoPath);
     newPic.copy(photoPath, newPath);
 

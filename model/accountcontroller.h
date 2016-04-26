@@ -77,8 +77,7 @@ public:
 
     std::string getUserName(int id);
 
-
-
+    static QString PATH;
 
 
 private:

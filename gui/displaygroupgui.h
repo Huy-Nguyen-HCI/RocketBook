@@ -25,9 +25,8 @@ private:
     GroupGUI* groupGUI;
     void refreshGroups();
 
-
 private slots:
-    void on_cell_clicked( int row, int column );
+    void cell_clicked( int row, int column );
     void on_enterGroupButton_clicked();
     void on_createGroupButton_clicked();
 };
