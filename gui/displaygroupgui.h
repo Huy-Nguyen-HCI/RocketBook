@@ -18,12 +18,13 @@ class DisplayGroupGUI : public QWidget
 public:
     explicit DisplayGroupGUI(AccountController *inputAccountController, GroupGUI* groupGUI, QWidget *parent = 0);
     ~DisplayGroupGUI();
+    void refreshGroups();
 
 private:
     Ui::DisplayGroupGUI *ui;
     AccountController* accountController;
     GroupGUI* groupGUI;
-    void refreshGroups();
+
 
 private slots:
     void cell_clicked( int row, int column );

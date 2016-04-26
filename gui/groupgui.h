@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "displaygroupgui.h"
 #include "creategroupgui.h"
+#include "scrapbookgui.h"
 
 class DisplayGroupGUI;
 class CreateGroupGUI;
@@ -27,6 +28,7 @@ private:
     AccountController* accountController;
     DisplayGroupGUI* displayGroupView;
     CreateGroupGUI* createGroupView;
+    ScrapbookGUI* currentGroupView;
 
 };
 

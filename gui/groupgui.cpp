@@ -20,6 +20,8 @@ GroupGUI::GroupGUI(AccountController* inputAccountController, QWidget *parent) :
 GroupGUI::~GroupGUI()
 {
     delete ui;
+    delete displayGroupView;
+    delete createGroupView;
 }
 
 void GroupGUI::switchGroupViews()
@@ -28,5 +30,7 @@ void GroupGUI::switchGroupViews()
         ui->stackedWidget->setCurrentWidget(createGroupView);
     } else {
         ui->stackedWidget->setCurrentWidget(displayGroupView);
+        displayGroupView->refreshGroups();
     }
 }
+
