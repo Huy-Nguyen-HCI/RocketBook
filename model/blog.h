@@ -43,6 +43,8 @@ public:
 
     int getID() { return id;}
 
+    QString getUsername() {return username;}
+
     /**
      * @brief getTitle gets the title for this blog post
      * @return the title for this blog post
@@ -65,6 +67,7 @@ public:
 private:
     std::vector<Comment*> commentList;
     QString title;
+    QString username;
 };
 
 #endif // BLOG_H

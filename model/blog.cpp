@@ -3,6 +3,7 @@
 Blog::Blog(QString username, QString title, QString content): Post::Post(username, content)
 {
     this->title = title;
+    this->username = username;
     postType = typeBlog;
 }
 
