@@ -23,7 +23,7 @@ ChatController::~ChatController()
 //updates user's chat list
 void ChatController::updateChats(){
 
-    cleanUp();
+   // cleanUp();
     chatList.empty();
     Chat* temp;
 

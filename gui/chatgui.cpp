@@ -16,7 +16,7 @@ ChatGUI::ChatGUI(AccountController *input, int chatId, QWidget *parent) :
         connect(timer, SIGNAL(timeout()), this, SLOT(refreshMembers()));
         timer->start(5000);
 
-    this->setWindowTitle("chat name");//username + " 's Profile");
+    this->setWindowTitle("Chat Room: " + QString::number(chatId));//username + " 's Profile");
 }
 
 ChatGUI::~ChatGUI()

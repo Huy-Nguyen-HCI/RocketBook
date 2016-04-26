@@ -57,7 +57,7 @@ void MessageGUI::on_addToChat_clicked(){
 void MessageGUI::on_leaveChat_clicked(){
     QModelIndexList selectedChat = ui->chatList->selectionModel()->selectedIndexes();
     if (selectedChat.length()==0) {
-        ui->message->setText("Error: You have to select chat to proceed.");
+        ui->message->setText("Error: You have to select a chat room to proceed.");
         return;
     }
     int chatId = selectedChat.at(0).data().toString().toInt();
@@ -73,7 +73,7 @@ void MessageGUI::on_leaveChat_clicked(){
 void MessageGUI::on_enterChat_clicked(){
     QModelIndexList selectedChat = ui->chatList->selectionModel()->selectedIndexes();
     if (selectedChat.length()==0) {
-        ui->message->setText("Error: You have to select chat to proceed.");
+        ui->message->setText("Error: You have to select a chat room to proceed.");
         return;
     }
 
