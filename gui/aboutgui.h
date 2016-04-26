@@ -2,6 +2,7 @@
 #define ABOUTGUI_H
 
 #include <QWidget>
+#include <map>
 
 namespace Ui {
 class AboutGUI;

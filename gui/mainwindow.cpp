@@ -15,7 +15,7 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     profile = new ProfileGUI(accountController);
     friends = new FriendsGUI(accountController);
     groups = new GroupGUI(accountController);
-
+    about = new AboutGUI();
 
 
     ui->stackedWidget->addWidget(messages);
@@ -24,7 +24,7 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     ui->stackedWidget->addWidget(profile);
     ui->stackedWidget->addWidget(friends);
     ui->stackedWidget->addWidget(groups);
-
+    ui->stackedWidget->addWidget(about);
 
 
     ui->stackedWidget->setCurrentWidget(dashboard);
@@ -91,5 +91,5 @@ void MainWindow::on_actionScrapbook_triggered()
 
 void MainWindow::on_actionAbout_Rocketbook_triggered()
 {
-
+    ui->stackedWidget->setCurrentWidget(about);
 }

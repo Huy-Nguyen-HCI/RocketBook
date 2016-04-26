@@ -14,6 +14,7 @@
 #include "friendsgui.h"
 #include "messagegui.h"
 #include "groupgui.h"
+#include "aboutgui.h"
 
 class LoginGUI;
 
@@ -61,7 +62,7 @@ private:
     FriendsGUI *friends;
     MessageGUI *messages;
     GroupGUI* groups;
-
+    AboutGUI *about;
 
 };
 
