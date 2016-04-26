@@ -7,6 +7,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <../model/accountcontroller.h>
+#include <QCloseEvent>
 
 namespace Ui {
 class ChatGUI;
@@ -26,7 +27,7 @@ private:
 
     AccountController *accountController;
     int chatId;
-
+    void closeEvent(QCloseEvent *event);
 
 
     QTimer *timer;
@@ -36,7 +37,7 @@ private slots:
     void on_send_clicked();
     void refreshMembers();
     void refreshMessages();
-    void on_close_clicked();
+
 
 };
 

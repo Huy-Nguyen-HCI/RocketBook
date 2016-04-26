@@ -42,8 +42,6 @@ void ChatGUI::refreshMessages() {
 }
 
 
-
-
 void ChatGUI::refreshMembers() {
 
     RocketUser *user = accountController->getUser();
@@ -71,13 +69,11 @@ void ChatGUI::on_send_clicked(){
     }
 
 
-
 }
 
 
-void ChatGUI::on_close_clicked(){
-   delete this;
-    }
-
-
+void ChatGUI::closeEvent(QCloseEvent *event){
+    delete this;
+    event->accept();
+}
 
