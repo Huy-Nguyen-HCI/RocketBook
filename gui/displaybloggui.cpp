@@ -8,6 +8,7 @@ DisplayBlogGUI::DisplayBlogGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, Q
     ui->setupUi(this);
     scrapbookGUI = input;
     scrapbook = inputScrapbook;
+    refreshBlogs();
 }
 
 DisplayBlogGUI::~DisplayBlogGUI()
@@ -17,7 +18,6 @@ DisplayBlogGUI::~DisplayBlogGUI()
 
 void DisplayBlogGUI::on_createBlog_clicked()
 {
-    refreshBlogs();
     scrapbookGUI->switchBlogViews();
 }
 

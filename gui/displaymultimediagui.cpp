@@ -9,6 +9,7 @@ DisplayMultimediaGUI::DisplayMultimediaGUI(Scrapbook *inputScrapbook, ScrapbookG
     scrapbookGUI = input;
     scrapbook = inputScrapbook;
 //    viewMedia = new ViewMultimediaItem();
+    refreshMultimedia();
 }
 
 DisplayMultimediaGUI::~DisplayMultimediaGUI()

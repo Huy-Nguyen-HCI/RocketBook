@@ -8,6 +8,7 @@ DisplayTweetGUI::DisplayTweetGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input,
     ui->setupUi(this);
     scrapbookGUI = input;
     scrapbook = inputScrapbook;
+    refreshTweets();
 }
 
 DisplayTweetGUI::~DisplayTweetGUI()

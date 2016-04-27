@@ -34,6 +34,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
     ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
     ui->multimediaStackedWidget->setCurrentWidget(displayMultimediaView);
 
+    refreshBook();
+
 }
 
 
@@ -70,6 +72,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
     ui->blogStackedWidget->setCurrentWidget(displayBlogView);
     ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
     ui->multimediaStackedWidget->setCurrentWidget(displayMultimediaView);
+
+    refreshBook();
 
 }
 
