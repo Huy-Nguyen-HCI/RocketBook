@@ -33,10 +33,10 @@ public:
     std::vector<QString>* getMessageList(int chatId);
     void updateChats();
 
-QStringList getChatIdListGUI();
-//QStringList getChatIdListUI();
-QStringList getMessageListGUI(int chatId);
-QStringList getChatMembersGUI(int chatId);
+    QStringList getChatIdListGUI();
+    //QStringList getChatIdListUI();
+    QStringList getMessageListGUI(int chatId);
+    QStringList getChatMembersGUI(int chatId);
 
     int requestInput();
     int requestInput2();

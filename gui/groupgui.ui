@@ -23,23 +23,36 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page"/>
    <widget class="QWidget" name="page_2"/>
   </widget>
-  <widget class="QPushButton" name="returnButton">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>390</x>
      <y>360</y>
-     <width>92</width>
-     <height>27</height>
+     <width>218</width>
+     <height>29</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Return</string>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="groupSwitchButton">
+      <property name="text">
+       <string>GroupScrapbook</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="returnButton">
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

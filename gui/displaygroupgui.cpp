@@ -65,7 +65,6 @@ void DisplayGroupGUI::cell_clicked( int row, int column )
 
 void DisplayGroupGUI::on_enterGroupButton_clicked()
 {
-    groupGUI->showReturnButton();
 
     //get the group ID by looking at the hidden column
     QList<QTableWidgetItem*> groupRow = ui->groupTable->selectedItems();
@@ -73,9 +72,13 @@ void DisplayGroupGUI::on_enterGroupButton_clicked()
     int groupID = ui->groupTable->item(row, 1)->text().toInt();
 
     //Create the group scrapbook
-    Scrapbook* groupScrapbook = accountController->getUser()->controlGroup()->getGroup(groupID)->getProfile()->getScrapbook();
+    Profile* groupProfile = accountController->getUser()->controlGroup()->getGroup(groupID)->getProfile();
+    Scrapbook* groupScrapbook = groupProfile->getScrapbook();
+    GroupProfileGUI* groupProfileGUI = new GroupProfileGUI(groupProfile);
     ScrapbookGUI* groupScrapbookGUI = new ScrapbookGUI(accountController, groupScrapbook);
-    groupGUI->addWidget(groupScrapbookGUI);
+    groupGUI->addGroupProfile(groupProfileGUI);
+    groupGUI->addGroupScrapbook(groupScrapbookGUI);
+    groupGUI->switchGroupViews(GroupGUI::GroupGUIType::ViewGroupProfile);
 
 }
 

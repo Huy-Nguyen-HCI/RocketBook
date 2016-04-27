@@ -17,6 +17,7 @@ GroupGUI::GroupGUI(AccountController* inputAccountController, QWidget *parent) :
     ui->stackedWidget->addWidget(createGroupView);
 
     ui->returnButton->hide();
+    ui->groupSwitchButton->hide();
     ui->stackedWidget->setCurrentWidget(displayGroupView);
 }
 
@@ -32,32 +33,61 @@ void GroupGUI::switchGroupViews(GroupGUIType type)
     switch (type){
         case ShowAllGroups:
             ui->stackedWidget->setCurrentWidget(displayGroupView);
+            ui->returnButton->hide();
+            ui->groupSwitchButton->hide();
             break;
         case CreateGroup:
             ui->stackedWidget->setCurrentWidget(createGroupView);
+            ui->returnButton->hide();
+            ui->groupSwitchButton->hide();
             break;
-        case EditGroup:
+        case ViewGroupProfile:
+            ui->stackedWidget->setCurrentWidget(groupProfileView);
+            ui->returnButton->show();
+            ui->groupSwitchButton->setText("Group Scrapbook");
+            ui->groupSwitchButton->show();
             break;
-        case ViewGroup:
+        case EnterScrapbook:
             ui->stackedWidget->setCurrentWidget(currentGroupView);
+            ui->returnButton->show();
+            ui->groupSwitchButton->setText("Group Profile");
+            ui->groupSwitchButton->show();
             break;
     }
 }
 
-void GroupGUI::addWidget(ScrapbookGUI* groupWidget) {
+void GroupGUI::addGroupScrapbook(ScrapbookGUI* groupWidget) {
     this->currentGroupView = groupWidget;
     ui->stackedWidget->addWidget(currentGroupView);
-    ui->stackedWidget->setCurrentWidget(currentGroupView);
+//    ui->stackedWidget->setCurrentWidget(currentGroupView);
 }
 
-void GroupGUI::showReturnButton() {
-    ui->returnButton->show();
+void GroupGUI::addGroupProfile(GroupProfileGUI *profileView) {
+    this->groupProfileView = profileView;
+    ui->stackedWidget->addWidget(groupProfileView);
+//    ui->stackedWidget->setCurrentWidget(groupProfileView);
 }
+
 
 void GroupGUI::on_returnButton_clicked()
 {
-    ui->returnButton->hide();
     ui->stackedWidget->removeWidget(currentGroupView);
-    ui->stackedWidget->setCurrentWidget(displayGroupView);
     delete currentGroupView;
+
+    ui->stackedWidget->removeWidget(groupProfileView);
+    delete groupProfileView;
+
+    switchGroupViews(ShowAllGroups);
+}
+
+
+void GroupGUI::on_groupSwitchButton_clicked()
+{
+    if (ui->stackedWidget->currentWidget() == currentGroupView) {
+        switchGroupViews(ViewGroupProfile);
+    } else {
+        switchGroupViews(EnterScrapbook);
+
+    }
+
 }
