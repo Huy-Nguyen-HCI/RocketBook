@@ -86,5 +86,4 @@ void ProfileUI::editDescription(){
         else{
             mvprintw(15,0, "Updating description failed");
         }
-        getch();
 }
