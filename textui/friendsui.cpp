@@ -179,13 +179,9 @@ int FriendsUI::viewFriendsProfile(int v){
     ProfileInfoType profile = accountControl->getUser()->controlFriend()->getFriendProfile(friendNames.at(v));
     QString fullName = "Name:   " + std::get<1>(profile);
     QString description = "Description: " + std::get<3>(profile);
-
-    //QString username = "Username: " + accountControl->getUser()->getUsername();
     mvprintw(1,1, fullName.toStdString().c_str());
     mvprintw(2,1, description.toStdString().c_str());
 
-    //QString description = "Description: " + accountControl->getUser()->getUsername();
-    //mvprintw(2,0, description.toStdString().c_str());
 
     getch();
 }

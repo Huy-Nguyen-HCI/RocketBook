@@ -118,9 +118,57 @@ void ScrapbookUI::postMedia(){
 void ScrapbookUI::displayScrapbook(){
     erase();
 
+    scrapbook = accountControl->getUser()->getProfile()->getScrapbook();
+
     mvprintw(0,0, "Scrapbook");
+
+    int row = 1;
+
+    std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
+
+    for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
+        Post* currentPost = wholeScrapbook[i];
+        Post::PostType pType = currentPost->type();
+        switch (pType) {
+            case Post::typeBlog:
+                displayBlog((Blog*)currentPost, row);
+                row = row+4;
+                break;
+            case Post::typeTweet:
+                displayTweet((Tweet*)currentPost, row);
+                row = row+3;
+                break;
+            case Post::typeMultimedia:
+                break;
+            case Post::typeComment:
+                break;
+            case Post::typePost:
+                break;
+        }
+    }
+
+
 
     getch();
 
+
+}
+
+void ScrapbookUI::displayBlog(Blog *blog, int row)
+{
+    QString currentTitle = "Title: "+blog->getTitle();
+    QString currentContent = blog->getContent();
+    mvprintw(row, 1,"Blog");
+    mvprintw(row+1, 1, currentTitle.toStdString().c_str());
+    mvprintw(row+2, 1, currentContent.toStdString().c_str());
+
+
+}
+
+void ScrapbookUI::displayTweet(Tweet *tweet, int row)
+{
+    QString currentContent = tweet->getContent();
+    mvprintw(row,1,"Tweet");
+    mvprintw(row+1, 1, currentContent.toStdString().c_str());
 
 }

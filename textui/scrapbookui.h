@@ -16,6 +16,11 @@ public:
     void postTweet();
     void postMedia();
     void displayScrapbook();
+    void displayBlog(Blog* blog, int row);
+    void displayTweet(Tweet* tweet, int row);
+
+private:
+    Scrapbook* scrapbook;
 };
 
 
