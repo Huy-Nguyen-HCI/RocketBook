@@ -20,7 +20,7 @@ void MainMenu::drawScreen(int v) {
     clear();
 
     mvprintw(0, 0, "Dashboard");
-    mvprintw(3, 8, "About Me");
+    mvprintw(3, 8, "Profile");
     mvprintw(4, 8, "Feed");
     mvprintw(5, 8, "Notifications");
     mvprintw(6, 8, "Friends");

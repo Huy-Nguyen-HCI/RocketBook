@@ -12,8 +12,75 @@ CreateAccountUI::CreateAccountUI(AccountController* accountControl)
 
 void CreateAccountUI::run(){
 
-    char name[80], pass[80], desciption[500];
+    char name[80], pass[80], confirm[80], fullName[80], description[500];
 
- //After account is created enter main menu using the line below
-   //  menu=new MainMenu(accountControl);
+    mvprintw(0,0,"Create Account");
+
+    mvprintw(1,0,"Enter Username: ");
+    getstr(name);
+
+    mvprintw(2,0,"Enter Password: ");
+    getstr(pass);
+
+   // mvprintw(3,0,"Enter Password Again: ");
+ //   getstr(confirm);
+
+    mvprintw(3,0,"Enter Full Name: ");
+    getstr(fullName);
+
+
+    mvprintw(4,0,"Enter Description: ");
+    getstr(description);
+    QString serverPath;
+
+    // check username and password cannot be empty
+    /**
+    if (name=="" || pass=="") {
+
+       //  ui->message->setText("Error: Both username and password have to be nonempty!");
+
+         return;
+    }
+**/
+    // check username in database
+    if (accountControl->checkAccountExists(QString::fromStdString(name))) {
+
+        //ui->message->setText("Error: Account already exists!");
+
+        return;
+    }
+/**
+    // check passwords match
+    if (strcmp(std::to_string(pass), std::to_string(confirm))==0) {
+
+        return;
+    }
+    **/
+/**
+    // check name field
+    if (fullName=="") {
+
+
+        return;
+    }
+**/
+    // if username does not already exist, create account, copy image, and segue to dashboard
+    if (accountControl->createNewAccount(QString::fromStdString(name),
+                                            QString::fromStdString(pass),
+                                            QString::fromStdString(fullName),
+                                            serverPath,
+                                            QString::fromStdString(description))) {
+
+
+        mvprintw(12,5,"Account created successfully.");
+        getch();
+
+        menu=new MainMenu(accountControl);
+        return;
+
+    }
+
+    // display error message
+    mvprintw(12,5,"Error in account creation.");
+    getch();
 }

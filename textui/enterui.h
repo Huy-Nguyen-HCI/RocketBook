@@ -3,6 +3,7 @@
 
 #include "screen.h"
 #include "loginui.h"
+#include "createaccountui.h"
 
 class EnterUI: public Screen
 {
@@ -14,7 +15,7 @@ public:
 
     //Screens
     LoginUI* login;
-    //CreateAccountUI* create;
+    CreateAccountUI* create;
 
 };
 

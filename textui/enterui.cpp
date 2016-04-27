@@ -33,7 +33,7 @@ void EnterUI::changeScreen(int selection){
     if(selection==1)
         login = new LoginUI(accountControl);
     else if(selection==2)
-        login = new LoginUI(accountControl);
+        create = new CreateAccountUI(accountControl);
     else if(selection==3)
         return;
 
