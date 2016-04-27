@@ -174,9 +174,6 @@ int FriendsUI::viewFriendsProfile(int v){
 
     mvprintw(0,0,"Friend's Profile");
 
-
     getch();
-
-
 }
 

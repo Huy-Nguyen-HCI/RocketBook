@@ -16,7 +16,7 @@ clear();
 
 // print the instructions for manipulating the Value object
 mvprintw(0, 0, "Select type of content to post:");
-mvprintw(3, 8, "Veiw Scrapbook");
+mvprintw(3, 8, "View Scrapbook");
 mvprintw(4, 8, "Post Blog");
 mvprintw(5, 8, "Post Tweet");
 mvprintw(6, 8, "Post Multimedia");
@@ -47,34 +47,46 @@ void ScrapbookUI::takeCommand(int selection){
 }
 
 void ScrapbookUI::postBlog(){
-    char text[2000], path[500];
+    char text[2000], title[200];
     erase();
-    mvprintw(0,0, "Enter Text: ");
+    mvprintw(0,0, "New Blog");
+    mvprintw(1,0, "Enter Title: ");
     echo();
+    getstr(title);
+
+
+    mvprintw(2,0, "Enter Text: ");
     getstr(text);
 
-    erase();
-    mvprintw(0,0, "Enter Picture Path: ");
-    getstr(path);
     //make new blog. Set text and path
+    accountControl->getUser()->getProfile()->getScrapbook()->addBlog(
+                accountControl->getUser()->getUsername(),QString::fromStdString(title),
+                QString::fromStdString(text),false);
+  //   scrapbook->addBlog(username, newTitle, newContent, privacy);
 
 }
 
 void ScrapbookUI::postTweet(){
     char text[2000], path[500];
     erase();
+    mvprintw(0,0,"New Tweet");
     mvprintw(0,0, "Enter Text: ");
     echo();
     getstr(text);
     //Make new tweet. Set text
+    accountControl->getUser()->getProfile()->getScrapbook()->addTweet(
+                accountControl->getUser()->getUsername(),
+                QString::fromStdString(text),false);
 
 }
 
 void ScrapbookUI::postMedia(){
+    /**
     char path[500];
     erase();
     mvprintw(0,0, "Enter File Path: ");
     echo();
     getstr(path);
     //Make new multimedia. set path
+    **/
 }

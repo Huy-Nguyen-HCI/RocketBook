@@ -8,8 +8,10 @@ class ProfileUI: public Screen
 public:
     ProfileUI(AccountController* accountControl);
     void drawScreen(int v);
-    void run();
     void displayInfo();
+    void takeCommand(int selection);
+    void viewProfile();
+    void editDescription();
 
 };
 
