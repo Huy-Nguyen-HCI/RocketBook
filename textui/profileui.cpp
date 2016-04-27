@@ -81,9 +81,11 @@ void ProfileUI::editDescription(){
 
     //if(ch==121) //y
     std::string description(newDescription);
+    mvprintw(5,5,description.c_str());
         if(accountControl->getUser()->changeProfileDescription(QString::fromStdString(description)))
             mvprintw(15,0, "Updating description successful");
         else{
             mvprintw(15,0, "Updating description failed");
         }
+        getch();
 }

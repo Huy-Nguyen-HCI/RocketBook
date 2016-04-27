@@ -4,7 +4,7 @@ ScrapbookUI::ScrapbookUI(AccountController* accountControl)
 {
     this->accountControl=accountControl;
     initialize();
-    options=5;
+    options=4;
     takeCommand(select(options));
 
 
@@ -19,8 +19,8 @@ mvprintw(0, 0, "Select type of content to post:");
 mvprintw(3, 8, "View Scrapbook");
 mvprintw(4, 8, "Post Blog");
 mvprintw(5, 8, "Post Tweet");
-mvprintw(6, 8, "Post Multimedia");
-mvprintw(7, 8, "Back");
+//mvprintw(6, 8, "Post Multimedia");
+mvprintw(6, 8, "Back");
 
 mvprintw(v+2, 5, "->");
 
@@ -32,13 +32,16 @@ void ScrapbookUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-   if(selection==2)
+    if(selection==1)
+        displayScrapbook();
+
+   else if(selection==2)
        postBlog();
    else if(selection==3)
        postTweet();
    else if(selection==4)
-       postMedia();
-   else if(selection==5)
+    //   postMedia();
+  // else if(selection==5)
        return;
 
    initialize();
@@ -58,12 +61,22 @@ void ScrapbookUI::postBlog(){
     mvprintw(2,0, "Enter Text: ");
     getstr(text);
 
+    mvprintw(LINES-1,0, "Enter p to make private: ");
+    bool priv=false;
+    cbreak();
+    noecho();
+    int ch= getch();
+    if(ch==112 || ch==10){//enter key or p)
+
+    if(ch==112) //p button
+        priv=true;
+
     //make new blog. Set text and path
     accountControl->getUser()->getProfile()->getScrapbook()->addBlog(
                 accountControl->getUser()->getUsername(),QString::fromStdString(title),
-                QString::fromStdString(text),false);
-  //   scrapbook->addBlog(username, newTitle, newContent, privacy);
+                QString::fromStdString(text),priv);
 
+    }
 }
 
 void ScrapbookUI::postTweet(){
@@ -74,10 +87,21 @@ void ScrapbookUI::postTweet(){
     echo();
     getstr(text);
     //Make new tweet. Set text
+
+    mvprintw(LINES-1,0, "Enter p post private, pressed enter to post public, or hit another key to cancel");
+    bool priv=false;
+    cbreak();
+    noecho();
+    int ch= getch();
+    if(ch==112 || ch==10){//enter key or p)
+
+    if(ch==112) //p button
+        priv=true;
     accountControl->getUser()->getProfile()->getScrapbook()->addTweet(
                 accountControl->getUser()->getUsername(),
-                QString::fromStdString(text),false);
+                QString::fromStdString(text),priv);
 
+    }
 }
 
 void ScrapbookUI::postMedia(){
@@ -89,4 +113,14 @@ void ScrapbookUI::postMedia(){
     getstr(path);
     //Make new multimedia. set path
     **/
+}
+
+void ScrapbookUI::displayScrapbook(){
+    erase();
+
+    mvprintw(0,0, "Scrapbook");
+
+    getch();
+
+
 }

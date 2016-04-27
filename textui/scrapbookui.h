@@ -15,6 +15,7 @@ public:
     void postBlog();
     void postTweet();
     void postMedia();
+    void displayScrapbook();
 };
 
 
