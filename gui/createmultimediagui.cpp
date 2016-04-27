@@ -1,13 +1,17 @@
 #include "createmultimediagui.h"
 #include "ui_createmultimediagui.h"
 
-CreateMultimediaGUI::CreateMultimediaGUI(AccountController *inputAcc, ScrapbookGUI *input, QWidget *parent) :
+CreateMultimediaGUI::CreateMultimediaGUI(AccountController* currentAccount,
+                                         Scrapbook *inputScrapbook,
+                                         ScrapbookGUI *input,
+                                         QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CreateMultimediaGUI)
 {
     ui->setupUi(this);
-    scrapbook = input;
-    accountController = inputAcc;
+    scrapbookGUI = input;
+    accountController = currentAccount;
+    scrapbook = inputScrapbook;
 }
 
 CreateMultimediaGUI::~CreateMultimediaGUI()
@@ -17,7 +21,7 @@ CreateMultimediaGUI::~CreateMultimediaGUI()
 
 void CreateMultimediaGUI::on_returnButton_clicked()
 {
-    scrapbook->switchMultimediaViews();
+    scrapbookGUI->switchMultimediaViews();
 }
 
 void CreateMultimediaGUI::on_uploadVideoButton_clicked()
@@ -56,11 +60,13 @@ void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
     ui->filePathBox->setText(filePath);
     ui->message->setText("Choose image file successful!");
 
-    QString username = accountController->getUser()->getUsername();
-    int picnum = accountController->getUser()->getProfile()->getScrapbook()->getAllMedia().size();
+    //create new file name
+    int scrapbookID = scrapbook->getID();
+    int picnum = scrapbook->getAllMedia().size();
+    QString numScrapbookID = QString::number(scrapbookID);
     QString numpic = QString::number(picnum);
 
-    QString newPath(AccountController::PATH + "picturesDir/" + username + "MultimediaPic_" + numpic);
+    QString newPath(AccountController::PATH + "picturesDir/" + numScrapbookID + "MultimediaPic_" + numpic);
     QFile newPic(filePath);
     newPic.copy(filePath, newPath);
     filePath = newPath;
@@ -78,13 +84,12 @@ void CreateMultimediaGUI::on_filePathBox_returnPressed()
 void CreateMultimediaGUI::on_publishButton_clicked()
 {
     // prepare data
-    RocketUser *user = accountController->getUser();
-    QString username = user->getUsername();
+    QString username = accountController->getUser()->getUsername();
     QString title = ui->titleBox->text();
     QString description = ui->descriptionBox->toPlainText();
     int privacy = ui->privacyBox->isChecked();
 
     // save data to database
-    accountController->getUser()->getProfile()->getScrapbook()->addMedia(username, title, description, filePath, privacy);
-    scrapbook->switchMultimediaViews();
+    scrapbook->addMedia(username, title, description, filePath, privacy);
+    scrapbookGUI->switchMultimediaViews();
 }

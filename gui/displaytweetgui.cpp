@@ -1,13 +1,13 @@
 #include "displaytweetgui.h"
 #include "ui_displaytweetgui.h"
 
-DisplayTweetGUI::DisplayTweetGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent) :
+DisplayTweetGUI::DisplayTweetGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayTweetGUI)
 {
     ui->setupUi(this);
-    scrapbook = input;
-    accountController = inputAccountController;
+    scrapbookGUI = input;
+    scrapbook = inputScrapbook;
 }
 
 DisplayTweetGUI::~DisplayTweetGUI()
@@ -19,18 +19,16 @@ void DisplayTweetGUI::on_createTweet_clicked()
 {
     // switch to create tweet view
     refreshTweets();
-    scrapbook->switchTweetViews();
+    scrapbookGUI->switchTweetViews();
 }
 
 void DisplayTweetGUI::refreshTweets()
 {
-    Profile *currentProfile = accountController->getUser()->getProfile();
-    Scrapbook *myScrapbook = currentProfile->getScrapbook();
-    std::vector<Tweet*> allTweets = myScrapbook->getAllTweets();
+    std::vector<Tweet*> allTweets = scrapbook->getAllTweets();
 
     ui->listWidget->clear();
 
-    for(int i = 0; i < allTweets.size(); i++){
+    for(unsigned int i = 0; i < allTweets.size(); i++){
 
         Tweet *currentTweet = allTweets.at(i);
         QString currentContent = currentTweet->getContent();

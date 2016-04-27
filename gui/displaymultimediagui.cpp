@@ -1,13 +1,13 @@
 #include "displaymultimediagui.h"
 #include "ui_displaymultimediagui.h"
 
-DisplayMultimediaGUI::DisplayMultimediaGUI(AccountController *inputAcc, ScrapbookGUI *input, QWidget *parent) :
+DisplayMultimediaGUI::DisplayMultimediaGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayMultimediaGUI)
 {
     ui->setupUi(this);
-    scrapbook = input;
-    accountController = inputAcc;
+    scrapbookGUI = input;
+    scrapbook = inputScrapbook;
 //    viewMedia = new ViewMultimediaItem();
 }
 
@@ -18,21 +18,19 @@ DisplayMultimediaGUI::~DisplayMultimediaGUI()
 
 void DisplayMultimediaGUI::on_postButton_clicked()
 {
-    scrapbook->switchMultimediaViews();
+    scrapbookGUI->switchMultimediaViews();
 }
 
 void DisplayMultimediaGUI::refreshMultimedia() {
 
-    Profile *currentProfile = accountController->getUser()->getProfile();
-    Scrapbook *myScrapbook = currentProfile->getScrapbook();
-    allMulti = myScrapbook->getAllMedia();
+    allMulti = scrapbook->getAllMedia();
 
     ui->multimediaList->clear();
 
-    for (int i = 0; i < allMulti.size(); i++) {
+    for (unsigned int i = 0; i < allMulti.size(); i++) {
 
         Multimedia *media = allMulti.at(i);
-        QString username = accountController->getUser()->getUsername();
+        QString username = media->getAuthorUsername();
         QString title = media->getTitle();
         QString description = media->getDescription();
         QString content = media->getContent();
@@ -64,7 +62,7 @@ void DisplayMultimediaGUI::refreshMultimedia() {
 
 //void DisplayMultimediaGUI::refreshMultimedia() {
 
-//    Profile *currentProfile = accountController->getUser()->getProfile();
+//    Profile *currentProfile = scrapbook->getUser()->getProfile();
 //    Scrapbook *myScrapbook = currentProfile->getScrapbook();
 //    std::vector<Multimedia*> allMulti = myScrapbook->getAllMedia();
 
@@ -74,7 +72,7 @@ void DisplayMultimediaGUI::refreshMultimedia() {
 
 //        // get info
 //        Multimedia *media = allMulti.at(i);
-//        QString username = accountController->getUser()->getUsername();
+//        QString username = scrapbook->getUser()->getUsername();
 //        QString title = media->getTitle();
 //        QString description = media->getDescription();
 //        QString content = media->getContent();

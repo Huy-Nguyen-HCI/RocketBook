@@ -27,7 +27,7 @@ public:
     static bool isFinished() { return finished; }
 
 private slots:
-    void on_loginButton_clicked();
+    bool on_loginButton_clicked();
 
     void on_createAccountButton_clicked();
 

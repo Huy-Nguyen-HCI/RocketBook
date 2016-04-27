@@ -9,6 +9,16 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
     accountController = inputAccountController;
 
     ui->setupUi(this);
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::setUp()
+{
     dashboard = new DashboardGUI(accountController);
     scrapbook = new ScrapbookGUI(accountController);
     messages = new MessageGUI(accountController);
@@ -31,13 +41,6 @@ MainWindow::MainWindow(AccountController *inputAccountController, QWidget *paren
 
     this->setWindowTitle("Welcome " + username + "!");
 }
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-
 
 void MainWindow::on_actionFeed_triggered()
 {

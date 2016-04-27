@@ -18,7 +18,7 @@ class CreateMultimediaGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit CreateMultimediaGUI(AccountController *inputAcc, ScrapbookGUI *input, QWidget *parent = 0);
+    explicit CreateMultimediaGUI(AccountController *currentAccount, Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent = 0);
     ~CreateMultimediaGUI();
 
 private slots:
@@ -35,9 +35,10 @@ private slots:
 
 private:
     Ui::CreateMultimediaGUI *ui;
-    ScrapbookGUI *scrapbook;
+    ScrapbookGUI *scrapbookGUI;
     QString filePath;
     AccountController *accountController;
+    Scrapbook* scrapbook;
 };
 
 

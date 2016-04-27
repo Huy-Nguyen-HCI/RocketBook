@@ -18,7 +18,7 @@ LoginGUI::~LoginGUI()
 }
 
 
-void LoginGUI::on_loginButton_clicked()
+bool LoginGUI::on_loginButton_clicked()
 {
     QString username = ui->usernameBox->text();
     //ui->passwordBox->setEchoMode(QLineEdit::PasswordEchoOnEdit);
@@ -32,16 +32,21 @@ void LoginGUI::on_loginButton_clicked()
         if (accountController->login(username, password)) {
             this->close();
             main->setUsername(username);
+            main->setUp();
             main->show();
+            return true;
         }
         else {
             ui->message->setText("Error: Wrong password!");
+            return false;
         }
     }
 
     // display error message
-    else
+    else {
         ui->message->setText("Error: Account does not exist!");
+        return false;
+    }
 }
 
 void LoginGUI::on_createAccountButton_clicked()

@@ -1,13 +1,13 @@
 #include "displaybloggui.h"
 #include "ui_displaybloggui.h"
 
-DisplayBlogGUI::DisplayBlogGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent) :
+DisplayBlogGUI::DisplayBlogGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DisplayBlogGUI)
 {
     ui->setupUi(this);
-    scrapbook = input;
-    accountController = inputAccountController;
+    scrapbookGUI = input;
+    scrapbook = inputScrapbook;
 }
 
 DisplayBlogGUI::~DisplayBlogGUI()
@@ -18,7 +18,7 @@ DisplayBlogGUI::~DisplayBlogGUI()
 void DisplayBlogGUI::on_createBlog_clicked()
 {
     refreshBlogs();
-    scrapbook->switchBlogViews();
+    scrapbookGUI->switchBlogViews();
 }
 
 void DisplayBlogGUI::on_refreshBlogs_clicked()
@@ -28,9 +28,8 @@ void DisplayBlogGUI::on_refreshBlogs_clicked()
 
 void DisplayBlogGUI::refreshBlogs()
 {
-    Profile *currentProfile = accountController->getUser()->getProfile();
-    Scrapbook *myScrapbook = currentProfile->getScrapbook();
-    std::vector<Blog*> allBlogs = myScrapbook->getAllBlogs();
+
+    std::vector<Blog*> allBlogs = scrapbook->getAllBlogs();
 
     ui->listWidget->clear();
 

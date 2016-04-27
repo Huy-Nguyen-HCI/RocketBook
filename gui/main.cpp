@@ -14,15 +14,16 @@ int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
 
+
     while (!LoginGUI::isFinished()) {
         QString dbPath = AccountController::PATH + "rocketDB.sqlite";
         QDir dir(dbPath);
         qDebug() << "dbPath is: " << dir.absolutePath() ;
-        AccountController* acc = new AccountController(dbPath);
 
-        MainWindow* main = new MainWindow(acc);
+        AccountController* acc = new AccountController(dbPath);
         LoginGUI* loginView = new LoginGUI(acc);
         CreateAccountGUI* createAccountView = new CreateAccountGUI(acc);
+        MainWindow* main = new MainWindow(acc);
 
         // set up connections
         loginView->setMainWindow(main);

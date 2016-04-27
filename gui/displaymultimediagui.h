@@ -22,7 +22,7 @@ class DisplayMultimediaGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit DisplayMultimediaGUI(AccountController *inputAcc, ScrapbookGUI *input, QWidget *parent = 0);
+    explicit DisplayMultimediaGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent = 0);
     ~DisplayMultimediaGUI();
     void refreshMultimedia();
 
@@ -39,8 +39,8 @@ private slots:
 
 private:
     Ui::DisplayMultimediaGUI *ui;
-    ScrapbookGUI *scrapbook;
-    AccountController *accountController;
+    ScrapbookGUI *scrapbookGUI;
+    Scrapbook *scrapbook;
     std::vector<Multimedia*> allMulti;
 //    ViewMultimediaItem *viewMedia;
 };

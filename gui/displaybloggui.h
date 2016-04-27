@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QTextBrowser>
 #include "scrapbookgui.h"
-#include "../model/accountcontroller.h"
+#include "../model/scrapbook.h"
 
 class ScrapbookGUI;
 
@@ -17,7 +17,7 @@ class DisplayBlogGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit DisplayBlogGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent = 0);
+    explicit DisplayBlogGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent = 0);
     ~DisplayBlogGUI();
     void refreshBlogs();
 
@@ -28,8 +28,8 @@ private slots:
 
 private:
     Ui::DisplayBlogGUI *ui;
-    ScrapbookGUI *scrapbook;
-    AccountController *accountController;
+    ScrapbookGUI *scrapbookGUI;
+    Scrapbook *scrapbook;
 };
 
 #endif // DISPLAYBLOGGUI_H

@@ -1,19 +1,58 @@
 #include "scrapbookgui.h"
 #include "ui_scrapbookgui.h"
 
-ScrapbookGUI::ScrapbookGUI(AccountController *inputAccountController, QWidget *parent) :
+ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
+                           QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ScrapbookGUI)
 {
     ui->setupUi(this);
-    accountController = inputAccountController;
+    accountController = currentAccount;
+    scrapbook = accountController->getUser()->getProfile()->getScrapbook();
 
-    createBlogView = new CreateBlogGUI(accountController, this);
-    displayBlogView = new DisplayBlogGUI(accountController, this);
-    createTweetView = new CreateTweetGUI(accountController, this);
-    displayTweetView = new DisplayTweetGUI(accountController, this);
-    createMultimediaView = new CreateMultimediaGUI(accountController, this);
-    displayMultimediaView = new DisplayMultimediaGUI(accountController, this);
+    createBlogView = new CreateBlogGUI(accountController, scrapbook, this);
+    displayBlogView = new DisplayBlogGUI(scrapbook, this);
+    createTweetView = new CreateTweetGUI(accountController, scrapbook, this);
+    displayTweetView = new DisplayTweetGUI(scrapbook, this);
+    createMultimediaView = new CreateMultimediaGUI(accountController, scrapbook, this);
+    displayMultimediaView = new DisplayMultimediaGUI(scrapbook, this);
+
+    // add display and edit view for blog
+    ui->blogStackedWidget->addWidget(displayBlogView);
+    ui->blogStackedWidget->addWidget(createBlogView);
+
+    // add display and edit view for tweet
+    ui->tweetStackedWidget->addWidget(displayTweetView);
+    ui->tweetStackedWidget->addWidget(createTweetView);
+
+    // add display and edit view for multimedia
+    ui->multimediaStackedWidget->addWidget(displayMultimediaView);
+    ui->multimediaStackedWidget->addWidget(createMultimediaView);
+
+    // show display view as default
+    ui->blogStackedWidget->setCurrentWidget(displayBlogView);
+    ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
+    ui->multimediaStackedWidget->setCurrentWidget(displayMultimediaView);
+
+}
+
+
+ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
+                           Scrapbook *displayScrapbook,
+                           QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::ScrapbookGUI)
+{
+    ui->setupUi(this);
+    accountController = currentAccount;
+    scrapbook = displayScrapbook;
+
+    createBlogView = new CreateBlogGUI(accountController, scrapbook, this);
+    displayBlogView = new DisplayBlogGUI(scrapbook, this);
+    createTweetView = new CreateTweetGUI(accountController, scrapbook, this);
+    displayTweetView = new DisplayTweetGUI(scrapbook, this);
+    createMultimediaView = new CreateMultimediaGUI(accountController, scrapbook, this);
+    displayMultimediaView = new DisplayMultimediaGUI(scrapbook, this);
 
     // add display and edit view for blog
     ui->blogStackedWidget->addWidget(displayBlogView);
@@ -74,7 +113,7 @@ void ScrapbookGUI::refreshBook()
 
     ui->scrapbookArea->clear();
     ui->scrapbookArea->addItem(QString("Your posts: \n"));
-    std::vector<Post*> wholeScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getAllPosts();
+    std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
     for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
         Post* currentPost = wholeScrapbook[i];
         Post::PostType pType = currentPost->type();

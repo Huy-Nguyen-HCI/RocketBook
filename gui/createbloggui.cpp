@@ -2,13 +2,14 @@
 #include "ui_createbloggui.h"
 
 
-CreateBlogGUI::CreateBlogGUI(AccountController *inputAccountController, ScrapbookGUI *input, QWidget *parent) :
+CreateBlogGUI::CreateBlogGUI(AccountController* currentAccount, Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CreateBlogGUI)
 {
     ui->setupUi(this);
-    scrapbook = input;
-    accountController = inputAccountController;
+    accountController = currentAccount;
+    scrapbookGUI = input;
+    scrapbook = inputScrapbook;
 }
 
 CreateBlogGUI::~CreateBlogGUI()
@@ -18,22 +19,16 @@ CreateBlogGUI::~CreateBlogGUI()
 
 void CreateBlogGUI::on_returnButton_clicked()
 {
-    scrapbook->switchBlogViews();
+    scrapbookGUI->switchBlogViews();
 }
 
 void CreateBlogGUI::on_publishButton_clicked()
 {
+    QString username = accountController->getUser()->getUsername();
     QString newTitle = ui->lineEdit->text();
     QString newContent = ui->textEdit->toPlainText();
-    QString userName = accountController->getUser()->getUsername();
-
-    Profile *currentProfile = accountController->getUser()->getProfile();
-    Scrapbook *myScrapbook = currentProfile->getScrapbook();
-
-    Blog *newBlog = new Blog(userName, newTitle, newContent);
-
-    myScrapbook->addBlog(newBlog);
-
-    scrapbook->switchBlogViews();
+    bool privacy = ui->privateCheckbox->isChecked();
+    scrapbook->addBlog(username, newTitle, newContent, privacy);
+    scrapbookGUI->switchBlogViews();
 
 }
