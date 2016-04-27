@@ -58,34 +58,33 @@ void ProfileUI::viewProfile(){
     mvprintw(0, 0, "Your Profile");
 
     QString username = "Username: " + accountControl->getUser()->getUsername();
-    mvprintw(1,0, username.toStdString().c_str());
+    mvprintw(2,0, username.toStdString().c_str());
 
-    QString description = "Description: " + accountControl->getUser()->getUsername();
-    mvprintw(2,0, description.toStdString().c_str());
+    QString description = "Description: " + accountControl->getUser()->getProfile()->getDescription();
+    mvprintw(3,0, description.toStdString().c_str());
     getch();
 
 }
+
+
 
 void ProfileUI::editDescription(){
     erase();
     char newDescription[2000];
 
     mvprintw(0,0,"Edit Description");
-    mvprintw(1,0,"Enter new Description: ");
+    mvprintw(2,0,"Enter new Description: ");
     echo();
     getstr(newDescription);
 
-   // mvprintw(12,0,"Are you sure you would like to display this as your new description?(y/n)");
-   // noecho();
-  //  int ch=getch();
+    mvprintw(12,3,"Press enter to confirm changes");
 
-    //if(ch==121) //y
-    std::string description(newDescription);
-    mvprintw(5,5,description.c_str());
-        if(accountControl->getUser()->changeProfileDescription(QString::fromStdString(description)))
-            mvprintw(15,0, "Updating description successful");
-        else{
-            mvprintw(15,0, "Updating description failed");
-        }
-        getch();
+if(getch()==10){
+    endwin();
+    if(accountControl->getUser()->changeProfileDescription(QString::fromStdString(newDescription)))
+        mvprintw(15,3, "Profile description successfully updated.");
+    }
+else
+    endwin();
+
 }
