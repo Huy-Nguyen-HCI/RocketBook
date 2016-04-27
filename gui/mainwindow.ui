@@ -49,8 +49,8 @@
    <addaction name="actionMessaging"/>
    <addaction name="actionGroups"/>
    <addaction name="separator"/>
-   <addaction name="actionAbout_Rocketbook"/>
    <addaction name="actionLog_out"/>
+   <addaction name="actionAbout_Rocketbook"/>
    <addaction name="separator"/>
   </widget>
   <action name="actionFeed">
