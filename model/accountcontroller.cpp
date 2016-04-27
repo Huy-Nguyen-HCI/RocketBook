@@ -9,7 +9,7 @@ QString AccountController::PATH = "/usr11/cs205_2016_Grp08/rocketDB/";  /**< ser
 
 AccountController::AccountController()
 {
-    dbPath.append("../database/rocketDB.sqlite");
+    dbPath.append("/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite");
     accountDB = new AccountDB(dbPath);
 
 }
