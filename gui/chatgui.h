@@ -3,10 +3,9 @@
 
 #include <QWidget>
 #include <QDialog>
-#include "../model/profile.h"
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-#include <../model/accountcontroller.h>
+#include "../model/accountcontroller.h"
 #include <QCloseEvent>
 
 namespace Ui {

@@ -5,6 +5,7 @@
 #include <QTextBrowser>
 #include "scrapbookgui.h"
 #include "../model/scrapbook.h"
+#include "viewbloggui.h"
 
 class ScrapbookGUI;
 
@@ -25,6 +26,8 @@ private slots:
     void on_createBlog_clicked();
 
     void on_refreshBlogs_clicked();
+
+    void on_viewBlogButton_clicked();
 
 private:
     Ui::DisplayBlogGUI *ui;

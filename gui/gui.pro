@@ -57,7 +57,8 @@ SOURCES += logingui.cpp \
 #    viewmultimediaitem.cpp
     groupgui.cpp \
     aboutgui.cpp \
-    groupprofilegui.cpp
+    groupprofilegui.cpp \
+    viewbloggui.cpp
 
 
 HEADERS  += logingui.h \
@@ -84,7 +85,8 @@ HEADERS  += logingui.h \
 #    viewmultimediaitem.h
     groupgui.h \
     aboutgui.h \
-    groupprofilegui.h
+    groupprofilegui.h \
+    viewbloggui.h
 
 FORMS    += logingui.ui \
     mainwindow.ui \
@@ -109,7 +111,8 @@ FORMS    += logingui.ui \
 #    viewmultimediaitem.ui
     groupgui.ui \
     aboutgui.ui \
-    groupprofilegui.ui
+    groupprofilegui.ui \
+    viewbloggui.ui
 
 RESOURCES += \
     icons.qrc \

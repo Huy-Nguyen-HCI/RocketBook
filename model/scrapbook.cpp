@@ -110,6 +110,14 @@ std::vector<Blog*> Scrapbook::getAllBlogs()
 
 }
 
+Comment* Scrapbook::addComment(int blogID, QString username, QString content) {
+    Blog* blog = getBlog(blogID);
+    int commentID = commentDB->getMaxPostID() + 1;
+    Comment* newComment = new Comment(commentID, username, content);
+    blog->addComment(newComment);
+    return newComment;
+}
+
 Tweet *Scrapbook::addTweet(Tweet* newTweet){
     tweetList.insert(tweetList.begin(), newTweet);
     postList.insert(postList.begin(), newTweet);
@@ -317,9 +325,15 @@ bool Scrapbook::comparePost(Post* a, Post* b) {
     return a->getID() > b->getID();
 }
 
-//Blog* Scrapbook::getBlog(int num){
-//    return blogList->at(num);
-//}
+Blog* Scrapbook::getBlog(int id){
+    for (unsigned int i = 0 ; i < blogList.size(); i++) {
+        if (blogList[i]->getID() == id) {
+            return blogList[i];
+        } else {
+            return NULL;
+        }
+    }
+}
 
 //Tweet* Scrapbook::getTweet(int num){
 //    return tweetList->at(num);

@@ -26,6 +26,14 @@ void DisplayBlogGUI::on_refreshBlogs_clicked()
     refreshBlogs();
 }
 
+void DisplayBlogGUI::on_viewBlogButton_clicked()
+{
+    QList<QListWidgetItem*> blogList = ui->listWidget->selectedItems();
+    int blogID = blogList[0]->data(5).toInt();
+    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(scrapbookGUI->getAccountController(), scrapbook, blogID);
+    viewBlogGUI->show();
+}
+
 void DisplayBlogGUI::refreshBlogs()
 {
 
@@ -33,19 +41,23 @@ void DisplayBlogGUI::refreshBlogs()
 
     ui->listWidget->clear();
 
-    for(int i = 0; i < allBlogs.size(); i++){
+    for(unsigned int i = 0; i < allBlogs.size(); i++){
 
-        Blog *curentBlog = allBlogs.at(i);
-        QString currentTitle = curentBlog->getTitle();
-        QString currentContent = curentBlog->getContent();
+        Blog *currentBlog = allBlogs.at(i);
+        QString currentTitle = currentBlog->getTitle();
+        QString currentContent = currentBlog->getContent();
 
         QString num = QString::number(i+1);
         QString content =
                 "Blog # " + num + ":" + "\n" +
                 "Title:    " + currentTitle + "\n" +
                 "Content:    " + currentContent + "\n";
-        ui->listWidget->addItem(content);
+        QListWidgetItem* listItem = new QListWidgetItem(content);
+        listItem->setData(5, currentBlog->getID());
+        ui->listWidget->addItem(listItem);
     }
 }
+
+
 
 

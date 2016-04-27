@@ -41,6 +41,7 @@ public:
     void displayBlog(Blog* blog);
     void displayTweet(Tweet* tweet);
     void displayMultimedia(Multimedia* multimedia);
+    AccountController* getAccountController() { return accountController;}
 
 private slots:
     void on_editButton_clicked();

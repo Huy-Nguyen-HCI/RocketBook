@@ -39,9 +39,8 @@ public:
      * @brief addComment Add a new comment to the blog
      * @param newComment The new comment to be added to the blog
      */
-    void addComment(Comment* newComment);
+    Comment* addComment(Comment* newComment);
 
-    int getID() { return id;}
 
     QString getUsername() {return username;}
 

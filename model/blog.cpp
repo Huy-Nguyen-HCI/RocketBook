@@ -22,8 +22,9 @@ QString Blog::getTitle()
     return title;
 }
 
-void Blog::addComment(Comment* newComment){
+Comment *Blog::addComment(Comment* newComment){
     commentList.push_back(newComment);
+    return newComment;
 }
 
 std::vector<Comment*> Blog::getAllComments(){

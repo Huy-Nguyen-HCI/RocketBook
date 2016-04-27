@@ -36,10 +36,20 @@ public:
                   bool privacy);
     std::vector<Blog*> getAllBlogs();
 
+    /**
+     * @brief addComment
+     * Add a new comment to the blog
+     * @param username The username of the commenter
+     * @param content The content of the comment
+     * @return the actual comment
+     */
+    Comment* addComment(int blogID, QString username, QString content);
+
     Tweet* addTweet(Tweet* newTweet);
     Tweet* addTweet(QString username,
                     QString content,
                     bool privacy);
+
     std::vector<Tweet*> getAllTweets();
 
     Multimedia* addMedia(Multimedia* newMedia);
@@ -53,6 +63,10 @@ public:
     std::vector<Post*> getAllPosts();
     std::vector<Post*> getAllPublicPosts();
     std::vector<Post*> getLatestPosts(int numberOfPosts);
+
+    Blog* getBlog(int id);
+    //    Tweet* getTweet(int num);
+    //    Multimedia* getMedia(int num);
 
 private:
     int id;
@@ -82,9 +96,7 @@ private:
     static bool comparePost(Post* a, Post* b);
 
 
-//    Blog* getBlog(int num);
-//    Tweet* getTweet(int num);
-//    Multimedia* getMedia(int num);
+
 
 };
 
