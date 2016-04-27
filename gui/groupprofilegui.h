@@ -18,12 +18,12 @@ class GroupProfileGUI : public QWidget
     Q_OBJECT
 
 public:
-    explicit GroupProfileGUI(Profile *profile, QWidget *parent = 0);
+    explicit GroupProfileGUI(Group *group, QWidget *parent = 0);
     ~GroupProfileGUI();
 
 private:
     Ui::GroupProfileGUI *ui;
-    Profile* groupProfile;
+    Group* group;
     QGraphicsScene* photoScene;
     QString groupName;
     QString groupDescription;
@@ -31,6 +31,7 @@ private:
 
     void refreshProfile();
     void loadPhoto();
+    void refreshMembers();
 
 };
 

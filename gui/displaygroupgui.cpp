@@ -71,13 +71,17 @@ void DisplayGroupGUI::on_enterGroupButton_clicked()
     int row = groupRow.at(0)->row();
     int groupID = ui->groupTable->item(row, 1)->text().toInt();
 
-    //Create the group scrapbook
-    Profile* groupProfile = accountController->getUser()->controlGroup()->getGroup(groupID)->getProfile();
-    Scrapbook* groupScrapbook = groupProfile->getScrapbook();
-    GroupProfileGUI* groupProfileGUI = new GroupProfileGUI(groupProfile);
+    //Create the profileGUI and scrapbookGUI for groups
+    Group* group = accountController->getUser()->controlGroup()->getGroup(groupID);
+    Scrapbook* groupScrapbook = group->getProfile()->getScrapbook();
+    GroupProfileGUI* groupProfileGUI = new GroupProfileGUI(group);
     ScrapbookGUI* groupScrapbookGUI = new ScrapbookGUI(accountController, groupScrapbook);
+
+    //Add the GUIs to the stackedwidget
     groupGUI->addGroupProfile(groupProfileGUI);
     groupGUI->addGroupScrapbook(groupScrapbookGUI);
+
+    //Switch group views to the profile view
     groupGUI->switchGroupViews(GroupGUI::GroupGUIType::ViewGroupProfile);
 
 }
