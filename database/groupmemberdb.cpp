@@ -198,7 +198,7 @@ std::vector<int> GroupMemberDB::retrieveGroupList(int accountID){
 
     qDebug() << "Groups in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
-    queryRetrieve.prepare("SELECT GroupID FROM Groups WHERE AccountID = (:AccountID)");
+    queryRetrieve.prepare("SELECT GroupID FROM GroupMembers WHERE AccountID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountID);
 
     int groupIDIndex = /*query.record().indexOf("GroupID"); */ 0;

@@ -13,8 +13,8 @@ FriendProfileGUI::FriendProfileGUI(ProfileInfoType info, QWidget *parent) :
     QString description = std::get<3>(info);
 
     this->setWindowTitle(username + " 's Profile");
-    ui->userName->setText("Username: " + username);
-    ui->description->setText(description);
+    ui->usernameLabel->setText(username);
+    ui->descriptionBrowser->setText(description);
 }
 
 FriendProfileGUI::~FriendProfileGUI()

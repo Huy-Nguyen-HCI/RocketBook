@@ -30,6 +30,7 @@ private:
     AccountController* accountController;
     GroupGUI* groupGUI;
     void clearAllFields();
+    void updateFriendList();
 };
 
 #endif // CREATEGROUPGUI_H

@@ -8,6 +8,8 @@ CreateGroupGUI::CreateGroupGUI(AccountController *inputAccountController, GroupG
     ui->setupUi(this);
     this->groupGUI = groupGUI;
     this->accountController = inputAccountController;
+    clearAllFields();
+    updateFriendList();
 }
 
 CreateGroupGUI::~CreateGroupGUI()
@@ -24,18 +26,23 @@ void CreateGroupGUI::on_buttonBox_accepted()
     Group* currentGroup = accountController->getUser()->controlGroup()->createNewGroup(fullName, photo, description);
 
     //add group members
-    QList<QListWidgetItem*> memberList = ui->friendList->selectedItems();
+    QModelIndexList memberList = ui->friendList->selectionModel()->selectedIndexes();
     for (int i = 0; i < memberList.size(); i++) {
-        QString memberUsername = memberList.at(i)->text();
+        QString memberUsername = memberList.at(i).data().toString();
         currentGroup->addMember(memberUsername);
     }
-    groupGUI->switchGroupViews();
+
+    clearAllFields();
+    updateFriendList();
+
+    groupGUI->switchGroupViews(GroupGUI::GroupGUIType::ShowAllGroups);
 }
 
 void CreateGroupGUI::on_buttonBox_rejected()
 {
     clearAllFields();
-    groupGUI->switchGroupViews();
+    updateFriendList();
+    groupGUI->switchGroupViews(GroupGUI::GroupGUIType::ShowAllGroups);
 }
 
 void CreateGroupGUI::clearAllFields()
@@ -44,4 +51,16 @@ void CreateGroupGUI::clearAllFields()
     ui->photoFilePathInput->clear();
     ui->descriptionInput->clear();
     ui->friendList->clearSelection();
+}
+
+void CreateGroupGUI::updateFriendList()
+{
+    ui->friendList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    FriendController* friendCtrl = accountController->getUser()->controlFriend();
+    friendCtrl->updateFriendList();
+    QStringList friends = friendCtrl->getFriendNames();
+    QStringListModel *model = new QStringListModel(friends);
+    ui->friendList->setModel(model);
+    //Prevents user for editing friendlist entries in qlist manually
+    ui->friendList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }

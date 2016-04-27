@@ -18,10 +18,18 @@ class GroupGUI : public QWidget
     Q_OBJECT
 
 public:
+    enum GroupGUIType {ShowAllGroups, CreateGroup, EditGroup, ViewGroup};
+
     explicit GroupGUI(AccountController *inputAccountController, QWidget *parent = 0);
     ~GroupGUI();
 
-    void switchGroupViews();
+    void switchGroupViews(GroupGUIType type);
+    void addWidget(ScrapbookGUI *groupWidget);
+    void showReturnButton();
+
+
+private slots:
+    void on_returnButton_clicked();
 
 private:
     Ui::GroupGUI *ui;

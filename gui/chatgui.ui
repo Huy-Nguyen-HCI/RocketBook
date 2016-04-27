@@ -6,81 +6,56 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>475</width>
-    <height>469</height>
+    <width>617</width>
+    <height>448</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_2">
+  <widget class="QSplitter" name="splitter">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>460</x>
      <y>10</y>
-     <width>111</width>
-     <height>61</height>
+     <width>141</width>
+     <height>411</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Chat Members: </string>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
    </property>
+   <widget class="QLabel" name="label_2">
+    <property name="text">
+     <string>Chat Members: </string>
+    </property>
+   </widget>
+   <widget class="QListView" name="memberList"/>
+   <widget class="QPushButton" name="send">
+    <property name="text">
+     <string>Send</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QLineEdit" name="chatBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>390</y>
-     <width>321</width>
-     <height>71</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="send">
-   <property name="geometry">
-    <rect>
-     <x>351</x>
-     <y>396</y>
-     <width>111</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Send</string>
-   </property>
-  </widget>
-  <widget class="QListView" name="messageList">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>321</width>
-     <height>331</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QListView" name="memberList">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>70</y>
-     <width>121</width>
-     <height>301</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QSplitter" name="splitter_2">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>-10</y>
-     <width>111</width>
-     <height>61</height>
+     <y>10</y>
+     <width>421</width>
+     <height>421</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Messages</string>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
    </property>
+   <widget class="QLabel" name="label_3">
+    <property name="text">
+     <string>Messages:</string>
+    </property>
+   </widget>
+   <widget class="QListView" name="messageList"/>
+   <widget class="QLineEdit" name="chatBox"/>
   </widget>
  </widget>
  <resources/>

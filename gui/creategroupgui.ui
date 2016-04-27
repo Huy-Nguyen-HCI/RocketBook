@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>12</x>
@@ -112,7 +112,7 @@
        </layout>
       </item>
       <item row="3" column="1">
-       <widget class="QListWidget" name="friendList"/>
+       <widget class="QListView" name="friendList"/>
       </item>
      </layout>
     </item>
