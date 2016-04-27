@@ -30,7 +30,7 @@ bool LoginGUI::on_loginButton_clicked()
 
         // if username and password match, log in and segue to main view
         if (accountController->login(username, password)) {
-            this->close();
+            this->hide();
             main->setUsername(username);
             main->setUp();
             main->show();
@@ -68,4 +68,10 @@ void LoginGUI::on_quitButton_clicked()
 {
     finished = true;
     this->close();
+}
+
+void LoginGUI::closeEvent(QCloseEvent *event)
+{
+    finished = true;
+    QWidget::closeEvent(event);
 }

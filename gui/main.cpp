@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
         delete acc;
         delete main;
         delete loginView;
+        delete createAccountView;
     }
 
 

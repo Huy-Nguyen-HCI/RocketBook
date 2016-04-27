@@ -39,6 +39,8 @@ private:
     MainWindow *main;
     CreateAccountGUI *createAccountView;
     static bool finished;
+
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // LOGINGUI_H
