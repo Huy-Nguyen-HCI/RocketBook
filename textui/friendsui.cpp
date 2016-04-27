@@ -172,6 +172,7 @@ int FriendsUI::viewFriendsProfile(int v){
         return 0;
 
 
+    clear();
     mvprintw(0,0,"Friend's Profile");
 
     QStringList friendNames= friendControl->getFriendNames();
@@ -181,7 +182,7 @@ int FriendsUI::viewFriendsProfile(int v){
 
     //QString username = "Username: " + accountControl->getUser()->getUsername();
     mvprintw(1,1, fullName.toStdString().c_str());
-    mvprintw(1,2, description.toStdString().c_str());
+    mvprintw(2,1, description.toStdString().c_str());
 
     //QString description = "Description: " + accountControl->getUser()->getUsername();
     //mvprintw(2,0, description.toStdString().c_str());
