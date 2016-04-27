@@ -4,9 +4,25 @@ ScrapbookUI::ScrapbookUI(AccountController* accountControl)
 {
     this->accountControl=accountControl;
     initialize();
-    options=4;
+    options=5;
     takeCommand(select(options));
+/**
+    int i = 0;
 
+       initscr();
+
+       scrollok(stdscr,TRUE);
+
+       while(1)
+       {
+           printw("%d - lots and lots of lines flowing down the terminal\n", i);
+           ++i;
+           refresh();
+       }
+
+       endwin();
+       getch();
+       **/
 
 }
 
@@ -19,8 +35,8 @@ mvprintw(0, 0, "Select type of content to post:");
 mvprintw(3, 8, "View Scrapbook");
 mvprintw(4, 8, "Post Blog");
 mvprintw(5, 8, "Post Tweet");
-//mvprintw(6, 8, "Post Multimedia");
-mvprintw(6, 8, "Back");
+mvprintw(6, 8, "Export Scrapbook to HTML");
+mvprintw(7, 8, "Back");
 
 mvprintw(v+2, 5, "->");
 
@@ -40,8 +56,8 @@ void ScrapbookUI::takeCommand(int selection){
    else if(selection==3)
        postTweet();
    else if(selection==4)
-    //   postMedia();
-  // else if(selection==5)
+       makeHTML();
+   else if(selection==5)
        return;
 
    initialize();
@@ -116,19 +132,26 @@ void ScrapbookUI::postMedia(){
 }
 
 void ScrapbookUI::displayScrapbook(){
-    erase();
+
+    bool booking=true;
+    int offset=0;
+     int row;
 
     scrapbook = accountControl->getUser()->getProfile()->getScrapbook();
 
+    while(booking){
+    erase();
     mvprintw(0,0, "Scrapbook");
-
-    int row = 1;
+    row=2;
 
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
 
-    for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
+    for (unsigned int i = offset; i < offset+5; i++) {
         Post* currentPost = wholeScrapbook[i];
         Post::PostType pType = currentPost->type();
+    //    scrl(1);
+     //   scroll(stdscr);
+     //   getch();
         switch (pType) {
             case Post::typeBlog:
                 displayBlog((Blog*)currentPost, row);
@@ -147,11 +170,22 @@ void ScrapbookUI::displayScrapbook(){
         }
     }
 
+//scrl(number of lines)
 
 
-    getch();
+    int ch= getch();
+        if(ch==KEY_DOWN && !((wholeScrapbook.size())==(5+offset)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+            offset++;
+        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
 
 
+        else
+            booking=false;
+
+    }
 }
 
 void ScrapbookUI::displayBlog(Blog *blog, int row)
@@ -170,5 +204,9 @@ void ScrapbookUI::displayTweet(Tweet *tweet, int row)
     QString currentContent = tweet->getContent();
     mvprintw(row,1,"Tweet");
     mvprintw(row+1, 1, currentContent.toStdString().c_str());
+
+}
+
+void ScrapbookUI::makeHTML(){
 
 }

@@ -15,6 +15,7 @@ public:
     void postBlog();
     void postTweet();
     void postMedia();
+    void makeHTML();
     void displayScrapbook();
     void displayBlog(Blog* blog, int row);
     void displayTweet(Tweet* tweet, int row);

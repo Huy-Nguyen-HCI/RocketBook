@@ -20,6 +20,7 @@ public:
     AccountController *accountControl;
     int options;
     int getArrowInput();
+    int scrollMouse();
 
 
 };

@@ -31,6 +31,11 @@ Screen::Screen()
 
 }
 
+
+int Screen::scrollMouse(){
+
+}
+
 int Screen::select(int max){
 
     int v=1;
@@ -92,10 +97,13 @@ Screen::~Screen()
 
 void Screen::initialize(){
     initscr();
+   // scrollok(stdscr,TRUE);
+  //  idlok(stdscr,TRUE);
     curs_set(0);
     cbreak();
     noecho();
     erase();
+
     keypad(stdscr, TRUE);
 }
 
