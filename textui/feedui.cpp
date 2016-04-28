@@ -4,8 +4,9 @@ FeedUI::FeedUI(AccountController* accountControl)
 {
     this->accountControl=accountControl;
     initialize();
-    options=2;
-    takeCommand(select(options));
+    displayFeed();
+    //options=2;
+    //takeCommand(select(options));
     //run();
 
 }
@@ -47,31 +48,48 @@ void FeedUI::takeCommand(int selection){
 
 void FeedUI::displayFeed()
 {
-    erase();
-    mvprintw(0,0, "Your friends' rocket adventures:");
+    bool booking=true;
+    int offset=0;
+    int row;
+    while(booking){
+
+
+    row = 2;
 
     Feed *allFeed = accountControl->getUser()->getFeed();
     allFeed->updatePostList();
     std::vector<Post*> friendFeed = allFeed->getFeed();
-    int row=2;
-    for (unsigned int i = 0; i < friendFeed.size(); i++) {
+    erase();
+    refresh();
+    mvprintw(0,0, "Your friends' rocket adventures:");
+    refresh();
+    //int row=2;
+    int *max;
+    if(friendFeed.size() < 5){
+        *max = friendFeed.size();
+    }else{
+        *max = offset+5;
+    }
+    for (unsigned int i = offset; i < *max; i++) {
         Post* currentPost = friendFeed[i];
         QString *author = new QString(currentPost->getAuthorUsername());
+        //QString *author = new QString("test author");
         Post::PostType pType = currentPost->type();
         switch (pType) {
             case Post::typeBlog:
-                //ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayBlog((Blog*)currentPost, row, author);
+                refresh();
                 row = row+5;
                 break;
             case Post::typeTweet:
-                //ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayTweet((Tweet*)currentPost, row, author);
+                refresh();
                 row = row+4;
                 break;
             case Post::typeMultimedia:
-                //ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
-                //displayMultimedia((Multimedia*)currentPost, ui->wholeFeed);
+                mvprintw(row, 1, "multimedia content!");
+                refresh();
+                row = row+2;
                 break;
             case Post::typeComment:
                 break;
@@ -80,8 +98,21 @@ void FeedUI::displayFeed()
         }
     }
 
-    getch();
+    //getch();
+    int ch= getch();
+        if(ch==KEY_DOWN && !((friendFeed.size())==(5+offset)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+            offset++;
+        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
 
+
+        else
+            booking=false;
+
+
+    }
 }
 
 void FeedUI::displayBlog(Blog *blog, int row, QString *author)
@@ -94,6 +125,7 @@ void FeedUI::displayBlog(Blog *blog, int row, QString *author)
     mvprintw(row, 1, line1.toStdString().c_str());
     mvprintw(row+1, 1, currentTitle.toStdString().c_str());
     mvprintw(row+2, 1, currentContent.toStdString().c_str());
+    refresh();
 
 }
 
@@ -104,6 +136,7 @@ void FeedUI::displayTweet(Tweet *tweet, int row, QString *author)
     line1 = *author + "'s tweet:";
     mvprintw(row,1, line1.toStdString().c_str());
     mvprintw(row+1, 1, currentContent.toStdString().c_str());
+    refresh();
 
 }
 
