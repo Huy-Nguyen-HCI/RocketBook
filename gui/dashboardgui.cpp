@@ -18,6 +18,7 @@ DashboardGUI::DashboardGUI(AccountController *inputAccountController, QWidget *p
     ui->commentButton->hide();
 
     connect(ui->wholeFeed, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(on_wholeFeedItem_clicked(QListWidgetItem*)));
+    refreshAllPosts();
 }
 
 DashboardGUI::~DashboardGUI()
@@ -28,7 +29,7 @@ DashboardGUI::~DashboardGUI()
 void DashboardGUI::on_latestScrapbookButton_clicked()
 {
     ui->latestInfoListWidget->clear();
-    ui->latestInfoListWidget->addItem(QString("Your latest posts: \n"));
+//    ui->latestInfoListWidget->addItem(QString("Your latest posts: \n"));
     std::vector<Post*> latestScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getLatestPosts(5);
     for (unsigned int i = 0; i < latestScrapbook.size(); i++) {
         Post* currentPost = latestScrapbook[i];
@@ -57,8 +58,9 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
     QString currentContent = blog->getContent();
 
     QString content =
-            "Blog: \nTitle:    " + currentTitle + "\n" +
-            "Content:    " + currentContent + "\n";
+            "Blog title:    " + currentTitle + "\n" +
+            "@" + blog->getAuthorUsername() + "\n" +
+            currentContent + "\n";
 
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, blogListItemType);
@@ -72,7 +74,7 @@ void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString currentContent = tweet->getContent();
 
-    QString content("Tweet: \nContent: " + currentContent +"\n");
+    QString content("@" + tweet->getAuthorUsername() + ": " + currentContent +"\n");
 
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, tweetListItemType);
@@ -87,7 +89,9 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theLis
     QString title = multimedia->getTitle();
     QString description = multimedia->getDescription();
     QString content = multimedia->getContent();
-    QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
+    QString newLabel("Photo: "+title + "\n"
+                     + "@" + multimedia->getAuthorUsername() + "\n"
+                     + description);
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, theList);
 
     newMedia->setData(listItemTypeRole, multimediaListItemType);
@@ -103,7 +107,7 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theLis
 void DashboardGUI::on_latestMultimediaButton_clicked()
 {
     ui->latestInfoListWidget->clear();
-    ui->latestInfoListWidget->addItem(QString("Your latest multimedia: \n"));
+//    ui->latestInfoListWidget->addItem(QString("Your latest multimedia: \n"));
     Profile *currentProfile = accountController->getUser()->getProfile();
     Scrapbook *myScrapbook = currentProfile->getScrapbook();
     std::vector<Multimedia*> allMulti = myScrapbook->getAllMedia();
@@ -115,7 +119,7 @@ void DashboardGUI::on_latestMultimediaButton_clicked()
         QString title = media->getTitle();
         QString description = media->getDescription();
         QString content = media->getContent();
-        QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
+        QString newLabel("Title: "+title + "\n" + "Description: " + description);
         QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->latestInfoListWidget);
         ui->latestInfoListWidget->addItem(newMedia);
         ui->latestInfoListWidget->setIconSize(QSize(125,125));
@@ -127,7 +131,7 @@ void DashboardGUI::refreshAllPosts()
 {
 
     ui->wholeFeed->clear();
-    ui->wholeFeed->addItem(QString("Your friends' rocket lauching adventures: \n"));
+//    ui->wholeFeed->addItem(QString("Your friends' rocket lauching adventures: \n"));
     Feed *allFeed = accountController->getUser()->getFeed();
     allFeed->updatePostList();
     std::vector<Post*> friendFeed = allFeed->getFeed();
@@ -137,15 +141,12 @@ void DashboardGUI::refreshAllPosts()
         Post::PostType pType = currentPost->type();
         switch (pType) {
             case Post::typeBlog:
-                ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayBlog((Blog*)currentPost, ui->wholeFeed);
                 break;
             case Post::typeTweet:
-                ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayTweet((Tweet*)currentPost, ui->wholeFeed);
                 break;
             case Post::typeMultimedia:
-                ui->wholeFeed->addItem(QString(currentPost->getAuthorUsername() + ": \n"));
                 displayMultimedia((Multimedia*)currentPost, ui->wholeFeed);
                 break;
             case Post::typeComment:

@@ -21,9 +21,16 @@ void CreateGroupGUI::on_buttonBox_accepted()
 {
     //retrieve the group details
     QString fullName = ui->fullNameInput->text();
-    QString photo = ui->photoFilePathInput->text();
+
     QString description = ui->descriptionInput->document()->toPlainText();
-    Group* currentGroup = accountController->getUser()->controlGroup()->createNewGroup(fullName, photo, description);
+
+    //copy image to the server
+    QString photo = ui->photoFilePathInput->text();
+    QString serverPath = AccountController::PATH + "picturesDir/" + fullName + "GroupPic";
+    QFile::copy(photoPath, serverPath);
+
+
+    Group* currentGroup = accountController->getUser()->controlGroup()->createNewGroup(fullName, serverPath, description);
 
     //add group members
     QModelIndexList memberList = ui->friendList->selectionModel()->selectedIndexes();
@@ -32,6 +39,9 @@ void CreateGroupGUI::on_buttonBox_accepted()
         currentGroup->addMember(memberUsername);
     }
 
+
+
+    //refresh and clear fields
     clearAllFields();
     updateFriendList();
 
@@ -63,4 +73,19 @@ void CreateGroupGUI::updateFriendList()
     ui->friendList->setModel(model);
     //Prevents user for editing friendlist entries in qlist manually
     ui->friendList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+}
+
+void CreateGroupGUI::on_uploadPhotoButton_clicked()
+{
+    photoPath = QFileDialog::getOpenFileName(this,
+                                         tr("Pick your image"),
+                                         ":/",
+                                         tr("Image Files (*.png *.jpg *.bmp)"));
+    // if user cancels the file selection
+    if (photoPath.isNull()) {
+        return;
+    }
+
+    ui->photoFilePathInput->setText(photoPath);
+
 }

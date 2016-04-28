@@ -33,6 +33,7 @@ void GroupGUI::switchGroupViews(GroupGUIType type)
     switch (type){
         case ShowAllGroups:
             ui->stackedWidget->setCurrentWidget(displayGroupView);
+            displayGroupView->refreshGroups();
             ui->returnButton->hide();
             ui->groupSwitchButton->hide();
             break;

@@ -52,15 +52,21 @@ void GroupProfileGUI::refreshMembers() {
     //display admin list
     for (unsigned int row = 0; row < adminList.size(); row++) {
         QTableWidgetItem* username = new QTableWidgetItem(adminList.at(row));
+        QTableWidgetItem* adminRights = new QTableWidgetItem("Administrator");
         ui->memberTable->setItem(row, 0, username);
-        ui->memberTable->setItem(row, 1, new QTableWidgetItem("Administrator"));
+        username->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        adminRights->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        ui->memberTable->setItem(row, 1, adminRights);
     }
 
     //display member list
     for (unsigned int row = adminList.size(); row < adminList.size() + memberList.size(); row++) {
         QTableWidgetItem* username = new QTableWidgetItem(memberList.at(row - adminList.size()));
+        QTableWidgetItem* adminRights = new QTableWidgetItem("Member");
+        username->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        adminRights->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
         ui->memberTable->setItem(row, 0, username);
-        ui->memberTable->setItem(row, 1, new QTableWidgetItem("Member"));
+        ui->memberTable->setItem(row, 1, adminRights);
     }
 
 }

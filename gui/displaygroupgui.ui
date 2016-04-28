@@ -6,62 +6,56 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>565</width>
-    <height>441</height>
+    <width>619</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QTableWidget" name="groupTable">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>33</y>
-     <width>381</width>
-     <height>391</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="groupLabel">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>82</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Your Groups:</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>30</y>
-     <width>137</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="enterGroupButton">
-      <property name="text">
-       <string>Enter Group</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="createGroupButton">
-      <property name="text">
-       <string>Create New Group</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="groupLabel">
+     <property name="text">
+      <string>Your Groups:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="2">
+    <widget class="QTableWidget" name="groupTable"/>
+   </item>
+   <item row="1" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item alignment="Qt::AlignTop">
+      <widget class="QPushButton" name="enterGroupButton">
+       <property name="text">
+        <string>Enter Group</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignTop">
+      <widget class="QPushButton" name="createGroupButton">
+       <property name="text">
+        <string>Create New Group</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>343</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

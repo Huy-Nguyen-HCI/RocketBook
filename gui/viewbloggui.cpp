@@ -17,6 +17,7 @@ ViewBlogGUI::ViewBlogGUI(AccountController *accountController,
     ui->commentTable->setShowGrid(false);
 //    ui->commentTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->commentTable->setSelectionMode(QAbstractItemView::NoSelection);
+    this->setWindowTitle(blog->getTitle());
 
     refreshBlog();
 
@@ -67,6 +68,10 @@ void ViewBlogGUI::refreshComments() {
     for (unsigned int row = 0; row < commentList.size(); row++) {
         QTableWidgetItem* username = new QTableWidgetItem(commentList[row]->getAuthorUsername());
         QTableWidgetItem* comment = new QTableWidgetItem(commentList[row]->getContent());
+
+        username->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        comment->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
         ui->commentTable->setItem(row, 0, username);
         ui->commentTable->setItem(row, 1, comment);
     }

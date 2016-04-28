@@ -17,6 +17,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
     scrapbook = accountController->getUser()->getProfile()->getScrapbook();
 
     ui->viewButton->hide();
+    ui->deleteButton->hide();
+    ui->editButton->hide();
     ui->scrapbookArea->setSelectionMode(QAbstractItemView::SingleSelection);
 
     createBlogView = new CreateBlogGUI(accountController, scrapbook, this);
@@ -127,7 +129,6 @@ void ScrapbookGUI::refreshBook()
 {
     ui->message->clear();
     ui->scrapbookArea->clear();
-    ui->scrapbookArea->addItem(QString("Your posts: \n"));
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
     for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
         Post* currentPost = wholeScrapbook[i];

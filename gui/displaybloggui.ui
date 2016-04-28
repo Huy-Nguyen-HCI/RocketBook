@@ -35,7 +35,7 @@
        <item>
         <widget class="QPushButton" name="viewBlogButton">
          <property name="text">
-          <string>View Blog</string>
+          <string>Comment</string>
          </property>
         </widget>
        </item>

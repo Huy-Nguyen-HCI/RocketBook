@@ -51,6 +51,9 @@ void DisplayGroupGUI::refreshGroups()
         QTableWidgetItem* group = new QTableWidgetItem(QIcon(groupPhoto), groupName);
         QTableWidgetItem* id = new QTableWidgetItem(QString::number(groupID));
 
+        group->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+        id->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+
         ui->groupTable->setItem(i, 0, group);
         ui->groupTable->setItem(i, 1, id);
 
@@ -88,6 +91,5 @@ void DisplayGroupGUI::on_enterGroupButton_clicked()
 
 void DisplayGroupGUI::on_createGroupButton_clicked()
 {
-    refreshGroups();
     groupGUI->switchGroupViews(GroupGUI::GroupGUIType::CreateGroup);
 }

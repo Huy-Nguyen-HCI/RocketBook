@@ -25,10 +25,13 @@ private slots:
 
     void on_buttonBox_rejected();
 
+    void on_uploadPhotoButton_clicked();
+
 private:
     Ui::CreateGroupGUI *ui;
     AccountController* accountController;
     GroupGUI* groupGUI;
+    QString photoPath;
     void clearAllFields();
     void updateFriendList();
 };
