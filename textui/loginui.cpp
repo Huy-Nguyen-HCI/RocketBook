@@ -33,4 +33,5 @@ void LoginUI::run(){
         refresh();
         mvprintw(0,0,"Login Failed. Try Again.");
     }
+
 }

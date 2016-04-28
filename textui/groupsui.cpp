@@ -16,10 +16,19 @@ int GroupsUI::selectGroup(){
 
     bool scrolling=true;
     int offset=0;
-    int row, max;
+    int row, max;  
+    //Instantiates groups when entering screen
+    std::vector<std::string> groupNames;
+    std::vector<Group*> allGroups = accountControl->getUser()->controlGroup()->getAllGroups();
+    for (int i=0;i<allGroups.size();i++){
+        std::string groupName=allGroups.at(i)->getProfile()->getFullName().toStdString();
+        groupNames.push_back(groupName);
+    }
 
     while(scrolling){
-     std::vector<Group*> allGroups = accountControl->getUser()->controlGroup()->getAllGroups();
+
+
+
      erase();
     refresh();
     mvprintw(0,0, "Friends: Press enter to select friend");
@@ -37,7 +46,7 @@ int GroupsUI::selectGroup(){
 
     //Write group naems using this loop
     for (unsigned int i = offset; i < max; i++) {
-        std::string groupName=allGroups.at(i)->getProfile()->getFullName().toStdString();
+        std::string groupName=groupNames.at(i);
         mvprintw(row,8,groupName.c_str());//.toStdString().c_str());
         row++;
     }

@@ -22,6 +22,14 @@ public:
 
 private:
     Scrapbook* scrapbook;
+
+
+    QString profileToHTML();
+    QString friendsToHTML();
+    QString buildContentHTML();
+    QString blogToHTML(Blog *blog);
+    QString tweetToHTML(Tweet *tweet);
+    QString multimediaToHTML(Multimedia *media);
 };
 
 
