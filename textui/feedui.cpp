@@ -211,23 +211,37 @@ void FeedUI::viewBlog(int index)
         endwin();
         return;
     }
-    Feed *allFeed = accountControl->getUser()->getFeed();
-    allFeed->updatePostList();
-    std::vector<Post*> friendFeed = allFeed->getFeed();
-    erase();
-    refresh();
-    Blog* currentBlog;
-    currentBlog = (Blog*) friendFeed[index];
-    QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
-    std::vector<Comment*> allComments = currentBlog->getAllComments();
-    erase();
-    bool commenting = true;
-    int offset=0;
-    int row = 2;
-    int max, displayNumber=18;
+//    Feed *allFeed = accountControl->getUser()->getFeed();
+//    allFeed->updatePostList();
+//    std::vector<Post*> friendFeed = allFeed->getFeed();
+//    erase();
+//    refresh();
+//    Blog* currentBlog;
+//    currentBlog = (Blog*) friendFeed[index];
+//    QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
+//    std::vector<Comment*> allComments = currentBlog->getAllComments();
+//    erase();
+      bool commenting = true;
+      int offset=0;
+      int row = 2;
+      int max, displayNumber=18;
 
 
     while(commenting){
+        Feed *allFeed = accountControl->getUser()->getFeed();
+        allFeed->updatePostList();
+        std::vector<Post*> friendFeed = allFeed->getFeed();
+        erase();
+        refresh();
+        Blog* currentBlog;
+        currentBlog = (Blog*) friendFeed[index];
+        QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
+        std::vector<Comment*> allComments = currentBlog->getAllComments();
+        erase();
+        //bool commenting = true;
+        //int offset=0;
+        //int row = 2;
+        //int max, displayNumber=18;
         endwin();
         erase();
         mvprintw(0,0, author->toStdString().c_str());
@@ -263,7 +277,7 @@ void FeedUI::viewBlog(int index)
             //postComment();
 
             if(allComments.size() > displayNumber)
-            offset=allComments.size()-displayNumber+1;
+            offset=allComments.size()-displayNumber - 1;
         }
         else
             commenting=false;
