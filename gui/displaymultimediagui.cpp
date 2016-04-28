@@ -50,14 +50,10 @@ void DisplayMultimediaGUI::refreshMultimedia() {
         //newPic.load(content);
         QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->multimediaList);
 
-        //QListWidgetItem *newMedia = new QListWidgetItem(newPic, description, ui->multimediaList);
-        //QListWidgetItem *newMedia = new QListWidgetItem(QImage(content), description, ui->multimediaList);
         ui->multimediaList->addItem(newMedia);
-
-        ui->multimediaList->setIconSize(QSize(200,200));
-
-        //ui->multimediaList->addItem(item);
     }
+
+    ui->multimediaList->setIconSize(QSize(200,200));
 
 }
 

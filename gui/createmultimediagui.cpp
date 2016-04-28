@@ -45,17 +45,12 @@ void CreateMultimediaGUI::on_uploadVideoButton_clicked()
 
 void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
 {
-    QString inputPath =
-            QFileDialog::getOpenFileName(this,
+    filePath = QFileDialog::getOpenFileName(this,
                                          tr("Pick your image"),
                                          ":/",
-                                         tr("Video Files (*.jpg *.gif *.png)"));
+                                         tr("Video Files (*.jpg *.bmp *.png)"));
     // if user cancels the file selection
-    if (inputPath.isNull()) return;
-
-    // change the absolute path to relative file path
-    QDir dir("./");
-    filePath = dir.relativeFilePath(inputPath);
+    if (filePath.isNull()) return;
 
     ui->filePathBox->setText(filePath);
     ui->message->setText("Choose image file successful!");
