@@ -38,6 +38,7 @@ private slots:
     void refreshMessages();
 
 
+    void on_chatBox_returnPressed();
 };
 
 #endif // CHATGUI_H

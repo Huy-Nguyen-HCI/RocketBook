@@ -14,7 +14,7 @@ ChatGUI::ChatGUI(AccountController *input, int chatId, QWidget *parent) :
         timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(refreshMessages()));
         connect(timer, SIGNAL(timeout()), this, SLOT(refreshMembers()));
-        timer->start(5000);
+        timer->start(500);
 
     this->setWindowTitle("Chat Room: " + QString::number(chatId));//username + " 's Profile");
 }
@@ -77,3 +77,14 @@ void ChatGUI::closeEvent(QCloseEvent *event){
     event->accept();
 }
 
+
+void ChatGUI::on_chatBox_returnPressed()
+{
+    QString message = ui->chatBox->text();
+    ui->chatBox->clear();
+
+    if(message.toStdString()!=("")){
+    accountController->getUser()->getChatController()->sendMessage(chatId,message);
+    refreshMessages();
+    }
+}
