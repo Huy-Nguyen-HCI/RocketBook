@@ -21,10 +21,9 @@ private:
     AccountController* accountControl;
     FriendController* friendControl;
     RocketUser* user;
-    int displayFriends(int v);
     void addFriend();
-    void removeFriend();
-    int selectFriend(int max);
+    void removeFriend(int index);
+    int selectFriend();
     int viewFriendsProfile(int v);
 
 };

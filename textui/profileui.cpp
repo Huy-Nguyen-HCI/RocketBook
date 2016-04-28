@@ -78,7 +78,8 @@ void ProfileUI::editDescription(){
     getstr(newDescription);
 
     mvprintw(12,3,"Press enter to confirm changes");
-
+    noecho();
+    cbreak();
 if(getch()==10){
     endwin();
     if(accountControl->getUser()->changeProfileDescription(QString::fromStdString(newDescription)))

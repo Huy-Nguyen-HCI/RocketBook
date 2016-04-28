@@ -33,20 +33,22 @@ void FriendsUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-   friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
-   if(selection==1){
+    friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
+    if(selection==1){
 
-       int chosenFriend=selectFriend(LINES-4);
-       viewFriendsProfile(chosenFriend);
-
-   }
-   else if(selection==2)
-       addFriend();
-   else if(selection==3){
-       removeFriend();
-   }
-   else if(selection==4)
-       return;
+        int chosenFriend=selectFriend();
+        if(chosenFriend!=-1)
+            viewFriendsProfile(chosenFriend);
+    }
+    else if(selection==2)
+        addFriend();
+    else if(selection==3){
+        int chosenFriend=selectFriend();
+        if(chosenFriend!=-1)
+            removeFriend(chosenFriend);
+    }
+    else if(selection==4)
+        return;
 
    initialize();
    takeCommand(select(options));
@@ -54,24 +56,6 @@ void FriendsUI::takeCommand(int selection){
 }
 
 
-
-
-/**
-
-void FriendsUI::displayFriends(int i){
-    erase();
-
-    QStringList friendNames= friendControl->getFriendNames();
-    std::vector<std::string> friends;
-
-    for(unsigned int j=i;j<friendNames.size();j++){
-        friends.push_back(friendNames.at(j).toStdString());
-    }
-    for(unsigned int k=0;k<friends.size();k++)
-        mvprintw(k+1,3,friends.at(k).c_str());
-
-}
-**/
 void FriendsUI::addFriend(){
     erase();
     char name[80];
@@ -81,88 +65,71 @@ void FriendsUI::addFriend(){
 
     getstr(name);
 
-    accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name));
+    if(accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name)))
+       mvprintw(LINES-2,2, "Friend added!");
+    else
+       mvprintw(LINES-2,2, "Username does not exist or you are already friends.");
+    getch();
+
 }
 
-void FriendsUI::removeFriend(){
-    erase();
-    char name[80];
+void FriendsUI::removeFriend(int index){
+    QStringList friendNames= friendControl->getFriendNames();
+    QString name=friendNames.at(index);
 
-    mvprintw(1,0,"Enter Username of friend you would like to remove: ");
-    echo();
+    mvprintw(LINES-2,2,"Press enter to confirm friend removal");
+    noecho();
+    cbreak();
+    if(getch()==10){
+        endwin();
 
-    getstr(name);
-
-
-    accountControl->getUser()->controlFriend()->deleteFriend(QString::fromStdString(name));
+        if(accountControl->getUser()->controlFriend()->deleteFriend(name))
+            mvprintw(LINES-2,2, "Friend removed.");
+        else
+            endwin();
+    }
 }
 
 
-int FriendsUI::displayFriends(int v){
-    erase();
-    mvprintw(0,0,"Select a friend's profile to view it or hit q to go back");
 
+int FriendsUI::selectFriend(){
+
+    bool scrolling=true;
+    int offset=0;
+    int row, max;
+
+    while(scrolling){
+    erase();
+    mvprintw(0,0, "Friends: Press enter to select friend");
+
+    row=3;
+    mvprintw(row, 5, "->");
 
     QStringList friendNames= friendControl->getFriendNames();
 
-    for(unsigned int i=0;i<friendNames.size();i++){
-        mvprintw(i+2,8,friendNames.at(i).toStdString().c_str());
+    max=offset+15;
+    if(friendNames.size()<offset+15)
+        max=friendNames.size();
+
+    for (unsigned int i = offset; i < max; i++) {
+        mvprintw(row,8,friendNames.at(i).toStdString().c_str());
+        row++;
     }
 
-    mvprintw(v+1, 5, "->");
-    refresh();
-
-    return friendControl->getFriendNames().size();
-
-}
-
-int FriendsUI::selectFriend(int m){
-
-    int max=m;
-
-    int v=1;
-
-    // initialize the interaction loop to run
-    bool continue_looping = true;
-
-    // draw the current screen
-    int totalFriends=displayFriends(v);
-
-
-   if(totalFriends<max)
-       max=totalFriends;
-
-    do {
-        // draw the new screen
-        refresh();
-        // obtain character from keyboard
-        int ch = getch();
-        // operate based on input character
-        switch (ch) {
-        case KEY_UP:
-            if(v>0) //arrow goes up
-            v--;
-            if(v==0) //arrow goes to bottom
-                v=max;
-            break;
-        case KEY_DOWN:
-            if(v<max+1) //arrows goes down
-            v++;
-            if(v==max+1) //arrow goes back to top
-                v=1;
-            break;
-        case 10: //Enter Key
-            continue_looping = false;
-            break;
-        case 113: //q
+    int ch= getch();
+        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+            offset++;
+        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
+        else if(ch==10)//enter key
+            scrolling=false;
+        else
             return -1;
-        }
 
-        displayFriends(v);
-
-    } while(continue_looping);
-
-    return v-1;
+    }
+    return offset;
 
 }
 
@@ -170,7 +137,6 @@ int FriendsUI::viewFriendsProfile(int v){
         erase();
     if(v==-1)
         return 0;
-
 
     clear();
     mvprintw(0,0,"Friend's Profile");
@@ -185,4 +151,3 @@ int FriendsUI::viewFriendsProfile(int v){
 
     getch();
 }
-
