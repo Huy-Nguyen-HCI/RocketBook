@@ -17,6 +17,8 @@ public:
     void updatePostList();
     std::vector<Post*> getFeed();
 
+    Blog* getBlog(int id);
+
 
 private:
     QString dbPath;

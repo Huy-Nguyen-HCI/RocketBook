@@ -61,3 +61,12 @@ bool Feed::comparePost(Post *a, Post *b)
     return a->getID() > b->getID();
 }
 
+Blog* Feed::getBlog(int id) {
+
+    for (unsigned int i = 0 ; i < postList.size(); i++) {
+        if (postList[i]->getID() == id) {
+            return (Blog*)postList[i];
+        }
+    }
+}
+

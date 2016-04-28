@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QListWidget>
 #include "../model/accountcontroller.h"
+#include "viewbloggui.h"
 
 namespace Ui {
 class DashboardGUI;
@@ -27,9 +28,21 @@ private slots:
 
     void on_latestMultimediaButton_clicked();
 
+    void on_commentButton_clicked();
+
+    void on_wholeFeedItem_clicked(QListWidgetItem* listItem);
+
 private:
     Ui::DashboardGUI *ui;
     AccountController* accountController;
+
+    //All list item static value for setData --> should be bypassed if redesigned by changing the data structure
+    static int blogListItemType;
+    static int tweetListItemType;
+    static int multimediaListItemType;
+    static int listItemTypeRole;
+    static int listItemIDRole;
+    static int listItemScrapbookRole;
 };
 
 #endif // DASHBOARDGUI_H

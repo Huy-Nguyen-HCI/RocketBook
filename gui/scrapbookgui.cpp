@@ -211,7 +211,8 @@ void ScrapbookGUI::on_viewButton_clicked()
 {
     QList<QListWidgetItem*> blogList = ui->scrapbookArea->selectedItems();
     int blogID = blogList[0]->data(listItemIDRole).toInt();
-    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(accountController, scrapbook, blogID);
+    Blog* blog = scrapbook->getBlog(blogID);
+    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(accountController, blog);
     viewBlogGUI->show();
 }
 

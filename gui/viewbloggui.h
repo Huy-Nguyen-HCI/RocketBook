@@ -23,8 +23,7 @@ public:
      * @param blog The blog that is opened, not necessarily belonging to the current user
      * @param parent The parent widget
      */
-    explicit ViewBlogGUI(AccountController *accountController,
-                         Scrapbook *scrapbook, int blogID,
+    explicit ViewBlogGUI(AccountController *accountController, Blog* blog,
                          QWidget *parent = 0);
     ~ViewBlogGUI();
 
@@ -42,7 +41,6 @@ private:
     Ui::ViewBlogGUI *ui;
     Blog* blog;
     AccountController* accountController;
-    Scrapbook* scrapbook;
 
     /**
      * @brief refreshBlog

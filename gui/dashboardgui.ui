@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>341</height>
+    <width>635</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,28 +20,42 @@
    <item row="0" column="1">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QPushButton" name="latestScrapbookButton">
+      <widget class="QListWidget" name="wholeFeed"/>
+     </item>
+     <item alignment="Qt::AlignTop">
+      <widget class="QPushButton" name="commentButton">
        <property name="text">
-        <string>My Scrapbook</string>
+        <string>Comment</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="latestGroupActButton">
-       <property name="text">
-        <string>My Group Activity</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="latestMultimediaButton">
-       <property name="text">
-        <string>My Latest Multimedia</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QListWidget" name="latestInfoListWidget"/>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QPushButton" name="latestScrapbookButton">
+         <property name="text">
+          <string>Latest From Scrapbook</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="latestGroupActButton">
+         <property name="text">
+          <string>Latest Group Posts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="latestMultimediaButton">
+         <property name="text">
+          <string>Latest Multimedia Posts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="latestInfoListWidget"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>

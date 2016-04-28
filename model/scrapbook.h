@@ -36,14 +36,14 @@ public:
                   bool privacy);
     std::vector<Blog*> getAllBlogs();
 
-    /**
-     * @brief addComment
-     * Add a new comment to the blog
-     * @param username The username of the commenter
-     * @param content The content of the comment
-     * @return the actual comment
-     */
-    Comment* addComment(int blogID, QString username, QString content);
+//    /**
+//     * @brief addComment
+//     * Add a new comment to the blog
+//     * @param username The username of the commenter
+//     * @param content The content of the comment
+//     * @return the actual comment
+//     */
+//    Comment* addComment(int blogID, QString username, QString content);
 
     Tweet* addTweet(Tweet* newTweet);
     Tweet* addTweet(QString username,

@@ -3,6 +3,8 @@
 #include <vector>
 #include "post.h"
 #include "comment.h"
+#include "../database/commentdb.h"
+#include "../database/accountdb.h"
 
 
 /**
@@ -19,7 +21,7 @@ public:
      * @param title The title of the blog
      * @param content The content of the blog
      */
-    Blog(QString username, QString title, QString content);
+    Blog(QString username, QString title, QString content, QString dbPath = "/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite");
 
     /**
      * @brief Construct a blog post
@@ -28,7 +30,7 @@ public:
      * @param title The title of the blog
      * @param content The content of the blog
      */
-    Blog(int id, QString username, QString title, QString content);
+    Blog(int id, QString username, QString title, QString content, QString dbPath = "/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite");
 
     /**
      * @brief Default destructor for blog post
@@ -40,6 +42,16 @@ public:
      * @param newComment The new comment to be added to the blog
      */
     Comment* addComment(Comment* newComment);
+
+
+    /**
+     * @brief addComment
+     * Add a new comment to the blog
+     * @param username The username of the commenter
+     * @param content The content of the comment
+     * @return the actual comment
+     */
+    Comment* addComment(QString username, QString content);
 
 
     QString getUsername() {return username;}
@@ -66,6 +78,9 @@ public:
 private:
     std::vector<Comment*> commentList;
     QString title;
+    QString dbPath;
+    CommentDB* commentDB;
+    AccountDB* accountDB;
 };
 
 #endif // BLOG_H

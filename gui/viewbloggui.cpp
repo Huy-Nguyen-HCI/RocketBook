@@ -2,16 +2,14 @@
 #include "ui_viewbloggui.h"
 
 ViewBlogGUI::ViewBlogGUI(AccountController *accountController,
-                         Scrapbook* scrapbook,
-                         int blogID,
+                         Blog *blog,
                          QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ViewBlogGUI)
 {
     ui->setupUi(this);
     this->accountController = accountController;
-    this->scrapbook = scrapbook;
-    this->blog = scrapbook->getBlog(blogID);
+    this->blog = blog;
 
     ui->commentTable->setColumnCount(2);
     ui->commentTable->horizontalHeader()->hide();
@@ -79,7 +77,7 @@ void ViewBlogGUI::on_buttonBox_clicked(QAbstractButton *button)
 {
     if ((QPushButton*)button == ui->buttonBox->button(QDialogButtonBox::Apply)) {
         QString newComment = ui->commentEdit->document()->toPlainText();
-        scrapbook->addComment(blog->getID(), accountController->getUser()->getUsername(), newComment);
+        blog->addComment(accountController->getUser()->getUsername(), newComment);
         refreshBlog();
     } else if ((QPushButton*)button == ui->buttonBox->button(QDialogButtonBox::Cancel)) {
         this->close();

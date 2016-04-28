@@ -1,12 +1,23 @@
 #include "dashboardgui.h"
 #include "ui_dashboardgui.h"
 
+
+int DashboardGUI::blogListItemType = 13;
+int DashboardGUI::tweetListItemType = 14;
+int DashboardGUI::multimediaListItemType = 15;
+int DashboardGUI::listItemTypeRole = 20;
+int DashboardGUI::listItemIDRole = 21;
+int DashboardGUI::listItemScrapbookRole = 22;
+
 DashboardGUI::DashboardGUI(AccountController *inputAccountController, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DashboardGUI)
 {
     ui->setupUi(this);
     this->accountController = inputAccountController;
+    ui->commentButton->hide();
+
+    connect(ui->wholeFeed, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(on_wholeFeedItem_clicked(QListWidgetItem*)));
 }
 
 DashboardGUI::~DashboardGUI()
@@ -48,7 +59,13 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
     QString content =
             "Blog: \nTitle:    " + currentTitle + "\n" +
             "Content:    " + currentContent + "\n";
-    theList->addItem(content);
+
+    QListWidgetItem* listItem = new QListWidgetItem(content);
+    listItem->setData(listItemTypeRole, blogListItemType);
+    listItem->setData(listItemIDRole, blog->getID());
+
+    theList->addItem(listItem);
+
 }
 
 void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
@@ -57,7 +74,10 @@ void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString content("Tweet: \nContent: " + currentContent +"\n");
 
-    theList->addItem(content);
+    QListWidgetItem* listItem = new QListWidgetItem(content);
+    listItem->setData(listItemTypeRole, tweetListItemType);
+    listItem->setData(listItemIDRole, tweet->getID());
+    theList->addItem(listItem);
 
 }
 
@@ -69,11 +89,13 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theLis
     QString content = multimedia->getContent();
     QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, theList);
+
+    newMedia->setData(listItemTypeRole, multimediaListItemType);
+    newMedia->setData(listItemIDRole, multimedia->getID());
+
     theList->addItem(newMedia);
 
     theList->setIconSize(QSize(125,125));
-
-
 }
 
 
@@ -135,3 +157,25 @@ void DashboardGUI::refreshAllPosts()
 }
 
 
+
+
+void DashboardGUI::on_wholeFeedItem_clicked(QListWidgetItem *listItem)
+{
+    if(listItem->data(listItemTypeRole) == blogListItemType) {
+        ui->commentButton->show();
+    } else {
+        ui->commentButton->hide();
+    }
+}
+
+
+
+void DashboardGUI::on_commentButton_clicked()
+{
+    QList<QListWidgetItem*> blogList = ui->wholeFeed->selectedItems();
+    int blogID = blogList[0]->data(listItemIDRole).toInt();
+    Blog* blog = accountController->getUser()->getFeed()->getBlog(blogID);
+    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(accountController, blog);
+    viewBlogGUI->show();
+
+}

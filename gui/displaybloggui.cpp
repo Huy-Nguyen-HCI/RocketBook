@@ -30,7 +30,8 @@ void DisplayBlogGUI::on_viewBlogButton_clicked()
 {
     QList<QListWidgetItem*> blogList = ui->listWidget->selectedItems();
     int blogID = blogList[0]->data(5).toInt();
-    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(scrapbookGUI->getAccountController(), scrapbook, blogID);
+    Blog* blog = scrapbook->getBlog(blogID);
+    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(scrapbookGUI->getAccountController(), blog);
     viewBlogGUI->show();
 }
 
