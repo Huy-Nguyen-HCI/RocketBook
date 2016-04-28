@@ -29,7 +29,6 @@ mvprintw(v+2, 5, "->");
 refresh();
 }
 
-
 void ChatUI::takeCommand(int selection){
 
     // cleanup the window and return control to bash
@@ -41,19 +40,32 @@ void ChatUI::takeCommand(int selection){
            createChat(chosenFriend);//(chosenFriend);
    }
 
+   else if(selection==2){
+       int chosenChat=selectChat();
+       if(chosenChat!=-1);
+       enterChat(chosenChat);
+   }
 
-   else if(selection==2)
-       enterChat();
-   else if(selection==3)
-       addFriend();
-   else if(selection==4)
-       leaveChat();
+   else if(selection==3){
+    int chosenChat=selectChat();
+    erase();
+    int chosenFriend=selectFriend();
+    if(chosenFriend!=-1 && chosenChat!=-1)
+        addFriend(chosenChat,chosenFriend);//(chosenFriend);
+
+   }
+
+   else if(selection==4){
+       int chosenChat=selectChat();
+       if(chosenChat!=-1)
+           leaveChat(chosenChat);
+   }
+
    else if(selection==5)
        return;
 
    initialize();
    takeCommand(select(options));
-
 }
 
 void ChatUI::createChat(int id){
@@ -62,22 +74,21 @@ void ChatUI::createChat(int id){
     mvprintw(LINES-2, 5, "New Chat Created");
     getch();
     erase();
-
 }
 
 
 
-
+/**
 void ChatUI::enterChat(){
-   chatList=accountControl->getUser()->getChatController()->getChatIdList();
+   std::vector<int> chats=accountControl->getUser()->getChatController()->getChatIdList();
    //This will enter Chat at specific chat Id
    enterChat(chatList->at(chatSelection()));
 
 
 }
+**/
 
-
-
+/**
 void ChatUI::displayChats(int v) {
 
     erase();
@@ -134,9 +145,10 @@ int ChatUI::chatSelection(){
     return v-1;
 
 }
-
-void ChatUI::enterChat(int chatId){
-
+**/
+void ChatUI::enterChat(int index){
+    std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+    int chatId=chatList->at(index);
 
     std::vector<int>* senderIds=accountControl->getUser()->getChatController()->getSenderList(chatId);
     std::vector<QString>* messages=accountControl->getUser()->getChatController()->getMessageList(chatId);
@@ -157,13 +169,28 @@ void ChatUI::enterChat(int chatId){
 
 }
 
-void ChatUI::addFriend(){
+void ChatUI::addFriend(int chatIndex, int friendIndex){
+    std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+    int chatId=chatList->at(chatIndex);
+    QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
+    QString friendName=friendNames.at(friendIndex);
+
+    if(accountControl->getUser()->getChatController()->addMemberToChat(chatId,friendName)){
+        mvprintw(LINES-2, 5, "Friend added to Chat");
+    }
+    getch();
 
 }
 
 
-void ChatUI::leaveChat(){
+void ChatUI::leaveChat(int index){
+    std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+    int chatId=chatList->at(index);
 
+    accountControl->getUser()->getChatController()->removeUserFromChat(chatId, username);
+        mvprintw(LINES-2, 5, "You've left the chat");
+
+        getch();
 }
 
 int ChatUI::selectFriend(){
@@ -185,8 +212,50 @@ int ChatUI::selectFriend(){
     if(friendNames.size()<offset+15)
         max=friendNames.size();
 
+
     for (unsigned int i = offset; i < max; i++) {
         mvprintw(row,8,friendNames.at(i).toStdString().c_str());
+        row++;
+    }
+
+    int ch= getch();
+        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+            offset++;
+        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
+        else if(ch==10)//enter key
+            scrolling=false;
+        else
+            return -1;
+
+    }
+    return offset;
+
+}
+
+int ChatUI::selectChat(){
+
+    bool scrolling=true;
+    int offset=0;
+    int row, max;
+
+    while(scrolling){
+    erase();
+    mvprintw(0,0, "Friends: Press enter to select chat");
+
+    row=3;
+    mvprintw(row, 5, "->");
+
+    std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+
+    max=offset+15;
+    if(chatList->size()<offset+15)
+        max=chatList->size();
+
+    for(unsigned int i=offset;i<max; i++){
+        mvprintw(row,8,std::to_string(chatList->at(i)).c_str());
         row++;
     }
 

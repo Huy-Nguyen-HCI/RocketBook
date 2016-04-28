@@ -24,11 +24,12 @@ private:
     void createChat(int id);
     void enterChat();
     int chatSelection();
-    void enterChat(int chatId);
-    void addFriend();
-    void leaveChat();
-    std::vector<int>* chatList;
+    void enterChat(int index);
+    void addFriend(int chatIndex, int friendIndex);
+    void leaveChat(int index);
+
     int selectFriend();
+    int selectChat();
 
 };
 
