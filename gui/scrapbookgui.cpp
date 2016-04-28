@@ -1,6 +1,12 @@
 #include "scrapbookgui.h"
 #include "ui_scrapbookgui.h"
 
+int ScrapbookGUI::blogListItemType = 13;
+int ScrapbookGUI::tweetListItemType = 14;
+int ScrapbookGUI::multimediaListItemType = 15;
+int ScrapbookGUI::listItemTypeRole = 20;
+int ScrapbookGUI::listItemIDRole = 21;
+
 ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
                            QWidget *parent) :
     QWidget(parent),
@@ -152,14 +158,23 @@ void ScrapbookGUI::displayBlog(Blog* blog) {
     QString content =
             "Blog: \nTitle:    " + currentTitle + "\n" +
             "Content:    " + currentContent + "\n";
-    ui->scrapbookArea->addItem(content);
+
+    QListWidgetItem* listItem = new QListWidgetItem(content);
+    listItem->setData(listItemTypeRole, blogListItemType);
+    listItem->setData(listItemIDRole, blog->getID());
+    ui->scrapbookArea->addItem(listItem);
 }
 
 void ScrapbookGUI::displayTweet(Tweet* tweet) {
 
     QString currentContent = tweet->getContent();
     QString content("Tweet: \nContent: " + currentContent +"\n");
-    ui->scrapbookArea->addItem(content);
+
+
+    QListWidgetItem* listItem = new QListWidgetItem(content);
+    listItem->setData(listItemTypeRole, tweetListItemType);
+    listItem->setData(listItemIDRole, tweet->getID());
+    ui->scrapbookArea->addItem(listItem);
 
 }
 
@@ -171,7 +186,12 @@ void ScrapbookGUI::displayMultimedia(Multimedia* multimedia) {
     QString content = multimedia->getContent();
     QString newLabel("Title: "+title + "\n" + "Description: " + description);
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->scrapbookArea);
+
+
+    newMedia->setData(listItemTypeRole, multimediaListItemType);
+    newMedia->setData(listItemIDRole, multimedia->getID());
     ui->scrapbookArea->addItem(newMedia);
+
     ui->scrapbookArea->setIconSize(QSize(125,125));
 
 
@@ -189,11 +209,16 @@ void ScrapbookGUI::on_deleteButton_clicked()
 
 void ScrapbookGUI::on_viewButton_clicked()
 {
-
+    QList<QListWidgetItem*> blogList = ui->scrapbookArea->selectedItems();
+    int blogID = blogList[0]->data(listItemIDRole).toInt();
+    ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(accountController, scrapbook, blogID);
+    viewBlogGUI->show();
 }
 
 void ScrapbookGUI::on_scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
-//    if(listItem->t)
-//    ui->viewButton->show();
-
+    if(listItem->data(listItemTypeRole) == blogListItemType) {
+        ui->viewButton->show();
+    } else {
+        ui->viewButton->hide();
+    }
 }

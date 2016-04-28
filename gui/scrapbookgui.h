@@ -62,6 +62,13 @@ private:
     DisplayTweetGUI *displayTweetView;
     AccountController *accountController;
     Scrapbook* scrapbook;
+
+    //All list item static value for setData --> should be bypassed if redesigned by changing the data structure
+    static int blogListItemType;
+    static int tweetListItemType;
+    static int multimediaListItemType;
+    static int listItemTypeRole;
+    static int listItemIDRole;
 };
 
 #endif // SCRAPBOOKGUI_H
