@@ -35,11 +35,10 @@ void ChatUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-    chatControl=new ChatController(accountControl->getPath(),accountControl->getUser()->getID());
    if(selection==1){
        int chosenFriend=selectFriend();
        if(chosenFriend!=-1)
-           createChat();//(chosenFriend);
+           createChat(chosenFriend);//(chosenFriend);
    }
 
 
@@ -57,9 +56,10 @@ void ChatUI::takeCommand(int selection){
 
 }
 
-void ChatUI::createChat(){
- //   chatControl->createChat();
-    mvprintw(8, 6, "New Chat Created");
+void ChatUI::createChat(int id){
+    QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
+    accountControl->getUser()->getChatController()->createChat(friendNames.at(id));
+    mvprintw(LINES-2, 5, "New Chat Created");
     getch();
     erase();
 
@@ -69,7 +69,7 @@ void ChatUI::createChat(){
 
 
 void ChatUI::enterChat(){
-   chatList=chatControl->getChatIdList();
+   chatList=accountControl->getUser()->getChatController()->getChatIdList();
    //This will enter Chat at specific chat Id
    enterChat(chatList->at(chatSelection()));
 
@@ -92,18 +92,6 @@ void ChatUI::displayChats(int v) {
 
     refresh();
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 int ChatUI::chatSelection(){
@@ -150,8 +138,8 @@ int ChatUI::chatSelection(){
 void ChatUI::enterChat(int chatId){
 
 
-    std::vector<int>* senderIds=chatControl->getSenderList(chatId);
-    std::vector<QString>* messages=chatControl->getMessageList(chatId);
+    std::vector<int>* senderIds=accountControl->getUser()->getChatController()->getSenderList(chatId);
+    std::vector<QString>* messages=accountControl->getUser()->getChatController()->getMessageList(chatId);
 
     erase();
     mvprintw(0,0, "Chat Id: ");
@@ -191,7 +179,7 @@ int ChatUI::selectFriend(){
     row=3;
     mvprintw(row, 5, "->");
 
-    QStringList friendNames= friendControl->getFriendNames();
+    QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
 
     max=offset+15;
     if(friendNames.size()<offset+15)

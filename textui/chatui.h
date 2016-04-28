@@ -4,7 +4,6 @@
 
 #include "screen.h"
 
-#include "../model/chatcontroller.h"
 #include "../model/accountcontroller.h"
 
 
@@ -21,7 +20,8 @@ public:
 private:
     AccountController* accountControl;
     ChatController* chatControl;
-    void createChat();
+    FriendController* friendControl;
+    void createChat(int id);
     void enterChat();
     int chatSelection();
     void enterChat(int chatId);
