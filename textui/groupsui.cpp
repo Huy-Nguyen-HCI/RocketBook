@@ -32,7 +32,7 @@ int GroupsUI::selectGroup(){
 
 
     max=offset+15;
-    if(allGroups.size()<offset+15) ///change container
+    if(allGroups.size()<offset+15)
         max=allGroups.size();
 
     //Write group naems using this loop

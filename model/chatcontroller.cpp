@@ -47,16 +47,16 @@ void ChatController::createChat(QString friendName){
     if(accountDB->accountExists(username) && accountDB->accountExists(friendName)){
 
     if(chatDB->createChat(accountDB->retrieveAccountID(username))){
-           cout << "Chat successfully created" << endl;
+          // cout << "Chat successfully created" << endl;
            chatDB->addToChat(chatDB->getMaxChatID(),accountDB->retrieveAccountID(friendName));
      updateChats();
     }
-       else
-           cout << "Chat Creation failed" << endl;
+       else;
+        //   cout << "Chat Creation failed" << endl;
 
     }
     else{
-        cout << "Account entered does not exit" << endl;
+      //  cout << "Account entered does not exit" << endl;
     }
 
 }
@@ -64,7 +64,7 @@ void ChatController::createChat(QString friendName){
 bool ChatController::addMemberToChat(int chatId,QString friendName){
 
     if(chatDB->addToChat(chatId, accountDB->retrieveAccountID(friendName))){
-        cout << friendName.toStdString() << " successfully added to chat" << endl;
+        //cout << friendName.toStdString() << " successfully added to chat" << endl;
         return true;
     }
     else
@@ -76,12 +76,12 @@ bool ChatController::removeUserFromChat(int chatId, QString username){
 
     if(chatDB->inChat(chatId,accountDB->retrieveAccountID(username))){
         chatDB->removeFromChat(chatId,accountDB->retrieveAccountID(username));
-        cout << username.toStdString() << " has been deleted from chat";
+       // cout << username.toStdString() << " has been deleted from chat";
         updateChats();
         return true;
     }
-    else
-        cout <<username.toStdString() << " is not in chat";
+    else;
+       // cout <<username.toStdString() << " is not in chat";
     return false;
 }
 
@@ -237,12 +237,12 @@ void ChatController::sendMessage(int chatId){
 //User enters Message ID here. In real program, message ID must be stored in chat object
 void ChatController::deleteMessage(int chatId){
     int userInput;
-    cout << "\n message number to delete \n";
+    //cout << "\n message number to delete \n";
     cin >> userInput;
-    if(messageDB->deleteMessage(chatId,userInput))
-        cout << "Message successfully deleted" << endl;
-    else
-        cout << "Message deletion failed" << endl;
+    if(messageDB->deleteMessage(chatId,userInput));
+     //   cout << "Message successfully deleted" << endl;
+    else;
+  //      cout << "Message deletion failed" << endl;
 
 }
 
