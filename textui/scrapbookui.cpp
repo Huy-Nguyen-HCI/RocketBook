@@ -162,6 +162,8 @@ void ScrapbookUI::displayScrapbook(){
                 row = row+3;
                 break;
             case Post::typeMultimedia:
+                mvprintw(row, 1, "multimedia content!");
+                row = row+2;
                 break;
             case Post::typeComment:
                 break;
