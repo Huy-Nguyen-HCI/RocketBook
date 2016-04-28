@@ -245,7 +245,7 @@ void ScrapbookUI::makeHTML(){
     // end html code
     htmlText += "</html>";
 
-   // writeToHTMLFile(htmlText);
+    writeToHTMLFile(htmlText);
 
 }
 
@@ -369,4 +369,23 @@ QString ScrapbookUI::multimediaToHTML(Multimedia *media) {
     html += "<u>Description:</u> " + media->getDescription().toHtmlEscaped();
 
     return html;
+}
+
+void ScrapbookUI::writeToHTMLFile(QString htmlText) {
+    char path[500];
+
+    mvprintw(LINES-2, 5, "Enter file path");
+
+    getstr(path);
+    std::string p(path);
+
+    QString fileName = QString::fromStdString(p);
+    if (fileName.isNull()) return;
+
+    QFile file(fileName);
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream( &file );
+        stream << htmlText << endl;
+    }
 }

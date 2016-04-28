@@ -30,6 +30,7 @@ private:
     QString blogToHTML(Blog *blog);
     QString tweetToHTML(Tweet *tweet);
     QString multimediaToHTML(Multimedia *media);
+    void writeToHTMLFile(QString htmlText);
 };
 
 
