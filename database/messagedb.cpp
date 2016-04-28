@@ -6,7 +6,12 @@
 MessageDB::MessageDB()
 {
     connectionName.append("messages");
-    QSqlDatabase messageDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase messageDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        messageDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        messageDB = QSqlDatabase::database(connectionName);
+    }
     messageDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!messageDB.open())
@@ -22,10 +27,15 @@ MessageDB::MessageDB()
 MessageDB::MessageDB(const QString &path)
 {
     connectionName.append("accounts");
-    QSqlDatabase MessageDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
-    MessageDB.setDatabaseName(path);
+    QSqlDatabase messageDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        messageDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        messageDB = QSqlDatabase::database(connectionName);
+    }
+    messageDB.setDatabaseName(path);
 
-    if (!MessageDB.open())
+    if (!messageDB.open())
     {
         //qDebug() << "Error: connection with database fail";
     }

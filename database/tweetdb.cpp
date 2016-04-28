@@ -3,7 +3,12 @@
 TweetDB::TweetDB(): PostDB::PostDB()
 {
     connectionName.append("tweets");
-    QSqlDatabase tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase tweetDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        tweetDB = QSqlDatabase::database(connectionName);
+    }
     tweetDB.setDatabaseName("TweetDB.sqlite");
 
     if (!tweetDB.open())
@@ -19,7 +24,12 @@ TweetDB::TweetDB(): PostDB::PostDB()
 TweetDB::TweetDB(const QString &path): PostDB::PostDB()
 {
     connectionName.append("tweets");
-    QSqlDatabase tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase tweetDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        tweetDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        tweetDB = QSqlDatabase::database(connectionName);
+    }
     tweetDB.setDatabaseName(path);
 
     if (!tweetDB.open())

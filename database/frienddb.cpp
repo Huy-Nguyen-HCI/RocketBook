@@ -3,7 +3,12 @@
 FriendDB::FriendDB()
 {
     connectionName.append("friends");
-    QSqlDatabase friendDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase friendDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        friendDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        friendDB = QSqlDatabase::database(connectionName);
+    }
     friendDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!friendDB.open())
@@ -19,7 +24,12 @@ FriendDB::FriendDB()
 FriendDB::FriendDB(const QString &path)
 {
     connectionName.append("friends");
-    QSqlDatabase friendDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase friendDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        friendDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        friendDB = QSqlDatabase::database(connectionName);
+    }
     //Must name database connection
 
     friendDB.setDatabaseName(path);

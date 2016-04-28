@@ -30,7 +30,7 @@ private slots:
 
     void on_commentButton_clicked();
 
-    void on_wholeFeedItem_clicked(QListWidgetItem* listItem);
+    void wholeFeedItem_clicked(QListWidgetItem* listItem);
 
 private:
     Ui::DashboardGUI *ui;

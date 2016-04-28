@@ -47,7 +47,7 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
 
     refreshBook();
 
-    connect(ui->scrapbookArea, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(on_scrapbookAreaItem_clicked(QListWidgetItem*)));
+    connect(ui->scrapbookArea, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(scrapbookAreaItem_clicked(QListWidgetItem*)));
 
 }
 
@@ -220,7 +220,7 @@ void ScrapbookGUI::on_viewButton_clicked()
     viewBlogGUI->show();
 }
 
-void ScrapbookGUI::on_scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
+void ScrapbookGUI::scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
     if(listItem->data(listItemTypeRole) == blogListItemType) {
         ui->viewButton->show();
     } else {

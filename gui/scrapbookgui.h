@@ -50,7 +50,7 @@ private slots:
 
     void on_viewButton_clicked();
 
-    void on_scrapbookAreaItem_clicked(QListWidgetItem *listItem);
+    void scrapbookAreaItem_clicked(QListWidgetItem *listItem);
 
     void on_exportButton_clicked();
 

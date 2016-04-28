@@ -3,7 +3,12 @@
 GroupDB::GroupDB()
 {
     connectionName.append("groups");
-    QSqlDatabase groupDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase groupDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        groupDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        groupDB = QSqlDatabase::database(connectionName);
+    }
     groupDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!groupDB.open())
@@ -19,7 +24,12 @@ GroupDB::GroupDB()
 GroupDB::GroupDB(const QString &path)
 {
     connectionName.append("groups");
-    QSqlDatabase groupDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase groupDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        groupDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        groupDB = QSqlDatabase::database(connectionName);
+    }
     groupDB.setDatabaseName(path);
 
     if (!groupDB.open())

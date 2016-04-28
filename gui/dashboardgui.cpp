@@ -17,7 +17,7 @@ DashboardGUI::DashboardGUI(AccountController *inputAccountController, QWidget *p
     this->accountController = inputAccountController;
     ui->commentButton->hide();
 
-    connect(ui->wholeFeed, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(on_wholeFeedItem_clicked(QListWidgetItem*)));
+    connect(ui->wholeFeed, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(wholeFeedItem_clicked(QListWidgetItem*)));
     refreshAllPosts();
 }
 
@@ -160,7 +160,7 @@ void DashboardGUI::refreshAllPosts()
 
 
 
-void DashboardGUI::on_wholeFeedItem_clicked(QListWidgetItem *listItem)
+void DashboardGUI::wholeFeedItem_clicked(QListWidgetItem *listItem)
 {
     if(listItem->data(listItemTypeRole) == blogListItemType) {
         ui->commentButton->show();

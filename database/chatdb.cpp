@@ -4,7 +4,12 @@
 ChatDB::ChatDB()
 {
     connectionName.append("chats");
-    QSqlDatabase chatDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase chatDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        chatDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        chatDB = QSqlDatabase::database(connectionName);
+    }
     chatDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!chatDB.open())
@@ -20,7 +25,12 @@ ChatDB::ChatDB()
 ChatDB::ChatDB(const QString &path)
 {
     connectionName.append("chats");
-    QSqlDatabase chatDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase chatDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        chatDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        chatDB = QSqlDatabase::database(connectionName);
+    }
     chatDB.setDatabaseName(path);
 
     if (!chatDB.open())

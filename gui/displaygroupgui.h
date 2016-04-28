@@ -27,7 +27,7 @@ private:
 
 
 private slots:
-    void cell_clicked( int row, int column );
+    void cell_clicked();
     void on_enterGroupButton_clicked();
     void on_createGroupButton_clicked();
 };

@@ -3,7 +3,12 @@
 ProfileDB::ProfileDB()
 {
     connectionName.append("Profiles");
-    QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase profileDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        profileDB = QSqlDatabase::database(connectionName);
+    }
     profileDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!profileDB.open())
@@ -20,7 +25,12 @@ ProfileDB::ProfileDB()
 ProfileDB::ProfileDB(const QString &path)
 {
     connectionName.append("Profiles");
-    QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase profileDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        profileDB = QSqlDatabase::database(connectionName);
+    }
     profileDB.setDatabaseName(path);
 
     if (!profileDB.open())
@@ -36,7 +46,12 @@ ProfileDB::ProfileDB(const QString &path)
 ProfileDB::ProfileDB(const QString &path, QString connectionName)
 {
     this->connectionName.append(connectionName);
-    QSqlDatabase profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase profileDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        profileDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        profileDB = QSqlDatabase::database(connectionName);
+    }
     profileDB.setDatabaseName(path);
 
     if (!profileDB.open())

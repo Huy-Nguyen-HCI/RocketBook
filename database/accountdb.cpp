@@ -3,8 +3,14 @@
 AccountDB::AccountDB()
 {
     connectionName.append("accounts");
-    QSqlDatabase accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
-    accountDB.setDatabaseName("../database/RocketDB.sqlite");
+    QSqlDatabase accountDB;
+
+    if (!QSqlDatabase::contains(connectionName)) {
+        accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        accountDB = QSqlDatabase::database(connectionName);
+    }
+
 
     if (!accountDB.open())
     {
@@ -19,7 +25,12 @@ AccountDB::AccountDB()
 AccountDB::AccountDB(const QString &path)
 {
     connectionName.append("accounts");
-    QSqlDatabase accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase accountDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        accountDB = QSqlDatabase::database(connectionName);
+    }
     accountDB.setDatabaseName(path);
 
     if (!accountDB.open())
@@ -35,7 +46,12 @@ AccountDB::AccountDB(const QString &path)
 AccountDB::AccountDB(const QString &path, const QString &connectionName)
 {
     this->connectionName.append(connectionName);
-    QSqlDatabase accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase accountDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        accountDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        accountDB = QSqlDatabase::database(connectionName);
+    }
     accountDB.setDatabaseName(path);
 
     if (!accountDB.open())

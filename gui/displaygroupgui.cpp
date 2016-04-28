@@ -26,7 +26,7 @@ DisplayGroupGUI::DisplayGroupGUI(AccountController *inputAccountController,
 
     refreshGroups();
 
-    connect( ui->groupTable, SIGNAL(cellClicked(int,int)), this, SLOT(cell_clicked(int,int)) );
+    connect( ui->groupTable, SIGNAL(cellClicked(int,int)), this, SLOT(cell_clicked()) );
 }
 
 DisplayGroupGUI::~DisplayGroupGUI()
@@ -61,7 +61,7 @@ void DisplayGroupGUI::refreshGroups()
 
 }
 
-void DisplayGroupGUI::cell_clicked( int row, int column )
+void DisplayGroupGUI::cell_clicked( )
 {
     ui->enterGroupButton->show();
 }

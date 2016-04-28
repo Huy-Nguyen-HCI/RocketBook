@@ -3,7 +3,15 @@
 BlogDB::BlogDB()
 {
     connectionName.append("blogs");
-    QSqlDatabase blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+
+    QSqlDatabase blogDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        blogDB = QSqlDatabase::database(connectionName);
+    }
+
+
     blogDB.setDatabaseName("rocketDB.sqlite");
 
     if (!blogDB.open())
@@ -19,7 +27,14 @@ BlogDB::BlogDB()
 BlogDB::BlogDB(const QString &path) : PostDB::PostDB()
 {
     connectionName.append("blogs");
-    QSqlDatabase blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+
+    QSqlDatabase blogDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        blogDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        blogDB = QSqlDatabase::database(connectionName);
+    }
+
     blogDB.setDatabaseName(path);
 
     if (!blogDB.open())

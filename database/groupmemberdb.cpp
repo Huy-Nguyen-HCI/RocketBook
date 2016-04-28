@@ -3,7 +3,12 @@
 GroupMemberDB::GroupMemberDB()
 {
     connectionName.append("GroupMembers");
-    QSqlDatabase groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase groupMemberDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        groupMemberDB = QSqlDatabase::database(connectionName);
+    }
     groupMemberDB.setDatabaseName("../database/RocketDB.sqlite");
 
     if (!groupMemberDB.open())
@@ -19,7 +24,12 @@ GroupMemberDB::GroupMemberDB()
 GroupMemberDB::GroupMemberDB(const QString &path)
 {
     connectionName.append("GroupMembers");
-    QSqlDatabase groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase groupMemberDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        groupMemberDB = QSqlDatabase::database(connectionName);
+    }
     //Must name database connection
 
     groupMemberDB.setDatabaseName(path);
@@ -37,7 +47,12 @@ GroupMemberDB::GroupMemberDB(const QString &path)
 GroupMemberDB::GroupMemberDB(const QString &path, const QString &connectionName)
 {
     this->connectionName.append(connectionName);
-    QSqlDatabase groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase groupMemberDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        groupMemberDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        groupMemberDB = QSqlDatabase::database(connectionName);
+    }
     //Must name database connection
 
     groupMemberDB.setDatabaseName(path);

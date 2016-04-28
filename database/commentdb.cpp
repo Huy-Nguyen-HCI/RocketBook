@@ -3,7 +3,12 @@
 CommentDB::CommentDB(): PostDB::PostDB()
 {
     connectionName.append("comments");
-    QSqlDatabase commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase commentDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        commentDB = QSqlDatabase::database(connectionName);
+    }
     commentDB.setDatabaseName("CommentDB.sqlite");
 
     if (!commentDB.open())
@@ -19,7 +24,12 @@ CommentDB::CommentDB(): PostDB::PostDB()
 CommentDB::CommentDB(const QString &path): PostDB::PostDB()
 {
     connectionName.append("comments");
-    QSqlDatabase commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase commentDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        commentDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        commentDB = QSqlDatabase::database(connectionName);
+    }
     commentDB.setDatabaseName(path);
 
     if (!commentDB.open())

@@ -3,7 +3,12 @@
 MultimediaDB::MultimediaDB(): PostDB::PostDB()
 {
     connectionName.append("multimedia");
-    QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase multimediaDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        multimediaDB = QSqlDatabase::database(connectionName);
+    }
     multimediaDB.setDatabaseName("rocketDB.sqlite");
 
     if (!multimediaDB.open())
@@ -19,7 +24,12 @@ MultimediaDB::MultimediaDB(): PostDB::PostDB()
 MultimediaDB::MultimediaDB(const QString &path): PostDB::PostDB()
 {
     connectionName.append("multimedia");
-    QSqlDatabase multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    QSqlDatabase multimediaDB;
+    if (!QSqlDatabase::contains(connectionName)) {
+        multimediaDB = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+    } else {
+        multimediaDB = QSqlDatabase::database(connectionName);
+    }
     multimediaDB.setDatabaseName(path);
 
     if (!multimediaDB.open())
