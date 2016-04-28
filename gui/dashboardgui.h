@@ -27,7 +27,6 @@ private slots:
 
     void on_latestMultimediaButton_clicked();
 
-
 private:
     Ui::DashboardGUI *ui;
     AccountController* accountController;

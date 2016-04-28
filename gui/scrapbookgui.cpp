@@ -222,3 +222,115 @@ void ScrapbookGUI::on_scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
         ui->viewButton->hide();
     }
 }
+
+void ScrapbookGUI::on_exportButton_clicked()
+{
+    QString htmlText;
+    QString imageStyle = " style='width:100px; height:100px; '";
+
+    // set up html code
+    htmlText += "<!DOCTYPE html><html>";
+
+    // set title
+    htmlText += "<head> <title> My Scrapbook </title> </head>";
+
+    // set header
+    htmlText = htmlText + "<h1 style='text-align:center'>" + accountController->getUser()->getUsername() + "'s Scrapbook" + "</h1>";
+
+    // begin body
+    htmlText += "<body>";
+
+    // add content
+    htmlText += buildContentHTML();
+
+    // end body
+    htmlText += "</body>";
+
+    // end html code
+    htmlText += "</html>";
+
+    qDebug() << htmlText;
+}
+
+QString ScrapbookGUI::buildContentHTML() {
+
+    QString html;
+    std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
+
+    // begin list
+    html += "<ol>";
+
+    // build list
+    for (int i = 0; i < wholeScrapbook.size(); i++) {
+        Post* currentPost = wholeScrapbook[i];
+        Post::PostType pType = currentPost->type();
+        switch (pType) {
+            case Post::typeBlog:
+                html = html + "<li>" + blogToHTML((Blog*)currentPost) + "</li>";
+                break;
+            case Post::typeTweet:
+                html = html + "<li>" + tweetToHTML((Tweet*)currentPost) + "</li>";
+                break;
+            case Post::typeMultimedia:
+                html = html + "<li>" + multimediaToHTML((Multimedia*)currentPost) + "</li>";
+                break;
+            case Post::typeComment:
+                break;
+            case Post::typePost:
+                break;
+        }
+    }
+
+    // end list
+    html += "</ol>";
+    return html;
+}
+
+QString ScrapbookGUI::blogToHTML(Blog *blog) {
+
+    QString html;
+
+    // add post type
+    html += "<b>Blog</b> <br>";
+
+    // add blog title
+    html = html + "<u>Title:</u> " + blog->getTitle().toHtmlEscaped() + "<br>";
+
+    // add content
+    html = html + "<u>Content:</u> " + blog->getContent().toHtmlEscaped();
+
+    return html;
+}
+
+QString ScrapbookGUI::tweetToHTML(Tweet *tweet) {
+
+    QString html;
+
+    // add post type
+    html += "<b>Tweet</b> <br>";
+
+    // add content
+    html = html + "<u>Content:</u> " + tweet->getContent().toHtmlEscaped();
+
+    return html;
+}
+
+QString ScrapbookGUI::multimediaToHTML(Multimedia *media) {
+
+    QString html;
+    QString imageStyle = " style='width:125px; height:125px; '";
+
+    // add post type
+    html += "<b>Multimedia</b> <br>";
+
+    // add title
+    html = html + "<u>Title:</u> " + media->getTitle().toHtmlEscaped() + "<br>";
+
+    // add image
+    html = html + "<img src=" + "'" + media->getContent() + "'" + imageStyle + ">" + "<br>";
+
+    // add text
+    html += "<u>Description:</u> " + media->getDescription().toHtmlEscaped();
+
+    return html;
+}

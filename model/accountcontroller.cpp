@@ -6,6 +6,7 @@ QString AccountController::PATH = "/usr11/cs205_2016_Grp08/rocketDB/";  /**< ser
 
 //QString AccountController::PATH = "/Users/HuyNguyen/mount/";   /**< local mount path */
 
+//QString AccountController::PATH = "../database/";
 
 AccountController::AccountController()
 {

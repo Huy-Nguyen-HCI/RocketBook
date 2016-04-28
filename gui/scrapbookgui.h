@@ -52,6 +52,8 @@ private slots:
 
     void on_scrapbookAreaItem_clicked(QListWidgetItem *listItem);
 
+    void on_exportButton_clicked();
+
 private:
     Ui::ScrapbookGUI *ui;
     CreateBlogGUI *createBlogView;
@@ -62,6 +64,12 @@ private:
     DisplayTweetGUI *displayTweetView;
     AccountController *accountController;
     Scrapbook* scrapbook;
+
+    // helper methods for constructing html
+    QString buildContentHTML();
+    QString blogToHTML(Blog *blog);
+    QString tweetToHTML(Tweet *tweet);
+    QString multimediaToHTML(Multimedia *media);
 
     //All list item static value for setData --> should be bypassed if redesigned by changing the data structure
     static int blogListItemType;
