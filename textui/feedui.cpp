@@ -205,8 +205,11 @@ int FeedUI::displayFeed()
 
 void FeedUI::viewBlog(int index)
 {
+    erase();
     bool isBlog = checkType(index);
     if( !isBlog){
+        erase();
+        printf("Not a blog!");
         return;
     }
     Feed *allFeed = accountControl->getUser()->getFeed();
@@ -214,10 +217,121 @@ void FeedUI::viewBlog(int index)
     std::vector<Post*> friendFeed = allFeed->getFeed();
     erase();
     refresh();
-    Post* currentPost = friendFeed[index];
-    QString *author = new QString(currentPost->getAuthorUsername());
+    Blog* currentBlog;
+    currentBlog = (Blog*) friendFeed[index];
+    QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
+    std::vector<Comment*> allComments = currentBlog->getAllComments();
+    erase();
+    bool commenting = true;
+    int offset=0;
+    int row = 2;
+    int max, displayNumber=18;
+
+    while(commenting){
+        //commentIds=accountControl->getUser()->getChatController()->getSenderList(chatId);
+        //messages=accountControl->getUser()->getChatController()->getMessageList(chatId);
+
+        erase();
+        mvprintw(0,0, author->toStdString().c_str());
+        //printw(std::to_string(chatId).c_str());
+        mvprintw(1, 0, ". Press up or down to scroll or Enter to post comment.");
+        refresh();
+
+        row=2;
 
 
+        if(allComments.size() < displayNumber)
+            max = allComments.size();
+        else
+            max = offset+displayNumber;
+
+    for(int i=offset;i<max;i++){
+        //mvprintw(row,0,accountControl->getUserName(senderIds->at(i)).c_str());
+        Comment *currentComment = allComments.at(i);
+        QString currentContent = currentComment->getAuthorUsername() + ": " + currentComment->getContent();
+        //mvprintw(row,0, currentComment->getAuthorUsername().toStdString().c_str());
+        //printw(": ");
+        //printw(currentComment->getContent().toStdString().c_str());
+        mvprintw(row, 0, currentContent.toStdString().c_str());
+        refresh();
+        row++;
+
+        }
+
+    int ch= getch();
+        if(ch==KEY_DOWN && !((allComments.size())==(max)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+            offset++;
+        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
+        else if(ch==10){//enter key
+            //sendMessage(chatId);
+            if(allComments.size() > displayNumber)
+            offset=allComments.size()-displayNumber+1;
+        }
+        else
+            commenting=false;
+
+    }
+
+
+}
+
+void FeedUI::viewComments(int index){
+
+
+    //std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+    //int chatId=chatList->at(index);
+
+    //std::vector<int>* commentIds;//=accountControl->getUser()->getChatController()->getSenderList(chatId);
+    //std::vector<QString>* comments;//=accountControl->getUser()->getChatController()->getMessageList(chatId);
+
+//    bool commenting = true;
+//    int offset=0;
+//    int row, max, displayNumber=18;
+
+//    while(commenting){
+//        commentIds=accountControl->getUser()->getChatController()->getSenderList(chatId);
+//        messages=accountControl->getUser()->getChatController()->getMessageList(chatId);
+
+//        erase();
+//        mvprintw(0,0, "Chat Room: ");
+//        printw(std::to_string(chatId).c_str());
+//        printw(". Press up or down to scroll or Enter to send message.");
+
+//        row=2;
+
+
+//        if(messages->size() < displayNumber)
+//            max = messages->size();
+//        else
+//            max = offset+displayNumber;
+
+//    for(int i=offset;i<max;i++){
+//        mvprintw(row,0,accountControl->getUserName(senderIds->at(i)).c_str());
+//        printw(": ");
+//        printw(messages->at(i).toStdString().c_str());
+//        row++;
+
+//        }
+
+//    int ch= getch();
+//        if(ch==KEY_DOWN && !((messages->size())==(max)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+//            offset++;
+//        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+//            offset--;
+//        else if(ch==KEY_UP);
+//        else if(ch==KEY_DOWN);
+//        else if(ch==10){//enter key
+//            sendMessage(chatId);
+//            if(messages->size() > displayNumber)
+//            offset=messages->size()-displayNumber+1;
+//        }
+//        else
+//            chating=false;
+
+//    }
 
 }
 
@@ -305,6 +419,8 @@ void FeedUI::displayBlog(Blog *blog, int row, QString *author)
     refresh();
 
 }
+
+
 
 void FeedUI::displayTweet(Tweet *tweet, int row, QString *author)
 {

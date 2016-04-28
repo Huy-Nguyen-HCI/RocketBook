@@ -13,6 +13,7 @@ public:
     int displayFeed();
     int selectBlog();
     void viewBlog(int index);
+    void viewComments(int index);
     bool checkType(int postIndex);
     void displayBlog(Blog* blog, int row, QString* author);
     void displayTweet(Tweet* tweet, int row, QString* author);
