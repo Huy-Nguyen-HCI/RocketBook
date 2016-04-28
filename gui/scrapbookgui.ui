@@ -30,25 +30,8 @@
        <string>Scrapbook</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="1">
-        <widget class="QPushButton" name="deleteButton">
-         <property name="text">
-          <string>Delete</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+       <item row="1" column="0" colspan="4">
+        <widget class="QListWidget" name="scrapbookArea"/>
        </item>
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout">
@@ -61,8 +44,32 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0" colspan="3">
-        <widget class="QListWidget" name="scrapbookArea"/>
+       <item row="0" column="3">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="deleteButton">
+         <property name="text">
+          <string>Delete</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="viewButton">
+         <property name="text">
+          <string>View</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

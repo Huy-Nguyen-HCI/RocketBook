@@ -10,6 +10,9 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
     accountController = currentAccount;
     scrapbook = accountController->getUser()->getProfile()->getScrapbook();
 
+    ui->viewButton->hide();
+    ui->scrapbookArea->setSelectionMode(QAbstractItemView::SingleSelection);
+
     createBlogView = new CreateBlogGUI(accountController, scrapbook, this);
     displayBlogView = new DisplayBlogGUI(scrapbook, this);
     createTweetView = new CreateTweetGUI(accountController, scrapbook, this);
@@ -35,6 +38,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
     ui->multimediaStackedWidget->setCurrentWidget(displayMultimediaView);
 
     refreshBook();
+
+    connect(ui->scrapbookArea, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(on_scrapbookAreaItem_clicked(QListWidgetItem*)));
 
 }
 
@@ -179,5 +184,16 @@ void ScrapbookGUI::on_editButton_clicked()
 
 void ScrapbookGUI::on_deleteButton_clicked()
 {
+
+}
+
+void ScrapbookGUI::on_viewButton_clicked()
+{
+
+}
+
+void ScrapbookGUI::on_scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
+//    if(listItem->t)
+//    ui->viewButton->show();
 
 }

@@ -48,6 +48,10 @@ private slots:
 
     void on_deleteButton_clicked();
 
+    void on_viewButton_clicked();
+
+    void on_scrapbookAreaItem_clicked(QListWidgetItem *listItem);
+
 private:
     Ui::ScrapbookGUI *ui;
     CreateBlogGUI *createBlogView;
