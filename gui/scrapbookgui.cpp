@@ -231,6 +231,7 @@ void ScrapbookGUI::scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
 void ScrapbookGUI::on_exportButton_clicked()
 {
     QString htmlText;
+    QString backgroundImagePath =  "rocketbackground.gif";
 
     // set up html code
     htmlText += "<!DOCTYPE html><html>";
@@ -242,7 +243,7 @@ void ScrapbookGUI::on_exportButton_clicked()
     htmlText = htmlText + "<h1 style='text-align:center'>" + accountController->getUser()->getUsername() + "'s Scrapbook" + "</h1>";
 
     // begin body
-    htmlText += "<body>";
+    htmlText = htmlText + "<body text='orange'" + " background='" + backgroundImagePath + "'>";
 
     // add profile
     htmlText += profileToHTML();
@@ -267,7 +268,7 @@ QString ScrapbookGUI::buildContentHTML() {
     QString html;
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
 
-    html += "<h3><u>My posts:</u></h3>";
+    html += "<h3><u><font color='white'>My posts:</font></u></h3>";
     // begin list
     html += "<ol>";
 
@@ -349,17 +350,17 @@ QString ScrapbookGUI::multimediaToHTML(Multimedia *media) {
 QString ScrapbookGUI::profileToHTML() {
 
     QString html;
-    QString imageStyle = " style='width:200px; height:200pxl; '";
+    QString imageStyle = " style='width:300px; height:300pxl; '";
     Profile *profile = accountController->getUser()->getProfile();
 
     // add profile image
     html =
             html + "<p style='text-align:center'>" +
-            "<img src=" + "'" + profile->getPicturePath() + "'" + imageStyle + ">" +
+            "<img border='5' src=" + "'" + profile->getPicturePath() + "'" + imageStyle + ">" +
             "</p>";
 
     // add description
-    html = html + "<h3>" + "<u>My description:</u>" + "</h3>";
+    html = html + "<h3>" + "<u><font color='white'>My description:</font></u>" + "</h3>";
     html += profile->getDescription().toHtmlEscaped();
     html += "<br>";
     return html;
@@ -387,7 +388,7 @@ QString ScrapbookGUI::friendsToHTML() {
     QString html;
     QStringList friendList = accountController->getUser()->controlFriend()->getFriendNames();
 
-    html += "<h3><u>My friends:</u></h3>";
+    html += "<h3><u><font color='white'>My friends:</font></u></h3>";
 
     html += "<ul>";
 

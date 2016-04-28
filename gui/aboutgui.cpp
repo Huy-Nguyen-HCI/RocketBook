@@ -43,6 +43,6 @@ std::map<QString, QString> AboutGUI::setupMap() {
     sourceMap.insert( std::pair<QString, QString>("user.png", "https://icons8.com/"));
     sourceMap.insert( std::pair<QString, QString>("settings.png", "https://icons8.com/"));
     sourceMap.insert( std::pair<QString, QString>("about.png", "https://icons8.com/"));
-
+    sourceMap.insert( std::pair<QString, QString>("rocketbackground.gif", "https://d13yacurqjgara.cloudfront.net/users/163741/screenshots/1228007/dribbble_shot_hq.gif"));
     return sourceMap;
 }
