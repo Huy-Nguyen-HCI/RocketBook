@@ -55,8 +55,8 @@ void ScrapbookUI::takeCommand(int selection){
        postBlog();
    else if(selection==3)
        postTweet();
-   else if(selection==4)
-       makeHTML();
+   else if(selection==4);
+    //   makeHTML();
    else if(selection==5)
        return;
 
