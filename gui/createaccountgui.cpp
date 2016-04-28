@@ -79,7 +79,9 @@ void CreateAccountGUI::on_createButton_clicked()
 
         // segue to dashboard
         this->close();
+        accountController->login(username, password);
         main->setUsername(username);
+        main->setUp();
         main->show();
         return;
 
