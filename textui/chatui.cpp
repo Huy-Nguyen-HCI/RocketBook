@@ -42,7 +42,7 @@ void ChatUI::takeCommand(int selection){
 
    else if(selection==1){
        int chosenChat=selectChat();
-       if(chosenChat!=-1);
+       if(chosenChat!=-1)
        chatRoom(chosenChat);
    }
 
@@ -77,75 +77,6 @@ void ChatUI::createChat(int id){
 }
 
 
-
-/**
-void ChatUI::enterChat(){
-   std::vector<int> chats=accountControl->getUser()->getChatController()->getChatIdList();
-   //This will enter Chat at specific chat Id
-   enterChat(chatList->at(chatSelection()));
-
-
-}
-**/
-
-/**
-void ChatUI::displayChats(int v) {
-
-    erase();
-
-    mvprintw(0, 0, "Your Chats");
-
-    for(unsigned int i=0;i<chatList->size(); i++){
-        mvprintw(i+1,3,std::to_string(chatList->at(i)).c_str());
-    }
-
-    mvprintw(v, 0, "->");
-
-    refresh();
-}
-
-
-int ChatUI::chatSelection(){
-    int v=1;
-
-    // initialize the interaction loop to run
-    bool continue_looping = true;
-
-    // draw the current screen
-    displayChats(v);
-
-    do {
-        // draw the new screen
-        refresh();
-        // obtain character from keyboard
-        int ch = getch();
-        // operate based on input character
-        switch (ch) {
-        case KEY_UP:
-            if(v>0) //arrow goes up
-            v--;
-            if(v==0) //arrow goes to bottom
-                v=chatList->size();
-            break;
-        case KEY_DOWN:
-            if(v<chatList->size()+1) //arrows goes down
-            v++;
-            if(v==chatList->size()+1) //arrow goes back to top
-                v=1;
-            break;
-        case 10: //Enter Key
-            continue_looping = false;
-            break;
-        }
-
-        displayChats(v);
-
-    } while(continue_looping);
-
-    return v-1;
-
-}
-**/
 void ChatUI::chatRoom(int index){
 
 
