@@ -146,7 +146,13 @@ void ScrapbookUI::displayScrapbook(){
 
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
 
-    for (unsigned int i = offset; i < offset+5; i++) {
+    int *max;
+    if(wholeScrapbook.size() < 5){
+        *max = wholeScrapbook.size();
+    }else{
+        *max = offset+5;
+    }
+    for (unsigned int i = offset; i < *max; i++) {
         Post* currentPost = wholeScrapbook[i];
         Post::PostType pType = currentPost->type();
     //    scrl(1);
