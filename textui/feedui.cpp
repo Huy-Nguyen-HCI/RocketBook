@@ -227,14 +227,15 @@ void FeedUI::viewBlog(int index)
     int row = 2;
     int max, displayNumber=18;
 
+
     while(commenting){
         //commentIds=accountControl->getUser()->getChatController()->getSenderList(chatId);
         //messages=accountControl->getUser()->getChatController()->getMessageList(chatId);
-
+        endwin();
         erase();
         mvprintw(0,0, author->toStdString().c_str());
         //printw(std::to_string(chatId).c_str());
-        mvprintw(1, 0, ". Press up or down to scroll or Enter to post comment.");
+        mvprintw(1, 0, "Press up or down to scroll or Enter to post comment.");
         refresh();
 
         row=2;
