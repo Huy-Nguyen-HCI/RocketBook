@@ -115,6 +115,10 @@ Comment* Scrapbook::addComment(int blogID, QString username, QString content) {
     int commentID = commentDB->getMaxPostID() + 1;
     Comment* newComment = new Comment(commentID, username, content);
     blog->addComment(newComment);
+    commentDB->addComment(commentID,
+                          accountDB->retrieveAccountID(username),
+                          blogID,
+                          content);
     return newComment;
 }
 
@@ -297,10 +301,10 @@ void Scrapbook::constructCommentContainer() {
     for (unsigned int i = 0; i < blogList.size(); i++) {
         int blogID = blogList[i]->getID();
         std::vector<CommentInfoType> commentInfo = commentDB->retrieveAllCommentInfo(blogID);
-        for (unsigned int i = 0; i < commentInfo.size(); i++) {
-            int commentID = std::get<0>(commentInfo[i]);
-            int accountID = std::get<1>(commentInfo[i]);
-            QString commentContent = std::get<3>(commentInfo[i]);
+        for (unsigned int j = 0; j < commentInfo.size(); j++) {
+            int commentID = std::get<0>(commentInfo[j]);
+            int accountID = std::get<1>(commentInfo[j]);
+            QString commentContent = std::get<3>(commentInfo[j]);
             Comment* newComment = new Comment(commentID,
                                               accountDB->getUsername(accountID),
                                               commentContent);
@@ -329,10 +333,9 @@ Blog* Scrapbook::getBlog(int id){
     for (unsigned int i = 0 ; i < blogList.size(); i++) {
         if (blogList[i]->getID() == id) {
             return blogList[i];
-        } else {
-            return NULL;
         }
     }
+    return NULL;
 }
 
 //Tweet* Scrapbook::getTweet(int num){

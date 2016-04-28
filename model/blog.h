@@ -66,7 +66,6 @@ public:
 private:
     std::vector<Comment*> commentList;
     QString title;
-    QString username;
 };
 
 #endif // BLOG_H

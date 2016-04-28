@@ -27,21 +27,22 @@ ViewBlogGUI::ViewBlogGUI(AccountController *accountController,
 ViewBlogGUI::~ViewBlogGUI()
 {
     delete ui;
+
 }
 
 
 
-void ViewBlogGUI::on_buttonBox_accepted()
-{
-    QString newComment = ui->commentEdit->document()->toPlainText();
-    scrapbook->addComment(blog->getID(), accountController->getUser()->getUsername(), newComment);
-    refreshBlog();
-}
+//void ViewBlogGUI::on_buttonBox_accepted()
+//{
+//    QString newComment = ui->commentEdit->document()->toPlainText();
+//    scrapbook->addComment(blog->getID(), accountController->getUser()->getUsername(), newComment);
+//    refreshBlog();
+//}
 
-void ViewBlogGUI::on_buttonBox_rejected()
-{
-    this->close();
-}
+//void ViewBlogGUI::on_buttonBox_rejected()
+//{
+//    this->close();
+//}
 
 void ViewBlogGUI::refreshBlog() {
     QString title = blog->getTitle();
@@ -70,5 +71,17 @@ void ViewBlogGUI::refreshComments() {
         QTableWidgetItem* comment = new QTableWidgetItem(commentList[row]->getContent());
         ui->commentTable->setItem(row, 0, username);
         ui->commentTable->setItem(row, 1, comment);
+    }
+}
+
+
+void ViewBlogGUI::on_buttonBox_clicked(QAbstractButton *button)
+{
+    if ((QPushButton*)button == ui->buttonBox->button(QDialogButtonBox::Apply)) {
+        QString newComment = ui->commentEdit->document()->toPlainText();
+        scrapbook->addComment(blog->getID(), accountController->getUser()->getUsername(), newComment);
+        refreshBlog();
+    } else if ((QPushButton*)button == ui->buttonBox->button(QDialogButtonBox::Cancel)) {
+        this->close();
     }
 }

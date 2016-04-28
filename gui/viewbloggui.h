@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "../model/accountcontroller.h"
 #include <QTableWidget>
+#include <QAbstractButton>
 
 namespace Ui {
 class ViewBlogGUI;
@@ -28,9 +29,14 @@ public:
     ~ViewBlogGUI();
 
 private slots:
-    void on_buttonBox_accepted();
+//    void on_buttonBox_accepted();
 
-    void on_buttonBox_rejected();
+//    void on_buttonBox_rejected();
+
+    void on_buttonBox_clicked(QAbstractButton *button);
+
+//    void on_buttonBox_accepted();
+
 
 private:
     Ui::ViewBlogGUI *ui;
