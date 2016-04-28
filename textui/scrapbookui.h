@@ -16,7 +16,10 @@ public:
     void postTweet();
     void postMedia();
     void makeHTML();
-    void displayScrapbook();
+    int displayScrapbook();
+    void viewBlog(int index);
+    void postComment(int blogIndex);
+    bool checkType(int scrapbookIndex);
     void displayBlog(Blog* blog, int row);
     void displayTweet(Tweet* tweet, int row);
 
