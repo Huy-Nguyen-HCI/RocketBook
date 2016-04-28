@@ -125,7 +125,7 @@ void ScrapbookGUI::switchMultimediaViews() {
 
 void ScrapbookGUI::refreshBook()
 {
-
+    ui->message->clear();
     ui->scrapbookArea->clear();
     ui->scrapbookArea->addItem(QString("Your posts: \n"));
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
@@ -227,7 +227,6 @@ void ScrapbookGUI::on_scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
 void ScrapbookGUI::on_exportButton_clicked()
 {
     QString htmlText;
-    QString imageStyle = " style='width:100px; height:100px; '";
 
     // set up html code
     htmlText += "<!DOCTYPE html><html>";
@@ -250,7 +249,7 @@ void ScrapbookGUI::on_exportButton_clicked()
     // end html code
     htmlText += "</html>";
 
-    qDebug() << htmlText;
+    writeToHTMLFile(htmlText);
 }
 
 QString ScrapbookGUI::buildContentHTML() {
@@ -334,4 +333,22 @@ QString ScrapbookGUI::multimediaToHTML(Multimedia *media) {
     html += "<u>Description:</u> " + media->getDescription().toHtmlEscaped();
 
     return html;
+}
+
+
+void ScrapbookGUI::writeToHTMLFile(QString htmlText) {
+
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                 tr("Save file"),
+                                 ":/index.html",
+                                 tr("Web pages (*.html)"));
+    // if user cancels file selection
+    if (fileName.isNull()) return;
+    QFile file(fileName);
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream( &file );
+        stream << htmlText << endl;
+    }
+    ui->message->setText("Export successful!");
 }

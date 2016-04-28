@@ -70,6 +70,7 @@ private:
     QString blogToHTML(Blog *blog);
     QString tweetToHTML(Tweet *tweet);
     QString multimediaToHTML(Multimedia *media);
+    void writeToHTMLFile(QString htmlText);
 
     //All list item static value for setData --> should be bypassed if redesigned by changing the data structure
     static int blogListItemType;
