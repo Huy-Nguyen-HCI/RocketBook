@@ -9,11 +9,11 @@ ChatDB::ChatDB()
 
     if (!chatDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -25,11 +25,11 @@ ChatDB::ChatDB(const QString &path)
 
     if (!chatDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -60,7 +60,7 @@ bool ChatDB::createChat(int accountID){
     }
     else
     {
-        qDebug() << "create chat failed: " << queryAdd.lastError();
+        //qDebug() << "create chat failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -83,7 +83,7 @@ bool ChatDB::addToChat(int chatID, int accountID){
     }
     else
     {
-        qDebug() << "add user to chat failed: " << queryAdd.lastError();
+        //qDebug() << "add user to chat failed: " << queryAdd.lastError();
     }
 }
     return success;
@@ -105,12 +105,12 @@ bool ChatDB::removeFromChat(int chatID, int accountID){
 
         if(!success)
         {
-            qDebug() << "remove from chat failed: " << queryDelete.lastError();
+            //qDebug() << "remove from chat failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove from chat failed: account is not in chat";
+        //qDebug() << "remove from chat failed: account is not in chat";
     }
 
     return success;
@@ -137,7 +137,7 @@ bool ChatDB::inChat(int chatID, int accountID) const
     }
     else
     {
-        qDebug() << "Account in chat failed: " << checkQuery.lastError();
+        //qDebug() << "Account in chat failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -149,7 +149,7 @@ std::vector<int>* ChatDB::retrieveChatList(int accountID){
 
     std::vector<int>* chatList= new std::vector<int>();
 
-    qDebug() << "Chats in db:";
+    //qDebug() << "Chats in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT ChatID FROM Chats WHERE AccountID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountID);
@@ -166,7 +166,7 @@ std::vector<int>* ChatDB::retrieveChatList(int accountID){
 
     else
     {
-        qDebug() << "Chat retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "Chat retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return chatList;
@@ -177,7 +177,7 @@ std::vector<int>* ChatDB::retrieveAccountsInChat(int chatID){
 
     std::vector<int>* accountList= new std::vector<int>();
 
-    qDebug() << "Chats in db:";
+    //qDebug() << "Chats in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT AccountID FROM Chats WHERE ChatID = (:ChatID)");
     queryRetrieve.bindValue(":ChatID", chatID);
@@ -194,7 +194,7 @@ std::vector<int>* ChatDB::retrieveAccountsInChat(int chatID){
 
     else
     {
-        qDebug() << "Chat retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "Chat retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return accountList;
@@ -214,7 +214,7 @@ bool ChatDB::removeAllChats()
     }
     else
     {
-        qDebug() << "remove all chats failed: " << removeQuery.lastError();
+        //qDebug() << "remove all chats failed: " << removeQuery.lastError();
     }
 
     return success;
@@ -224,7 +224,7 @@ int ChatDB::getMaxChatID()
 {
     int maxID;
 
-    qDebug() << "Get max chat ID from db:";
+    //qDebug() << "Get max chat ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(ChatID) FROM Chats");
 
@@ -237,7 +237,7 @@ int ChatDB::getMaxChatID()
     }
     else
     {
-        qDebug() << "chat retrieval fails:" <<queryMaxID.lastError();
+        //qDebug() << "chat retrieval fails:" <<queryMaxID.lastError();
     }
 
     return maxID;

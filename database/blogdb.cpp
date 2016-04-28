@@ -8,11 +8,11 @@ BlogDB::BlogDB()
 
     if (!blogDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -24,11 +24,11 @@ BlogDB::BlogDB(const QString &path) : PostDB::PostDB()
 
     if (!blogDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -47,7 +47,7 @@ bool BlogDB::addBlog(int blogID,
 {
     bool success = false;
 
-    qDebug() << "blog id is: " <<  blogID;
+    //qDebug() << "blog id is: " <<  blogID;
     QSqlQuery queryAdd(QSqlDatabase::database(connectionName));
     queryAdd.prepare("INSERT INTO Blogs (BlogID, AccountID, ScrapbookID, BlogTitle, BlogContent, Privacy) VALUES (:BlogID, :AccountID, :ScrapbookID, :BlogTitle, :BlogContent, :Privacy)");
     queryAdd.bindValue(":BlogID", blogID);
@@ -63,7 +63,7 @@ bool BlogDB::addBlog(int blogID,
     }
     else
     {
-        qDebug() << "add blog failed: " << queryAdd.lastError();
+        //qDebug() << "add blog failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -82,12 +82,12 @@ bool BlogDB::removeBlog(int id)
 
         if(!success)
         {
-            qDebug() << "remove blog failed: " << queryDelete.lastError();
+            //qDebug() << "remove blog failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove blog failed: blog doesnt exist";
+        //qDebug() << "remove blog failed: blog doesnt exist";
     }
 
     return success;
@@ -127,7 +127,7 @@ BlogInfoType BlogDB::retrieveBlogInfo(int blogID)
     }
     else
     {
-        qDebug() << "blog retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "blog retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return std::make_tuple(id, accountID, scrapbookID, blogTitle, blogContent, privacy);
@@ -172,7 +172,7 @@ std::vector<BlogInfoType> BlogDB::retrieveAllBlogInfo(int scrapbookID)
     }
     else
     {
-        qDebug() << "blog retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "blog retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return blogInfo;
@@ -195,7 +195,7 @@ bool BlogDB::blogExists(int id) const
     }
     else
     {
-        qDebug() << "blog exists failed: " << checkQuery.lastError();
+        //qDebug() << "blog exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -214,7 +214,7 @@ bool BlogDB::removeAllBlogs()
     }
     else
     {
-        qDebug() << "remove all blogs failed: " << removeQuery.lastError();
+        //qDebug() << "remove all blogs failed: " << removeQuery.lastError();
     }
 
     return success;

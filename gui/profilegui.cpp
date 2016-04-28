@@ -26,7 +26,7 @@ void ProfileGUI::loadProfile() {
     QString descr = currentProfile->getDescription();
     QString myName = currentProfile->getFullName();
     photoPath = currentProfile->getPicturePath();
-    qDebug() << "path is: " << photoPath;
+    //qDebug() << "path is: " << photoPath;
 
     ui->descriptionBox->setText(descr);
     ui->username->setText("Username: " + myName);
@@ -62,7 +62,7 @@ void ProfileGUI::on_selectPicture_clicked()
     // update the path in the database
     accountController->getUser()->getProfile()->setPicturePath(photoPath);
     accountController->getUser()->changePhoto(newPath);
-    qDebug() << "new path is: " << newPath;
+    //qDebug() << "new path is: " << newPath;
 
     updatePhoto();
 

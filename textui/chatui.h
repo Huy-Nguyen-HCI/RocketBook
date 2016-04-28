@@ -22,10 +22,13 @@ private:
     AccountController* accountControl;
     ChatController* chatControl;
     void createChat();
-    void selectChat();
+    void enterChat();
     int chatSelection();
     void enterChat(int chatId);
+    void addFriend();
+    void leaveChat();
     std::vector<int>* chatList;
+    int selectFriend();
 
 };
 

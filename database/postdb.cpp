@@ -10,7 +10,7 @@ int PostDB::getMaxPostID()
 {
     int maxID;
 
-    qDebug() << "Max postID in db:";
+    //qDebug() << "Max postID in db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(BlogID) FROM (SELECT BlogID FROM Blogs UNION SELECT MultimediaID FROM Multimedias UNION SELECT TweetID FROM Tweets UNION SELECT CommentID FROM Comments)");
 
@@ -23,7 +23,7 @@ int PostDB::getMaxPostID()
     }
     else
     {
-        qDebug() << "Max PostID fails:" <<queryMaxID.lastError();
+        //qDebug() << "Max PostID fails:" <<queryMaxID.lastError();
     }
 
     return maxID;

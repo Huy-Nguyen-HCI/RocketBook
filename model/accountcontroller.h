@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <sstream>
-#include <QDebug>
+#include <qdebug.h>
 #include <QCoreApplication>
 #include "../database/accountdb.h"
 #include <string>

@@ -8,11 +8,11 @@ CommentDB::CommentDB(): PostDB::PostDB()
 
     if (!commentDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -24,11 +24,11 @@ CommentDB::CommentDB(const QString &path): PostDB::PostDB()
 
     if (!commentDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -55,7 +55,7 @@ bool CommentDB::addComment(int commentID, int accountID, int blogID, const QStri
     }
     else
     {
-        qDebug() << "add comment failed: " << queryAdd.lastError();
+        //qDebug() << "add comment failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -77,12 +77,12 @@ bool CommentDB::removeComment(int id)
 
         if(!success)
         {
-            qDebug() << "remove comment failed: " << queryDelete.lastError();
+            //qDebug() << "remove comment failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove comment failed: comment doesnt exist";
+        //qDebug() << "remove comment failed: comment doesnt exist";
     }
 
     return success;
@@ -119,7 +119,7 @@ CommentInfoType CommentDB::retrieveCommentInfo(int id)
     }
     else
     {
-        qDebug() << "comment retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "comment retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return std::make_tuple(commentID, accountID, blogID, content);
@@ -160,7 +160,7 @@ std::vector<CommentInfoType> CommentDB::retrieveAllCommentInfo(int blogID)
     }
     else
     {
-        qDebug() << "comment retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "comment retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return commentInfo;
@@ -183,7 +183,7 @@ bool CommentDB::commentExists(int id) const
     }
     else
     {
-        qDebug() << "comment exists failed: " << checkQuery.lastError();
+        //qDebug() << "comment exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -202,7 +202,7 @@ bool CommentDB::removeAllComments()
     }
     else
     {
-        qDebug() << "remove all comments failed: " << removeQuery.lastError();
+        //qDebug() << "remove all comments failed: " << removeQuery.lastError();
     }
 
     return success;

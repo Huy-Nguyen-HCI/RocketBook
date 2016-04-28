@@ -103,7 +103,7 @@ void DisplayMultimediaGUI::on_viewButton_clicked()
 //    int selectedIndex = ui->multimediaList->row(selected.at(0));
 //    Multimedia *media = allMulti[selectedIndex];
 
-//    qDebug() << "path is: " << media->getContent();
+//    //qDebug() << "path is: " << media->getContent();
 //    viewMedia->show();
 //    viewMedia->setPath(media->getContent());
 }

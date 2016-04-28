@@ -8,11 +8,11 @@ GroupMemberDB::GroupMemberDB()
 
     if (!groupMemberDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -26,11 +26,11 @@ GroupMemberDB::GroupMemberDB(const QString &path)
 
     if (!groupMemberDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -44,11 +44,11 @@ GroupMemberDB::GroupMemberDB(const QString &path, const QString &connectionName)
 
     if (!groupMemberDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -79,7 +79,7 @@ bool GroupMemberDB::createGroup(int groupID, int accountID)
     }
     else
     {
-        qDebug() << "add group member failed: " << queryAdd.lastError();
+        //qDebug() << "add group member failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -100,7 +100,7 @@ bool GroupMemberDB::addGroupMember(int groupID, int accountID, int groupAdminRig
     }
     else
     {
-        qDebug() << "add group member failed: " << queryAdd.lastError();
+        //qDebug() << "add group member failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -125,7 +125,7 @@ bool GroupMemberDB::groupMemberExists(int groupID, int accountID) const
     }
     else
     {
-        qDebug() << "group member exists failed: " << checkQuery.lastError();
+        //qDebug() << "group member exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -146,12 +146,12 @@ bool GroupMemberDB::removeGroupMember(int groupID, int accountID){
 
         if(!success)
         {
-            qDebug() << "remove group member failed: " << queryDelete.lastError();
+            //qDebug() << "remove group member failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove group member failed: group member does not exist";
+        //qDebug() << "remove group member failed: group member does not exist";
     }
 
     return success;}
@@ -186,7 +186,7 @@ std::vector<GroupMemberInfoType> GroupMemberDB::retrieveAllGroupMembersInfo(int 
     }
     else
     {
-        qDebug() << "group member retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "group member retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return groupMemberInfo;
@@ -196,7 +196,7 @@ std::vector<int> GroupMemberDB::retrieveGroupList(int accountID){
 
     std::vector<int> groupList;
 
-    qDebug() << "Groups in db:";
+    //qDebug() << "Groups in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT GroupID FROM GroupMembers WHERE AccountID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountID);
@@ -213,7 +213,7 @@ std::vector<int> GroupMemberDB::retrieveGroupList(int accountID){
 
     else
     {
-        qDebug() << "Group retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "Group retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return groupList;
@@ -235,7 +235,7 @@ bool GroupMemberDB::removeAllGroupMembers()
     }
     else
     {
-        qDebug() << "remove all group members failed: " << removeQuery.lastError();
+        //qDebug() << "remove all group members failed: " << removeQuery.lastError();
     }
 
     return success;
@@ -245,7 +245,7 @@ int GroupMemberDB::getMaxGroupID()
 {
     int maxID;
 
-    qDebug() << "Get max group ID from db:";
+    //qDebug() << "Get max group ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(GroupID) FROM GroupMembers");
 
@@ -258,7 +258,7 @@ int GroupMemberDB::getMaxGroupID()
     }
     else
     {
-        qDebug() << "group retrieval fails:" <<queryMaxID.lastError();
+        //qDebug() << "group retrieval fails:" <<queryMaxID.lastError();
     }
 
     return maxID;
@@ -268,7 +268,7 @@ int GroupMemberDB::getMaxGroupID()
 bool GroupMemberDB::setAdmin(int groupID, int accountID)
 {
     bool success = false;
-    qDebug() << "Set a user to become admin of a group";
+    //qDebug() << "Set a user to become admin of a group";
 
     if(groupMemberExists(groupID, accountID)) {
 
@@ -283,7 +283,7 @@ bool GroupMemberDB::setAdmin(int groupID, int accountID)
         }
         else
         {
-            qDebug() << "set admin fails:" <<querySetAdmin.lastError();
+            //qDebug() << "set admin fails:" <<querySetAdmin.lastError();
         }
     }
 

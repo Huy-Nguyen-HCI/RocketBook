@@ -8,11 +8,11 @@ GroupDB::GroupDB()
 
     if (!groupDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -24,11 +24,11 @@ GroupDB::GroupDB(const QString &path)
 
     if (!groupDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -58,7 +58,7 @@ bool GroupDB::addGroup(int groupID, int profileID){
     }
     else
     {
-        qDebug() << "add group failed: " << queryAdd.lastError();
+        //qDebug() << "add group failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -69,7 +69,7 @@ int GroupDB::getProfileID(int groupID)
 {
     int profileID;
 
-    qDebug() << "Get profileID from group:";
+    //qDebug() << "Get profileID from group:";
     QSqlQuery queryProfileID(QSqlDatabase::database(connectionName));
     queryProfileID.prepare("SELECT ProfileID FROM Groups WHERE GroupID = (:GroupID)");
     queryProfileID.bindValue(":GroupID", groupID);
@@ -83,7 +83,7 @@ int GroupDB::getProfileID(int groupID)
     }
     else
     {
-        qDebug() << "group retrieval fails:" <<queryProfileID.lastError();
+        //qDebug() << "group retrieval fails:" <<queryProfileID.lastError();
     }
 
     return profileID;
@@ -93,7 +93,7 @@ int GroupDB::getMaxGroupID()
 {
     int maxID;
 
-    qDebug() << "Get max group ID from db:";
+    //qDebug() << "Get max group ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(GroupID) FROM Groups");
 
@@ -106,7 +106,7 @@ int GroupDB::getMaxGroupID()
     }
     else
     {
-        qDebug() << "group retrieval fails:" <<queryMaxID.lastError();
+        //qDebug() << "group retrieval fails:" <<queryMaxID.lastError();
     }
 
     return maxID;
@@ -127,7 +127,7 @@ bool GroupDB::removeAllGroups()
     }
     else
     {
-        qDebug() << "remove all groups failed: " << removeQuery.lastError();
+        //qDebug() << "remove all groups failed: " << removeQuery.lastError();
     }
 
     return success;

@@ -8,11 +8,11 @@ AccountDB::AccountDB()
 
     if (!accountDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -24,11 +24,11 @@ AccountDB::AccountDB(const QString &path)
 
     if (!accountDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -40,11 +40,11 @@ AccountDB::AccountDB(const QString &path, const QString &connectionName)
 
     if (!accountDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -78,7 +78,7 @@ bool AccountDB::addAccount(int accountID, const QString &username, const QString
         }
         else
         {
-            qDebug() << "add account failed: " << queryAdd.lastError();
+            //qDebug() << "add account failed: " << queryAdd.lastError();
         }
     }
     return success;
@@ -100,12 +100,12 @@ bool AccountDB::removeAccount(const QString& username)
 
         if(!success)
         {
-            qDebug() << "remove account failed: " << queryDelete.lastError();
+            //qDebug() << "remove account failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove account failed: account doesnt exist";
+        //qDebug() << "remove account failed: account doesnt exist";
     }
 
     return success;
@@ -114,7 +114,7 @@ bool AccountDB::removeAccount(const QString& username)
 AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName)
 {
 
-    qDebug() << "Accounts in db:";
+    //qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM Accounts WHERE username = :Username");
     queryRetrieve.bindValue(":Username", userName);
@@ -143,7 +143,7 @@ AccountInfoType AccountDB::retrieveAccountInfo(const QString& userName)
     }
     else
     {
-        qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
     return std::make_tuple(accountID, user, pass, profileID, adminRights);
 }
@@ -152,7 +152,7 @@ int AccountDB::retrieveAccountID(const QString& username)
 {
     QString accountId;
 
-    qDebug() << "Accounts in db:";
+    //qDebug() << "Accounts in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT AccountID FROM Accounts WHERE username = :Username");
     queryRetrieve.bindValue(":Username", username);
@@ -168,7 +168,7 @@ int AccountDB::retrieveAccountID(const QString& username)
     }
     else
     {
-        qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return accountId.toInt();
@@ -193,7 +193,7 @@ bool AccountDB::accountExists(const QString& username) const
     }
     else
     {
-        qDebug() << "account exists failed: " << checkQuery.lastError();
+        //qDebug() << "account exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -212,7 +212,7 @@ bool AccountDB::removeAllAccounts()
     }
     else
     {
-        qDebug() << "remove all accounts failed: " << removeQuery.lastError();
+        //qDebug() << "remove all accounts failed: " << removeQuery.lastError();
     }
 
     return success;
@@ -224,7 +224,7 @@ int AccountDB::getMaxAccountID()
 {
     int maxID;
 
-    qDebug() << "Get max account ID from db:";
+    //qDebug() << "Get max account ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(AccountID) FROM Accounts");
 
@@ -237,7 +237,7 @@ int AccountDB::getMaxAccountID()
     }
     else
     {
-        qDebug() << "account retrieval fails:" <<queryMaxID.lastError();
+        //qDebug() << "account retrieval fails:" <<queryMaxID.lastError();
     }
 
     return maxID;
@@ -246,7 +246,7 @@ int AccountDB::getMaxAccountID()
 
 QString AccountDB::getUsername(int accountID)
 {
-    qDebug() << "Get username in db:";
+    //qDebug() << "Get username in db:";
     QSqlQuery queryUsername(QSqlDatabase::database(connectionName));
     queryUsername.prepare("SELECT Username FROM Accounts WHERE AccountID = :AccountID");
     queryUsername.bindValue(":AccountID", accountID);
@@ -259,7 +259,7 @@ QString AccountDB::getUsername(int accountID)
     }
     else
     {
-        qDebug() << "username retrieval fails:" <<queryUsername.lastError();
+        //qDebug() << "username retrieval fails:" <<queryUsername.lastError();
     }
 
     return "";
@@ -267,7 +267,7 @@ QString AccountDB::getUsername(int accountID)
 
 int AccountDB::getProfileID(int accountID)
 {
-    qDebug() << "Get profile ID in db:";
+    //qDebug() << "Get profile ID in db:";
     QSqlQuery queryUsername(QSqlDatabase::database(connectionName));
     queryUsername.prepare("SELECT ProfileID FROM Accounts WHERE AccountID = :AccountID");
     queryUsername.bindValue(":AccountID", accountID);
@@ -280,7 +280,7 @@ int AccountDB::getProfileID(int accountID)
     }
     else
     {
-        qDebug() << "profile ID retrieval fails:" <<queryUsername.lastError();
+        //qDebug() << "profile ID retrieval fails:" <<queryUsername.lastError();
     }
 
     return -1;

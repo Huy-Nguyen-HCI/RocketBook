@@ -8,11 +8,11 @@ MultimediaDB::MultimediaDB(): PostDB::PostDB()
 
     if (!multimediaDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -24,11 +24,11 @@ MultimediaDB::MultimediaDB(const QString &path): PostDB::PostDB()
 
     if (!multimediaDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -69,7 +69,7 @@ bool MultimediaDB::addMultimedia(int multimediaID,
     }
     else
     {
-        qDebug() << "add Multimedia failed: " << queryAdd.lastError();
+        //qDebug() << "add Multimedia failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -91,12 +91,12 @@ bool MultimediaDB::removeMultimedia(int id)
 
         if(!success)
         {
-            qDebug() << "remove Multimedias failed: " << queryDelete.lastError();
+            //qDebug() << "remove Multimedias failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove Multimedias failed: Multimedia doesnt exist";
+        //qDebug() << "remove Multimedias failed: Multimedia doesnt exist";
     }
 
     return success;
@@ -141,7 +141,7 @@ MultimediaInfoType MultimediaDB::retrieveMultimediaInfo(int id)
     }
     else
     {
-        qDebug() << "Multimedia retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "Multimedia retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return std::make_tuple(multimediaID,
@@ -202,7 +202,7 @@ std::vector<MultimediaInfoType> MultimediaDB::retrieveAllMultimediaInfo(int scra
     }
     else
     {
-        qDebug() << "multimedia retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "multimedia retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return multimediaInfo;
@@ -225,7 +225,7 @@ bool MultimediaDB::multimediaExists(int id) const
     }
     else
     {
-        qDebug() << "Multimedia exists failed: " << checkQuery.lastError();
+        //qDebug() << "Multimedia exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -244,7 +244,7 @@ bool MultimediaDB::removeAllMultimedias()
     }
     else
     {
-        qDebug() << "remove all Multimedias failed: " << removeQuery.lastError();
+        //qDebug() << "remove all Multimedias failed: " << removeQuery.lastError();
     }
 
     return success;

@@ -59,7 +59,7 @@ RocketUser::RocketUser(QString dbPath,
         int scrapbookID = std::get<4>(profileInfo);
         profile = new Profile(dbPath, profileID, fullName, photo, description, scrapbookID);
     } else {
-        qDebug() << "Profile does not exists.";
+        //qDebug() << "Profile does not exists.";
     }
 
     groupController = new GroupController(dbPath, id);

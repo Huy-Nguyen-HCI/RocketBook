@@ -8,11 +8,11 @@ TweetDB::TweetDB(): PostDB::PostDB()
 
     if (!tweetDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -24,11 +24,11 @@ TweetDB::TweetDB(const QString &path): PostDB::PostDB()
 
     if (!tweetDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -56,7 +56,7 @@ bool TweetDB::addTweet(int tweetID, int accountID, int scrapbookID, const QStrin
     }
     else
     {
-        qDebug() << "add tweet failed: " << queryAdd.lastError();
+        //qDebug() << "add tweet failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -78,12 +78,12 @@ bool TweetDB::removeTweet(int id)
 
         if(!success)
         {
-            qDebug() << "remove tweet failed: " << queryDelete.lastError();
+            //qDebug() << "remove tweet failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove tweet failed: tweet doesnt exist";
+        //qDebug() << "remove tweet failed: tweet doesnt exist";
     }
 
     return success;
@@ -121,7 +121,7 @@ TweetInfoType TweetDB::retrieveTweetInfo(int tweetID)
     }
     else
     {
-        qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return std::make_tuple(id, accountID, scrapbookID, tweetContent, privacy);
@@ -164,7 +164,7 @@ std::vector<TweetInfoType> TweetDB::retrieveAllTweetInfo(int scrapbookID)
     }
     else
     {
-        qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "tweet retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return tweetInfo;
@@ -187,7 +187,7 @@ bool TweetDB::tweetExists(int id) const
     }
     else
     {
-        qDebug() << "tweet exists failed: " << checkQuery.lastError();
+        //qDebug() << "tweet exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -206,7 +206,7 @@ bool TweetDB::removeAllTweets()
     }
     else
     {
-        qDebug() << "remove all tweets failed: " << removeQuery.lastError();
+        //qDebug() << "remove all tweets failed: " << removeQuery.lastError();
     }
 
     return success;

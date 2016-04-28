@@ -8,11 +8,11 @@ FriendDB::FriendDB()
 
     if (!friendDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -26,11 +26,11 @@ FriendDB::FriendDB(const QString &path)
 
     if (!friendDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -70,7 +70,7 @@ bool FriendDB::addFriendBothSides(int accountID, int friendID)
     }
     else
     {
-        qDebug() << "add friend failed: " << queryAdd.lastError();
+        //qDebug() << "add friend failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -99,12 +99,12 @@ bool FriendDB::removeFriendBothSides(int accountID, int friendID)
 
         if(!success)
         {
-            qDebug() << "remove account failed: " << queryDelete.lastError();
+            //qDebug() << "remove account failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove friend failed: friend does not exist";
+        //qDebug() << "remove friend failed: friend does not exist";
     }
 
     return success;
@@ -115,7 +115,7 @@ std::vector<int> FriendDB::retrieveAllFriends(int accountId)
 {
     std::vector<int> friendList;
 
-    qDebug() << "Friends in db:";
+    //qDebug() << "Friends in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT FriendID FROM Friends WHERE AccountID = (:AccountID)");
     queryRetrieve.bindValue(":AccountID", accountId);
@@ -132,7 +132,7 @@ std::vector<int> FriendDB::retrieveAllFriends(int accountId)
 
     else
     {
-        qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "account retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return friendList;
@@ -158,7 +158,7 @@ bool FriendDB::friendshipExists(int accountID, int friendID) const
     }
     else
     {
-        qDebug() << "account exists failed: " << checkQuery.lastError();
+        //qDebug() << "account exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -177,7 +177,7 @@ bool FriendDB::removeAllFriends()
     }
     else
     {
-        qDebug() << "remove all friends failed: " << removeQuery.lastError();
+        //qDebug() << "remove all friends failed: " << removeQuery.lastError();
     }
 
     return success;

@@ -1,4 +1,4 @@
-#include "chatui.h"
+﻿#include "chatui.h"
 
 ChatUI::ChatUI(AccountController* accountControl)
 {
@@ -6,7 +6,8 @@ ChatUI::ChatUI(AccountController* accountControl)
     this->username=accountControl->getUser()->getUsername();
     this->accountControl=accountControl;
     initialize();
-    takeCommand(select(3));
+    options=5;
+    takeCommand(select(options));
 
 }
 
@@ -17,8 +18,10 @@ clear();
 // print the instructions for manipulating the Value object
 mvprintw(0, 0, "Chat Menu \nPlease select one by using the arrow keys and pressing enter:");
 mvprintw(3, 8, "Create new Chat");
-mvprintw(4, 8, "Select Chat");
-mvprintw(5, 8, "Back");
+mvprintw(4, 8, "Enter Chat Room");
+mvprintw(5, 8, "Add friend to Chat");
+mvprintw(6, 8, "Leave Chat");
+mvprintw(7, 8, "Back");
 
 mvprintw(v+2, 5, "->");
 //std::to_string(v).c_str()
@@ -27,22 +30,30 @@ refresh();
 }
 
 
-
 void ChatUI::takeCommand(int selection){
 
     // cleanup the window and return control to bash
     endwin();
 
     chatControl=new ChatController(accountControl->getPath(),accountControl->getUser()->getID());
-   if(selection==1)
-       createChat();
+   if(selection==1){
+       int chosenFriend=selectFriend();
+       if(chosenFriend!=-1)
+           createChat();//(chosenFriend);
+   }
+
+
    else if(selection==2)
-       selectChat();
+       enterChat();
    else if(selection==3)
+       addFriend();
+   else if(selection==4)
+       leaveChat();
+   else if(selection==5)
        return;
 
    initialize();
-   takeCommand(select(3));
+   takeCommand(select(options));
 
 }
 
@@ -51,12 +62,13 @@ void ChatUI::createChat(){
     mvprintw(8, 6, "New Chat Created");
     getch();
     erase();
+
 }
 
 
 
 
-void ChatUI::selectChat(){
+void ChatUI::enterChat(){
    chatList=chatControl->getChatIdList();
    //This will enter Chat at specific chat Id
    enterChat(chatList->at(chatSelection()));
@@ -80,6 +92,16 @@ void ChatUI::displayChats(int v) {
 
     refresh();
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -144,5 +166,55 @@ void ChatUI::enterChat(int chatId){
 
 
     getch();
+
+}
+
+void ChatUI::addFriend(){
+
+}
+
+
+void ChatUI::leaveChat(){
+
+}
+
+int ChatUI::selectFriend(){
+
+    bool scrolling=true;
+    int offset=0;
+    int row, max;
+
+    while(scrolling){
+    erase();
+    mvprintw(0,0, "Friends: Press enter to select friend");
+
+    row=3;
+    mvprintw(row, 5, "->");
+
+    QStringList friendNames= friendControl->getFriendNames();
+
+    max=offset+15;
+    if(friendNames.size()<offset+15)
+        max=friendNames.size();
+
+    for (unsigned int i = offset; i < max; i++) {
+        mvprintw(row,8,friendNames.at(i).toStdString().c_str());
+        row++;
+    }
+
+    int ch= getch();
+        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+            offset++;
+        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
+        else if(ch==10)//enter key
+            scrolling=false;
+        else
+            return -1;
+
+    }
+    return offset;
 
 }

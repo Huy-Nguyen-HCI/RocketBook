@@ -11,11 +11,11 @@ MessageDB::MessageDB()
 
     if (!messageDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -27,11 +27,11 @@ MessageDB::MessageDB(const QString &path)
 
     if (!MessageDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -63,7 +63,7 @@ bool MessageDB::addMessage(int messageID, int chatID, int accountID, const QStri
         }
         else
         {
-            qDebug() << "Failed to add message: " << queryAdd.lastError();
+            //qDebug() << "Failed to add message: " << queryAdd.lastError();
         }
 
         return success;
@@ -84,12 +84,12 @@ bool MessageDB::deleteMessage(int chatID,  int messageID){
 
         if(!success)
         {
-            qDebug() << "remove account failed: " << queryDelete.lastError();
+            //qDebug() << "remove account failed: " << queryDelete.lastError();
         }
 
         else
         {
-            qDebug() << "remove account failed: account doesnt exist";
+            //qDebug() << "remove account failed: account doesnt exist";
         }
 
         return success;
@@ -100,7 +100,7 @@ std::vector<QString>* MessageDB::retrieveChatMessages(int chatID){
 
     std::vector<QString>* messageList= new std::vector<QString>();
 
-    qDebug() << "Messeges in chat:";
+    //qDebug() << "Messeges in chat:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT Message FROM Messages WHERE ChatID = (:ChatID)");
     queryRetrieve.bindValue(":ChatID", chatID);
@@ -117,7 +117,7 @@ std::vector<QString>* MessageDB::retrieveChatMessages(int chatID){
 
     else
     {
-        qDebug() << "message retrieval failed:" <<queryRetrieve.lastError();
+        //qDebug() << "message retrieval failed:" <<queryRetrieve.lastError();
     }
 
     return messageList;
@@ -129,7 +129,7 @@ std::vector<int>* MessageDB::retrieveChatSenders(int chatID){
 
     std::vector<int>* senderList= new std::vector<int>();
 
-    qDebug() << "Senders of Messages in chat:";
+    //qDebug() << "Senders of Messages in chat:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT AccountID FROM Messages WHERE ChatID = (:ChatID)");
     queryRetrieve.bindValue(":ChatID", chatID);
@@ -146,7 +146,7 @@ std::vector<int>* MessageDB::retrieveChatSenders(int chatID){
 
     else
     {
-        qDebug() << "account retrieval failed:" <<queryRetrieve.lastError();
+        //qDebug() << "account retrieval failed:" <<queryRetrieve.lastError();
     }
 
     return senderList;
@@ -158,7 +158,7 @@ int MessageDB::getMaxMessageID(int chatId)
 {
     int maxID;
 
-    qDebug() << "Get max messageID from chat from db:";
+    //qDebug() << "Get max messageID from chat from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(MessageID) FROM Messages WHERE ChatID = (:ChatID)");
     queryMaxID.bindValue(":ChatID", chatId);
@@ -172,7 +172,7 @@ int MessageDB::getMaxMessageID(int chatId)
     }
     else
     {
-        qDebug() << "message retrieval fails:" <<queryMaxID.lastError();
+        //qDebug() << "message retrieval fails:" <<queryMaxID.lastError();
     }
 
     return maxID;

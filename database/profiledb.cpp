@@ -8,11 +8,11 @@ ProfileDB::ProfileDB()
 
     if (!profileDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 
 }
@@ -25,11 +25,11 @@ ProfileDB::ProfileDB(const QString &path)
 
     if (!profileDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -41,11 +41,11 @@ ProfileDB::ProfileDB(const QString &path, QString connectionName)
 
     if (!profileDB.open())
     {
-        qDebug() << "Error: connection with database fail";
+        //qDebug() << "Error: connection with database fail";
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        //qDebug() << "Database: connection ok";
     }
 }
 
@@ -79,7 +79,7 @@ bool ProfileDB::addProfile(int profileID, const QString &fullName, const QString
     }
     else
     {
-        qDebug() << "add profile failed: " << queryAdd.lastError();
+        //qDebug() << "add profile failed: " << queryAdd.lastError();
     }
 
     return success;
@@ -98,12 +98,12 @@ bool ProfileDB::removeProfile(int profileID)
 
         if(!success)
         {
-            qDebug() << "remove profile failed: " << queryDelete.lastError();
+            //qDebug() << "remove profile failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove profile failed: profile doesnt exist";
+        //qDebug() << "remove profile failed: profile doesnt exist";
     }
 
     return success;
@@ -112,7 +112,7 @@ bool ProfileDB::removeProfile(int profileID)
 ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
 {
 
-    qDebug() << "Profiles in db:";
+    //qDebug() << "Profiles in db:";
     QSqlQuery queryRetrieve(QSqlDatabase::database(connectionName));
     queryRetrieve.prepare("SELECT * FROM Profiles WHERE ProfileID = (:ProfileID)");
     queryRetrieve.bindValue(":ProfileID", profileID);
@@ -142,7 +142,7 @@ ProfileInfoType ProfileDB::retrieveProfileInfo(int profileID)
     }
     else
     {
-        qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
+        //qDebug() << "profile retrieval fails:" <<queryRetrieve.lastError();
     }
 
     return std::make_tuple(id, fullname, photo, description, scrapbookID);
@@ -190,7 +190,7 @@ bool ProfileDB::profileExists(int profileID) const
     }
     else
     {
-        qDebug() << "profile exists failed: " << checkQuery.lastError();
+        //qDebug() << "profile exists failed: " << checkQuery.lastError();
     }
 
     return exists;
@@ -209,7 +209,7 @@ bool ProfileDB::removeAllProfiles()
     }
     else
     {
-        qDebug() << "remove all profiles failed: " << removeQuery.lastError();
+        //qDebug() << "remove all profiles failed: " << removeQuery.lastError();
     }
 
     return success;
@@ -219,7 +219,7 @@ int ProfileDB::getMaxProfileID()
 {
     int maxID = -1;
 
-    qDebug() << "Get max profile ID from db:";
+    //qDebug() << "Get max profile ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(ProfileID) FROM Profiles");
 
@@ -232,7 +232,7 @@ int ProfileDB::getMaxProfileID()
     }
     else
     {
-        qDebug() << "profile ID max fails:" <<queryMaxID.lastError();
+        //qDebug() << "profile ID max fails:" <<queryMaxID.lastError();
     }
 
     return maxID;
@@ -242,7 +242,7 @@ int ProfileDB::getMaxScrapbookID()
 {
     int maxID = -1;
 
-    qDebug() << "Get max profile ID from db:";
+    //qDebug() << "Get max profile ID from db:";
     QSqlQuery queryMaxID(QSqlDatabase::database(connectionName));
     queryMaxID.prepare("SELECT max(ScrapbookID) FROM Profiles");
 
@@ -255,7 +255,7 @@ int ProfileDB::getMaxScrapbookID()
     }
     else
     {
-        qDebug() << "profile ID max fails:" <<queryMaxID.lastError();
+        //qDebug() << "profile ID max fails:" <<queryMaxID.lastError();
     }
 
     return maxID;
