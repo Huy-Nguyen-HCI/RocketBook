@@ -219,7 +219,7 @@ int ScrapbookUI::displayScrapbook(){
     refresh();
 
     int *max;
-    if(wholeScrapbook.size() < 5){
+    if(wholeScrapbook.size() < offset+5){
         *max = wholeScrapbook.size();
     }else{
         *max = offset+5;
@@ -312,8 +312,8 @@ void ScrapbookUI::viewBlog(int index)
         endwin();
         erase();
         //mvprintw(0,0, author->toStdString().c_str());
-        mvprintw(1,0, currentContent->toStdString().c_str());
-        mvprintw(2, 0, "Press up or down to scroll or Enter to post comment.");
+        mvprintw(0,0, currentContent->toStdString().c_str());
+        mvprintw(1, 0, "Press up or down to scroll or Enter to post comment.");
         refresh();
 
         row=2;
