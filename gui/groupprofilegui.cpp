@@ -68,13 +68,23 @@ void GroupProfileGUI::refreshMembers() {
         ui->memberTable->setItem(row, 0, username);
         ui->memberTable->setItem(row, 1, adminRights);
     }
+    ui->memberTable->resizeColumnsToContents();
+    ui->memberTable->resizeRowsToContents();
 
 }
 
 void GroupProfileGUI::loadPhoto() {
+    if (photoPath.isNull()) return;
+
+    // clear the current view
+    photoScene->clear();
+    ui->groupPhoto->viewport()->update();
+
+    //display image in GUI
     ui->groupPhoto->setScene(photoScene);
     QPixmap *file = new QPixmap(photoPath);
     QGraphicsPixmapItem *image = new QGraphicsPixmapItem(*file);
     ui->groupPhoto->fitInView(image, Qt::KeepAspectRatio);
     photoScene->addItem(image);
+
 }

@@ -38,8 +38,6 @@ private slots:
 
     void on_actionAboutMe_triggered();
 
-    void on_actionNotifications_triggered();
-
     void on_actionFriend_triggered();
 
     void on_actionLog_out_triggered();

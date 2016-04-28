@@ -17,6 +17,12 @@ ViewBlogGUI::ViewBlogGUI(AccountController *accountController,
     ui->commentTable->setShowGrid(false);
 //    ui->commentTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->commentTable->setSelectionMode(QAbstractItemView::NoSelection);
+
+
+    ui->commentTable->setColumnWidth(0, 50);
+    ui->commentTable->setColumnWidth(1, 200);
+
+
     this->setWindowTitle(blog->getTitle());
 
     refreshBlog();
@@ -73,8 +79,12 @@ void ViewBlogGUI::refreshComments() {
         comment->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
         ui->commentTable->setItem(row, 0, username);
+        QFont font("Helvetica", 12, QFont::Bold);
+        ui->commentTable->item(row, 0)->setFont(font);
         ui->commentTable->setItem(row, 1, comment);
     }
+    ui->commentTable->resizeColumnsToContents();
+    ui->commentTable->resizeRowsToContents();
 }
 
 

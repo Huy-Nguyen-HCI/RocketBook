@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>662</width>
-    <height>490</height>
+    <width>641</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,7 +42,6 @@
    <addaction name="actionAboutMe"/>
    <addaction name="separator"/>
    <addaction name="actionFeed"/>
-   <addaction name="actionNotifications"/>
    <addaction name="actionFriend"/>
    <addaction name="separator"/>
    <addaction name="actionScrapbook"/>

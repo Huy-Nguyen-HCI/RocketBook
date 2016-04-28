@@ -18,6 +18,13 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="blogTitleLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string>Blog Title</string>
        </property>
@@ -25,6 +32,11 @@
      </item>
      <item>
       <widget class="QLabel" name="authorLabel">
+       <property name="font">
+        <font>
+         <italic>true</italic>
+        </font>
+       </property>
        <property name="text">
         <string>by Username</string>
        </property>

@@ -10,6 +10,10 @@ DisplayMultimediaGUI::DisplayMultimediaGUI(Scrapbook *inputScrapbook, ScrapbookG
     scrapbook = inputScrapbook;
 //    viewMedia = new ViewMultimediaItem();
     refreshMultimedia();
+    //hide all non-usable functions
+    ui->deleteButton->hide();
+    ui->viewButton->hide();
+    ui->editButton->hide();
 }
 
 DisplayMultimediaGUI::~DisplayMultimediaGUI()

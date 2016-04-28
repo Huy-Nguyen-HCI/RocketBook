@@ -58,6 +58,9 @@ void DisplayGroupGUI::refreshGroups()
         ui->groupTable->setItem(i, 1, id);
 
     }
+    ui->groupTable->setIconSize(QSize(200, 200));
+    ui->groupTable->resizeColumnsToContents();
+    ui->groupTable->resizeRowsToContents();
 
 }
 

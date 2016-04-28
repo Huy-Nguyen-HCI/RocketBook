@@ -56,10 +56,6 @@ void MainWindow::on_actionAboutMe_triggered()
     profile->updatePhoto();
 }
 
-void MainWindow::on_actionNotifications_triggered()
-{
-
-}
 
 void MainWindow::on_actionFriend_triggered()
 {

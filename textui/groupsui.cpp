@@ -1,5 +1,7 @@
 #include "groupsui.h"
 
+
+
 GroupsUI::GroupsUI(AccountController* accountControl)
 {
     this->accountControl=accountControl;
@@ -16,42 +18,40 @@ int GroupsUI::selectGroup(){
 
     bool scrolling=true;
     int offset=0;
-    int row, max;  
+    int row, max;
     //Instantiates groups when entering screen
-    std::vector<std::string> groupNames;
     std::vector<Group*> allGroups = accountControl->getUser()->controlGroup()->getAllGroups();
     for (int i=0;i<allGroups.size();i++){
+        int groupID = allGroups.at(i)->getID();
         std::string groupName=allGroups.at(i)->getProfile()->getFullName().toStdString();
-        groupNames.push_back(groupName);
+        GroupIDNameType groupInfo = std::make_tuple(groupID, groupName);
+        groupIDNames.push_back(groupInfo);
     }
 
     while(scrolling){
 
+        erase();
+        refresh();
+        mvprintw(0,0, "Groups: Press hit ENTER to enter a group");
 
+        //set positioning for the arrow
+        row=3;
+        mvprintw(row, 5, "->");
 
-     erase();
-    refresh();
-    mvprintw(0,0, "Friends: Press enter to select friend");
+        //
+        max=offset+15;
+        if(allGroups.size()<offset+15)
+            max=allGroups.size();
 
+        //Write group names using this loop
+        for (unsigned int i = offset; i < max; i++) {
+            std::string groupName=std::get<1>(groupIDNames.at(i));
+            mvprintw(row,8,groupName.c_str());
+            row++;
+        }
 
-    row=3;
-    mvprintw(row, 5, "->");
-
-
-
-
-    max=offset+15;
-    if(allGroups.size()<offset+15)
-        max=allGroups.size();
-
-    //Write group naems using this loop
-    for (unsigned int i = offset; i < max; i++) {
-        std::string groupName=groupNames.at(i);
-        mvprintw(row,8,groupName.c_str());//.toStdString().c_str());
-        row++;
-    }
-
-    int ch= getch();
+        //handling the control
+        int ch= getch();
         if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
             offset++;
         else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
@@ -70,8 +70,7 @@ int GroupsUI::selectGroup(){
 }
 
 void GroupsUI::enterGroup(int index){
-
-
-
-
+    int groupID = std::get<0>(groupIDNames.at(index));
+    Group* group = accountControl->getUser()->controlGroup()->getGroup(groupID);
+    Scrapbook* groupScrapbook = group->getProfile()->getScrapbook();
 }
