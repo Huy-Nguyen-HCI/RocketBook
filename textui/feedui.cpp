@@ -211,16 +211,7 @@ void FeedUI::viewBlog(int index)
         endwin();
         return;
     }
-//    Feed *allFeed = accountControl->getUser()->getFeed();
-//    allFeed->updatePostList();
-//    std::vector<Post*> friendFeed = allFeed->getFeed();
-//    erase();
-//    refresh();
-//    Blog* currentBlog;
-//    currentBlog = (Blog*) friendFeed[index];
-//    QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
-//    std::vector<Comment*> allComments = currentBlog->getAllComments();
-//    erase();
+
       bool commenting = true;
       int offset=0;
       int row = 2;
@@ -236,16 +227,14 @@ void FeedUI::viewBlog(int index)
         Blog* currentBlog;
         currentBlog = (Blog*) friendFeed[index];
         QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
+        QString *currentContent = new QString(currentBlog->getContent());
         std::vector<Comment*> allComments = currentBlog->getAllComments();
         erase();
-        //bool commenting = true;
-        //int offset=0;
-        //int row = 2;
-        //int max, displayNumber=18;
         endwin();
         erase();
         mvprintw(0,0, author->toStdString().c_str());
-        mvprintw(1, 0, "Press up or down to scroll or Enter to post comment.");
+        mvprintw(1,0, currentContent->toStdString().c_str());
+        mvprintw(2, 0, "Press up or down to scroll or Enter to post comment.");
         refresh();
 
         row=2;
@@ -289,13 +278,12 @@ void FeedUI::viewBlog(int index)
 
 void FeedUI::postComment(int blogIndex)
 {
-    QString username = accountControl->getUser()->getUsername();
-    char comment[500];
+
+     char comment[500];
      mvprintw(LINES-3, 5, "Enter New Comment: ");
      echo();
      getstr(comment);
-     //Comment* newComment = new Comment(username, QString::fromStdString(comment));
-     //blog->addComment(newComment);
+
 
      Feed *allFeed = accountControl->getUser()->getFeed();
      allFeed->updatePostList();
@@ -304,11 +292,9 @@ void FeedUI::postComment(int blogIndex)
      refresh();
      Blog* currentBlog;
      currentBlog = (Blog*) friendFeed[blogIndex];
-     //currentBlog->addComment(newComment);
+
      currentBlog->addComment(accountControl->getUser()->getUsername(), QString::fromStdString(comment));
 
-
-     //accountControl->getUser()->getChatController()->sendMessage(chatId,QString::fromStdString(comment));
      noecho();
 
 }
