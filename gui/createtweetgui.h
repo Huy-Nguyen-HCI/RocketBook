@@ -21,6 +21,7 @@ public:
                             ScrapbookGUI *input,
                             QWidget *parent = 0);
     ~CreateTweetGUI();
+    void clearViews();
 
 private slots:
     void on_returnButton_clicked();

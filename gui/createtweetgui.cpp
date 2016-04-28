@@ -38,3 +38,9 @@ void CreateTweetGUI::on_publishButton_clicked()
     scrapbookGUI->switchTweetViews();
 
 }
+
+void CreateTweetGUI::clearViews() {
+
+    ui->contentBox->clear();
+    ui->privateCheckbox->setChecked(false);
+}

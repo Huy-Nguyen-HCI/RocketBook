@@ -32,3 +32,10 @@ void CreateBlogGUI::on_publishButton_clicked()
     scrapbookGUI->switchBlogViews();
 
 }
+
+void CreateBlogGUI::clearViews() {
+
+    ui->lineEdit->clear();
+    ui->textEdit->clear();
+    ui->privateCheckbox->setChecked(false);
+}

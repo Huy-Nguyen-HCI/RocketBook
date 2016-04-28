@@ -54,6 +54,8 @@ private slots:
 
     void on_exportButton_clicked();
 
+    void on_refreshButton_clicked();
+
 private:
     Ui::ScrapbookGUI *ui;
     CreateBlogGUI *createBlogView;

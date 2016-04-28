@@ -96,16 +96,19 @@ ScrapbookGUI::~ScrapbookGUI()
 }
 
 void ScrapbookGUI::switchTweetViews() {
-    if (ui->tweetStackedWidget->currentWidget() == displayTweetView)
+    if (ui->tweetStackedWidget->currentWidget() == displayTweetView){
+        createTweetView->clearViews();
         ui->tweetStackedWidget->setCurrentWidget(createTweetView);
-    else
-        //displayTweetView->refreshTweets();
-        ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
+    }
+    else {
         displayTweetView->refreshTweets();
+        ui->tweetStackedWidget->setCurrentWidget(displayTweetView);
+    }
 }
 
 void ScrapbookGUI::switchBlogViews() {
     if (ui->blogStackedWidget->currentWidget() == displayBlogView){
+        createBlogView->clearViews();
         ui->blogStackedWidget->setCurrentWidget(createBlogView);
     }
     else {
@@ -117,6 +120,7 @@ void ScrapbookGUI::switchBlogViews() {
 
 void ScrapbookGUI::switchMultimediaViews() {
     if (ui->multimediaStackedWidget->currentWidget() == displayMultimediaView){
+        createMultimediaView->clearViews();
         ui->multimediaStackedWidget->setCurrentWidget(createMultimediaView);
     }
     else {
@@ -127,7 +131,6 @@ void ScrapbookGUI::switchMultimediaViews() {
 
 void ScrapbookGUI::refreshBook()
 {
-    ui->message->clear();
     ui->scrapbookArea->clear();
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
     for (unsigned int i = 0; i < wholeScrapbook.size(); i++) {
@@ -377,7 +380,6 @@ void ScrapbookGUI::writeToHTMLFile(QString htmlText) {
         QTextStream stream( &file );
         stream << htmlText << endl;
     }
-    ui->message->setText("Export successful!");
 }
 
 QString ScrapbookGUI::friendsToHTML() {
@@ -396,4 +398,9 @@ QString ScrapbookGUI::friendsToHTML() {
     html += "</ul>";
 
     return html;
+}
+
+void ScrapbookGUI::on_refreshButton_clicked()
+{
+    refreshBook();
 }

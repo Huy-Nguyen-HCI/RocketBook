@@ -20,6 +20,7 @@ class CreateMultimediaGUI : public QWidget
 public:
     explicit CreateMultimediaGUI(AccountController *currentAccount, Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent = 0);
     ~CreateMultimediaGUI();
+    void clearViews();
 
 private slots:
     void on_returnButton_clicked();

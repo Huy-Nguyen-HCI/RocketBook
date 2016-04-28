@@ -88,3 +88,11 @@ void CreateMultimediaGUI::on_publishButton_clicked()
     scrapbook->addMedia(username, title, description, filePath, privacy);
     scrapbookGUI->switchMultimediaViews();
 }
+
+void CreateMultimediaGUI::clearViews() {
+
+    ui->titleBox->clear();
+    ui->descriptionBox->clear();
+    ui->filePathBox->clear();
+    ui->privacyBox->setChecked(false);
+}
