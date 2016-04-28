@@ -241,6 +241,12 @@ void ScrapbookGUI::on_exportButton_clicked()
     // begin body
     htmlText += "<body>";
 
+    // add profile
+    htmlText += profileToHTML();
+
+    // add friend list
+    htmlText += friendsToHTML();
+
     // add content
     htmlText += buildContentHTML();
 
@@ -258,6 +264,7 @@ QString ScrapbookGUI::buildContentHTML() {
     QString html;
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
 
+    html += "<h3><u>My posts:</u></h3>";
     // begin list
     html += "<ol>";
 
@@ -336,6 +343,25 @@ QString ScrapbookGUI::multimediaToHTML(Multimedia *media) {
     return html;
 }
 
+QString ScrapbookGUI::profileToHTML() {
+
+    QString html;
+    QString imageStyle = " style='width:200px; height:200pxl; '";
+    Profile *profile = accountController->getUser()->getProfile();
+
+    // add profile image
+    html =
+            html + "<p style='text-align:center'>" +
+            "<img src=" + "'" + profile->getPicturePath() + "'" + imageStyle + ">" +
+            "</p>";
+
+    // add description
+    html = html + "<h3>" + "<u>My description:</u>" + "</h3>";
+    html += profile->getDescription().toHtmlEscaped();
+    html += "<br>";
+    return html;
+}
+
 
 void ScrapbookGUI::writeToHTMLFile(QString htmlText) {
 
@@ -352,4 +378,22 @@ void ScrapbookGUI::writeToHTMLFile(QString htmlText) {
         stream << htmlText << endl;
     }
     ui->message->setText("Export successful!");
+}
+
+QString ScrapbookGUI::friendsToHTML() {
+
+    QString html;
+    QStringList friendList = accountController->getUser()->controlFriend()->getFriendNames();
+
+    html += "<h3><u>My friends:</u></h3>";
+
+    html += "<ul>";
+
+    for (QString friendName : friendList) {
+        html = html + "<li>" + friendName + "</li>";
+    }
+
+    html += "</ul>";
+
+    return html;
 }
