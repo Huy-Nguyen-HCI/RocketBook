@@ -7,11 +7,19 @@ FriendsGUI::FriendsGUI(AccountController *input, QWidget *parent) :
 {
     ui->setupUi(this);
     accountController = input;
+
+    // set up the completer
+    QStringList usernames = accountController->getAllUsernames();
+    completer = new QCompleter(usernames, this);
+
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    ui->friendNameInput->setCompleter(completer);
 }
 
 FriendsGUI::~FriendsGUI()
 {
     delete ui;
+    delete completer;
 }
 
 void FriendsGUI::on_viewProfile_clicked()

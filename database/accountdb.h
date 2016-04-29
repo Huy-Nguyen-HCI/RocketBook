@@ -130,6 +130,8 @@ public:
      */
     int getProfileID(int accountID);
 
+    QStringList getAllUsernames();
+
 private:
     QString connectionName;
 };

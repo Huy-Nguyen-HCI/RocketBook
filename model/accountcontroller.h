@@ -10,7 +10,6 @@
 #include "rocketuser.h"
 #include "chatcontroller.h"
 
-
 /**
  * @brief Account Controller class initiates user actions. This includes Login and Add friend.
  */
@@ -79,6 +78,7 @@ public:
 
     static QString PATH;
 
+    QStringList getAllUsernames() { return accountDB->getAllUsernames(); }
 
 private:
     AccountDB* accountDB;

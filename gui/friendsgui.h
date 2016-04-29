@@ -2,6 +2,7 @@
 #define FRIENDSGUI_H
 
 #include <QWidget>
+#include <QCompleter>
 #include "../model/accountcontroller.h"
 #include "friendprofilegui.h"
 
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::FriendsGUI *ui;
     AccountController *accountController;
+    QCompleter *completer;
 };
 
 #endif // FRIENDSGUI_H

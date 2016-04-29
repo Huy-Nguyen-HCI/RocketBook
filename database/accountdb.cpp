@@ -301,3 +301,21 @@ int AccountDB::getProfileID(int accountID)
 
     return -1;
 }
+
+QStringList AccountDB::getAllUsernames() {
+
+    QSqlQuery query(QSqlDatabase::database(connectionName));
+    QStringList usernameList;
+
+    query.prepare("SELECT Username FROM Accounts");
+    if (query.exec())
+    {
+        while (query.next())
+        {
+            QString name = query.value(0).toString();
+            usernameList.append(name);
+        }
+    }
+
+    return usernameList;
+}

@@ -71,7 +71,7 @@
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Icon sources:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-style:italic; color:#00ffff;&quot;&gt;Icon and image sources:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>

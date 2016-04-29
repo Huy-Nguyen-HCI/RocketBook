@@ -116,3 +116,5 @@ int AccountController::getAccountId(QString username){
 std::string AccountController::getUserName(int id){
     return accountDB->getUsername(id).toStdString();
 }
+
+

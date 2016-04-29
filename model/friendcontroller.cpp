@@ -90,3 +90,7 @@ ProfileInfoType FriendController::getFriendProfile(QString username) {
     ProfileInfoType info = profileDB->retrieveProfileInfo(profileID);
     return info;
 }
+
+
+
+
