@@ -6,8 +6,8 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QMediaPlayer>
-#include <QGraphicsVideoItem>
+//#include <QMediaPlayer>
+//#include <QGraphicsVideoItem>
 
 class DisplayMultimediaGUI;
 

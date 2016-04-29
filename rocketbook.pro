@@ -6,4 +6,4 @@ SUBDIRS += \
     database \
     gui \
     docs \
-    textui
+    textui \

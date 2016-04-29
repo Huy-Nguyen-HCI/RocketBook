@@ -231,7 +231,7 @@ void ScrapbookGUI::scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
 void ScrapbookGUI::on_exportButton_clicked()
 {
     QString htmlText;
-    QString backgroundImagePath =  "rocketbackground.gif";
+    QString backgroundImagePath =  QDir::currentPath() + "/rocketbackground.gif";
 
     // set up html code
     htmlText += "<!DOCTYPE html><html>";
