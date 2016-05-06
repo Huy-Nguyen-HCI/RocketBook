@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <QString>
 #define timeout(QPrivateSignal)   timeout2(QPrivateSignal);
 #include "../model/accountcontroller.h"
 
@@ -21,6 +22,7 @@ public:
     int options;
     int getArrowInput();
     int scrollMouse();
+    std::vector<std::string> QtoStd(std::vector<QString> list);
 
 
 };

@@ -109,3 +109,10 @@ void Screen::initialize(){
 
 void Screen::drawScreen(int v){}
 
+std::vector<std::string> Screen::QtoStd(std::vector<QString> list){
+    std::vector<std::string> stringList;
+    for(unsigned int i=0;i<list.size();i++)
+        stringList.push_back(list.at(i).toStdString());
+    return stringList;
+}
+
