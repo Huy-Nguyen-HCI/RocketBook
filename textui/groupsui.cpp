@@ -84,14 +84,6 @@ void GroupsUI::createGroup(){
 
 
 
-
-
-
-
-
-
-
-
 int GroupsUI::selectGroup(){
 
     bool scrolling=true;
@@ -179,6 +171,8 @@ void GroupsUI::viewProfile(int index){
             printw(" , ");
     }
 
-
         getch();
+
+        scrapbook=new GroupScrapbookUI(accountControl->getUser()->getUsername(),groupID, group, groupScrapbook, accountControl->getUser()->controlFriend()->getFriendNames());
+
 }

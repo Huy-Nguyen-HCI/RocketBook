@@ -15,7 +15,6 @@ void FriendsUI::drawScreen(int v) {
 
 clear();
 
-// print the instructions for manipulating the Value object
 mvprintw(0, 0, "Friends");
 mvprintw(3, 8, "View Friends List");
 mvprintw(4, 8, "Add Friend");

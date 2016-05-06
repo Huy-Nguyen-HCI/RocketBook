@@ -9,7 +9,7 @@ public:
     FeedUI(AccountController* accountControl);
     void drawScreen(int v);
     void takeCommand(int selection);
-    void run();
+
     int displayFeed();
     int selectBlog();
     void viewBlog(int index);

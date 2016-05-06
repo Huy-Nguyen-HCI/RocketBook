@@ -3,6 +3,7 @@
 
 #include "screen.h"
 
+
 class ScrapbookUI: public Screen
 {
 public:

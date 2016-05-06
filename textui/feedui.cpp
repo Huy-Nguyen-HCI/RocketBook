@@ -18,13 +18,6 @@ FeedUI::FeedUI(AccountController* accountControl)
 
 }
 
-void FeedUI::run()
-{
-//    int chosenFriend=selectFriend();
-//    if(chosenFriend!=-1)
-//        viewFriendsProfile(chosenFriend);
-}
-
 
 
 void FeedUI::drawScreen(int v) {
@@ -146,7 +139,7 @@ void FeedUI::viewBlog(int index)
       bool commenting = true;
       int offset=0;
       int row = 2;
-      int max, displayNumber=18;
+      int max, displayNumber=7;
 
 
     while(commenting){
@@ -157,18 +150,29 @@ void FeedUI::viewBlog(int index)
         refresh();
         Blog* currentBlog;
         currentBlog = (Blog*) friendFeed[index];
-        QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
+        QString *author = new QString(currentBlog->getAuthorUsername());
         QString *currentContent = new QString(currentBlog->getContent());
         std::vector<Comment*> allComments = currentBlog->getAllComments();
         erase();
         endwin();
         erase();
-        mvprintw(0,0, author->toStdString().c_str());
-        mvprintw(1,0, currentContent->toStdString().c_str());
-        mvprintw(2, 0, "Press up or down to scroll or Enter to post comment.");
+
+        mvprintw(0, 0, "Press up or down to scroll or Enter to post comment.");
+
+        mvprintw(2,0, "Blog Title: ");
+        printw(currentBlog->getTitle().toStdString().c_str());
+
+        mvprintw(3,0, "Author: ");
+
+        printw(author->toStdString().c_str());
+
+        mvprintw(4,0, "Content: ");
+        printw(currentContent->toStdString().c_str());
+
+        mvprintw(12, 0, "Comments:");
         refresh();
 
-        row=2;
+        row=13;
 
 
         if(allComments.size() < displayNumber)

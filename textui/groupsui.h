@@ -2,6 +2,7 @@
 #define GROUPSUI_H
 
 #include "screen.h"
+#include "groupscrapbookui.h"
 
 typedef std::tuple<int, std::string> GroupIDNameType;
 
@@ -16,6 +17,8 @@ public:
     void takeCommand(int selection);
     void drawScreen(int v);
     void createGroup();
+
+    GroupScrapbookUI* scrapbook;
 private:
     std::vector<GroupIDNameType> groupIDNames;
 

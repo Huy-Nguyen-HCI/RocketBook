@@ -35,7 +35,8 @@ SOURCES += main.cpp \
     profileui.cpp \
     scrapbookui.cpp \
     feedui.cpp \
-    groupsui.cpp
+    groupsui.cpp \
+    groupscrapbookui.cpp
 
 HEADERS += \
     mainmenu.h \
@@ -50,4 +51,5 @@ HEADERS += \
     profileui.h \
     scrapbookui.h \
     feedui.h \
-    groupsui.h
+    groupsui.h \
+    groupscrapbookui.h
