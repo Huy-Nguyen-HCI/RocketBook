@@ -27,14 +27,8 @@ TEST(RocketUserTest, testGetID)
 
 }
 
-TEST(ProfileTest, testCreateProf)
+TEST(ProfileTest, testGetProfileID)
 {
-//    Profile::Profile(QString dbPath,
-//                     int id,
-//                     QString fullName,
-//                     QString photo,
-//                     QString description,
-//                     int scrapbookID)
 
     const QString dbPath("../unittest/testdirec");
     int id1 = 0;
@@ -44,6 +38,67 @@ TEST(ProfileTest, testCreateProf)
     int sid1 = 5;
 
     Profile prof(dbPath, id1, fn1, ph1, dscr1, sid1);
+    ASSERT_EQ(id1, prof.getID());
 
 
 }
+
+TEST(ProfileTest, testDescription)
+{
+
+    const QString dbPath("../unittest/testdirec");
+    int id1 = 0;
+    const QString fn1("fullName1");
+    const QString ph1("photo1");
+    const QString dscr1("description1");
+    QString dscr2("description2");
+    int sid1 = 5;
+
+    Profile prof(dbPath, id1, fn1, ph1, dscr1, sid1);
+    ASSERT_EQ(dscr1, prof.getDescription());
+    prof.setDescription(dscr2);
+    ASSERT_EQ(dscr2, prof.getDescription());
+    ASSERT_NE(dscr1, prof.getDescription());
+
+
+}
+
+TEST(ProfileTest, testFullName)
+{
+
+
+    const QString dbPath("../unittest/testdirec");
+    int id1 = 0;
+    const QString fn1("fullName1");
+    const QString ph1("photo1");
+    const QString dscr1("description1");
+    QString fn2("full name 2");
+    int sid1 = 5;
+
+    Profile prof(dbPath, id1, fn1, ph1, dscr1, sid1);
+    ASSERT_EQ(fn1, prof.getFullName());
+    prof.setFullName(fn2);
+    ASSERT_EQ(fn2, prof.getFullName());
+    ASSERT_NE(fn1, prof.getFullName());
+
+}
+
+TEST(ProfileTest, testPicturePath)
+{
+
+    const QString dbPath("../unittest/testdirec");
+    int id1 = 0;
+    const QString fn1("fullName1");
+    const QString ph1("photo1");
+    const QString dscr1("description1");
+    QString ph2("photo 2");
+    int sid1 = 5;
+
+    Profile prof(dbPath, id1, fn1, ph1, dscr1, sid1);
+    ASSERT_EQ(ph1, prof.getPicturePath());
+    prof.setPicturePath(ph2);
+    ASSERT_EQ(ph2, prof.getPicturePath());
+    ASSERT_NE(ph1, prof.getPicturePath());
+
+}
+
