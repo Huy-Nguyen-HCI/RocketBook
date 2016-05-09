@@ -1393,5 +1393,101 @@ TEST(ChatDatabase, removeFromChat)
 
 }
 
+TEST(ChatDatabase, removeAllChats)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int cid2 = 15;
+    int aid1 = 7;
+    int aid2 = 8;
+    newCDB.removeAllChats();
+    newCDB.createChat(aid1);
+    newCDB.addToChat(cid1, aid2);
+
+    newCDB.createChat(aid2);
+    newCDB.addToChat(cid2, aid1);
+
+    ASSERT_TRUE(newCDB.removeAllChats());
+
+}
+
+TEST(ChatDatabase, getMaxID)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int cid2 = 15;
+    int aid1 = 7;
+    int aid2 = 8;
+    newCDB.removeAllChats();
+    newCDB.createChat(aid1);
+    newCDB.addToChat(cid1, aid2);
+
+    ASSERT_EQ(cid1, newCDB.getMaxChatID());
+
+    newCDB.createChat(aid2);
+    newCDB.addToChat(cid2, aid1);
+
+    ASSERT_EQ(cid2, newCDB.getMaxChatID());
+
+    newCDB.removeAllChats();
+
+
+}
+
+TEST(ChatDatabase, getAccountList)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int cid2 = 15;
+    int aid1 = 0;
+    int aid2 = 1;
+    newCDB.removeAllChats();
+    newCDB.createChat(aid1);
+    newCDB.addToChat(cid1, aid2);
+    std::vector<int>* accountList1 = newCDB.retrieveAccountsInChat(cid1);
+    ASSERT_EQ(aid2, accountList1->at(0));
+
+    newCDB.createChat(aid2);
+    newCDB.addToChat(cid2, aid1);
+    std::vector<int>* accountList2 = newCDB.retrieveAccountsInChat(cid2);
+    ASSERT_EQ(aid1, accountList2->at(0));
+
+
+
+    newCDB.removeAllChats();
+
+
+}
+
+TEST(ChatDatabase, getChatList)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 0;
+    int cid2 = 1;
+    int aid1 = 7;
+    int aid2 = 8;
+    newCDB.removeAllChats();
+    newCDB.createChat(aid1);
+    newCDB.addToChat(cid1, aid2);
+    std::vector<int>* chatList1 = newCDB.retrieveChatList(aid2);
+    ASSERT_EQ(cid1, chatList1->at(0));
+
+    newCDB.createChat(aid2);
+    newCDB.addToChat(cid2, aid1);
+    std::vector<int>* chatList2 = newCDB.retrieveChatList(aid1);
+    ASSERT_EQ(cid2, chatList2->at(0));
+
+
+
+
+    newCDB.removeAllChats();
+
+
+}
+
 
 
