@@ -1306,4 +1306,92 @@ TEST(BlogDatabase, testRetrieveAllBlogInfo)
 
 }
 
+//Chat databsae tests:
+
+TEST(ChatDatabase, createChat)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int aid1 = 7;
+    int aid2 = 8;
+    ASSERT_TRUE(newCDB.createChat(aid1));
+    ASSERT_TRUE(newCDB.createChat(aid2));
+
+    newCDB.removeAllChats();
+
+
+}
+
+TEST(ChatDatabase, addToChat)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int cid2 = 15;
+    int aid1 = 7;
+    int aid2 = 8;
+    newCDB.removeAllChats();
+    newCDB.createChat(aid1);
+    ASSERT_TRUE(newCDB.addToChat(cid1, aid2));
+
+    newCDB.createChat(aid2);
+    ASSERT_TRUE(newCDB.addToChat(cid2, aid1));
+    newCDB.removeAllChats();
+
+}
+
+TEST(ChatDatabase, inChat)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int cid2 = 15;
+    int aid1 = 7;
+    int aid2 = 8;
+    newCDB.removeAllChats();
+    ASSERT_FALSE(newCDB.inChat(cid1, aid2));
+    newCDB.createChat(aid1);
+    ASSERT_FALSE(newCDB.inChat(cid1, aid2));
+    newCDB.addToChat(cid1, aid2);
+    ASSERT_TRUE(newCDB.inChat(cid1, aid2));
+
+    ASSERT_FALSE(newCDB.inChat(cid2, aid1));
+    newCDB.createChat(aid2);
+    ASSERT_FALSE(newCDB.inChat(cid2, aid1));
+    newCDB.addToChat(cid2, aid1);
+    ASSERT_TRUE(newCDB.inChat(cid2, aid1));
+
+    newCDB.removeAllChats();
+
+
+}
+
+TEST(ChatDatabase, removeFromChat)
+{
+    const QString path("../unittest/testdirec/Chats");
+    ChatDB newCDB(path);
+    int cid1 = 5;
+    int cid2 = 15;
+    int aid1 = 7;
+    int aid2 = 8;
+    newCDB.removeAllChats();
+    newCDB.createChat(aid1);
+    newCDB.addToChat(cid1, aid2);
+    ASSERT_TRUE(newCDB.inChat(cid1, aid2));
+    ASSERT_TRUE(newCDB.removeFromChat(cid1, aid2));
+    ASSERT_FALSE(newCDB.inChat(cid1, aid2));
+
+    newCDB.createChat(aid2);
+    newCDB.addToChat(cid2, aid1);
+    ASSERT_TRUE(newCDB.inChat(cid2, aid1));
+    ASSERT_TRUE(newCDB.removeFromChat(cid2, aid1));
+    ASSERT_FALSE(newCDB.inChat(cid2, aid1));
+
+    newCDB.removeAllChats();
+
+
+}
+
+
 
