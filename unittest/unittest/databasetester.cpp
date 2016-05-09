@@ -1489,5 +1489,72 @@ TEST(ChatDatabase, getChatList)
 
 }
 
+//Group Database Tests
+
+TEST(GroupDatabase, addGroup)
+{
+    const QString path("../unittest/testdirec/Groups");
+    GroupDB newGDB(path);
+    int gid1 = 1;
+    int gid2 = 2;
+    int pid1 = 7;
+    int pid2 = 8;
+    newGDB.removeAllGroups();
+    ASSERT_TRUE(newGDB.addGroup(gid1, pid1));
+    ASSERT_TRUE(newGDB.addGroup(gid2, pid2));
+    newGDB.removeAllGroups();
+
+
+}
+
+TEST(GroupDatabase, removeAllGroups)
+{
+    const QString path("../unittest/testdirec/Groups");
+    GroupDB newGDB(path);
+    int gid1 = 1;
+    int gid2 = 2;
+    int pid1 = 7;
+    int pid2 = 8;
+    newGDB.addGroup(gid1, pid1);
+    newGDB.addGroup(gid2, pid2);
+    ASSERT_TRUE(newGDB.removeAllGroups());
+
+
+}
+
+TEST(GroupDatabase, testGetProfileID)
+{
+    const QString path("../unittest/testdirec/Groups");
+    GroupDB newGDB(path);
+    int gid1 = 1;
+    int gid2 = 2;
+    int pid1 = 7;
+    int pid2 = 8;
+    newGDB.removeAllGroups();
+    newGDB.addGroup(gid1, pid1);
+    newGDB.addGroup(gid2, pid2);
+    ASSERT_EQ(pid1, newGDB.getProfileID(gid1));
+    ASSERT_EQ(pid2, newGDB.getProfileID(gid2));
+    newGDB.removeAllGroups();
+
+}
+
+TEST(GroupDatabase, testGetMaxGroupID)
+{
+    const QString path("../unittest/testdirec/Groups");
+    GroupDB newGDB(path);
+    int gid1 = 1;
+    int gid2 = 2;
+    int pid1 = 7;
+    int pid2 = 8;
+    newGDB.removeAllGroups();
+    newGDB.addGroup(gid1, pid1);
+    newGDB.addGroup(gid2, pid2);
+    ASSERT_EQ(gid2, newGDB.getMaxGroupID());
+    newGDB.removeAllGroups();
+
+}
+
+
 
 

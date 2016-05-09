@@ -14,6 +14,7 @@
 #include "../../database/multimediadb.h"
 #include "../../database/blogdb.h"
 #include "../../database/chatdb.h"
+#include "../../database/groupdb.h"
 
 
 
