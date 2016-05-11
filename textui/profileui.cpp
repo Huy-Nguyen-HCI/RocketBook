@@ -57,11 +57,14 @@ void ProfileUI::viewProfile(){
     erase();
     mvprintw(0, 0, "Your Profile");
 
+
+
     QString username = "Username: " + accountControl->getUser()->getUsername();
     mvprintw(2,0, username.toStdString().c_str());
 
     QString description = "Description: " + accountControl->getUser()->getProfile()->getDescription();
     mvprintw(3,0, description.toStdString().c_str());
+    mvprintw(LINES-1, 0, "Press any key to continue");
     getch();
 
 }
@@ -77,7 +80,7 @@ void ProfileUI::editDescription(){
     echo();
     getstr(newDescription);
 
-    mvprintw(12,3,"Press enter to confirm changes");
+    mvprintw(12,3,"Press enter to confirm change, or any key to decline change");
     noecho();
     cbreak();
 if(getch()==10){

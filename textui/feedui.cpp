@@ -53,7 +53,8 @@ int FeedUI::displayFeed()
     std::vector<Post*> friendFeed = allFeed->getFeed();
     erase();
     refresh();
-    mvprintw(0,0, "Your Feed.  Select a blog");
+    mvprintw(0,0, "Feed. Scroll using up and down");
+    mvprintw(1,0, "Select a blog to comment with enter or press any other key to go back");
     refresh();
 
     row=3;
@@ -62,8 +63,8 @@ int FeedUI::displayFeed()
 
 
 
-    max=offset+5;
-    if(friendFeed.size()<offset+5)
+    max=offset+4;
+    if(friendFeed.size()<offset+4)
         max=friendFeed.size();
 
     for(unsigned int i=offset;i<max; i++){
@@ -148,7 +149,8 @@ void FeedUI::viewBlog(int index)
         endwin();
         erase();
 
-        mvprintw(0, 0, "Press up or down to scroll or Enter to post comment.");
+        mvprintw(0, 0, "Enter to post comment or any other key to go back");
+
 
         mvprintw(2,0, "Blog Title: ");
         printw(currentBlog->getTitle().toStdString().c_str());
@@ -160,10 +162,11 @@ void FeedUI::viewBlog(int index)
         mvprintw(4,0, "Content: ");
         printw(currentContent->toStdString().c_str());
 
-        mvprintw(12, 0, "Comments:");
+        mvprintw(13, 0, "Comments:");
+        mvprintw(12, 0, "Press up or down to scroll through comments");
         refresh();
 
-        row=13;
+        row=14;
 
 
         if(allComments.size() < displayNumber)

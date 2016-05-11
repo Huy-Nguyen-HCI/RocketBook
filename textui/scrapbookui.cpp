@@ -317,40 +317,29 @@ void ScrapbookUI::displayTweet(Tweet *tweet, int row)
 }
 
 void ScrapbookUI::makeHTML(){
-    QString htmlText;
+    char path[2000];
+        erase();
+        mvprintw(0,0, "Export to html");
+        mvprintw(1,0, "Enter Path: ");
+        echo();
+        getstr(path);
 
-    // set up html code
-    htmlText += "<!DOCTYPE html><html>";
 
-    // set title
-    htmlText += "<head> <title> My Scrapbook </title> </head>";
+        /**
 
-    // set header
-    htmlText = htmlText + "<h1 style='text-align:center'>" + accountControl->getUser()->getUsername() + "'s Scrapbook" + "</h1>";
 
-    // begin body
-    htmlText += "<body>";
+          print to file here
 
-    // add profile
-    htmlText += profileToHTML();
 
-    // add friend list
-    htmlText += friendsToHTML();
 
-    // add content
-    htmlText += buildContentHTML();
+          **/
 
-    // end body
-    htmlText += "</body>";
 
-    // end html code
-    htmlText += "</html>";
 
-    writeToHTMLFile(htmlText);
 
 }
 
-
+/**
 QString ScrapbookUI::profileToHTML() {
 
     QString html;
@@ -490,3 +479,4 @@ void ScrapbookUI::writeToHTMLFile(QString htmlText) {
         stream << htmlText << endl;
     }
 }
+**/
