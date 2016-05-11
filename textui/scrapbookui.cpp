@@ -103,17 +103,6 @@ void ScrapbookUI::postTweet(){
     }
 }
 
-void ScrapbookUI::postMedia(){
-    /**
-    char path[500];
-    erase();
-    mvprintw(0,0, "Enter File Path: ");
-    echo();
-    getstr(path);
-    //Make new multimedia. set path
-    **/
-}
-
 int ScrapbookUI::displayScrapbook(){
 
     bool booking=true;

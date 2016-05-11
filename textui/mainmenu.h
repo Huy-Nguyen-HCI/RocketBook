@@ -8,11 +8,22 @@
 #include "profileui.h"
 #include "feedui.h"
 #include "groupsui.h"
-
+/**
+ * @brief The Main Menu Prompts the to select one of several different actions. These
+ * actions include profile, feed, scrapbook, friends, groups, messaging, and logout.
+ */
 class MainMenu: public Screen
 {
 public:
+    /**
+     * @brief MainMenu
+     * Displays Main Menu
+     * @param accountController Account Controller
+     */
     MainMenu(AccountController* accountControl);
+    /**
+     * @brief ~MainMenu
+     */
     ~MainMenu();
 
     //Screens
@@ -24,8 +35,16 @@ public:
     GroupsUI* groups;
 
 
-
+    /**
+     * @brief Draw screen
+     * @param v Value of pointer
+     */
     void drawScreen(int v);
+    /**
+     * @brief Change Screen
+     * Makes new screen based on user selection
+     * @param selection Pointer (arrow on screen) value when enter is pressed
+     */
     void changeScreen(int selection);
 
 };

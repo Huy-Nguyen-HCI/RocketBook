@@ -22,9 +22,6 @@ void CreateAccountUI::run(){
     mvprintw(2,0,"Enter Password: ");
     getstr(pass);
 
-   // mvprintw(3,0,"Enter Password Again: ");
- //   getstr(confirm);
-
     mvprintw(3,0,"Enter Full Name: ");
     getstr(fullName);
 
@@ -33,15 +30,6 @@ void CreateAccountUI::run(){
     getstr(description);
     QString serverPath;
 
-    // check username and password cannot be empty
-    /**
-    if (name=="" || pass=="") {
-
-       //  ui->message->setText("Error: Both username and password have to be nonempty!");
-
-         return;
-    }
-**/
     // check username in database
     if (accountControl->checkAccountExists(QString::fromStdString(name))) {
 
@@ -49,21 +37,7 @@ void CreateAccountUI::run(){
 
         return;
     }
-/**
-    // check passwords match
-    if (strcmp(std::to_string(pass), std::to_string(confirm))==0) {
 
-        return;
-    }
-    **/
-/**
-    // check name field
-    if (fullName=="") {
-
-
-        return;
-    }
-**/
     // if username does not already exist, create account, copy image, and segue to dashboard
     if (accountControl->createNewAccount(QString::fromStdString(name),
                                             QString::fromStdString(pass),

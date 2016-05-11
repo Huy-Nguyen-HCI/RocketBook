@@ -14,7 +14,7 @@
 class ChatUI: public Screen{
 public:
     /**
-     * @brief ChatUI constructor
+     * @brief ChatUI
      * @param accountController Account Controller
      *
      */

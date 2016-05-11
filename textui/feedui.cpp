@@ -7,15 +7,6 @@ FeedUI::FeedUI(AccountController* accountControl)
     int chosenBlog=displayFeed();
     if(chosenBlog!=-1)
         viewBlog(chosenBlog);
-
-
-
-    //run();
-    //displayFeed();
-    //options=2;
-    //takeCommand(select(options));
-    //run();
-
 }
 
 
@@ -264,47 +255,6 @@ bool FeedUI::checkType(int postIndex)
 
 }
 
-
-//int FeedUI::selectBlog(){
-
-//    bool scrolling=true;
-//    int offset=0;
-//    int row, max;
-
-//    while(scrolling){
-//    erase();
-//    mvprintw(0,0, "Friends: Press enter to select friend");
-
-//    row=3;
-//    mvprintw(row, 5, "->");
-
-//    QStringList friendNames= friendControl->getFriendNames();
-
-//    max=offset+15;
-//    if(friendNames.size()<offset+15)
-//        max=friendNames.size();
-
-//    for (unsigned int i = offset; i < max; i++) {
-//        mvprintw(row,8,friendNames.at(i).toStdString().c_str());
-//        row++;
-//    }
-
-//    int ch= getch();
-//        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
-//            offset++;
-//        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
-//            offset--;
-//        else if(ch==KEY_UP);
-//        else if(ch==KEY_DOWN);
-//        else if(ch==10)//enter key
-//            scrolling=false;
-//        else
-//            return -1;
-
-//    }
-//    return offset;
-
-//}
 
 void FeedUI::displayBlog(Blog *blog, int row, QString *author)
 {

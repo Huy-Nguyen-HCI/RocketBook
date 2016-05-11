@@ -38,7 +38,7 @@ public:
 
     /**
      * @brief View Blog
-     * displays selected blog on screen
+     * Displays selected blog on screen
      * @param index Index of selected blog
      */
     void viewBlog(int index);
