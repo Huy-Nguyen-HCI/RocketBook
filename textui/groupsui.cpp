@@ -102,7 +102,7 @@ int GroupsUI::selectGroup(){
 
         erase();
         refresh();
-        mvprintw(0,0, "Groups: Press hit ENTER to enter a group");
+        mvprintw(0,0, "Groups: Press ENTER to enter a group");
 
         //set positioning for the arrow
         row=3;
@@ -170,7 +170,7 @@ void GroupsUI::viewProfile(int index){
         if(i!=members.size()-1)
             printw(" , ");
     }
-
+        mvprintw(LINES-1, 0, "Press any key to continue");
         getch();
 
         scrapbook=new GroupScrapbookUI(accountControl->getUser()->getUsername(),groupID, group, groupScrapbook, accountControl->getUser()->controlFriend()->getFriendNames());

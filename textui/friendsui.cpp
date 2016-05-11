@@ -64,11 +64,7 @@ void FriendsUI::addFriend(){
 
     getstr(name);
 
-    if(accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name)))
-       mvprintw(LINES-2,2, "Friend added!");
-    else
-       mvprintw(LINES-2,2, "Username does not exist or you are already friends.");
-    getch();
+   accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name));
 
 }
 
@@ -76,7 +72,7 @@ void FriendsUI::removeFriend(int index){
     QStringList friendNames= friendControl->getFriendNames();
     QString name=friendNames.at(index);
 
-    mvprintw(LINES-2,2,"Press enter to confirm friend removal");
+    mvprintw(LINES-2,2,"Press enter to confirm friend removal or any other key to cancel");
     noecho();
     cbreak();
     if(getch()==10){
@@ -99,7 +95,7 @@ int FriendsUI::selectFriend(){
 
     while(scrolling){
     erase();
-    mvprintw(0,0, "Friends: Press enter to select friend");
+    mvprintw(0,0, "Friends: Press enter to select friend or any other key to go back");
 
     row=3;
     mvprintw(row, 5, "->");

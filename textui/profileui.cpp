@@ -80,7 +80,7 @@ void ProfileUI::editDescription(){
     echo();
     getstr(newDescription);
 
-    mvprintw(12,3,"Press enter to confirm change, or any key to decline change");
+    mvprintw(LINES-1,0,"Press enter to confirm change, or any key to decline change");
     noecho();
     cbreak();
 if(getch()==10){

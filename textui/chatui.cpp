@@ -16,7 +16,7 @@ void ChatUI::drawScreen(int v) {
     clear();
 
     // print the instructions for manipulating the Value object
-    mvprintw(0, 0, "Chat Menu \nPlease select one by using the arrow keys and pressing enter:");
+    mvprintw(0, 0, "Chat Menu");
     mvprintw(4, 8, "Create new Chat");
     mvprintw(3, 8, "Enter Chat Room");
     mvprintw(5, 8, "Add friend to Chat");
@@ -221,7 +221,7 @@ int ChatUI::selectChat(){
 
     while(scrolling){
         erase();
-        mvprintw(0,0, "Friends: Press enter to select chat");
+        mvprintw(0,0, "Friends: Press enter to select chat or any other key to go back");
 
         row=3;
         mvprintw(row, 5, "->");

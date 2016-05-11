@@ -53,11 +53,10 @@ int FeedUI::displayFeed()
     std::vector<Post*> friendFeed = allFeed->getFeed();
     erase();
     refresh();
-    mvprintw(0,0, "Feed. Scroll using up and down");
-    mvprintw(1,0, "Select a blog to comment with enter or press any other key to go back");
+    mvprintw(0,0, "Feed: Select a blog to comment with enter or press any other key to go back");
     refresh();
 
-    row=3;
+    row=4;
     mvprintw(row, 5, "->");
     refresh();
 
