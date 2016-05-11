@@ -95,6 +95,15 @@ private:
 
     static bool comparePost(Post* a, Post* b);
 
+    // helper methods for constructing html
+    QString buildContentHTML();
+    QString blogToHTML(Blog *blog);
+    QString tweetToHTML(Tweet *tweet);
+    QString multimediaToHTML(Multimedia *media);
+    QString profileToHTML();
+    QString friendsToHTML();
+    void writeToHTMLFile(QString htmlText);
+
 
 
 

@@ -12,12 +12,26 @@ namespace Ui {
 class ChatGUI;
 }
 
+/**
+ * @brief The ChatGUI class
+ * Provides functionality for the chat interface
+ */
 class ChatGUI : public QWidget
 {
     Q_OBJECT
 
 public:
+
+    /**
+     * @brief ChatGUI
+     * @param input The input model
+     * @param chatId Chat ID
+     * @param parent
+     *
+     * Default constructor
+     */
     explicit ChatGUI(AccountController *input, int chatId, QWidget *parent = 0);
+
     ~ChatGUI();
 
 private:
@@ -36,8 +50,6 @@ private slots:
     void on_send_clicked();
     void refreshMembers();
     void refreshMessages();
-
-
     void on_chatBox_returnPressed();
 };
 

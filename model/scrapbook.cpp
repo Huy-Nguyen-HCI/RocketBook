@@ -339,12 +339,3 @@ Blog* Scrapbook::getBlog(int id){
     }
 
 }
-
-//Tweet* Scrapbook::getTweet(int num){
-//    return tweetList->at(num);
-//}
-
-//Multimedia* Scrapbook::getMedia(int num){
-//    return mediaList->at(num);
-//}
-

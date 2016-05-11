@@ -10,7 +10,7 @@
 #include "friendcontroller.h"
 #include "chatcontroller.h"
 #include "feed.h"
-
+#include "QFile"
 
 /**
  * @brief The RocketUser class stores information about the user.
@@ -105,6 +105,8 @@ public:
 
     ChatController* controlChat() { return chatController;}
 
+    QString exportToHtml();
+
 private:
     //Account matters
     AccountDB* accountDB;
@@ -121,6 +123,14 @@ private:
     GroupController* groupController;
     ChatController* chatController;
     Feed* feed;
+
+    // helper methods for constructing html
+    QString buildContentHTML();
+    QString blogToHTML(Blog *blog);
+    QString tweetToHTML(Tweet *tweet);
+    QString multimediaToHTML(Multimedia *media);
+    QString profileToHTML();
+    QString friendsToHTML();
 
     // feed
     // Chat List
