@@ -230,141 +230,10 @@ void ScrapbookGUI::scrapbookAreaItem_clicked(QListWidgetItem* listItem) {
 
 void ScrapbookGUI::on_exportButton_clicked()
 {
-//    QString htmlText;
-//    QString backgroundImagePath =  QDir::currentPath() + "/rocketbackground.gif";
-
-//    // set up html code
-//    htmlText += "<!DOCTYPE html><html>";
-
-//    // set title
-//    htmlText += "<head> <title> My Scrapbook </title> </head>";
-
-//    // set header
-//    htmlText = htmlText + "<h1 style='text-align:center'>" + accountController->getUser()->getUsername() + "'s Scrapbook" + "</h1>";
-
-//    // begin body
-//    htmlText = htmlText + "<body text='orange'" + " background='" + backgroundImagePath + "'>";
-
-//    // add profile
-//    htmlText += profileToHTML();
-
-//    // add friend list
-//    htmlText += friendsToHTML();
-
-//    // add content
-//    htmlText += buildContentHTML();
-
-//    // end body
-//    htmlText += "</body>";
-
-//    // end html code
-//    htmlText += "</html>";
-
     writeToHTMLFile(accountController->getUser()->exportToHtml());
 }
 
-//QString ScrapbookGUI::buildContentHTML() {
 
-//    QString html;
-//    std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
-
-//    html += "<h3><u><font color='white'>My posts:</font></u></h3>";
-//    // begin list
-//    html += "<ol>";
-
-//    // build list
-//    for (int i = 0; i < wholeScrapbook.size(); i++) {
-//        Post* currentPost = wholeScrapbook[i];
-//        Post::PostType pType = currentPost->type();
-//        switch (pType) {
-//            case Post::typeBlog:
-//                html = html + "<li>" + blogToHTML((Blog*)currentPost) + "</li>";
-//                break;
-//            case Post::typeTweet:
-//                html = html + "<li>" + tweetToHTML((Tweet*)currentPost) + "</li>";
-//                break;
-//            case Post::typeMultimedia:
-//                html = html + "<li>" + multimediaToHTML((Multimedia*)currentPost) + "</li>";
-//                break;
-//            case Post::typeComment:
-//                break;
-//            case Post::typePost:
-//                break;
-//        }
-//    }
-
-//    // end list
-//    html += "</ol>";
-//    return html;
-//}
-
-//QString ScrapbookGUI::blogToHTML(Blog *blog) {
-
-//    QString html;
-
-//    // add post type
-//    html += "<b>Blog</b> <br>";
-
-//    // add blog title
-//    html = html + "<u>Title:</u> " + blog->getTitle().toHtmlEscaped() + "<br>";
-
-//    // add content
-//    html = html + "<u>Content:</u> " + blog->getContent().toHtmlEscaped();
-
-//    return html;
-//}
-
-//QString ScrapbookGUI::tweetToHTML(Tweet *tweet) {
-
-//    QString html;
-
-//    // add post type
-//    html += "<b>Tweet</b> <br>";
-
-//    // add content
-//    html = html + "<u>Content:</u> " + tweet->getContent().toHtmlEscaped();
-
-//    return html;
-//}
-
-//QString ScrapbookGUI::multimediaToHTML(Multimedia *media) {
-
-//    QString html;
-//    QString imageStyle = " style='width:125px; height:125px; '";
-
-//    // add post type
-//    html += "<b>Multimedia</b> <br>";
-
-//    // add title
-//    html = html + "<u>Title:</u> " + media->getTitle().toHtmlEscaped() + "<br>";
-
-//    // add image
-//    html = html + "<img src=" + "'" + media->getContent() + "'" + imageStyle + ">" + "<br>";
-
-//    // add text
-//    html += "<u>Description:</u> " + media->getDescription().toHtmlEscaped();
-
-//    return html;
-//}
-
-//QString ScrapbookGUI::profileToHTML() {
-
-//    QString html;
-//    QString imageStyle = " style='width:300px; height:300pxl; '";
-//    Profile *profile = accountController->getUser()->getProfile();
-
-//    // add profile image
-//    html =
-//            html + "<p style='text-align:center'>" +
-//            "<img border='5' src=" + "'" + profile->getPicturePath() + "'" + imageStyle + ">" +
-//            "</p>";
-
-//    // add description
-//    html = html + "<h3>" + "<u><font color='white'>My description:</font></u>" + "</h3>";
-//    html += profile->getDescription().toHtmlEscaped();
-//    html += "<br>";
-//    return html;
-//}
 
 
 void ScrapbookGUI::writeToHTMLFile(QString htmlText) {
@@ -382,24 +251,6 @@ void ScrapbookGUI::writeToHTMLFile(QString htmlText) {
         stream << htmlText << endl;
     }
 }
-
-//QString ScrapbookGUI::friendsToHTML() {
-
-//    QString html;
-//    QStringList friendList = accountController->getUser()->controlFriend()->getFriendNames();
-
-//    html += "<h3><u><font color='white'>My friends:</font></u></h3>";
-
-//    html += "<ul>";
-
-//    for (QString friendName : friendList) {
-//        html = html + "<li>" + friendName + "</li>";
-//    }
-
-//    html += "</ul>";
-
-//    return html;
-//}
 
 void ScrapbookGUI::on_refreshButton_clicked()
 {
