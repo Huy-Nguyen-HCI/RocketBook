@@ -140,8 +140,22 @@ public:
      */
     int getMaxScrapbookID();
 
+    /**
+     * @brief changePhoto
+     * Changes profile photo
+     * @param profileID Id of profile
+     * @param path Picture path
+     * @return the maximum ID used for scrapbook
+     */
     bool changePhoto(int profileID, QString path);
 
+    /**
+     * @brief changeDescription
+     * Changes profile description
+     * @param profileID Id of profile
+     * @param description New description
+     * @return the maximum ID used for scrapbook
+     */
     bool changeDescription(int profileID, QString description);
 
 private:

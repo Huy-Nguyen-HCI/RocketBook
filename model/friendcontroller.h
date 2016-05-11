@@ -29,12 +29,39 @@ public:
     ~FriendController();
 
 
+    /**
+     * @brief add Friend
+     * @param friendname Name of friend
+     * @return status of friend being added
+     */
     AddFriendStatus addFriend(QString friendname);
+    /**
+     * @brief delete Friend
+     * @param friendname Name of friend
+     * @return status of friend being deleted
+     */
     DeleteFriendStatus deleteFriend(QString friendname);
-    QStringList getFriends();
+    /**
+     * @brief getFriends
+     * @return List of friend names
+     */
     QStringList getFriendNames();
+    /**
+     * @brief getFriendsIds
+     * @return List friend Ids
+     */
     std::vector<int> getFriendIds();
+    /**
+     * @brief Update Friend List
+     * Updates friend list based on database
+     */
+
     void updateFriendList();
+    /**
+     * @brief get Friend Profile
+     * @returns Friend's profile info
+     */
+
     ProfileInfoType getFriendProfile(QString username);
 
 private:

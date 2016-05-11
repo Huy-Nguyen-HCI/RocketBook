@@ -9,7 +9,18 @@
 class Comment: public Post{
 
 public:
+    /**
+     * @brief Comment constructor for new comment
+     * @param username Username
+     * @param content Content
+     */
     Comment(QString username, QString content);
+    /**
+     * @brief Comment constructor for comment that already exists
+     * @param id Comment Id
+     * @param username Username
+     * @param content Content
+     */
     Comment(int id, QString username, QString content);
     ~Comment();
 private:

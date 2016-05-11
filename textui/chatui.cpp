@@ -13,20 +13,20 @@ ChatUI::ChatUI(AccountController* accountControl)
 
 void ChatUI::drawScreen(int v) {
 
-clear();
+    clear();
 
-// print the instructions for manipulating the Value object
-mvprintw(0, 0, "Chat Menu \nPlease select one by using the arrow keys and pressing enter:");
-mvprintw(4, 8, "Create new Chat");
-mvprintw(3, 8, "Enter Chat Room");
-mvprintw(5, 8, "Add friend to Chat");
-mvprintw(6, 8, "Leave Chat");
-mvprintw(7, 8, "Back");
+    // print the instructions for manipulating the Value object
+    mvprintw(0, 0, "Chat Menu \nPlease select one by using the arrow keys and pressing enter:");
+    mvprintw(4, 8, "Create new Chat");
+    mvprintw(3, 8, "Enter Chat Room");
+    mvprintw(5, 8, "Add friend to Chat");
+    mvprintw(6, 8, "Leave Chat");
+    mvprintw(7, 8, "Back");
 
-mvprintw(v+2, 5, "->");
-//std::to_string(v).c_str()
+    mvprintw(v+2, 5, "->");
+    //std::to_string(v).c_str()
 
-refresh();
+    refresh();
 }
 
 void ChatUI::takeCommand(int selection){
@@ -34,38 +34,38 @@ void ChatUI::takeCommand(int selection){
     // cleanup the window and return control to bash
     endwin();
 
-   if(selection==2){
-       int chosenFriend=selectFriend();
-       if(chosenFriend!=-1)
-           createChat(chosenFriend);//(chosenFriend);
-   }
+    if(selection==2){
+        int chosenFriend=selectFriend();
+        if(chosenFriend!=-1)
+            createChat(chosenFriend);//(chosenFriend);
+    }
 
-   else if(selection==1){
-       int chosenChat=selectChat();
-       if(chosenChat!=-1)
-       chatRoom(chosenChat);
-   }
+    else if(selection==1){
+        int chosenChat=selectChat();
+        if(chosenChat!=-1)
+            chatRoom(chosenChat);
+    }
 
-   else if(selection==3){
-    int chosenChat=selectChat();
-    erase();
-    int chosenFriend=selectFriend();
-    if(chosenFriend!=-1 && chosenChat!=-1)
-        addFriend(chosenChat,chosenFriend);//(chosenFriend);
+    else if(selection==3){
+        int chosenChat=selectChat();
+        erase();
+        int chosenFriend=selectFriend();
+        if(chosenFriend!=-1 && chosenChat!=-1)
+            addFriend(chosenChat,chosenFriend);//(chosenFriend);
 
-   }
+    }
 
-   else if(selection==4){
-       int chosenChat=selectChat();
-       if(chosenChat!=-1)
-           leaveChat(chosenChat);
-   }
+    else if(selection==4){
+        int chosenChat=selectChat();
+        if(chosenChat!=-1)
+            leaveChat(chosenChat);
+    }
 
-   else if(selection==5)
-       return;
+    else if(selection==5)
+        return;
 
-   initialize();
-   takeCommand(select(options));
+    initialize();
+    takeCommand(select(options));
 }
 
 void ChatUI::createChat(int id){
@@ -107,15 +107,15 @@ void ChatUI::chatRoom(int index){
         else
             max = offset+displayNumber;
 
-    for(int i=offset;i<max;i++){
-        mvprintw(row,0,accountControl->getUserName(senderIds->at(i)).c_str());
-        printw(": ");
-        printw(messages->at(i).toStdString().c_str());
-        row++;
+        for(int i=offset;i<max;i++){
+            mvprintw(row,0,accountControl->getUserName(senderIds->at(i)).c_str());
+            printw(": ");
+            printw(messages->at(i).toStdString().c_str());
+            row++;
 
         }
 
-    int ch= getch();
+        int ch= getch();
         if(ch==KEY_DOWN && !((messages->size())==(max)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
             offset++;
         else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
@@ -125,7 +125,7 @@ void ChatUI::chatRoom(int index){
         else if(ch==10){//enter key
             sendMessage(chatId);
             if(messages->size() > displayNumber)
-            offset=messages->size()-displayNumber+1;
+                offset=messages->size()-displayNumber+1;
         }
         else
             chating=false;
@@ -139,13 +139,13 @@ void ChatUI::chatRoom(int index){
 
 void ChatUI::sendMessage(int chatId){
     char message[500];
-     mvprintw(LINES-3, 5, "Enter Message: ");
-     echo();
-     getstr(message);
-     accountControl->getUser()->getChatController()->sendMessage(chatId,QString::fromStdString(message));
-     noecho();
+    mvprintw(LINES-3, 5, "Enter Message: ");
+    echo();
+    getstr(message);
+    accountControl->getUser()->getChatController()->sendMessage(chatId,QString::fromStdString(message));
+    noecho();
 
-  }
+}
 
 void ChatUI::addFriend(int chatIndex, int friendIndex){
     std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
@@ -166,9 +166,9 @@ void ChatUI::leaveChat(int index){
     int chatId=chatList->at(index);
 
     accountControl->getUser()->getChatController()->removeUserFromChat(chatId, username);
-        mvprintw(LINES-2, 5, "You've left the chat");
+    mvprintw(LINES-2, 5, "You've left the chat");
 
-        getch();
+    getch();
 }
 
 int ChatUI::selectFriend(){
@@ -178,25 +178,25 @@ int ChatUI::selectFriend(){
     int row, max;
 
     while(scrolling){
-    erase();
-    mvprintw(0,0, "Friends: Press enter to select friend");
+        erase();
+        mvprintw(0,0, "Friends: Press enter to select friend");
 
-    row=3;
-    mvprintw(row, 5, "->");
+        row=3;
+        mvprintw(row, 5, "->");
 
-    QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
+        QStringList friendNames= accountControl->getUser()->controlFriend()->getFriendNames();
 
-    max=offset+15;
-    if(friendNames.size()<offset+15)
-        max=friendNames.size();
+        max=offset+15;
+        if(friendNames.size()<offset+15)
+            max=friendNames.size();
 
 
-    for (unsigned int i = offset; i < max; i++) {
-        mvprintw(row,8,friendNames.at(i).toStdString().c_str());
-        row++;
-    }
+        for (unsigned int i = offset; i < max; i++) {
+            mvprintw(row,8,friendNames.at(i).toStdString().c_str());
+            row++;
+        }
 
-    int ch= getch();
+        int ch= getch();
         if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
             offset++;
         else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
@@ -220,24 +220,24 @@ int ChatUI::selectChat(){
     int row, max;
 
     while(scrolling){
-    erase();
-    mvprintw(0,0, "Friends: Press enter to select chat");
+        erase();
+        mvprintw(0,0, "Friends: Press enter to select chat");
 
-    row=3;
-    mvprintw(row, 5, "->");
+        row=3;
+        mvprintw(row, 5, "->");
 
-    std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+        std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
 
-    max=offset+15;
-    if(chatList->size()<offset+15)
-        max=chatList->size();
+        max=offset+15;
+        if(chatList->size()<offset+15)
+            max=chatList->size();
 
-    for(unsigned int i=offset;i<max; i++){
-        mvprintw(row,8,std::to_string(chatList->at(i)).c_str());
-        row++;
-    }
+        for(unsigned int i=offset;i<max; i++){
+            mvprintw(row,8,std::to_string(chatList->at(i)).c_str());
+            row++;
+        }
 
-    int ch= getch();
+        int ch= getch();
         if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
             offset++;
         else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
@@ -261,24 +261,24 @@ int ChatUI::scrollMessages(){
     int row, max;
 
     while(scrolling){
-    erase();
-    mvprintw(0,0, "Friends: Press enter to select chat");
+        erase();
+        mvprintw(0,0, "Friends: Press enter to select chat");
 
-    row=3;
-    mvprintw(row, 5, "->");
+        row=3;
+        mvprintw(row, 5, "->");
 
-    std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
+        std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
 
-    max=offset+15;
-    if(chatList->size()<offset+15)
-        max=chatList->size();
+        max=offset+15;
+        if(chatList->size()<offset+15)
+            max=chatList->size();
 
-    for(unsigned int i=offset;i<max; i++){
-        mvprintw(row,8,std::to_string(chatList->at(i)).c_str());
-        row++;
-    }
+        for(unsigned int i=offset;i<max; i++){
+            mvprintw(row,8,std::to_string(chatList->at(i)).c_str());
+            row++;
+        }
 
-    int ch= getch();
+        int ch= getch();
         if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
             offset++;
         else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)

@@ -27,6 +27,9 @@ public:
      */
     AccountController(QString path);
 
+    /**
+     * @brief Descrtucts account controller.
+     */
     ~AccountController();
 
     /**
@@ -70,14 +73,32 @@ public:
      */
     RocketUser *getUser();
 
+    /**
+     * @brief Returns database path
+     * @return dbPath
+     */
     QString getPath();
 
+    /**
+     * @brief Returns current account Id
+     * @param username Username
+     * @return accountId
+     */
     int getAccountId(QString username);
 
+    /**
+     * @brief Returns username
+     * @param id Account id
+     * @return username
+     */
     std::string getUserName(int id);
 
     static QString PATH;
 
+    /**
+     * @brief gets All usernames
+     * @return QStringList of all usernames
+     */
     QStringList getAllUsernames() { return accountDB->getAllUsernames(); }
 
 private:
@@ -92,15 +113,6 @@ private:
      * @return True if password entered by user matches stored password.
      */
     bool verifyPassword(QString username,QString password);
-
-    /**
-     * @brief Asks for user to select operation
-     * @returns Integer value representing user selection
-     */
-    int requestInput();
-    int requestInput2();
-
-
 
 };
 

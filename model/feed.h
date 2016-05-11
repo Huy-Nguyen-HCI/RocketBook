@@ -11,12 +11,28 @@
 class Feed{
 
 public:
+    /**
+     * @brief Constructs feed
+     * @param dbPath Database path
+     * @param friendController FriendController
+     * @param groupController GroupController
+     */
     Feed(QString dbPath, FriendController* friendController, GroupController* groupController);
+    /**
+     * @brief Destructs feed
+     */
     ~Feed();
-
+    /**
+     * @brief Updates post list
+     */
     void updatePostList();
     std::vector<Post*> getFeed();
 
+    /**
+     * @brief getBlog
+     * @param id Blog Id
+     * @return returns blog with specified Id
+     */
     Blog* getBlog(int id);
 
 
@@ -29,6 +45,12 @@ private:
     GroupController* groupController;
     std::vector<Post*> postList;
 
+    /**
+     * @brief compare Post
+     * @param a Post a
+     * @param b Post b
+     * @return True if posts are identical
+     */
     bool static comparePost(Post* a, Post* b);
 
 };

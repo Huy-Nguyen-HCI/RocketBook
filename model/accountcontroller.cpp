@@ -89,21 +89,7 @@ bool AccountController::verifyPassword(QString username, QString password){
     QString storedPassword = std::get<2>(accountInfo);
     return storedPassword == password;
 }
-/**
-int AccountController::requestInput(){
-    int userInput;
-    cout << "\nEnter 0 to quit, 1 to create account, 2 to log in, 3 edit friends \n";
-    cin >> userInput;
-    return userInput;
-}
 
-int AccountController::requestInput2(){
-    int userInput;
-    cout << "\nEnter 0 to go back, 1 add friend, 2 to delete friend, 3 display friend ID's' \n";
-    cin >> userInput;
-    return userInput;
-}
-**/
 QString AccountController::getPath(){
     return dbPath;
 }
