@@ -17,9 +17,7 @@ LoginGUI::~LoginGUI()
     delete ui;
 }
 
-
-bool LoginGUI::on_loginButton_clicked()
-{
+bool LoginGUI::login() {
     QString username = ui->usernameBox->text();
     //ui->passwordBox->setEchoMode(QLineEdit::PasswordEchoOnEdit);
     QString password = ui->passwordBox->text();
@@ -49,6 +47,11 @@ bool LoginGUI::on_loginButton_clicked()
     }
 }
 
+bool LoginGUI::on_loginButton_clicked()
+{
+    return login();
+}
+
 void LoginGUI::on_createAccountButton_clicked()
 {
 
@@ -74,4 +77,9 @@ void LoginGUI::closeEvent(QCloseEvent *event)
 {
     finished = true;
     QWidget::closeEvent(event);
+}
+
+bool LoginGUI::on_passwordBox_returnPressed()
+{
+    return login();
 }

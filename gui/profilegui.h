@@ -23,7 +23,7 @@ class ProfileGUI : public QWidget
 public:
     /**
      * @brief ProfileGUI
-     * Default profileGUI
+     * Default profileGUI constructor
      * @param inputAccountController the current account
      * @param parent
      */

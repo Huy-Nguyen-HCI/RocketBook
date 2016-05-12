@@ -48,14 +48,7 @@ void DisplayBlogGUI::refreshBlogs()
     for(unsigned int i = 0; i < allBlogs.size(); i++){
 
         Blog *currentBlog = allBlogs.at(i);
-        QString currentTitle = currentBlog->getTitle();
-        QString currentContent = currentBlog->getContent();
-
-        QString num = QString::number(i+1);
-        QString content =
-                "Blog # " + num + ":" + "\n" +
-                "Title:    " + currentTitle + "\n" +
-                "Content:    " + currentContent + "\n";
+        QString content = scrapbookGUI->printPost(currentBlog);
         QListWidgetItem* listItem = new QListWidgetItem(content);
         listItem->setData(5, currentBlog->getID());
         ui->listWidget->addItem(listItem);

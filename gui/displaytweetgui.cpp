@@ -33,11 +33,7 @@ void DisplayTweetGUI::refreshTweets()
     for(unsigned int i = 0; i < allTweets.size(); i++){
 
         Tweet *currentTweet = allTweets.at(i);
-        QString currentContent = currentTweet->getContent();
-        QString num = QString::number(allTweets.size() - i);
-        QString content =
-                "Tweet # " + num + ":" + "\n" +
-                currentContent + "\n";
+        QString content = scrapbookGUI->printPost(currentTweet);
         ui->listWidget->addItem(content);
     }
 }

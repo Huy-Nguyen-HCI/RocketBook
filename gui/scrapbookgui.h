@@ -104,6 +104,13 @@ public:
      */
     AccountController* getAccountController() { return accountController;}
 
+    /**
+     * @brief printPost
+     * Detect the post
+     * @return the string to print to scrapbook
+     */
+    QString printPost(Post*);
+
 private slots:
 
     /**
@@ -140,6 +147,8 @@ private slots:
      */
     void on_refreshButton_clicked();
 
+
+
 private:
     Ui::ScrapbookGUI *ui;
     CreateBlogGUI *createBlogView;
@@ -160,12 +169,18 @@ private:
     static int listItemTypeRole;
     static int listItemIDRole;
 
+    /**
+     * @brief setUp Set up the constructor
+     */
+    void setUp();
 
     /**
      * @brief writeToHTMLFile
      * @param htmlText
      */
     void writeToHTMLFile(QString htmlText);
+
+
 };
 
 #endif // SCRAPBOOKGUI_H

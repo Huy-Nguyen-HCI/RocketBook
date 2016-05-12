@@ -36,23 +36,11 @@ void DisplayMultimediaGUI::refreshMultimedia() {
     for (unsigned int i = 0; i < allMulti.size(); i++) {
 
         Multimedia *media = allMulti.at(i);
-        QString username = media->getAuthorUsername();
-        QString title = media->getTitle();
-        QString description = media->getDescription();
+
         QString content = media->getContent();
-        QString num = QString::number(i + 1);
 
-        QString item =
-                "Multimedia # " + num + ":" + "\n" +
-                "Title:     " + title + "\n" +
-                "Content:       " + content + "\n" +
-                "Description:       " + description + "\n";
+        QString newLabel = scrapbookGUI->printPost(media);
 
-
-        //QString newLabel = new QString("Title: "+title + "\n" + "Descrption: " + description);
-        QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
-        //QPicture *newPic = new QPicture(-1);
-        //newPic.load(content);
         QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->multimediaList);
 
         ui->multimediaList->addItem(newMedia);

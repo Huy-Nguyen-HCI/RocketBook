@@ -57,10 +57,18 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
     QString currentTitle = blog->getTitle();
     QString currentContent = blog->getContent();
 
+    if (currentTitle.isEmpty()) {
+        currentTitle = "<No Title>";
+    }
+    if (currentContent.isEmpty()) {
+        currentContent = "<No Content>";
+    }
+
     QString content =
-            "Blog title:    " + currentTitle + "\n" +
-            "@" + blog->getAuthorUsername() + "\n" +
-            currentContent + "\n";
+            "BLOG \n" +
+            currentTitle + "\n" +
+            "@" + blog->getAuthorUsername() + "\n"
+            + currentContent+ "\n";
 
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, blogListItemType);
@@ -73,8 +81,12 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
 void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString currentContent = tweet->getContent();
+    if (currentContent.isEmpty()) {
+        currentContent = "<No Content>";
+    }
 
-    QString content("@" + tweet->getAuthorUsername() + ": " + currentContent +"\n");
+    QString content("TWEET\n@" + tweet->getAuthorUsername() + ": " + currentContent+ "\n");
+
 
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, tweetListItemType);
@@ -89,9 +101,15 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theLis
     QString title = multimedia->getTitle();
     QString description = multimedia->getDescription();
     QString content = multimedia->getContent();
-    QString newLabel("Photo: "+title + "\n"
-                     + "@" + multimedia->getAuthorUsername() + "\n"
-                     + description);
+
+    if (title.isEmpty()) {
+        title = "<No Title>";
+    }
+
+    QString newLabel("PHOTO \n" +
+                     title + "\n" +
+                     "@" + multimedia->getAuthorUsername() + "\n" +
+                     description + "\n");
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, theList);
 
     newMedia->setData(listItemTypeRole, multimediaListItemType);
@@ -119,7 +137,10 @@ void DashboardGUI::on_latestMultimediaButton_clicked()
         QString title = media->getTitle();
         QString description = media->getDescription();
         QString content = media->getContent();
-        QString newLabel("Title: "+title + "\n" + "Description: " + description);
+        QString newLabel = "PHOTO \n" +
+                title + "\n" +
+                "@" + media->getAuthorUsername() + "\n" +
+                description + "\n";
         QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->latestInfoListWidget);
         ui->latestInfoListWidget->addItem(newMedia);
         ui->latestInfoListWidget->setIconSize(QSize(125,125));
