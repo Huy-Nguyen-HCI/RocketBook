@@ -74,7 +74,7 @@ int GroupScrapbookUI::viewScrapbook(){
 
     std::vector<Post*> wholeScrapbook = groupScrapbook->getAllPosts();
     erase();
-    mvprintw(0,0, "Group Scrapbook. Select a blog to comment");
+    mvprintw(0,0, "Group Scrapbook: Select a blog to comment using enter or press any other key to go back");
     refresh();
     row=3;
     mvprintw(row, 5, "->");
