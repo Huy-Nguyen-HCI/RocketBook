@@ -1555,6 +1555,80 @@ TEST(GroupDatabase, testGetMaxGroupID)
 
 }
 
+//Group member database tests:
+
+TEST(GroupMemberDatabase, testCreateGroup)
+{
+    const QString path("../unittest/testdirec/GroupMembers");
+    GroupMemberDB newGDB(path);
+    int gid1 = 1;
+    int aid1 = 11;
+    ASSERT_TRUE(newGDB.createGroup(gid1, aid1));
+
+}
+
+TEST(GroupMemberDatabase, testAddGroupMember)
+{
+    const QString path("../unittest/testdirec/GroupMembers");
+    GroupMemberDB newGDB(path);
+    int gid1 = 1;
+    int aid1 = 11;
+    int aid2 = 12;
+    newGDB.removeAllGroupMembers();
+    newGDB.createGroup(gid1, aid1);
+    ASSERT_TRUE(newGDB.addGroupMember(gid1, aid2));
+
+}
+
+TEST(GroupMemberDatabase, testGroupMemberExists)
+{
+    const QString path("../unittest/testdirec/GroupMembers");
+    GroupMemberDB newGDB(path);
+    int gid1 = 1;
+    int aid1 = 11;
+    int aid2 = 12;
+    newGDB.removeAllGroupMembers();
+    newGDB.createGroup(gid1, aid1);
+    ASSERT_FALSE(newGDB.groupMemberExists(gid1, aid2));
+    ASSERT_TRUE(newGDB.groupMemberExists(gid1, aid1));
+    newGDB.addGroupMember(gid1, aid2);
+    ASSERT_TRUE(newGDB.groupMemberExists(gid1, aid2));
+
+}
+
+TEST(GroupMemberDatabase, testRemoveGroupMember)
+{
+    const QString path("../unittest/testdirec/GroupMembers");
+    GroupMemberDB newGDB(path);
+    int gid1 = 1;
+    int aid1 = 11;
+    int aid2 = 12;
+    newGDB.removeAllGroupMembers();
+    newGDB.createGroup(gid1, aid1);
+    newGDB.addGroupMember(gid1, aid2);
+    ASSERT_TRUE(newGDB.groupMemberExists(gid1, aid2));
+    ASSERT_TRUE(newGDB.removeGroupMember(gid1, aid2));
+    ASSERT_FALSE(newGDB.groupMemberExists(gid1, aid2));
+
+}
+
+TEST(GroupMemberDatabase, testRemoveAllGroupMember)
+{
+    const QString path("../unittest/testdirec/GroupMembers");
+    GroupMemberDB newGDB(path);
+    int gid1 = 1;
+    int aid1 = 11;
+    int aid2 = 12;
+    newGDB.removeAllGroupMembers();
+    newGDB.createGroup(gid1, aid1);
+    newGDB.addGroupMember(gid1, aid2);
+    ASSERT_TRUE(newGDB.groupMemberExists(gid1, aid1));
+    ASSERT_TRUE(newGDB.groupMemberExists(gid1, aid2));
+    ASSERT_TRUE(newGDB.removeAllGroupMembers());
+    ASSERT_FALSE(newGDB.groupMemberExists(gid1, aid1));
+    ASSERT_FALSE(newGDB.groupMemberExists(gid1, aid2));
+}
+
 
 
 

@@ -15,6 +15,7 @@
 #include "../../database/blogdb.h"
 #include "../../database/chatdb.h"
 #include "../../database/groupdb.h"
+#include "../../database/groupmemberdb.h"
 
 
 
