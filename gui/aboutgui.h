@@ -25,6 +25,9 @@ public:
      */
     explicit AboutGUI(QWidget *parent = 0);
 
+    /**
+      * @brief ~AboutGUI the class destructor. Delete the pointer to ui.
+      */
     ~AboutGUI();
 
 private:

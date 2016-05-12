@@ -52,7 +52,6 @@ void DisplayBlogGUI::refreshBlogs()
 
     // add all the blogs to the view again
     for(unsigned int i = 0; i < allBlogs.size(); i++){
-
         Blog *currentBlog = allBlogs.at(i);
         QString content = scrapbookGUI->printPost(currentBlog);
         QListWidgetItem* listItem = new QListWidgetItem(content);

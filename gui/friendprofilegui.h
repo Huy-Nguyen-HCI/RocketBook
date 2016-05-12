@@ -10,6 +10,9 @@ namespace Ui {
 class FriendProfileGUI;
 }
 
+/**
+ * @brief The FriendProfileGUI class displays the friend's profile when viewed in the friend list.
+ */
 class FriendProfileGUI : public QDialog
 {
     Q_OBJECT

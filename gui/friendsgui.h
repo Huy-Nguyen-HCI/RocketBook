@@ -10,6 +10,9 @@ namespace Ui {
 class FriendsGUI;
 }
 
+/**
+ * @brief The FriendsGUI class allows for viewing, adding and removing friends.
+ */
 class FriendsGUI : public QWidget
 {
     Q_OBJECT

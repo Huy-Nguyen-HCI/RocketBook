@@ -17,6 +17,9 @@ namespace Ui {
 class DisplayMultimediaGUI;
 }
 
+/**
+ * @brief The DisplayMultimediaGUI class displays all multimedia content that the user posted.
+ */
 class DisplayMultimediaGUI : public QWidget
 {
     Q_OBJECT

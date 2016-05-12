@@ -13,6 +13,9 @@ namespace Ui {
 class DisplayBlogGUI;
 }
 
+/**
+ * @brief The DisplayBlogGUI class displays all the blogs posted by the user.
+ */
 class DisplayBlogGUI : public QWidget
 {
     Q_OBJECT

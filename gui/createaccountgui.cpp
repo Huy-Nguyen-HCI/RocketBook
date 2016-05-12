@@ -93,31 +93,31 @@ void CreateAccountGUI::on_createButton_clicked()
 }
 
 void CreateAccountGUI::clearAllFields() {
-    ui->usernameBox->setText("");
-    ui->passwordBox->setText("");
-    ui->confirmPasswordBox->setText("");
-    ui->fullnameBox->setText("");
-    ui->profilePathBox->setText("");
-    ui->describeBox->document()->setPlainText("");
-    ui->message->setText("");
+    ui->usernameBox->clear();
+    ui->passwordBox->clear();
+    ui->confirmPasswordBox->clear();
+    ui->fullnameBox->clear();
+    ui->profilePathBox->clear();
+    ui->describeBox->document()->clear();
+    ui->message->clear();
 }
 
 /**
  * @brief CreateAccountGUI::on_uploadButton_clicked allows the user to pick a file to upload.
  */
-
 void CreateAccountGUI::on_uploadButton_clicked(){
 
-        photoPath = QFileDialog::getOpenFileName(this,
+    photoPath = QFileDialog::getOpenFileName(this,
                                              tr("Pick your image"),
                                              ":/",
                                              tr("Image Files (*.png *.jpg *.bmp)"));
-        // if user cancels the file selection
-        if (photoPath.isNull()) {
-            return;
-        }
+    // if user cancels the file selection
+    if (photoPath.isNull()) {
+        return;
+    }
 
-        ui->profilePathBox->setText(photoPath);
+    // display the selected path
+    ui->profilePathBox->setText(photoPath);
 }
 
 

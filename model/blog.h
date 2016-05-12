@@ -20,6 +20,7 @@ public:
      * @param username The username of the author of the blog
      * @param title The title of the blog
      * @param content The content of the blog
+     * @param dbPath The path to the database
      */
     Blog(QString username, QString title, QString content, QString dbPath = "/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite");
 
@@ -29,6 +30,7 @@ public:
      * @param username The username of the author of the blog
      * @param title The title of the blog
      * @param content The content of the blog
+     * @param dbPath The path to the database
      */
     Blog(int id, QString username, QString title, QString content, QString dbPath = "/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite");
 

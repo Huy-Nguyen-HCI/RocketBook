@@ -72,8 +72,6 @@ private slots:
 
 
 private:
-
-
     Ui::CreateAccountGUI *ui;
     LoginGUI *loginView;
     AccountController *accountController;

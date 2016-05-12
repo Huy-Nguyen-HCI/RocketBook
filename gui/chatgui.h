@@ -68,7 +68,7 @@ private slots:
 
     /**
      * @brief on_chatBox_returnPressed
-     * Go back to the current app.
+     * Send a message to the other person.
      */
     void on_chatBox_returnPressed();
 };

@@ -11,6 +11,9 @@ namespace Ui {
 class DisplayGroupGUI;
 }
 
+/**
+ * @brief The DisplayGroupGUI class displays all the groups the user belongs to.
+ */
 class DisplayGroupGUI : public QWidget
 {
     Q_OBJECT

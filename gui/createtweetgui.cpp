@@ -28,19 +28,20 @@ void CreateTweetGUI::on_returnButton_clicked()
 
 void CreateTweetGUI::on_publishButton_clicked()
 {
+    // get user input
     QString content = ui->contentBox->toPlainText();
     QString username = accountController->getUser()->getUsername();
-
-
     bool privacy = ui->privateCheckbox->isChecked();
+
+    // add new tweet to the database
     scrapbook->addTweet(username, content, privacy);
 
+    // segue to main view
     scrapbookGUI->switchTweetViews();
 
 }
 
 void CreateTweetGUI::clearViews() {
-
     ui->contentBox->clear();
     ui->privateCheckbox->setChecked(false);
 }

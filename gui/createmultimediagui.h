@@ -40,12 +40,6 @@ private slots:
     void on_returnButton_clicked();
 
     /**
-     * @brief on_uploadVideoButton_clicked
-     * Upload a video
-     */
-    void on_uploadVideoButton_clicked();
-
-    /**
      * @brief on_uploadPhotoButton_clicked
      * Upload a photo
      */
@@ -57,7 +51,9 @@ private slots:
      */
     void on_filePathBox_returnPressed();
 
-
+    /**
+     * @brief on_publishButton_clicked add the media to the database and display it in the view.
+     */
     void on_publishButton_clicked();
 
 private:

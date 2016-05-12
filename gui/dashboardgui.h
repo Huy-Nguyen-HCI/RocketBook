@@ -10,6 +10,9 @@ namespace Ui {
 class DashboardGUI;
 }
 
+/**
+ * @brief The DashboardGUI class displays all the content posted by the user.
+ */
 class DashboardGUI : public QWidget
 {
     Q_OBJECT

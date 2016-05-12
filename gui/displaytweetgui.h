@@ -11,6 +11,9 @@ namespace Ui {
 class DisplayTweetGUI;
 }
 
+/**
+ * @brief The DisplayTweetGUI class displays all tweets made by the user.
+ */
 class DisplayTweetGUI : public QWidget
 {
     Q_OBJECT

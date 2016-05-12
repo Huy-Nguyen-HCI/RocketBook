@@ -12,7 +12,6 @@ CreateMultimediaGUI::CreateMultimediaGUI(AccountController* currentAccount,
     scrapbookGUI = input;
     accountController = currentAccount;
     scrapbook = inputScrapbook;
-    ui->uploadVideoButton->hide();
 }
 
 CreateMultimediaGUI::~CreateMultimediaGUI()
@@ -23,25 +22,6 @@ CreateMultimediaGUI::~CreateMultimediaGUI()
 void CreateMultimediaGUI::on_returnButton_clicked()
 {
     scrapbookGUI->switchMultimediaViews();
-}
-
-void CreateMultimediaGUI::on_uploadVideoButton_clicked()
-{
-    QString inputPath =
-            QFileDialog::getOpenFileName(this,
-                                         tr("Pick your video"),
-                                         ":/",
-                                         tr("Video Files (*.mp3 *.mp4 *.flv)"));
-    // if user cancels the file selection
-    if (inputPath.isNull()) return;
-
-    // change the absolute path to relative file path
-    QDir dir("./");
-    filePath = dir.relativeFilePath(inputPath);
-
-    ui->filePathBox->setText(filePath);
-    ui->message->setText("Choose video file successful!");
-
 }
 
 void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
@@ -62,6 +42,7 @@ void CreateMultimediaGUI::on_uploadPhotoButton_clicked()
     QString numScrapbookID = QString::number(scrapbookID);
     QString numpic = QString::number(picnum);
 
+    // copy the file to the server
     QString newPath(AccountController::PATH + "picturesDir/" + numScrapbookID + "MultimediaPic_" + numpic);
     QFile newPic(filePath);
     newPic.copy(filePath, newPath);
@@ -91,7 +72,6 @@ void CreateMultimediaGUI::on_publishButton_clicked()
 }
 
 void CreateMultimediaGUI::clearViews() {
-
     ui->titleBox->clear();
     ui->descriptionBox->clear();
     ui->filePathBox->clear();

@@ -5,9 +5,12 @@ CreateGroupGUI::CreateGroupGUI(AccountController *inputAccountController, GroupG
     QWidget(parent),
     ui(new Ui::CreateGroupGUI)
 {
+    // set up the pointers
     ui->setupUi(this);
     this->groupGUI = groupGUI;
     this->accountController = inputAccountController;
+
+    // refresh the view
     clearAllFields();
     updateFriendList();
 }
@@ -25,10 +28,8 @@ void CreateGroupGUI::on_buttonBox_accepted()
     QString description = ui->descriptionInput->document()->toPlainText();
 
     //copy image to the server
-    QString photo = ui->photoFilePathInput->text();
     QString serverPath = AccountController::PATH + "picturesDir/" + fullName + "GroupPic";
     QFile::copy(photoPath, serverPath);
-
 
     Group* currentGroup = accountController->getUser()->controlGroup()->createNewGroup(fullName, serverPath, description);
 
@@ -38,8 +39,6 @@ void CreateGroupGUI::on_buttonBox_accepted()
         QString memberUsername = memberList.at(i).data().toString();
         currentGroup->addMember(memberUsername);
     }
-
-
 
     //refresh and clear fields
     clearAllFields();
@@ -65,13 +64,17 @@ void CreateGroupGUI::clearAllFields()
 
 void CreateGroupGUI::updateFriendList()
 {
+    // update the friend list in the model and controller
     ui->friendList->setSelectionMode(QAbstractItemView::ExtendedSelection);
     FriendController* friendCtrl = accountController->getUser()->controlFriend();
     friendCtrl->updateFriendList();
+
+    // display the list in the view
     QStringList friends = friendCtrl->getFriendNames();
     QStringListModel *model = new QStringListModel(friends);
     ui->friendList->setModel(model);
-    //Prevents user for editing friendlist entries in qlist manually
+
+    // prevent user from editing friendlist entries in qlist manually
     ui->friendList->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 

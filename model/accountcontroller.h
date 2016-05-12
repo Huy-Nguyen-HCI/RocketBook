@@ -36,6 +36,10 @@ public:
      * @brief Creates new account and adds account information to database.
      * @param username Account username
      * @param password Account password
+     * @param fullName the user's full name
+     * @param photo the path of user's photo
+     * @param description the description of the account
+     * @param adminRights flag to indicate whether user is admin
      * @return true if adding is successful and false otherwise
      */
     bool createNewAccount(QString username,
