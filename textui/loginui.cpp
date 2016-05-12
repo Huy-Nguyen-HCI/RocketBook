@@ -14,16 +14,16 @@ void LoginUI::run(){
 
     char name[80], pass[80];
 
-    mvprintw(1,0,"Enter Username: ");
+    mvprintw(2,2,"Enter Username: ");
     getstr(name);
     initscr();
-    mvprintw(2,0,"Enter Password: ");
+    mvprintw(3,2,"Enter Password: ");
     getstr(pass);
 
     if(accountControl->login(QString::fromStdString(name),QString::fromStdString(pass))){
         erase();
         refresh();
-        mvprintw(2,0,"Login Successful. Welcome ");
+        mvprintw(2,2,"Login Successful. Welcome ");
         printw(name);
         refresh();
         menu=new MainMenu(accountControl);

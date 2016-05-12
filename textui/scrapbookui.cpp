@@ -60,7 +60,7 @@ void ScrapbookUI::postBlog(){
     mvprintw(2,0, "Enter Text: ");
     getstr(text);
 
-    mvprintw(LINES-1,0, "Enter p to make private: ");
+    mvprintw(LINES-1,0, "Enter p post private, pressed enter to post public, or hit another key to cancel");
     bool priv=false;
     cbreak();
     noecho();
@@ -116,7 +116,7 @@ int ScrapbookUI::displayScrapbook(){
 
     std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
     erase();
-    mvprintw(0,0, "Scrapbook. Select a blog to comment");
+    mvprintw(0,0, "Scrapbook: Select a blog to comment with enter, or hit another key to go back");
     refresh();
     row=3;
     mvprintw(row, 5, "->");
