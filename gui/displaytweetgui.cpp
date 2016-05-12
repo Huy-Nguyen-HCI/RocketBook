@@ -26,10 +26,13 @@ void DisplayTweetGUI::on_createTweet_clicked()
 
 void DisplayTweetGUI::refreshTweets()
 {
+    // get all the tweets
     std::vector<Tweet*> allTweets = scrapbook->getAllTweets();
 
+    // clear the views
     ui->listWidget->clear();
 
+    // add all the tweets to the view again
     for(unsigned int i = 0; i < allTweets.size(); i++){
 
         Tweet *currentTweet = allTweets.at(i);

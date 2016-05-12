@@ -5,5 +5,4 @@ SUBDIRS += \
     unittest/unittest \
     database \
     gui \
-    docs \
     textui \

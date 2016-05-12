@@ -10,11 +10,10 @@ DisplayMultimediaGUI::DisplayMultimediaGUI(Scrapbook *inputScrapbook, ScrapbookG
     scrapbook = inputScrapbook;
 //    viewMedia = new ViewMultimediaItem();
     refreshMultimedia();
-    //hide all non-usable functions
+    //hide all unimplemented functions
     ui->deleteButton->hide();
     ui->viewButton->hide();
     ui->editButton->hide();
-    ui->loadButton->hide();
 }
 
 DisplayMultimediaGUI::~DisplayMultimediaGUI()
@@ -29,18 +28,29 @@ void DisplayMultimediaGUI::on_postButton_clicked()
 
 void DisplayMultimediaGUI::refreshMultimedia() {
 
+    // get all the media from the database
     allMulti = scrapbook->getAllMedia();
 
+    // clear the current view
     ui->multimediaList->clear();
 
+    // add all media to the view again
     for (unsigned int i = 0; i < allMulti.size(); i++) {
 
         Multimedia *media = allMulti.at(i);
-
+        QString username = media->getAuthorUsername();
+        QString title = media->getTitle();
+        QString description = media->getDescription();
         QString content = media->getContent();
+        QString num = QString::number(i + 1);
 
-        QString newLabel = scrapbookGUI->printPost(media);
+        QString item =
+                "Multimedia # " + num + ":" + "\n" +
+                "Title:     " + title + "\n" +
+                "Content:       " + content + "\n" +
+                "Description:       " + description + "\n";
 
+        QString newLabel("Title: "+title + "\n" + "Descrption: " + description);
         QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->multimediaList);
 
         ui->multimediaList->addItem(newMedia);
@@ -50,35 +60,6 @@ void DisplayMultimediaGUI::refreshMultimedia() {
 
 }
 
-//void DisplayMultimediaGUI::refreshMultimedia() {
-
-//    Profile *currentProfile = scrapbook->getUser()->getProfile();
-//    Scrapbook *myScrapbook = currentProfile->getScrapbook();
-//    std::vector<Multimedia*> allMulti = myScrapbook->getAllMedia();
-
-//    ui->multimediaList->clear();
-
-//    for (int i = 0 ; i < allMulti.size(); i++) {
-
-//        // get info
-//        Multimedia *media = allMulti.at(i);
-//        QString username = scrapbook->getUser()->getUsername();
-//        QString title = media->getTitle();
-//        QString description = media->getDescription();
-//        QString content = media->getContent();
-
-//        // create items
-//        MultimediaItem *mediaItem = new MultimediaItem(username, title, description, content);
-//        mediaItem->resize(ui->multimediaList->width(), 100);
-//        QListWidgetItem *widgetItem = new QListWidgetItem();
-//        mediaItem->layout()->setSizeConstraint(QLayout::SetFixedSize);
-//        widgetItem->setSizeHint(mediaItem->sizeHint());
-
-//        // add widget to list
-//        ui->multimediaList->addItem(widgetItem);
-//        ui->multimediaList->setItemWidget(widgetItem, mediaItem);
-//    }
-//}
 
 void DisplayMultimediaGUI::on_loadButton_clicked()
 {

@@ -8,10 +8,12 @@ FriendProfileGUI::FriendProfileGUI(ProfileInfoType info, QWidget *parent) :
     ui->setupUi(this);
     scene = new QGraphicsScene();
 
+    // get the info to display from the database
     QString username = std::get<1>(info);
     photoPath = std::get<2>(info);
     QString description = std::get<3>(info);
 
+    // display the info
     this->setWindowTitle(username + " 's Profile");
     ui->usernameLabel->setText(username);
     ui->descriptionBrowser->setText(description);

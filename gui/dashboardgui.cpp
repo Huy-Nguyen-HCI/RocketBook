@@ -28,8 +28,10 @@ DashboardGUI::~DashboardGUI()
 
 void DashboardGUI::on_latestScrapbookButton_clicked()
 {
+    // clear the previous list
     ui->latestInfoListWidget->clear();
-//    ui->latestInfoListWidget->addItem(QString("Your latest posts: \n"));
+
+    // pull scrapbook data from database and display in a list view
     std::vector<Post*> latestScrapbook = accountController->getUser()->getProfile()->getScrapbook()->getLatestPosts(5);
     for (unsigned int i = 0; i < latestScrapbook.size(); i++) {
         Post* currentPost = latestScrapbook[i];
@@ -54,6 +56,7 @@ void DashboardGUI::on_latestScrapbookButton_clicked()
 
 void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
 
+    // get data to display
     QString currentTitle = blog->getTitle();
     QString currentContent = blog->getContent();
 
@@ -70,6 +73,7 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
             "@" + blog->getAuthorUsername() + "\n"
             + currentContent+ "\n";
 
+    // display each blog as a QListWidgetItem
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, blogListItemType);
     listItem->setData(listItemIDRole, blog->getID());
@@ -80,6 +84,7 @@ void DashboardGUI::displayBlog(Blog* blog, QListWidget* theList) {
 
 void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
+    // get data to display
     QString currentContent = tweet->getContent();
     if (currentContent.isEmpty()) {
         currentContent = "<No Content>";
@@ -87,7 +92,7 @@ void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
     QString content("TWEET\n@" + tweet->getAuthorUsername() + ": " + currentContent+ "\n");
 
-
+    // display each tweet as a QListWidgetItem
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, tweetListItemType);
     listItem->setData(listItemIDRole, tweet->getID());
@@ -98,6 +103,7 @@ void DashboardGUI::displayTweet(Tweet* tweet, QListWidget* theList) {
 
 void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theList) {
 
+    // get data to display
     QString title = multimedia->getTitle();
     QString description = multimedia->getDescription();
     QString content = multimedia->getContent();
@@ -110,6 +116,8 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theLis
                      title + "\n" +
                      "@" + multimedia->getAuthorUsername() + "\n" +
                      description + "\n");
+
+    // display each media as a QListWidgetItem
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, theList);
 
     newMedia->setData(listItemTypeRole, multimediaListItemType);
@@ -124,8 +132,10 @@ void DashboardGUI::displayMultimedia(Multimedia* multimedia, QListWidget* theLis
 
 void DashboardGUI::on_latestMultimediaButton_clicked()
 {
+    // clear the previous list
     ui->latestInfoListWidget->clear();
-//    ui->latestInfoListWidget->addItem(QString("Your latest multimedia: \n"));
+
+    // pull data from the database and display in a list
     Profile *currentProfile = accountController->getUser()->getProfile();
     Scrapbook *myScrapbook = currentProfile->getScrapbook();
     std::vector<Multimedia*> allMulti = myScrapbook->getAllMedia();
@@ -150,9 +160,10 @@ void DashboardGUI::on_latestMultimediaButton_clicked()
 
 void DashboardGUI::refreshAllPosts()
 {
-
+    // clear the previous list
     ui->wholeFeed->clear();
-//    ui->wholeFeed->addItem(QString("Your friends' rocket lauching adventures: \n"));
+
+    // pull feed from the database and display in a list
     Feed *allFeed = accountController->getUser()->getFeed();
     allFeed->updatePostList();
     std::vector<Post*> friendFeed = allFeed->getFeed();
@@ -179,8 +190,6 @@ void DashboardGUI::refreshAllPosts()
 }
 
 
-
-
 void DashboardGUI::wholeFeedItem_clicked(QListWidgetItem *listItem)
 {
     if(listItem->data(listItemTypeRole) == blogListItemType) {
@@ -194,9 +203,12 @@ void DashboardGUI::wholeFeedItem_clicked(QListWidgetItem *listItem)
 
 void DashboardGUI::on_commentButton_clicked()
 {
+    // get the blog selected
     QList<QListWidgetItem*> blogList = ui->wholeFeed->selectedItems();
     int blogID = blogList[0]->data(listItemIDRole).toInt();
     Blog* blog = accountController->getUser()->getFeed()->getBlog(blogID);
+
+    // display the comment view for the selected blog
     ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(accountController, blog);
     viewBlogGUI->show();
 

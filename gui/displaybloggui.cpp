@@ -31,20 +31,26 @@ void DisplayBlogGUI::on_refreshBlogs_clicked()
 
 void DisplayBlogGUI::on_viewBlogButton_clicked()
 {
+    // get the blog to display
     QList<QListWidgetItem*> blogList = ui->listWidget->selectedItems();
     int blogID = blogList[0]->data(5).toInt();
     Blog* blog = scrapbook->getBlog(blogID);
+
+    // create a new view to display blog
     ViewBlogGUI* viewBlogGUI = new ViewBlogGUI(scrapbookGUI->getAccountController(), blog);
     viewBlogGUI->show();
+    /// TODO: delete viewBlogGUI;
 }
 
 void DisplayBlogGUI::refreshBlogs()
 {
-
+    // get the list of all blogs
     std::vector<Blog*> allBlogs = scrapbook->getAllBlogs();
 
+    // clear the current view
     ui->listWidget->clear();
 
+    // add all the blogs to the view again
     for(unsigned int i = 0; i < allBlogs.size(); i++){
 
         Blog *currentBlog = allBlogs.at(i);

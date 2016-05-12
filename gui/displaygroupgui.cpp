@@ -39,9 +39,11 @@ void DisplayGroupGUI::refreshGroups()
     //pull out the group list. This should automatically be refreshed in the model
     std::vector<Group*> allGroups = accountController->getUser()->controlGroup()->getAllGroups();
 
+    // clear the current view
     ui->groupTable->clear();
     ui->groupTable->setRowCount(allGroups.size());
 
+    // add the groups to the view again
     for (unsigned int i = 0; i < allGroups.size(); i++) {
         Profile* groupProfile = allGroups[i]->getProfile();
         QString groupPhoto = groupProfile->getPicturePath();

@@ -18,15 +18,38 @@ class DisplayBlogGUI : public QWidget
     Q_OBJECT
 
 public:
+    /**
+     * @brief DisplayBlogGUI the class constructor.
+     * @param inputScrapbook a pointer to the scrapbook which contains all the blogs.
+     * @param input the pointer to the corresponding scrapbook GUI.
+     * @param parent the parent QListWidget.
+     */
     explicit DisplayBlogGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, QWidget *parent = 0);
+
+    /**
+      * @brief ~DisplayBlogGUI the class destructor. Delete the pointer to ui.
+      */
     ~DisplayBlogGUI();
+
+    /**
+     * @brief refreshBlogs laod and display all the blogs again.
+     */
     void refreshBlogs();
 
 private slots:
+    /**
+     * @brief on_createBlog_clicked segue to the create blog view.
+     */
+
     void on_createBlog_clicked();
+    /**
+     * @brief on_refreshBlogs_clicked refresh all the blogs.
+     */
 
     void on_refreshBlogs_clicked();
-
+    /**
+     * @brief on_viewBlogButton_clicked segue to the view blog view.
+     */
     void on_viewBlogButton_clicked();
 
     void listWidgetItem_clicked();
