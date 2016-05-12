@@ -1,0 +1,99 @@
+\hypertarget{classScreen}{}\section{Screen Class Reference}
+\label{classScreen}\index{Screen@{Screen}}
+Inheritance diagram for Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classScreen}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classScreen_a8f7d73396fe312fd9980d7e2ecafc16b}{initialize} ()\hypertarget{classScreen_a8f7d73396fe312fd9980d7e2ecafc16b}{}\label{classScreen_a8f7d73396fe312fd9980d7e2ecafc16b}
+
+\begin{DoxyCompactList}\small\item\em Class screen initialization commands. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{draw\+Screen} (int v)
+\begin{DoxyCompactList}\small\item\em Draw screen. \end{DoxyCompactList}\item 
+int \hyperlink{classScreen_afcf54b70cce015db5a7874876df8df60}{select} (int max)
+\begin{DoxyCompactList}\small\item\em Select Handles scrolling logic. \end{DoxyCompactList}\item 
+int \hyperlink{classScreen_af85f0c544a0ac1a4702032007a8dd13c}{get\+Arrow\+Input} ()\hypertarget{classScreen_af85f0c544a0ac1a4702032007a8dd13c}{}\label{classScreen_af85f0c544a0ac1a4702032007a8dd13c}
+
+\begin{DoxyCompactList}\small\item\em Adds to counter if user presses up and subtracts from counter if user pressed down. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classScreen_a4f8e8b8e14d79db272df3df177304649}{Qto\+Std} (std\+::vector$<$ Q\+String $>$ list)
+\begin{DoxyCompactList}\small\item\em Q\+String\+List to std string list converts Q\+String\+List into vector of std string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAccountController}{Account\+Controller} $\ast$ {\bfseries account\+Control}\hypertarget{classScreen_a84e1528164e6e3cf16c9efd0aa916ad6}{}\label{classScreen_a84e1528164e6e3cf16c9efd0aa916ad6}
+
+\item 
+int {\bfseries options}\hypertarget{classScreen_a0750c40311f442483756627395991c8b}{}\label{classScreen_a0750c40311f442483756627395991c8b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Screen@{Screen}!draw\+Screen@{draw\+Screen}}
+\index{draw\+Screen@{draw\+Screen}!Screen@{Screen}}
+\subsubsection[{\texorpdfstring{draw\+Screen(int v)}{drawScreen(int v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Screen\+::draw\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{}\label{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}
+
+
+Draw screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Value of pointer \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classGroupsUI_ab3edbe00293aeda49e5251d2777984bf}{Groups\+UI}, \hyperlink{classMainMenu_ae86dc04cf1ae13a6041ffbd7212e5421}{Main\+Menu}, \hyperlink{classChatUI_a8b26be080ffb069e119e4482030a979a}{Chat\+UI}, \hyperlink{classGroupScrapbookUI_a3faeeff0a07f521520066f75a7f1b225}{Group\+Scrapbook\+UI}, \hyperlink{classEnterUI_a157f3cdd6607a46da895edcab4a5de04}{Enter\+UI}, \hyperlink{classFriendsUI_a155f56089ee79ce326198d0e88d464d0}{Friends\+UI}, \hyperlink{classFeedUI_aa95513cfc7b44665cf4a37258b3b45df}{Feed\+UI}, \hyperlink{classScrapbookUI_ae827fcb9cd147e05bbe8074a286ef10f}{Scrapbook\+UI}, and \hyperlink{classProfileUI_af2a6deb2877b8da70d9d102a646725bd}{Profile\+UI}.
+
+\index{Screen@{Screen}!Qto\+Std@{Qto\+Std}}
+\index{Qto\+Std@{Qto\+Std}!Screen@{Screen}}
+\subsubsection[{\texorpdfstring{Qto\+Std(std\+::vector$<$ Q\+String $>$ list)}{QtoStd(std::vector< QString > list)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::string $>$ Screen\+::\+Qto\+Std (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ Q\+String $>$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{classScreen_a4f8e8b8e14d79db272df3df177304649}{}\label{classScreen_a4f8e8b8e14d79db272df3df177304649}
+
+
+Q\+String\+List to std string list converts Q\+String\+List into vector of std string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Q\+String list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std string vector with the contents of the Q\+String\+List parameter 
+\end{DoxyReturn}
+\index{Screen@{Screen}!select@{select}}
+\index{select@{select}!Screen@{Screen}}
+\subsubsection[{\texorpdfstring{select(int max)}{select(int max)}}]{\setlength{\rightskip}{0pt plus 5cm}int Screen\+::select (
+\begin{DoxyParamCaption}
+\item[{int}]{max}
+\end{DoxyParamCaption}
+)}\hypertarget{classScreen_afcf54b70cce015db5a7874876df8df60}{}\label{classScreen_afcf54b70cce015db5a7874876df8df60}
+
+
+Select Handles scrolling logic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max} & Amount of options for user to select \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer value indicating what the user has selected on the list displayed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/screen.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/screen.\+cpp\end{DoxyCompactItemize}

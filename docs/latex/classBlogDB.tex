@@ -1,0 +1,196 @@
+\hypertarget{classBlogDB}{}\section{Blog\+DB Class Reference}
+\label{classBlogDB}\index{Blog\+DB@{Blog\+DB}}
+
+
+The \hyperlink{classBlogDB}{Blog\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$blogdb.\+h$>$}
+
+Inheritance diagram for Blog\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBlogDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBlogDB_a411260738e154e8e211be307df572d2b}{Blog\+DB} ()\hypertarget{classBlogDB_a411260738e154e8e211be307df572d2b}{}\label{classBlogDB_a411260738e154e8e211be307df572d2b}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBlogDB}{Blog\+DB} Construct a \hyperlink{classBlog}{Blog} database at Blog\+D\+B.\+sqlite. \end{DoxyCompactList}\item 
+\hyperlink{classBlogDB_a2bc1a96e1940895126a86fafe2d39ab2}{Blog\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBlogDB}{Blog\+DB} Construct an \hyperlink{classBlog}{Blog} database, given the path. \end{DoxyCompactList}\item 
+\hyperlink{classBlogDB_aa5345a0101e9a3f0bb62bac301428d26}{$\sim$\+Blog\+DB} ()\hypertarget{classBlogDB_aa5345a0101e9a3f0bb62bac301428d26}{}\label{classBlogDB_aa5345a0101e9a3f0bb62bac301428d26}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\+Blog\+DB Default destructor for \hyperlink{classBlog}{Blog} database \end{DoxyCompactList}\item 
+bool \hyperlink{classBlogDB_a8a9d5dcd4ba128a20aa29ad1c1c6380d}{add\+Blog} (int blog\+ID, int account\+ID, int scrapbook\+ID, const Q\+String \&blog\+Title, const Q\+String \&blog\+Content, int privacy)
+\begin{DoxyCompactList}\small\item\em add\+Blog Add a new \hyperlink{classBlog}{Blog} to the database table \end{DoxyCompactList}\item 
+bool \hyperlink{classBlogDB_a859bde805f823538f0b5c1b80a05360f}{remove\+Blog} (int id)
+\begin{DoxyCompactList}\small\item\em remove\+Blog Remove the blog from database \end{DoxyCompactList}\item 
+Blog\+Info\+Type \hyperlink{classBlogDB_a225b7f0642fe3e1559a4031d46f4cbf4}{retrieve\+Blog\+Info} (int blog\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Blog\+Info Get information about the blog. \end{DoxyCompactList}\item 
+std\+::vector$<$ Blog\+Info\+Type $>$ \hyperlink{classBlogDB_a8b64dfbf327f4bdb5474e03de22732c8}{retrieve\+All\+Blog\+Info} (int scrapbook\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+All\+Blog\+Info Retrieve all blogs from a scrapbooik \end{DoxyCompactList}\item 
+bool \hyperlink{classBlogDB_a2835c0e55293c8c32d20cbdbeceaa320}{blog\+Exists} (int id) const 
+\begin{DoxyCompactList}\small\item\em blog\+Exists Check if blog exists, given the id \end{DoxyCompactList}\item 
+bool \hyperlink{classBlogDB_ada79a507a12ca651dfc0eb68fbe1bef8}{remove\+All\+Blogs} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Blogs Remove all blogs in the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classBlogDB}{Blog\+DB} class. 
+
+Create an sqlite3 table named \char`\"{}\+Blogs\char`\"{} in a database file. The database structure\+: Column 1\+: Blog\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Account\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 3\+: Scrapbook\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 4\+: Blog\+Title T\+E\+XT Column 5\+: Blog\+Content T\+E\+XT Column 6\+: Privacy I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Blog\+DB@{Blog\+DB}!Blog\+DB@{Blog\+DB}}
+\index{Blog\+DB@{Blog\+DB}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{Blog\+D\+B(const Q\+String \&path)}{BlogDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Blog\+D\+B\+::\+Blog\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlogDB_a2bc1a96e1940895126a86fafe2d39ab2}{}\label{classBlogDB_a2bc1a96e1940895126a86fafe2d39ab2}
+
+
+\hyperlink{classBlogDB}{Blog\+DB} Construct an \hyperlink{classBlog}{Blog} database, given the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the Blogdb \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Blog\+DB@{Blog\+DB}!add\+Blog@{add\+Blog}}
+\index{add\+Blog@{add\+Blog}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{add\+Blog(int blog\+I\+D, int account\+I\+D, int scrapbook\+I\+D, const Q\+String \&blog\+Title, const Q\+String \&blog\+Content, int privacy)}{addBlog(int blogID, int accountID, int scrapbookID, const QString &blogTitle, const QString &blogContent, int privacy)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Blog\+D\+B\+::add\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{blog\+ID, }
+\item[{int}]{account\+ID, }
+\item[{int}]{scrapbook\+ID, }
+\item[{const Q\+String \&}]{blog\+Title, }
+\item[{const Q\+String \&}]{blog\+Content, }
+\item[{int}]{privacy}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlogDB_a8a9d5dcd4ba128a20aa29ad1c1c6380d}{}\label{classBlogDB_a8a9d5dcd4ba128a20aa29ad1c1c6380d}
+
+
+add\+Blog Add a new \hyperlink{classBlog}{Blog} to the database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blog\+ID} & \hyperlink{classBlog}{Blog} ID \\
+\hline
+{\em account\+ID} & The ID of the author \\
+\hline
+{\em scrapbook\+ID} & the ID of the scrapbook that contains the blog \\
+\hline
+{\em blog\+Content} & the content of the blog. \\
+\hline
+{\em privacy} & the privacy setting of the blog \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Blog\+DB@{Blog\+DB}!blog\+Exists@{blog\+Exists}}
+\index{blog\+Exists@{blog\+Exists}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{blog\+Exists(int id) const }{blogExists(int id) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Blog\+D\+B\+::blog\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+) const}\hypertarget{classBlogDB_a2835c0e55293c8c32d20cbdbeceaa320}{}\label{classBlogDB_a2835c0e55293c8c32d20cbdbeceaa320}
+
+
+blog\+Exists Check if blog exists, given the id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the blog\textquotesingle{}s id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Blog\+DB@{Blog\+DB}!remove\+All\+Blogs@{remove\+All\+Blogs}}
+\index{remove\+All\+Blogs@{remove\+All\+Blogs}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Blogs()}{removeAllBlogs()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Blog\+D\+B\+::remove\+All\+Blogs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlogDB_ada79a507a12ca651dfc0eb68fbe1bef8}{}\label{classBlogDB_ada79a507a12ca651dfc0eb68fbe1bef8}
+
+
+remove\+All\+Blogs Remove all blogs in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Blog\+DB@{Blog\+DB}!remove\+Blog@{remove\+Blog}}
+\index{remove\+Blog@{remove\+Blog}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Blog(int id)}{removeBlog(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Blog\+D\+B\+::remove\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlogDB_a859bde805f823538f0b5c1b80a05360f}{}\label{classBlogDB_a859bde805f823538f0b5c1b80a05360f}
+
+
+remove\+Blog Remove the blog from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & of the removed blog \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Blog\+DB@{Blog\+DB}!retrieve\+All\+Blog\+Info@{retrieve\+All\+Blog\+Info}}
+\index{retrieve\+All\+Blog\+Info@{retrieve\+All\+Blog\+Info}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+All\+Blog\+Info(int scrapbook\+I\+D)}{retrieveAllBlogInfo(int scrapbookID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Blog\+Info\+Type $>$ Blog\+D\+B\+::retrieve\+All\+Blog\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{scrapbook\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlogDB_a8b64dfbf327f4bdb5474e03de22732c8}{}\label{classBlogDB_a8b64dfbf327f4bdb5474e03de22732c8}
+
+
+retrieve\+All\+Blog\+Info Retrieve all blogs from a scrapbooik 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scrapbook\+ID} & The ID of the scrapbook \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of all Blog\+Info\+Type tuples containing the data of the blog 
+\end{DoxyReturn}
+\index{Blog\+DB@{Blog\+DB}!retrieve\+Blog\+Info@{retrieve\+Blog\+Info}}
+\index{retrieve\+Blog\+Info@{retrieve\+Blog\+Info}!Blog\+DB@{Blog\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Blog\+Info(int blog\+I\+D)}{retrieveBlogInfo(int blogID)}}]{\setlength{\rightskip}{0pt plus 5cm}Blog\+Info\+Type Blog\+D\+B\+::retrieve\+Blog\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{blog\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlogDB_a225b7f0642fe3e1559a4031d46f4cbf4}{}\label{classBlogDB_a225b7f0642fe3e1559a4031d46f4cbf4}
+
+
+retrieve\+Blog\+Info Get information about the blog. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the id of the blog \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return a tuple containing information about the blog (blog\+ID, scrapbook\+ID, blog\+Content) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/blogdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/blogdb.\+cpp\end{DoxyCompactItemize}

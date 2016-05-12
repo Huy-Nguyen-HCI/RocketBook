@@ -1,0 +1,204 @@
+\hypertarget{classBlog}{}\section{Blog Class Reference}
+\label{classBlog}\index{Blog@{Blog}}
+
+
+The \hyperlink{classBlog}{Blog} class contains text that creator of the blog has posted as well as list comments of other users.  
+
+
+
+
+{\ttfamily \#include $<$blog.\+h$>$}
+
+Inheritance diagram for Blog\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBlog}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBlog_af1f9e5fcb1bd0fa3efb89bf7ed43b688}{Blog} (Q\+String username, Q\+String title, Q\+String content, Q\+String db\+Path=\char`\"{}/usr11/cs205\+\_\+2016\+\_\+\+Grp08/rocket\+DB/rocket\+D\+B.\+sqlite\char`\"{})
+\begin{DoxyCompactList}\small\item\em Construct a blog post. \end{DoxyCompactList}\item 
+\hyperlink{classBlog_a457335b60a87bad653d8fdd2101efac5}{Blog} (int id, Q\+String username, Q\+String title, Q\+String content, Q\+String db\+Path=\char`\"{}/usr11/cs205\+\_\+2016\+\_\+\+Grp08/rocket\+DB/rocket\+D\+B.\+sqlite\char`\"{})
+\begin{DoxyCompactList}\small\item\em Construct a blog post. \end{DoxyCompactList}\item 
+\hyperlink{classBlog_a0b2c662d24dee57b9b897e9aaef74233}{$\sim$\+Blog} ()\hypertarget{classBlog_a0b2c662d24dee57b9b897e9aaef74233}{}\label{classBlog_a0b2c662d24dee57b9b897e9aaef74233}
+
+\begin{DoxyCompactList}\small\item\em Default destructor for blog post. \end{DoxyCompactList}\item 
+\hyperlink{classComment}{Comment} $\ast$ \hyperlink{classBlog_a102dc56c62292b0d313d552c7c530c9c}{add\+Comment} (\hyperlink{classComment}{Comment} $\ast$new\+Comment)
+\begin{DoxyCompactList}\small\item\em add\+Comment Add a new comment to the blog \end{DoxyCompactList}\item 
+\hyperlink{classComment}{Comment} $\ast$ \hyperlink{classBlog_a1bf61b24f505372a3174e608c85f6e11}{add\+Comment} (Q\+String username, Q\+String content)
+\begin{DoxyCompactList}\small\item\em add\+Comment Add a new comment to the blog \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classBlog_ad101a9e5995aef40ac3a90766ceef8e4}{get\+Username} ()
+\begin{DoxyCompactList}\small\item\em get\+Username returns author of the blog\textquotesingle{}s username \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classBlog_a6e7ded0090342698b061bbd7d3d6dab0}{get\+Title} ()
+\begin{DoxyCompactList}\small\item\em get\+Title gets the title for this blog post \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classComment}{Comment} $\ast$ $>$ \hyperlink{classBlog_aed8e8858743b25fbcacb7e466a6fe497}{get\+All\+Comments} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Comments retrieves all the comments in the blog post \end{DoxyCompactList}\item 
+void \hyperlink{classBlog_a061561d6deffb35dcaa241e4c47903ce}{edit\+Blog} (Q\+String new\+Content)
+\begin{DoxyCompactList}\small\item\em edit\+Blog Edit the current content of the blog by delete the old content and add the new content \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classBlog}{Blog} class contains text that creator of the blog has posted as well as list comments of other users. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Blog@{Blog}!Blog@{Blog}}
+\index{Blog@{Blog}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{Blog(\+Q\+String username, Q\+String title, Q\+String content, Q\+String db\+Path=""/usr11/cs205\+\_\+2016\+\_\+\+Grp08/rocket\+D\+B/rocket\+D\+B.\+sqlite"")}{Blog(QString username, QString title, QString content, QString dbPath="/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite")}}]{\setlength{\rightskip}{0pt plus 5cm}Blog\+::\+Blog (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{title, }
+\item[{Q\+String}]{content, }
+\item[{Q\+String}]{db\+Path = {\ttfamily \char`\"{}/usr11/cs205\+\_\+2016\+\_\+Grp08/rocketDB/rocketDB.sqlite\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_af1f9e5fcb1bd0fa3efb89bf7ed43b688}{}\label{classBlog_af1f9e5fcb1bd0fa3efb89bf7ed43b688}
+
+
+Construct a blog post. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The username of the author of the blog \\
+\hline
+{\em title} & The title of the blog \\
+\hline
+{\em content} & The content of the blog \\
+\hline
+{\em db\+Path} & The path to the database \\
+\hline
+\end{DoxyParams}
+\index{Blog@{Blog}!Blog@{Blog}}
+\index{Blog@{Blog}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{Blog(int id, Q\+String username, Q\+String title, Q\+String content, Q\+String db\+Path=""/usr11/cs205\+\_\+2016\+\_\+\+Grp08/rocket\+D\+B/rocket\+D\+B.\+sqlite"")}{Blog(int id, QString username, QString title, QString content, QString dbPath="/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite")}}]{\setlength{\rightskip}{0pt plus 5cm}Blog\+::\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{title, }
+\item[{Q\+String}]{content, }
+\item[{Q\+String}]{db\+Path = {\ttfamily \char`\"{}/usr11/cs205\+\_\+2016\+\_\+Grp08/rocketDB/rocketDB.sqlite\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_a457335b60a87bad653d8fdd2101efac5}{}\label{classBlog_a457335b60a87bad653d8fdd2101efac5}
+
+
+Construct a blog post. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the blog post \\
+\hline
+{\em username} & The username of the author of the blog \\
+\hline
+{\em title} & The title of the blog \\
+\hline
+{\em content} & The content of the blog \\
+\hline
+{\em db\+Path} & The path to the database \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Blog@{Blog}!add\+Comment@{add\+Comment}}
+\index{add\+Comment@{add\+Comment}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{add\+Comment(\+Comment $\ast$new\+Comment)}{addComment(Comment *newComment)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Comment} $\ast$ Blog\+::add\+Comment (
+\begin{DoxyParamCaption}
+\item[{{\bf Comment} $\ast$}]{new\+Comment}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_a102dc56c62292b0d313d552c7c530c9c}{}\label{classBlog_a102dc56c62292b0d313d552c7c530c9c}
+
+
+add\+Comment Add a new comment to the blog 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Comment} & The new comment to be added to the blog \\
+\hline
+\end{DoxyParams}
+\index{Blog@{Blog}!add\+Comment@{add\+Comment}}
+\index{add\+Comment@{add\+Comment}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{add\+Comment(\+Q\+String username, Q\+String content)}{addComment(QString username, QString content)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Comment} $\ast$ Blog\+::add\+Comment (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{content}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_a1bf61b24f505372a3174e608c85f6e11}{}\label{classBlog_a1bf61b24f505372a3174e608c85f6e11}
+
+
+add\+Comment Add a new comment to the blog 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The username of the commenter \\
+\hline
+{\em content} & The content of the comment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the actual comment 
+\end{DoxyReturn}
+\index{Blog@{Blog}!edit\+Blog@{edit\+Blog}}
+\index{edit\+Blog@{edit\+Blog}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{edit\+Blog(\+Q\+String new\+Content)}{editBlog(QString newContent)}}]{\setlength{\rightskip}{0pt plus 5cm}void Blog\+::edit\+Blog (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{new\+Content}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_a061561d6deffb35dcaa241e4c47903ce}{}\label{classBlog_a061561d6deffb35dcaa241e4c47903ce}
+
+
+edit\+Blog Edit the current content of the blog by delete the old content and add the new content 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Content} & The new content to be in the blog \\
+\hline
+\end{DoxyParams}
+\index{Blog@{Blog}!get\+All\+Comments@{get\+All\+Comments}}
+\index{get\+All\+Comments@{get\+All\+Comments}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{get\+All\+Comments()}{getAllComments()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Comment} $\ast$ $>$ Blog\+::get\+All\+Comments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_aed8e8858743b25fbcacb7e466a6fe497}{}\label{classBlog_aed8e8858743b25fbcacb7e466a6fe497}
+
+
+get\+All\+Comments retrieves all the comments in the blog post 
+
+\begin{DoxyReturn}{Returns}
+all comments on the blog post 
+\end{DoxyReturn}
+\index{Blog@{Blog}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{get\+Title()}{getTitle()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Blog\+::get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBlog_a6e7ded0090342698b061bbd7d3d6dab0}{}\label{classBlog_a6e7ded0090342698b061bbd7d3d6dab0}
+
+
+get\+Title gets the title for this blog post 
+
+\begin{DoxyReturn}{Returns}
+the title for this blog post 
+\end{DoxyReturn}
+\index{Blog@{Blog}!get\+Username@{get\+Username}}
+\index{get\+Username@{get\+Username}!Blog@{Blog}}
+\subsubsection[{\texorpdfstring{get\+Username()}{getUsername()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Blog\+::get\+Username (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classBlog_ad101a9e5995aef40ac3a90766ceef8e4}{}\label{classBlog_ad101a9e5995aef40ac3a90766ceef8e4}
+
+
+get\+Username returns author of the blog\textquotesingle{}s username 
+
+\begin{DoxyReturn}{Returns}
+username 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/blog.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/blog.\+cpp\end{DoxyCompactItemize}

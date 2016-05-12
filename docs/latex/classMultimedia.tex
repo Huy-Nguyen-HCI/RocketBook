@@ -1,0 +1,144 @@
+\hypertarget{classMultimedia}{}\section{Multimedia Class Reference}
+\label{classMultimedia}\index{Multimedia@{Multimedia}}
+
+
+The \hyperlink{classMultimedia}{Multimedia} Class holds multimedia content which the user has posted.  
+
+
+
+
+{\ttfamily \#include $<$multimedia.\+h$>$}
+
+Inheritance diagram for Multimedia\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMultimedia}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Privacy\+Type} \{ {\bfseries Private}, 
+{\bfseries Public}
+ \}\hypertarget{classMultimedia_a0184ece9b710d1c780d41f510f05ef76}{}\label{classMultimedia_a0184ece9b710d1c780d41f510f05ef76}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMultimedia_afa5fd55e64ebe8e78cbc338da1c25dee}{Multimedia} (Q\+String username, Q\+String title, Q\+String description, Q\+String content)
+\begin{DoxyCompactList}\small\item\em Mulimedia constructor for new multimedia post. \end{DoxyCompactList}\item 
+\hyperlink{classMultimedia_ae036bf701057bdc18cf8da98e385640a}{Multimedia} (int id, Q\+String username, Q\+String title, Q\+String description, Q\+String content)
+\begin{DoxyCompactList}\small\item\em Mulimedia constructor for existing multimedia post. \end{DoxyCompactList}\item 
+\hyperlink{classMultimedia_ab280f9ce1d0a1291c9b1ab876e854c94}{$\sim$\+Multimedia} ()\hypertarget{classMultimedia_ab280f9ce1d0a1291c9b1ab876e854c94}{}\label{classMultimedia_ab280f9ce1d0a1291c9b1ab876e854c94}
+
+\begin{DoxyCompactList}\small\item\em Mulimedia destructor. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classMultimedia_ab416f1220be623d85896acd1ca7d6b97}{get\+Title} ()
+\begin{DoxyCompactList}\small\item\em get\+Title \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classMultimedia_aec725fe22cbeb3a0421de639b1299ce1}{get\+Description} ()
+\begin{DoxyCompactList}\small\item\em get\+Description \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classMultimedia}{Multimedia} Class holds multimedia content which the user has posted. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Multimedia@{Multimedia}!Multimedia@{Multimedia}}
+\index{Multimedia@{Multimedia}!Multimedia@{Multimedia}}
+\subsubsection[{\texorpdfstring{Multimedia(\+Q\+String username, Q\+String title, Q\+String description, Q\+String content)}{Multimedia(QString username, QString title, QString description, QString content)}}]{\setlength{\rightskip}{0pt plus 5cm}Multimedia\+::\+Multimedia (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{title, }
+\item[{Q\+String}]{description, }
+\item[{Q\+String}]{content}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimedia_afa5fd55e64ebe8e78cbc338da1c25dee}{}\label{classMultimedia_afa5fd55e64ebe8e78cbc338da1c25dee}
+
+
+Mulimedia constructor for new multimedia post. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Author of post \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+title Title of post 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em description} & Description of post \\
+\hline
+{\em content} & Picture file path \\
+\hline
+\end{DoxyParams}
+\index{Multimedia@{Multimedia}!Multimedia@{Multimedia}}
+\index{Multimedia@{Multimedia}!Multimedia@{Multimedia}}
+\subsubsection[{\texorpdfstring{Multimedia(int id, Q\+String username, Q\+String title, Q\+String description, Q\+String content)}{Multimedia(int id, QString username, QString title, QString description, QString content)}}]{\setlength{\rightskip}{0pt plus 5cm}Multimedia\+::\+Multimedia (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{title, }
+\item[{Q\+String}]{description, }
+\item[{Q\+String}]{content}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimedia_ae036bf701057bdc18cf8da98e385640a}{}\label{classMultimedia_ae036bf701057bdc18cf8da98e385640a}
+
+
+Mulimedia constructor for existing multimedia post. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{classPost}{Post} Id \\
+\hline
+{\em username} & Author of post \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+title Title of post 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em description} & Description of post \\
+\hline
+{\em content} & Picture file path \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Multimedia@{Multimedia}!get\+Description@{get\+Description}}
+\index{get\+Description@{get\+Description}!Multimedia@{Multimedia}}
+\subsubsection[{\texorpdfstring{get\+Description()}{getDescription()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Multimedia\+::get\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimedia_aec725fe22cbeb3a0421de639b1299ce1}{}\label{classMultimedia_aec725fe22cbeb3a0421de639b1299ce1}
+
+
+get\+Description 
+
+\begin{DoxyReturn}{Returns}
+Description of post 
+\end{DoxyReturn}
+\index{Multimedia@{Multimedia}!get\+Title@{get\+Title}}
+\index{get\+Title@{get\+Title}!Multimedia@{Multimedia}}
+\subsubsection[{\texorpdfstring{get\+Title()}{getTitle()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Multimedia\+::get\+Title (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimedia_ab416f1220be623d85896acd1ca7d6b97}{}\label{classMultimedia_ab416f1220be623d85896acd1ca7d6b97}
+
+
+get\+Title 
+
+\begin{DoxyReturn}{Returns}
+Title of post 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/multimedia.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/multimedia.\+cpp\end{DoxyCompactItemize}

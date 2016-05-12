@@ -1,0 +1,84 @@
+\hypertarget{classFeed}{}\section{Feed Class Reference}
+\label{classFeed}\index{Feed@{Feed}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFeed_a39046cd22d8656c9a607a0a04ef2bd18}{Feed} (Q\+String db\+Path, \hyperlink{classFriendController}{Friend\+Controller} $\ast$friend\+Controller, \hyperlink{classGroupController}{Group\+Controller} $\ast$group\+Controller)
+\begin{DoxyCompactList}\small\item\em Constructs feed. \end{DoxyCompactList}\item 
+\hyperlink{classFeed_ad57cc00ddfdebda2466c31c5ecb39b9f}{$\sim$\+Feed} ()\hypertarget{classFeed_ad57cc00ddfdebda2466c31c5ecb39b9f}{}\label{classFeed_ad57cc00ddfdebda2466c31c5ecb39b9f}
+
+\begin{DoxyCompactList}\small\item\em Destructs feed. \end{DoxyCompactList}\item 
+void \hyperlink{classFeed_a266e70137762c06ec22c96d03caa8b27}{update\+Post\+List} ()\hypertarget{classFeed_a266e70137762c06ec22c96d03caa8b27}{}\label{classFeed_a266e70137762c06ec22c96d03caa8b27}
+
+\begin{DoxyCompactList}\small\item\em Updates post list. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classPost}{Post} $\ast$ $>$ \hyperlink{classFeed_acb845b46829d0e7903a6e3dda4654725}{get\+Feed} ()
+\begin{DoxyCompactList}\small\item\em get\+Feed Compiles a list of post which is the user\textquotesingle{}s feed \end{DoxyCompactList}\item 
+\hyperlink{classBlog}{Blog} $\ast$ \hyperlink{classFeed_ab43f771f8c60d2c9478fedcd9ea309ac}{get\+Blog} (int id)
+\begin{DoxyCompactList}\small\item\em get\+Blog \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Feed@{Feed}!Feed@{Feed}}
+\index{Feed@{Feed}!Feed@{Feed}}
+\subsubsection[{\texorpdfstring{Feed(\+Q\+String db\+Path, Friend\+Controller $\ast$friend\+Controller, Group\+Controller $\ast$group\+Controller)}{Feed(QString dbPath, FriendController *friendController, GroupController *groupController)}}]{\setlength{\rightskip}{0pt plus 5cm}Feed\+::\+Feed (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{{\bf Friend\+Controller} $\ast$}]{friend\+Controller, }
+\item[{{\bf Group\+Controller} $\ast$}]{group\+Controller}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeed_a39046cd22d8656c9a607a0a04ef2bd18}{}\label{classFeed_a39046cd22d8656c9a607a0a04ef2bd18}
+
+
+Constructs feed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & Database path \\
+\hline
+{\em friend\+Controller} & \hyperlink{classFriendController}{Friend\+Controller} \\
+\hline
+{\em group\+Controller} & \hyperlink{classGroupController}{Group\+Controller} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Feed@{Feed}!get\+Blog@{get\+Blog}}
+\index{get\+Blog@{get\+Blog}!Feed@{Feed}}
+\subsubsection[{\texorpdfstring{get\+Blog(int id)}{getBlog(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blog} $\ast$ Feed\+::get\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeed_ab43f771f8c60d2c9478fedcd9ea309ac}{}\label{classFeed_ab43f771f8c60d2c9478fedcd9ea309ac}
+
+
+get\+Blog 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{classBlog}{Blog} Id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns blog with specified Id 
+\end{DoxyReturn}
+\index{Feed@{Feed}!get\+Feed@{get\+Feed}}
+\index{get\+Feed@{get\+Feed}!Feed@{Feed}}
+\subsubsection[{\texorpdfstring{get\+Feed()}{getFeed()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Post} $\ast$ $>$ Feed\+::get\+Feed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeed_acb845b46829d0e7903a6e3dda4654725}{}\label{classFeed_acb845b46829d0e7903a6e3dda4654725}
+
+
+get\+Feed Compiles a list of post which is the user\textquotesingle{}s feed 
+
+\begin{DoxyReturn}{Returns}
+the user\textquotesingle{}s feed (a vector of Posts$\ast$) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/feed.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/feed.\+cpp\end{DoxyCompactItemize}

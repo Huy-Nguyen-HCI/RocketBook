@@ -1,0 +1,196 @@
+\hypertarget{classMessageDB}{}\section{Message\+DB Class Reference}
+\label{classMessageDB}\index{Message\+DB@{Message\+DB}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMessageDB_a231aa735bc53856b529e7a90881e5dd6}{Message\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMessageDB}{Message\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classMessageDB_a15df8f0fe21a37291154ca3f41910b5f}{Message\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMessageDB}{Message\+DB} Construct a message database, given the path and the name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classMessageDB_a484178341bec1ced68a600c1ee63d592}{$\sim$\+Message\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Message\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classMessageDB_a21821b985bc97bbc8d57ad6c83789b6b}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classMessageDB_a863043c12bfebf091027f16fdbb04a27}{add\+Message} (int message\+ID, int chat\+ID, int account\+ID, const Q\+String \&message)
+\begin{DoxyCompactList}\small\item\em add\+Message Add a new message to message database table \end{DoxyCompactList}\item 
+bool \hyperlink{classMessageDB_acad7a46b4029c6066d29aba829edc673}{delete\+Message} (int chat\+ID, int message\+ID)
+\begin{DoxyCompactList}\small\item\em delete\+Message Deletes a specific message from a specific chat \end{DoxyCompactList}\item 
+std\+::vector$<$ Q\+String $>$ $\ast$ \hyperlink{classMessageDB_a53c19daacce9d0fbdf3244f39c208116}{retrieve\+Chat\+Messages} (int chat\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Chat\+Messages Return a vector of strings including ID\textquotesingle{}s of all of the message in a chat \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ $\ast$ \hyperlink{classMessageDB_aef6317fe2a0fd08b68492b60eb189ab1}{retrieve\+Chat\+Senders} (int chat\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Chat\+Senders Return a vector including ID\textquotesingle{}s of all senders of message in a chat in the same order as message were sent. \end{DoxyCompactList}\item 
+int \hyperlink{classMessageDB_ab51335fe726549a32f07820ea3c76920}{get\+Max\+Message\+ID} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em get\+Max\+Message\+ID Get the maximum ID for messages in specified chat \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Message\+DB@{Message\+DB}!Message\+DB@{Message\+DB}}
+\index{Message\+DB@{Message\+DB}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{Message\+D\+B()}{MessageDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Message\+D\+B\+::\+Message\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_a231aa735bc53856b529e7a90881e5dd6}{}\label{classMessageDB_a231aa735bc53856b529e7a90881e5dd6}
+
+
+\hyperlink{classMessageDB}{Message\+DB}. 
+
+Construct a message database at ../database/account\+DB.sqlite \index{Message\+DB@{Message\+DB}!Message\+DB@{Message\+DB}}
+\index{Message\+DB@{Message\+DB}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{Message\+D\+B(const Q\+String \&path)}{MessageDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Message\+D\+B\+::\+Message\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_a15df8f0fe21a37291154ca3f41910b5f}{}\label{classMessageDB_a15df8f0fe21a37291154ca3f41910b5f}
+
+
+\hyperlink{classMessageDB}{Message\+DB} Construct a message database, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the messagedb \\
+\hline
+\end{DoxyParams}
+\index{Message\+DB@{Message\+DB}!````~Message\+DB@{$\sim$\+Message\+DB}}
+\index{````~Message\+DB@{$\sim$\+Message\+DB}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Message\+D\+B()}{~MessageDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Message\+D\+B\+::$\sim$\+Message\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_a484178341bec1ced68a600c1ee63d592}{}\label{classMessageDB_a484178341bec1ced68a600c1ee63d592}
+
+
+$\sim$\+Message\+DB 
+
+Default destructor for message database 
+
+\subsection{Member Function Documentation}
+\index{Message\+DB@{Message\+DB}!add\+Message@{add\+Message}}
+\index{add\+Message@{add\+Message}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{add\+Message(int message\+I\+D, int chat\+I\+D, int account\+I\+D, const Q\+String \&message)}{addMessage(int messageID, int chatID, int accountID, const QString &message)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Message\+D\+B\+::add\+Message (
+\begin{DoxyParamCaption}
+\item[{int}]{message\+ID, }
+\item[{int}]{chat\+ID, }
+\item[{int}]{account\+ID, }
+\item[{const Q\+String \&}]{message}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_a863043c12bfebf091027f16fdbb04a27}{}\label{classMessageDB_a863043c12bfebf091027f16fdbb04a27}
+
+
+add\+Message Add a new message to message database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message\+ID} & \hyperlink{classMessage}{Message} Id. \\
+\hline
+{\em chat\+ID} & \hyperlink{classChat}{Chat} Id \\
+\hline
+{\em account\+ID} & Id of sender \\
+\hline
+{\em \&message} & \hyperlink{classMessage}{Message} being sent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Message\+DB@{Message\+DB}!delete\+Message@{delete\+Message}}
+\index{delete\+Message@{delete\+Message}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{delete\+Message(int chat\+I\+D, int message\+I\+D)}{deleteMessage(int chatID, int messageID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Message\+D\+B\+::delete\+Message (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+ID, }
+\item[{int}]{message\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_acad7a46b4029c6066d29aba829edc673}{}\label{classMessageDB_acad7a46b4029c6066d29aba829edc673}
+
+
+delete\+Message Deletes a specific message from a specific chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+ID} & Id of chosen chat \\
+\hline
+{\em message\+ID} & Id of choosen message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Message\+DB@{Message\+DB}!get\+Max\+Message\+ID@{get\+Max\+Message\+ID}}
+\index{get\+Max\+Message\+ID@{get\+Max\+Message\+ID}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Message\+I\+D(int chat\+Id)}{getMaxMessageID(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}int Message\+D\+B\+::get\+Max\+Message\+ID (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_ab51335fe726549a32f07820ea3c76920}{}\label{classMessageDB_ab51335fe726549a32f07820ea3c76920}
+
+
+get\+Max\+Message\+ID Get the maximum ID for messages in specified chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of specified chat which max message Id will be retrieved from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the maximum used for messages in chat 
+\end{DoxyReturn}
+\index{Message\+DB@{Message\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Message\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMessageDB_a21821b985bc97bbc8d57ad6c83789b6b}{}\label{classMessageDB_a21821b985bc97bbc8d57ad6c83789b6b}
+
+
+is\+Open 
+
+Check whether message database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Message\+DB@{Message\+DB}!retrieve\+Chat\+Messages@{retrieve\+Chat\+Messages}}
+\index{retrieve\+Chat\+Messages@{retrieve\+Chat\+Messages}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Chat\+Messages(int chat\+I\+D)}{retrieveChatMessages(int chatID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Q\+String $>$ $\ast$ Message\+D\+B\+::retrieve\+Chat\+Messages (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_a53c19daacce9d0fbdf3244f39c208116}{}\label{classMessageDB_a53c19daacce9d0fbdf3244f39c208116}
+
+
+retrieve\+Chat\+Messages Return a vector of strings including ID\textquotesingle{}s of all of the message in a chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat which all messages will be retrieved from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of all messages in specified chat 
+\end{DoxyReturn}
+\index{Message\+DB@{Message\+DB}!retrieve\+Chat\+Senders@{retrieve\+Chat\+Senders}}
+\index{retrieve\+Chat\+Senders@{retrieve\+Chat\+Senders}!Message\+DB@{Message\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Chat\+Senders(int chat\+I\+D)}{retrieveChatSenders(int chatID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ $\ast$ Message\+D\+B\+::retrieve\+Chat\+Senders (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classMessageDB_aef6317fe2a0fd08b68492b60eb189ab1}{}\label{classMessageDB_aef6317fe2a0fd08b68492b60eb189ab1}
+
+
+retrieve\+Chat\+Senders Return a vector including ID\textquotesingle{}s of all senders of message in a chat in the same order as message were sent. 
+
+Example\+: Chat\+Messages$<$\+Joe\+: Hi$>$ $<$Ha\+: Hi$>$ $<$Joe\+: how are you$>$ $<$Ha\+: I\textquotesingle{}m good$>$ Chat\+Senders$<$\+Joe Id$>$ $<$\+Ha id$>$=\char`\"{}\char`\"{}$>$ $<$\+Joe id$>$=\char`\"{}\char`\"{}$>$ $<$\+Ha id$>$=\char`\"{}\char`\"{}$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat which all messages will be retrieved from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector sender Id\textquotesingle{}s corresponding to messages sent 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/messagedb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/messagedb.\+cpp\end{DoxyCompactItemize}

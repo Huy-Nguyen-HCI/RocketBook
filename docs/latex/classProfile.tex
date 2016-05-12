@@ -1,0 +1,217 @@
+\hypertarget{classProfile}{}\section{Profile Class Reference}
+\label{classProfile}\index{Profile@{Profile}}
+
+
+The \hyperlink{classProfile}{Profile} class stores information about a user\textquotesingle{}s profile\+: Picture Description Name \hyperlink{classScrapbook}{Scrapbook}.  
+
+
+
+
+{\ttfamily \#include $<$profile.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classProfile_a4eea708cdbed0262d9e7ddbe3f1e3f89}{Profile} ()\hypertarget{classProfile_a4eea708cdbed0262d9e7ddbe3f1e3f89}{}\label{classProfile_a4eea708cdbed0262d9e7ddbe3f1e3f89}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classProfile}{Profile} constructor. \end{DoxyCompactList}\item 
+\hyperlink{classProfile_a856fc2cd9f74a21194e31510b6e303e1}{Profile} (Q\+String db\+Path, Q\+String full\+Name, Q\+String photo, Q\+String description)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classProfile}{Profile} Constructor to create a new profile, knowing name, photo, description. \end{DoxyCompactList}\item 
+\hyperlink{classProfile_a7d59ec57ad89453232ff87d9e004e495}{Profile} (Q\+String db\+Path, int id, Q\+String full\+Name, Q\+String photo, Q\+String description, int scrapbook\+ID)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classProfile}{Profile} Constructor to reconstruct a profile with ID, full name, photo, description, scrapbook. \end{DoxyCompactList}\item 
+\hyperlink{classProfile_a58fa758a59bc4ee3c1a9980e360e4e98}{$\sim$\+Profile} ()\hypertarget{classProfile_a58fa758a59bc4ee3c1a9980e360e4e98}{}\label{classProfile_a58fa758a59bc4ee3c1a9980e360e4e98}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classProfile}{Profile} destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classProfile_a23a7c9cb9836723d173171cef4c87063}{get\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Id \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classProfile_a03400292e805a44e801b5de2746efe46}{get\+Description} ()
+\begin{DoxyCompactList}\small\item\em get\+Description \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classProfile_aad900ecefcc673a6b650682857358fa1}{get\+Full\+Name} ()
+\begin{DoxyCompactList}\small\item\em get\+Full\+Name \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classProfile_a73ffd81d17b83e72abc3fd283fb1b54b}{get\+Picture\+Path} ()
+\begin{DoxyCompactList}\small\item\em get\+Picture\+Path \end{DoxyCompactList}\item 
+\hyperlink{classScrapbook}{Scrapbook} $\ast$ \hyperlink{classProfile_a6d7f9987e3ee6e9d70578d9585fa16a9}{get\+Scrapbook} ()
+\begin{DoxyCompactList}\small\item\em get\+Scrapbook \end{DoxyCompactList}\item 
+void \hyperlink{classProfile_a80ea407203bcbf1fd2ca229e4a1acfff}{set\+Description} (Q\+String \&input)
+\begin{DoxyCompactList}\small\item\em set\+Description \end{DoxyCompactList}\item 
+void \hyperlink{classProfile_ae1c5c41d66e80c65cfbd177e626a5459}{set\+Full\+Name} (Q\+String \&input)
+\begin{DoxyCompactList}\small\item\em set\+Full\+Name \end{DoxyCompactList}\item 
+void \hyperlink{classProfile_a02c32680f8c95d97dd88fa1098cc679d}{set\+Picture\+Path} (Q\+String \&input)
+\begin{DoxyCompactList}\small\item\em set\+Picture\+Path \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classProfile}{Profile} class stores information about a user\textquotesingle{}s profile\+: Picture Description Name \hyperlink{classScrapbook}{Scrapbook}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Profile@{Profile}!Profile@{Profile}}
+\index{Profile@{Profile}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{Profile(\+Q\+String db\+Path, Q\+String full\+Name, Q\+String photo, Q\+String description)}{Profile(QString dbPath, QString fullName, QString photo, QString description)}}]{\setlength{\rightskip}{0pt plus 5cm}Profile\+::\+Profile (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{Q\+String}]{full\+Name, }
+\item[{Q\+String}]{photo, }
+\item[{Q\+String}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfile_a856fc2cd9f74a21194e31510b6e303e1}{}\label{classProfile_a856fc2cd9f74a21194e31510b6e303e1}
+
+
+\hyperlink{classProfile}{Profile} Constructor to create a new profile, knowing name, photo, description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Name} & Full name of the user/group \\
+\hline
+{\em photo} & Photo link of the user/group \\
+\hline
+{\em description} & Description of the user/group \\
+\hline
+\end{DoxyParams}
+\index{Profile@{Profile}!Profile@{Profile}}
+\index{Profile@{Profile}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{Profile(\+Q\+String db\+Path, int id, Q\+String full\+Name, Q\+String photo, Q\+String description, int scrapbook\+I\+D)}{Profile(QString dbPath, int id, QString fullName, QString photo, QString description, int scrapbookID)}}]{\setlength{\rightskip}{0pt plus 5cm}Profile\+::\+Profile (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{id, }
+\item[{Q\+String}]{full\+Name, }
+\item[{Q\+String}]{photo, }
+\item[{Q\+String}]{description, }
+\item[{int}]{scrapbook\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfile_a7d59ec57ad89453232ff87d9e004e495}{}\label{classProfile_a7d59ec57ad89453232ff87d9e004e495}
+
+
+\hyperlink{classProfile}{Profile} Constructor to reconstruct a profile with ID, full name, photo, description, scrapbook. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the profile \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Profile@{Profile}!get\+Description@{get\+Description}}
+\index{get\+Description@{get\+Description}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{get\+Description()}{getDescription()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Profile\+::get\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_a03400292e805a44e801b5de2746efe46}{}\label{classProfile_a03400292e805a44e801b5de2746efe46}
+
+
+get\+Description 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classProfile}{Profile} description 
+\end{DoxyReturn}
+\index{Profile@{Profile}!get\+Full\+Name@{get\+Full\+Name}}
+\index{get\+Full\+Name@{get\+Full\+Name}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{get\+Full\+Name()}{getFullName()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Profile\+::get\+Full\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_aad900ecefcc673a6b650682857358fa1}{}\label{classProfile_aad900ecefcc673a6b650682857358fa1}
+
+
+get\+Full\+Name 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classProfile}{Profile} name 
+\end{DoxyReturn}
+\index{Profile@{Profile}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{get\+I\+D()}{getID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Profile\+::get\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_a23a7c9cb9836723d173171cef4c87063}{}\label{classProfile_a23a7c9cb9836723d173171cef4c87063}
+
+
+get\+Id 
+
+\begin{DoxyReturn}{Returns}
+profile Id 
+\end{DoxyReturn}
+\index{Profile@{Profile}!get\+Picture\+Path@{get\+Picture\+Path}}
+\index{get\+Picture\+Path@{get\+Picture\+Path}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{get\+Picture\+Path()}{getPicturePath()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Profile\+::get\+Picture\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_a73ffd81d17b83e72abc3fd283fb1b54b}{}\label{classProfile_a73ffd81d17b83e72abc3fd283fb1b54b}
+
+
+get\+Picture\+Path 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classProfile}{Profile} picture path 
+\end{DoxyReturn}
+\index{Profile@{Profile}!get\+Scrapbook@{get\+Scrapbook}}
+\index{get\+Scrapbook@{get\+Scrapbook}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{get\+Scrapbook()}{getScrapbook()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scrapbook}$\ast$ Profile\+::get\+Scrapbook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_a6d7f9987e3ee6e9d70578d9585fa16a9}{}\label{classProfile_a6d7f9987e3ee6e9d70578d9585fa16a9}
+
+
+get\+Scrapbook 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classProfile}{Profile}\textquotesingle{} description\textquotesingle{}s scrapbook 
+\end{DoxyReturn}
+\index{Profile@{Profile}!set\+Description@{set\+Description}}
+\index{set\+Description@{set\+Description}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{set\+Description(\+Q\+String \&input)}{setDescription(QString &input)}}]{\setlength{\rightskip}{0pt plus 5cm}void Profile\+::set\+Description (
+\begin{DoxyParamCaption}
+\item[{Q\+String \&}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_a80ea407203bcbf1fd2ca229e4a1acfff}{}\label{classProfile_a80ea407203bcbf1fd2ca229e4a1acfff}
+
+
+set\+Description 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \&input} & New profile description \\
+\hline
+\end{DoxyParams}
+\index{Profile@{Profile}!set\+Full\+Name@{set\+Full\+Name}}
+\index{set\+Full\+Name@{set\+Full\+Name}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{set\+Full\+Name(\+Q\+String \&input)}{setFullName(QString &input)}}]{\setlength{\rightskip}{0pt plus 5cm}void Profile\+::set\+Full\+Name (
+\begin{DoxyParamCaption}
+\item[{Q\+String \&}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_ae1c5c41d66e80c65cfbd177e626a5459}{}\label{classProfile_ae1c5c41d66e80c65cfbd177e626a5459}
+
+
+set\+Full\+Name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \&input} & New profile name \\
+\hline
+\end{DoxyParams}
+\index{Profile@{Profile}!set\+Picture\+Path@{set\+Picture\+Path}}
+\index{set\+Picture\+Path@{set\+Picture\+Path}!Profile@{Profile}}
+\subsubsection[{\texorpdfstring{set\+Picture\+Path(\+Q\+String \&input)}{setPicturePath(QString &input)}}]{\setlength{\rightskip}{0pt plus 5cm}void Profile\+::set\+Picture\+Path (
+\begin{DoxyParamCaption}
+\item[{Q\+String \&}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProfile_a02c32680f8c95d97dd88fa1098cc679d}{}\label{classProfile_a02c32680f8c95d97dd88fa1098cc679d}
+
+
+set\+Picture\+Path 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \&input} & New profile picture path \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/profile.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/profile.\+cpp\end{DoxyCompactItemize}

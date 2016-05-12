@@ -1,0 +1,123 @@
+\hypertarget{classChat}{}\section{Chat Class Reference}
+\label{classChat}\index{Chat@{Chat}}
+
+
+The chat class contains a list of messages and a list of participants in a given chat.  
+
+
+
+
+{\ttfamily \#include $<$chat.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classChat_a4427e061b727c06cccca9626cc0cf9c8}{Chat} ()\hypertarget{classChat_a4427e061b727c06cccca9626cc0cf9c8}{}\label{classChat_a4427e061b727c06cccca9626cc0cf9c8}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChat}{Chat} Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classChat_a911edde3a05c074f27da0172fe857d6c}{Chat} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChat}{Chat} Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classChat_a5ba0b562f6cb367891ea34d38d7f6634}{Chat} (int chat\+Id, std\+::vector$<$ int $>$ $\ast$member\+List)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChat}{Chat} Constructor. \end{DoxyCompactList}\item 
+int \hyperlink{classChat_a8e4444f24fb22a6db1b3cfbabaa2e0f0}{get\+Chat\+Id} ()
+\begin{DoxyCompactList}\small\item\em get\+Chat\+Id \end{DoxyCompactList}\item 
+void \hyperlink{classChat_a795ad989c7d8d5ec499a4166dd746edd}{add\+Message} (\hyperlink{classMessage}{Message} $\ast$new\+Message)
+\begin{DoxyCompactList}\small\item\em Adds a message to chat. \end{DoxyCompactList}\item 
+void \hyperlink{classChat_abe6350fda908d6cc5a437132e55600b9}{set\+Members} (std\+::vector$<$ int $>$ $\ast$member\+List)
+\begin{DoxyCompactList}\small\item\em set chat members \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The chat class contains a list of messages and a list of participants in a given chat. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Chat@{Chat}!Chat@{Chat}}
+\index{Chat@{Chat}!Chat@{Chat}}
+\subsubsection[{\texorpdfstring{Chat(int chat\+Id)}{Chat(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}Chat\+::\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChat_a911edde3a05c074f27da0172fe857d6c}{}\label{classChat_a911edde3a05c074f27da0172fe857d6c}
+
+
+\hyperlink{classChat}{Chat} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & \hyperlink{classChat}{Chat} Id \\
+\hline
+\end{DoxyParams}
+\index{Chat@{Chat}!Chat@{Chat}}
+\index{Chat@{Chat}!Chat@{Chat}}
+\subsubsection[{\texorpdfstring{Chat(int chat\+Id, std\+::vector$<$ int $>$ $\ast$member\+List)}{Chat(int chatId, std::vector< int > *memberList)}}]{\setlength{\rightskip}{0pt plus 5cm}Chat\+::\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id, }
+\item[{std\+::vector$<$ int $>$ $\ast$}]{member\+List}
+\end{DoxyParamCaption}
+)}\hypertarget{classChat_a5ba0b562f6cb367891ea34d38d7f6634}{}\label{classChat_a5ba0b562f6cb367891ea34d38d7f6634}
+
+
+\hyperlink{classChat}{Chat} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & \hyperlink{classChat}{Chat} Id \\
+\hline
+{\em member\+List} & List of chat participants \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Chat@{Chat}!add\+Message@{add\+Message}}
+\index{add\+Message@{add\+Message}!Chat@{Chat}}
+\subsubsection[{\texorpdfstring{add\+Message(\+Message $\ast$new\+Message)}{addMessage(Message *newMessage)}}]{\setlength{\rightskip}{0pt plus 5cm}void Chat\+::add\+Message (
+\begin{DoxyParamCaption}
+\item[{{\bf Message} $\ast$}]{new\+Message}
+\end{DoxyParamCaption}
+)}\hypertarget{classChat_a795ad989c7d8d5ec499a4166dd746edd}{}\label{classChat_a795ad989c7d8d5ec499a4166dd746edd}
+
+
+Adds a message to chat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Message} & \hyperlink{classMessage}{Message} to be added \\
+\hline
+\end{DoxyParams}
+\index{Chat@{Chat}!get\+Chat\+Id@{get\+Chat\+Id}}
+\index{get\+Chat\+Id@{get\+Chat\+Id}!Chat@{Chat}}
+\subsubsection[{\texorpdfstring{get\+Chat\+Id()}{getChatId()}}]{\setlength{\rightskip}{0pt plus 5cm}int Chat\+::get\+Chat\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChat_a8e4444f24fb22a6db1b3cfbabaa2e0f0}{}\label{classChat_a8e4444f24fb22a6db1b3cfbabaa2e0f0}
+
+
+get\+Chat\+Id 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classChat}{Chat} Id 
+\end{DoxyReturn}
+\index{Chat@{Chat}!set\+Members@{set\+Members}}
+\index{set\+Members@{set\+Members}!Chat@{Chat}}
+\subsubsection[{\texorpdfstring{set\+Members(std\+::vector$<$ int $>$ $\ast$member\+List)}{setMembers(std::vector< int > *memberList)}}]{\setlength{\rightskip}{0pt plus 5cm}void Chat\+::set\+Members (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ int $>$ $\ast$}]{member\+List}
+\end{DoxyParamCaption}
+)}\hypertarget{classChat_abe6350fda908d6cc5a437132e55600b9}{}\label{classChat_abe6350fda908d6cc5a437132e55600b9}
+
+
+set chat members 
+
+
+\begin{DoxyParams}{Parameters}
+{\em member\+List} & List of members \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/chat.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/chat.\+cpp\end{DoxyCompactItemize}

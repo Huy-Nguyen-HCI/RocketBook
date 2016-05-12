@@ -1,0 +1,166 @@
+\hypertarget{classGroupDB}{}\section{Group\+DB Class Reference}
+\label{classGroupDB}\index{Group\+DB@{Group\+DB}}
+
+
+The \hyperlink{classGroupDB}{Group\+DB} class Maintain a sqlite3 table \char`\"{}\+Groups\char`\"{} to store information on groups Column 1\+: Group\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Profile\+ID I\+N\+T\+E\+G\+ER U\+N\+I\+Q\+UE N\+OT N\+U\+LL.  
+
+
+
+
+{\ttfamily \#include $<$groupdb.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupDB_a96a4bde4f06f8318fce0a35027386f0d}{Group\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupDB}{Group\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classGroupDB_a5a204e106575e3c1060a713d0ca37eba}{Group\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupDB}{Group\+DB} Construct a group database connection, given the path and the name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classGroupDB_acf4face75bc1bfdd6b5560892e8c2662}{$\sim$\+Group\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Group\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupDB_a27d0350c082d93aed3200e07a22eb3ea}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupDB_af712d7133acb6d54a4c5771a1b299147}{add\+Group} (int group\+ID, int profile\+ID)
+\begin{DoxyCompactList}\small\item\em add\+Group Add a group into database \end{DoxyCompactList}\item 
+int \hyperlink{classGroupDB_aac86cfedb0ae4f8ea9b7886057381344}{get\+Max\+Group\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Max\+Group\+Id Get the maximum ID for groups \end{DoxyCompactList}\item 
+int \hyperlink{classGroupDB_a808e067d3e6ffc951875381f575c7bd0}{get\+Profile\+ID} (int group\+ID)
+\begin{DoxyCompactList}\small\item\em get\+Profile\+ID Retrieve the profile ID from the group ID \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupDB_a0bee74ed271773d6df96a8f046c59ab0}{remove\+All\+Groups} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Groups Remove all groups existing in the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGroupDB}{Group\+DB} class Maintain a sqlite3 table \char`\"{}\+Groups\char`\"{} to store information on groups Column 1\+: Group\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Profile\+ID I\+N\+T\+E\+G\+ER U\+N\+I\+Q\+UE N\+OT N\+U\+LL. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group\+DB@{Group\+DB}!Group\+DB@{Group\+DB}}
+\index{Group\+DB@{Group\+DB}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{Group\+D\+B()}{GroupDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+D\+B\+::\+Group\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_a96a4bde4f06f8318fce0a35027386f0d}{}\label{classGroupDB_a96a4bde4f06f8318fce0a35027386f0d}
+
+
+\hyperlink{classGroupDB}{Group\+DB}. 
+
+Construct a group database connection at ../database/\+Rocket\+DB.sqlite \index{Group\+DB@{Group\+DB}!Group\+DB@{Group\+DB}}
+\index{Group\+DB@{Group\+DB}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{Group\+D\+B(const Q\+String \&path)}{GroupDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+D\+B\+::\+Group\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_a5a204e106575e3c1060a713d0ca37eba}{}\label{classGroupDB_a5a204e106575e3c1060a713d0ca37eba}
+
+
+\hyperlink{classGroupDB}{Group\+DB} Construct a group database connection, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the Groupdb \\
+\hline
+\end{DoxyParams}
+\index{Group\+DB@{Group\+DB}!````~Group\+DB@{$\sim$\+Group\+DB}}
+\index{````~Group\+DB@{$\sim$\+Group\+DB}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Group\+D\+B()}{~GroupDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+D\+B\+::$\sim$\+Group\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_acf4face75bc1bfdd6b5560892e8c2662}{}\label{classGroupDB_acf4face75bc1bfdd6b5560892e8c2662}
+
+
+$\sim$\+Group\+DB 
+
+Default destructor for \hyperlink{classGroup}{Group} database 
+
+\subsection{Member Function Documentation}
+\index{Group\+DB@{Group\+DB}!add\+Group@{add\+Group}}
+\index{add\+Group@{add\+Group}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{add\+Group(int group\+I\+D, int profile\+I\+D)}{addGroup(int groupID, int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+D\+B\+::add\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID, }
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_af712d7133acb6d54a4c5771a1b299147}{}\label{classGroupDB_af712d7133acb6d54a4c5771a1b299147}
+
+
+add\+Group Add a group into database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & Group\+ID of the group \\
+\hline
+{\em profile\+ID} & Profile\+ID of the profile of the group \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added successfully, false otherwise 
+\end{DoxyReturn}
+\index{Group\+DB@{Group\+DB}!get\+Max\+Group\+ID@{get\+Max\+Group\+ID}}
+\index{get\+Max\+Group\+ID@{get\+Max\+Group\+ID}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Group\+I\+D()}{getMaxGroupID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Group\+D\+B\+::get\+Max\+Group\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_aac86cfedb0ae4f8ea9b7886057381344}{}\label{classGroupDB_aac86cfedb0ae4f8ea9b7886057381344}
+
+
+get\+Max\+Group\+Id Get the maximum ID for groups 
+
+\begin{DoxyReturn}{Returns}
+the maximum used for groups 
+\end{DoxyReturn}
+\index{Group\+DB@{Group\+DB}!get\+Profile\+ID@{get\+Profile\+ID}}
+\index{get\+Profile\+ID@{get\+Profile\+ID}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{get\+Profile\+I\+D(int group\+I\+D)}{getProfileID(int groupID)}}]{\setlength{\rightskip}{0pt plus 5cm}int Group\+D\+B\+::get\+Profile\+ID (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_a808e067d3e6ffc951875381f575c7bd0}{}\label{classGroupDB_a808e067d3e6ffc951875381f575c7bd0}
+
+
+get\+Profile\+ID Retrieve the profile ID from the group ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & The ID of the group \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The ID of the profile 
+\end{DoxyReturn}
+\index{Group\+DB@{Group\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGroupDB_a27d0350c082d93aed3200e07a22eb3ea}{}\label{classGroupDB_a27d0350c082d93aed3200e07a22eb3ea}
+
+
+is\+Open 
+
+Check whether \hyperlink{classGroup}{Group} database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Group\+DB@{Group\+DB}!remove\+All\+Groups@{remove\+All\+Groups}}
+\index{remove\+All\+Groups@{remove\+All\+Groups}!Group\+DB@{Group\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Groups()}{removeAllGroups()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+D\+B\+::remove\+All\+Groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupDB_a0bee74ed271773d6df96a8f046c59ab0}{}\label{classGroupDB_a0bee74ed271773d6df96a8f046c59ab0}
+
+
+remove\+All\+Groups Remove all groups existing in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/groupdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/groupdb.\+cpp\end{DoxyCompactItemize}

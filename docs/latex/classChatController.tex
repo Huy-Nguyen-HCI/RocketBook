@@ -1,0 +1,261 @@
+\hypertarget{classChatController}{}\section{Chat\+Controller Class Reference}
+\label{classChatController}\index{Chat\+Controller@{Chat\+Controller}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classChatController_a181a7671ad22b30bba6ece9953af6849}{Chat\+Controller} (Q\+String db\+Path, int account\+Id)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChatController}{Chat\+Controller}. \end{DoxyCompactList}\item 
+\hyperlink{classChatController_adc6b7a21ada76423568c93f631bb3eeb}{$\sim$\+Chat\+Controller} ()\hypertarget{classChatController_adc6b7a21ada76423568c93f631bb3eeb}{}\label{classChatController_adc6b7a21ada76423568c93f631bb3eeb}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChatController}{Chat\+Controller} destuctor. \end{DoxyCompactList}\item 
+void \hyperlink{classChatController_a05caa5931a7bb7ee842527b8ed2ccbfa}{create\+Chat} (Q\+String friend\+Name)
+\begin{DoxyCompactList}\small\item\em create\+Chat Creates chat \end{DoxyCompactList}\item 
+bool \hyperlink{classChatController_aec8d6878e62e56da3a77cd67ad9dae63}{add\+Member\+To\+Chat} (int chat\+Id, Q\+String friend\+Name)
+\begin{DoxyCompactList}\small\item\em add\+Member\+To\+Chat Adds an friend to chat \end{DoxyCompactList}\item 
+bool \hyperlink{classChatController_a75c28b7fd66e0ca1079de48925e4974d}{send\+Message} (int chat\+Id, Q\+String message)
+\begin{DoxyCompactList}\small\item\em send\+Message Sends \hyperlink{classMessage}{Message} \end{DoxyCompactList}\item 
+bool \hyperlink{classChatController_a00a6dee4d7fed8f1b3c4e11c4c9dd320}{remove\+User\+From\+Chat} (int chat\+Id, Q\+String username)
+\begin{DoxyCompactList}\small\item\em remove\+User\+From\+Chat Removes user from chat \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ $\ast$ \hyperlink{classChatController_a212e267ddbb3bb1a55f40666ba8d2cd9}{get\+Chat\+Id\+List} ()
+\begin{DoxyCompactList}\small\item\em get\+Chat\+Id\+List Returns list of all chat Ids \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ $\ast$ \hyperlink{classChatController_a131472bde027f72f19a52fba9c735aeb}{get\+Sender\+List} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em get\+Sender\+List Returns list of senders for a given chat \end{DoxyCompactList}\item 
+std\+::vector$<$ Q\+String $>$ $\ast$ \hyperlink{classChatController_a53377ed34f11050e37ad2c36a305e880}{get\+Message\+List} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em get\+Message\+List Returns list of messages for a given chat \end{DoxyCompactList}\item 
+void \hyperlink{classChatController_a88da4d788443ff833db968359a7d31d5}{update\+Chats} ()\hypertarget{classChatController_a88da4d788443ff833db968359a7d31d5}{}\label{classChatController_a88da4d788443ff833db968359a7d31d5}
+
+\begin{DoxyCompactList}\small\item\em Updates chat and message objects to agree with the database. \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classChatController_a0937cbbf50a669da60715327794149a7}{get\+Chat\+Id\+List\+G\+UI} ()
+\begin{DoxyCompactList}\small\item\em get\+Chat\+Id\+List Returns std string list of messages for a given chat \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classChatController_afd227d0c6e8e891c4c57945c1807eaa2}{get\+Message\+List\+G\+UI} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em get\+Message\+List\+G\+UI Returns a Q\+String\+List of messages for a given chat \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classChatController_a3f97f32d49b7e9435acf60527e27eb61}{get\+Chat\+Members\+G\+UI} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em get\+Chat\+Members\+G\+UI Returns a Q\+String\+List of chat members for a given chat \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classChat}{Chat} $\ast$ $>$ {\bfseries chat\+List}\hypertarget{classChatController_a5e626784fc3ce8ea86e13985d0471427}{}\label{classChatController_a5e626784fc3ce8ea86e13985d0471427}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Chat\+Controller@{Chat\+Controller}!Chat\+Controller@{Chat\+Controller}}
+\index{Chat\+Controller@{Chat\+Controller}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{Chat\+Controller(\+Q\+String db\+Path, int account\+Id)}{ChatController(QString dbPath, int accountId)}}]{\setlength{\rightskip}{0pt plus 5cm}Chat\+Controller\+::\+Chat\+Controller (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{account\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a181a7671ad22b30bba6ece9953af6849}{}\label{classChatController_a181a7671ad22b30bba6ece9953af6849}
+
+
+\hyperlink{classChatController}{Chat\+Controller}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & Database path \\
+\hline
+{\em account\+Id} & Account Id \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Chat\+Controller@{Chat\+Controller}!add\+Member\+To\+Chat@{add\+Member\+To\+Chat}}
+\index{add\+Member\+To\+Chat@{add\+Member\+To\+Chat}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{add\+Member\+To\+Chat(int chat\+Id, Q\+String friend\+Name)}{addMemberToChat(int chatId, QString friendName)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+Controller\+::add\+Member\+To\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id, }
+\item[{Q\+String}]{friend\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_aec8d6878e62e56da3a77cd67ad9dae63}{}\label{classChatController_aec8d6878e62e56da3a77cd67ad9dae63}
+
+
+add\+Member\+To\+Chat Adds an friend to chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+{\em friend\+Name} & Name of friend \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if friend has been added to chat 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!create\+Chat@{create\+Chat}}
+\index{create\+Chat@{create\+Chat}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{create\+Chat(\+Q\+String friend\+Name)}{createChat(QString friendName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Chat\+Controller\+::create\+Chat (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{friend\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a05caa5931a7bb7ee842527b8ed2ccbfa}{}\label{classChatController_a05caa5931a7bb7ee842527b8ed2ccbfa}
+
+
+create\+Chat Creates chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em friend\+Name} & Name of friend that chat will be started with \\
+\hline
+\end{DoxyParams}
+\index{Chat\+Controller@{Chat\+Controller}!get\+Chat\+Id\+List@{get\+Chat\+Id\+List}}
+\index{get\+Chat\+Id\+List@{get\+Chat\+Id\+List}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Chat\+Id\+List()}{getChatIdList()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ $\ast$ Chat\+Controller\+::get\+Chat\+Id\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a212e267ddbb3bb1a55f40666ba8d2cd9}{}\label{classChatController_a212e267ddbb3bb1a55f40666ba8d2cd9}
+
+
+get\+Chat\+Id\+List Returns list of all chat Ids 
+
+\begin{DoxyReturn}{Returns}
+Vector of chat Ids 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!get\+Chat\+Id\+List\+G\+UI@{get\+Chat\+Id\+List\+G\+UI}}
+\index{get\+Chat\+Id\+List\+G\+UI@{get\+Chat\+Id\+List\+G\+UI}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Chat\+Id\+List\+G\+U\+I()}{getChatIdListGUI()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List Chat\+Controller\+::get\+Chat\+Id\+List\+G\+UI (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a0937cbbf50a669da60715327794149a7}{}\label{classChatController_a0937cbbf50a669da60715327794149a7}
+
+
+get\+Chat\+Id\+List Returns std string list of messages for a given chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of messages for the specified chat 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!get\+Chat\+Members\+G\+UI@{get\+Chat\+Members\+G\+UI}}
+\index{get\+Chat\+Members\+G\+UI@{get\+Chat\+Members\+G\+UI}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Chat\+Members\+G\+U\+I(int chat\+Id)}{getChatMembersGUI(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List Chat\+Controller\+::get\+Chat\+Members\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a3f97f32d49b7e9435acf60527e27eb61}{}\label{classChatController_a3f97f32d49b7e9435acf60527e27eb61}
+
+
+get\+Chat\+Members\+G\+UI Returns a Q\+String\+List of chat members for a given chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String\+List of usernames in the order which the messages were sent 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!get\+Message\+List@{get\+Message\+List}}
+\index{get\+Message\+List@{get\+Message\+List}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Message\+List(int chat\+Id)}{getMessageList(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Q\+String $>$ $\ast$ Chat\+Controller\+::get\+Message\+List (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a53377ed34f11050e37ad2c36a305e880}{}\label{classChatController_a53377ed34f11050e37ad2c36a305e880}
+
+
+get\+Message\+List Returns list of messages for a given chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of messages for the specified chat 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!get\+Message\+List\+G\+UI@{get\+Message\+List\+G\+UI}}
+\index{get\+Message\+List\+G\+UI@{get\+Message\+List\+G\+UI}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Message\+List\+G\+U\+I(int chat\+Id)}{getMessageListGUI(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List Chat\+Controller\+::get\+Message\+List\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_afd227d0c6e8e891c4c57945c1807eaa2}{}\label{classChatController_afd227d0c6e8e891c4c57945c1807eaa2}
+
+
+get\+Message\+List\+G\+UI Returns a Q\+String\+List of messages for a given chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String\+List of messages for the specified chat 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!get\+Sender\+List@{get\+Sender\+List}}
+\index{get\+Sender\+List@{get\+Sender\+List}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Sender\+List(int chat\+Id)}{getSenderList(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ $\ast$ Chat\+Controller\+::get\+Sender\+List (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a131472bde027f72f19a52fba9c735aeb}{}\label{classChatController_a131472bde027f72f19a52fba9c735aeb}
+
+
+get\+Sender\+List Returns list of senders for a given chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of account Ids in the order which the messages were sent 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!remove\+User\+From\+Chat@{remove\+User\+From\+Chat}}
+\index{remove\+User\+From\+Chat@{remove\+User\+From\+Chat}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{remove\+User\+From\+Chat(int chat\+Id, Q\+String username)}{removeUserFromChat(int chatId, QString username)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+Controller\+::remove\+User\+From\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id, }
+\item[{Q\+String}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a00a6dee4d7fed8f1b3c4e11c4c9dd320}{}\label{classChatController_a00a6dee4d7fed8f1b3c4e11c4c9dd320}
+
+
+remove\+User\+From\+Chat Removes user from chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+{\em username} & Name of user to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if user has been removed from chat 
+\end{DoxyReturn}
+\index{Chat\+Controller@{Chat\+Controller}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!Chat\+Controller@{Chat\+Controller}}
+\subsubsection[{\texorpdfstring{send\+Message(int chat\+Id, Q\+String message)}{sendMessage(int chatId, QString message)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+Controller\+::send\+Message (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id, }
+\item[{Q\+String}]{message}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatController_a75c28b7fd66e0ca1079de48925e4974d}{}\label{classChatController_a75c28b7fd66e0ca1079de48925e4974d}
+
+
+send\+Message Sends \hyperlink{classMessage}{Message} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+{\em messahe} & \hyperlink{classMessage}{Message} being sent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True of message sent successfully 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/chatcontroller.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/chatcontroller.\+cpp\end{DoxyCompactItemize}

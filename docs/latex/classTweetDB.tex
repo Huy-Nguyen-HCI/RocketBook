@@ -1,0 +1,215 @@
+\hypertarget{classTweetDB}{}\section{Tweet\+DB Class Reference}
+\label{classTweetDB}\index{Tweet\+DB@{Tweet\+DB}}
+
+
+The \hyperlink{classTweetDB}{Tweet\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$tweetdb.\+h$>$}
+
+Inheritance diagram for Tweet\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTweetDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTweetDB_a3b93b88909955194aad67e163a149333}{Tweet\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classTweetDB}{Tweet\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classTweetDB_a3b947c5f7244e552de0ad5d89e3fc663}{Tweet\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classTweetDB}{Tweet\+DB} Construct an \hyperlink{classTweet}{Tweet} database, given the path. \end{DoxyCompactList}\item 
+\hyperlink{classTweetDB_a238b869c0a328095b5eb65c36db4089e}{$\sim$\+Tweet\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Tweet\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classTweetDB_a9e46391c80b40b85c38c3259c325cef4}{add\+Tweet} (int tweet\+ID, int account\+ID, int scrapbook\+ID, const Q\+String \&tweet\+Content, int privacy)
+\begin{DoxyCompactList}\small\item\em add\+Tweet Add a new \hyperlink{classTweet}{Tweet} to the database table \end{DoxyCompactList}\item 
+bool \hyperlink{classTweetDB_a033495196bb96818330bc0d1a513cebc}{remove\+Tweet} (int tweet\+ID)
+\begin{DoxyCompactList}\small\item\em remove\+Tweet Remove the tweet from database \end{DoxyCompactList}\item 
+Tweet\+Info\+Type \hyperlink{classTweetDB_ad65a5c85629c879a625bebcaf9441c77}{retrieve\+Tweet\+Info} (int tweet\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Tweet\+Info get information about the tweet. \end{DoxyCompactList}\item 
+std\+::vector$<$ Tweet\+Info\+Type $>$ \hyperlink{classTweetDB_a9d17af063272eb49a3342233486e6e11}{retrieve\+All\+Tweet\+Info} (int scrapbook\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+All\+Tweet\+Info Retrieve all tweets from a scrapbooik \end{DoxyCompactList}\item 
+bool \hyperlink{classTweetDB_ae5c19432f60bd0905e8042b8e86db4b1}{tweet\+Exists} (int id) const 
+\begin{DoxyCompactList}\small\item\em tweet\+Exists Check if tweet exists, given the id \end{DoxyCompactList}\item 
+bool \hyperlink{classTweetDB_a745fe1b3de1df79c3260a8398ff7a1d8}{remove\+All\+Tweets} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Tweets Remove all tweets in the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classTweetDB}{Tweet\+DB} class. 
+
+Create an sqlite3 table named \char`\"{}\+Tweets\char`\"{} in a database file. The database structure\+: Column 1\+: Tweet\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Account\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 3\+: Scrapbook\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 4\+: Tweet\+Content T\+E\+XT Column 5\+: Privacy I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Tweet\+DB@{Tweet\+DB}!Tweet\+DB@{Tweet\+DB}}
+\index{Tweet\+DB@{Tweet\+DB}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{Tweet\+D\+B()}{TweetDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Tweet\+D\+B\+::\+Tweet\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a3b93b88909955194aad67e163a149333}{}\label{classTweetDB_a3b93b88909955194aad67e163a149333}
+
+
+\hyperlink{classTweetDB}{Tweet\+DB}. 
+
+Construct a \hyperlink{classTweet}{Tweet} database at Tweet\+D\+B.\+sqlite \index{Tweet\+DB@{Tweet\+DB}!Tweet\+DB@{Tweet\+DB}}
+\index{Tweet\+DB@{Tweet\+DB}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{Tweet\+D\+B(const Q\+String \&path)}{TweetDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Tweet\+D\+B\+::\+Tweet\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a3b947c5f7244e552de0ad5d89e3fc663}{}\label{classTweetDB_a3b947c5f7244e552de0ad5d89e3fc663}
+
+
+\hyperlink{classTweetDB}{Tweet\+DB} Construct an \hyperlink{classTweet}{Tweet} database, given the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the Tweetdb \\
+\hline
+\end{DoxyParams}
+\index{Tweet\+DB@{Tweet\+DB}!````~Tweet\+DB@{$\sim$\+Tweet\+DB}}
+\index{````~Tweet\+DB@{$\sim$\+Tweet\+DB}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Tweet\+D\+B()}{~TweetDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Tweet\+D\+B\+::$\sim$\+Tweet\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a238b869c0a328095b5eb65c36db4089e}{}\label{classTweetDB_a238b869c0a328095b5eb65c36db4089e}
+
+
+$\sim$\+Tweet\+DB 
+
+Default destructor for \hyperlink{classTweet}{Tweet} database 
+
+\subsection{Member Function Documentation}
+\index{Tweet\+DB@{Tweet\+DB}!add\+Tweet@{add\+Tweet}}
+\index{add\+Tweet@{add\+Tweet}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{add\+Tweet(int tweet\+I\+D, int account\+I\+D, int scrapbook\+I\+D, const Q\+String \&tweet\+Content, int privacy)}{addTweet(int tweetID, int accountID, int scrapbookID, const QString &tweetContent, int privacy)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Tweet\+D\+B\+::add\+Tweet (
+\begin{DoxyParamCaption}
+\item[{int}]{tweet\+ID, }
+\item[{int}]{account\+ID, }
+\item[{int}]{scrapbook\+ID, }
+\item[{const Q\+String \&}]{tweet\+Content, }
+\item[{int}]{privacy}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a9e46391c80b40b85c38c3259c325cef4}{}\label{classTweetDB_a9e46391c80b40b85c38c3259c325cef4}
+
+
+add\+Tweet Add a new \hyperlink{classTweet}{Tweet} to the database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tweet\+ID} & \hyperlink{classTweet}{Tweet} ID \\
+\hline
+{\em account\+ID} & ID of the author \\
+\hline
+{\em scrapbook\+ID} & the ID of the scrapbook that contains the tweet \\
+\hline
+{\em tweet\+Content} & the content of the tweet. \\
+\hline
+{\em privacy} & The privacy setting of the tweet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Tweet\+DB@{Tweet\+DB}!remove\+All\+Tweets@{remove\+All\+Tweets}}
+\index{remove\+All\+Tweets@{remove\+All\+Tweets}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Tweets()}{removeAllTweets()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Tweet\+D\+B\+::remove\+All\+Tweets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a745fe1b3de1df79c3260a8398ff7a1d8}{}\label{classTweetDB_a745fe1b3de1df79c3260a8398ff7a1d8}
+
+
+remove\+All\+Tweets Remove all tweets in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Tweet\+DB@{Tweet\+DB}!remove\+Tweet@{remove\+Tweet}}
+\index{remove\+Tweet@{remove\+Tweet}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Tweet(int tweet\+I\+D)}{removeTweet(int tweetID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Tweet\+D\+B\+::remove\+Tweet (
+\begin{DoxyParamCaption}
+\item[{int}]{tweet\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a033495196bb96818330bc0d1a513cebc}{}\label{classTweetDB_a033495196bb96818330bc0d1a513cebc}
+
+
+remove\+Tweet Remove the tweet from database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & of the removed tweet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Tweet\+DB@{Tweet\+DB}!retrieve\+All\+Tweet\+Info@{retrieve\+All\+Tweet\+Info}}
+\index{retrieve\+All\+Tweet\+Info@{retrieve\+All\+Tweet\+Info}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+All\+Tweet\+Info(int scrapbook\+I\+D)}{retrieveAllTweetInfo(int scrapbookID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Tweet\+Info\+Type $>$ Tweet\+D\+B\+::retrieve\+All\+Tweet\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{scrapbook\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_a9d17af063272eb49a3342233486e6e11}{}\label{classTweetDB_a9d17af063272eb49a3342233486e6e11}
+
+
+retrieve\+All\+Tweet\+Info Retrieve all tweets from a scrapbooik 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scrapbook\+ID} & The ID of the scrapbook \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of all Tweet\+Info\+Type tuples containing the data of the \hyperlink{classTweet}{Tweet} 
+\end{DoxyReturn}
+\index{Tweet\+DB@{Tweet\+DB}!retrieve\+Tweet\+Info@{retrieve\+Tweet\+Info}}
+\index{retrieve\+Tweet\+Info@{retrieve\+Tweet\+Info}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Tweet\+Info(int tweet\+I\+D)}{retrieveTweetInfo(int tweetID)}}]{\setlength{\rightskip}{0pt plus 5cm}Tweet\+Info\+Type Tweet\+D\+B\+::retrieve\+Tweet\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{tweet\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classTweetDB_ad65a5c85629c879a625bebcaf9441c77}{}\label{classTweetDB_ad65a5c85629c879a625bebcaf9441c77}
+
+
+retrieve\+Tweet\+Info get information about the tweet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the id of the tweet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return a tuple containing information about the tweet (tweet\+ID, scrapbook\+ID, tweet\+Content) 
+\end{DoxyReturn}
+\index{Tweet\+DB@{Tweet\+DB}!tweet\+Exists@{tweet\+Exists}}
+\index{tweet\+Exists@{tweet\+Exists}!Tweet\+DB@{Tweet\+DB}}
+\subsubsection[{\texorpdfstring{tweet\+Exists(int id) const }{tweetExists(int id) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Tweet\+D\+B\+::tweet\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+) const}\hypertarget{classTweetDB_ae5c19432f60bd0905e8042b8e86db4b1}{}\label{classTweetDB_ae5c19432f60bd0905e8042b8e86db4b1}
+
+
+tweet\+Exists Check if tweet exists, given the id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the tweet\textquotesingle{}s id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/tweetdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/tweetdb.\+cpp\end{DoxyCompactItemize}

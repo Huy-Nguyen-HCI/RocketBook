@@ -1,0 +1,257 @@
+\hypertarget{classRocketUser}{}\section{Rocket\+User Class Reference}
+\label{classRocketUser}\index{Rocket\+User@{Rocket\+User}}
+
+
+The \hyperlink{classRocketUser}{Rocket\+User} class stores information about the user.  
+
+
+
+
+{\ttfamily \#include $<$rocketuser.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRocketUser_a57af92433b5c5e739a5c9cef7f238c4e}{Rocket\+User} (Q\+String db\+Path, int id, Q\+String username, Q\+String full\+Name=\char`\"{}\char`\"{}, Q\+String photo=\char`\"{}\char`\"{}, Q\+String description=\char`\"{}\char`\"{}, int admin\+Rights=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRocketUser}{Rocket\+User} Used to create a new account, must have full name, photo, description, etc. \end{DoxyCompactList}\item 
+\hyperlink{classRocketUser_aee17bbc4be7b88149c3fc008b636e831}{Rocket\+User} (Q\+String db\+Path, int id, Q\+String username, int profile\+ID, int admin\+Rights)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRocketUser}{Rocket\+User} Only used for login, reconstruct everything. \end{DoxyCompactList}\item 
+\hyperlink{classRocketUser_a1922172eefb653c80d641929e6bdf669}{$\sim$\+Rocket\+User} ()\hypertarget{classRocketUser_a1922172eefb653c80d641929e6bdf669}{}\label{classRocketUser_a1922172eefb653c80d641929e6bdf669}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRocketUser}{Rocket\+User} destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classRocketUser_a435c19898ebb866ee35fa10b3eadd212}{get\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+ID Retrieve the ID of the user \end{DoxyCompactList}\item 
+\hyperlink{classProfile}{Profile} $\ast$ \hyperlink{classRocketUser_a788ee5a45c37ba10fa71e684a3144d8c}{get\+Profile} ()
+\begin{DoxyCompactList}\small\item\em get\+Profile Access the profile, which contains all about user information and scrapbook \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classRocketUser_a6c090361254679565787368e391ba81c}{get\+Username} ()
+\begin{DoxyCompactList}\small\item\em get\+Username \end{DoxyCompactList}\item 
+\hyperlink{classGroupController}{Group\+Controller} $\ast$ \hyperlink{classRocketUser_ae0e3021b9fcc002e4608747076527819}{control\+Group} ()
+\begin{DoxyCompactList}\small\item\em control\+Group Access group functionality of a user \end{DoxyCompactList}\item 
+\hyperlink{classFriendController}{Friend\+Controller} $\ast$ \hyperlink{classRocketUser_aface2ba08248ebd171c663af5d80b330}{control\+Friend} ()
+\begin{DoxyCompactList}\small\item\em control\+Friend Access friend functionality of a user \end{DoxyCompactList}\item 
+\hyperlink{classFeed}{Feed} $\ast$ {\bfseries get\+Feed} ()\hypertarget{classRocketUser_aae8d411133e60b27321f27b4f30abcb8}{}\label{classRocketUser_aae8d411133e60b27321f27b4f30abcb8}
+
+\item 
+bool \hyperlink{classRocketUser_ac6557be85ae1d3d5330839a76953c8fe}{is\+Admin} ()
+\begin{DoxyCompactList}\small\item\em is\+Admin Check if the user is an admin \end{DoxyCompactList}\item 
+bool \hyperlink{classRocketUser_a4dc9da3f41f783ff627a0e628115cdae}{change\+Profile\+Description} (Q\+String description)
+\begin{DoxyCompactList}\small\item\em change\+Profile\+Description \end{DoxyCompactList}\item 
+bool \hyperlink{classRocketUser_a987bf1e4eb4458cabce1c146bd964e92}{change\+Photo} (Q\+String path)
+\begin{DoxyCompactList}\small\item\em change\+Photo \end{DoxyCompactList}\item 
+\hyperlink{classChatController}{Chat\+Controller} $\ast$ \hyperlink{classRocketUser_aa8432e8b7dc02a9ed45bd25a9c444ae8}{get\+Chat\+Controller} ()
+\begin{DoxyCompactList}\small\item\em get\+Chat\+Controller \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classRocketUser_a78672a60c514748aa64d8307e14d7c46}{export\+To\+Html} ()
+\begin{DoxyCompactList}\small\item\em Exports scrapbook to H\+T\+ML. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classRocketUser}{Rocket\+User} class stores information about the user. 
+
+\hyperlink{classProfile}{Profile} \hyperlink{classGroup}{Group} list Password Privacy settings Admin rights Friend list \hyperlink{classFeed}{Feed} \hyperlink{classChat}{Chat} container 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Rocket\+User@{Rocket\+User}!Rocket\+User@{Rocket\+User}}
+\index{Rocket\+User@{Rocket\+User}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{Rocket\+User(\+Q\+String db\+Path, int id, Q\+String username, Q\+String full\+Name="""", Q\+String photo="""", Q\+String description="""", int admin\+Rights=0)}{RocketUser(QString dbPath, int id, QString username, QString fullName="", QString photo="", QString description="", int adminRights=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Rocket\+User\+::\+Rocket\+User (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{id, }
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{full\+Name = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\+String}]{photo = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\+String}]{description = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{int}]{admin\+Rights = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_a57af92433b5c5e739a5c9cef7f238c4e}{}\label{classRocketUser_a57af92433b5c5e739a5c9cef7f238c4e}
+
+
+\hyperlink{classRocketUser}{Rocket\+User} Used to create a new account, must have full name, photo, description, etc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Name} & \\
+\hline
+{\em photo} & \\
+\hline
+{\em description} & \\
+\hline
+\end{DoxyParams}
+\index{Rocket\+User@{Rocket\+User}!Rocket\+User@{Rocket\+User}}
+\index{Rocket\+User@{Rocket\+User}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{Rocket\+User(\+Q\+String db\+Path, int id, Q\+String username, int profile\+I\+D, int admin\+Rights)}{RocketUser(QString dbPath, int id, QString username, int profileID, int adminRights)}}]{\setlength{\rightskip}{0pt plus 5cm}Rocket\+User\+::\+Rocket\+User (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{id, }
+\item[{Q\+String}]{username, }
+\item[{int}]{profile\+ID, }
+\item[{int}]{admin\+Rights = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_aee17bbc4be7b88149c3fc008b636e831}{}\label{classRocketUser_aee17bbc4be7b88149c3fc008b636e831}
+
+
+\hyperlink{classRocketUser}{Rocket\+User} Only used for login, reconstruct everything. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em username} & \\
+\hline
+{\em profile\+ID} & \\
+\hline
+{\em admin\+Rights} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Rocket\+User@{Rocket\+User}!change\+Photo@{change\+Photo}}
+\index{change\+Photo@{change\+Photo}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{change\+Photo(\+Q\+String path)}{changePhoto(QString path)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Rocket\+User\+::change\+Photo (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_a987bf1e4eb4458cabce1c146bd964e92}{}\label{classRocketUser_a987bf1e4eb4458cabce1c146bd964e92}
+
+
+change\+Photo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & New profile picture path \\
+\hline
+\end{DoxyParams}
+\index{Rocket\+User@{Rocket\+User}!change\+Profile\+Description@{change\+Profile\+Description}}
+\index{change\+Profile\+Description@{change\+Profile\+Description}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{change\+Profile\+Description(\+Q\+String description)}{changeProfileDescription(QString description)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Rocket\+User\+::change\+Profile\+Description (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_a4dc9da3f41f783ff627a0e628115cdae}{}\label{classRocketUser_a4dc9da3f41f783ff627a0e628115cdae}
+
+
+change\+Profile\+Description 
+
+
+\begin{DoxyParams}{Parameters}
+{\em description} & New profile description \\
+\hline
+\end{DoxyParams}
+\index{Rocket\+User@{Rocket\+User}!control\+Friend@{control\+Friend}}
+\index{control\+Friend@{control\+Friend}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{control\+Friend()}{controlFriend()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Friend\+Controller}$\ast$ Rocket\+User\+::control\+Friend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRocketUser_aface2ba08248ebd171c663af5d80b330}{}\label{classRocketUser_aface2ba08248ebd171c663af5d80b330}
+
+
+control\+Friend Access friend functionality of a user 
+
+\begin{DoxyReturn}{Returns}
+a friend controller 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!control\+Group@{control\+Group}}
+\index{control\+Group@{control\+Group}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{control\+Group()}{controlGroup()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group\+Controller}$\ast$ Rocket\+User\+::control\+Group (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRocketUser_ae0e3021b9fcc002e4608747076527819}{}\label{classRocketUser_ae0e3021b9fcc002e4608747076527819}
+
+
+control\+Group Access group functionality of a user 
+
+\begin{DoxyReturn}{Returns}
+a group controller 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!export\+To\+Html@{export\+To\+Html}}
+\index{export\+To\+Html@{export\+To\+Html}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{export\+To\+Html()}{exportToHtml()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Rocket\+User\+::export\+To\+Html (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_a78672a60c514748aa64d8307e14d7c46}{}\label{classRocketUser_a78672a60c514748aa64d8307e14d7c46}
+
+
+Exports scrapbook to H\+T\+ML. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String of formatted H\+T\+ML code containing scrapbook posts, profile picture, profile description, and friends 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!get\+Chat\+Controller@{get\+Chat\+Controller}}
+\index{get\+Chat\+Controller@{get\+Chat\+Controller}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{get\+Chat\+Controller()}{getChatController()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Chat\+Controller} $\ast$ Rocket\+User\+::get\+Chat\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_aa8432e8b7dc02a9ed45bd25a9c444ae8}{}\label{classRocketUser_aa8432e8b7dc02a9ed45bd25a9c444ae8}
+
+
+get\+Chat\+Controller 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classChat}{Chat} Controller 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{get\+I\+D()}{getID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Rocket\+User\+::get\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRocketUser_a435c19898ebb866ee35fa10b3eadd212}{}\label{classRocketUser_a435c19898ebb866ee35fa10b3eadd212}
+
+
+get\+ID Retrieve the ID of the user 
+
+\begin{DoxyReturn}{Returns}
+ID of the user 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!get\+Profile@{get\+Profile}}
+\index{get\+Profile@{get\+Profile}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{get\+Profile()}{getProfile()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Profile} $\ast$ Rocket\+User\+::get\+Profile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRocketUser_a788ee5a45c37ba10fa71e684a3144d8c}{}\label{classRocketUser_a788ee5a45c37ba10fa71e684a3144d8c}
+
+
+get\+Profile Access the profile, which contains all about user information and scrapbook 
+
+\begin{DoxyReturn}{Returns}
+the user profile 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!get\+Username@{get\+Username}}
+\index{get\+Username@{get\+Username}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{get\+Username()}{getUsername()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Rocket\+User\+::get\+Username (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRocketUser_a6c090361254679565787368e391ba81c}{}\label{classRocketUser_a6c090361254679565787368e391ba81c}
+
+
+get\+Username 
+
+\begin{DoxyReturn}{Returns}
+Username of current rocket user 
+\end{DoxyReturn}
+\index{Rocket\+User@{Rocket\+User}!is\+Admin@{is\+Admin}}
+\index{is\+Admin@{is\+Admin}!Rocket\+User@{Rocket\+User}}
+\subsubsection[{\texorpdfstring{is\+Admin()}{isAdmin()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Rocket\+User\+::is\+Admin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRocketUser_ac6557be85ae1d3d5330839a76953c8fe}{}\label{classRocketUser_ac6557be85ae1d3d5330839a76953c8fe}
+
+
+is\+Admin Check if the user is an admin 
+
+\begin{DoxyReturn}{Returns}
+true if user is an admin, false if not 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/rocketuser.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/rocketuser.\+cpp\end{DoxyCompactItemize}

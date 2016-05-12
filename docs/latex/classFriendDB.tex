@@ -1,0 +1,186 @@
+\hypertarget{classFriendDB}{}\section{Friend\+DB Class Reference}
+\label{classFriendDB}\index{Friend\+DB@{Friend\+DB}}
+
+
+The \hyperlink{classFriendDB}{Friend\+DB} class Insert/\+Delete from a sqlite3 table Friends Column 1\+: Account\+ID integer Column 2\+: Friend\+ID integer.  
+
+
+
+
+{\ttfamily \#include $<$frienddb.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFriendDB_a6fd7410c33c662d8b78da820857d24ac}{Friend\+DB} ()\hypertarget{classFriendDB_a6fd7410c33c662d8b78da820857d24ac}{}\label{classFriendDB_a6fd7410c33c662d8b78da820857d24ac}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFriendDB}{Friend\+DB} Construct a friend database. \end{DoxyCompactList}\item 
+\hyperlink{classFriendDB_aeb06351e9332d761fc3198afc0ffc1ef}{Friend\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFriendDB}{Friend\+DB} Construct a friend database, given the path and the name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classFriendDB_a405b76fd45f4a0043744ba95b6badeb8}{$\sim$\+Friend\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Friend\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classFriendDB_a8612c6ab65fa9e7cdb976302f9a8e0f3}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classFriendDB_a8ceb2289939679e2070badfc687a2547}{add\+Friend} (int account\+ID, int friend\+ID)
+\begin{DoxyCompactList}\small\item\em add\+Friend Adds a new friendship by entering two entires into the friend table\+: entry 1\+: user\+Id and friend\+Id entry 2\+: friend Id and User Id \end{DoxyCompactList}\item 
+bool \hyperlink{classFriendDB_a1f1fbe2b57f94792fa7d135573878561}{remove\+Friend} (int account\+ID, int friend\+ID)
+\begin{DoxyCompactList}\small\item\em remove\+Friend Remove a friendship \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classFriendDB_aa3e745aeeed7d329b93474389bdd7203}{retrieve\+All\+Friends} (int account\+Id)
+\begin{DoxyCompactList}\small\item\em retrieve\+All\+Friends Retrieve all the ID of friends belonging to one account \end{DoxyCompactList}\item 
+bool \hyperlink{classFriendDB_a45331ea26f56566c84c6298e9b122641}{friendship\+Exists} (int account\+ID, int friend\+ID) const 
+\begin{DoxyCompactList}\small\item\em friendship\+Exists Check if friendship exists, knowing the username \end{DoxyCompactList}\item 
+bool \hyperlink{classFriendDB_afbf98d6aa85268e715e39d06f8eb2997}{remove\+All\+Friends} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Friends Remove all friends from the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classFriendDB}{Friend\+DB} class Insert/\+Delete from a sqlite3 table Friends Column 1\+: Account\+ID integer Column 2\+: Friend\+ID integer. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Friend\+DB@{Friend\+DB}!Friend\+DB@{Friend\+DB}}
+\index{Friend\+DB@{Friend\+DB}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{Friend\+D\+B(const Q\+String \&path)}{FriendDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Friend\+D\+B\+::\+Friend\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendDB_aeb06351e9332d761fc3198afc0ffc1ef}{}\label{classFriendDB_aeb06351e9332d761fc3198afc0ffc1ef}
+
+
+\hyperlink{classFriendDB}{Friend\+DB} Construct a friend database, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the frienddb \\
+\hline
+\end{DoxyParams}
+\index{Friend\+DB@{Friend\+DB}!````~Friend\+DB@{$\sim$\+Friend\+DB}}
+\index{````~Friend\+DB@{$\sim$\+Friend\+DB}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Friend\+D\+B()}{~FriendDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Friend\+D\+B\+::$\sim$\+Friend\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendDB_a405b76fd45f4a0043744ba95b6badeb8}{}\label{classFriendDB_a405b76fd45f4a0043744ba95b6badeb8}
+
+
+$\sim$\+Friend\+DB 
+
+Default destructor for friend database 
+
+\subsection{Member Function Documentation}
+\index{Friend\+DB@{Friend\+DB}!add\+Friend@{add\+Friend}}
+\index{add\+Friend@{add\+Friend}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{add\+Friend(int account\+I\+D, int friend\+I\+D)}{addFriend(int accountID, int friendID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Friend\+D\+B\+::add\+Friend (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID, }
+\item[{int}]{friend\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendDB_a8ceb2289939679e2070badfc687a2547}{}\label{classFriendDB_a8ceb2289939679e2070badfc687a2547}
+
+
+add\+Friend Adds a new friendship by entering two entires into the friend table\+: entry 1\+: user\+Id and friend\+Id entry 2\+: friend Id and User Id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & Account ID \\
+\hline
+{\em friend\+ID} & Friend ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Friend\+DB@{Friend\+DB}!friendship\+Exists@{friendship\+Exists}}
+\index{friendship\+Exists@{friendship\+Exists}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{friendship\+Exists(int account\+I\+D, int friend\+I\+D) const }{friendshipExists(int accountID, int friendID) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Friend\+D\+B\+::friendship\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID, }
+\item[{int}]{friend\+ID}
+\end{DoxyParamCaption}
+) const}\hypertarget{classFriendDB_a45331ea26f56566c84c6298e9b122641}{}\label{classFriendDB_a45331ea26f56566c84c6298e9b122641}
+
+
+friendship\+Exists Check if friendship exists, knowing the username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & User account ID \\
+\hline
+{\em friend\+ID} & Friend account ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Friend\+DB@{Friend\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Friend\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classFriendDB_a8612c6ab65fa9e7cdb976302f9a8e0f3}{}\label{classFriendDB_a8612c6ab65fa9e7cdb976302f9a8e0f3}
+
+
+is\+Open 
+
+Check whether account database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Friend\+DB@{Friend\+DB}!remove\+All\+Friends@{remove\+All\+Friends}}
+\index{remove\+All\+Friends@{remove\+All\+Friends}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Friends()}{removeAllFriends()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Friend\+D\+B\+::remove\+All\+Friends (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendDB_afbf98d6aa85268e715e39d06f8eb2997}{}\label{classFriendDB_afbf98d6aa85268e715e39d06f8eb2997}
+
+
+remove\+All\+Friends Remove all friends from the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Friend\+DB@{Friend\+DB}!remove\+Friend@{remove\+Friend}}
+\index{remove\+Friend@{remove\+Friend}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Friend(int account\+I\+D, int friend\+I\+D)}{removeFriend(int accountID, int friendID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Friend\+D\+B\+::remove\+Friend (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID, }
+\item[{int}]{friend\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendDB_a1f1fbe2b57f94792fa7d135573878561}{}\label{classFriendDB_a1f1fbe2b57f94792fa7d135573878561}
+
+
+remove\+Friend Remove a friendship 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the friend to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Friend\+DB@{Friend\+DB}!retrieve\+All\+Friends@{retrieve\+All\+Friends}}
+\index{retrieve\+All\+Friends@{retrieve\+All\+Friends}!Friend\+DB@{Friend\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+All\+Friends(int account\+Id)}{retrieveAllFriends(int accountId)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ Friend\+D\+B\+::retrieve\+All\+Friends (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendDB_aa3e745aeeed7d329b93474389bdd7203}{}\label{classFriendDB_aa3e745aeeed7d329b93474389bdd7203}
+
+
+retrieve\+All\+Friends Retrieve all the ID of friends belonging to one account 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Id} & The ID of the friends of an account \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/frienddb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/frienddb.\+cpp\end{DoxyCompactItemize}

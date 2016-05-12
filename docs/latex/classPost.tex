@@ -1,0 +1,208 @@
+\hypertarget{classPost}{}\section{Post Class Reference}
+\label{classPost}\index{Post@{Post}}
+
+
+The \hyperlink{classPost}{Post} class serves as a parent for all content that the user can post Types of posts\+: \hyperlink{classBlog}{Blog} \hyperlink{classMultimedia}{Multimedia} \hyperlink{classTweet}{Tweet} \hyperlink{classComment}{Comment}.  
+
+
+
+
+{\ttfamily \#include $<$post.\+h$>$}
+
+Inheritance diagram for Post\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPost}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Post\+Type} \{ \\*
+{\bfseries type\+Post}, 
+{\bfseries type\+Blog}, 
+{\bfseries type\+Tweet}, 
+{\bfseries type\+Multimedia}, 
+\\*
+{\bfseries type\+Comment}
+ \}\hypertarget{classPost_a686f0f53eaf20e9b1995aef7337ab882}{}\label{classPost_a686f0f53eaf20e9b1995aef7337ab882}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPost_a3d8bd84cafa13ad2418a1af8f7cd63a7}{Post} (Q\+String username, Q\+String content)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} is a constructor of a post. \end{DoxyCompactList}\item 
+\hyperlink{classPost_a2a6f6d8ea39692835d2403b41e328627}{Post} (int id, Q\+String username, Q\+String content)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} is a constructor of a post. \end{DoxyCompactList}\item 
+\hyperlink{classPost_a6c1e585c0adb3220a154ba20d2144ae1}{$\sim$\+Post} ()\hypertarget{classPost_a6c1e585c0adb3220a154ba20d2144ae1}{}\label{classPost_a6c1e585c0adb3220a154ba20d2144ae1}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classPost_a5518c69784c09c1d587c0412779d58ac}{get\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+ID returns the ID of the post \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classPost_ae1dc678542270799a01d175be2b201d3}{get\+Author\+Username} ()
+\begin{DoxyCompactList}\small\item\em get\+Author gets the author of the post. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classPost_a81a95c598c33f04083dfed8cb734f4ca}{get\+Content} ()
+\begin{DoxyCompactList}\small\item\em get\+Content gets the content of the post. \end{DoxyCompactList}\item 
+void \hyperlink{classPost_abeb9b0ed9f44f1aaed5834c6898c618f}{set\+Private} ()\hypertarget{classPost_abeb9b0ed9f44f1aaed5834c6898c618f}{}\label{classPost_abeb9b0ed9f44f1aaed5834c6898c618f}
+
+\begin{DoxyCompactList}\small\item\em set\+Private Sets post to private \end{DoxyCompactList}\item 
+bool \hyperlink{classPost_ad86af22dad64bd7a5ef2611f00309f8e}{get\+Privacy} ()
+\begin{DoxyCompactList}\small\item\em get\+Privacy \end{DoxyCompactList}\item 
+void \hyperlink{classPost_aa9ae3fe999271bfc7d811d573a00f1d8}{set\+ID} (int input)
+\begin{DoxyCompactList}\small\item\em Sets post Id. \end{DoxyCompactList}\item 
+Post\+Type {\bfseries type} ()\hypertarget{classPost_a80f2ae3c95997a20f107bc80204c50cc}{}\label{classPost_a80f2ae3c95997a20f107bc80204c50cc}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries id}\hypertarget{classPost_aafa50b170bbe10c9bbe3ce77ce8c79e6}{}\label{classPost_aafa50b170bbe10c9bbe3ce77ce8c79e6}
+
+\item 
+Q\+String {\bfseries username}\hypertarget{classPost_aa945913af695a5de5e88f630481cd7c2}{}\label{classPost_aa945913af695a5de5e88f630481cd7c2}
+
+\item 
+Q\+String {\bfseries content}\hypertarget{classPost_abb97710dd70ea1291150d26b63050899}{}\label{classPost_abb97710dd70ea1291150d26b63050899}
+
+\item 
+bool {\bfseries privacy}\hypertarget{classPost_a44ef3134dacbf0c4fa779b6eaa1ab701}{}\label{classPost_a44ef3134dacbf0c4fa779b6eaa1ab701}
+
+\item 
+Post\+Type {\bfseries post\+Type}\hypertarget{classPost_a319fc77e683be3c64f6260b3b52f630e}{}\label{classPost_a319fc77e683be3c64f6260b3b52f630e}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int {\bfseries id\+Cnt} = 0\hypertarget{classPost_a42c49e7c695cbe6cc01ce3d0a7fc8058}{}\label{classPost_a42c49e7c695cbe6cc01ce3d0a7fc8058}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPost}{Post} class serves as a parent for all content that the user can post Types of posts\+: \hyperlink{classBlog}{Blog} \hyperlink{classMultimedia}{Multimedia} \hyperlink{classTweet}{Tweet} \hyperlink{classComment}{Comment}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Post@{Post}!Post@{Post}}
+\index{Post@{Post}!Post@{Post}}
+\subsubsection[{\texorpdfstring{Post(\+Q\+String username, Q\+String content)}{Post(QString username, QString content)}}]{\setlength{\rightskip}{0pt plus 5cm}Post\+::\+Post (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{content}
+\end{DoxyParamCaption}
+)}\hypertarget{classPost_a3d8bd84cafa13ad2418a1af8f7cd63a7}{}\label{classPost_a3d8bd84cafa13ad2418a1af8f7cd63a7}
+
+
+\hyperlink{classPost}{Post} is a constructor of a post. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The username of the author of the post. \\
+\hline
+{\em content} & The content of the post. \\
+\hline
+\end{DoxyParams}
+\index{Post@{Post}!Post@{Post}}
+\index{Post@{Post}!Post@{Post}}
+\subsubsection[{\texorpdfstring{Post(int id, Q\+String username, Q\+String content)}{Post(int id, QString username, QString content)}}]{\setlength{\rightskip}{0pt plus 5cm}Post\+::\+Post (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{content}
+\end{DoxyParamCaption}
+)}\hypertarget{classPost_a2a6f6d8ea39692835d2403b41e328627}{}\label{classPost_a2a6f6d8ea39692835d2403b41e328627}
+
+
+\hyperlink{classPost}{Post} is a constructor of a post. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post \\
+\hline
+{\em username} & The username of the author of the post. \\
+\hline
+{\em content} & The content of the post. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Post@{Post}!get\+Author\+Username@{get\+Author\+Username}}
+\index{get\+Author\+Username@{get\+Author\+Username}!Post@{Post}}
+\subsubsection[{\texorpdfstring{get\+Author\+Username()}{getAuthorUsername()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Post\+::get\+Author\+Username (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPost_ae1dc678542270799a01d175be2b201d3}{}\label{classPost_ae1dc678542270799a01d175be2b201d3}
+
+
+get\+Author gets the author of the post. 
+
+\begin{DoxyReturn}{Returns}
+the author of the post. 
+\end{DoxyReturn}
+\index{Post@{Post}!get\+Content@{get\+Content}}
+\index{get\+Content@{get\+Content}!Post@{Post}}
+\subsubsection[{\texorpdfstring{get\+Content()}{getContent()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Post\+::get\+Content (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPost_a81a95c598c33f04083dfed8cb734f4ca}{}\label{classPost_a81a95c598c33f04083dfed8cb734f4ca}
+
+
+get\+Content gets the content of the post. 
+
+\begin{DoxyReturn}{Returns}
+the content of the post. 
+\end{DoxyReturn}
+\index{Post@{Post}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Post@{Post}}
+\subsubsection[{\texorpdfstring{get\+I\+D()}{getID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Post\+::get\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classPost_a5518c69784c09c1d587c0412779d58ac}{}\label{classPost_a5518c69784c09c1d587c0412779d58ac}
+
+
+get\+ID returns the ID of the post 
+
+\begin{DoxyReturn}{Returns}
+the ID of the post. 
+\end{DoxyReturn}
+\index{Post@{Post}!get\+Privacy@{get\+Privacy}}
+\index{get\+Privacy@{get\+Privacy}!Post@{Post}}
+\subsubsection[{\texorpdfstring{get\+Privacy()}{getPrivacy()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Post\+::get\+Privacy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPost_ad86af22dad64bd7a5ef2611f00309f8e}{}\label{classPost_ad86af22dad64bd7a5ef2611f00309f8e}
+
+
+get\+Privacy 
+
+\begin{DoxyReturn}{Returns}
+True if post is private 
+\end{DoxyReturn}
+\index{Post@{Post}!set\+ID@{set\+ID}}
+\index{set\+ID@{set\+ID}!Post@{Post}}
+\subsubsection[{\texorpdfstring{set\+I\+D(int input)}{setID(int input)}}]{\setlength{\rightskip}{0pt plus 5cm}void Post\+::set\+ID (
+\begin{DoxyParamCaption}
+\item[{int}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPost_aa9ae3fe999271bfc7d811d573a00f1d8}{}\label{classPost_aa9ae3fe999271bfc7d811d573a00f1d8}
+
+
+Sets post Id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Id being assigned to post \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/post.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/post.\+cpp\end{DoxyCompactItemize}

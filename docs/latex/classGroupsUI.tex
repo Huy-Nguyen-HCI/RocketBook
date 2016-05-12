@@ -1,0 +1,143 @@
+\hypertarget{classGroupsUI}{}\section{Groups\+UI Class Reference}
+\label{classGroupsUI}\index{Groups\+UI@{Groups\+UI}}
+
+
+The \hyperlink{classGroupsUI}{Groups\+UI} handles functionality for creating groups and editing group profiles in text UI.  
+
+
+
+
+{\ttfamily \#include $<$groupsui.\+h$>$}
+
+Inheritance diagram for Groups\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGroupsUI}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupsUI_a874193355176aa40b6fce30e8aeb708f}{Groups\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$account\+Control)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupsUI}{Groups\+UI}. \end{DoxyCompactList}\item 
+int \hyperlink{classGroupsUI_a2d1126b3e3cd8ecba3c0e1bebc521736}{select\+Group} ()\hypertarget{classGroupsUI_a2d1126b3e3cd8ecba3c0e1bebc521736}{}\label{classGroupsUI_a2d1126b3e3cd8ecba3c0e1bebc521736}
+
+\begin{DoxyCompactList}\small\item\em Select \hyperlink{classGroup}{Group} Displays list of groups and allows user to select one to enter. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupsUI_ac2513b740609c8263db85b91cf69ac2b}{enter\+Group} (int index)
+\begin{DoxyCompactList}\small\item\em Enter \hyperlink{classGroup}{Group} Enters selected group. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupsUI_a77de7dab3346d7e57fb389f396cb24a6}{view\+Profile} (int index)
+\begin{DoxyCompactList}\small\item\em View \hyperlink{classProfile}{Profile} Views profile of selected group. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupsUI_a64cf522aeb035d00db3bbd8da38875bb}{take\+Command} (int selection)
+\begin{DoxyCompactList}\small\item\em Take command Makes new screen based on user selection. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupsUI_ab3edbe00293aeda49e5251d2777984bf}{draw\+Screen} (int v)
+\begin{DoxyCompactList}\small\item\em Draw screen. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupsUI_a4ce092af55dae46d5c270d5f32a69784}{create\+Group} ()\hypertarget{classGroupsUI_a4ce092af55dae46d5c270d5f32a69784}{}\label{classGroupsUI_a4ce092af55dae46d5c270d5f32a69784}
+
+\begin{DoxyCompactList}\small\item\em Create \hyperlink{classGroup}{Group} Asks user to enter necessary information to create a group and creates group with indicated information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupScrapbookUI}{Group\+Scrapbook\+UI} $\ast$ {\bfseries scrapbook}\hypertarget{classGroupsUI_ab0700dac6c6bf69b2c16811257c10296}{}\label{classGroupsUI_ab0700dac6c6bf69b2c16811257c10296}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGroupsUI}{Groups\+UI} handles functionality for creating groups and editing group profiles in text UI. 
+
+Users can also create a new \hyperlink{classGroupScrapbookUI}{Group\+Scrapbook\+UI} from this screen. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Groups\+UI@{Groups\+UI}!Groups\+UI@{Groups\+UI}}
+\index{Groups\+UI@{Groups\+UI}!Groups\+UI@{Groups\+UI}}
+\subsubsection[{\texorpdfstring{Groups\+U\+I(\+Account\+Controller $\ast$account\+Control)}{GroupsUI(AccountController *accountControl)}}]{\setlength{\rightskip}{0pt plus 5cm}Groups\+U\+I\+::\+Groups\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{account\+Control}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupsUI_a874193355176aa40b6fce30e8aeb708f}{}\label{classGroupsUI_a874193355176aa40b6fce30e8aeb708f}
+
+
+\hyperlink{classGroupsUI}{Groups\+UI}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Control} & Account Controller \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Groups\+UI@{Groups\+UI}!draw\+Screen@{draw\+Screen}}
+\index{draw\+Screen@{draw\+Screen}!Groups\+UI@{Groups\+UI}}
+\subsubsection[{\texorpdfstring{draw\+Screen(int v)}{drawScreen(int v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Groups\+U\+I\+::draw\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGroupsUI_ab3edbe00293aeda49e5251d2777984bf}{}\label{classGroupsUI_ab3edbe00293aeda49e5251d2777984bf}
+
+
+Draw screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Value of pointer \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{Screen}.
+
+\index{Groups\+UI@{Groups\+UI}!enter\+Group@{enter\+Group}}
+\index{enter\+Group@{enter\+Group}!Groups\+UI@{Groups\+UI}}
+\subsubsection[{\texorpdfstring{enter\+Group(int index)}{enterGroup(int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void Groups\+U\+I\+::enter\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupsUI_ac2513b740609c8263db85b91cf69ac2b}{}\label{classGroupsUI_ac2513b740609c8263db85b91cf69ac2b}
+
+
+Enter \hyperlink{classGroup}{Group} Enters selected group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of selected group on group list \\
+\hline
+\end{DoxyParams}
+\index{Groups\+UI@{Groups\+UI}!take\+Command@{take\+Command}}
+\index{take\+Command@{take\+Command}!Groups\+UI@{Groups\+UI}}
+\subsubsection[{\texorpdfstring{take\+Command(int selection)}{takeCommand(int selection)}}]{\setlength{\rightskip}{0pt plus 5cm}void Groups\+U\+I\+::take\+Command (
+\begin{DoxyParamCaption}
+\item[{int}]{selection}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupsUI_a64cf522aeb035d00db3bbd8da38875bb}{}\label{classGroupsUI_a64cf522aeb035d00db3bbd8da38875bb}
+
+
+Take command Makes new screen based on user selection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selection} & Pointer value when enter is pressed \\
+\hline
+\end{DoxyParams}
+\index{Groups\+UI@{Groups\+UI}!view\+Profile@{view\+Profile}}
+\index{view\+Profile@{view\+Profile}!Groups\+UI@{Groups\+UI}}
+\subsubsection[{\texorpdfstring{view\+Profile(int index)}{viewProfile(int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void Groups\+U\+I\+::view\+Profile (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupsUI_a77de7dab3346d7e57fb389f396cb24a6}{}\label{classGroupsUI_a77de7dab3346d7e57fb389f396cb24a6}
+
+
+View \hyperlink{classProfile}{Profile} Views profile of selected group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of selected group on group list \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/groupsui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/groupsui.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,218 @@
+\hypertarget{classFeedUI}{}\section{Feed\+UI Class Reference}
+\label{classFeedUI}\index{Feed\+UI@{Feed\+UI}}
+
+
+The chat\+UI screen includes all chat functionality for viewing feed and commenting on blogs.  
+
+
+
+
+{\ttfamily \#include $<$feedui.\+h$>$}
+
+Inheritance diagram for Feed\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classFeedUI}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFeedUI_a2b24cd4cdf154866590d2ce583d688e9}{Feed\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$account\+Control)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFeedUI}{Feed\+UI} Displays feed and allows user to scroll through. \end{DoxyCompactList}\item 
+void \hyperlink{classFeedUI_aa95513cfc7b44665cf4a37258b3b45df}{draw\+Screen} (int v)
+\begin{DoxyCompactList}\small\item\em Draw screen. \end{DoxyCompactList}\item 
+void \hyperlink{classFeedUI_a5e3f1e7bea0c898b95d8b6d461f9bae5}{take\+Command} (int selection)
+\begin{DoxyCompactList}\small\item\em Take command Makes new screen based on user selection. \end{DoxyCompactList}\item 
+int \hyperlink{classFeedUI_a593dc73d77c0266f85d0472def6f97fb}{display\+Feed} ()
+\begin{DoxyCompactList}\small\item\em Displays feed on screen. \end{DoxyCompactList}\item 
+void \hyperlink{classFeedUI_a2cae2081d76ad291519568cd344e015a}{view\+Blog} (int index)
+\begin{DoxyCompactList}\small\item\em View \hyperlink{classBlog}{Blog} Displays selected blog on screen. \end{DoxyCompactList}\item 
+bool \hyperlink{classFeedUI_a4fa2ad966ef73b69b2d30b01ae6c4b4c}{check\+Type} (int post\+Index)
+\begin{DoxyCompactList}\small\item\em Checks post type. \end{DoxyCompactList}\item 
+void \hyperlink{classFeedUI_aa3946c1d695e02e65faa4556323d3ce0}{post\+Comment} (int blog\+Index)
+\begin{DoxyCompactList}\small\item\em Posts a comment on blog. \end{DoxyCompactList}\item 
+void \hyperlink{classFeedUI_ad62000bd7018afd6b30fd6bb189d2108}{display\+Blog} (\hyperlink{classBlog}{Blog} $\ast$blog, int row, Q\+String $\ast$author)
+\begin{DoxyCompactList}\small\item\em Display \hyperlink{classBlog}{Blog}. \end{DoxyCompactList}\item 
+void \hyperlink{classFeedUI_a316555b3674ff1ab79dc9a4d54b7f6a4}{display\+Tweet} (\hyperlink{classTweet}{Tweet} $\ast$tweet, int row, Q\+String $\ast$author)
+\begin{DoxyCompactList}\small\item\em Display \hyperlink{classTweet}{Tweet}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The chat\+UI screen includes all chat functionality for viewing feed and commenting on blogs. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Feed\+UI@{Feed\+UI}!Feed\+UI@{Feed\+UI}}
+\index{Feed\+UI@{Feed\+UI}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{Feed\+U\+I(\+Account\+Controller $\ast$account\+Control)}{FeedUI(AccountController *accountControl)}}]{\setlength{\rightskip}{0pt plus 5cm}Feed\+U\+I\+::\+Feed\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{account\+Control}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_a2b24cd4cdf154866590d2ce583d688e9}{}\label{classFeedUI_a2b24cd4cdf154866590d2ce583d688e9}
+
+
+\hyperlink{classFeedUI}{Feed\+UI} Displays feed and allows user to scroll through. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Controller} & Account Controller \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Feed\+UI@{Feed\+UI}!check\+Type@{check\+Type}}
+\index{check\+Type@{check\+Type}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{check\+Type(int post\+Index)}{checkType(int postIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Feed\+U\+I\+::check\+Type (
+\begin{DoxyParamCaption}
+\item[{int}]{post\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_a4fa2ad966ef73b69b2d30b01ae6c4b4c}{}\label{classFeedUI_a4fa2ad966ef73b69b2d30b01ae6c4b4c}
+
+
+Checks post type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em post\+Index} & \hyperlink{classPost}{Post} Index on post list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if post is a blog 
+\end{DoxyReturn}
+\index{Feed\+UI@{Feed\+UI}!display\+Blog@{display\+Blog}}
+\index{display\+Blog@{display\+Blog}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{display\+Blog(\+Blog $\ast$blog, int row, Q\+String $\ast$author)}{displayBlog(Blog *blog, int row, QString *author)}}]{\setlength{\rightskip}{0pt plus 5cm}void Feed\+U\+I\+::display\+Blog (
+\begin{DoxyParamCaption}
+\item[{{\bf Blog} $\ast$}]{blog, }
+\item[{int}]{row, }
+\item[{Q\+String $\ast$}]{author}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_ad62000bd7018afd6b30fd6bb189d2108}{}\label{classFeedUI_ad62000bd7018afd6b30fd6bb189d2108}
+
+
+Display \hyperlink{classBlog}{Blog}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classBlog}{Blog}} & \hyperlink{classBlog}{Blog} to be displayed \\
+\hline
+{\em row} & Position on screen to display blog \\
+\hline
+{\em author} & Author of blog \\
+\hline
+\end{DoxyParams}
+\index{Feed\+UI@{Feed\+UI}!display\+Feed@{display\+Feed}}
+\index{display\+Feed@{display\+Feed}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{display\+Feed()}{displayFeed()}}]{\setlength{\rightskip}{0pt plus 5cm}int Feed\+U\+I\+::display\+Feed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_a593dc73d77c0266f85d0472def6f97fb}{}\label{classFeedUI_a593dc73d77c0266f85d0472def6f97fb}
+
+
+Displays feed on screen. 
+
+\begin{DoxyReturn}{Returns}
+position of pointer on screen 
+\end{DoxyReturn}
+\index{Feed\+UI@{Feed\+UI}!display\+Tweet@{display\+Tweet}}
+\index{display\+Tweet@{display\+Tweet}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{display\+Tweet(\+Tweet $\ast$tweet, int row, Q\+String $\ast$author)}{displayTweet(Tweet *tweet, int row, QString *author)}}]{\setlength{\rightskip}{0pt plus 5cm}void Feed\+U\+I\+::display\+Tweet (
+\begin{DoxyParamCaption}
+\item[{{\bf Tweet} $\ast$}]{tweet, }
+\item[{int}]{row, }
+\item[{Q\+String $\ast$}]{author}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_a316555b3674ff1ab79dc9a4d54b7f6a4}{}\label{classFeedUI_a316555b3674ff1ab79dc9a4d54b7f6a4}
+
+
+Display \hyperlink{classTweet}{Tweet}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classTweet}{Tweet}} & \hyperlink{classTweet}{Tweet} to be displayed \\
+\hline
+{\em row} & Position on screen to display tweet \\
+\hline
+{\em author} & Author of tweet \\
+\hline
+\end{DoxyParams}
+\index{Feed\+UI@{Feed\+UI}!draw\+Screen@{draw\+Screen}}
+\index{draw\+Screen@{draw\+Screen}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{draw\+Screen(int v)}{drawScreen(int v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Feed\+U\+I\+::draw\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classFeedUI_aa95513cfc7b44665cf4a37258b3b45df}{}\label{classFeedUI_aa95513cfc7b44665cf4a37258b3b45df}
+
+
+Draw screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Value of pointer \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{Screen}.
+
+\index{Feed\+UI@{Feed\+UI}!post\+Comment@{post\+Comment}}
+\index{post\+Comment@{post\+Comment}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{post\+Comment(int blog\+Index)}{postComment(int blogIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}void Feed\+U\+I\+::post\+Comment (
+\begin{DoxyParamCaption}
+\item[{int}]{blog\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_aa3946c1d695e02e65faa4556323d3ce0}{}\label{classFeedUI_aa3946c1d695e02e65faa4556323d3ce0}
+
+
+Posts a comment on blog. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blog\+Index} & \hyperlink{classBlog}{Blog} index on post list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if post is a blog 
+\end{DoxyReturn}
+\index{Feed\+UI@{Feed\+UI}!take\+Command@{take\+Command}}
+\index{take\+Command@{take\+Command}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{take\+Command(int selection)}{takeCommand(int selection)}}]{\setlength{\rightskip}{0pt plus 5cm}void Feed\+U\+I\+::take\+Command (
+\begin{DoxyParamCaption}
+\item[{int}]{selection}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_a5e3f1e7bea0c898b95d8b6d461f9bae5}{}\label{classFeedUI_a5e3f1e7bea0c898b95d8b6d461f9bae5}
+
+
+Take command Makes new screen based on user selection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selection} & Pointer value when enter is pressed \\
+\hline
+\end{DoxyParams}
+\index{Feed\+UI@{Feed\+UI}!view\+Blog@{view\+Blog}}
+\index{view\+Blog@{view\+Blog}!Feed\+UI@{Feed\+UI}}
+\subsubsection[{\texorpdfstring{view\+Blog(int index)}{viewBlog(int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void Feed\+U\+I\+::view\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{classFeedUI_a2cae2081d76ad291519568cd344e015a}{}\label{classFeedUI_a2cae2081d76ad291519568cd344e015a}
+
+
+View \hyperlink{classBlog}{Blog} Displays selected blog on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of selected blog \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/feedui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/feedui.\+cpp\end{DoxyCompactItemize}

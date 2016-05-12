@@ -1,0 +1,299 @@
+\hypertarget{classGroupMemberDB}{}\section{Group\+Member\+DB Class Reference}
+\label{classGroupMemberDB}\index{Group\+Member\+DB@{Group\+Member\+DB}}
+
+
+The \hyperlink{classGroupMemberDB}{Group\+Member\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$groupmemberdb.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupMemberDB_a2b723703e4b30c4876fb02b62813a88a}{Group\+Member\+DB} ()\hypertarget{classGroupMemberDB_a2b723703e4b30c4876fb02b62813a88a}{}\label{classGroupMemberDB_a2b723703e4b30c4876fb02b62813a88a}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupMemberDB}{Group\+Member\+DB} Construct a group member database. \end{DoxyCompactList}\item 
+\hyperlink{classGroupMemberDB_a16cbd098d20e4ef4e848eb32ada8285c}{Group\+Member\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupMemberDB}{Group\+Member\+DB} Construct a group members database, given the path and the name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classGroupMemberDB_a0b0f153543aea1c695904b480f32ae11}{Group\+Member\+DB} (const Q\+String \&path, const Q\+String \&connection\+Name)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupMemberDB}{Group\+Member\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classGroupMemberDB_a10069210b5ed6856d20fb68192e28c52}{$\sim$\+Group\+Member\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Group\+Member\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_a1ae935d7a185d05e0f2eec85ec88e4bb}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_a23e976a5f1a2f7163c8c81cb5369e45f}{create\+Group} (int group\+ID, int account\+ID)
+\begin{DoxyCompactList}\small\item\em create\+Group Create a new group with only one member in which the member is an admin. \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_a2027f8341b63928fd65f2791b18aa5a8}{add\+Group\+Member} (int group\+ID, int account\+ID, int group\+Admin\+Rights=0)
+\begin{DoxyCompactList}\small\item\em add\+Group\+Member Adds a new group\+Membership by entering two entires into the group\+Member table\+: entry 1\+: user\+Id and group\+Member\+Id entry 2\+: group\+Member Id and User Id \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_af486022344b536264a49ae393420ad31}{group\+Member\+Exists} (int group\+ID, int account\+ID) const 
+\begin{DoxyCompactList}\small\item\em group\+Membership\+Exists Check if group\+Membership exists, knowing the username \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_a527709d6b0a85ab6d452f56ff04903b8}{remove\+Group\+Member} (int group\+ID, int account\+ID)
+\begin{DoxyCompactList}\small\item\em remove\+Group\+Member Remove a group\+Membership \end{DoxyCompactList}\item 
+std\+::vector$<$ Group\+Member\+Info\+Type $>$ \hyperlink{classGroupMemberDB_ad926d57d28dfacd2fcde5511cae62f2e}{retrieve\+All\+Group\+Members\+Info} (int group\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+All\+Group\+Members\+Info Retrieve all group members from one group \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classGroupMemberDB_a43fa2ec7bc3c7e33970d60f480313974}{retrieve\+Group\+List} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Group\+List Retrieve the group list in one account \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_a53061a946cb3b711a2e741c091421eec}{remove\+All\+Group\+Members} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Group\+Members Remove all group\+Members from the database \end{DoxyCompactList}\item 
+int \hyperlink{classGroupMemberDB_a92446b1ca15758048fb48e17dff86d88}{get\+Max\+Group\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Max\+Group\+ID Retrieve the last group ID \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupMemberDB_aa89464f493771ef0cc0d661d4c7391b9}{set\+Admin} (int group\+ID, int account\+ID)
+\begin{DoxyCompactList}\small\item\em set\+Admin Set a group member to become admin \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGroupMemberDB}{Group\+Member\+DB} class. 
+
+Insert/\+Delete from a sqlite3 table Group\+Members Column 1\+: Group\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 2\+: Friend\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 3\+: Group\+Admin\+Rights I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!Group\+Member\+DB@{Group\+Member\+DB}}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{Group\+Member\+D\+B(const Q\+String \&path)}{GroupMemberDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+Member\+D\+B\+::\+Group\+Member\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a16cbd098d20e4ef4e848eb32ada8285c}{}\label{classGroupMemberDB_a16cbd098d20e4ef4e848eb32ada8285c}
+
+
+\hyperlink{classGroupMemberDB}{Group\+Member\+DB} Construct a group members database, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the group\+Memberdb \\
+\hline
+\end{DoxyParams}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!Group\+Member\+DB@{Group\+Member\+DB}}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{Group\+Member\+D\+B(const Q\+String \&path, const Q\+String \&connection\+Name)}{GroupMemberDB(const QString &path, const QString &connectionName)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+Member\+D\+B\+::\+Group\+Member\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path, }
+\item[{const Q\+String \&}]{connection\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a0b0f153543aea1c695904b480f32ae11}{}\label{classGroupMemberDB_a0b0f153543aea1c695904b480f32ae11}
+
+
+\hyperlink{classGroupMemberDB}{Group\+Member\+DB}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+{\em connection\+Name} & \\
+\hline
+\end{DoxyParams}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!````~Group\+Member\+DB@{$\sim$\+Group\+Member\+DB}}
+\index{````~Group\+Member\+DB@{$\sim$\+Group\+Member\+DB}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Group\+Member\+D\+B()}{~GroupMemberDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+Member\+D\+B\+::$\sim$\+Group\+Member\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a10069210b5ed6856d20fb68192e28c52}{}\label{classGroupMemberDB_a10069210b5ed6856d20fb68192e28c52}
+
+
+$\sim$\+Group\+Member\+DB 
+
+Default destructor for group\+Member database 
+
+\subsection{Member Function Documentation}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!add\+Group\+Member@{add\+Group\+Member}}
+\index{add\+Group\+Member@{add\+Group\+Member}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{add\+Group\+Member(int group\+I\+D, int account\+I\+D, int group\+Admin\+Rights=0)}{addGroupMember(int groupID, int accountID, int groupAdminRights=0)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::add\+Group\+Member (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID, }
+\item[{int}]{account\+ID, }
+\item[{int}]{group\+Admin\+Rights = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a2027f8341b63928fd65f2791b18aa5a8}{}\label{classGroupMemberDB_a2027f8341b63928fd65f2791b18aa5a8}
+
+
+add\+Group\+Member Adds a new group\+Membership by entering two entires into the group\+Member table\+: entry 1\+: user\+Id and group\+Member\+Id entry 2\+: group\+Member Id and User Id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & \hyperlink{classGroup}{Group} ID \\
+\hline
+{\em account\+ID} & Group\+Member ID \\
+\hline
+{\em group\+Admin\+Rights} & Whether the member is an admin, 0 if false, 1 if true. Default is 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!create\+Group@{create\+Group}}
+\index{create\+Group@{create\+Group}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{create\+Group(int group\+I\+D, int account\+I\+D)}{createGroup(int groupID, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::create\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a23e976a5f1a2f7163c8c81cb5369e45f}{}\label{classGroupMemberDB_a23e976a5f1a2f7163c8c81cb5369e45f}
+
+
+create\+Group Create a new group with only one member in which the member is an admin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & The ID of the group to be created \\
+\hline
+{\em account\+ID} & The ID of the account \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if created, false if not 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!get\+Max\+Group\+ID@{get\+Max\+Group\+ID}}
+\index{get\+Max\+Group\+ID@{get\+Max\+Group\+ID}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Group\+I\+D()}{getMaxGroupID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Group\+Member\+D\+B\+::get\+Max\+Group\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a92446b1ca15758048fb48e17dff86d88}{}\label{classGroupMemberDB_a92446b1ca15758048fb48e17dff86d88}
+
+
+get\+Max\+Group\+ID Retrieve the last group ID 
+
+\begin{DoxyReturn}{Returns}
+the max (last) group ID 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!group\+Member\+Exists@{group\+Member\+Exists}}
+\index{group\+Member\+Exists@{group\+Member\+Exists}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{group\+Member\+Exists(int group\+I\+D, int account\+I\+D) const }{groupMemberExists(int groupID, int accountID) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::group\+Member\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGroupMemberDB_af486022344b536264a49ae393420ad31}{}\label{classGroupMemberDB_af486022344b536264a49ae393420ad31}
+
+
+group\+Membership\+Exists Check if group\+Membership exists, knowing the username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & User account ID \\
+\hline
+{\em group\+Member\+ID} & Group\+Member account ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGroupMemberDB_a1ae935d7a185d05e0f2eec85ec88e4bb}{}\label{classGroupMemberDB_a1ae935d7a185d05e0f2eec85ec88e4bb}
+
+
+is\+Open 
+
+Check whether account database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!remove\+All\+Group\+Members@{remove\+All\+Group\+Members}}
+\index{remove\+All\+Group\+Members@{remove\+All\+Group\+Members}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Group\+Members()}{removeAllGroupMembers()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::remove\+All\+Group\+Members (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a53061a946cb3b711a2e741c091421eec}{}\label{classGroupMemberDB_a53061a946cb3b711a2e741c091421eec}
+
+
+remove\+All\+Group\+Members Remove all group\+Members from the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!remove\+Group\+Member@{remove\+Group\+Member}}
+\index{remove\+Group\+Member@{remove\+Group\+Member}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Group\+Member(int group\+I\+D, int account\+I\+D)}{removeGroupMember(int groupID, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::remove\+Group\+Member (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a527709d6b0a85ab6d452f56ff04903b8}{}\label{classGroupMemberDB_a527709d6b0a85ab6d452f56ff04903b8}
+
+
+remove\+Group\+Member Remove a group\+Membership 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & The \hyperlink{classGroup}{Group} ID of the group in which a member got removed \\
+\hline
+{\em account\+ID} & The Account ID to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!retrieve\+All\+Group\+Members\+Info@{retrieve\+All\+Group\+Members\+Info}}
+\index{retrieve\+All\+Group\+Members\+Info@{retrieve\+All\+Group\+Members\+Info}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+All\+Group\+Members\+Info(int group\+I\+D)}{retrieveAllGroupMembersInfo(int groupID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Group\+Member\+Info\+Type $>$ Group\+Member\+D\+B\+::retrieve\+All\+Group\+Members\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_ad926d57d28dfacd2fcde5511cae62f2e}{}\label{classGroupMemberDB_ad926d57d28dfacd2fcde5511cae62f2e}
+
+
+retrieve\+All\+Group\+Members\+Info Retrieve all group members from one group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & The ID of the group \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of all member info, including ID and the admin rights 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!retrieve\+Group\+List@{retrieve\+Group\+List}}
+\index{retrieve\+Group\+List@{retrieve\+Group\+List}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Group\+List(int account\+I\+D)}{retrieveGroupList(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ Group\+Member\+D\+B\+::retrieve\+Group\+List (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_a43fa2ec7bc3c7e33970d60f480313974}{}\label{classGroupMemberDB_a43fa2ec7bc3c7e33970d60f480313974}
+
+
+retrieve\+Group\+List Retrieve the group list in one account 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & The ID of the account \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the list of group I\+Ds 
+\end{DoxyReturn}
+\index{Group\+Member\+DB@{Group\+Member\+DB}!set\+Admin@{set\+Admin}}
+\index{set\+Admin@{set\+Admin}!Group\+Member\+DB@{Group\+Member\+DB}}
+\subsubsection[{\texorpdfstring{set\+Admin(int group\+I\+D, int account\+I\+D)}{setAdmin(int groupID, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Member\+D\+B\+::set\+Admin (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupMemberDB_aa89464f493771ef0cc0d661d4c7391b9}{}\label{classGroupMemberDB_aa89464f493771ef0cc0d661d4c7391b9}
+
+
+set\+Admin Set a group member to become admin 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & \\
+\hline
+{\em account\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/groupmemberdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/groupmemberdb.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,178 @@
+\hypertarget{classScrapbookGUI}{}\section{Scrapbook\+G\+UI Class Reference}
+\label{classScrapbookGUI}\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+
+
+The \hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} class is a parent class of all scrapbook functionalities in the G\+UI.  
+
+
+
+
+{\ttfamily \#include $<$scrapbookgui.\+h$>$}
+
+Inheritance diagram for Scrapbook\+G\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classScrapbookGUI}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classScrapbookGUI_a121e6cd53f1322ac9c7b2acb294680f0}{Scrapbook\+G\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$input\+Account\+Controller, Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} This constructor is used for personal scrapbooks. \end{DoxyCompactList}\item 
+\hyperlink{classScrapbookGUI_a684928568666455bf909bf80a88fb38c}{Scrapbook\+G\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$input\+Account\+Controller, \hyperlink{classScrapbook}{Scrapbook} $\ast$display\+Scrapbook, Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} This constructor is used for any scrapbook. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_a8380ec41f3806098f35268a6b933a715}{switch\+Tweet\+Views} ()\hypertarget{classScrapbookGUI_a8380ec41f3806098f35268a6b933a715}{}\label{classScrapbookGUI_a8380ec41f3806098f35268a6b933a715}
+
+\begin{DoxyCompactList}\small\item\em switch\+Tweet\+Views Switching between create tweet and tweet view \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_afa0ed7d9a879170a899f0dc36c3857f9}{switch\+Blog\+Views} ()\hypertarget{classScrapbookGUI_afa0ed7d9a879170a899f0dc36c3857f9}{}\label{classScrapbookGUI_afa0ed7d9a879170a899f0dc36c3857f9}
+
+\begin{DoxyCompactList}\small\item\em switch\+Blog\+Views Switching between create blog and blog view \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_a0e27d6cd17b7cfd2b5d8606e14113fb4}{switch\+Multimedia\+Views} ()\hypertarget{classScrapbookGUI_a0e27d6cd17b7cfd2b5d8606e14113fb4}{}\label{classScrapbookGUI_a0e27d6cd17b7cfd2b5d8606e14113fb4}
+
+\begin{DoxyCompactList}\small\item\em switch\+Multimedia\+Views Switching between create multimedia and multimedia view \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_a5454d89263cb161a99f286d3dc3180e3}{refresh\+Book} ()\hypertarget{classScrapbookGUI_a5454d89263cb161a99f286d3dc3180e3}{}\label{classScrapbookGUI_a5454d89263cb161a99f286d3dc3180e3}
+
+\begin{DoxyCompactList}\small\item\em refresh\+Book Refresh the entire scrapbook and display it in the G\+UI again \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_a841087a66434703d3527690ac58f016a}{display\+Blog} (\hyperlink{classBlog}{Blog} $\ast$blog)
+\begin{DoxyCompactList}\small\item\em display\+Blog Display one blog in the scrapbook area \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_ae64992466cfed4643b4748ab936ed051}{display\+Tweet} (\hyperlink{classTweet}{Tweet} $\ast$tweet)
+\begin{DoxyCompactList}\small\item\em display\+Tweet Display one tweet in the scrapbook area \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookGUI_a1ac7e2138b02ba90ec63e55ec869bfa3}{display\+Multimedia} (\hyperlink{classMultimedia}{Multimedia} $\ast$multimedia)
+\begin{DoxyCompactList}\small\item\em display\+Multimedia Display one photo/video in the scrapbook area \end{DoxyCompactList}\item 
+\hyperlink{classAccountController}{Account\+Controller} $\ast$ \hyperlink{classScrapbookGUI_a7f8bae762c60a3afd37cec494579ba8f}{get\+Account\+Controller} ()
+\begin{DoxyCompactList}\small\item\em get\+Account\+Controller \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classScrapbookGUI_a106ea2561d04306702d7c8279c18c8c2}{print\+Post} (\hyperlink{classPost}{Post} $\ast$)
+\begin{DoxyCompactList}\small\item\em print\+Post Detect the post \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} class is a parent class of all scrapbook functionalities in the G\+UI. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{Scrapbook\+G\+U\+I(\+Account\+Controller $\ast$input\+Account\+Controller, Q\+Widget $\ast$parent=0)}{ScrapbookGUI(AccountController *inputAccountController, QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Scrapbook\+G\+U\+I\+::\+Scrapbook\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{input\+Account\+Controller, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classScrapbookGUI_a121e6cd53f1322ac9c7b2acb294680f0}{}\label{classScrapbookGUI_a121e6cd53f1322ac9c7b2acb294680f0}
+
+
+\hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} This constructor is used for personal scrapbooks. 
+
+It will find the scrapbook in the account controller and retrieve the data from there. 
+\begin{DoxyParams}{Parameters}
+{\em input\+Account\+Controller} & The current account controller functionality \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{Scrapbook\+G\+U\+I(\+Account\+Controller $\ast$input\+Account\+Controller, Scrapbook $\ast$display\+Scrapbook, Q\+Widget $\ast$parent=0)}{ScrapbookGUI(AccountController *inputAccountController, Scrapbook *displayScrapbook, QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Scrapbook\+G\+U\+I\+::\+Scrapbook\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{input\+Account\+Controller, }
+\item[{{\bf Scrapbook} $\ast$}]{display\+Scrapbook, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classScrapbookGUI_a684928568666455bf909bf80a88fb38c}{}\label{classScrapbookGUI_a684928568666455bf909bf80a88fb38c}
+
+
+\hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} This constructor is used for any scrapbook. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Account\+Controller} & The current account controller, reflecting the current user \\
+\hline
+{\em display\+Scrapbook} & The scrapbook that is displaying \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!display\+Blog@{display\+Blog}}
+\index{display\+Blog@{display\+Blog}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{display\+Blog(\+Blog $\ast$blog)}{displayBlog(Blog *blog)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+G\+U\+I\+::display\+Blog (
+\begin{DoxyParamCaption}
+\item[{{\bf Blog} $\ast$}]{blog}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookGUI_a841087a66434703d3527690ac58f016a}{}\label{classScrapbookGUI_a841087a66434703d3527690ac58f016a}
+
+
+display\+Blog Display one blog in the scrapbook area 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blog} & The blog to be displayed \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!display\+Multimedia@{display\+Multimedia}}
+\index{display\+Multimedia@{display\+Multimedia}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{display\+Multimedia(\+Multimedia $\ast$multimedia)}{displayMultimedia(Multimedia *multimedia)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+G\+U\+I\+::display\+Multimedia (
+\begin{DoxyParamCaption}
+\item[{{\bf Multimedia} $\ast$}]{multimedia}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookGUI_a1ac7e2138b02ba90ec63e55ec869bfa3}{}\label{classScrapbookGUI_a1ac7e2138b02ba90ec63e55ec869bfa3}
+
+
+display\+Multimedia Display one photo/video in the scrapbook area 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multimedia} & The item to be displayed \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!display\+Tweet@{display\+Tweet}}
+\index{display\+Tweet@{display\+Tweet}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{display\+Tweet(\+Tweet $\ast$tweet)}{displayTweet(Tweet *tweet)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+G\+U\+I\+::display\+Tweet (
+\begin{DoxyParamCaption}
+\item[{{\bf Tweet} $\ast$}]{tweet}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookGUI_ae64992466cfed4643b4748ab936ed051}{}\label{classScrapbookGUI_ae64992466cfed4643b4748ab936ed051}
+
+
+display\+Tweet Display one tweet in the scrapbook area 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tweet} & The tweet to be displayed \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!get\+Account\+Controller@{get\+Account\+Controller}}
+\index{get\+Account\+Controller@{get\+Account\+Controller}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{get\+Account\+Controller()}{getAccountController()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account\+Controller}$\ast$ Scrapbook\+G\+U\+I\+::get\+Account\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classScrapbookGUI_a7f8bae762c60a3afd37cec494579ba8f}{}\label{classScrapbookGUI_a7f8bae762c60a3afd37cec494579ba8f}
+
+
+get\+Account\+Controller 
+
+\begin{DoxyReturn}{Returns}
+the current account 
+\end{DoxyReturn}
+\index{Scrapbook\+G\+UI@{Scrapbook\+G\+UI}!print\+Post@{print\+Post}}
+\index{print\+Post@{print\+Post}!Scrapbook\+G\+UI@{Scrapbook\+G\+UI}}
+\subsubsection[{\texorpdfstring{print\+Post(\+Post $\ast$)}{printPost(Post *)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Scrapbook\+G\+U\+I\+::print\+Post (
+\begin{DoxyParamCaption}
+\item[{{\bf Post} $\ast$}]{post}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookGUI_a106ea2561d04306702d7c8279c18c8c2}{}\label{classScrapbookGUI_a106ea2561d04306702d7c8279c18c8c2}
+
+
+print\+Post Detect the post 
+
+\begin{DoxyReturn}{Returns}
+the string to print to scrapbook 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/gui/scrapbookgui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/gui/scrapbookgui.\+cpp\end{DoxyCompactItemize}

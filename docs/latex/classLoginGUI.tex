@@ -1,0 +1,117 @@
+\hypertarget{classLoginGUI}{}\section{Login\+G\+UI Class Reference}
+\label{classLoginGUI}\index{Login\+G\+UI@{Login\+G\+UI}}
+
+
+The \hyperlink{classLoginGUI}{Login\+G\+UI} class provides the functionality to login to the application.  
+
+
+
+
+{\ttfamily \#include $<$logingui.\+h$>$}
+
+Inheritance diagram for Login\+G\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLoginGUI}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLoginGUI_a463b5504797bf4189053649348314787}{Login\+G\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$input\+Account\+Controller, Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classLoginGUI}{Login\+G\+UI} constructs a login window. \end{DoxyCompactList}\item 
+void \hyperlink{classLoginGUI_a25e4f8144c8d24f7f0431828e09d61f3}{set\+Main\+Window} (\hyperlink{classMainWindow}{Main\+Window} $\ast$input)
+\begin{DoxyCompactList}\small\item\em set\+Main\+Window sets the main window in the class \end{DoxyCompactList}\item 
+void \hyperlink{classLoginGUI_aed7e048a3e518a89a5cbc508df88831e}{set\+Create\+Account\+View} (\hyperlink{classCreateAccountGUI}{Create\+Account\+G\+UI} $\ast$input)
+\begin{DoxyCompactList}\small\item\em set\+Create\+Account\+View sets the create account window \end{DoxyCompactList}\item 
+void \hyperlink{classLoginGUI_ac35e63981f4d570fa9fb528393a8db1e}{clear\+All\+Fields} ()\hypertarget{classLoginGUI_ac35e63981f4d570fa9fb528393a8db1e}{}\label{classLoginGUI_ac35e63981f4d570fa9fb528393a8db1e}
+
+\begin{DoxyCompactList}\small\item\em clear\+All\+Fields Clears all fields in the Login UI \end{DoxyCompactList}\item 
+bool \hyperlink{classLoginGUI_a675a9105543ff0df4ae588c9c3060cf8}{login} ()\hypertarget{classLoginGUI_a675a9105543ff0df4ae588c9c3060cf8}{}\label{classLoginGUI_a675a9105543ff0df4ae588c9c3060cf8}
+
+\begin{DoxyCompactList}\small\item\em login Login to the account \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classLoginGUI_a9c4874e6e42919bbf5c0ea09a892ca5d}{is\+Finished} ()
+\begin{DoxyCompactList}\small\item\em is\+Finished When the \hyperlink{classLoginUI}{Login\+UI} can be closed \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classLoginGUI}{Login\+G\+UI} class provides the functionality to login to the application. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Login\+G\+UI@{Login\+G\+UI}!Login\+G\+UI@{Login\+G\+UI}}
+\index{Login\+G\+UI@{Login\+G\+UI}!Login\+G\+UI@{Login\+G\+UI}}
+\subsubsection[{\texorpdfstring{Login\+G\+U\+I(\+Account\+Controller $\ast$input\+Account\+Controller, Q\+Widget $\ast$parent=0)}{LoginGUI(AccountController *inputAccountController, QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Login\+G\+U\+I\+::\+Login\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{input\+Account\+Controller, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classLoginGUI_a463b5504797bf4189053649348314787}{}\label{classLoginGUI_a463b5504797bf4189053649348314787}
+
+
+\hyperlink{classLoginGUI}{Login\+G\+UI} constructs a login window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Account\+Controller} & The model \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Login\+G\+UI@{Login\+G\+UI}!is\+Finished@{is\+Finished}}
+\index{is\+Finished@{is\+Finished}!Login\+G\+UI@{Login\+G\+UI}}
+\subsubsection[{\texorpdfstring{is\+Finished()}{isFinished()}}]{\setlength{\rightskip}{0pt plus 5cm}static bool Login\+G\+U\+I\+::is\+Finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classLoginGUI_a9c4874e6e42919bbf5c0ea09a892ca5d}{}\label{classLoginGUI_a9c4874e6e42919bbf5c0ea09a892ca5d}
+
+
+is\+Finished When the \hyperlink{classLoginUI}{Login\+UI} can be closed 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Login\+G\+UI@{Login\+G\+UI}!set\+Create\+Account\+View@{set\+Create\+Account\+View}}
+\index{set\+Create\+Account\+View@{set\+Create\+Account\+View}!Login\+G\+UI@{Login\+G\+UI}}
+\subsubsection[{\texorpdfstring{set\+Create\+Account\+View(\+Create\+Account\+G\+U\+I $\ast$input)}{setCreateAccountView(CreateAccountGUI *input)}}]{\setlength{\rightskip}{0pt plus 5cm}void Login\+G\+U\+I\+::set\+Create\+Account\+View (
+\begin{DoxyParamCaption}
+\item[{{\bf Create\+Account\+G\+UI} $\ast$}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLoginGUI_aed7e048a3e518a89a5cbc508df88831e}{}\label{classLoginGUI_aed7e048a3e518a89a5cbc508df88831e}
+
+
+set\+Create\+Account\+View sets the create account window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the Create Account window \\
+\hline
+\end{DoxyParams}
+\index{Login\+G\+UI@{Login\+G\+UI}!set\+Main\+Window@{set\+Main\+Window}}
+\index{set\+Main\+Window@{set\+Main\+Window}!Login\+G\+UI@{Login\+G\+UI}}
+\subsubsection[{\texorpdfstring{set\+Main\+Window(\+Main\+Window $\ast$input)}{setMainWindow(MainWindow *input)}}]{\setlength{\rightskip}{0pt plus 5cm}void Login\+G\+U\+I\+::set\+Main\+Window (
+\begin{DoxyParamCaption}
+\item[{{\bf Main\+Window} $\ast$}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLoginGUI_a25e4f8144c8d24f7f0431828e09d61f3}{}\label{classLoginGUI_a25e4f8144c8d24f7f0431828e09d61f3}
+
+
+set\+Main\+Window sets the main window in the class 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the main window \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/gui/logingui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/gui/logingui.\+cpp\end{DoxyCompactItemize}

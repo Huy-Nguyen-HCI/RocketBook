@@ -1,0 +1,342 @@
+\hypertarget{classProfileDB}{}\section{Profile\+DB Class Reference}
+\label{classProfileDB}\index{Profile\+DB@{Profile\+DB}}
+
+
+The \hyperlink{classProfileDB}{Profile\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$profiledb.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classProfileDB_a103ccd5b1853eb19e3517ab4e4697a4e}{Profile\+DB} ()\hypertarget{classProfileDB_a103ccd5b1853eb19e3517ab4e4697a4e}{}\label{classProfileDB_a103ccd5b1853eb19e3517ab4e4697a4e}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classProfileDB}{Profile\+DB} Construct a profile database at ../database/profile\+DB.sqlite. \end{DoxyCompactList}\item 
+\hyperlink{classProfileDB_a51a19d9b646130c7825e4fc813066536}{Profile\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classProfileDB}{Profile\+DB} Construct a profile database, given the path and the name of the database. \end{DoxyCompactList}\item 
+{\bfseries Profile\+DB} (const Q\+String \&path, Q\+String connection\+Name)\hypertarget{classProfileDB_a15f7c0d60b0804285e3ce6d4f9aafa47}{}\label{classProfileDB_a15f7c0d60b0804285e3ce6d4f9aafa47}
+
+\item 
+\hyperlink{classProfileDB_a212a9e7be28408b61ec052fbba3d4b51}{$\sim$\+Profile\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Profile\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classProfileDB_a5bf8d021d3d2e9180b826bfc64cff89a}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classProfileDB_afc92a3c555cec8ce6f3ab3485a0478f1}{add\+Profile} (int profile\+ID, const Q\+String \&full\+Name, const Q\+String \&photo, const Q\+String \&description, int scrapbook\+ID)
+\begin{DoxyCompactList}\small\item\em add\+Profile Add a new profile to the database table \end{DoxyCompactList}\item 
+bool \hyperlink{classProfileDB_a85e818339d3db3a1c7b63ccac36f2a11}{remove\+Profile} (int profile\+ID)
+\begin{DoxyCompactList}\small\item\em remove\+Profile Remove an entire profile from the database, knowing the profile\+ID \end{DoxyCompactList}\item 
+Profile\+Info\+Type \hyperlink{classProfileDB_a8b78aa4c97726bdf3b7f0e092b51f6b2}{retrieve\+Profile\+Info} (int profile\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Profile\+Info Return a string including details of the profile, knowing the profile ID, separated by a comma For example, a possible return is \char`\"{}1, Ha Vu, havu.\+jpg, I am a student\char`\"{} \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classProfileDB_a2f85c50ee9ba92ba6049a6927295fd91}{retrieve\+Fullname} (int profile\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Fullname Return the full name stored in the profile \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classProfileDB_aa230defe25ed8672505470ddb01a881b}{retrieve\+Photo} (int profile\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Photo Return the photo stored in the profile \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classProfileDB_a139f1f03f7ee3550fc904af779fa0a2a}{retrieve\+Description} (int profile\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Description Return the description stored in the profile \end{DoxyCompactList}\item 
+int {\bfseries retrieve\+Scrapbook\+ID} (int profile\+ID)\hypertarget{classProfileDB_a11982c294c69edd4c4e279c94b568557}{}\label{classProfileDB_a11982c294c69edd4c4e279c94b568557}
+
+\item 
+bool \hyperlink{classProfileDB_a17867d77854426b37e473c00de6acdfb}{profile\+Exists} (int profile\+ID) const 
+\begin{DoxyCompactList}\small\item\em profile\+Exists Check if profile exists, knowing the profile ID \end{DoxyCompactList}\item 
+bool \hyperlink{classProfileDB_a4971bdc09df2a7925cc8c29951d1fecd}{remove\+All\+Profiles} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Profiles Remove all profiles existed in the database \end{DoxyCompactList}\item 
+int \hyperlink{classProfileDB_a667a97763757c2ca399c9b617d172f22}{get\+Max\+Profile\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Max\+Profile\+ID Get the maximum ID used for profile \end{DoxyCompactList}\item 
+int \hyperlink{classProfileDB_a4a6537f590fcf08f4072fb1898679ddb}{get\+Max\+Scrapbook\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Max\+Scrapbook\+ID Get the maximum ID used for scrapbook \end{DoxyCompactList}\item 
+bool \hyperlink{classProfileDB_a4f2c1567a44455f4e24937380631fdee}{change\+Photo} (int profile\+ID, Q\+String path)
+\begin{DoxyCompactList}\small\item\em change\+Photo Changes profile photo \end{DoxyCompactList}\item 
+bool \hyperlink{classProfileDB_aa91bf52b637d81374f7a1ca5c3cf3dc7}{change\+Description} (int profile\+ID, Q\+String description)
+\begin{DoxyCompactList}\small\item\em change\+Description Changes profile description \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classProfileDB}{Profile\+DB} class. 
+
+Create an sqlite3 table in a database file. The database structure\+: Column 1\+: Profile\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Full\+Name T\+E\+XT Column 3\+: Photo T\+E\+XT Column 4\+: Description T\+E\+XT Column 5\+: Scrapbook\+ID I\+N\+T\+E\+G\+ER U\+N\+I\+Q\+UE 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Profile\+DB@{Profile\+DB}!Profile\+DB@{Profile\+DB}}
+\index{Profile\+DB@{Profile\+DB}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{Profile\+D\+B(const Q\+String \&path)}{ProfileDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Profile\+D\+B\+::\+Profile\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a51a19d9b646130c7825e4fc813066536}{}\label{classProfileDB_a51a19d9b646130c7825e4fc813066536}
+
+
+\hyperlink{classProfileDB}{Profile\+DB} Construct a profile database, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the \hyperlink{classProfileDB}{Profile\+DB} \\
+\hline
+\end{DoxyParams}
+\index{Profile\+DB@{Profile\+DB}!````~Profile\+DB@{$\sim$\+Profile\+DB}}
+\index{````~Profile\+DB@{$\sim$\+Profile\+DB}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Profile\+D\+B()}{~ProfileDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Profile\+D\+B\+::$\sim$\+Profile\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a212a9e7be28408b61ec052fbba3d4b51}{}\label{classProfileDB_a212a9e7be28408b61ec052fbba3d4b51}
+
+
+$\sim$\+Profile\+DB 
+
+Default destructor for profile database 
+
+\subsection{Member Function Documentation}
+\index{Profile\+DB@{Profile\+DB}!add\+Profile@{add\+Profile}}
+\index{add\+Profile@{add\+Profile}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{add\+Profile(int profile\+I\+D, const Q\+String \&full\+Name, const Q\+String \&photo, const Q\+String \&description, int scrapbook\+I\+D)}{addProfile(int profileID, const QString &fullName, const QString &photo, const QString &description, int scrapbookID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::add\+Profile (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID, }
+\item[{const Q\+String \&}]{full\+Name, }
+\item[{const Q\+String \&}]{photo, }
+\item[{const Q\+String \&}]{description, }
+\item[{int}]{scrapbook\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_afc92a3c555cec8ce6f3ab3485a0478f1}{}\label{classProfileDB_afc92a3c555cec8ce6f3ab3485a0478f1}
+
+
+add\+Profile Add a new profile to the database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & profile ID \\
+\hline
+{\em full\+Name} & \\
+\hline
+{\em photo} & \\
+\hline
+{\em description} & \\
+\hline
+{\em scrapbook\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!change\+Description@{change\+Description}}
+\index{change\+Description@{change\+Description}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{change\+Description(int profile\+I\+D, Q\+String description)}{changeDescription(int profileID, QString description)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::change\+Description (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID, }
+\item[{Q\+String}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_aa91bf52b637d81374f7a1ca5c3cf3dc7}{}\label{classProfileDB_aa91bf52b637d81374f7a1ca5c3cf3dc7}
+
+
+change\+Description Changes profile description 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & Id of profile \\
+\hline
+{\em description} & New description \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the maximum ID used for scrapbook 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!change\+Photo@{change\+Photo}}
+\index{change\+Photo@{change\+Photo}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{change\+Photo(int profile\+I\+D, Q\+String path)}{changePhoto(int profileID, QString path)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::change\+Photo (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID, }
+\item[{Q\+String}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a4f2c1567a44455f4e24937380631fdee}{}\label{classProfileDB_a4f2c1567a44455f4e24937380631fdee}
+
+
+change\+Photo Changes profile photo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & Id of profile \\
+\hline
+{\em path} & Picture path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the maximum ID used for scrapbook 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!get\+Max\+Profile\+ID@{get\+Max\+Profile\+ID}}
+\index{get\+Max\+Profile\+ID@{get\+Max\+Profile\+ID}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Profile\+I\+D()}{getMaxProfileID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Profile\+D\+B\+::get\+Max\+Profile\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a667a97763757c2ca399c9b617d172f22}{}\label{classProfileDB_a667a97763757c2ca399c9b617d172f22}
+
+
+get\+Max\+Profile\+ID Get the maximum ID used for profile 
+
+\begin{DoxyReturn}{Returns}
+the maximum ID used for profile 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!get\+Max\+Scrapbook\+ID@{get\+Max\+Scrapbook\+ID}}
+\index{get\+Max\+Scrapbook\+ID@{get\+Max\+Scrapbook\+ID}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Scrapbook\+I\+D()}{getMaxScrapbookID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Profile\+D\+B\+::get\+Max\+Scrapbook\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a4a6537f590fcf08f4072fb1898679ddb}{}\label{classProfileDB_a4a6537f590fcf08f4072fb1898679ddb}
+
+
+get\+Max\+Scrapbook\+ID Get the maximum ID used for scrapbook 
+
+\begin{DoxyReturn}{Returns}
+the maximum ID used for scrapbook 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classProfileDB_a5bf8d021d3d2e9180b826bfc64cff89a}{}\label{classProfileDB_a5bf8d021d3d2e9180b826bfc64cff89a}
+
+
+is\+Open 
+
+Check whether profile database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!profile\+Exists@{profile\+Exists}}
+\index{profile\+Exists@{profile\+Exists}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{profile\+Exists(int profile\+I\+D) const }{profileExists(int profileID) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::profile\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+) const}\hypertarget{classProfileDB_a17867d77854426b37e473c00de6acdfb}{}\label{classProfileDB_a17867d77854426b37e473c00de6acdfb}
+
+
+profile\+Exists Check if profile exists, knowing the profile ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & the profile ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!remove\+All\+Profiles@{remove\+All\+Profiles}}
+\index{remove\+All\+Profiles@{remove\+All\+Profiles}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Profiles()}{removeAllProfiles()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::remove\+All\+Profiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a4971bdc09df2a7925cc8c29951d1fecd}{}\label{classProfileDB_a4971bdc09df2a7925cc8c29951d1fecd}
+
+
+remove\+All\+Profiles Remove all profiles existed in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!remove\+Profile@{remove\+Profile}}
+\index{remove\+Profile@{remove\+Profile}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Profile(int profile\+I\+D)}{removeProfile(int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Profile\+D\+B\+::remove\+Profile (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a85e818339d3db3a1c7b63ccac36f2a11}{}\label{classProfileDB_a85e818339d3db3a1c7b63ccac36f2a11}
+
+
+remove\+Profile Remove an entire profile from the database, knowing the profile\+ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & the ID of the profile removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!retrieve\+Description@{retrieve\+Description}}
+\index{retrieve\+Description@{retrieve\+Description}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Description(int profile\+I\+D)}{retrieveDescription(int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Profile\+D\+B\+::retrieve\+Description (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a139f1f03f7ee3550fc904af779fa0a2a}{}\label{classProfileDB_a139f1f03f7ee3550fc904af779fa0a2a}
+
+
+retrieve\+Description Return the description stored in the profile 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & the ID of the profile retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string representing the description of the profile; return \char`\"{}\char`\"{} if the profile does not exist. 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!retrieve\+Fullname@{retrieve\+Fullname}}
+\index{retrieve\+Fullname@{retrieve\+Fullname}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Fullname(int profile\+I\+D)}{retrieveFullname(int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Profile\+D\+B\+::retrieve\+Fullname (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a2f85c50ee9ba92ba6049a6927295fd91}{}\label{classProfileDB_a2f85c50ee9ba92ba6049a6927295fd91}
+
+
+retrieve\+Fullname Return the full name stored in the profile 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & the ID of the profile retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string representing the full name of the profile; return \char`\"{}\char`\"{} if the profile does not exist. 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!retrieve\+Photo@{retrieve\+Photo}}
+\index{retrieve\+Photo@{retrieve\+Photo}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Photo(int profile\+I\+D)}{retrievePhoto(int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Profile\+D\+B\+::retrieve\+Photo (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_aa230defe25ed8672505470ddb01a881b}{}\label{classProfileDB_aa230defe25ed8672505470ddb01a881b}
+
+
+retrieve\+Photo Return the photo stored in the profile 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & the ID of the profile retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string representing the photo of the profile; return \char`\"{}\char`\"{} if the profile does not exist. 
+\end{DoxyReturn}
+\index{Profile\+DB@{Profile\+DB}!retrieve\+Profile\+Info@{retrieve\+Profile\+Info}}
+\index{retrieve\+Profile\+Info@{retrieve\+Profile\+Info}!Profile\+DB@{Profile\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Profile\+Info(int profile\+I\+D)}{retrieveProfileInfo(int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}Profile\+Info\+Type Profile\+D\+B\+::retrieve\+Profile\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classProfileDB_a8b78aa4c97726bdf3b7f0e092b51f6b2}{}\label{classProfileDB_a8b78aa4c97726bdf3b7f0e092b51f6b2}
+
+
+retrieve\+Profile\+Info Return a string including details of the profile, knowing the profile ID, separated by a comma For example, a possible return is \char`\"{}1, Ha Vu, havu.\+jpg, I am a student\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+ID} & the ID of the profile retrieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string with profileid, fullname, photo, description; return \char`\"{}\char`\"{} if the profile does not exist. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/profiledb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/profiledb.\+cpp\end{DoxyCompactItemize}

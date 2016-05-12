@@ -1,0 +1,120 @@
+\hypertarget{classGroupGUI}{}\section{Group\+G\+UI Class Reference}
+\label{classGroupGUI}\index{Group\+G\+UI@{Group\+G\+UI}}
+
+
+The \hyperlink{classGroupGUI}{Group\+G\+UI} class The G\+UI that shows all the control interface for the group.  
+
+
+
+
+{\ttfamily \#include $<$groupgui.\+h$>$}
+
+Inheritance diagram for Group\+G\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGroupGUI}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classGroupGUI_a07cb130b553bc270c1debf317cfa1cf8}{Group\+G\+U\+I\+Type} \{ {\bfseries Show\+All\+Groups}, 
+{\bfseries Create\+Group}, 
+{\bfseries View\+Group\+Profile}, 
+{\bfseries Enter\+Scrapbook}
+ \}\hypertarget{classGroupGUI_a07cb130b553bc270c1debf317cfa1cf8}{}\label{classGroupGUI_a07cb130b553bc270c1debf317cfa1cf8}
+\begin{DoxyCompactList}\small\item\em The Group\+G\+U\+I\+Type enum The different type of group G\+UI that could be switched between. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupGUI_acfc284ab86c90b70735c59b4a3944979}{Group\+G\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$input\+Account\+Controller, Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupGUI}{Group\+G\+UI} constructs the main group control. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupGUI_a259227f76695aca072e4cc6c5801a4e7}{switch\+Group\+Views} (\hyperlink{classGroupGUI_a07cb130b553bc270c1debf317cfa1cf8}{Group\+G\+U\+I\+Type} type)
+\begin{DoxyCompactList}\small\item\em switch\+Group\+Views Switch between all the group views\+: show all groups, create group, view profile, enter scrapbook \end{DoxyCompactList}\item 
+void \hyperlink{classGroupGUI_a3aec97c7ea8c53451b8e89e78b69c2ca}{add\+Group\+Scrapbook} (\hyperlink{classScrapbookGUI}{Scrapbook\+G\+UI} $\ast$group\+Widget)
+\begin{DoxyCompactList}\small\item\em add\+Group\+Scrapbook Add a scrapbook G\+UI as a group scrapbook \end{DoxyCompactList}\item 
+void \hyperlink{classGroupGUI_a641a3dbe4cbf8e67f3b78247cc88a38a}{add\+Group\+Profile} (\hyperlink{classGroupProfileGUI}{Group\+Profile\+G\+UI} $\ast$profile\+View)
+\begin{DoxyCompactList}\small\item\em add\+Group\+Profile Add a profile G\+UI for the group \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGroupGUI}{Group\+G\+UI} class The G\+UI that shows all the control interface for the group. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group\+G\+UI@{Group\+G\+UI}!Group\+G\+UI@{Group\+G\+UI}}
+\index{Group\+G\+UI@{Group\+G\+UI}!Group\+G\+UI@{Group\+G\+UI}}
+\subsubsection[{\texorpdfstring{Group\+G\+U\+I(\+Account\+Controller $\ast$input\+Account\+Controller, Q\+Widget $\ast$parent=0)}{GroupGUI(AccountController *inputAccountController, QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+G\+U\+I\+::\+Group\+G\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{input\+Account\+Controller, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classGroupGUI_acfc284ab86c90b70735c59b4a3944979}{}\label{classGroupGUI_acfc284ab86c90b70735c59b4a3944979}
+
+
+\hyperlink{classGroupGUI}{Group\+G\+UI} constructs the main group control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Account\+Controller} & The model \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Group\+G\+UI@{Group\+G\+UI}!add\+Group\+Profile@{add\+Group\+Profile}}
+\index{add\+Group\+Profile@{add\+Group\+Profile}!Group\+G\+UI@{Group\+G\+UI}}
+\subsubsection[{\texorpdfstring{add\+Group\+Profile(\+Group\+Profile\+G\+U\+I $\ast$profile\+View)}{addGroupProfile(GroupProfileGUI *profileView)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+G\+U\+I\+::add\+Group\+Profile (
+\begin{DoxyParamCaption}
+\item[{{\bf Group\+Profile\+G\+UI} $\ast$}]{profile\+View}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupGUI_a641a3dbe4cbf8e67f3b78247cc88a38a}{}\label{classGroupGUI_a641a3dbe4cbf8e67f3b78247cc88a38a}
+
+
+add\+Group\+Profile Add a profile G\+UI for the group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em profile\+View} & the profile view for the group \\
+\hline
+\end{DoxyParams}
+\index{Group\+G\+UI@{Group\+G\+UI}!add\+Group\+Scrapbook@{add\+Group\+Scrapbook}}
+\index{add\+Group\+Scrapbook@{add\+Group\+Scrapbook}!Group\+G\+UI@{Group\+G\+UI}}
+\subsubsection[{\texorpdfstring{add\+Group\+Scrapbook(\+Scrapbook\+G\+U\+I $\ast$group\+Widget)}{addGroupScrapbook(ScrapbookGUI *groupWidget)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+G\+U\+I\+::add\+Group\+Scrapbook (
+\begin{DoxyParamCaption}
+\item[{{\bf Scrapbook\+G\+UI} $\ast$}]{group\+Widget}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupGUI_a3aec97c7ea8c53451b8e89e78b69c2ca}{}\label{classGroupGUI_a3aec97c7ea8c53451b8e89e78b69c2ca}
+
+
+add\+Group\+Scrapbook Add a scrapbook G\+UI as a group scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+Widget} & the scrapbook G\+UI for the group \\
+\hline
+\end{DoxyParams}
+\index{Group\+G\+UI@{Group\+G\+UI}!switch\+Group\+Views@{switch\+Group\+Views}}
+\index{switch\+Group\+Views@{switch\+Group\+Views}!Group\+G\+UI@{Group\+G\+UI}}
+\subsubsection[{\texorpdfstring{switch\+Group\+Views(\+Group\+G\+U\+I\+Type type)}{switchGroupViews(GroupGUIType type)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+G\+U\+I\+::switch\+Group\+Views (
+\begin{DoxyParamCaption}
+\item[{{\bf Group\+G\+U\+I\+Type}}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupGUI_a259227f76695aca072e4cc6c5801a4e7}{}\label{classGroupGUI_a259227f76695aca072e4cc6c5801a4e7}
+
+
+switch\+Group\+Views Switch between all the group views\+: show all groups, create group, view profile, enter scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of \hyperlink{classGroup}{Group} G\+UI to switch to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/gui/groupgui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/gui/groupgui.\+cpp\end{DoxyCompactItemize}

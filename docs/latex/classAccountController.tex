@@ -1,0 +1,217 @@
+\hypertarget{classAccountController}{}\section{Account\+Controller Class Reference}
+\label{classAccountController}\index{Account\+Controller@{Account\+Controller}}
+
+
+Account Controller class initiates user actions.  
+
+
+
+
+{\ttfamily \#include $<$accountcontroller.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAccountController_a79fa83d5d57f53bba6ade1221ada3a1d}{Account\+Controller} ()\hypertarget{classAccountController_a79fa83d5d57f53bba6ade1221ada3a1d}{}\label{classAccountController_a79fa83d5d57f53bba6ade1221ada3a1d}
+
+\begin{DoxyCompactList}\small\item\em Constructs and runs account controller. \end{DoxyCompactList}\item 
+\hyperlink{classAccountController_a03a3718aa657135e8ce34d6d6f946942}{Account\+Controller} (Q\+String path)\hypertarget{classAccountController_a03a3718aa657135e8ce34d6d6f946942}{}\label{classAccountController_a03a3718aa657135e8ce34d6d6f946942}
+
+\begin{DoxyCompactList}\small\item\em Constructs and runs account controller. \end{DoxyCompactList}\item 
+\hyperlink{classAccountController_ac9951634ec2cfa0c7943f98bbab5279a}{$\sim$\+Account\+Controller} ()\hypertarget{classAccountController_ac9951634ec2cfa0c7943f98bbab5279a}{}\label{classAccountController_ac9951634ec2cfa0c7943f98bbab5279a}
+
+\begin{DoxyCompactList}\small\item\em Descrtucts account controller. \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountController_ae0cde2e3eb66f23840d330c9f305dae5}{create\+New\+Account} (Q\+String username, Q\+String password, Q\+String full\+Name=\char`\"{}\char`\"{}, Q\+String photo=\char`\"{}\char`\"{}, Q\+String description=\char`\"{}\char`\"{}, int admin\+Rights=0)
+\begin{DoxyCompactList}\small\item\em Creates new account and adds account information to database. \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountController_a3597e3f59d0cddceefca6eeb4edadfd3}{check\+Account\+Exists} (Q\+String username)
+\begin{DoxyCompactList}\small\item\em Checks of account exists. \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountController_a10e8731d5d875c5f13a0628695843de6}{login} (Q\+String username, Q\+String password)
+\begin{DoxyCompactList}\small\item\em login Sequence of actions for attempting to login into an account. \end{DoxyCompactList}\item 
+void \hyperlink{classAccountController_a738ac29136e24810dad3f9aec80ce18c}{logout} ()
+\begin{DoxyCompactList}\small\item\em logout Sequence of actions to log out of an account \end{DoxyCompactList}\item 
+\hyperlink{classRocketUser}{Rocket\+User} $\ast$ \hyperlink{classAccountController_a22ef52c3a2c18d6db6f52f78b89e0a94}{get\+User} ()\hypertarget{classAccountController_a22ef52c3a2c18d6db6f52f78b89e0a94}{}\label{classAccountController_a22ef52c3a2c18d6db6f52f78b89e0a94}
+
+\begin{DoxyCompactList}\small\item\em Returns the user associated with the account. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classAccountController_a9ec2a491b5c1b3c166e4f50a75a1e252}{get\+Path} ()
+\begin{DoxyCompactList}\small\item\em Returns database path. \end{DoxyCompactList}\item 
+int \hyperlink{classAccountController_a31f4f33bedc9367b19f9e88c96f06fa7}{get\+Account\+Id} (Q\+String username)
+\begin{DoxyCompactList}\small\item\em Returns current account Id. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classAccountController_a137769fafdaaa27f4a611e249dfb1eaf}{get\+User\+Name} (int id)
+\begin{DoxyCompactList}\small\item\em Returns username. \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classAccountController_a6124f615929e59cd686eb56e32b4e83f}{get\+All\+Usernames} ()
+\begin{DoxyCompactList}\small\item\em gets All usernames \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Q\+String \hyperlink{classAccountController_ae5ae819d313ad3670b2c278bcfacd608}{P\+A\+TH} = \char`\"{}/usr11/cs205\+\_\+2016\+\_\+\+Grp08/rocket\+DB/\char`\"{}\hypertarget{classAccountController_ae5ae819d313ad3670b2c278bcfacd608}{}\label{classAccountController_ae5ae819d313ad3670b2c278bcfacd608}
+
+\begin{DoxyCompactList}\small\item\em server path \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Account Controller class initiates user actions. 
+
+This includes Login and Add friend. 
+
+\subsection{Member Function Documentation}
+\index{Account\+Controller@{Account\+Controller}!check\+Account\+Exists@{check\+Account\+Exists}}
+\index{check\+Account\+Exists@{check\+Account\+Exists}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{check\+Account\+Exists(\+Q\+String username)}{checkAccountExists(QString username)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+Controller\+::check\+Account\+Exists (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_a3597e3f59d0cddceefca6eeb4edadfd3}{}\label{classAccountController_a3597e3f59d0cddceefca6eeb4edadfd3}
+
+
+Checks of account exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Account username \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if account exists 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!create\+New\+Account@{create\+New\+Account}}
+\index{create\+New\+Account@{create\+New\+Account}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{create\+New\+Account(\+Q\+String username, Q\+String password, Q\+String full\+Name="""", Q\+String photo="""", Q\+String description="""", int admin\+Rights=0)}{createNewAccount(QString username, QString password, QString fullName="", QString photo="", QString description="", int adminRights=0)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+Controller\+::create\+New\+Account (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{password, }
+\item[{Q\+String}]{full\+Name = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\+String}]{photo = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\+String}]{description = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{int}]{admin\+Rights = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_ae0cde2e3eb66f23840d330c9f305dae5}{}\label{classAccountController_ae0cde2e3eb66f23840d330c9f305dae5}
+
+
+Creates new account and adds account information to database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Account username \\
+\hline
+{\em password} & Account password \\
+\hline
+{\em full\+Name} & the user\textquotesingle{}s full name \\
+\hline
+{\em photo} & the path of user\textquotesingle{}s photo \\
+\hline
+{\em description} & the description of the account \\
+\hline
+{\em admin\+Rights} & flag to indicate whether user is admin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if adding is successful and false otherwise 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!get\+Account\+Id@{get\+Account\+Id}}
+\index{get\+Account\+Id@{get\+Account\+Id}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Account\+Id(\+Q\+String username)}{getAccountId(QString username)}}]{\setlength{\rightskip}{0pt plus 5cm}int Account\+Controller\+::get\+Account\+Id (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_a31f4f33bedc9367b19f9e88c96f06fa7}{}\label{classAccountController_a31f4f33bedc9367b19f9e88c96f06fa7}
+
+
+Returns current account Id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+account\+Id 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!get\+All\+Usernames@{get\+All\+Usernames}}
+\index{get\+All\+Usernames@{get\+All\+Usernames}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{get\+All\+Usernames()}{getAllUsernames()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List Account\+Controller\+::get\+All\+Usernames (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classAccountController_a6124f615929e59cd686eb56e32b4e83f}{}\label{classAccountController_a6124f615929e59cd686eb56e32b4e83f}
+
+
+gets All usernames 
+
+\begin{DoxyReturn}{Returns}
+Q\+String\+List of all usernames 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Path()}{getPath()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Account\+Controller\+::get\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_a9ec2a491b5c1b3c166e4f50a75a1e252}{}\label{classAccountController_a9ec2a491b5c1b3c166e4f50a75a1e252}
+
+
+Returns database path. 
+
+\begin{DoxyReturn}{Returns}
+db\+Path 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!get\+User\+Name@{get\+User\+Name}}
+\index{get\+User\+Name@{get\+User\+Name}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{get\+User\+Name(int id)}{getUserName(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Account\+Controller\+::get\+User\+Name (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_a137769fafdaaa27f4a611e249dfb1eaf}{}\label{classAccountController_a137769fafdaaa27f4a611e249dfb1eaf}
+
+
+Returns username. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Account id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+username 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!login@{login}}
+\index{login@{login}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{login(\+Q\+String username, Q\+String password)}{login(QString username, QString password)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+Controller\+::login (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{password}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_a10e8731d5d875c5f13a0628695843de6}{}\label{classAccountController_a10e8731d5d875c5f13a0628695843de6}
+
+
+login Sequence of actions for attempting to login into an account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The username of the account \\
+\hline
+{\em password} & The password of the account \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if login passes, false if login fails. 
+\end{DoxyReturn}
+\index{Account\+Controller@{Account\+Controller}!logout@{logout}}
+\index{logout@{logout}!Account\+Controller@{Account\+Controller}}
+\subsubsection[{\texorpdfstring{logout()}{logout()}}]{\setlength{\rightskip}{0pt plus 5cm}void Account\+Controller\+::logout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountController_a738ac29136e24810dad3f9aec80ce18c}{}\label{classAccountController_a738ac29136e24810dad3f9aec80ce18c}
+
+
+logout Sequence of actions to log out of an account 
+
+\begin{DoxyReturn}{Returns}
+true of log out passes, false if it fails 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/accountcontroller.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/accountcontroller.\+cpp\end{DoxyCompactItemize}

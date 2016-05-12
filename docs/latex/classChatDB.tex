@@ -1,0 +1,258 @@
+\hypertarget{classChatDB}{}\section{Chat\+DB Class Reference}
+\label{classChatDB}\index{Chat\+DB@{Chat\+DB}}
+
+
+The \hyperlink{classChatDB}{Chat\+DB} class Maintain a sqlite3 table \char`\"{}\+Chats\char`\"{} to store chats Column 1\+: Chat\+ID I\+N\+T\+E\+G\+ER K\+EY N\+OT N\+U\+LL Column 2\+: Account\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL.  
+
+
+
+
+{\ttfamily \#include $<$chatdb.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classChatDB_aa99e58930a74b5b873280af970ba9fbc}{Chat\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChatDB}{Chat\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classChatDB_a1809a8b752ce9a622c9092c632d5154a}{Chat\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChatDB}{Chat\+DB} Construct an \hyperlink{classChat}{Chat} database, given the path and the name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classChatDB_a89ed15f30c3c77cdead9573bea8d394e}{$\sim$\+Chat\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Chat\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classChatDB_af501cc1ccfa04f5a9c22f34487b52de3}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classChatDB_ac2fd84bd865798bbca96da5a58acd160}{add\+To\+Chat} (int chat\+ID, int account\+ID)
+\begin{DoxyCompactList}\small\item\em add\+To\+Chat Add a new member to chat \end{DoxyCompactList}\item 
+bool \hyperlink{classChatDB_a1543cbf41c9cf2704e6d5440ff72f15d}{remove\+From\+Chat} (int chat\+ID, int account\+ID)
+\begin{DoxyCompactList}\small\item\em remove\+From\+Chat Removes account from chat \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ $\ast$ \hyperlink{classChatDB_ab23373a16930a0822018ccf8a48c47d5}{retrieve\+Chat\+List} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+Chatlist Return a vector chat Ids for a given user indicating all chats the user in a part of \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ $\ast$ \hyperlink{classChatDB_af94ecd02f952a3a01b059f57651ac0a9}{retrieve\+Accounts\+In\+Chat} (int chat\+Id)
+\begin{DoxyCompactList}\small\item\em retrieve\+Accounts\+In\+Chat Return a vector including ID\textquotesingle{}s of all participants of a specified chat \end{DoxyCompactList}\item 
+bool \hyperlink{classChatDB_ad0a787b17322a88800bb38ba7500e1d9}{create\+Chat} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em create\+Chat Creates a chat. \end{DoxyCompactList}\item 
+int \hyperlink{classChatDB_ac6af92de98926da877e606d67bf4fdec}{get\+Max\+Chat\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Max\+Chat\+Id Get the maximum ID for chats \end{DoxyCompactList}\item 
+bool \hyperlink{classChatDB_a7a63614e4a31f1e6f4b5ce9f5d3261f0}{in\+Chat} (int chat\+ID, int account\+ID) const 
+\begin{DoxyCompactList}\small\item\em in\+Chat Returns true of specified account is in specified chat \end{DoxyCompactList}\item 
+bool \hyperlink{classChatDB_aa684136cc3342bec7e1f4fe5093ca9e7}{remove\+All\+Chats} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Chats Remove all chats existing in the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classChatDB}{Chat\+DB} class Maintain a sqlite3 table \char`\"{}\+Chats\char`\"{} to store chats Column 1\+: Chat\+ID I\+N\+T\+E\+G\+ER K\+EY N\+OT N\+U\+LL Column 2\+: Account\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Chat\+DB@{Chat\+DB}!Chat\+DB@{Chat\+DB}}
+\index{Chat\+DB@{Chat\+DB}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{Chat\+D\+B()}{ChatDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Chat\+D\+B\+::\+Chat\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_aa99e58930a74b5b873280af970ba9fbc}{}\label{classChatDB_aa99e58930a74b5b873280af970ba9fbc}
+
+
+\hyperlink{classChatDB}{Chat\+DB}. 
+
+Construct a chat database at ../database/\+Rocket\+DB.sqlite \index{Chat\+DB@{Chat\+DB}!Chat\+DB@{Chat\+DB}}
+\index{Chat\+DB@{Chat\+DB}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{Chat\+D\+B(const Q\+String \&path)}{ChatDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Chat\+D\+B\+::\+Chat\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_a1809a8b752ce9a622c9092c632d5154a}{}\label{classChatDB_a1809a8b752ce9a622c9092c632d5154a}
+
+
+\hyperlink{classChatDB}{Chat\+DB} Construct an \hyperlink{classChat}{Chat} database, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the Chatdb \\
+\hline
+\end{DoxyParams}
+\index{Chat\+DB@{Chat\+DB}!````~Chat\+DB@{$\sim$\+Chat\+DB}}
+\index{````~Chat\+DB@{$\sim$\+Chat\+DB}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Chat\+D\+B()}{~ChatDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Chat\+D\+B\+::$\sim$\+Chat\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_a89ed15f30c3c77cdead9573bea8d394e}{}\label{classChatDB_a89ed15f30c3c77cdead9573bea8d394e}
+
+
+$\sim$\+Chat\+DB 
+
+Default destructor for \hyperlink{classChat}{Chat} database 
+
+\subsection{Member Function Documentation}
+\index{Chat\+DB@{Chat\+DB}!add\+To\+Chat@{add\+To\+Chat}}
+\index{add\+To\+Chat@{add\+To\+Chat}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{add\+To\+Chat(int chat\+I\+D, int account\+I\+D)}{addToChat(int chatID, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+D\+B\+::add\+To\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_ac2fd84bd865798bbca96da5a58acd160}{}\label{classChatDB_ac2fd84bd865798bbca96da5a58acd160}
+
+
+add\+To\+Chat Add a new member to chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+ID} & \hyperlink{classChat}{Chat} Id \\
+\hline
+{\em account\+ID} & Id of account to be added to chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!create\+Chat@{create\+Chat}}
+\index{create\+Chat@{create\+Chat}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{create\+Chat(int account\+I\+D)}{createChat(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+D\+B\+::create\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_ad0a787b17322a88800bb38ba7500e1d9}{}\label{classChatDB_ad0a787b17322a88800bb38ba7500e1d9}
+
+
+create\+Chat Creates a chat. 
+
+When a chat is created, only one user is in the chat
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Id} & Account of creator of the chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if creation successful, false otherwise 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!get\+Max\+Chat\+ID@{get\+Max\+Chat\+ID}}
+\index{get\+Max\+Chat\+ID@{get\+Max\+Chat\+ID}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Chat\+I\+D()}{getMaxChatID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Chat\+D\+B\+::get\+Max\+Chat\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_ac6af92de98926da877e606d67bf4fdec}{}\label{classChatDB_ac6af92de98926da877e606d67bf4fdec}
+
+
+get\+Max\+Chat\+Id Get the maximum ID for chats 
+
+\begin{DoxyReturn}{Returns}
+the maximum used for chats 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!in\+Chat@{in\+Chat}}
+\index{in\+Chat@{in\+Chat}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{in\+Chat(int chat\+I\+D, int account\+I\+D) const }{inChat(int chatID, int accountID) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+D\+B\+::in\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+) const}\hypertarget{classChatDB_a7a63614e4a31f1e6f4b5ce9f5d3261f0}{}\label{classChatDB_a7a63614e4a31f1e6f4b5ce9f5d3261f0}
+
+
+in\+Chat Returns true of specified account is in specified chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+ID} & Id of chosen chat \\
+\hline
+{\em account\+ID} & Id of account \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if specified account is in specified chat, false otherwise 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classChatDB_af501cc1ccfa04f5a9c22f34487b52de3}{}\label{classChatDB_af501cc1ccfa04f5a9c22f34487b52de3}
+
+
+is\+Open 
+
+Check whether \hyperlink{classChat}{Chat} database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!remove\+All\+Chats@{remove\+All\+Chats}}
+\index{remove\+All\+Chats@{remove\+All\+Chats}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Chats()}{removeAllChats()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+D\+B\+::remove\+All\+Chats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_aa684136cc3342bec7e1f4fe5093ca9e7}{}\label{classChatDB_aa684136cc3342bec7e1f4fe5093ca9e7}
+
+
+remove\+All\+Chats Remove all chats existing in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!remove\+From\+Chat@{remove\+From\+Chat}}
+\index{remove\+From\+Chat@{remove\+From\+Chat}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{remove\+From\+Chat(int chat\+I\+D, int account\+I\+D)}{removeFromChat(int chatID, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Chat\+D\+B\+::remove\+From\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+ID, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_a1543cbf41c9cf2704e6d5440ff72f15d}{}\label{classChatDB_a1543cbf41c9cf2704e6d5440ff72f15d}
+
+
+remove\+From\+Chat Removes account from chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+ID} & Id of chosen chat \\
+\hline
+{\em account\+ID} & Id of account to be removed from chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!retrieve\+Accounts\+In\+Chat@{retrieve\+Accounts\+In\+Chat}}
+\index{retrieve\+Accounts\+In\+Chat@{retrieve\+Accounts\+In\+Chat}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Accounts\+In\+Chat(int chat\+Id)}{retrieveAccountsInChat(int chatId)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ $\ast$ Chat\+D\+B\+::retrieve\+Accounts\+In\+Chat (
+\begin{DoxyParamCaption}
+\item[{int}]{chat\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_af94ecd02f952a3a01b059f57651ac0a9}{}\label{classChatDB_af94ecd02f952a3a01b059f57651ac0a9}
+
+
+retrieve\+Accounts\+In\+Chat Return a vector including ID\textquotesingle{}s of all participants of a specified chat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chat\+Id} & Id of chat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of account Ids participating in specified chat 
+\end{DoxyReturn}
+\index{Chat\+DB@{Chat\+DB}!retrieve\+Chat\+List@{retrieve\+Chat\+List}}
+\index{retrieve\+Chat\+List@{retrieve\+Chat\+List}!Chat\+DB@{Chat\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Chat\+List(int account\+I\+D)}{retrieveChatList(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ $\ast$ Chat\+D\+B\+::retrieve\+Chat\+List (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classChatDB_ab23373a16930a0822018ccf8a48c47d5}{}\label{classChatDB_ab23373a16930a0822018ccf8a48c47d5}
+
+
+retrieve\+Chatlist Return a vector chat Ids for a given user indicating all chats the user in a part of 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Id} & Account Id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of Ids of all chats the specified account is involved in 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/chatdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/chatdb.\+cpp\end{DoxyCompactItemize}

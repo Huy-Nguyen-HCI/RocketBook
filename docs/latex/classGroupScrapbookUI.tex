@@ -1,0 +1,278 @@
+\hypertarget{classGroupScrapbookUI}{}\section{Group\+Scrapbook\+UI Class Reference}
+\label{classGroupScrapbookUI}\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+
+
+Groups \hyperlink{classScrapbook}{Scrapbook} UI handles all of the functions for group scrapbook in text UI.  
+
+
+
+
+{\ttfamily \#include $<$groupscrapbookui.\+h$>$}
+
+Inheritance diagram for Group\+Scrapbook\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGroupScrapbookUI}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupScrapbookUI_a48803a826aeb821546a02770b31e13bb}{Group\+Scrapbook\+UI} (Q\+String username, int group\+Id, \hyperlink{classGroup}{Group} $\ast$group, \hyperlink{classScrapbook}{Scrapbook} $\ast$group\+Scrapbook, Q\+String\+List friend\+Names)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupScrapbookUI}{Group\+Scrapbook\+UI}. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_a3faeeff0a07f521520066f75a7f1b225}{draw\+Screen} (int v)
+\begin{DoxyCompactList}\small\item\em Draw screen. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_afb2b9aae788b199fc621b7b11f208504}{take\+Command} (int selection)
+\begin{DoxyCompactList}\small\item\em Take command Makes new screen based on user selection. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_abd2e2425a95a6251066f3ff14f335d27}{display\+Blog} (\hyperlink{classBlog}{Blog} $\ast$blog, int row)
+\begin{DoxyCompactList}\small\item\em Display \hyperlink{classBlog}{Blog}. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_ac326e65f4fef7fefb7b0b5284e1653df}{display\+Tweet} (\hyperlink{classTweet}{Tweet} $\ast$tweet, int row)
+\begin{DoxyCompactList}\small\item\em Display \hyperlink{classTweet}{Tweet}. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_a5195f5a6fbdd6cc8d90348f57322d36c}{view\+Blog} (int index)
+\begin{DoxyCompactList}\small\item\em View \hyperlink{classBlog}{Blog} Displays selected blog on screen. \end{DoxyCompactList}\item 
+int \hyperlink{classGroupScrapbookUI_ae9d46046637ad95dcc5cff4dd0a1cb37}{view\+Scrapbook} ()
+\begin{DoxyCompactList}\small\item\em View \hyperlink{classScrapbook}{Scrapbook} Displays scrapbook posts on screen and allows user to scroll and select blogs to comment. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_ab9b96dbb884e49aa9a2146784340b0bf}{post\+Blog} ()\hypertarget{classGroupScrapbookUI_ab9b96dbb884e49aa9a2146784340b0bf}{}\label{classGroupScrapbookUI_ab9b96dbb884e49aa9a2146784340b0bf}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} \hyperlink{classBlog}{Blog} Asks user for blog title and contents and creates blog post. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_a825bff1239eb5ee8062f0c3057e09af0}{post\+Comment} (int blog\+Index)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} \hyperlink{classComment}{Comment} Adds comment to specific blog. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_a81992e0811cd86d11b9718e11b64db52}{post\+Tweet} ()\hypertarget{classGroupScrapbookUI_a81992e0811cd86d11b9718e11b64db52}{}\label{classGroupScrapbookUI_a81992e0811cd86d11b9718e11b64db52}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} \hyperlink{classTweet}{Tweet} Asks user to enter text and creates tweet post. \end{DoxyCompactList}\item 
+void \hyperlink{classGroupScrapbookUI_a389dda951ced6d3384cdb15bffb5e530}{add\+Friend} (int friend\+Index)
+\begin{DoxyCompactList}\small\item\em Adds friend to group. \end{DoxyCompactList}\item 
+int \hyperlink{classGroupScrapbookUI_a5f7c9c1a9ba8e3c4bcdac89762eca4a3}{select\+Friend} ()
+\begin{DoxyCompactList}\small\item\em Displays friends on screen and allows user to select a friend. \end{DoxyCompactList}\item 
+bool \hyperlink{classGroupScrapbookUI_a237840b9944b0589aa8d218fb03de420}{check\+Type} (int scrapbook\+Index)
+\begin{DoxyCompactList}\small\item\em Checks post type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries group\+Id}\hypertarget{classGroupScrapbookUI_a6d4cb2f6c2883e95e66489284512e535}{}\label{classGroupScrapbookUI_a6d4cb2f6c2883e95e66489284512e535}
+
+\item 
+\hyperlink{classGroup}{Group} $\ast$ {\bfseries group}\hypertarget{classGroupScrapbookUI_a00eef73a684700abf80579418c1ce3c2}{}\label{classGroupScrapbookUI_a00eef73a684700abf80579418c1ce3c2}
+
+\item 
+\hyperlink{classScrapbook}{Scrapbook} $\ast$ {\bfseries group\+Scrapbook}\hypertarget{classGroupScrapbookUI_a84517102b59705dc71a38c1d3bfccc7d}{}\label{classGroupScrapbookUI_a84517102b59705dc71a38c1d3bfccc7d}
+
+\item 
+Q\+String {\bfseries username}\hypertarget{classGroupScrapbookUI_a67fe7755854ad0efdf2062d7ced6ca5a}{}\label{classGroupScrapbookUI_a67fe7755854ad0efdf2062d7ced6ca5a}
+
+\item 
+Q\+String\+List {\bfseries friend\+Names}\hypertarget{classGroupScrapbookUI_a53d92693ac957d7e1ff8ee65402d3324}{}\label{classGroupScrapbookUI_a53d92693ac957d7e1ff8ee65402d3324}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Groups \hyperlink{classScrapbook}{Scrapbook} UI handles all of the functions for group scrapbook in text UI. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{Group\+Scrapbook\+U\+I(\+Q\+String username, int group\+Id, Group $\ast$group, Scrapbook $\ast$group\+Scrapbook, Q\+String\+List friend\+Names)}{GroupScrapbookUI(QString username, int groupId, Group *group, Scrapbook *groupScrapbook, QStringList friendNames)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+Scrapbook\+U\+I\+::\+Group\+Scrapbook\+UI (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{int}]{group\+Id, }
+\item[{{\bf Group} $\ast$}]{group, }
+\item[{{\bf Scrapbook} $\ast$}]{group\+Scrapbook, }
+\item[{Q\+String\+List}]{friend\+Names}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_a48803a826aeb821546a02770b31e13bb}{}\label{classGroupScrapbookUI_a48803a826aeb821546a02770b31e13bb}
+
+
+\hyperlink{classGroupScrapbookUI}{Group\+Scrapbook\+UI}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username of current user \\
+\hline
+{\em group\+Id} & Id of indicated group \\
+\hline
+{\em group} & Indicated group \\
+\hline
+{\em group\+Scrapbook} & \hyperlink{classGroup}{Group}\textquotesingle{}s scrapbook \\
+\hline
+{\em friend\+Names} & List of user\textquotesingle{}s friends \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!add\+Friend@{add\+Friend}}
+\index{add\+Friend@{add\+Friend}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{add\+Friend(int friend\+Index)}{addFriend(int friendIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::add\+Friend (
+\begin{DoxyParamCaption}
+\item[{int}]{friend\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_a389dda951ced6d3384cdb15bffb5e530}{}\label{classGroupScrapbookUI_a389dda951ced6d3384cdb15bffb5e530}
+
+
+Adds friend to group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em friend\+Index} & Position on friends list of selected friend \\
+\hline
+\end{DoxyParams}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!check\+Type@{check\+Type}}
+\index{check\+Type@{check\+Type}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{check\+Type(int scrapbook\+Index)}{checkType(int scrapbookIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+Scrapbook\+U\+I\+::check\+Type (
+\begin{DoxyParamCaption}
+\item[{int}]{scrapbook\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_a237840b9944b0589aa8d218fb03de420}{}\label{classGroupScrapbookUI_a237840b9944b0589aa8d218fb03de420}
+
+
+Checks post type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scrapbook\+Index} & Index of post in post list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if post is a blog 
+\end{DoxyReturn}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!display\+Blog@{display\+Blog}}
+\index{display\+Blog@{display\+Blog}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{display\+Blog(\+Blog $\ast$blog, int row)}{displayBlog(Blog *blog, int row)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::display\+Blog (
+\begin{DoxyParamCaption}
+\item[{{\bf Blog} $\ast$}]{blog, }
+\item[{int}]{row}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_abd2e2425a95a6251066f3ff14f335d27}{}\label{classGroupScrapbookUI_abd2e2425a95a6251066f3ff14f335d27}
+
+
+Display \hyperlink{classBlog}{Blog}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classBlog}{Blog}} & \hyperlink{classBlog}{Blog} to be displayed \\
+\hline
+{\em row} & Position on screen to display blog \\
+\hline
+\end{DoxyParams}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!display\+Tweet@{display\+Tweet}}
+\index{display\+Tweet@{display\+Tweet}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{display\+Tweet(\+Tweet $\ast$tweet, int row)}{displayTweet(Tweet *tweet, int row)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::display\+Tweet (
+\begin{DoxyParamCaption}
+\item[{{\bf Tweet} $\ast$}]{tweet, }
+\item[{int}]{row}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_ac326e65f4fef7fefb7b0b5284e1653df}{}\label{classGroupScrapbookUI_ac326e65f4fef7fefb7b0b5284e1653df}
+
+
+Display \hyperlink{classTweet}{Tweet}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classTweet}{Tweet}} & \hyperlink{classTweet}{Tweet} to be displayed \\
+\hline
+{\em row} & Position on screen to display tweet \\
+\hline
+\end{DoxyParams}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!draw\+Screen@{draw\+Screen}}
+\index{draw\+Screen@{draw\+Screen}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{draw\+Screen(int v)}{drawScreen(int v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::draw\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGroupScrapbookUI_a3faeeff0a07f521520066f75a7f1b225}{}\label{classGroupScrapbookUI_a3faeeff0a07f521520066f75a7f1b225}
+
+
+Draw screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Value of pointer \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{Screen}.
+
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!post\+Comment@{post\+Comment}}
+\index{post\+Comment@{post\+Comment}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{post\+Comment(int blog\+Index)}{postComment(int blogIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::post\+Comment (
+\begin{DoxyParamCaption}
+\item[{int}]{blog\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_a825bff1239eb5ee8062f0c3057e09af0}{}\label{classGroupScrapbookUI_a825bff1239eb5ee8062f0c3057e09af0}
+
+
+\hyperlink{classPost}{Post} \hyperlink{classComment}{Comment} Adds comment to specific blog. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blog\+Index} & Index of blog \\
+\hline
+\end{DoxyParams}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!select\+Friend@{select\+Friend}}
+\index{select\+Friend@{select\+Friend}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{select\+Friend()}{selectFriend()}}]{\setlength{\rightskip}{0pt plus 5cm}int Group\+Scrapbook\+U\+I\+::select\+Friend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_a5f7c9c1a9ba8e3c4bcdac89762eca4a3}{}\label{classGroupScrapbookUI_a5f7c9c1a9ba8e3c4bcdac89762eca4a3}
+
+
+Displays friends on screen and allows user to select a friend. 
+
+\begin{DoxyReturn}{Returns}
+Index of selected friend 
+\end{DoxyReturn}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!take\+Command@{take\+Command}}
+\index{take\+Command@{take\+Command}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{take\+Command(int selection)}{takeCommand(int selection)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::take\+Command (
+\begin{DoxyParamCaption}
+\item[{int}]{selection}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_afb2b9aae788b199fc621b7b11f208504}{}\label{classGroupScrapbookUI_afb2b9aae788b199fc621b7b11f208504}
+
+
+Take command Makes new screen based on user selection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selection} & Pointer value when enter is pressed \\
+\hline
+\end{DoxyParams}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!view\+Blog@{view\+Blog}}
+\index{view\+Blog@{view\+Blog}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{view\+Blog(int index)}{viewBlog(int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+Scrapbook\+U\+I\+::view\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_a5195f5a6fbdd6cc8d90348f57322d36c}{}\label{classGroupScrapbookUI_a5195f5a6fbdd6cc8d90348f57322d36c}
+
+
+View \hyperlink{classBlog}{Blog} Displays selected blog on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of selected blog \\
+\hline
+\end{DoxyParams}
+\index{Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}!view\+Scrapbook@{view\+Scrapbook}}
+\index{view\+Scrapbook@{view\+Scrapbook}!Group\+Scrapbook\+UI@{Group\+Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{view\+Scrapbook()}{viewScrapbook()}}]{\setlength{\rightskip}{0pt plus 5cm}int Group\+Scrapbook\+U\+I\+::view\+Scrapbook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupScrapbookUI_ae9d46046637ad95dcc5cff4dd0a1cb37}{}\label{classGroupScrapbookUI_ae9d46046637ad95dcc5cff4dd0a1cb37}
+
+
+View \hyperlink{classScrapbook}{Scrapbook} Displays scrapbook posts on screen and allows user to scroll and select blogs to comment. 
+
+\begin{DoxyReturn}{Returns}
+location of pointer on screen 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/groupscrapbookui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/groupscrapbookui.\+cpp\end{DoxyCompactItemize}

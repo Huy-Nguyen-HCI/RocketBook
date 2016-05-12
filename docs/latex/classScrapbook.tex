@@ -1,0 +1,362 @@
+\hypertarget{classScrapbook}{}\section{Scrapbook Class Reference}
+\label{classScrapbook}\index{Scrapbook@{Scrapbook}}
+
+
+The \hyperlink{classScrapbook}{Scrapbook} class Contains all the content a user has posted.  
+
+
+
+
+{\ttfamily \#include $<$scrapbook.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classScrapbook_af20366c87e4d29c13633ebd684e54be8}{Scrapbook} (Q\+String db\+Path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScrapbook}{Scrapbook}. \end{DoxyCompactList}\item 
+\hyperlink{classScrapbook_a3eb90c9dd4bdf2b35871aff161c8abeb}{Scrapbook} (Q\+String db\+Path, int id)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScrapbook}{Scrapbook}. \end{DoxyCompactList}\item 
+\hyperlink{classScrapbook_a7130a2a96c585d0729de5c5798250b87}{$\sim$\+Scrapbook} ()\hypertarget{classScrapbook_a7130a2a96c585d0729de5c5798250b87}{}\label{classScrapbook_a7130a2a96c585d0729de5c5798250b87}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScrapbook}{Scrapbook} destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classScrapbook_afd8c7a71d467c6b82200bb7058db4899}{get\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Id \end{DoxyCompactList}\item 
+\hyperlink{classBlog}{Blog} $\ast$ \hyperlink{classScrapbook_a95795fb9dde39bb70c7715fd5bf94ae4}{add\+Blog} (\hyperlink{classBlog}{Blog} $\ast$new\+Blog)
+\begin{DoxyCompactList}\small\item\em add\+Blog Adds blog to scrapbook \end{DoxyCompactList}\item 
+\hyperlink{classBlog}{Blog} $\ast$ \hyperlink{classScrapbook_ac73fb4909d68858681afe416f98ffa90}{add\+Blog} (Q\+String username, Q\+String title, Q\+String content, bool privacy)
+\begin{DoxyCompactList}\small\item\em add\+Blog Constructs new blog and adds blog to scrapbook \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classBlog}{Blog} $\ast$ $>$ \hyperlink{classScrapbook_a12af94427c5906543a10cfd24a691cbe}{get\+All\+Blogs} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Blogs \end{DoxyCompactList}\item 
+\hyperlink{classTweet}{Tweet} $\ast$ \hyperlink{classScrapbook_a308253a7e3bd93f5ed08a33652e9b5f5}{add\+Tweet} (\hyperlink{classTweet}{Tweet} $\ast$new\+Tweet)
+\begin{DoxyCompactList}\small\item\em add\+Tweet Adds tweet to scrapbook \end{DoxyCompactList}\item 
+\hyperlink{classTweet}{Tweet} $\ast$ \hyperlink{classScrapbook_aed06bf63ce44d9af1202920b088a0d3f}{add\+Tweet} (Q\+String username, Q\+String content, bool privacy)
+\begin{DoxyCompactList}\small\item\em add\+Tweet Constructs new tweet and adds tweet to scrapbook \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classTweet}{Tweet} $\ast$ $>$ \hyperlink{classScrapbook_af36d5a699b15569ec45443b5c12a6361}{get\+All\+Tweets} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Tweets \end{DoxyCompactList}\item 
+\hyperlink{classMultimedia}{Multimedia} $\ast$ \hyperlink{classScrapbook_ad49877eed315201e91b08198f590f7b5}{add\+Media} (\hyperlink{classMultimedia}{Multimedia} $\ast$new\+Media)
+\begin{DoxyCompactList}\small\item\em add\+Media Adds multimedia to scrapbook \end{DoxyCompactList}\item 
+\hyperlink{classMultimedia}{Multimedia} $\ast$ \hyperlink{classScrapbook_a45a911b3655b0dc13585391d3d7ad1b1}{add\+Media} (Q\+String username, Q\+String title, Q\+String description, Q\+String content, bool privacy)
+\begin{DoxyCompactList}\small\item\em add\+Media Constructs new multimedia and adds mutlimedia to scrapbook \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classMultimedia}{Multimedia} $\ast$ $>$ \hyperlink{classScrapbook_a1abac6c1797346ebfb91b464b7cebd30}{get\+All\+Media} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Media \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classPost}{Post} $\ast$ $>$ \hyperlink{classScrapbook_ab28df3465cc12fde8d79a2e84f6b363f}{get\+All\+Posts} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Posts \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classPost}{Post} $\ast$ $>$ \hyperlink{classScrapbook_ab19322d97d35fca461ba921c24e206cf}{get\+All\+Public\+Posts} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Public\+Posts \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classPost}{Post} $\ast$ $>$ \hyperlink{classScrapbook_a4d4b3cb9d9a7c2753ce7888f4796bfce}{get\+Latest\+Posts} (int number\+Of\+Posts)
+\begin{DoxyCompactList}\small\item\em get\+Latest\+Post \end{DoxyCompactList}\item 
+\hyperlink{classBlog}{Blog} $\ast$ \hyperlink{classScrapbook_a4ac2f26d09104e86a4eeb1b5416b4715}{get\+Blog} (int id)
+\begin{DoxyCompactList}\small\item\em get\+Blog \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classScrapbook}{Scrapbook} class Contains all the content a user has posted. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Scrapbook@{Scrapbook}!Scrapbook@{Scrapbook}}
+\index{Scrapbook@{Scrapbook}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{Scrapbook(\+Q\+String db\+Path)}{Scrapbook(QString dbPath)}}]{\setlength{\rightskip}{0pt plus 5cm}Scrapbook\+::\+Scrapbook (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_af20366c87e4d29c13633ebd684e54be8}{}\label{classScrapbook_af20366c87e4d29c13633ebd684e54be8}
+
+
+\hyperlink{classScrapbook}{Scrapbook}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & Database path \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook@{Scrapbook}!Scrapbook@{Scrapbook}}
+\index{Scrapbook@{Scrapbook}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{Scrapbook(\+Q\+String db\+Path, int id)}{Scrapbook(QString dbPath, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Scrapbook\+::\+Scrapbook (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a3eb90c9dd4bdf2b35871aff161c8abeb}{}\label{classScrapbook_a3eb90c9dd4bdf2b35871aff161c8abeb}
+
+
+\hyperlink{classScrapbook}{Scrapbook}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & Database path \\
+\hline
+{\em id} & \hyperlink{classScrapbook}{Scrapbook} Id \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Scrapbook@{Scrapbook}!add\+Blog@{add\+Blog}}
+\index{add\+Blog@{add\+Blog}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{add\+Blog(\+Blog $\ast$new\+Blog)}{addBlog(Blog *newBlog)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blog} $\ast$ Scrapbook\+::add\+Blog (
+\begin{DoxyParamCaption}
+\item[{{\bf Blog} $\ast$}]{new\+Blog}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a95795fb9dde39bb70c7715fd5bf94ae4}{}\label{classScrapbook_a95795fb9dde39bb70c7715fd5bf94ae4}
+
+
+add\+Blog Adds blog to scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Blog} & New blog to be added to scrapbook \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly created blog 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!add\+Blog@{add\+Blog}}
+\index{add\+Blog@{add\+Blog}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{add\+Blog(\+Q\+String username, Q\+String title, Q\+String content, bool privacy)}{addBlog(QString username, QString title, QString content, bool privacy)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blog} $\ast$ Scrapbook\+::add\+Blog (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{title, }
+\item[{Q\+String}]{content, }
+\item[{bool}]{privacy}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_ac73fb4909d68858681afe416f98ffa90}{}\label{classScrapbook_ac73fb4909d68858681afe416f98ffa90}
+
+
+add\+Blog Constructs new blog and adds blog to scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Author of blog \\
+\hline
+{\em title} & Title of blog \\
+\hline
+{\em content} & \hyperlink{classBlog}{Blog} content \\
+\hline
+{\em privacy} & True if post is private \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly created blog 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!add\+Media@{add\+Media}}
+\index{add\+Media@{add\+Media}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{add\+Media(\+Multimedia $\ast$new\+Media)}{addMedia(Multimedia *newMedia)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Multimedia} $\ast$ Scrapbook\+::add\+Media (
+\begin{DoxyParamCaption}
+\item[{{\bf Multimedia} $\ast$}]{new\+Media}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_ad49877eed315201e91b08198f590f7b5}{}\label{classScrapbook_ad49877eed315201e91b08198f590f7b5}
+
+
+add\+Media Adds multimedia to scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Media} & New multimedia to be added to scrapbook \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly created multimedia 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!add\+Media@{add\+Media}}
+\index{add\+Media@{add\+Media}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{add\+Media(\+Q\+String username, Q\+String title, Q\+String description, Q\+String content, bool privacy)}{addMedia(QString username, QString title, QString description, QString content, bool privacy)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Multimedia} $\ast$ Scrapbook\+::add\+Media (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{title, }
+\item[{Q\+String}]{description, }
+\item[{Q\+String}]{content, }
+\item[{bool}]{privacy}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a45a911b3655b0dc13585391d3d7ad1b1}{}\label{classScrapbook_a45a911b3655b0dc13585391d3d7ad1b1}
+
+
+add\+Media Constructs new multimedia and adds mutlimedia to scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Author of multimedia \\
+\hline
+{\em title} & Title of multimedia \\
+\hline
+{\em description} & Description of multimedia \\
+\hline
+{\em content} & \hyperlink{classMultimedia}{Multimedia} content \\
+\hline
+{\em privacy} & True if post is private \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly created multimedia 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!add\+Tweet@{add\+Tweet}}
+\index{add\+Tweet@{add\+Tweet}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{add\+Tweet(\+Tweet $\ast$new\+Tweet)}{addTweet(Tweet *newTweet)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tweet} $\ast$ Scrapbook\+::add\+Tweet (
+\begin{DoxyParamCaption}
+\item[{{\bf Tweet} $\ast$}]{new\+Tweet}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a308253a7e3bd93f5ed08a33652e9b5f5}{}\label{classScrapbook_a308253a7e3bd93f5ed08a33652e9b5f5}
+
+
+add\+Tweet Adds tweet to scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Tweet} & New tweet to be added to scrapbook \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly created tweet 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!add\+Tweet@{add\+Tweet}}
+\index{add\+Tweet@{add\+Tweet}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{add\+Tweet(\+Q\+String username, Q\+String content, bool privacy)}{addTweet(QString username, QString content, bool privacy)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tweet} $\ast$ Scrapbook\+::add\+Tweet (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username, }
+\item[{Q\+String}]{content, }
+\item[{bool}]{privacy}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_aed06bf63ce44d9af1202920b088a0d3f}{}\label{classScrapbook_aed06bf63ce44d9af1202920b088a0d3f}
+
+
+add\+Tweet Constructs new tweet and adds tweet to scrapbook 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Author of tweet \\
+\hline
+{\em content} & \hyperlink{classTweet}{Tweet} content \\
+\hline
+{\em privacy} & True if post is private \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly created tweet 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+All\+Blogs@{get\+All\+Blogs}}
+\index{get\+All\+Blogs@{get\+All\+Blogs}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+All\+Blogs()}{getAllBlogs()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Blog} $\ast$ $>$ Scrapbook\+::get\+All\+Blogs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a12af94427c5906543a10cfd24a691cbe}{}\label{classScrapbook_a12af94427c5906543a10cfd24a691cbe}
+
+
+get\+All\+Blogs 
+
+\begin{DoxyReturn}{Returns}
+vector of all Blogs in the scrapbook 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+All\+Media@{get\+All\+Media}}
+\index{get\+All\+Media@{get\+All\+Media}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+All\+Media()}{getAllMedia()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Multimedia} $\ast$ $>$ Scrapbook\+::get\+All\+Media (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a1abac6c1797346ebfb91b464b7cebd30}{}\label{classScrapbook_a1abac6c1797346ebfb91b464b7cebd30}
+
+
+get\+All\+Media 
+
+\begin{DoxyReturn}{Returns}
+vector of all \hyperlink{classMultimedia}{Multimedia} in the scrapbook 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+All\+Posts@{get\+All\+Posts}}
+\index{get\+All\+Posts@{get\+All\+Posts}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+All\+Posts()}{getAllPosts()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Post} $\ast$ $>$ Scrapbook\+::get\+All\+Posts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_ab28df3465cc12fde8d79a2e84f6b363f}{}\label{classScrapbook_ab28df3465cc12fde8d79a2e84f6b363f}
+
+
+get\+All\+Posts 
+
+\begin{DoxyReturn}{Returns}
+vector of all posts in the scrapbook 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+All\+Public\+Posts@{get\+All\+Public\+Posts}}
+\index{get\+All\+Public\+Posts@{get\+All\+Public\+Posts}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+All\+Public\+Posts()}{getAllPublicPosts()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Post} $\ast$ $>$ Scrapbook\+::get\+All\+Public\+Posts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_ab19322d97d35fca461ba921c24e206cf}{}\label{classScrapbook_ab19322d97d35fca461ba921c24e206cf}
+
+
+get\+All\+Public\+Posts 
+
+\begin{DoxyReturn}{Returns}
+vector of all public posts in the scrapbook 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+All\+Tweets@{get\+All\+Tweets}}
+\index{get\+All\+Tweets@{get\+All\+Tweets}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+All\+Tweets()}{getAllTweets()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Tweet} $\ast$ $>$ Scrapbook\+::get\+All\+Tweets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_af36d5a699b15569ec45443b5c12a6361}{}\label{classScrapbook_af36d5a699b15569ec45443b5c12a6361}
+
+
+get\+All\+Tweets 
+
+\begin{DoxyReturn}{Returns}
+vector of all Tweets in the scrapbook 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+Blog@{get\+Blog}}
+\index{get\+Blog@{get\+Blog}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+Blog(int id)}{getBlog(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blog} $\ast$ Scrapbook\+::get\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a4ac2f26d09104e86a4eeb1b5416b4715}{}\label{classScrapbook_a4ac2f26d09104e86a4eeb1b5416b4715}
+
+
+get\+Blog 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{classBlog}{Blog} Id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classBlog}{Blog} at specified Id 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+I\+D()}{getID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Scrapbook\+::get\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classScrapbook_afd8c7a71d467c6b82200bb7058db4899}{}\label{classScrapbook_afd8c7a71d467c6b82200bb7058db4899}
+
+
+get\+Id 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classScrapbook}{Scrapbook} Id 
+\end{DoxyReturn}
+\index{Scrapbook@{Scrapbook}!get\+Latest\+Posts@{get\+Latest\+Posts}}
+\index{get\+Latest\+Posts@{get\+Latest\+Posts}!Scrapbook@{Scrapbook}}
+\subsubsection[{\texorpdfstring{get\+Latest\+Posts(int number\+Of\+Posts)}{getLatestPosts(int numberOfPosts)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Post} $\ast$ $>$ Scrapbook\+::get\+Latest\+Posts (
+\begin{DoxyParamCaption}
+\item[{int}]{number\+Of\+Posts}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbook_a4d4b3cb9d9a7c2753ce7888f4796bfce}{}\label{classScrapbook_a4d4b3cb9d9a7c2753ce7888f4796bfce}
+
+
+get\+Latest\+Post 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+Of\+Post} & Number of post to be returned in vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of posts in the scrapbook 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/scrapbook.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/scrapbook.\+cpp\end{DoxyCompactItemize}

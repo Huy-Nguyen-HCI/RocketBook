@@ -1,0 +1,288 @@
+\hypertarget{classAccountDB}{}\section{Account\+DB Class Reference}
+\label{classAccountDB}\index{Account\+DB@{Account\+DB}}
+
+
+The \hyperlink{classAccountDB}{Account\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$accountdb.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAccountDB_a935f760528c8292a089400e1f3ea9577}{Account\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classAccountDB}{Account\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classAccountDB_a2ca09cf320edd35c90303d3a7ba91204}{Account\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classAccountDB}{Account\+DB} Construct an account database, given the path and the name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classAccountDB_a551774b53bdaafb29cd22879de660d4e}{Account\+DB} (const Q\+String \&path, const Q\+String \&connection\+Name)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classAccountDB}{Account\+DB} Construct an account database, given the path and the connection name of the database. \end{DoxyCompactList}\item 
+\hyperlink{classAccountDB_ac9980df714c334f2cb305ea070a6c4a3}{$\sim$\+Account\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Account\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountDB_a75ce23da6b5a397b07c5a527eaf27ec9}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountDB_a18a8ac09ee458a88e71e492fbb62a1c7}{add\+Account} (int account\+ID, const Q\+String \&username, const Q\+String \&password, int profile\+ID, int admin\+Rights)
+\begin{DoxyCompactList}\small\item\em add\+Account Add a new account to the database table \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountDB_a746a8d486264cea34e566d5b50425ebc}{remove\+Account} (const Q\+String \&username)
+\begin{DoxyCompactList}\small\item\em remove\+Account Remove an entire account from the database, knowing the username \end{DoxyCompactList}\item 
+Account\+Info\+Type \hyperlink{classAccountDB_af8828222707ed6130b414565f18be2bc}{retrieve\+Account\+Info} (const Q\+String \&username)
+\begin{DoxyCompactList}\small\item\em retrieve\+Account\+Info Return a string including details of the account with the username and password For example, a possible return is \char`\"{}1 vuh Avengers214 2\char`\"{} \end{DoxyCompactList}\item 
+int {\bfseries retrieve\+Account\+ID} (const Q\+String \&username)\hypertarget{classAccountDB_af423a6865c2f78f204375deee4553096}{}\label{classAccountDB_af423a6865c2f78f204375deee4553096}
+
+\item 
+bool \hyperlink{classAccountDB_a94dea7bc1945a33c3abbdcaae1599773}{account\+Exists} (const Q\+String \&username) const 
+\begin{DoxyCompactList}\small\item\em account\+Exists Check if account exists, knowing the username \end{DoxyCompactList}\item 
+bool \hyperlink{classAccountDB_a951cc093240e88b375cdd99fac34a8eb}{remove\+All\+Accounts} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Accounts Remove all accounts existing in the database \end{DoxyCompactList}\item 
+int \hyperlink{classAccountDB_a0c9428fda76a5b42b0d0f946bbc2e5f4}{get\+Max\+Account\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+Max\+Account\+ID Get the maximum ID used for account \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classAccountDB_a0fa422135d200d2bb78f29de5beb4fdc}{get\+Username} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em get\+Username Get the the username of an account for a given account Id \end{DoxyCompactList}\item 
+int \hyperlink{classAccountDB_adfc1ccfe39ac55e1b2497d7fab725862}{get\+Profile\+ID} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em get\+Profile\+ID Get the profile ID of an account for a given account ID \end{DoxyCompactList}\item 
+Q\+String\+List {\bfseries get\+All\+Usernames} ()\hypertarget{classAccountDB_a430e10b36e5164866dd53ad8e8b32319}{}\label{classAccountDB_a430e10b36e5164866dd53ad8e8b32319}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classAccountDB}{Account\+DB} class. 
+
+Create an sqlite3 table named \char`\"{}\+Accounts\char`\"{} in a database file. The database structure\+: Column 1\+: Account\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Username T\+E\+XT U\+N\+I\+Q\+UE Column 3\+: Password T\+E\+XT Column 4\+: Profile\+ID I\+N\+T\+E\+G\+ER Column 5\+: Admin\+Rights 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Account\+DB@{Account\+DB}!Account\+DB@{Account\+DB}}
+\index{Account\+DB@{Account\+DB}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{Account\+D\+B()}{AccountDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Account\+D\+B\+::\+Account\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a935f760528c8292a089400e1f3ea9577}{}\label{classAccountDB_a935f760528c8292a089400e1f3ea9577}
+
+
+\hyperlink{classAccountDB}{Account\+DB}. 
+
+Construct an account database at ../database/\+Rocket\+DB.sqlite \index{Account\+DB@{Account\+DB}!Account\+DB@{Account\+DB}}
+\index{Account\+DB@{Account\+DB}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{Account\+D\+B(const Q\+String \&path)}{AccountDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Account\+D\+B\+::\+Account\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a2ca09cf320edd35c90303d3a7ba91204}{}\label{classAccountDB_a2ca09cf320edd35c90303d3a7ba91204}
+
+
+\hyperlink{classAccountDB}{Account\+DB} Construct an account database, given the path and the name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the accountdb \\
+\hline
+\end{DoxyParams}
+\index{Account\+DB@{Account\+DB}!Account\+DB@{Account\+DB}}
+\index{Account\+DB@{Account\+DB}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{Account\+D\+B(const Q\+String \&path, const Q\+String \&connection\+Name)}{AccountDB(const QString &path, const QString &connectionName)}}]{\setlength{\rightskip}{0pt plus 5cm}Account\+D\+B\+::\+Account\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path, }
+\item[{const Q\+String \&}]{connection\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a551774b53bdaafb29cd22879de660d4e}{}\label{classAccountDB_a551774b53bdaafb29cd22879de660d4e}
+
+
+\hyperlink{classAccountDB}{Account\+DB} Construct an account database, given the path and the connection name of the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+{\em connection\+Name} & \\
+\hline
+\end{DoxyParams}
+\index{Account\+DB@{Account\+DB}!````~Account\+DB@{$\sim$\+Account\+DB}}
+\index{````~Account\+DB@{$\sim$\+Account\+DB}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Account\+D\+B()}{~AccountDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Account\+D\+B\+::$\sim$\+Account\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_ac9980df714c334f2cb305ea070a6c4a3}{}\label{classAccountDB_ac9980df714c334f2cb305ea070a6c4a3}
+
+
+$\sim$\+Account\+DB 
+
+Default destructor for account database 
+
+\subsection{Member Function Documentation}
+\index{Account\+DB@{Account\+DB}!account\+Exists@{account\+Exists}}
+\index{account\+Exists@{account\+Exists}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{account\+Exists(const Q\+String \&username) const }{accountExists(const QString &username) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+D\+B\+::account\+Exists (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{username}
+\end{DoxyParamCaption}
+) const}\hypertarget{classAccountDB_a94dea7bc1945a33c3abbdcaae1599773}{}\label{classAccountDB_a94dea7bc1945a33c3abbdcaae1599773}
+
+
+account\+Exists Check if account exists, knowing the username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the account checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!add\+Account@{add\+Account}}
+\index{add\+Account@{add\+Account}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{add\+Account(int account\+I\+D, const Q\+String \&username, const Q\+String \&password, int profile\+I\+D, int admin\+Rights)}{addAccount(int accountID, const QString &username, const QString &password, int profileID, int adminRights)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+D\+B\+::add\+Account (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID, }
+\item[{const Q\+String \&}]{username, }
+\item[{const Q\+String \&}]{password, }
+\item[{int}]{profile\+ID, }
+\item[{int}]{admin\+Rights}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a18a8ac09ee458a88e71e492fbb62a1c7}{}\label{classAccountDB_a18a8ac09ee458a88e71e492fbb62a1c7}
+
+
+add\+Account Add a new account to the database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & Account ID \\
+\hline
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+{\em profile\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!get\+Max\+Account\+ID@{get\+Max\+Account\+ID}}
+\index{get\+Max\+Account\+ID@{get\+Max\+Account\+ID}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{get\+Max\+Account\+I\+D()}{getMaxAccountID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Account\+D\+B\+::get\+Max\+Account\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a0c9428fda76a5b42b0d0f946bbc2e5f4}{}\label{classAccountDB_a0c9428fda76a5b42b0d0f946bbc2e5f4}
+
+
+get\+Max\+Account\+ID Get the maximum ID used for account 
+
+\begin{DoxyReturn}{Returns}
+the maximum ID used for account 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!get\+Profile\+ID@{get\+Profile\+ID}}
+\index{get\+Profile\+ID@{get\+Profile\+ID}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{get\+Profile\+I\+D(int account\+I\+D)}{getProfileID(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}int Account\+D\+B\+::get\+Profile\+ID (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_adfc1ccfe39ac55e1b2497d7fab725862}{}\label{classAccountDB_adfc1ccfe39ac55e1b2497d7fab725862}
+
+
+get\+Profile\+ID Get the profile ID of an account for a given account ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the profile ID 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!get\+Username@{get\+Username}}
+\index{get\+Username@{get\+Username}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{get\+Username(int account\+I\+D)}{getUsername(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Account\+D\+B\+::get\+Username (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a0fa422135d200d2bb78f29de5beb4fdc}{}\label{classAccountDB_a0fa422135d200d2bb78f29de5beb4fdc}
+
+
+get\+Username Get the the username of an account for a given account Id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Id} & Account Id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+username of account which has the specified account Id 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classAccountDB_a75ce23da6b5a397b07c5a527eaf27ec9}{}\label{classAccountDB_a75ce23da6b5a397b07c5a527eaf27ec9}
+
+
+is\+Open 
+
+Check whether account database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!remove\+Account@{remove\+Account}}
+\index{remove\+Account@{remove\+Account}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Account(const Q\+String \&username)}{removeAccount(const QString &username)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+D\+B\+::remove\+Account (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a746a8d486264cea34e566d5b50425ebc}{}\label{classAccountDB_a746a8d486264cea34e566d5b50425ebc}
+
+
+remove\+Account Remove an entire account from the database, knowing the username 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & the username of the account removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!remove\+All\+Accounts@{remove\+All\+Accounts}}
+\index{remove\+All\+Accounts@{remove\+All\+Accounts}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Accounts()}{removeAllAccounts()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Account\+D\+B\+::remove\+All\+Accounts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_a951cc093240e88b375cdd99fac34a8eb}{}\label{classAccountDB_a951cc093240e88b375cdd99fac34a8eb}
+
+
+remove\+All\+Accounts Remove all accounts existing in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Account\+DB@{Account\+DB}!retrieve\+Account\+Info@{retrieve\+Account\+Info}}
+\index{retrieve\+Account\+Info@{retrieve\+Account\+Info}!Account\+DB@{Account\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Account\+Info(const Q\+String \&username)}{retrieveAccountInfo(const QString &username)}}]{\setlength{\rightskip}{0pt plus 5cm}Account\+Info\+Type Account\+D\+B\+::retrieve\+Account\+Info (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classAccountDB_af8828222707ed6130b414565f18be2bc}{}\label{classAccountDB_af8828222707ed6130b414565f18be2bc}
+
+
+retrieve\+Account\+Info Return a string including details of the account with the username and password For example, a possible return is \char`\"{}1 vuh Avengers214 2\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & username of the account \\
+\hline
+{\em password} & password of the account \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string with Account\+ID, Username, Password, Profile\+ID; return \char`\"{}\char`\"{} if the account does not exist. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/accountdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/accountdb.\+cpp\end{DoxyCompactItemize}

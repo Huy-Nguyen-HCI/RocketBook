@@ -1,0 +1,225 @@
+\hypertarget{classGroup}{}\section{Group Class Reference}
+\label{classGroup}\index{Group@{Group}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroup_ac2bb409a9f7c3778540bdd08d88ebea8}{Group} (Q\+String db\+Path, int group\+ID, int account\+ID, Q\+String full\+Name, Q\+String photo, Q\+String description)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroup}{Group} This constructor create a new group. \end{DoxyCompactList}\item 
+\hyperlink{classGroup_a05b1908155299169d753831951514823}{Group} (Q\+String db\+Path, int group\+ID, int profile\+ID)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroup}{Group} This constructor reconstruct an existing group. \end{DoxyCompactList}\item 
+\hyperlink{classGroup_aed00a22ff227ee2657ae44a5cbcedf7c}{$\sim$\+Group} ()\hypertarget{classGroup_aed00a22ff227ee2657ae44a5cbcedf7c}{}\label{classGroup_aed00a22ff227ee2657ae44a5cbcedf7c}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroup}{Group} destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classGroup_a114ada54c464a97c19f578d0ab53aad5}{get\+ID} ()
+\begin{DoxyCompactList}\small\item\em get\+ID \end{DoxyCompactList}\item 
+\hyperlink{classProfile}{Profile} $\ast$ \hyperlink{classGroup_ad9591a9525b2851c1a5d3c45a4484c17}{get\+Profile} ()
+\begin{DoxyCompactList}\small\item\em get\+Profile \end{DoxyCompactList}\item 
+bool \hyperlink{classGroup_a01dcf7c9498b7f289ed2b6da6ffac76e}{add\+Member} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em add\+Member Adds new member to group \end{DoxyCompactList}\item 
+bool \hyperlink{classGroup_a54d7e1e704f86e1900fee1ccd734d4b2}{add\+Member} (Q\+String username)
+\begin{DoxyCompactList}\small\item\em add\+Member Adds new member to group \end{DoxyCompactList}\item 
+bool \hyperlink{classGroup_a1f8ef25c0d64f81cd1bb9b7934efb509}{set\+Admin} (int account\+ID)
+\begin{DoxyCompactList}\small\item\em set\+Admin Sets group member as admininstrator of the group \end{DoxyCompactList}\item 
+bool \hyperlink{classGroup_a606b6ccdd03fc97295abc29b7b7cab45}{set\+Admin} (Q\+String username)
+\begin{DoxyCompactList}\small\item\em set\+Admin Sets group member as admininstrator of the group \end{DoxyCompactList}\item 
+std\+::vector$<$ Q\+String $>$ \hyperlink{classGroup_a106e3f7789d7e90ee7c9febd20f89ffc}{get\+Member\+Name\+List} ()
+\begin{DoxyCompactList}\small\item\em get\+Member\+Name\+List Retrieves member name list \end{DoxyCompactList}\item 
+std\+::vector$<$ Q\+String $>$ \hyperlink{classGroup_a6d0d1a01d0b2e557f65583b0798861d2}{get\+Admin\+Name\+List} ()
+\begin{DoxyCompactList}\small\item\em get\+Admin\+Name\+List Retrieves Admin name list \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group@{Group}!Group@{Group}}
+\index{Group@{Group}!Group@{Group}}
+\subsubsection[{\texorpdfstring{Group(\+Q\+String db\+Path, int group\+I\+D, int account\+I\+D, Q\+String full\+Name, Q\+String photo, Q\+String description)}{Group(QString dbPath, int groupID, int accountID, QString fullName, QString photo, QString description)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+::\+Group (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{group\+ID, }
+\item[{int}]{account\+ID, }
+\item[{Q\+String}]{full\+Name, }
+\item[{Q\+String}]{photo, }
+\item[{Q\+String}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_ac2bb409a9f7c3778540bdd08d88ebea8}{}\label{classGroup_ac2bb409a9f7c3778540bdd08d88ebea8}
+
+
+\hyperlink{classGroup}{Group} This constructor create a new group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & The path to database \\
+\hline
+{\em group\+ID} & The ID of the group \\
+\hline
+{\em account\+ID} & The account ID of the creator \\
+\hline
+{\em full\+Name} & Name of group \\
+\hline
+{\em photo} & Photo of group \\
+\hline
+{\em description} & \hyperlink{classGroup}{Group} description \\
+\hline
+\end{DoxyParams}
+\index{Group@{Group}!Group@{Group}}
+\index{Group@{Group}!Group@{Group}}
+\subsubsection[{\texorpdfstring{Group(\+Q\+String db\+Path, int group\+I\+D, int profile\+I\+D)}{Group(QString dbPath, int groupID, int profileID)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+::\+Group (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{group\+ID, }
+\item[{int}]{profile\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_a05b1908155299169d753831951514823}{}\label{classGroup_a05b1908155299169d753831951514823}
+
+
+\hyperlink{classGroup}{Group} This constructor reconstruct an existing group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & The path to database \\
+\hline
+{\em group\+ID} & The ID of the group \\
+\hline
+{\em profile\+ID} & The ID of the group profile \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Group@{Group}!add\+Member@{add\+Member}}
+\index{add\+Member@{add\+Member}!Group@{Group}}
+\subsubsection[{\texorpdfstring{add\+Member(int account\+I\+D)}{addMember(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+::add\+Member (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_a01dcf7c9498b7f289ed2b6da6ffac76e}{}\label{classGroup_a01dcf7c9498b7f289ed2b6da6ffac76e}
+
+
+add\+Member Adds new member to group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Id} & Id of account to be added to group \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful 
+\end{DoxyReturn}
+\index{Group@{Group}!add\+Member@{add\+Member}}
+\index{add\+Member@{add\+Member}!Group@{Group}}
+\subsubsection[{\texorpdfstring{add\+Member(\+Q\+String username)}{addMember(QString username)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+::add\+Member (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_a54d7e1e704f86e1900fee1ccd734d4b2}{}\label{classGroup_a54d7e1e704f86e1900fee1ccd734d4b2}
+
+
+add\+Member Adds new member to group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username of account to be added to group \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful 
+\end{DoxyReturn}
+\index{Group@{Group}!get\+Admin\+Name\+List@{get\+Admin\+Name\+List}}
+\index{get\+Admin\+Name\+List@{get\+Admin\+Name\+List}!Group@{Group}}
+\subsubsection[{\texorpdfstring{get\+Admin\+Name\+List()}{getAdminNameList()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$Q\+String$>$ Group\+::get\+Admin\+Name\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classGroup_a6d0d1a01d0b2e557f65583b0798861d2}{}\label{classGroup_a6d0d1a01d0b2e557f65583b0798861d2}
+
+
+get\+Admin\+Name\+List Retrieves Admin name list 
+
+\begin{DoxyReturn}{Returns}
+Vector of admin names as Q\+Strings 
+\end{DoxyReturn}
+\index{Group@{Group}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Group@{Group}}
+\subsubsection[{\texorpdfstring{get\+I\+D()}{getID()}}]{\setlength{\rightskip}{0pt plus 5cm}int Group\+::get\+ID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_a114ada54c464a97c19f578d0ab53aad5}{}\label{classGroup_a114ada54c464a97c19f578d0ab53aad5}
+
+
+get\+ID 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classGroup}{Group} Id 
+\end{DoxyReturn}
+\index{Group@{Group}!get\+Member\+Name\+List@{get\+Member\+Name\+List}}
+\index{get\+Member\+Name\+List@{get\+Member\+Name\+List}!Group@{Group}}
+\subsubsection[{\texorpdfstring{get\+Member\+Name\+List()}{getMemberNameList()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$Q\+String$>$ Group\+::get\+Member\+Name\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classGroup_a106e3f7789d7e90ee7c9febd20f89ffc}{}\label{classGroup_a106e3f7789d7e90ee7c9febd20f89ffc}
+
+
+get\+Member\+Name\+List Retrieves member name list 
+
+\begin{DoxyReturn}{Returns}
+Vector of member names as Q\+Strings 
+\end{DoxyReturn}
+\index{Group@{Group}!get\+Profile@{get\+Profile}}
+\index{get\+Profile@{get\+Profile}!Group@{Group}}
+\subsubsection[{\texorpdfstring{get\+Profile()}{getProfile()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Profile} $\ast$ Group\+::get\+Profile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_ad9591a9525b2851c1a5d3c45a4484c17}{}\label{classGroup_ad9591a9525b2851c1a5d3c45a4484c17}
+
+
+get\+Profile 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classGroup}{Group} profile 
+\end{DoxyReturn}
+\index{Group@{Group}!set\+Admin@{set\+Admin}}
+\index{set\+Admin@{set\+Admin}!Group@{Group}}
+\subsubsection[{\texorpdfstring{set\+Admin(int account\+I\+D)}{setAdmin(int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+::set\+Admin (
+\begin{DoxyParamCaption}
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_a1f8ef25c0d64f81cd1bb9b7934efb509}{}\label{classGroup_a1f8ef25c0d64f81cd1bb9b7934efb509}
+
+
+set\+Admin Sets group member as admininstrator of the group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & Account Id of account to be set as admin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful 
+\end{DoxyReturn}
+\index{Group@{Group}!set\+Admin@{set\+Admin}}
+\index{set\+Admin@{set\+Admin}!Group@{Group}}
+\subsubsection[{\texorpdfstring{set\+Admin(\+Q\+String username)}{setAdmin(QString username)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Group\+::set\+Admin (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroup_a606b6ccdd03fc97295abc29b7b7cab45}{}\label{classGroup_a606b6ccdd03fc97295abc29b7b7cab45}
+
+
+set\+Admin Sets group member as admininstrator of the group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username of account to be set as admin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/group.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/group.\+cpp\end{DoxyCompactItemize}

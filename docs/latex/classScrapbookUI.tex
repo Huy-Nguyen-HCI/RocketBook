@@ -1,0 +1,203 @@
+\hypertarget{classScrapbookUI}{}\section{Scrapbook\+UI Class Reference}
+\label{classScrapbookUI}\index{Scrapbook\+UI@{Scrapbook\+UI}}
+
+
+\hyperlink{classScrapbook}{Scrapbook} UI handles all of the functions for scrapbook in text UI.  
+
+
+
+
+{\ttfamily \#include $<$scrapbookui.\+h$>$}
+
+Inheritance diagram for Scrapbook\+UI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classScrapbookUI}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classScrapbookUI_ac6b7ce656599b4b1be8a89a9268ac8a4}{Scrapbook\+UI} (\hyperlink{classAccountController}{Account\+Controller} $\ast$account\+Control)
+\begin{DoxyCompactList}\small\item\em Scrapbook\+IU. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_ae827fcb9cd147e05bbe8074a286ef10f}{draw\+Screen} (int v)
+\begin{DoxyCompactList}\small\item\em Draw screen. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_a456e4a0842c15ab4437f7a5762893f72}{take\+Command} (int selection)
+\begin{DoxyCompactList}\small\item\em Take command Makes new screen based on user selection. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_ace503d6cacce475f83cb5faa84c2d4ee}{post\+Blog} ()\hypertarget{classScrapbookUI_ace503d6cacce475f83cb5faa84c2d4ee}{}\label{classScrapbookUI_ace503d6cacce475f83cb5faa84c2d4ee}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} \hyperlink{classBlog}{Blog} Asks user for blog title and contents and creates blog post. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_af648b16a538505eb0ba4d8dd1d43ad88}{post\+Tweet} ()\hypertarget{classScrapbookUI_af648b16a538505eb0ba4d8dd1d43ad88}{}\label{classScrapbookUI_af648b16a538505eb0ba4d8dd1d43ad88}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} \hyperlink{classTweet}{Tweet} Asks user to enter text and creates tweet post. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_a9f971abd5269dd2daee0262965115863}{make\+H\+T\+ML} ()\hypertarget{classScrapbookUI_a9f971abd5269dd2daee0262965115863}{}\label{classScrapbookUI_a9f971abd5269dd2daee0262965115863}
+
+\begin{DoxyCompactList}\small\item\em Generates H\+T\+ML \hyperlink{classScrapbook}{Scrapbook}. \end{DoxyCompactList}\item 
+int \hyperlink{classScrapbookUI_a4059c771a66d1f7f89a889397e546911}{display\+Scrapbook} ()
+\begin{DoxyCompactList}\small\item\em View \hyperlink{classScrapbook}{Scrapbook} Displays scrapbook posts on screen and allows user to scroll and select blogs to comment. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_a66f6c3b392e8b93fd93e5029e36e163c}{view\+Blog} (int index)
+\begin{DoxyCompactList}\small\item\em View \hyperlink{classBlog}{Blog} Displays selected blog on screen. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_ae1b8a9cd10ac8eac41b8c692e87af526}{post\+Comment} (int blog\+Index)\hypertarget{classScrapbookUI_ae1b8a9cd10ac8eac41b8c692e87af526}{}\label{classScrapbookUI_ae1b8a9cd10ac8eac41b8c692e87af526}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPost}{Post} \hyperlink{classTweet}{Tweet} Asks user to enter text and creates tweet post. \end{DoxyCompactList}\item 
+bool \hyperlink{classScrapbookUI_a465587d61bb66c1ac8c8c2c1b0b9a73d}{check\+Type} (int scrapbook\+Index)
+\begin{DoxyCompactList}\small\item\em Checks post type. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_a6c7d5e84abea60efb67d296c5545cb67}{display\+Blog} (\hyperlink{classBlog}{Blog} $\ast$blog, int row)
+\begin{DoxyCompactList}\small\item\em Display \hyperlink{classBlog}{Blog}. \end{DoxyCompactList}\item 
+void \hyperlink{classScrapbookUI_ad6944e17044fe124baae5d647b46ffef}{display\+Tweet} (\hyperlink{classTweet}{Tweet} $\ast$tweet, int row)
+\begin{DoxyCompactList}\small\item\em Display \hyperlink{classTweet}{Tweet}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classScrapbook}{Scrapbook} UI handles all of the functions for scrapbook in text UI. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!Scrapbook\+UI@{Scrapbook\+UI}}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{Scrapbook\+U\+I(\+Account\+Controller $\ast$account\+Control)}{ScrapbookUI(AccountController *accountControl)}}]{\setlength{\rightskip}{0pt plus 5cm}Scrapbook\+U\+I\+::\+Scrapbook\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{account\+Control}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_ac6b7ce656599b4b1be8a89a9268ac8a4}{}\label{classScrapbookUI_ac6b7ce656599b4b1be8a89a9268ac8a4}
+
+
+Scrapbook\+IU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Controller} & Account Controller \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!check\+Type@{check\+Type}}
+\index{check\+Type@{check\+Type}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{check\+Type(int scrapbook\+Index)}{checkType(int scrapbookIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Scrapbook\+U\+I\+::check\+Type (
+\begin{DoxyParamCaption}
+\item[{int}]{scrapbook\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_a465587d61bb66c1ac8c8c2c1b0b9a73d}{}\label{classScrapbookUI_a465587d61bb66c1ac8c8c2c1b0b9a73d}
+
+
+Checks post type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scrapbook\+Index} & Index of post in post list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if post is a blog 
+\end{DoxyReturn}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!display\+Blog@{display\+Blog}}
+\index{display\+Blog@{display\+Blog}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{display\+Blog(\+Blog $\ast$blog, int row)}{displayBlog(Blog *blog, int row)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+U\+I\+::display\+Blog (
+\begin{DoxyParamCaption}
+\item[{{\bf Blog} $\ast$}]{blog, }
+\item[{int}]{row}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_a6c7d5e84abea60efb67d296c5545cb67}{}\label{classScrapbookUI_a6c7d5e84abea60efb67d296c5545cb67}
+
+
+Display \hyperlink{classBlog}{Blog}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classBlog}{Blog}} & \hyperlink{classBlog}{Blog} to be displayed \\
+\hline
+{\em row} & Position on screen to display blog \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!display\+Scrapbook@{display\+Scrapbook}}
+\index{display\+Scrapbook@{display\+Scrapbook}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{display\+Scrapbook()}{displayScrapbook()}}]{\setlength{\rightskip}{0pt plus 5cm}int Scrapbook\+U\+I\+::display\+Scrapbook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_a4059c771a66d1f7f89a889397e546911}{}\label{classScrapbookUI_a4059c771a66d1f7f89a889397e546911}
+
+
+View \hyperlink{classScrapbook}{Scrapbook} Displays scrapbook posts on screen and allows user to scroll and select blogs to comment. 
+
+\begin{DoxyReturn}{Returns}
+location of pointer on screen 
+\end{DoxyReturn}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!display\+Tweet@{display\+Tweet}}
+\index{display\+Tweet@{display\+Tweet}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{display\+Tweet(\+Tweet $\ast$tweet, int row)}{displayTweet(Tweet *tweet, int row)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+U\+I\+::display\+Tweet (
+\begin{DoxyParamCaption}
+\item[{{\bf Tweet} $\ast$}]{tweet, }
+\item[{int}]{row}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_ad6944e17044fe124baae5d647b46ffef}{}\label{classScrapbookUI_ad6944e17044fe124baae5d647b46ffef}
+
+
+Display \hyperlink{classTweet}{Tweet}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classTweet}{Tweet}} & \hyperlink{classTweet}{Tweet} to be displayed \\
+\hline
+{\em row} & Position on screen to display tweet \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!draw\+Screen@{draw\+Screen}}
+\index{draw\+Screen@{draw\+Screen}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{draw\+Screen(int v)}{drawScreen(int v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+U\+I\+::draw\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classScrapbookUI_ae827fcb9cd147e05bbe8074a286ef10f}{}\label{classScrapbookUI_ae827fcb9cd147e05bbe8074a286ef10f}
+
+
+Draw screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Value of pointer \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{Screen}.
+
+\index{Scrapbook\+UI@{Scrapbook\+UI}!take\+Command@{take\+Command}}
+\index{take\+Command@{take\+Command}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{take\+Command(int selection)}{takeCommand(int selection)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+U\+I\+::take\+Command (
+\begin{DoxyParamCaption}
+\item[{int}]{selection}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_a456e4a0842c15ab4437f7a5762893f72}{}\label{classScrapbookUI_a456e4a0842c15ab4437f7a5762893f72}
+
+
+Take command Makes new screen based on user selection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selection} & Pointer value when enter is pressed \\
+\hline
+\end{DoxyParams}
+\index{Scrapbook\+UI@{Scrapbook\+UI}!view\+Blog@{view\+Blog}}
+\index{view\+Blog@{view\+Blog}!Scrapbook\+UI@{Scrapbook\+UI}}
+\subsubsection[{\texorpdfstring{view\+Blog(int index)}{viewBlog(int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scrapbook\+U\+I\+::view\+Blog (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{classScrapbookUI_a66f6c3b392e8b93fd93e5029e36e163c}{}\label{classScrapbookUI_a66f6c3b392e8b93fd93e5029e36e163c}
+
+
+View \hyperlink{classBlog}{Blog} Displays selected blog on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of selected blog \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/scrapbookui.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/scrapbookui.\+cpp\end{DoxyCompactItemize}

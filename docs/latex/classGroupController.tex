@@ -1,0 +1,108 @@
+\hypertarget{classGroupController}{}\section{Group\+Controller Class Reference}
+\label{classGroupController}\index{Group\+Controller@{Group\+Controller}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGroupController_ae547a242eca65a1605d9c53af638fcfe}{Group\+Controller} (Q\+String db\+Path, int account\+ID)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupController}{Group\+Controller} Constructs \hyperlink{classGroup}{Group} Controller. \end{DoxyCompactList}\item 
+\hyperlink{classGroupController_ae3e63080f1b8ffff1dd2e3fa10a0819a}{$\sim$\+Group\+Controller} ()\hypertarget{classGroupController_ae3e63080f1b8ffff1dd2e3fa10a0819a}{}\label{classGroupController_ae3e63080f1b8ffff1dd2e3fa10a0819a}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGroupController}{Group\+Controller} destructor. \end{DoxyCompactList}\item 
+\hyperlink{classGroup}{Group} $\ast$ \hyperlink{classGroupController_a751f2b1a4214f7def0d2f3d1816260d3}{create\+New\+Group} (Q\+String full\+Name, Q\+String photo, Q\+String description)
+\begin{DoxyCompactList}\small\item\em create\+New\+Group Ceates new \hyperlink{classGroup}{Group} \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classGroup}{Group} $\ast$ $>$ \hyperlink{classGroupController_a251a65c5639370e8e5740f872f2b3837}{get\+All\+Groups} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Groups \end{DoxyCompactList}\item 
+\hyperlink{classGroup}{Group} $\ast$ \hyperlink{classGroupController_a4f65aad9b4e4595d8272fed4b6f8a262}{get\+Group} (int group\+ID)
+\begin{DoxyCompactList}\small\item\em get\+Group \end{DoxyCompactList}\item 
+void \hyperlink{classGroupController_a7a52522600b09950c9e2fb6b1e6b2154}{refresh\+Groups} ()\hypertarget{classGroupController_a7a52522600b09950c9e2fb6b1e6b2154}{}\label{classGroupController_a7a52522600b09950c9e2fb6b1e6b2154}
+
+\begin{DoxyCompactList}\small\item\em Refreshes groups objects to match up with database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group\+Controller@{Group\+Controller}!Group\+Controller@{Group\+Controller}}
+\index{Group\+Controller@{Group\+Controller}!Group\+Controller@{Group\+Controller}}
+\subsubsection[{\texorpdfstring{Group\+Controller(\+Q\+String db\+Path, int account\+I\+D)}{GroupController(QString dbPath, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+Controller\+::\+Group\+Controller (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupController_ae547a242eca65a1605d9c53af638fcfe}{}\label{classGroupController_ae547a242eca65a1605d9c53af638fcfe}
+
+
+\hyperlink{classGroupController}{Group\+Controller} Constructs \hyperlink{classGroup}{Group} Controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & Database Path \\
+\hline
+{\em account\+ID} & Id of account \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Group\+Controller@{Group\+Controller}!create\+New\+Group@{create\+New\+Group}}
+\index{create\+New\+Group@{create\+New\+Group}!Group\+Controller@{Group\+Controller}}
+\subsubsection[{\texorpdfstring{create\+New\+Group(\+Q\+String full\+Name, Q\+String photo, Q\+String description)}{createNewGroup(QString fullName, QString photo, QString description)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} $\ast$ Group\+Controller\+::create\+New\+Group (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{full\+Name, }
+\item[{Q\+String}]{photo, }
+\item[{Q\+String}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupController_a751f2b1a4214f7def0d2f3d1816260d3}{}\label{classGroupController_a751f2b1a4214f7def0d2f3d1816260d3}
+
+
+create\+New\+Group Ceates new \hyperlink{classGroup}{Group} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Name} & \hyperlink{classGroup}{Group} Name \\
+\hline
+{\em photo} & \hyperlink{classGroup}{Group} Photo \\
+\hline
+{\em description} & \hyperlink{classGroup}{Group} Description \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The group which has just been created 
+\end{DoxyReturn}
+\index{Group\+Controller@{Group\+Controller}!get\+All\+Groups@{get\+All\+Groups}}
+\index{get\+All\+Groups@{get\+All\+Groups}!Group\+Controller@{Group\+Controller}}
+\subsubsection[{\texorpdfstring{get\+All\+Groups()}{getAllGroups()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Group} $\ast$ $>$ Group\+Controller\+::get\+All\+Groups (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupController_a251a65c5639370e8e5740f872f2b3837}{}\label{classGroupController_a251a65c5639370e8e5740f872f2b3837}
+
+
+get\+All\+Groups 
+
+\begin{DoxyReturn}{Returns}
+Vector containing all the groups the user in participating in 
+\end{DoxyReturn}
+\index{Group\+Controller@{Group\+Controller}!get\+Group@{get\+Group}}
+\index{get\+Group@{get\+Group}!Group\+Controller@{Group\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Group(int group\+I\+D)}{getGroup(int groupID)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} $\ast$ Group\+Controller\+::get\+Group (
+\begin{DoxyParamCaption}
+\item[{int}]{group\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classGroupController_a4f65aad9b4e4595d8272fed4b6f8a262}{}\label{classGroupController_a4f65aad9b4e4595d8272fed4b6f8a262}
+
+
+get\+Group 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+ID} & \hyperlink{classGroup}{Group} Id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classGroup}{Group} at given group Id 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/groupcontroller.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/groupcontroller.\+cpp\end{DoxyCompactItemize}

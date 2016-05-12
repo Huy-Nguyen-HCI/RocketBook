@@ -1,0 +1,119 @@
+\hypertarget{classMainMenu}{}\section{Main\+Menu Class Reference}
+\label{classMainMenu}\index{Main\+Menu@{Main\+Menu}}
+
+
+The Main Menu Prompts the to select one of several different actions.  
+
+
+
+
+{\ttfamily \#include $<$mainmenu.\+h$>$}
+
+Inheritance diagram for Main\+Menu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMainMenu}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMainMenu_a59fd6b4194b456791c0f17d223e37bea}{Main\+Menu} (\hyperlink{classAccountController}{Account\+Controller} $\ast$account\+Control)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMainMenu}{Main\+Menu} Displays Main Menu. \end{DoxyCompactList}\item 
+\hyperlink{classMainMenu_a0a19ddba3ac52bf39c09b579171c98f2}{$\sim$\+Main\+Menu} ()\hypertarget{classMainMenu_a0a19ddba3ac52bf39c09b579171c98f2}{}\label{classMainMenu_a0a19ddba3ac52bf39c09b579171c98f2}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\+Main\+Menu \end{DoxyCompactList}\item 
+void \hyperlink{classMainMenu_ae86dc04cf1ae13a6041ffbd7212e5421}{draw\+Screen} (int v)
+\begin{DoxyCompactList}\small\item\em Draw screen. \end{DoxyCompactList}\item 
+void \hyperlink{classMainMenu_ab91c57315336821b94bd1240550183a4}{change\+Screen} (int selection)
+\begin{DoxyCompactList}\small\item\em Change \hyperlink{classScreen}{Screen} Makes new screen based on user selection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFriendsUI}{Friends\+UI} $\ast$ {\bfseries friends}\hypertarget{classMainMenu_ac05fadacf74b5741d0b8ce500596bae3}{}\label{classMainMenu_ac05fadacf74b5741d0b8ce500596bae3}
+
+\item 
+\hyperlink{classChatUI}{Chat\+UI} $\ast$ {\bfseries chats}\hypertarget{classMainMenu_a5cdb3f46d4d1caba34a2fa78bf90229c}{}\label{classMainMenu_a5cdb3f46d4d1caba34a2fa78bf90229c}
+
+\item 
+\hyperlink{classScrapbookUI}{Scrapbook\+UI} $\ast$ {\bfseries scrapbook}\hypertarget{classMainMenu_a83d3d33ace5e26e52965648514f14f41}{}\label{classMainMenu_a83d3d33ace5e26e52965648514f14f41}
+
+\item 
+\hyperlink{classProfileUI}{Profile\+UI} $\ast$ {\bfseries profile}\hypertarget{classMainMenu_adcd9f278a7861cc7cc8db31ea8db804b}{}\label{classMainMenu_adcd9f278a7861cc7cc8db31ea8db804b}
+
+\item 
+\hyperlink{classFeedUI}{Feed\+UI} $\ast$ {\bfseries feed}\hypertarget{classMainMenu_a9347d630d6a161d91d822f00e6542859}{}\label{classMainMenu_a9347d630d6a161d91d822f00e6542859}
+
+\item 
+\hyperlink{classGroupsUI}{Groups\+UI} $\ast$ {\bfseries groups}\hypertarget{classMainMenu_a11b7a11b936f917358f5c44f177f3bd0}{}\label{classMainMenu_a11b7a11b936f917358f5c44f177f3bd0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Main Menu Prompts the to select one of several different actions. 
+
+These actions include profile, feed, scrapbook, friends, groups, messaging, and logout. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Main\+Menu@{Main\+Menu}!Main\+Menu@{Main\+Menu}}
+\index{Main\+Menu@{Main\+Menu}!Main\+Menu@{Main\+Menu}}
+\subsubsection[{\texorpdfstring{Main\+Menu(\+Account\+Controller $\ast$account\+Control)}{MainMenu(AccountController *accountControl)}}]{\setlength{\rightskip}{0pt plus 5cm}Main\+Menu\+::\+Main\+Menu (
+\begin{DoxyParamCaption}
+\item[{{\bf Account\+Controller} $\ast$}]{account\+Control}
+\end{DoxyParamCaption}
+)}\hypertarget{classMainMenu_a59fd6b4194b456791c0f17d223e37bea}{}\label{classMainMenu_a59fd6b4194b456791c0f17d223e37bea}
+
+
+\hyperlink{classMainMenu}{Main\+Menu} Displays Main Menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+Controller} & Account Controller \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Main\+Menu@{Main\+Menu}!change\+Screen@{change\+Screen}}
+\index{change\+Screen@{change\+Screen}!Main\+Menu@{Main\+Menu}}
+\subsubsection[{\texorpdfstring{change\+Screen(int selection)}{changeScreen(int selection)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Menu\+::change\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{selection}
+\end{DoxyParamCaption}
+)}\hypertarget{classMainMenu_ab91c57315336821b94bd1240550183a4}{}\label{classMainMenu_ab91c57315336821b94bd1240550183a4}
+
+
+Change \hyperlink{classScreen}{Screen} Makes new screen based on user selection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selection} & Pointer (arrow on screen) value when enter is pressed \\
+\hline
+\end{DoxyParams}
+\index{Main\+Menu@{Main\+Menu}!draw\+Screen@{draw\+Screen}}
+\index{draw\+Screen@{draw\+Screen}!Main\+Menu@{Main\+Menu}}
+\subsubsection[{\texorpdfstring{draw\+Screen(int v)}{drawScreen(int v)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Menu\+::draw\+Screen (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classMainMenu_ae86dc04cf1ae13a6041ffbd7212e5421}{}\label{classMainMenu_ae86dc04cf1ae13a6041ffbd7212e5421}
+
+
+Draw screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Value of pointer \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classScreen_a7c48a93c2b9d4bdb92349e68d8f88c5e}{Screen}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/mainmenu.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/textui/mainmenu.\+cpp\end{DoxyCompactItemize}

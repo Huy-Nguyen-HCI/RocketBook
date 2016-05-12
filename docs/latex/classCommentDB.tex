@@ -1,0 +1,212 @@
+\hypertarget{classCommentDB}{}\section{Comment\+DB Class Reference}
+\label{classCommentDB}\index{Comment\+DB@{Comment\+DB}}
+
+
+The \hyperlink{classCommentDB}{Comment\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$commentdb.\+h$>$}
+
+Inheritance diagram for Comment\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCommentDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCommentDB_ac5d0c5ea3bcfc16bd08522eab40f96c5}{Comment\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCommentDB}{Comment\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classCommentDB_a6b8fd5bb5b5116016103199773817917}{Comment\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCommentDB}{Comment\+DB} Construct a comment database, given the path. \end{DoxyCompactList}\item 
+\hyperlink{classCommentDB_a2b4336fab794dad2d02b56fe57cc3ab8}{$\sim$\+Comment\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Comment\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classCommentDB_ad06b4ae25b54125d9873aa726679c088}{add\+Comment} (int comment\+ID, int account\+ID, int blog\+ID, const Q\+String \&content)
+\begin{DoxyCompactList}\small\item\em add\+Comment Add a new account to the database table \end{DoxyCompactList}\item 
+bool \hyperlink{classCommentDB_aede2f63d31cc304a7622d2751d9ae777}{remove\+Comment} (int id)
+\begin{DoxyCompactList}\small\item\em remove\+Comment Remove a comment from the database, given the id \end{DoxyCompactList}\item 
+Comment\+Info\+Type \hyperlink{classCommentDB_ad8bbd99b0ce3aca13c6793bccfdaf08d}{retrieve\+Comment\+Info} (int id)
+\begin{DoxyCompactList}\small\item\em retrieve\+Comment Return a tuple containing information about the comment \end{DoxyCompactList}\item 
+std\+::vector$<$ Comment\+Info\+Type $>$ \hyperlink{classCommentDB_a653a359787cf13dcf54aff19a786c9ba}{retrieve\+All\+Comment\+Info} (int blog\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+All\+Comments Return a vector of tuple containing information about the comme \end{DoxyCompactList}\item 
+bool \hyperlink{classCommentDB_a6dd172ee549edff6d6ed9aaf33064ed8}{comment\+Exists} (int id) const 
+\begin{DoxyCompactList}\small\item\em comment\+Exists Check if comment exists given the id. \end{DoxyCompactList}\item 
+bool \hyperlink{classCommentDB_a2d7875c1237805da17342dd0f8730922}{remove\+All\+Comments} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Comments Remove all comments in the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classCommentDB}{Comment\+DB} class. 
+
+Create an sqlite3 table named \char`\"{}\+Comments\char`\"{} in a database file. The database structure\+: Column 1\+: Comment\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Account\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 3\+: Blog\+ID T\+E\+XT Column 4\+: Comment\+Content T\+E\+XT N\+OT N\+U\+LL 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Comment\+DB@{Comment\+DB}!Comment\+DB@{Comment\+DB}}
+\index{Comment\+DB@{Comment\+DB}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{Comment\+D\+B()}{CommentDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Comment\+D\+B\+::\+Comment\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_ac5d0c5ea3bcfc16bd08522eab40f96c5}{}\label{classCommentDB_ac5d0c5ea3bcfc16bd08522eab40f96c5}
+
+
+\hyperlink{classCommentDB}{Comment\+DB}. 
+
+Construct a comment database at Comment\+D\+B.\+sqlite \index{Comment\+DB@{Comment\+DB}!Comment\+DB@{Comment\+DB}}
+\index{Comment\+DB@{Comment\+DB}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{Comment\+D\+B(const Q\+String \&path)}{CommentDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Comment\+D\+B\+::\+Comment\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_a6b8fd5bb5b5116016103199773817917}{}\label{classCommentDB_a6b8fd5bb5b5116016103199773817917}
+
+
+\hyperlink{classCommentDB}{Comment\+DB} Construct a comment database, given the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the \hyperlink{classCommentDB}{Comment\+DB} \\
+\hline
+\end{DoxyParams}
+\index{Comment\+DB@{Comment\+DB}!````~Comment\+DB@{$\sim$\+Comment\+DB}}
+\index{````~Comment\+DB@{$\sim$\+Comment\+DB}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Comment\+D\+B()}{~CommentDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Comment\+D\+B\+::$\sim$\+Comment\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_a2b4336fab794dad2d02b56fe57cc3ab8}{}\label{classCommentDB_a2b4336fab794dad2d02b56fe57cc3ab8}
+
+
+$\sim$\+Comment\+DB 
+
+Default destructor for comment database 
+
+\subsection{Member Function Documentation}
+\index{Comment\+DB@{Comment\+DB}!add\+Comment@{add\+Comment}}
+\index{add\+Comment@{add\+Comment}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{add\+Comment(int comment\+I\+D, int account\+I\+D, int blog\+I\+D, const Q\+String \&content)}{addComment(int commentID, int accountID, int blogID, const QString &content)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Comment\+D\+B\+::add\+Comment (
+\begin{DoxyParamCaption}
+\item[{int}]{comment\+ID, }
+\item[{int}]{account\+ID, }
+\item[{int}]{blog\+ID, }
+\item[{const Q\+String \&}]{content}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_ad06b4ae25b54125d9873aa726679c088}{}\label{classCommentDB_ad06b4ae25b54125d9873aa726679c088}
+
+
+add\+Comment Add a new account to the database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & Account ID \\
+\hline
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+{\em profile\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Comment\+DB@{Comment\+DB}!comment\+Exists@{comment\+Exists}}
+\index{comment\+Exists@{comment\+Exists}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{comment\+Exists(int id) const }{commentExists(int id) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Comment\+D\+B\+::comment\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+) const}\hypertarget{classCommentDB_a6dd172ee549edff6d6ed9aaf33064ed8}{}\label{classCommentDB_a6dd172ee549edff6d6ed9aaf33064ed8}
+
+
+comment\+Exists Check if comment exists given the id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the input id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Comment\+DB@{Comment\+DB}!remove\+All\+Comments@{remove\+All\+Comments}}
+\index{remove\+All\+Comments@{remove\+All\+Comments}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Comments()}{removeAllComments()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Comment\+D\+B\+::remove\+All\+Comments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_a2d7875c1237805da17342dd0f8730922}{}\label{classCommentDB_a2d7875c1237805da17342dd0f8730922}
+
+
+remove\+All\+Comments Remove all comments in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Comment\+DB@{Comment\+DB}!remove\+Comment@{remove\+Comment}}
+\index{remove\+Comment@{remove\+Comment}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Comment(int id)}{removeComment(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Comment\+D\+B\+::remove\+Comment (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_aede2f63d31cc304a7622d2751d9ae777}{}\label{classCommentDB_aede2f63d31cc304a7622d2751d9ae777}
+
+
+remove\+Comment Remove a comment from the database, given the id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the comment\textquotesingle{}s id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Comment\+DB@{Comment\+DB}!retrieve\+All\+Comment\+Info@{retrieve\+All\+Comment\+Info}}
+\index{retrieve\+All\+Comment\+Info@{retrieve\+All\+Comment\+Info}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+All\+Comment\+Info(int blog\+I\+D)}{retrieveAllCommentInfo(int blogID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Comment\+Info\+Type $>$ Comment\+D\+B\+::retrieve\+All\+Comment\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{blog\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_a653a359787cf13dcf54aff19a786c9ba}{}\label{classCommentDB_a653a359787cf13dcf54aff19a786c9ba}
+
+
+retrieve\+All\+Comments Return a vector of tuple containing information about the comme 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blog\+ID} & The ID of the blog \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Comment\+DB@{Comment\+DB}!retrieve\+Comment\+Info@{retrieve\+Comment\+Info}}
+\index{retrieve\+Comment\+Info@{retrieve\+Comment\+Info}!Comment\+DB@{Comment\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Comment\+Info(int id)}{retrieveCommentInfo(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Comment\+Info\+Type Comment\+D\+B\+::retrieve\+Comment\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classCommentDB_ad8bbd99b0ce3aca13c6793bccfdaf08d}{}\label{classCommentDB_ad8bbd99b0ce3aca13c6793bccfdaf08d}
+
+
+retrieve\+Comment Return a tuple containing information about the comment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the comment\textquotesingle{}s id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string with the id, username and content, or an empty string if id does not exist. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/commentdb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/commentdb.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,162 @@
+\hypertarget{classFriendController}{}\section{Friend\+Controller Class Reference}
+\label{classFriendController}\index{Friend\+Controller@{Friend\+Controller}}
+
+
+The \hyperlink{classFriendController}{Friend\+Controller} class Control all adding/removing friends functionality.  
+
+
+
+
+{\ttfamily \#include $<$friendcontroller.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Add\+Friend\+Status} \{ {\bfseries Add\+Successful}, 
+{\bfseries Already\+Friend}, 
+{\bfseries Friend\+Not\+Exist}, 
+{\bfseries Add\+Failed}
+ \}\hypertarget{classFriendController_a4db3238a6f2e8ce12624a92e81547db5}{}\label{classFriendController_a4db3238a6f2e8ce12624a92e81547db5}
+
+\item 
+enum {\bfseries Delete\+Friend\+Status} \{ {\bfseries Delete\+Successful}, 
+{\bfseries Friendship\+Not\+Exist}, 
+{\bfseries Delete\+Failed}
+ \}\hypertarget{classFriendController_ad5ddfa0b7d2b2eb5dee143f0aa8363b0}{}\label{classFriendController_ad5ddfa0b7d2b2eb5dee143f0aa8363b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFriendController_a5c96f9851c482b29c5baaaa45b0bb971}{Friend\+Controller} (Q\+String db\+Path, int account\+ID)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classFriendController}{Friend\+Controller}. \end{DoxyCompactList}\item 
+\hyperlink{classFriendController_a18ec512e658bf5e9e39b167ef40b925c}{$\sim$\+Friend\+Controller} ()\hypertarget{classFriendController_a18ec512e658bf5e9e39b167ef40b925c}{}\label{classFriendController_a18ec512e658bf5e9e39b167ef40b925c}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\+Friend\+Controller Default destructor \end{DoxyCompactList}\item 
+Add\+Friend\+Status \hyperlink{classFriendController_ae1dcadea467911b774e90640e2b74d98}{add\+Friend} (Q\+String friendname)
+\begin{DoxyCompactList}\small\item\em add Friend \end{DoxyCompactList}\item 
+Delete\+Friend\+Status \hyperlink{classFriendController_adb5a3780263393f573f70c392a11cf4c}{delete\+Friend} (Q\+String friendname)
+\begin{DoxyCompactList}\small\item\em delete Friend \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{classFriendController_aa43aa34b31aa3ad32d4bace87baa96a3}{get\+Friend\+Names} ()
+\begin{DoxyCompactList}\small\item\em get\+Friends \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classFriendController_af32988ca2e523cf5d5183ffc3d0ea1b6}{get\+Friend\+Ids} ()
+\begin{DoxyCompactList}\small\item\em get\+Friends\+Ids \end{DoxyCompactList}\item 
+void \hyperlink{classFriendController_a5df174a1c9cb54ee74e8bb90ae8753d9}{update\+Friend\+List} ()\hypertarget{classFriendController_a5df174a1c9cb54ee74e8bb90ae8753d9}{}\label{classFriendController_a5df174a1c9cb54ee74e8bb90ae8753d9}
+
+\begin{DoxyCompactList}\small\item\em Update Friend List Updates friend list based on database. \end{DoxyCompactList}\item 
+Profile\+Info\+Type \hyperlink{classFriendController_a1cdbb69d38765bbb6a800a4877c3ec70}{get\+Friend\+Profile} (Q\+String username)
+\begin{DoxyCompactList}\small\item\em get Friend \hyperlink{classProfile}{Profile} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classFriendController}{Friend\+Controller} class Control all adding/removing friends functionality. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Friend\+Controller@{Friend\+Controller}!Friend\+Controller@{Friend\+Controller}}
+\index{Friend\+Controller@{Friend\+Controller}!Friend\+Controller@{Friend\+Controller}}
+\subsubsection[{\texorpdfstring{Friend\+Controller(\+Q\+String db\+Path, int account\+I\+D)}{FriendController(QString dbPath, int accountID)}}]{\setlength{\rightskip}{0pt plus 5cm}Friend\+Controller\+::\+Friend\+Controller (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{db\+Path, }
+\item[{int}]{account\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendController_a5c96f9851c482b29c5baaaa45b0bb971}{}\label{classFriendController_a5c96f9851c482b29c5baaaa45b0bb971}
+
+
+\hyperlink{classFriendController}{Friend\+Controller}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & \\
+\hline
+{\em account\+ID} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Friend\+Controller@{Friend\+Controller}!add\+Friend@{add\+Friend}}
+\index{add\+Friend@{add\+Friend}!Friend\+Controller@{Friend\+Controller}}
+\subsubsection[{\texorpdfstring{add\+Friend(\+Q\+String friendname)}{addFriend(QString friendname)}}]{\setlength{\rightskip}{0pt plus 5cm}Friend\+Controller\+::\+Add\+Friend\+Status Friend\+Controller\+::add\+Friend (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{friendname}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendController_ae1dcadea467911b774e90640e2b74d98}{}\label{classFriendController_ae1dcadea467911b774e90640e2b74d98}
+
+
+add Friend 
+
+
+\begin{DoxyParams}{Parameters}
+{\em friendname} & Name of friend \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status of friend being added 
+\end{DoxyReturn}
+\index{Friend\+Controller@{Friend\+Controller}!delete\+Friend@{delete\+Friend}}
+\index{delete\+Friend@{delete\+Friend}!Friend\+Controller@{Friend\+Controller}}
+\subsubsection[{\texorpdfstring{delete\+Friend(\+Q\+String friendname)}{deleteFriend(QString friendname)}}]{\setlength{\rightskip}{0pt plus 5cm}Friend\+Controller\+::\+Delete\+Friend\+Status Friend\+Controller\+::delete\+Friend (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{friendname}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendController_adb5a3780263393f573f70c392a11cf4c}{}\label{classFriendController_adb5a3780263393f573f70c392a11cf4c}
+
+
+delete Friend 
+
+
+\begin{DoxyParams}{Parameters}
+{\em friendname} & Name of friend \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status of friend being deleted 
+\end{DoxyReturn}
+\index{Friend\+Controller@{Friend\+Controller}!get\+Friend\+Ids@{get\+Friend\+Ids}}
+\index{get\+Friend\+Ids@{get\+Friend\+Ids}!Friend\+Controller@{Friend\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Friend\+Ids()}{getFriendIds()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ int $>$ Friend\+Controller\+::get\+Friend\+Ids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendController_af32988ca2e523cf5d5183ffc3d0ea1b6}{}\label{classFriendController_af32988ca2e523cf5d5183ffc3d0ea1b6}
+
+
+get\+Friends\+Ids 
+
+\begin{DoxyReturn}{Returns}
+List friend Ids 
+\end{DoxyReturn}
+\index{Friend\+Controller@{Friend\+Controller}!get\+Friend\+Names@{get\+Friend\+Names}}
+\index{get\+Friend\+Names@{get\+Friend\+Names}!Friend\+Controller@{Friend\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Friend\+Names()}{getFriendNames()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List Friend\+Controller\+::get\+Friend\+Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendController_aa43aa34b31aa3ad32d4bace87baa96a3}{}\label{classFriendController_aa43aa34b31aa3ad32d4bace87baa96a3}
+
+
+get\+Friends 
+
+\begin{DoxyReturn}{Returns}
+List of friend names 
+\end{DoxyReturn}
+\index{Friend\+Controller@{Friend\+Controller}!get\+Friend\+Profile@{get\+Friend\+Profile}}
+\index{get\+Friend\+Profile@{get\+Friend\+Profile}!Friend\+Controller@{Friend\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Friend\+Profile(\+Q\+String username)}{getFriendProfile(QString username)}}]{\setlength{\rightskip}{0pt plus 5cm}Profile\+Info\+Type Friend\+Controller\+::get\+Friend\+Profile (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{username}
+\end{DoxyParamCaption}
+)}\hypertarget{classFriendController_a1cdbb69d38765bbb6a800a4877c3ec70}{}\label{classFriendController_a1cdbb69d38765bbb6a800a4877c3ec70}
+
+
+get Friend \hyperlink{classProfile}{Profile} 
+
+\begin{DoxyReturn}{Returns}
+Friend\textquotesingle{}s profile info 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/friendcontroller.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/model/friendcontroller.\+cpp\end{DoxyCompactItemize}

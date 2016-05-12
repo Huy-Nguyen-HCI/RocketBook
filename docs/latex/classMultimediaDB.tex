@@ -1,0 +1,231 @@
+\hypertarget{classMultimediaDB}{}\section{Multimedia\+DB Class Reference}
+\label{classMultimediaDB}\index{Multimedia\+DB@{Multimedia\+DB}}
+
+
+The \hyperlink{classMultimediaDB}{Multimedia\+DB} class.  
+
+
+
+
+{\ttfamily \#include $<$multimediadb.\+h$>$}
+
+Inheritance diagram for Multimedia\+DB\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMultimediaDB}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMultimediaDB_a048917175bd492882f859589b54bf0c0}{Multimedia\+DB} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMultimediaDB}{Multimedia\+DB}. \end{DoxyCompactList}\item 
+\hyperlink{classMultimediaDB_a208ee84fdeab0de7edf4765fcd0bc500}{Multimedia\+DB} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classMultimediaDB}{Multimedia\+DB} Construct a \hyperlink{classMultimedia}{Multimedia} database, given the path. \end{DoxyCompactList}\item 
+\hyperlink{classMultimediaDB_a29d25675487c38ab3c1a0bc5fafb1735}{$\sim$\+Multimedia\+DB} ()
+\begin{DoxyCompactList}\small\item\em $\sim$\+Multimedia\+DB \end{DoxyCompactList}\item 
+bool \hyperlink{classMultimediaDB_a39cd333257972ca8b52d836b7439688d}{is\+Open} () const 
+\begin{DoxyCompactList}\small\item\em is\+Open \end{DoxyCompactList}\item 
+bool \hyperlink{classMultimediaDB_acefba2ec9c7af4f640a8114983134310}{add\+Multimedia} (int multimedia\+ID, int account\+ID, int scrapbook\+ID, const Q\+String \&multimedia\+Title, const Q\+String \&multimedia\+Description, const Q\+String \&multimedia\+Content, int privacy)
+\begin{DoxyCompactList}\small\item\em add\+Multimedia Add a new account to the database table \end{DoxyCompactList}\item 
+bool \hyperlink{classMultimediaDB_ad701af61e1af3bb7ec7597929a7fd234}{remove\+Multimedia} (int id)
+\begin{DoxyCompactList}\small\item\em remove\+Multimedia Remove a \hyperlink{classMultimedia}{Multimedia} from the database, given the id \end{DoxyCompactList}\item 
+Multimedia\+Info\+Type \hyperlink{classMultimediaDB_adffc035101015974eba99b3f9fc91323}{retrieve\+Multimedia\+Info} (int id)
+\begin{DoxyCompactList}\small\item\em retrieve\+Multimedia Return a tuple containing information about the multimedia content (multimedia\+ID, scrapbook\+ID, multimedia\+Title, multimedia\+Description, multimedia\+Content) For example, a possible return is \char`\"{}1 vuh Hello World!\char`\"{} \end{DoxyCompactList}\item 
+std\+::vector$<$ Multimedia\+Info\+Type $>$ \hyperlink{classMultimediaDB_adc8794e2f6bc8c0c6927d8d2c3b54c59}{retrieve\+All\+Multimedia\+Info} (int scrapbook\+ID)
+\begin{DoxyCompactList}\small\item\em retrieve\+All\+Multimedia\+Info Retrieve all Multimedias from a scrapbooik \end{DoxyCompactList}\item 
+bool \hyperlink{classMultimediaDB_a65b3231aabb21072233556e6913ed960}{multimedia\+Exists} (int id) const 
+\begin{DoxyCompactList}\small\item\em Multimedia\+Exists Check if \hyperlink{classMultimedia}{Multimedia} exists given the id. \end{DoxyCompactList}\item 
+bool \hyperlink{classMultimediaDB_a8582ed163b9abdb708d7232b44583800}{remove\+All\+Multimedias} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Multimedias Remove all Multimedias in the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classMultimediaDB}{Multimedia\+DB} class. 
+
+Create an sqlite3 table named \char`\"{}\+Multimedias\char`\"{} in a database file. The database structure\+: Column 1\+: Multimedia\+ID I\+N\+T\+E\+G\+ER P\+R\+I\+M\+A\+RY K\+EY Column 2\+: Account\+ID I\+N\+T\+E\+GR N\+OT N\+U\+LL Column 3\+: Scrapbook\+ID I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL Column 4\+: Multimedia\+Title T\+E\+XT Column 5\+: Multimedia\+Description T\+E\+XT Column 6\+: Multimedia\+Content T\+E\+XT Column 7\+: Privacy I\+N\+T\+E\+G\+ER N\+OT N\+U\+LL 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Multimedia\+DB@{Multimedia\+DB}!Multimedia\+DB@{Multimedia\+DB}}
+\index{Multimedia\+DB@{Multimedia\+DB}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{Multimedia\+D\+B()}{MultimediaDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Multimedia\+D\+B\+::\+Multimedia\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_a048917175bd492882f859589b54bf0c0}{}\label{classMultimediaDB_a048917175bd492882f859589b54bf0c0}
+
+
+\hyperlink{classMultimediaDB}{Multimedia\+DB}. 
+
+Construct a \hyperlink{classMultimedia}{Multimedia} database at Multimedia\+D\+B.\+sqlite \index{Multimedia\+DB@{Multimedia\+DB}!Multimedia\+DB@{Multimedia\+DB}}
+\index{Multimedia\+DB@{Multimedia\+DB}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{Multimedia\+D\+B(const Q\+String \&path)}{MultimediaDB(const QString &path)}}]{\setlength{\rightskip}{0pt plus 5cm}Multimedia\+D\+B\+::\+Multimedia\+DB (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{path}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_a208ee84fdeab0de7edf4765fcd0bc500}{}\label{classMultimediaDB_a208ee84fdeab0de7edf4765fcd0bc500}
+
+
+\hyperlink{classMultimediaDB}{Multimedia\+DB} Construct a \hyperlink{classMultimedia}{Multimedia} database, given the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & full path name of the \hyperlink{classMultimediaDB}{Multimedia\+DB} \\
+\hline
+\end{DoxyParams}
+\index{Multimedia\+DB@{Multimedia\+DB}!````~Multimedia\+DB@{$\sim$\+Multimedia\+DB}}
+\index{````~Multimedia\+DB@{$\sim$\+Multimedia\+DB}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{$\sim$\+Multimedia\+D\+B()}{~MultimediaDB()}}]{\setlength{\rightskip}{0pt plus 5cm}Multimedia\+D\+B\+::$\sim$\+Multimedia\+DB (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_a29d25675487c38ab3c1a0bc5fafb1735}{}\label{classMultimediaDB_a29d25675487c38ab3c1a0bc5fafb1735}
+
+
+$\sim$\+Multimedia\+DB 
+
+Default destructor for \hyperlink{classMultimedia}{Multimedia} database 
+
+\subsection{Member Function Documentation}
+\index{Multimedia\+DB@{Multimedia\+DB}!add\+Multimedia@{add\+Multimedia}}
+\index{add\+Multimedia@{add\+Multimedia}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{add\+Multimedia(int multimedia\+I\+D, int account\+I\+D, int scrapbook\+I\+D, const Q\+String \&multimedia\+Title, const Q\+String \&multimedia\+Description, const Q\+String \&multimedia\+Content, int privacy)}{addMultimedia(int multimediaID, int accountID, int scrapbookID, const QString &multimediaTitle, const QString &multimediaDescription, const QString &multimediaContent, int privacy)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Multimedia\+D\+B\+::add\+Multimedia (
+\begin{DoxyParamCaption}
+\item[{int}]{multimedia\+ID, }
+\item[{int}]{account\+ID, }
+\item[{int}]{scrapbook\+ID, }
+\item[{const Q\+String \&}]{multimedia\+Title, }
+\item[{const Q\+String \&}]{multimedia\+Description, }
+\item[{const Q\+String \&}]{multimedia\+Content, }
+\item[{int}]{privacy}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_acefba2ec9c7af4f640a8114983134310}{}\label{classMultimediaDB_acefba2ec9c7af4f640a8114983134310}
+
+
+add\+Multimedia Add a new account to the database table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account\+ID} & Account ID \\
+\hline
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+{\em profile\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if added, false if not added 
+\end{DoxyReturn}
+\index{Multimedia\+DB@{Multimedia\+DB}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{is\+Open() const }{isOpen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Multimedia\+D\+B\+::is\+Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMultimediaDB_a39cd333257972ca8b52d836b7439688d}{}\label{classMultimediaDB_a39cd333257972ca8b52d836b7439688d}
+
+
+is\+Open 
+
+Check whether multimedia database is open \begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Multimedia\+DB@{Multimedia\+DB}!multimedia\+Exists@{multimedia\+Exists}}
+\index{multimedia\+Exists@{multimedia\+Exists}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{multimedia\+Exists(int id) const }{multimediaExists(int id) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Multimedia\+D\+B\+::multimedia\+Exists (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMultimediaDB_a65b3231aabb21072233556e6913ed960}{}\label{classMultimediaDB_a65b3231aabb21072233556e6913ed960}
+
+
+Multimedia\+Exists Check if \hyperlink{classMultimedia}{Multimedia} exists given the id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the input id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false if no 
+\end{DoxyReturn}
+\index{Multimedia\+DB@{Multimedia\+DB}!remove\+All\+Multimedias@{remove\+All\+Multimedias}}
+\index{remove\+All\+Multimedias@{remove\+All\+Multimedias}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{remove\+All\+Multimedias()}{removeAllMultimedias()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Multimedia\+D\+B\+::remove\+All\+Multimedias (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_a8582ed163b9abdb708d7232b44583800}{}\label{classMultimediaDB_a8582ed163b9abdb708d7232b44583800}
+
+
+remove\+All\+Multimedias Remove all Multimedias in the database 
+
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Multimedia\+DB@{Multimedia\+DB}!remove\+Multimedia@{remove\+Multimedia}}
+\index{remove\+Multimedia@{remove\+Multimedia}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{remove\+Multimedia(int id)}{removeMultimedia(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Multimedia\+D\+B\+::remove\+Multimedia (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_ad701af61e1af3bb7ec7597929a7fd234}{}\label{classMultimediaDB_ad701af61e1af3bb7ec7597929a7fd234}
+
+
+remove\+Multimedia Remove a \hyperlink{classMultimedia}{Multimedia} from the database, given the id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the \hyperlink{classMultimedia}{Multimedia}\textquotesingle{}s id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if succeeded, false if failed 
+\end{DoxyReturn}
+\index{Multimedia\+DB@{Multimedia\+DB}!retrieve\+All\+Multimedia\+Info@{retrieve\+All\+Multimedia\+Info}}
+\index{retrieve\+All\+Multimedia\+Info@{retrieve\+All\+Multimedia\+Info}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+All\+Multimedia\+Info(int scrapbook\+I\+D)}{retrieveAllMultimediaInfo(int scrapbookID)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Multimedia\+Info\+Type $>$ Multimedia\+D\+B\+::retrieve\+All\+Multimedia\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{scrapbook\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_adc8794e2f6bc8c0c6927d8d2c3b54c59}{}\label{classMultimediaDB_adc8794e2f6bc8c0c6927d8d2c3b54c59}
+
+
+retrieve\+All\+Multimedia\+Info Retrieve all Multimedias from a scrapbooik 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scrapbook\+ID} & The ID of the scrapbook \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of all Multimedia\+Info\+Type tuples containing the data of the \hyperlink{classMultimedia}{Multimedia} 
+\end{DoxyReturn}
+\index{Multimedia\+DB@{Multimedia\+DB}!retrieve\+Multimedia\+Info@{retrieve\+Multimedia\+Info}}
+\index{retrieve\+Multimedia\+Info@{retrieve\+Multimedia\+Info}!Multimedia\+DB@{Multimedia\+DB}}
+\subsubsection[{\texorpdfstring{retrieve\+Multimedia\+Info(int id)}{retrieveMultimediaInfo(int id)}}]{\setlength{\rightskip}{0pt plus 5cm}Multimedia\+Info\+Type Multimedia\+D\+B\+::retrieve\+Multimedia\+Info (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classMultimediaDB_adffc035101015974eba99b3f9fc91323}{}\label{classMultimediaDB_adffc035101015974eba99b3f9fc91323}
+
+
+retrieve\+Multimedia Return a tuple containing information about the multimedia content (multimedia\+ID, scrapbook\+ID, multimedia\+Title, multimedia\+Description, multimedia\+Content) For example, a possible return is \char`\"{}1 vuh Hello World!\char`\"{} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the \hyperlink{classMultimedia}{Multimedia}\textquotesingle{}s id. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string with the id, username and content, or an empty string if id does not exist. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/multimediadb.\+h\item 
+/\+Users/\+Huy\+Nguyen/\+Desktop/\+School/\+C\+S 205/avengers/database/multimediadb.\+cpp\end{DoxyCompactItemize}
