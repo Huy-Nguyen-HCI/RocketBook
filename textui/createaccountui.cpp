@@ -40,10 +40,10 @@ void CreateAccountUI::run(){
 
     // if username does not already exist, create account, copy image, and segue to dashboard
     if (accountControl->createNewAccount(QString::fromStdString(name),
-                                            QString::fromStdString(pass),
-                                            QString::fromStdString(fullName),
-                                            serverPath,
-                                            QString::fromStdString(description))) {
+                                         QString::fromStdString(pass),
+                                         QString::fromStdString(fullName),
+                                         serverPath,
+                                         QString::fromStdString(description))) {
 
 
         mvprintw(12,5,"Account created successfully.");

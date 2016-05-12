@@ -37,22 +37,63 @@ public:
     Group(QString dbPath,
           int groupID,
           int profileID);
-
+    /**
+     * @brief Group destructor
+     */
     ~Group();
 
+    /**
+     * @brief getID
+     * @return Group Id
+     */
     int getID();
+    /**
+     * @brief getProfile
+     * @return Group profile
+     */
     Profile* getProfile();
 
-    //add a new member
+    /**
+     * @brief addMember
+     * Adds new member to group
+     * @param accountId Id of account to be added to group
+     * @return True if successful
+     */
     bool addMember(int accountID);
+    /**
+     * @brief addMember
+     * Adds new member to group
+     * @param username Username of account to be added to group
+     * @return True if successful
+     */
     bool addMember(QString username);
 
-    //set a member to be admin
+    /**
+     * @brief setAdmin
+     * Sets group member as admininstrator of the group
+     * @param accountID Account Id of account to be set as admin
+     * @return True if successful
+     */
     bool setAdmin(int accountID);
+    /**
+     * @brief setAdmin
+     * Sets group member as admininstrator of the group
+     * @param username Username of account to be set as admin
+     * @return True if successful
+     */
     bool setAdmin(QString username);
 
-    //retrieve member name list
+    /**
+     * @brief getMemberNameList
+     * Retrieves member name list
+     * @return Vector of member names as QStrings
+     */
     std::vector<QString> getMemberNameList() { return memberNameList;}
+    /**
+     * @brief getAdminNameList
+     * Retrieves Admin name list
+     * @return Vector of admin names as QStrings
+     */
     std::vector<QString> getAdminNameList() { return adminNameList;}
 
 

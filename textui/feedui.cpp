@@ -13,30 +13,29 @@ FeedUI::FeedUI(AccountController* accountControl)
 
 void FeedUI::drawScreen(int v) {
 
-clear();
+    clear();
 
-// print the instructions for manipulating the Value object
-mvprintw(0, 0, "Select type of content to post:");
-mvprintw(3, 8, "View Feed");
-mvprintw(4, 8, "Back");
+    // print the instructions for manipulating the Value object
+    mvprintw(0, 0, "Select type of content to post:");
+    mvprintw(3, 8, "View Feed");
+    mvprintw(4, 8, "Back");
 
-mvprintw(v+2, 5, "->");
+    mvprintw(v+2, 5, "->");
 
-refresh();
+    refresh();
 }
 
 void FeedUI::takeCommand(int selection){
 
-    // cleanup the window and return control to bash
     endwin();
 
     if(selection==1)
         displayFeed();
-   else if(selection==2)
-       return;
+    else if(selection==2)
+        return;
 
-   initialize();
-   takeCommand(select(options));
+    initialize();
+    takeCommand(select(options));
 
 }
 
@@ -48,58 +47,57 @@ int FeedUI::displayFeed()
     int row, max;
 
     while(scrolling){
-    Feed *allFeed = accountControl->getUser()->getFeed();
-    allFeed->updatePostList();
-    std::vector<Post*> friendFeed = allFeed->getFeed();
-    erase();
-    refresh();
-    mvprintw(0,0, "Feed: Select a blog to comment with enter or press any other key to go back");
-    refresh();
+        Feed *allFeed = accountControl->getUser()->getFeed();
+        allFeed->updatePostList();
+        std::vector<Post*> friendFeed = allFeed->getFeed();
+        erase();
+        refresh();
+        mvprintw(0,0, "Feed: Select a blog to comment with enter or press any other key to go back");
+        refresh();
 
-    row=4;
-    mvprintw(row, 5, "->");
-    refresh();
-
-
-
-    max=offset+4;
-    if(friendFeed.size()<offset+4)
-        max=friendFeed.size();
-
-    for(unsigned int i=offset;i<max; i++){
-        //mvprintw(row,8,std::to_string(chatList->at(i)).c_str());
-        //row++;
-        Post* currentPost = friendFeed[i];
-               QString *author = new QString(currentPost->getAuthorUsername());
-               Post::PostType pType = currentPost->type();
-               switch (pType) {
-                   case Post::typeBlog:
-                       displayBlog((Blog*)currentPost, row, author);
-                       refresh();
-                       row = row+5;
-                       break;
-                   case Post::typeTweet:
-                       displayTweet((Tweet*)currentPost, row, author);
-                       refresh();
-                       row = row+5;
-                       break;
-                   case Post::typeMultimedia:
-                       mvprintw(row, 8, "multimedia content!");
-                       refresh();
-                       row = row+5;
-                       break;
-                   case Post::typeComment:
-                       break;
-                   case Post::typePost:
-                       break;
-               }
-           }
+        row=4;
+        mvprintw(row, 5, "->");
+        refresh();
 
 
-    int ch= getch();
-        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+
+        max=offset+4;
+        if(friendFeed.size()<offset+4)
+            max=friendFeed.size();
+
+        for(unsigned int i=offset;i<max; i++){
+
+            Post* currentPost = friendFeed[i];
+            QString *author = new QString(currentPost->getAuthorUsername());
+            Post::PostType pType = currentPost->type();
+            switch (pType) {
+            case Post::typeBlog:
+                displayBlog((Blog*)currentPost, row, author);
+                refresh();
+                row = row+5;
+                break;
+            case Post::typeTweet:
+                displayTweet((Tweet*)currentPost, row, author);
+                refresh();
+                row = row+5;
+                break;
+            case Post::typeMultimedia:
+                mvprintw(row, 8, "multimedia content!");
+                refresh();
+                row = row+5;
+                break;
+            case Post::typeComment:
+                break;
+            case Post::typePost:
+                break;
+            }
+        }
+
+
+        int ch= getch();
+        if(ch==KEY_DOWN && (max!=(offset+1)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
@@ -127,10 +125,10 @@ void FeedUI::viewBlog(int index)
         return;
     }
 
-      bool commenting = true;
-      int offset=0;
-      int row = 2;
-      int max, displayNumber=7;
+    bool commenting = true;
+    int offset=0;
+    int row = 2;
+    int max, displayNumber=7;
 
 
     while(commenting){
@@ -173,28 +171,27 @@ void FeedUI::viewBlog(int index)
         else
             max = offset+displayNumber;
 
-    for(int i=offset;i<max;i++){
-        Comment *currentComment = allComments.at(i);
-        QString currentContent = currentComment->getAuthorUsername() + ": " + currentComment->getContent();
-        mvprintw(row, 0, currentContent.toStdString().c_str());
-        refresh();
-        row++;
+        for(int i=offset;i<max;i++){
+            Comment *currentComment = allComments.at(i);
+            QString currentContent = currentComment->getAuthorUsername() + ": " + currentComment->getContent();
+            mvprintw(row, 0, currentContent.toStdString().c_str());
+            refresh();
+            row++;
 
         }
 
-    int ch= getch();
-        if(ch==KEY_DOWN && !((allComments.size())==(max)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        int ch= getch();
+        if(ch==KEY_DOWN && !((allComments.size())==(max)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
         else if(ch==10){//enter key
             postComment(index);
-            //postComment();
 
             if(allComments.size() > displayNumber)
-            offset=allComments.size()-displayNumber - 1;
+                offset=allComments.size()-displayNumber - 1;
         }
         else
             commenting=false;
@@ -207,23 +204,23 @@ void FeedUI::viewBlog(int index)
 void FeedUI::postComment(int blogIndex)
 {
 
-     char comment[500];
-     mvprintw(LINES-3, 5, "Enter New Comment: ");
-     echo();
-     getstr(comment);
+    char comment[500];
+    mvprintw(LINES-3, 5, "Enter New Comment: ");
+    echo();
+    getstr(comment);
 
 
-     Feed *allFeed = accountControl->getUser()->getFeed();
-     allFeed->updatePostList();
-     std::vector<Post*> friendFeed = allFeed->getFeed();
-     erase();
-     refresh();
-     Blog* currentBlog;
-     currentBlog = (Blog*) friendFeed[blogIndex];
+    Feed *allFeed = accountControl->getUser()->getFeed();
+    allFeed->updatePostList();
+    std::vector<Post*> friendFeed = allFeed->getFeed();
+    erase();
+    refresh();
+    Blog* currentBlog;
+    currentBlog = (Blog*) friendFeed[blogIndex];
 
-     currentBlog->addComment(accountControl->getUser()->getUsername(), QString::fromStdString(comment));
+    currentBlog->addComment(accountControl->getUser()->getUsername(), QString::fromStdString(comment));
 
-     noecho();
+    noecho();
 
 }
 
@@ -238,21 +235,21 @@ bool FeedUI::checkType(int postIndex)
     Post* currentPost = friendFeed[postIndex];
     Post::PostType pType = currentPost->type();
     switch (pType) {
-        case Post::typeBlog:
-           return true;
-            break;
-        case Post::typeTweet:
-            return false;
-            break;
-        case Post::typeMultimedia:
-            return false;
-            break;
-        case Post::typeComment:
-             return false;
-            break;
-        case Post::typePost:
+    case Post::typeBlog:
+        return true;
+        break;
+    case Post::typeTweet:
         return false;
-            break;
+        break;
+    case Post::typeMultimedia:
+        return false;
+        break;
+    case Post::typeComment:
+        return false;
+        break;
+    case Post::typePost:
+        return false;
+        break;
     }
 
 }

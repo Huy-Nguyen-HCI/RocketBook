@@ -26,6 +26,12 @@ public:
      * @brief Updates post list
      */
     void updatePostList();
+
+    /**
+     * @brief getFeed
+     * Compiles a list of post which is the user's feed
+     * @return the user's feed (a vector of Posts*)
+     */
     std::vector<Post*> getFeed();
 
     /**

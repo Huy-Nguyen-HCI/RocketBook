@@ -15,19 +15,18 @@ ProfileUI::ProfileUI(AccountController* accountControl)
 
 void ProfileUI::takeCommand(int selection){
 
-    // cleanup the window and return control to bash
     endwin();
 
 
-   if(selection==1)
-       viewProfile();
-   else if(selection==2)
-       editDescription();
-   else if(selection==3)
-       return;
+    if(selection==1)
+        viewProfile();
+    else if(selection==2)
+        editDescription();
+    else if(selection==3)
+        return;
 
-   initialize();
-   takeCommand(select(options));
+    initialize();
+    takeCommand(select(options));
 
 }
 
@@ -37,7 +36,6 @@ void ProfileUI::drawScreen(int v){
 
     erase();
 
-    // print the instructions for manipulating the Value object
     mvprintw(0, 0, "Your Account");
     mvprintw(3, 8, "View ");
     mvprintw(4, 8, "Edit Description");
@@ -56,7 +54,6 @@ void ProfileUI::viewProfile(){
 
     erase();
     mvprintw(0, 0, "Your Profile");
-
 
 
     QString username = "Username: " + accountControl->getUser()->getUsername();
@@ -83,12 +80,12 @@ void ProfileUI::editDescription(){
     mvprintw(LINES-1,0,"Press enter to confirm change, or any key to decline change");
     noecho();
     cbreak();
-if(getch()==10){
-    endwin();
-    if(accountControl->getUser()->changeProfileDescription(QString::fromStdString(newDescription)))
-        mvprintw(15,3, "Profile description successfully updated.");
+    if(getch()==10){
+        endwin();
+        if(accountControl->getUser()->changeProfileDescription(QString::fromStdString(newDescription)))
+            mvprintw(15,3, "Profile description successfully updated.");
     }
-else
-    endwin();
+    else
+        endwin();
 
 }

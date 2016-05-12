@@ -27,7 +27,6 @@ class RocketUser
 {
 public:
 
-//    enum AddFriendStatus { Successful, AlreadyFriend, FriendNotExist, Failed };
     /**
      * @brief RocketUser
      * Used to create a new account, must have full name, photo, description, etc.
@@ -56,7 +55,9 @@ public:
                QString username,
                int profileID,
                int adminRights);
-
+    /**
+     * @brief RocketUser destructor
+     */
     ~RocketUser();
 
     /**
@@ -72,7 +73,10 @@ public:
      * @return the user profile
      */
     Profile* getProfile();
-
+    /**
+     * @brief getUsername
+     * @return Username of current rocket user
+     */
     QString getUsername() {return username;}
 
     /**
@@ -97,14 +101,26 @@ public:
      * @return true if user is an admin, false if not
      */
     bool isAdmin() { return adminRights;}
-
+    /**
+     * @brief changeProfileDescription
+     * @param description New profile description
+     */
     bool changeProfileDescription(QString description);
+    /**
+     * @brief changePhoto
+     * @param path New profile picture path
+     */
     bool changePhoto(QString path);
-
+    /**
+     * @brief getChatController
+     * @return Chat Controller
+     */
     ChatController* getChatController();
 
-    ChatController* controlChat() { return chatController;}
-
+    /**
+     * @brief Exports scrapbook to HTML
+     * @return QString of formatted HTML code containing scrapbook posts, profile picture, profile description, and friends
+     */
     QString exportToHtml();
 
 private:
@@ -125,15 +141,40 @@ private:
     Feed* feed;
 
     // helper methods for constructing html
-    QString buildContentHTML();
-    QString blogToHTML(Blog *blog);
-    QString tweetToHTML(Tweet *tweet);
-    QString multimediaToHTML(Multimedia *media);
-    QString profileToHTML();
-    QString friendsToHTML();
 
-    // feed
-    // Chat List
+    /**
+     * @brief Creates HTML code for scrapbook
+     * @return QString of formatted HTML code containing scrapbook posts
+     */
+    QString buildContentHTML();
+    /**
+     * @brief Creates HTML code for blog post
+     * @param *blog specified blog
+     * @return QString of formatted HTML code containing blog post
+     */
+    QString blogToHTML(Blog *blog);
+    /**
+     * @brief Creates HTML code for tweet post
+     * @param *tweet specified tweet
+     * @return QString of formatted HTML code containing tweet post
+     */
+    QString tweetToHTML(Tweet *tweet);
+    /**
+     * @brief Creates HTML code for multimedia post
+     * @param *media specified multimedia
+     * @return QString of formatted HTML code containing multimedia post
+     */
+    QString multimediaToHTML(Multimedia *media);
+    /**
+     * @brief Creates HTML code for profile
+     * @return QString of formatted HTML code containing profile description and profile picture
+     */
+    QString profileToHTML();
+    /**
+     * @brief Creates HTML code for friends
+     * @return QString of formatted HTML code containing friends list
+     */
+    QString friendsToHTML();
 
 };
 

@@ -11,40 +11,38 @@ ScrapbookUI::ScrapbookUI(AccountController* accountControl)
 
 void ScrapbookUI::drawScreen(int v) {
 
-clear();
+    clear();
 
-// print the instructions for manipulating the Value object
-mvprintw(0, 0, "Select type of content to post:");
-mvprintw(3, 8, "View Scrapbook");
-mvprintw(4, 8, "Post Blog");
-mvprintw(5, 8, "Post Tweet");
-mvprintw(6, 8, "Export Scrapbook to HTML");
-mvprintw(7, 8, "Back");
+    mvprintw(0, 0, "Select type of content to post:");
+    mvprintw(3, 8, "View Scrapbook");
+    mvprintw(4, 8, "Post Blog");
+    mvprintw(5, 8, "Post Tweet");
+    mvprintw(6, 8, "Export Scrapbook to HTML");
+    mvprintw(7, 8, "Back");
 
-mvprintw(v+2, 5, "->");
+    mvprintw(v+2, 5, "->");
 
-refresh();
+    refresh();
 }
 
 void ScrapbookUI::takeCommand(int selection){
 
-    // cleanup the window and return control to bash
     endwin();
 
     if(selection==1)
         displayScrapbook();
 
-   else if(selection==2)
-       postBlog();
-   else if(selection==3)
-       postTweet();
-   else if(selection==4)
-       makeHTML();
-   else if(selection==5)
-       return;
+    else if(selection==2)
+        postBlog();
+    else if(selection==3)
+        postTweet();
+    else if(selection==4)
+        makeHTML();
+    else if(selection==5)
+        return;
 
-   initialize();
-   takeCommand(select(options));
+    initialize();
+    takeCommand(select(options));
 
 }
 
@@ -67,13 +65,13 @@ void ScrapbookUI::postBlog(){
     int ch= getch();
     if(ch==112 || ch==10){//enter key or p)
 
-    if(ch==112) //p button
-        priv=true;
+        if(ch==112) //p button
+            priv=true;
 
-    //make new blog. Set text and path
-    accountControl->getUser()->getProfile()->getScrapbook()->addBlog(
-                accountControl->getUser()->getUsername(),QString::fromStdString(title),
-                QString::fromStdString(text),priv);
+        //make new blog. Set text and path
+        accountControl->getUser()->getProfile()->getScrapbook()->addBlog(
+                    accountControl->getUser()->getUsername(),QString::fromStdString(title),
+                    QString::fromStdString(text),priv);
 
     }
 }
@@ -85,7 +83,6 @@ void ScrapbookUI::postTweet(){
     mvprintw(0,0, "Enter Text: ");
     echo();
     getstr(text);
-    //Make new tweet. Set text
 
     mvprintw(LINES-1,0, "Enter p post private, pressed enter to post public, or hit another key to cancel");
     bool priv=false;
@@ -94,11 +91,11 @@ void ScrapbookUI::postTweet(){
     int ch= getch();
     if(ch==112 || ch==10){//enter key or p)
 
-    if(ch==112) //p button
-        priv=true;
-    accountControl->getUser()->getProfile()->getScrapbook()->addTweet(
-                accountControl->getUser()->getUsername(),
-                QString::fromStdString(text),priv);
+        if(ch==112) //p button
+            priv=true;
+        accountControl->getUser()->getProfile()->getScrapbook()->addTweet(
+                    accountControl->getUser()->getUsername(),
+                    QString::fromStdString(text),priv);
 
     }
 }
@@ -114,25 +111,25 @@ int ScrapbookUI::displayScrapbook(){
     while(booking){
 
 
-    std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
-    erase();
-    mvprintw(0,0, "Scrapbook: Select a blog to comment with enter, or hit another key to go back");
-    refresh();
-    row=3;
-    mvprintw(row, 5, "->");
-    refresh();
+        std::vector<Post*> wholeScrapbook = scrapbook->getAllPosts();
+        erase();
+        mvprintw(0,0, "Scrapbook: Select a blog to comment with enter, or hit another key to go back");
+        refresh();
+        row=3;
+        mvprintw(row, 5, "->");
+        refresh();
 
-    int *max;
-    if(wholeScrapbook.size() < offset+5){
-        *max = wholeScrapbook.size();
-    }else{
-        *max = offset+5;
-    }
-    for (unsigned int i = offset; i < *max; i++) {
-        Post* currentPost = wholeScrapbook[i];
-        Post::PostType pType = currentPost->type();
+        int *max;
+        if(wholeScrapbook.size() < offset+5){
+            *max = wholeScrapbook.size();
+        }else{
+            *max = offset+5;
+        }
+        for (unsigned int i = offset; i < *max; i++) {
+            Post* currentPost = wholeScrapbook[i];
+            Post::PostType pType = currentPost->type();
 
-        switch (pType) {
+            switch (pType) {
             case Post::typeBlog:
                 displayBlog((Blog*)currentPost, row);
                 row = row+5;
@@ -149,25 +146,23 @@ int ScrapbookUI::displayScrapbook(){
                 break;
             case Post::typePost:
                 break;
+            }
         }
-    }
-
-//scrl(number of lines)
 
         int ch= getch();
-            if(ch==KEY_DOWN && (*max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
-                offset++;
-            else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
-                offset--;
-            else if(ch==KEY_UP);
-            else if(ch==KEY_DOWN);
-            else if(ch==10)//enter key
-                viewBlog(offset);
-            else
-                return -1;
+        if(ch==KEY_DOWN && (*max!=(offset+1)))
+            offset++;
+        else if(ch==KEY_UP && offset>0)
+            offset--;
+        else if(ch==KEY_UP);
+        else if(ch==KEY_DOWN);
+        else if(ch==10)//enter key
+            viewBlog(offset);
+        else
+            return -1;
 
-        }
-        return offset;
+    }
+    return offset;
 }
 
 
@@ -181,10 +176,10 @@ void ScrapbookUI::viewBlog(int index)
         return;
     }
 
-      bool commenting = true;
-      int offset=0;
-      int row = 2;
-      int max, displayNumber=7;
+    bool commenting = true;
+    int offset=0;
+    int row = 2;
+    int max, displayNumber=7;
 
 
     while(commenting){
@@ -194,7 +189,6 @@ void ScrapbookUI::viewBlog(int index)
         refresh();
         Blog* currentBlog;
         currentBlog = (Blog*) wholeScrapbook[index];
-        //QString *author = new QString(currentBlog->getAuthorUsername() + "'s blog:");
         QString *currentContent = new QString(currentBlog->getContent());
         std::vector<Comment*> allComments = currentBlog->getAllComments();
         erase();
@@ -219,28 +213,27 @@ void ScrapbookUI::viewBlog(int index)
         else
             max = offset+displayNumber;
 
-    for(int i=offset;i<max;i++){
-        Comment *currentComment = allComments.at(i);
-        QString currentContent = currentComment->getAuthorUsername() + ": " + currentComment->getContent();
-        mvprintw(row, 0, currentContent.toStdString().c_str());
-        refresh();
-        row++;
+        for(int i=offset;i<max;i++){
+            Comment *currentComment = allComments.at(i);
+            QString currentContent = currentComment->getAuthorUsername() + ": " + currentComment->getContent();
+            mvprintw(row, 0, currentContent.toStdString().c_str());
+            refresh();
+            row++;
 
         }
 
-    int ch= getch();
-        if(ch==KEY_DOWN && !((allComments.size())==(max)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        int ch= getch();
+        if(ch==KEY_DOWN && !((allComments.size())==(max)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
         else if(ch==10){//enter key
             postComment(index);
-            //postComment();
 
             if(allComments.size() > displayNumber)
-            offset=allComments.size()-displayNumber - 1;
+                offset=allComments.size()-displayNumber - 1;
         }
         else
             commenting=false;
@@ -257,9 +250,6 @@ void ScrapbookUI::postComment(int blogIndex)
     echo();
     getstr(comment);
 
-
-    //Feed *allFeed = accountControl->getUser()->getFeed();
-    //allFeed->updatePostList();
     std::vector<Post*> myBook = scrapbook->getAllPosts();
     erase();
     refresh();
@@ -279,21 +269,21 @@ bool ScrapbookUI::checkType(int scrapbookIndex)
     Post* currentPost = wholeScrapbook[scrapbookIndex];
     Post::PostType pType = currentPost->type();
     switch (pType) {
-        case Post::typeBlog:
-           return true;
-            break;
-        case Post::typeTweet:
-            return false;
-            break;
-        case Post::typeMultimedia:
-            return false;
-            break;
-        case Post::typeComment:
-             return false;
-            break;
-        case Post::typePost:
+    case Post::typeBlog:
+        return true;
+        break;
+    case Post::typeTweet:
         return false;
-            break;
+        break;
+    case Post::typeMultimedia:
+        return false;
+        break;
+    case Post::typeComment:
+        return false;
+        break;
+    case Post::typePost:
+        return false;
+        break;
     }
 }
 
@@ -336,7 +326,4 @@ void ScrapbookUI::makeHTML(){
         QTextStream stream( &file );
         stream << htmlText << endl;
     }
-
-
-
 }

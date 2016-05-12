@@ -18,7 +18,6 @@ public:
 
     /**
      * @brief Post is a constructor of a post.
-     *
      * @param username The username of the author of the post.
      * @param content The content of the post.
      */
@@ -31,7 +30,9 @@ public:
      * @param content The content of the post.
      */
     Post(int id, QString username, QString content);
-
+    /**
+     * @brief Post destructor
+     */
     ~Post();
 
     enum PostType {typePost, typeBlog, typeTweet, typeMultimedia, typeComment};
@@ -54,10 +55,21 @@ public:
      */
     QString getContent();
 
+    /**
+     * @brief setPrivate
+     * Sets post to private
+     */
     void setPrivate();
 
+    /**
+     * @brief getPrivacy
+     * @return True if post is private
+     */
     bool getPrivacy() { return privacy; }
-
+    /**
+     * @brief Sets post Id
+     * @param input Id being assigned to post
+     */
     void setID(int input) { id = input; }
 
     PostType type();

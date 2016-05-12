@@ -46,7 +46,7 @@ FriendController::AddFriendStatus FriendController::addFriend(QString friendname
     QString username = accountDB->getUsername(accountID);
 
     if (!accountDB->accountExists(friendname) || !accountDB->accountExists(username) || username==friendname){
-       // std::cerr << "Account does not exist." << std::endl;
+        // std::cerr << "Account does not exist." << std::endl;
         return FriendController::FriendNotExist;
     }
 
@@ -56,7 +56,7 @@ FriendController::AddFriendStatus FriendController::addFriend(QString friendname
     }
 
     if (friendDB->addFriend(accountID,friendId)) {
-       // std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
+        // std::cout << "You are now friends with " << friendname.toStdString() << "!" << std::endl;
         updateFriendList();
         return FriendController::AddSuccessful;
     }
@@ -69,7 +69,6 @@ FriendController::DeleteFriendStatus FriendController::deleteFriend(QString frie
     int friendId = accountDB->retrieveAccountID(friendname);
 
     if (!friendDB->friendshipExists(accountID,friendId)) {
-      //  std::cerr << "Friendship does not exist." << std::endl;
         return FriendController::FriendshipNotExist;
     }
 
@@ -77,7 +76,6 @@ FriendController::DeleteFriendStatus FriendController::deleteFriend(QString frie
 
         friendDB->removeFriend(accountID,friendId);
         updateFriendList();
-       // std::cout << "You are no longer friends with " << friendname.toStdString() << "." << std::endl;
         return FriendController::DeleteSuccessful;
     }
 }

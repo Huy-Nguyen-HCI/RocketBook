@@ -1,6 +1,6 @@
 #include "friendsui.h"
 
-FriendsUI::FriendsUI(AccountController* accountControl)// FriendController* friendControl)
+FriendsUI::FriendsUI(AccountController* accountControl)
 {
     user=accountControl->getUser();
     username=user->getUsername();
@@ -13,23 +13,22 @@ FriendsUI::FriendsUI(AccountController* accountControl)// FriendController* frie
 
 void FriendsUI::drawScreen(int v) {
 
-clear();
+    clear();
 
-mvprintw(0, 0, "Friends");
-mvprintw(3, 8, "View Friends List");
-mvprintw(4, 8, "Add Friend");
-mvprintw(5, 8, "Delete Friend");
-mvprintw(6, 8, "Back");
+    mvprintw(0, 0, "Friends");
+    mvprintw(3, 8, "View Friends List");
+    mvprintw(4, 8, "Add Friend");
+    mvprintw(5, 8, "Delete Friend");
+    mvprintw(6, 8, "Back");
 
-mvprintw(v+2, 5, "->");
+    mvprintw(v+2, 5, "->");
 
-refresh();
+    refresh();
 }
 
 
 void FriendsUI::takeCommand(int selection){
 
-    // cleanup the window and return control to bash
     endwin();
 
     friendControl=new FriendController(accountControl->getPath(),accountControl->getAccountId(username));
@@ -49,8 +48,8 @@ void FriendsUI::takeCommand(int selection){
     else if(selection==4)
         return;
 
-   initialize();
-   takeCommand(select(options));
+    initialize();
+    takeCommand(select(options));
 
 }
 
@@ -64,7 +63,7 @@ void FriendsUI::addFriend(){
 
     getstr(name);
 
-   accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name));
+    accountControl->getUser()->controlFriend()->addFriend(QString::fromStdString(name));
 
 }
 
@@ -94,27 +93,27 @@ int FriendsUI::selectFriend(){
     int row, max;
 
     while(scrolling){
-    erase();
-    mvprintw(0,0, "Friends: Press enter to select friend or any other key to go back");
+        erase();
+        mvprintw(0,0, "Friends: Press enter to select friend or any other key to go back");
 
-    row=3;
-    mvprintw(row, 5, "->");
+        row=3;
+        mvprintw(row, 5, "->");
 
-    QStringList friendNames= friendControl->getFriendNames();
+        QStringList friendNames= friendControl->getFriendNames();
 
-    max=offset+15;
-    if(friendNames.size()<offset+15)
-        max=friendNames.size();
+        max=offset+15;
+        if(friendNames.size()<offset+15)
+            max=friendNames.size();
 
-    for (unsigned int i = offset; i < max; i++) {
-        mvprintw(row,8,friendNames.at(i).toStdString().c_str());
-        row++;
-    }
+        for (unsigned int i = offset; i < max; i++) {
+            mvprintw(row,8,friendNames.at(i).toStdString().c_str());
+            row++;
+        }
 
-    int ch= getch();
-        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        int ch= getch();
+        if(ch==KEY_DOWN && (max!=(offset+1)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
@@ -129,7 +128,7 @@ int FriendsUI::selectFriend(){
 }
 
 int FriendsUI::viewFriendsProfile(int v){
-        erase();
+    erase();
     if(v==-1)
         return 0;
 

@@ -110,17 +110,6 @@ std::vector<Blog*> Scrapbook::getAllBlogs()
 
 }
 
-//Comment* Scrapbook::addComment(int blogID, QString username, QString content) {
-//    Blog* blog = getBlog(blogID);
-//    int commentID = commentDB->getMaxPostID() + 1;
-//    Comment* newComment = new Comment(commentID, username, content);
-//    blog->addComment(newComment);
-//    commentDB->addComment(commentID,
-//                          accountDB->retrieveAccountID(username),
-//                          blogID,
-//                          content);
-//    return newComment;
-//}
 
 Tweet *Scrapbook::addTweet(Tweet* newTweet){
     tweetList.insert(tweetList.begin(), newTweet);
@@ -132,10 +121,10 @@ Tweet *Scrapbook::addTweet(Tweet* newTweet){
     //add tweet into the database
     int accountID = accountDB->retrieveAccountID(newTweet->getAuthorUsername());
     tweetDB->addTweet(newTweet->getID(),
-                     accountID,
-                     this->id,
-                     newTweet->getContent(),
-                     newTweet->getPrivacy());
+                      accountID,
+                      this->id,
+                      newTweet->getContent(),
+                      newTweet->getPrivacy());
     return newTweet;
 }
 
@@ -255,8 +244,8 @@ void Scrapbook::constructTweetContainer() {
         bool privacy = std::get<4>(tweetInfo[i]);
 
         Tweet* newTweet = new Tweet(tweetID,
-                                   accountDB->getUsername(accountID),
-                                   tweetContent);
+                                    accountDB->getUsername(accountID),
+                                    tweetContent);
         if (privacy) { newTweet->setPrivate();}
 
         tweetList.push_back(newTweet);

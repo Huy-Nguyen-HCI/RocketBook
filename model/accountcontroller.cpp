@@ -4,10 +4,6 @@ using namespace std;
 
 QString AccountController::PATH = "/usr11/cs205_2016_Grp08/rocketDB/";  /**< server path */
 
-//QString AccountController::PATH = "/Users/HuyNguyen/mount/";   /**< local mount path */
-
-//QString AccountController::PATH = "../database/";
-
 AccountController::AccountController()
 {
     dbPath.append("/usr11/cs205_2016_Grp08/rocketDB/rocketDB.sqlite");

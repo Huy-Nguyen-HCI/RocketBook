@@ -25,13 +25,13 @@ int Screen::select(int max){
         switch (ch) {
         case KEY_UP:
             if(v>0) //arrow goes up
-            v--;
+                v--;
             if(v==0) //arrow goes to bottom
                 v=max;
             break;
         case KEY_DOWN:
             if(v<max+1) //arrows goes down
-            v++;
+                v++;
             if(v==max+1) //arrow goes back to top
                 v=1;
             break;

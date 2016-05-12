@@ -22,6 +22,9 @@ public:
      * @param content Content
      */
     Comment(int id, QString username, QString content);
+    /**
+     * @brief Comment destructor
+     */
     ~Comment();
 private:
 

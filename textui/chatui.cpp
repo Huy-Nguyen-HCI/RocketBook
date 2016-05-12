@@ -51,7 +51,7 @@ void ChatUI::takeCommand(int selection){
         erase();
         int chosenFriend=selectFriend();
         if(chosenFriend!=-1 && chosenChat!=-1)
-            addFriend(chosenChat,chosenFriend);//(chosenFriend);
+            addFriend(chosenChat,chosenFriend);
 
     }
 
@@ -83,8 +83,8 @@ void ChatUI::chatRoom(int index){
     std::vector<int>* chatList=accountControl->getUser()->getChatController()->getChatIdList();
     int chatId=chatList->at(index);
 
-    std::vector<int>* senderIds;//=accountControl->getUser()->getChatController()->getSenderList(chatId);
-    std::vector<QString>* messages;//=accountControl->getUser()->getChatController()->getMessageList(chatId);
+    std::vector<int>* senderIds;
+    std::vector<QString>* messages;
 
     bool chating=true;
     int offset=0;
@@ -116,9 +116,9 @@ void ChatUI::chatRoom(int index){
         }
 
         int ch= getch();
-        if(ch==KEY_DOWN && !((messages->size())==(max)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        if(ch==KEY_DOWN && !((messages->size())==(max)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
@@ -197,9 +197,9 @@ int ChatUI::selectFriend(){
         }
 
         int ch= getch();
-        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        if(ch==KEY_DOWN && (max!=(offset+1)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
@@ -238,9 +238,9 @@ int ChatUI::selectChat(){
         }
 
         int ch= getch();
-        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        if(ch==KEY_DOWN && (max!=(offset+1)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);
@@ -279,9 +279,9 @@ int ChatUI::scrollMessages(){
         }
 
         int ch= getch();
-        if(ch==KEY_DOWN && (max!=(offset+1)))//ch==258 || KEY_DOWN || !((wholeScrapbook.size()-5)>offset)) //259 and 259 enables scrolling
+        if(ch==KEY_DOWN && (max!=(offset+1)))
             offset++;
-        else if(ch==KEY_UP && offset>0)//ch==259 || KEY_UP || offset>0)
+        else if(ch==KEY_UP && offset>0)
             offset--;
         else if(ch==KEY_UP);
         else if(ch==KEY_DOWN);

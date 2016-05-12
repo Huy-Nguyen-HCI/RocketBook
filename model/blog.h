@@ -53,7 +53,11 @@ public:
      */
     Comment* addComment(QString username, QString content);
 
-
+    /**
+     * @brief getUsername
+     * returns author of the blog's username
+     * @return username
+     */
     QString getUsername() {return username;}
 
     /**

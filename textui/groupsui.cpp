@@ -18,18 +18,16 @@ GroupsUI::GroupsUI(AccountController* accountControl)
 
 void GroupsUI::drawScreen(int v) {
 
-clear();
+    clear();
 
-// print the instructions for manipulating the Value object
+    mvprintw(0, 0, "Groups");
+    mvprintw(3, 8, "Enter group");
+    mvprintw(4, 8, "Create new group");
+    mvprintw(5, 8, "Back");
 
-mvprintw(0, 0, "Groups");
-mvprintw(3, 8, "Enter group");
-mvprintw(4, 8, "Create new group");
-mvprintw(5, 8, "Back");
+    mvprintw(v+2, 5, "->");
 
-mvprintw(v+2, 5, "->");
-
-refresh();
+    refresh();
 }
 
 
@@ -37,7 +35,6 @@ refresh();
 
 void GroupsUI::takeCommand(int selection){
 
-    // cleanup the window and return control to bash
     endwin();
 
     if(selection==1){
@@ -51,8 +48,8 @@ void GroupsUI::takeCommand(int selection){
     else if(selection==3)
         return;
 
-   initialize();
-   takeCommand(select(options));
+    initialize();
+    takeCommand(select(options));
 
 }
 
@@ -77,10 +74,6 @@ void GroupsUI::createGroup(){
     Group* currentGroup = accountControl->getUser()->controlGroup()->createNewGroup(QString::fromStdString(name), serverPath, QString::fromStdString(description));
 
 }
-//adding members
-      //  currentGroup->addMember(memberUsername);
-
-
 
 
 
@@ -170,9 +163,9 @@ void GroupsUI::viewProfile(int index){
         if(i!=members.size()-1)
             printw(" , ");
     }
-        mvprintw(LINES-1, 0, "Press any key to continue");
-        getch();
+    mvprintw(LINES-1, 0, "Press any key to continue");
+    getch();
 
-        scrapbook=new GroupScrapbookUI(accountControl->getUser()->getUsername(),groupID, group, groupScrapbook, accountControl->getUser()->controlFriend()->getFriendNames());
+    scrapbook=new GroupScrapbookUI(accountControl->getUser()->getUsername(),groupID, group, groupScrapbook, accountControl->getUser()->controlFriend()->getFriendNames());
 
 }

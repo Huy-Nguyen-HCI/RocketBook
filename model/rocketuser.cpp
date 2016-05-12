@@ -147,19 +147,19 @@ QString RocketUser::buildContentHTML() {
         Post* currentPost = wholeRocketUser[i];
         Post::PostType pType = currentPost->type();
         switch (pType) {
-            case Post::typeBlog:
-                html = html + "<li>" + blogToHTML((Blog*)currentPost) + "</li>";
-                break;
-            case Post::typeTweet:
-                html = html + "<li>" + tweetToHTML((Tweet*)currentPost) + "</li>";
-                break;
-            case Post::typeMultimedia:
-                html = html + "<li>" + multimediaToHTML((Multimedia*)currentPost) + "</li>";
-                break;
-            case Post::typeComment:
-                break;
-            case Post::typePost:
-                break;
+        case Post::typeBlog:
+            html = html + "<li>" + blogToHTML((Blog*)currentPost) + "</li>";
+            break;
+        case Post::typeTweet:
+            html = html + "<li>" + tweetToHTML((Tweet*)currentPost) + "</li>";
+            break;
+        case Post::typeMultimedia:
+            html = html + "<li>" + multimediaToHTML((Multimedia*)currentPost) + "</li>";
+            break;
+        case Post::typeComment:
+            break;
+        case Post::typePost:
+            break;
         }
     }
 
