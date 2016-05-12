@@ -14,7 +14,7 @@ class ChatGUI;
 
 /**
  * @brief The ChatGUI class
- * Provides functionality for the chat interface
+ * Provides functionality for the chat interface. The chat has an instant refresh rate of .5 second
  */
 class ChatGUI : public QWidget
 {
@@ -24,8 +24,8 @@ public:
 
     /**
      * @brief ChatGUI
-     * @param input The input model
-     * @param chatId Chat ID
+     * @param input The current account of the user
+     * @param chatId The ID of the chatroom
      * @param parent
      *
      * Default constructor
@@ -47,9 +47,29 @@ private:
 
 
 private slots:
+    /**
+     * @brief on_send_clicked
+     * Send a message to the other person
+     */
     void on_send_clicked();
+
+    /**
+     * @brief refreshMembers
+     * Refresh all members currently in the chat
+     */
     void refreshMembers();
+
+    /**
+     * @brief refreshMessages
+     * Refresh all messages currently in the chat.
+     * This slot connects to the timer, and the refresh rate is 0.5 second.
+     */
     void refreshMessages();
+
+    /**
+     * @brief on_chatBox_returnPressed
+     * Go back to the current app.
+     */
     void on_chatBox_returnPressed();
 };
 

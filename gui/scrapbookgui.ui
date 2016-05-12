@@ -63,7 +63,7 @@
        <item row="0" column="2">
         <widget class="QPushButton" name="viewButton">
          <property name="text">
-          <string>View</string>
+          <string>Comment</string>
          </property>
         </widget>
        </item>

@@ -12,6 +12,7 @@ CreateMultimediaGUI::CreateMultimediaGUI(AccountController* currentAccount,
     scrapbookGUI = input;
     accountController = currentAccount;
     scrapbook = inputScrapbook;
+    ui->uploadVideoButton->hide();
 }
 
 CreateMultimediaGUI::~CreateMultimediaGUI()

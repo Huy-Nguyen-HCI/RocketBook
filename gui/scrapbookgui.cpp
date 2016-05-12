@@ -47,6 +47,8 @@ ScrapbookGUI::ScrapbookGUI(AccountController *currentAccount,
 
     refreshBook();
 
+    ui->refreshButton->hide();
+
     connect(ui->scrapbookArea, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(scrapbookAreaItem_clicked(QListWidgetItem*)));
 
 }
@@ -108,7 +110,7 @@ void ScrapbookGUI::switchTweetViews() {
 
 void ScrapbookGUI::switchBlogViews() {
     if (ui->blogStackedWidget->currentWidget() == displayBlogView){
-        createBlogView->clearViews();
+        createBlogView->clearFields();
         ui->blogStackedWidget->setCurrentWidget(createBlogView);
     }
     else {
@@ -160,8 +162,9 @@ void ScrapbookGUI::displayBlog(Blog* blog) {
     QString currentContent = blog->getContent();
 
     QString content =
-            "Blog: \nTitle:    " + currentTitle + "\n" +
-            "Content:    " + currentContent + "\n";
+            "BLOG \n" + currentTitle + "\n" +
+            "@" + blog->getAuthorUsername() + "\n"
+            + currentContent + "\n";
 
     QListWidgetItem* listItem = new QListWidgetItem(content);
     listItem->setData(listItemTypeRole, blogListItemType);
@@ -172,7 +175,7 @@ void ScrapbookGUI::displayBlog(Blog* blog) {
 void ScrapbookGUI::displayTweet(Tweet* tweet) {
 
     QString currentContent = tweet->getContent();
-    QString content("Tweet: \nContent: " + currentContent +"\n");
+    QString content("TWEET \n@" + tweet->getAuthorUsername() + ": " +                   currentContent +"\n");
 
 
     QListWidgetItem* listItem = new QListWidgetItem(content);
@@ -188,7 +191,7 @@ void ScrapbookGUI::displayMultimedia(Multimedia* multimedia) {
     QString title = multimedia->getTitle();
     QString description = multimedia->getDescription();
     QString content = multimedia->getContent();
-    QString newLabel("Title: "+title + "\n" + "Description: " + description);
+    QString newLabel("PHOTO \nTitle: "+title + "\n@" + multimedia->getAuthorUsername() + "\n" + description);
     QListWidgetItem *newMedia = new QListWidgetItem(QIcon(content), newLabel, ui->scrapbookArea);
 
 

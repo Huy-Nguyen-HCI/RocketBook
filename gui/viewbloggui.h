@@ -28,13 +28,14 @@ public:
     ~ViewBlogGUI();
 
 private slots:
-//    void on_buttonBox_accepted();
 
-//    void on_buttonBox_rejected();
-
+    /**
+     * @brief on_buttonBox_clicked
+     * If any button box is clicked
+     * @param button
+     */
     void on_buttonBox_clicked(QAbstractButton *button);
 
-//    void on_buttonBox_accepted();
 
 
 private:

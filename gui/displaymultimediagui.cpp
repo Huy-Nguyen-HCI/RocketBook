@@ -14,6 +14,7 @@ DisplayMultimediaGUI::DisplayMultimediaGUI(Scrapbook *inputScrapbook, ScrapbookG
     ui->deleteButton->hide();
     ui->viewButton->hide();
     ui->editButton->hide();
+    ui->loadButton->hide();
 }
 
 DisplayMultimediaGUI::~DisplayMultimediaGUI()

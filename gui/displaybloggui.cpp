@@ -9,6 +9,9 @@ DisplayBlogGUI::DisplayBlogGUI(Scrapbook *inputScrapbook, ScrapbookGUI *input, Q
     scrapbookGUI = input;
     scrapbook = inputScrapbook;
     refreshBlogs();
+    ui->viewBlogButton->hide();
+    ui->refreshBlogs->hide();
+    connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(listWidgetItem_clicked()));
 }
 
 DisplayBlogGUI::~DisplayBlogGUI()
@@ -59,6 +62,8 @@ void DisplayBlogGUI::refreshBlogs()
     }
 }
 
-
+void DisplayBlogGUI::listWidgetItem_clicked() {
+    ui->viewBlogButton->show();
+}
 
 

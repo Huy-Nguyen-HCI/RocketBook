@@ -29,6 +29,8 @@ private slots:
 
     void on_viewBlogButton_clicked();
 
+    void listWidgetItem_clicked();
+
 private:
     Ui::DisplayBlogGUI *ui;
     ScrapbookGUI *scrapbookGUI;

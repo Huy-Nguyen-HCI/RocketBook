@@ -33,7 +33,7 @@ void CreateBlogGUI::on_publishButton_clicked()
 
 }
 
-void CreateBlogGUI::clearViews() {
+void CreateBlogGUI::clearFields() {
 
     ui->lineEdit->clear();
     ui->textEdit->clear();
