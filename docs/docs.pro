@@ -1,5 +1,4 @@
 DISTFILES += \
     Makefile
 
-SOURCES += \
-    main.cpp
+SOURCES +=
