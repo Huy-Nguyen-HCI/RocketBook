@@ -1629,6 +1629,46 @@ TEST(GroupMemberDatabase, testRemoveAllGroupMember)
     ASSERT_FALSE(newGDB.groupMemberExists(gid1, aid2));
 }
 
+//Message Database Tests:
+
+TEST(MessageDBTests, testAddMessage)
+{
+    const QString path("../unittest/testdirec/Messages");
+    MessageDB newMDB(path);
+    int mid1 = 1;
+    int aid1 = 11;
+    int cid1 = 21;
+    const QString message1("First Message");
+    int mid2 = 2;
+    int aid2 = 12;
+    int cid2 = 22;
+    const QString message2("Second Message");
+    ASSERT_TRUE(newMDB.addMessage(mid1, aid1, cid1, message1));
+    ASSERT_TRUE(newMDB.addMessage(mid2, aid2, cid1, message1));
+    ASSERT_TRUE(newMDB.addMessage(mid1, aid1, cid2, message1));
+    ASSERT_TRUE(newMDB.addMessage(mid2, aid2, cid2, message2));
+
+}
+
+TEST(MessageDBTests, testDeleteMessage)
+{
+    const QString path("../unittest/testdirec/Messages");
+    MessageDB newMDB(path);
+    int mid1 = 1;
+    int aid1 = 11;
+    int cid1 = 21;
+    const QString message1("First Message");
+    int mid2 = 2;
+    int aid2 = 12;
+    int cid2 = 22;
+    const QString message2("Second Message");
+    newMDB.addMessage(mid1, aid1, cid1, message1);
+    newMDB.addMessage(mid2, aid2, cid2, message2);
+    ASSERT_TRUE(newMDB.deleteMessage(cid1, mid1));
+    ASSERT_TRUE(newMDB.deleteMessage(cid2, mid2));
+
+}
+
 
 
 

@@ -27,6 +27,54 @@ TEST(RocketUserTest, testGetID)
 
 }
 
+TEST(RocketUserTest, testDescription)
+{
+
+    const QString dbPath("../unittest/testdirec");
+    int id1 = 0;
+    const QString un1("username1");
+    const QString fn1("fullName1");
+    const QString ph1("photo1");
+    QString dscr1("description1");
+    int id2 = 1;
+    const QString un2("username2");
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    QString dscr2("description2");
+
+    RocketUser user1(dbPath, id1, un1, fn1, ph1, dscr1);
+    ASSERT_EQ(dscr1, user1.getProfile()->getDescription());
+    user1.changeProfileDescription(dscr2);
+    ASSERT_EQ(dscr2, user1.getProfile()->getDescription());
+
+
+}
+
+TEST(RocketUserTest, testPhoto)
+{
+
+    const QString dbPath("../unittest/testdirec");
+    int id1 = 0;
+    const QString un1("username1");
+    const QString fn1("fullName1");
+    const QString ph1("photo1");
+    QString dscr1("description1");
+    int id2 = 1;
+    const QString un2("username2");
+    const QString fn2("fullName2");
+    const QString ph2("photo2");
+    QString dscr2("description2");
+
+    RocketUser user1(dbPath, id1, un1, fn1, ph1, dscr1);
+    ASSERT_EQ(ph1, user1.getProfile()->getPicturePath());
+    user1.changePhoto(ph2);
+    ASSERT_EQ(ph2, user1.getProfile()->getPicturePath());
+
+
+}
+
+//Profile Tests:
+
 TEST(ProfileTest, testGetProfileID)
 {
 

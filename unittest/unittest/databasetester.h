@@ -16,6 +16,7 @@
 #include "../../database/chatdb.h"
 #include "../../database/groupdb.h"
 #include "../../database/groupmemberdb.h"
+#include "../../database/messagedb.h"
 
 
 
