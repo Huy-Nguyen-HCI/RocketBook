@@ -30,6 +30,14 @@ void CreateTweetGUI::on_publishButton_clicked()
 {
     // get user input
     QString content = ui->contentBox->toPlainText();
+
+    // check valid character count
+    if (content.isEmpty() || content.length() > 140) {
+        ui->message->setText("Error: Tweet must be between 0 and 140 characters!");
+        return;
+    }
+
+    // get user input
     QString username = accountController->getUser()->getUsername();
     bool privacy = ui->privateCheckbox->isChecked();
 
@@ -43,5 +51,6 @@ void CreateTweetGUI::on_publishButton_clicked()
 
 void CreateTweetGUI::clearViews() {
     ui->contentBox->clear();
+    ui->message->clear();
     ui->privateCheckbox->setChecked(false);
 }
