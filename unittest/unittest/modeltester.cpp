@@ -327,4 +327,76 @@ TEST(GroupTests, testProfile)
     ASSERT_EQ(dscr, newGroup.getProfile()->getDescription());
 }
 
+// Multimeida tests
+
+TEST(MultimediaTest, testTitle)
+{
+    QString username("username");
+    QString title("title");
+    QString description("description");
+    QString content("content");
+    Multimedia mm(username, title, description, content);
+    ASSERT_EQ(title, mm.getTitle());
+}
+
+TEST(MultimediaTest, testAuthor)
+{
+    QString username("username");
+    QString title("title");
+    QString description("description");
+    QString content("content");
+    Multimedia mm(username, title, description, content);
+    ASSERT_EQ(username, mm.getAuthorUsername());
+}
+
+TEST(MultimediaTest, testContent)
+{
+    QString username("username");
+    QString title("title");
+    QString description("description");
+    QString content("content");
+    Multimedia mm(username, title, description, content);
+    ASSERT_EQ(content, mm.getContent());
+}
+
+TEST(MultimediaTest, testDescription)
+{
+    QString username("username");
+    QString title("title");
+    QString description("description");
+    QString content("content");
+    Multimedia mm(username, title, description, content);
+    ASSERT_EQ(description, mm.getDescription());
+}
+
+//Post tests
+
+TEST(PostTests, testContent)
+{
+    QString username("username");
+    QString content("content");
+    Post newPost(username, content);
+    ASSERT_EQ(content, newPost.getContent());
+}
+
+TEST(PostTests, testAuthor)
+{
+    QString username("username");
+    QString content("content");
+    Post newPost(username, content);
+    ASSERT_EQ(username, newPost.getAuthorUsername());
+}
+
+TEST(PostTests, testPrivacy)
+{
+    QString username("username");
+    QString content("content");
+    Post newPost(username, content);
+    ASSERT_FALSE(newPost.getPrivacy());
+    newPost.setPrivate();
+    ASSERT_TRUE(newPost.getPrivacy());
+}
+
+
+
 
