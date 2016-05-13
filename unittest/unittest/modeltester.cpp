@@ -269,6 +269,28 @@ TEST(BlogTest, testComments)
     ASSERT_EQ(username2, comments2.at(0)->getAuthorUsername());
 }
 
+TEST(BlogTest, testBlogType)
+{
+    QString username1("username 1");
+    QString title1("title 1");
+    QString content1("content 1");
+    QString username2("username 2");
+    QString title2("title 2");
+    QString content2("content 2");
+    QString dbPath("../unittest/testdirec");
+
+    Blog newBlog1(username1, title1, content1, dbPath);
+    Blog newBlog2(username2, title2, content2, dbPath);
+
+    Post::PostType postType1 = newBlog1.type();
+    Post::PostType postType2 = newBlog2.type();
+    ASSERT_EQ(Post::typeBlog, postType1);
+    ASSERT_EQ(Post::typeBlog, postType2);
+
+}
+
+
+
 //Comment tests
 
 TEST(CommentTests, testContent)
@@ -297,6 +319,22 @@ TEST(CommentTests, testAuthor)
 
     ASSERT_EQ(username1, newComment1.getAuthorUsername());
     ASSERT_EQ(username2, newComment2.getAuthorUsername());
+}
+
+TEST(CommentTests, testCommentType)
+{
+    QString username1("username 1");
+    QString content1("content 1");
+    QString username2("username 2");
+    QString content2("content 2");
+
+    Comment newComment1(username1, content1);
+    Comment newComment2(username2, content2);
+
+    Post::PostType postType1 = newComment1.type();
+    Post::PostType postType2 = newComment2.type();
+    ASSERT_EQ(Post::typeComment, postType1);
+    ASSERT_EQ(Post::typeComment, postType2);
 }
 
 //Group Test
@@ -369,6 +407,18 @@ TEST(MultimediaTest, testDescription)
     ASSERT_EQ(description, mm.getDescription());
 }
 
+TEST(MultimediaTest, testMultimediaType)
+{
+    QString username("username");
+    QString title("title");
+    QString description("description");
+    QString content("content");
+    Multimedia mm(username, title, description, content);
+    Post::PostType postType = mm.type();
+    ASSERT_EQ(Post::typeMultimedia, postType);
+
+}
+
 //Post tests
 
 TEST(PostTests, testContent)
@@ -396,6 +446,53 @@ TEST(PostTests, testPrivacy)
     newPost.setPrivate();
     ASSERT_TRUE(newPost.getPrivacy());
 }
+
+TEST(PostTests, testPostType)
+{
+    QString username("username");
+    QString content("content");
+    Post newPost(username, content);
+    Post::PostType postType = newPost.type();
+    ASSERT_EQ(Post::typePost, postType);
+}
+
+//Tweet tests
+
+TEST(TweetTests, testContent)
+{
+    QString username("username");
+    QString content("content");
+    Tweet newTweet(username, content);
+    ASSERT_EQ(content, newTweet.getContent());
+}
+
+TEST(TweetTests, testAuthor)
+{
+    QString username("username");
+    QString content("content");
+    Tweet newTweet(username, content);
+    ASSERT_EQ(username, newTweet.getAuthorUsername());
+}
+
+TEST(TweetTests, testPrivacy)
+{
+    QString username("username");
+    QString content("content");
+    Tweet newTweet(username, content);
+    ASSERT_FALSE(newTweet.getPrivacy());
+    newTweet.setPrivate();
+    ASSERT_TRUE(newTweet.getPrivacy());
+}
+
+TEST(TweetTests, testTweetType)
+{
+    QString username("username");
+    QString content("content");
+    Tweet newTweet(username, content);
+    Post::PostType postType = newTweet.type();
+    ASSERT_EQ(Post::typeTweet, postType);
+}
+
 
 
 
