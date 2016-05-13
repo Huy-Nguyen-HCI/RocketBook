@@ -84,7 +84,7 @@ void GroupProfileGUI::loadPhoto() {
     ui->groupPhoto->setScene(photoScene);
     QPixmap *file = new QPixmap(photoPath);
     QGraphicsPixmapItem *image = new QGraphicsPixmapItem(*file);
-    ui->groupPhoto->fitInView(image, Qt::KeepAspectRatio);
+    ui->groupPhoto->fitInView(photoScene->sceneRect(), Qt::KeepAspectRatio);
     photoScene->addItem(image);
 
 }
